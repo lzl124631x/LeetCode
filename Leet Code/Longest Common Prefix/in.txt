@@ -1,0 +1,10 @@
+3
+3
+abcde
+abdec
+abced
+3
+abc
+abcd
+abcde
+2

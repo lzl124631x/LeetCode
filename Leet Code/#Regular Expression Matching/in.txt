@@ -1,0 +1,17 @@
+16
+a ab*
+aa a
+aa aa
+aaa aa
+aa a*
+aa .*
+ab .*
+aab c*a*b
+abcabc .*c
+abcabc .*cabc
+abcabc .*ab..*
+abcabc .*c..*
+abbabbb .*ab*b
+abbabbb ab*b
+abbabbb ab*ab*
+acaabbaccbbacaabbbb a*.*b*.*a*aa*a*
