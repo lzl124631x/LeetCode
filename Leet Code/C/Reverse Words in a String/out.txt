@@ -1,0 +1,8 @@
+Case #1: [4 3 2 1]
+Time[0.000s]
+Case #2: [32 2]
+Time[0.000s]
+Case #3: [3 321 2]
+Time[0.000s]
+Case #4: [blue is sky the]
+Time[0.000s]
