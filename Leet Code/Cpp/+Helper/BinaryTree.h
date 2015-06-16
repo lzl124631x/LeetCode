@@ -1,3 +1,5 @@
+#ifndef BinaryTree_h
+#define BinaryTree_h
 #include <iostream>
 #include <queue>
 #include <vector>
@@ -83,3 +85,4 @@ string serialize(TreeNode* root){
 	*(p - 1) = '\0';
 	return string(buf);
 }
+#endif
