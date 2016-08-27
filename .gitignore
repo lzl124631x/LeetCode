@@ -1,3 +1,4 @@
 *.exe
 *.exe.stackdump
 Book/
+*.sublime-workspace
