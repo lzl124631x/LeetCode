@@ -17,3 +17,4 @@ Status | # | Title | Difficulty
 :white_check_mark: | 405 | Convert a Number to Hexadecimal | Easy
 :white_check_mark: | 438 | Find All Anagrams in a String | Easy
 :white_check_mark: | 299 | Bulls and Cows | Easy
+:white_check_mark: | 389 | Find the Difference | Easy
