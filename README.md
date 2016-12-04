@@ -23,3 +23,4 @@ Status | # | Title | Difficulty
 :white_check_mark: | 349 | Intersection of Two Arrays | Easy
 :white_check_mark: | 350 | Intersection of Two Arrays II | Easy
 :white_check_mark: | 409 | Longest Palindrome | Easy
+:white_check_mark: | 453 | Minimum Moves to Equal Array Elements | Easy
