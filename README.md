@@ -14,3 +14,4 @@ Status | # | Title | Difficulty
 :white_check_mark: | 441 | Arranging Coins | Easy
 :white_check_mark: | 455 | Assign Cookies | Easy
 :white_check_mark: | 401 | Binary Watch | Easy
+:white_check_mark: | 405 | Convert a Number to Hexadecimal | Easy
