@@ -20,3 +20,6 @@ Status | # | Title | Difficulty
 :white_check_mark: | 389 | Find the Difference | Easy
 :white_check_mark: | 387 | First Unique Character in a String | Easy
 :white_check_mark: | 374 | Guess Number Higher or Lower | Easy
+:white_check_mark: | 349 | Intersection of Two Arrays | Easy
+:white_check_mark: | 350 | Intersection of Two Arrays II | Easy
+:white_check_mark: | 409 | Longest Palindrome | Easy
