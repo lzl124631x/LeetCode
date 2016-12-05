@@ -31,3 +31,4 @@ Status | # | Title | Difficulty
 :white_check_mark: | 459 | Repeated Substring Pattern | Easy
 :white_check_mark: | 414 | Third Maximum Number | Easy
 :white_check_mark: | 404 | Sum of Left Leaves | Easy
+:white_check_mark: | 434 | Number of Segments in a String | Easy
