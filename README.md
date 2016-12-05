@@ -25,3 +25,5 @@ Status | # | Title | Difficulty
 :white_check_mark: | 409 | Longest Palindrome | Easy
 :white_check_mark: | 453 | Minimum Moves to Equal Array Elements | Easy
 :white_check_mark: | 400 | Nth Digit | Easy
+:white_check_mark: | 447 | Number of Boomerangs | Easy
+:white_check_mark: | 342 | Power of Four | Easy
