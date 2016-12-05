@@ -29,3 +29,4 @@ Status | # | Title | Difficulty
 :white_check_mark: | 342 | Power of Four | Easy
 :white_check_mark: | 383 | Ransom Note | Easy
 :white_check_mark: | 459 | Repeated Substring Pattern | Easy
+:white_check_mark: | 414 | Third Maximum Number | Easy
