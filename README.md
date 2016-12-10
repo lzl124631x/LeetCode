@@ -33,3 +33,4 @@ Status | # | Title | Difficulty
 :white_check_mark: | 404 | Sum of Left Leaves | Easy
 :white_check_mark: | 434 | Number of Segments in a String | Easy
 :white_check_mark: | 345 | Reverse Vowels of a String | Easy
+:white_check_mark: | 396 | Rotate Function | Easy
