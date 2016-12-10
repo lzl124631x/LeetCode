@@ -35,3 +35,4 @@ Status | # | Title | Difficulty
 :white_check_mark: | 345 | Reverse Vowels of a String | Easy
 :white_check_mark: | 396 | Rotate Function | Easy
 :white_check_mark: | 112 | Path Sum | Easy
+:white_check_mark: | 113 | Path Sum II | Medium
