@@ -38,3 +38,4 @@ Status | # | Title | Difficulty
 :white_check_mark: | 113 | Path Sum II | Medium
 :white_check_mark: | 437 | Path Sum III | Easy
 :white_check_mark: | 475 | Heaters | Easy
+:white_check_mark: | 419 | Battleships in a Board | Medium
