@@ -40,3 +40,4 @@ Status | # | Title | Difficulty
 :white_check_mark: | 475 | Heaters | Easy
 :white_check_mark: | 419 | Battleships in a Board | Medium
 :white_check_mark: | 338 | Counting Bits | Medium
+:white_check_mark: | 413 | Arithmetic Slices | Medium
