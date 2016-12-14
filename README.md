@@ -43,3 +43,4 @@ My Code for Online Judges.
 413 | Arithmetic Slices | Medium
 357 | Count Numbers with Unique Digits | Medium
 343 | Integer Break | Medium
+392 | Is Subsequence | Medium
