@@ -4,7 +4,7 @@ My Code for Online Judges.
 
 ## LeetCode
 
-# | Title | Difficulty 
+\# | Title | Difficulty 
 ---|---|---
 412 | Fizz Buzz | Easy
 463 | Island Perimeter | Easy
