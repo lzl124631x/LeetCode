@@ -42,3 +42,4 @@ My Code for Online Judges.
 338 | Counting Bits | Medium
 413 | Arithmetic Slices | Medium
 357 | Count Numbers with Unique Digits | Medium
+343 | Integer Break | Medium
