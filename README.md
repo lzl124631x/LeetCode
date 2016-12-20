@@ -54,3 +54,5 @@ My Code for Online Judges.
 464 | Can I Win | Medium
 446 | Arithmetic Slices II - Subsequence | Hard
 416 | Partition Equal Subset Sum | Medium
+461 | Hamming Distance | Easy
+448 | Find All Numbers Disappeared in an Array | Easy
