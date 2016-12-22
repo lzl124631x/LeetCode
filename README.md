@@ -59,3 +59,6 @@ My Code for Online Judges.
 410 | Split Array Largest Sum | Hard
 403 | Frog Jump | Hard
 376 | Wiggle Subsequence | Medium
+375 | Guess Number Higher or Lower II | Medium
+368 | Largest Divisible Subset | Medium
+322 | Coin Change | Medium
