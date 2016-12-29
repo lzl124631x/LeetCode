@@ -66,3 +66,4 @@ My Code for Online Judges.
 477 | Total Hamming Distance | Medium
 208 | Implement Trie (Prefix Tree) | Medium
 211 | Add and Search Word - Data structure design | Medium
+421 | Maximum XOR of Two Numbers in an Array | Medium
