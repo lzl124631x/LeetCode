@@ -67,3 +67,4 @@ My Code for Online Judges.
 208 | Implement Trie (Prefix Tree) | Medium
 211 | Add and Search Word - Data structure design | Medium
 421 | Maximum XOR of Two Numbers in an Array | Medium
+472 | Concatenated Words | Hard
