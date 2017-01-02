@@ -73,3 +73,4 @@ My Code for Online Judges.
 382 | Linked List Random Node | Medium
 398 | Random Pick Index | Medium
 442 | Find All Duplicates in an Array | Medium
+1 | Two Sum | Easy
