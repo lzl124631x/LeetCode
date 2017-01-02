@@ -75,3 +75,4 @@ My Code for Online Judges.
 442 | Find All Duplicates in an Array | Medium
 1 | Two Sum | Easy
 167 | Two Sum II - Input array is sorted | Medium
+169 | Majority Element | Easy
