@@ -71,3 +71,4 @@ My Code for Online Judges.
 212 | Word Search II | Hard
 336 | Palindrome Pairs | Hard
 382 | Linked List Random Node | Medium
+398 | Random Pick Index | Medium
