@@ -76,3 +76,5 @@ My Code for Online Judges.
 1 | Two Sum | Easy
 167 | Two Sum II - Input array is sorted | Medium
 169 | Majority Element | Easy
+229 | Majority Element II | Medium
+380 | Insert Delete GetRandom O(1) | Hard
