@@ -1,3 +1,4 @@
+// https://discuss.leetcode.com/topic/16983/easy-76ms-c-solution-using-bfs
 class Solution {
 private:
     void addWords(string &word, unordered_set<string> &wordList, queue<string> &q) {
