@@ -83,4 +83,6 @@ My Code for Online Judges.
 154 | Find Minimum in Rotated Sorted Array II | Hard
 451 | Sort Characters By Frequency | Medium
 84 | Largest Rectangle in Histogram | Medium
+85 | Maximal Rectangle | Hard
 127 | Word Ladder | Hard
+126 | Word Ladder II | Hard
