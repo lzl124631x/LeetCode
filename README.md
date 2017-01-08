@@ -88,4 +88,6 @@ My Code for Online Judges.
 126 | Word Ladder II | Hard
 476 | Number Complement | Easy
 481 | Magical String | Medium
+482 | License Key Formatting | Medium
 480 | Sliding Window Median | Hard
+15 | 3Sum | Medium
