@@ -1,12 +1,16 @@
 #ifndef Helper_h
 #define Helper_h
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <iostream>
 #include <vector>
 #include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
 #include "BinaryTree.h"
 using namespace std;
 #define CASET int ___T, case_n = 1; scanf("%d ", &___T); while (___T-- > 0)
@@ -58,9 +62,10 @@ vector<int> scanVector(){
 	vector<int> v;
 	string str;
 	cin >> str;
-	char *s = (char*) str.c_str(), *p = NULL;
-	while(p = strsep(&s, ",")){
+	char *s = (char*) str.c_str(), *p = strtok(s, ",");
+	while(p){
 		v.push_back(atoi(p));
+		p = strtok(NULL, ",");
 	}
 	return v;
 }
