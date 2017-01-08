@@ -42,8 +42,7 @@ vector<int> breathFirstTraversal(TreeNode *root){
 
 // Note: Invalid input is not considered yet.
 TreeNode* deserialize(string str){
-	char *s = (char*)str.c_str(), *p = NULL;
-	p = strsep(&s, ",");
+	char *s = (char*)str.c_str(), *p = strtok(s, ",");
 	if(!strcmp(p, "#")) return NULL;
 	TreeNode *root = new TreeNode(atoi(p));	
 	queue<TreeNode*> q;
@@ -52,7 +51,7 @@ TreeNode* deserialize(string str){
 		TreeNode *pnode = q.front(); q.pop();
 		TreeNode *n[2] = {NULL};
 		for(int i = 0; s && i < 2; ++i){
-			p = strsep(&s, ",");
+			p = strtok(NULL, ",");
 			if(strcmp(p, "#")){
 				n[i] = new TreeNode(atoi(p));
 				q.push(n[i]);
