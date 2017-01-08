@@ -11,8 +11,7 @@ public:
             }
         }
         for (auto it = AB.begin(); it != AB.end(); ++it) {
-            auto it2 = CD.find(-it->first);
-            if (it2 != CD.end()) cnt += it->second * it2->second;
+            cnt += it->second * CD[-it->first];
         }
         return cnt;
     }
