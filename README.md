@@ -87,4 +87,5 @@ My Code for Online Judges.
 127 | Word Ladder | Hard
 126 | Word Ladder II | Hard
 476 | Number Complement | Easy
+481 | Magical String | Medium
 480 | Sliding Window Median | Hard
