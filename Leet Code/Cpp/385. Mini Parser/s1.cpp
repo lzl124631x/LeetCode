@@ -37,13 +37,12 @@ public:
             while (i < end) {
                 int begin = i;
                 if (s[i] == '[') { // element being nested list
-                    int cnt = 1;
-                    ++i;
-                    while (cnt > 0) {
+                    int cnt = 0;
+                    do {
                         if (s[i] == '[') ++cnt;
                         else if (s[i] == ']') --cnt;
                         ++i;
-                    }
+                    } while (cnt > 0);
                 } else {
                     while (isdigit(s[i]) || s[i] == '-') ++i;
                 }
