@@ -119,3 +119,4 @@ My Code for Online Judges.
 204 | Count Primes | Easy
 21 | Merge Two Sorted Lists | Easy
 23 | Merge k Sorted Lists | Hard
+412 | Fizz Buzz | Easy
