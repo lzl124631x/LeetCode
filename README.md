@@ -124,3 +124,4 @@ My Code for Online Judges.
 264 | Ugly Number II | Medium
 313 | Super Ugly Number | Medium
 303 | Range Sum Query - Immutable | Easy
+304 | Range Sum Query 2D - Immutable | Medium
