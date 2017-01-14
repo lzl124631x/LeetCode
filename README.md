@@ -110,3 +110,4 @@ My Code for Online Judges.
 300 | Longest Increasing Subsequence | Medium
 115 | Distinct Subsequences | Hard
 321 | Create Maximum Number | Hard
+121 | Best Time to Buy and Sell Stock | Easy
