@@ -117,3 +117,5 @@ My Code for Online Judges.
 309 | Best Time to Buy and Sell Stock with Cooldown | Hard
 279 | Perfect Squares | Medium
 204 | Count Primes | Easy
+21 | Merge Two Sorted Lists | Easy
+23 | Merge k Sorted Lists | Hard
