@@ -116,3 +116,4 @@ My Code for Online Judges.
 188 | Best Time to Buy and Sell Stock IV | Hard
 309 | Best Time to Buy and Sell Stock with Cooldown | Hard
 279 | Perfect Squares | Medium
+204 | Count Primes | Easy
