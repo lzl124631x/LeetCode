@@ -121,3 +121,4 @@ My Code for Online Judges.
 23 | Merge k Sorted Lists | Hard
 412 | Fizz Buzz | Easy
 263 | Ugly Number | Easy
+264 | Ugly Number II | Medium
