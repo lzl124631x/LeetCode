@@ -122,3 +122,4 @@ My Code for Online Judges.
 412 | Fizz Buzz | Easy
 263 | Ugly Number | Easy
 264 | Ugly Number II | Medium
+313 | Super Ugly Number | Medium
