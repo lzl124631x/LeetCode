@@ -138,3 +138,4 @@ My Code for Online Judges.
 94 | Binary Tree Inorder Traversal | Medium
 144 | Binary Tree Preorder Traversal | Medium
 145 | Binary Tree Postorder Traversal | Hard
+98 | Validate Binary Search Tree | Medium
