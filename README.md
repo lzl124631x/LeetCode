@@ -134,3 +134,4 @@ My Code for Online Judges.
 100 | Same Tree | Easy
 101 | Symmetric Tree | Easy
 104 | Maximum Depth of Binary Tree | Easy
+111 | Minimum Depth of Binary Tree | Easy
