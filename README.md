@@ -130,3 +130,4 @@ My Code for Online Judges.
 487 | Max Consecutive Ones II | Medium
 488 | Zuma Game | Hard
 307 | Range Sum Query - Mutable | Medium
+315 | Count of Smaller Numbers After Self | Hard
