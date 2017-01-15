@@ -126,3 +126,6 @@ My Code for Online Judges.
 303 | Range Sum Query - Immutable | Easy
 304 | Range Sum Query 2D - Immutable | Medium
 174 | Dungeon Game | Hard
+485 | Max Consecutive Ones | Easy
+487 | Max Consecutive Ones II | Medium
+488 | Zuma Game | Hard
