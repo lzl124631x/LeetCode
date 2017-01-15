@@ -133,3 +133,4 @@ My Code for Online Judges.
 315 | Count of Smaller Numbers After Self | Hard
 100 | Same Tree | Easy
 101 | Symmetric Tree | Easy
+104 | Maximum Depth of Binary Tree | Easy
