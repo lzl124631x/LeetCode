@@ -141,3 +141,5 @@ My Code for Online Judges.
 98 | Validate Binary Search Tree | Medium
 173 | Binary Search Tree Iterator | Medium
 257 | Binary Tree Paths | Easy
+473 | Matchsticks to Square | Medium
+67 | Add Binary | Easy
