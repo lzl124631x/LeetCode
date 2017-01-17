@@ -146,3 +146,4 @@ My Code for Online Judges.
 110 | Balanced Binary Tree | Easy
 13 | Roman to Integer | Easy
 12 | Integer to Roman | Medium
+58 | Length of Last Word | Easy
