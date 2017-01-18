@@ -8,12 +8,12 @@ private:
                 while (isdigit(s[i])) n = n * 10 + s[i++] - '0';
                 ++i;
                 string part = dfs(s, i);
+                ++i;
                 while (n--) ans += part;
             } else {
                 ans.push_back(s[i++]);
             }
         }
-        if (i < s.size() && s[i] == ']') ++i;
         return ans;
     }
 public:
