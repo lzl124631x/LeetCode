@@ -8,19 +8,19 @@ public:
          vector<pair<int, int>> ans;
          sort(buildings.begin(), buildings.end(), cmp);
          int i = 0, x = 0, y = 0, N = buildings.size();
-         priority_queue<pair<int, int>> heap;
-         while (i < N || !heap.empty()) {
-             x = heap.empty() ? buildings[i][0] : heap.top().second;
-             if (i  >= N || buildings[i][0] > x) {
-                 while (!heap.empty() && heap.top().second <= x) heap.pop();
-             } else {
+         priority_queue<pair<int, int>> live;// first: height, second: right
+         while (i < N || !live.empty()) {
+             if (i < N && (live.empty() || live.top().second >= buildings[i][0])) {
                  x = buildings[i][0];
                  while (i < N && buildings[i][0] == x) {
-                     heap.push(make_pair(buildings[i][2], buildings[i][1]));
+                     live.push(make_pair(buildings[i][2], buildings[i][1]));
                      ++i;
                  }
+             } else {
+                 x = live.top().second;
+                 while (!live.empty() && live.top().second <= x) live.pop();
              }
-             y = heap.empty() ? 0 : heap.top().first;
+             y = live.empty() ? 0 : live.top().first;
              if (ans.empty() || ans.back().second != y) ans.push_back(make_pair(x, y));
          }
          return ans;
