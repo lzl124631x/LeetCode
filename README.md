@@ -152,3 +152,4 @@ My Code for LeetCode OJ.
 394 | Decode String | Medium
 17 | Letter Combinations of a Phone Number | Medium
 129 | Sum Root to Leaf Numbers | Medium
+35 | Search Insert Position | Medium
