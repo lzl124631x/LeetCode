@@ -1,8 +1,6 @@
-# Code
+# LeetCode
 
-My Code for Online Judges.
-
-## LeetCode
+My Code for LeetCode OJ.
 
 \# | Title | Difficulty 
 ---|---|---
