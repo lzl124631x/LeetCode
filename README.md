@@ -158,3 +158,4 @@ My Code for LeetCode OJ.
 10 | Regular Expression Matching | Hard
 27 | Remove Element | Easy
 61 | Rotate List | Easy
+143 | Reorder List | Medium
