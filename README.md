@@ -156,3 +156,4 @@ My Code for LeetCode OJ.
 33 | Search in Rotated Sorted Array | Hard
 81 | Search in Rotated Sorted Array II | Medium
 10 | Regular Expression Matching | Hard
+27 | Remove Element | Easy
