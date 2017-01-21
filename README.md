@@ -186,3 +186,4 @@ My Code for LeetCode OJ.
 75 | Sort Colors | Medium
 226 | Invert Binary Tree | Easy
 141 | Linked List Cycle | Easy
+142 | Linked List Cycle II | Medium
