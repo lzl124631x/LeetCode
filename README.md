@@ -168,3 +168,4 @@ My Code for LeetCode OJ.
 69 | Sqrt(x) | Medium
 6 | ZigZag Conversion | Easy
 48 | Rotate Image | Medium
+38 | Count and Say | Easy
