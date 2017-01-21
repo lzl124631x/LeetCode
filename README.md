@@ -173,3 +173,4 @@ My Code for LeetCode OJ.
 20 | Valid Parentheses | Easy
 36 | Valid Sudoku | Easy
 371 | Sum of Two Integers | Easy
+24 | Swap Nodes in Pairs | Easy
