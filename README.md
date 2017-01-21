@@ -170,3 +170,4 @@ My Code for LeetCode OJ.
 48 | Rotate Image | Medium
 38 | Count and Say | Easy
 417 | Pacific Atlantic Water Flow | Medium
+20 | Valid Parentheses | Easy
