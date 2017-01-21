@@ -176,3 +176,4 @@ My Code for LeetCode OJ.
 24 | Swap Nodes in Pairs | Easy
 62 | Unique Paths | Medium
 63 | Unique Paths II | Medium
+136 | Single Number | Easy
