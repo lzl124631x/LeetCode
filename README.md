@@ -171,3 +171,4 @@ My Code for LeetCode OJ.
 38 | Count and Say | Easy
 417 | Pacific Atlantic Water Flow | Medium
 20 | Valid Parentheses | Easy
+36 | Valid Sudoku | Easy
