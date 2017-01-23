@@ -192,3 +192,5 @@ My Code for LeetCode OJ.
 83 | Remove Duplicates from Sorted List | Easy
 26 | Remove Duplicates from Sorted Array | Easy
 316 | Remove Duplicate Letters | Hard
+494 | Target Sum | Medium
+491 | Increasing Subsequences | Medium
