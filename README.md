@@ -200,3 +200,4 @@ My Code for LeetCode OJ.
 207 | Course Schedule | Medium
 210 | Course Schedule II | Medium
 456 | 132 Pattern | Medium
+402 | Remove K Digits | Medium
