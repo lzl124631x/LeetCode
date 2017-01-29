@@ -1,13 +1,3 @@
-#include <stack>
-#include <iostream>
-#include "../+Helper/helper.h"
-using namespace std;
-
-/*
-* Number might be multi-digit.
-* infixToSuffix: Remember push from the stack all the signs of the same or GEATER significance.
-*/
-
 class Solution {
 public:
     int calculate(string str) {
@@ -89,18 +79,3 @@ public:
         return out;
     }
 };
-
-int main() {
-    freopen("in.txt", "r", stdin);
-    freopen("out.txt", "w", stdout);
-    CLK_INIT;
-    Solution s;
-    CASET{
-        string str;
-        cin >> str;
-        PRINTCASE;
-        CLK_START;
-        cout << s.calculate(str) << endl;
-        CLK_END;
-    }
-}
