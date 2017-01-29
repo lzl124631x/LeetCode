@@ -204,3 +204,4 @@ My Code for LeetCode OJ.
 114 | Flatten Binary Tree to Linked List | Medium
 222 | Count Complete Tree Nodes | Medium
 341 | Flatten Nested List Iterator | Medium
+86 | Partition List | Medium
