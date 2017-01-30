@@ -208,3 +208,5 @@ My Code for LeetCode OJ.
 331 | Verify Preorder Serialization of a Binary Tree | Medium
 486 | Predict the Winner | Medium
 224 | Basic Calculator | Hard
+150 | Evaluate Reverse Polish Notation | Medium
+227 | Basic Calculator II | Medium
