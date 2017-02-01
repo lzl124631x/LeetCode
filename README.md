@@ -212,3 +212,6 @@ My Code for LeetCode OJ.
 227 | Basic Calculator II | Medium
 327 | Count of Range Sum | Hard
 393 | UTF-8 Validation | Medium
+397 | Integer Replacement | Medium
+324 | Wiggle Sort II | Medium
+164 | Maximum Gap | Hard
