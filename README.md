@@ -225,4 +225,4 @@ My Code for LeetCode OJ.
 42 | Trapping Rain Water | Hard
 407 | Trapping Rain Water II | Hard
 399 | Evaluate Division | Medium
-352 | Data Stream as Disjoint Intervals | Medium
+352 | Data Stream as Disjoint Intervals | Hard
