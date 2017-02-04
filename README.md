@@ -230,3 +230,4 @@ My Code for LeetCode OJ.
 435 | Non-overlapping Intervals | Medium
 406 | Queue Reconstruction by Height | Medium
 330 | Patching Array | Hard
+367 | Valid Perfect Square | Easy
