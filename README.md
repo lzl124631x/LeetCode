@@ -234,3 +234,4 @@ My Code for LeetCode OJ.
 378 | Kth Smallest Element in a Sorted Matrix | Medium
 436 | Find Right Interval | Medium
 483 | Smallest Good Base | Hard
+373 | Find K Pairs with Smallest Sums | Medium
