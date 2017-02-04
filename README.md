@@ -233,3 +233,4 @@ My Code for LeetCode OJ.
 367 | Valid Perfect Square | Easy
 378 | Kth Smallest Element in a Sorted Matrix | Medium
 436 | Find Right Interval | Medium
+483 | Smallest Good Base | Hard
