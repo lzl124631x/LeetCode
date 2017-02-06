@@ -240,3 +240,4 @@ My Code for LeetCode OJ.
 492 | Construct the Rectangle | Easy
 495 | Teemo Attacking | Medium
 384 | Shuffle an Array | Medium
+424 | Longest Repeating Character Replacement | Medium
