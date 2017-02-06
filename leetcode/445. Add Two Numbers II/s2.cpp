@@ -8,7 +8,15 @@
  */
 class Solution {
 private:
-    ListNode* reverse(ListNode *head) {
+    int getLength (ListNode *head) {
+        int n = 0;
+        while (head) {
+            head = head->next;
+            ++n;
+        }
+        return n;
+    }
+    ListNode *reverse(ListNode *head) {
         ListNode newHead(0);
         while (head) {
             ListNode *p = head;
@@ -20,23 +28,36 @@ private:
     }
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        l1 = reverse(l1);
-        l2 = reverse(l2);
-        int carry = 0;
-        ListNode head(0), *tail = &head;
-        while (l1 || l2 || carry) {
-            if (l1) {
-                carry += l1->val; 
-                l1 = l1->next;
-            }
-            if (l2) {
-                carry += l2->val;
-                l2 = l2->next;
-            }
-            tail->next = new ListNode(carry % 10);
-            tail = tail->next;
-            carry /= 10;
+        ListNode *head = NULL;
+        int n1 = getLength(l1), n2 = getLength(l2);
+        if (n1 < n2) {
+            swap(l1, l2);
+            swap(n1, n2);
         }
-        return reverse(head.next);
+        while (n1 > n2) {
+            ListNode *p = new ListNode(l1->val);
+            p->next = head;
+            head = p;
+            l1 = l1->next;
+            --n1;
+        }
+        while (l1) {
+            int carry = l1->val + l2->val;
+            ListNode *p = new ListNode(carry % 10);
+            p->next = head;
+            head = p;
+            while (carry /= 10) {
+                if (p->next) {
+                    carry += p->next->val;
+                    p->next->val = carry % 10;
+                    p = p->next;
+                } else {
+                    p->next = new ListNode(carry);
+                }
+            }
+            l1 = l1->next;
+            l2 = l2->next;
+        }
+        return reverse(head);
     }
 };
