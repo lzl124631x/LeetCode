@@ -244,3 +244,4 @@ My Code for LeetCode OJ.
 390 | Elimination Game | Medium
 334 | Increasing Triplet Subsequence | Medium
 388 | Longest Absolute File Path | Medium
+395 | Longest Substring with At Least K Repeating Characters | Medium
