@@ -237,3 +237,4 @@ My Code for LeetCode OJ.
 373 | Find K Pairs with Smallest Sums | Medium
 239 | Sliding Window Maximum | Hard
 423 | Reconstruct Original Digits from English | Medium
+492 | Construct the Rectangle | Easy
