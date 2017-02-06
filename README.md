@@ -241,3 +241,4 @@ My Code for LeetCode OJ.
 495 | Teemo Attacking | Medium
 384 | Shuffle an Array | Medium
 424 | Longest Repeating Character Replacement | Medium
+390 | Elimination Game | Medium
