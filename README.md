@@ -238,3 +238,4 @@ My Code for LeetCode OJ.
 239 | Sliding Window Maximum | Hard
 423 | Reconstruct Original Digits from English | Medium
 492 | Construct the Rectangle | Easy
+495 | Teemo Attacking | Medium
