@@ -247,3 +247,4 @@ My Code for LeetCode OJ.
 395 | Longest Substring with At Least K Repeating Characters | Medium
 148 | Sort List | Medium
 386 | Lexicographical Numbers | Medium
+500 | Keyboard Row | Easy
