@@ -249,3 +249,4 @@ My Code for LeetCode OJ.
 386 | Lexicographical Numbers | Medium
 500 | Keyboard Row | Easy
 496 | Next Greater Element I | Medium
+506 | Relative Ranks | Easy
