@@ -248,3 +248,4 @@ My Code for LeetCode OJ.
 148 | Sort List | Medium
 386 | Lexicographical Numbers | Medium
 500 | Keyboard Row | Easy
+496 | Next Greater Element I | Medium
