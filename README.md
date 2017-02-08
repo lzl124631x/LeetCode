@@ -251,3 +251,4 @@ My Code for LeetCode OJ.
 496 | Next Greater Element I | Medium
 506 | Relative Ranks | Easy
 508 | Most Frequent Subtree Sum | Medium
+498 | Diagonal Traverse | Medium
