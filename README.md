@@ -254,3 +254,4 @@ My Code for LeetCode OJ.
 498 | Diagonal Traverse | Medium
 503 | Next Greater Element II | Medium
 372 | Super Pow | Medium
+365 | Water and Jug Problem | Medium
