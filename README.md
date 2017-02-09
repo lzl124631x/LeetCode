@@ -253,3 +253,4 @@ My Code for LeetCode OJ.
 508 | Most Frequent Subtree Sum | Medium
 498 | Diagonal Traverse | Medium
 503 | Next Greater Element II | Medium
+372 | Super Pow | Medium
