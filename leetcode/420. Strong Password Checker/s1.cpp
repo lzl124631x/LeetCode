@@ -24,20 +24,17 @@ public:
                 L = R;
             }
         }
-        for (int i = 1, cnt, dec; i <= 3; ++i) {
+        for (int i = 1; i <= 3; ++i) {
             for (auto it = lenCnts[i - 1].begin(); it != lenCnts[i - 1].end(); ++it) {
                 if (i <= 2) {
-                    dec = min(it->second, (delMax - del) / i);
-                    del += dec * i;
-                    it->second -= dec;
-                    if (it->first - i > 2) lenCnts[2][it->first - i] += dec;
+                    int d = min(it->second, (delMax - del) / i);
+                    del += d * i;
+                    it->second -= d;
+                    if (it->first - i > 2) lenCnts[2][it->first - i] += d;
                 }
                 rep += it->second * (it->first / 3);
             }
         }
-        int dec = (delMax - del) / 3;
-        rep -= dec;
-        del -= dec * 3;
-        return delMax + max(rep, lower + upper + digit);
+        return delMax + max(rep - (delMax - del) / 3, lower + upper + digit);
     }
 };
