@@ -262,3 +262,4 @@ My Code for LeetCode OJ.
 462 | Minimum Moves to Equal Array Elements II | Medium
 440 | K-th Smallest in Lexicographical Order| Hard
 460 | LFU Cache | Hard
+420 | Strong Password Checker | Hard
