@@ -157,7 +157,7 @@ My Code for LeetCode OJ.
 81 | Search in Rotated Sorted Array II | Medium
 10 | Regular Expression Matching | Hard
 27 | Remove Element | Easy
-61 | Rotate List | Easy
+61 | Rotate List | Medium
 143 | Reorder List | Medium
 206 | Reverse Linked List | Easy
 92 | Reverse Linked List II | Medium
