@@ -260,3 +260,4 @@ My Code for LeetCode OJ.
 391 | Perfect Rectangle | Hard
 335 | Self Crossing | Hard
 462 | Minimum Moves to Equal Array Elements II | Medium
+440 | K-th Smallest in Lexicographical Order| Hard
