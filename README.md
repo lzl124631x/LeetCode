@@ -263,3 +263,4 @@ My Code for LeetCode OJ.
 440 | K-th Smallest in Lexicographical Order| Hard
 460 | LFU Cache | Hard
 420 | Strong Password Checker | Hard
+138 | Copy List with Random Pointer | Medium
