@@ -266,3 +266,4 @@ My Code for LeetCode OJ.
 138 | Copy List with Random Pointer | Medium
 25 | Reverse Nodes in k-Group | Hard
 516 | Longest Palindromic Subsequence | Medium
+22 | Generate Parentheses | Medium
