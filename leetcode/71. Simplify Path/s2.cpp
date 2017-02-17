@@ -10,7 +10,7 @@ public:
             } else if (name.size() && name != ".") s.push_back(name);
         }
         string ans;
-        for (auto name : s) ans += '/' + name;
+        for (auto n : s) ans += '/' + n;
         return ans.size() ? ans : "/";
     }
 };
