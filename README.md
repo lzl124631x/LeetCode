@@ -269,3 +269,4 @@ My Code for LeetCode OJ.
 22 | Generate Parentheses | Medium
 49 | Group Anagrams | Medium
 71 | Simplify Path | Medium
+3 | Longest Substring Without Repeating Characters | Medium
