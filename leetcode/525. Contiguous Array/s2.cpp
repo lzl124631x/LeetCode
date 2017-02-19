@@ -1,3 +1,4 @@
+// https://discuss.leetcode.com/topic/79906/easy-java-o-n-solution-presum-hashmap/
 class Solution {
 public:
     int findMaxLength(vector<int>& nums) {
