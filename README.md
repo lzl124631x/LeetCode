@@ -273,3 +273,4 @@ My Code for LeetCode OJ.
 32 | Longest Valid Parentheses | Hard
 520 | Detect Capital | Easy
 526 | Beautiful Arrangement | Medium
+525 | Contiguous Array | Medium
