@@ -271,3 +271,4 @@ My Code for LeetCode OJ.
 71 | Simplify Path | Medium
 3 | Longest Substring Without Repeating Characters | Medium
 32 | Longest Valid Parentheses | Hard
+520 | Detect Capital | Easy
