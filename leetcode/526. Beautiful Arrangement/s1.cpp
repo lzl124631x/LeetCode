@@ -9,8 +9,7 @@ private:
         }
         for (auto it = s.begin(); it != s.end();) {
             int n = *it++;
-            if (n >= start && n % start == 0
-            || start >= n && start % n == 0) {
+            if (n % start == 0 || start % n == 0) {
                 s.erase(n);
                 dfs(start + 1, s);
                 s.insert(n);
