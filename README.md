@@ -272,3 +272,4 @@ My Code for LeetCode OJ.
 3 | Longest Substring Without Repeating Characters | Medium
 32 | Longest Valid Parentheses | Hard
 520 | Detect Capital | Easy
+526 | Beautiful Arrangement | Medium
