@@ -275,3 +275,4 @@ My Code for LeetCode OJ.
 526 | Beautiful Arrangement | Medium
 525 | Contiguous Array | Medium
 517 | Super Washing Machines | Hard
+43 | Multiply Strings | Medium
