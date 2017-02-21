@@ -19,3 +19,12 @@ public:
         return sell[k];
     }
 };
+
+/*
+Why is it `k >= N / 2` not `k >= N - 1`?
+For prices of length N, we can do `N - 1` transactions at most indeed.
+For example, for `[1,2,3]` we can do at most 2 transactions.
+But actually doing 1 transaction is enough for this case.
+Think about the fact that we never buy back what we sold on the same day,
+so the maximum number of transactions should always be no more than `N / 2`.
+*/
