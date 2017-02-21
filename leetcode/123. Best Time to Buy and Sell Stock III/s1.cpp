@@ -1,21 +1,16 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int ans = 0, N = prices.size();
-        vector<int> m(N + 1, 0), n(N + 1, 0);
-        int minVal = INT_MAX;
-        for (int i = 0; i < N; ++i) {
+        int N = prices.size();
+        vector<int> v1(N + 1, 0), v2(N + 1, 0);
+        int minVal = INT_MAX, maxVal = INT_MIN, ans = 0;
+        for (int i = 0, j = N - 1; i < N; ++i, --j) {
             minVal = min(minVal, prices[i]);
-            m[i] = max(m[i - 1], prices[i] - minVal);
+            maxVal = max(maxVal, prices[j]);
+            v1[i + 1] = max(v1[i], prices[i] - minVal);
+            v2[j] = max(v2[j + 1], maxVal - prices[j]);
         }
-        int maxVal = INT_MIN;
-        for (int i = N - 1; i >= 0; --i) {
-            maxVal = max(maxVal, prices[i]);
-            n[i] = max(n[i + 1], maxVal - prices[i]);
-        }
-        for (int i = 0; i <= N; ++i) {
-            ans = max(ans, m[i] + n[i]);
-        }
+        for (int i = 0; i < N; ++i) ans = max(ans, v1[i] + v2[i]);
         return ans;
     }
 };

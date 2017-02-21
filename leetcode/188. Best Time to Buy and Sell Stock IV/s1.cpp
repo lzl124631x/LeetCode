@@ -1,24 +1,21 @@
 // https://discuss.leetcode.com/topic/8984/a-concise-dp-solution-in-java
 class Solution {
-private:
-    int quickSolve(vector<int> &prices) {
-        int ans = 0;
-        for (int i = 1; i < prices.size(); ++i) {
-            if (prices[i] > prices[i - 1]) ans += prices[i] - prices[i - 1];
-        }
-        return ans;
-    }
 public:
     int maxProfit(int k, vector<int>& prices) {
-        if (k <= 0) return 0;
-        if (k >= prices.size() / 2) return quickSolve(prices);
-        vector<int> buy(k, INT_MIN), sell(k, 0);
+        if (k >= prices.size() / 2) {
+            int ans = 0;
+            for (int i = 1; i < prices.size(); ++i) {
+                ans += max(prices[i] - prices[i - 1], 0);
+            }
+            return ans;
+        }
+        vector<int> buy(k + 1, INT_MIN), sell(k + 1, 0);
         for (int p : prices) {
-            for (int i = k - 1; i >= 0; --i) {
-                sell[i] = max(sell[i], buy[i] + p);
-                buy[i] = max(buy[i], (i >= 1 ? sell[i - 1] : 0) - p);
+            for (int i = 0; i < k; ++i) {
+                buy[i + 1] = max(buy[i + 1], sell[i] - p);
+                sell[i + 1] = max(sell[i + 1], buy[i + 1] + p);
             }
         }
-        return sell[k - 1];
+        return sell[k];
     }
 };
