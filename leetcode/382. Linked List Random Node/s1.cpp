@@ -12,24 +12,18 @@ private:
 public:
     /** @param head The linked list's head.
         Note that the head is guaranteed to be not null, so it contains at least one node. */
-    Solution(ListNode* head) {
-        this->head = head;
-    }
+    Solution(ListNode* head) : head(head) {}
     
     /** Returns a random node's value. */
     int getRandom() {
-        if (!head) return 0;
-        int val = head->val, index = 1;
-        ListNode *node = head->next;
-        while (node) {
-            int R = rand() % (index + 1);
-            if (R == 0) {
-                val = node->val;
-            }
-            node = node->next;
-            ++index;
+        ListNode *p = head->next;
+        int cnt = 2, ans = head->val;
+        while (p) {
+            if (rand() % cnt == 0) ans = p->val;
+            p = p->next;
+            ++cnt;
         }
-        return val;
+        return ans;
     }
 };
 
