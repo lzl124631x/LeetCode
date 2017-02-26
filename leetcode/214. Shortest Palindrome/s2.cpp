@@ -1,6 +1,7 @@
 // https://discuss.leetcode.com/topic/14770/my-easily-understandable-but-time-consuming-c-solution
 // Brute force
 // Time: O(n^2)
+// 86 ms
 class Solution {
 public:
     string shortestPalindrome(string s) {

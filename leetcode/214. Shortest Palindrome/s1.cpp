@@ -1,7 +1,7 @@
 // Brute Force
 // Time: O(n^2)
 // Space: O(1)
-
+// 659 ms
 class Solution {
 private:
     bool isPalindrome(string &s, int start, int end) {
