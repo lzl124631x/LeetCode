@@ -1,14 +1,9 @@
-// Brute Force
-// Time: O(n^2)
-// Space: O(1)
-// 139 ms
+// Time: 269 ms
 class Solution {
 private:
     bool isPalindrome(string &s, int start, int end) {
-        int len = end - start + 1;
-        int L = start + len / 2 - 1, R = end - len / 2 + 1;
-        while (L >= start && s[L] == s[R]) --L, ++R;
-        return L < start;
+        while (start < end && s[start] == s[end]) ++start, --end;
+        return start >= end;
     }
 public:
     string shortestPalindrome(string s) {
