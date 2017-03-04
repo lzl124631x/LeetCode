@@ -1,4 +1,4 @@
-// Time: O(k + (N - k) logk)
+// Time: O(k + (N - k)logk)
 // Space: O(1)
 class Solution {
 public:
