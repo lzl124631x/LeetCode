@@ -6,7 +6,7 @@
 class Solution {
 public:
   bool isHappy(int n) {
-    set<int> s;
+    unordered_set<int> s;
     while (n != 1 && !s.count(n)) {
       s.insert(n);
       int next = 0;
