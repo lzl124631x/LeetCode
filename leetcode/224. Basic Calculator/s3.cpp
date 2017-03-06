@@ -1,3 +1,6 @@
+// Author: lzl
+// Time: O(N)
+// Space: O(N)
 class Solution {
 private:
   vector<string> infixToSuffix(string s) {
@@ -38,7 +41,7 @@ private:
     }
     return ans;
   }
-  
+
   int evaluateSuffix(vector<string> v) {
     stack<int> st;
     st.push(0);
