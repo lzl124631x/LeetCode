@@ -1,4 +1,4 @@
-// Author: https://github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
 class Solution {
