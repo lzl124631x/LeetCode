@@ -1,4 +1,4 @@
-// Author: lzl
+// Author: github.com/lzl124631x
 // Time: O(Nk)
 // Space: O(N)
 // Where N is the length of transformation chain,
