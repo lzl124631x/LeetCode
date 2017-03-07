@@ -281,3 +281,5 @@ My Code for LeetCode OJ.
 151 | Reverse Words in a String | Medium
 215 | Kth Largest Element in an Array | Medium
 202 | Happy Number | Easy
+532 | K-diff Pairs in an Array | Easy
+530 | Minimum Absolute Difference in BST | Easy

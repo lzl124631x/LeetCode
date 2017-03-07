@@ -1,4 +1,4 @@
-// Author: lzl
+// Author: github.com/lzl124631x
 // Time: O(Nk)
 // Space: O(N)
 // Where N is the length of transformation chain,
@@ -6,7 +6,7 @@
 class Solution {
 public:
   bool isHappy(int n) {
-    set<int> s;
+    unordered_set<int> s;
     while (n != 1 && !s.count(n)) {
       s.insert(n);
       int next = 0;
