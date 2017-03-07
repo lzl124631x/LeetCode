@@ -1,5 +1,7 @@
 # LeetCode
 
+Author: github.com/lzl124631x
+
 My Code for LeetCode OJ.
 
 \# | Title | Difficulty 
