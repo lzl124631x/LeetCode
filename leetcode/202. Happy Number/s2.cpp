@@ -1,9 +1,9 @@
 // Author: github.com/lzl124631x
-// Time: O(Nk)
+// Time: O(1)
 // Space: O(1)
-// Where N is the length of transformation chain,
-// k is the average length of numbers in the chain.
-// Detail: fast & slow pointers.
+// The maximum number is 2^31 - 1, around 10^9, ie. has 10 digits.
+// So the next number of it is at most 9*9*10=810, which has 3 digits.
+// So the number of digits will drop significantly to less than 4 digits.
 class Solution {
 private:
   int happify(int n) {

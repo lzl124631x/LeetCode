@@ -5,18 +5,15 @@
 // So the next number of it is at most 9*9*10=810, which has 3 digits.
 // So the number of digits will drop significantly to less than 4 digits.
 class Solution {
+private:
+  int next(int n) {
+    int ans = 0;
+    for (; n; ans += pow(n % 10, 2), n /= 10);
+    return ans;
+  }
 public:
   bool isHappy(int n) {
-    unordered_set<int> s;
-    while (n != 1 && !s.count(n)) {
-      s.insert(n);
-      int next = 0;
-      while (n) {
-        next += pow(n % 10, 2);
-        n /= 10;
-      }
-      n = next;
-    }
+    for (; n != 1 && n != 4; n = next(n));
     return n == 1;
   }
 };
