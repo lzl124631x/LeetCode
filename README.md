@@ -292,3 +292,4 @@ My Code for LeetCode OJ.
 515 | Find Largest Value in Each Tree Row | Medium
 541 | Reverse String II | Easy
 539 | Minimum Time Difference | Medium
+536 | Construct Binary Tree from String | Medium
