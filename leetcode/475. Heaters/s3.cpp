@@ -5,14 +5,18 @@
 class Solution {
 public:
   int findRadius(vector<int>& houses, vector<int>& heaters) {
-    sort(houses.begin(), houses.end());
     sort(heaters.begin(), heaters.end());
-    int j = 0, ans = INT_MIN;
+    int ans = 0;
     for (int h : houses) {
-      while (j < heaters.size() && heaters[j] < h) ++j;
+      int L = 0, R = heaters.size() - 1;
+      while (L <= R) {
+        int M = (L + R) / 2;
+        if (heaters[M] >= h) R = M - 1;
+        else L = M + 1;
+      }
       int d = INT_MAX;
-      if (j - 1 >= 0) d = min(d, abs(heaters[j - 1] - h));
-      if (j < heaters.size()) d = min(d, abs(heaters[j] - h));
+      if (L < heaters.size()) d = min(d, heaters[L] - h);
+      if (R >= 0) d = min(d, h - heaters[R]);
       ans = max(ans, d);
     }
     return ans;
