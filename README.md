@@ -294,3 +294,4 @@ My Code for LeetCode OJ.
 539 | Minimum Time Difference | Medium
 536 | Construct Binary Tree from String | Medium
 529 | Minesweeper | Medium
+278 | First Bad Version | Easy
