@@ -1,26 +1,29 @@
+// OJ: https://leetcode.com/problems/binary-watch
+// Auther: github.com/lzl124631x
+// Time: O(1)
+// Space: O(1)
 class Solution {
 private:
-    int n = 0;
-    vector<string> ans;
-    void dfs(int start, int k) {
-        if (!k) {
-            if (valid()) ans.push_back(read());
-            return;
-        }
-        for (int i = start; i <= 10 - k; ++i) {
-            n |= 1 << i;
-            dfs(i + 1, k - 1);
-            n ^= 1 << i;
-        }
+  vector<string> ans;
+  bool valid(int bits) { return (bits >> 6) < 12 && (bits & ((1 << 6) - 1)) < 60; }
+  void read(int bits) {
+    int h = bits >> 6, m = bits - (h << 6);
+    ans.push_back(to_string(h) + ':' + string(m < 10 ? 1 : 0, '0') + to_string(m));
+  }
+  void dfs(int num, int start, int bits) {
+    if (!num) {
+      read(bits);
+      return;
     }
-    bool valid() { return (n >> 6) < 12 && (n & ((1 << 6) - 1)) < 60; }
-    string read() {
-        string m = to_string(n & ((1 << 6) - 1));
-        return to_string(n >> 6) + ':' + (m.size() == 1 ? '0' + m : m);
+    for (int i = start; i < 10; ++i) {
+      bits |= 1 << i;
+      if (valid(bits)) dfs(num - 1, i + 1, bits);
+      bits ^= 1 << i;
     }
+  }
 public:
-    vector<string> readBinaryWatch(int num) {
-        dfs(0, num);
-        return ans;
-    }
+  vector<string> readBinaryWatch(int num) {
+    dfs(num, 0, 0);
+    return ans;
+  }
 };
