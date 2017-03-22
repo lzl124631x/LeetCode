@@ -296,3 +296,4 @@ My Code for LeetCode OJ.
 529 | Minesweeper | Medium
 278 | First Bad Version | Easy
 131 | Palindrome Partitioning | Medium
+543 | Diameter of Binary Tree | Easy
