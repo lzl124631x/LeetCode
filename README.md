@@ -299,3 +299,4 @@ My Code for LeetCode OJ.
 543 | Diameter of Binary Tree | Easy
 538 | Convert BST to Greater Tree | Medium
 542 | 01 Matrix | Medium
+524 | Longest Word in Dictionary through Deleting | Medium

@@ -1,0 +1,23 @@
+// OJ: https://leetcode.com/problems/longest-word-in-dictionary-through-deleting
+// Auther: github.com/lzl124631x
+// Time: O(SD), where S is length of string s, D is the sum of lengths of strings in d.
+// Space: O(1)
+class Solution {
+private:
+  bool isSubstring(string sub, string str) {
+    int i = 0;
+    for (int j = 0; i < sub.size() && j < str.size(); ++j) {
+      if (sub[i] == str[j]) ++i;
+    }
+    return i == sub.size();
+  }
+public:
+  string findLongestWord(string s, vector<string>& d) {
+    string ans;
+    for (string word : d) {
+      if (word.size() < ans.size() || !isSubstring(word, s)) continue;
+      if (word.size() > ans.size() || word < ans) ans = word;
+    }
+    return ans;
+  }
+};
