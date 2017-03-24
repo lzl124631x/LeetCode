@@ -1,6 +1,6 @@
 // OJ: https://leetcode.com/problems/word-search
 // Auther: github.com/lzl124631x
-// Time: O(MNK)
+// Time: O(MN4^K)
 // Space: O(K)
 class Solution {
 private:
@@ -8,7 +8,7 @@ private:
   bool exist(vector<vector<char>>& board, string &word, int x, int y, int k) {
     if (x < 0 || x >= board.size()
       || y < 0 || y >= board[0].size() || word[k] != board[x][y]) return false;
-      if (k == word.size() - 1) return true;
+    if (k == word.size() - 1) return true;
     char c = board[x][y];
     board[x][y] = '\0';
     for (auto dir : dirs) {
