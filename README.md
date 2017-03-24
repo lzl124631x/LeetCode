@@ -302,3 +302,4 @@ My Code for LeetCode OJ.
 524 | Longest Word in Dictionary through Deleting | Medium
 523 | Continuous Subarray Sum | Medium
 89 | Gray Code | Medium
+79 | Word Search | Medium
