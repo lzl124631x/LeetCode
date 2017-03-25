@@ -303,3 +303,4 @@ My Code for LeetCode OJ.
 523 | Continuous Subarray Sum | Medium
 89 | Gray Code | Medium
 79 | Word Search | Medium
+46 | Permutations | Medium
