@@ -10,9 +10,7 @@ public:
     if (i >= 0) {
       while (j > i && nums[j] <= nums[i]) --j;
       swap(nums[i], nums[j]);
-      j = nums.size() - 1;
     }
-    ++i;
-    while (i < j) swap(nums[i++], nums[j--]);
+    reverse(nums.begin() + i + 1, nums.end());
   }
 };
