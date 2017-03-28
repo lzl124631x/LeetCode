@@ -7,12 +7,10 @@ public:
   int findMinArrowShots(vector<pair<int, int>>& points) {
     sort(points.begin(), points.end());
     int cnt = 0;
-    for (auto it = points.begin(); it != points.end(); ++cnt) {
-      int start = INT_MIN, end = INT_MAX;
-      for (; it != points.end() && it->first <= end && it->second >= start; ++it) {
-        start = max(start, it->first);
-        end = min(end, it->second);
-      }
+    for (int i = 0; i < points.size(); ++cnt) {
+      int right = INT_MAX;
+      while (i < points.size() && right >= points[i].first)
+        right = min(right, points[i++].second);
     }
     return cnt;
   }
