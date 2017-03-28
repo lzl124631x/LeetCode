@@ -2,6 +2,7 @@
 // Auther: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(1)
+// Ref: https://discuss.leetcode.com/topic/84569/c-5-line-o-n-time
 class Solution {
 public:
   int findMinArrowShots(vector<pair<int, int>>& points) {
