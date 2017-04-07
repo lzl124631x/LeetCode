@@ -4,7 +4,7 @@
 // Space: O(1)
 class Solution {
 private:
-  bool isSubstring(string sub, string str) {
+  bool isSubstring(string &str, string &sub) {
     int i = 0;
     for (int j = 0; i < sub.size() && j < str.size(); ++j) {
       if (sub[i] == str[j]) ++i;
@@ -15,8 +15,7 @@ public:
   string findLongestWord(string s, vector<string>& d) {
     string ans;
     for (string word : d) {
-      if (word.size() < ans.size() || !isSubstring(word, s)) continue;
-      if (word.size() > ans.size() || word < ans) ans = word;
+      if (word.size() >= ans.size() && isSubstring(s, word) && (ans.size() < word.size() || word < ans)) ans = word;
     }
     return ans;
   }
