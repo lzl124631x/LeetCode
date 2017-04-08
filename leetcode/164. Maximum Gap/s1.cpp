@@ -7,12 +7,9 @@ class Solution {
 public:
   int maximumGap(vector<int>& nums) {
     if (nums.size() < 2) return 0;
-    int N = nums.size(), minVal = INT_MAX, maxVal = INT_MIN;
-    for (int n : nums) {
-      minVal = min(minVal, n);
-      maxVal = max(maxVal, n);
-    }
-    int gap = ceil((double)(maxVal - minVal) / (N - 1));
+    int minVal = *min_element(nums.begin(), nums.end());
+    int maxVal = *max_element(nums.begin(), nums.end());
+    int N = nums.size(), gap = ceil((double)(maxVal - minVal) / (N - 1));
     vector<int> mins(N - 1, INT_MAX), maxes(N - 1, INT_MIN);
     for (int n : nums) {
       if (n == minVal || n == maxVal) continue;
