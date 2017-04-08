@@ -1,28 +1,20 @@
-// https://discuss.leetcode.com/topic/65594/java-least-is-most
-/**
- * Definition for an interval.
- * struct Interval {
- *     int start;
- *     int end;
- *     Interval() : start(0), end(0) {}
- *     Interval(int s, int e) : start(s), end(e) {}
- * };
- */
-bool cmp (Interval a, Interval b) {
-    return a.end == b.end ? a.start < b.start : a.end < b.end;
-}
+// OJ: https://leetcode.com/problems/non-overlapping-intervals
+// Auther: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+// Ref: https://discuss.leetcode.com/topic/65594/java-least-is-most
 class Solution {
 public:
-    int eraseOverlapIntervals(vector<Interval>& intervals) {
-        if (intervals.empty()) return 0;
-        sort(intervals.begin(), intervals.end(), cmp);
-        int end = intervals[0].end, cnt = 1;
-        for (int i = 1; i < intervals.size(); ++i) {
-            if (intervals[i].start >= end) {
-                end = intervals[i].end;
-                ++cnt;
-            }
-        }
-        return intervals.size() - cnt;
+  int eraseOverlapIntervals(vector<Interval>& intervals) {
+    sort(intervals.begin(), intervals.end(),
+      [](Interval &a, Interval &b) { return a.end == b.end ? a.start < b.start : a.end < b.end; });
+    int end = INT_MIN, cnt = 0;
+    for (auto i : intervals) {
+      if (i.start >= end) {
+        end = i.end;
+        ++cnt;
+      }
     }
+    return intervals.size() - cnt;
+  }
 };
