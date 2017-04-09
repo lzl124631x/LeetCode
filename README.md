@@ -310,3 +310,4 @@ My Code for LeetCode OJ.
 134 | Gas Station | Medium
 557 | Reverse Words in a String III | Easy
 554 | Brick Wall | Medium
+556 | Next Greater Element III | Medium
