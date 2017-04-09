@@ -5,14 +5,11 @@
 class Solution {
 public:
   string reverseWords(string s) {
-    int begin = 0;
-    while (begin < s.size() && isspace(s[begin])) ++begin;
-    while (begin < s.size()) {
-      int end = begin;
-      while (end < s.size() && !isspace(s[end])) ++end;
-      reverse(s.begin() + begin, s.begin() + end);
-      begin = end;
-      while (begin < s.size() && isspace(s[begin])) ++begin;
+    for (int i = 0, int begin = 0; i <= s.size(); ++i) {
+      if (i == s.size() || isspace(s[i])) {
+        reverse(s.begin() + begin, s.begin() + i);
+        begin = i + 1;
+      }
     }
     return s;
   }
