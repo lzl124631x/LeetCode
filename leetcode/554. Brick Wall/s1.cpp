@@ -5,7 +5,6 @@
 class Solution {
 public:
   int leastBricks(vector<vector<int>>& wall) {
-    if (wall.empty() || wall[0].empty()) return 0;
     int maxCnt = 0;
     unordered_map<int, int> cnt;
     for (auto row : wall) {
