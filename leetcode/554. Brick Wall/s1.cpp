@@ -7,14 +7,9 @@ public:
   int leastBricks(vector<vector<int>>& wall) {
     int maxCnt = 0;
     unordered_map<int, int> cnt;
-    for (auto row : wall) {
-      int w = 0;
-      for (int i = 0; i < row.size() - 1; ++i) {
-        w += row[i];
-        cnt[w]++;
-        maxCnt = max(maxCnt, cnt[w]);
-      }
-    }
+    for (auto row : wall)
+      for (int i = 0, w = 0; i < row.size() - 1; ++i)
+        maxCnt = max(maxCnt, ++cnt[w += row[i]]);
     return wall.size() - maxCnt;
   }
 };
