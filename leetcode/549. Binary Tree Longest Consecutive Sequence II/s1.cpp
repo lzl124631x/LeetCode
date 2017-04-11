@@ -1,7 +1,7 @@
 // OJ: https://leetcode.com/problems/binary-tree-longest-consecutive-sequence-ii
 // Auther: github.com/lzl124631x
-// Time: O(N^2)
-// Space: O(1)
+// Time: O(N^2) (N is # of nodes)
+// Space: O(H) (H is height of tree)
 class Solution {
 private:
   int longestConsecutive(TreeNode *root, TreeNode *p, bool increment) {
