@@ -4,19 +4,19 @@
 // Space: O(logN)
 class Solution {
 private:
-  int ans, maxHeight = 0;
-  void preorder(TreeNode* root, int height) {
+  int maxDepth = 0, ans = 0;
+  void dfs(TreeNode *root, int depth) {
     if (!root) return;
-    if (height > maxHeight) {
-      maxHeight = height;
+    if (depth > maxDepth) {
       ans = root->val;
+      maxDepth = depth;
     }
-    preorder(root->left, height + 1);
-    preorder(root->right, height + 1);
+    dfs(root->left, depth + 1);
+    dfs(root->right, depth + 1);
   }
 public:
   int findBottomLeftValue(TreeNode* root) {
-    preorder(root, 1);
+    dfs(root, 1);
     return ans;
   }
 };
