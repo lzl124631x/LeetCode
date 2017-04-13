@@ -312,3 +312,4 @@ My Code for LeetCode OJ.
 554 | Brick Wall | Medium
 556 | Next Greater Element III | Medium
 549 | Binary Tree Longest Consecutive Sequence II | Medium
+540 | Single Element in a Sorted Array | Medium
