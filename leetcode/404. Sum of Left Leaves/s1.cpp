@@ -1,12 +1,16 @@
+// OJ: https://leetcode.com/problems/sum-of-left-leaves
+// Auther: github.com/lzl124631x
+// Time: O(N)
+// Space: O(logN)
 class Solution {
 private:
-    int rec (TreeNode *node, TreeNode *p) {
-        if (!node) return 0;
-        if (!node->left && !node->right && p && p->left == node) return node->val;
-        return rec(node->left, node) + rec(node->right, node);
-    }
+  int dfs(TreeNode *root, bool isLeftChild) {
+    if (!root) return 0;
+    if (!root->left && !root->right && isLeftChild) return root->val;
+    return dfs(root->left, true) + dfs(root->right, false);
+  }
 public:
-    int sumOfLeftLeaves(TreeNode* root) {
-        return rec(root, NULL);
-    }
+  int sumOfLeftLeaves(TreeNode* root) {
+    return dfs(root, false);
+  }
 };
