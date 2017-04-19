@@ -1,30 +1,20 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
+// OJ: https://leetcode.com/problems/flatten-binary-tree-to-linked-list
+// Auther: github.com/lzl124631x
+// Time: O(N)
+// Space: O(logN)
 class Solution {
 private:
-    TreeNode *helper(TreeNode *root) {
-        TreeNode *right = root->right, *end = root;
-        if (root->left) {
-            end = helper(root->left);
-            end->right = root->right;
-            root->right = root->left;
-            root->left = NULL;
-        }
-        if (right) {
-            end = helper(right);
-        }
-        return end;
-    }
+  TreeNode* helper(TreeNode *root) {
+    if (!root) return NULL;
+    auto leftEnd = helper(root->left), rightEnd = helper(root->right), right = root->right;
+    root->right = root->left;
+    root->left = NULL;
+    if (leftEnd) leftEnd->right = right;
+    else root->right = right;
+    return rightEnd ? rightEnd : (leftEnd ? leftEnd : root);
+  }
 public:
-    void flatten(TreeNode* root) {
-        if (!root) return;
-        helper(root);
-    }
+  void flatten(TreeNode* root) {
+    helper(root);
+  }
 };
