@@ -25,10 +25,9 @@ public:
     int i = find(p), j = find(q);
     if (i == j) return;
     if (rank[i] < rank[j]) id[i] = j;
-    else if (rank[i] > rank[j]) id[j] = i;
     else {
       id[j] = i;
-      rank[j]++;
+      if (rank[i] == rank[j]) rank[j]++;
     }
     --cnt;
   }
@@ -39,7 +38,7 @@ public:
     int N = M.size();
     UnionFind uf(N);
     for (int i = 0; i < N; ++i)
-      for (int j = 0; j < N; ++j)
+      for (int j = i + 1; j < N; ++j)
         if (M[i][j]) uf.connect(i, j);
     return uf.getCount();
   }
