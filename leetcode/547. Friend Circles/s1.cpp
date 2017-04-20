@@ -1,6 +1,6 @@
 // OJ: https://leetcode.com/problems/friend-circles
 // Auther: github.com/lzl124631x
-// Time: O(N^2 * logN)
+// Time: O(N^2 * a(N)), where `a` is the inverse function of Ackermann function. O(a(N)) is faster than O(log(N)).
 // Space: O(N)
 class UnionFind {
 private:
@@ -13,11 +13,8 @@ public:
     for (int i = 0; i < cnt; ++i) id[i] = i;
   }
   int find(int p) {
-    while (p != id[p]) {
-      id[p] = id[id[p]];
-      p = id[p];
-    }
-    return p;
+      if (id[p] == p) return p;
+      return id[p] = find(id[p]);
   }
   int getCount() { return cnt; }
   bool connected(int p, int q) { return find(p) == find(q); }
