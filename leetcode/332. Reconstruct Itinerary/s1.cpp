@@ -1,27 +1,28 @@
+// OJ: https://leetcode.com/problems/reconstruct-itinerary
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
 class Solution {
 private:
-    vector<string> ans { "JFK" };
-    unordered_map<string, multiset<string>> m;
-    int N;
-    bool dfs() {
-        if (ans.size() == N + 1) return true;
-        string from = ans.back();
-        auto s = m[from];
-        for (auto it = s.begin(); it != s.end(); it = s.upper_bound(*it)) {
-            string to = *it;
-            ans.push_back(to);
-            m[from].erase(m[from].find(to));
-            if (dfs()) return true;
-            m[from].insert(to);
-            ans.pop_back();
-        }
-        return false;
+  unordered_map<string, multiset<string>> m;
+  bool dfs(vector<string> &path, int leftCnt) {
+    if (!leftCnt) return true;
+    multiset<string> &toes = m[path.back()];
+    for (auto it = toes.begin(); it != toes.end(); it = toes.upper_bound(*it)) {
+      string to = *it;
+      path.push_back(to);
+      toes.erase(it);
+      if (dfs(path, leftCnt - 1)) return true;
+      path.pop_back();
+      toes.insert(to);
     }
+    return false;
+  }
 public:
-    vector<string> findItinerary(vector<pair<string, string>> tickets) {
-        N = tickets.size();
-        for (auto p : tickets) m[p.first].insert(p.second);
-        dfs();
-        return ans;
-    }
+  vector<string> findItinerary(vector<pair<string, string>> tickets) {
+    for (auto t : tickets) m[t.first].insert(t.second);
+    vector<string> path { "JFK" };
+    dfs(path, tickets.size());
+    return path;
+  }
 };
