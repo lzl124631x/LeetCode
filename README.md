@@ -331,3 +331,4 @@ My Code for LeetCode OJ.
 116 | Populating Next Right Pointers in Each Node | Medium
 117 | Populating Next Right Pointers in Each Node II | Medium
 223 | Rectangle Area | Medium
+563 | Binary Tree Tilt | Easy
