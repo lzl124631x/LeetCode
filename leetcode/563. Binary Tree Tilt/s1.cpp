@@ -4,20 +4,16 @@
 // Space: O(logN)
 class Solution {
 private:
-  int findTilt(TreeNode *root, int &sum) {
-    if (!root) {
-      sum = 0;
-      return 0;
-    }
-    int leftSum = 0, rightSum = 0;
-    int left = findTilt(root->left, leftSum);
-    int right = findTilt(root->right, rightSum);
-    sum = leftSum + rightSum + root->val;
-    return left + right + abs(leftSum - rightSum);
+  int tilt = 0;
+  int traverse(TreeNode *root) {
+    if (!root) return 0;
+    int left = traverse(root->left), right = traverse(root->right);
+    tilt += abs(left - right);
+    return left + right + root->val;
   }
 public:
   int findTilt(TreeNode* root) {
-    int sum = 0;
-    return findTilt(root, sum);
+    traverse(root);
+    return tilt;
   }
 };
