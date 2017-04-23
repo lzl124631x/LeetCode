@@ -333,3 +333,4 @@ My Code for LeetCode OJ.
 223 | Rectangle Area | Medium
 563 | Binary Tree Tilt | Easy
 561 | Array Partition I | Easy
+562 | Longest Line of Consecutive One in Matrix | Medium
