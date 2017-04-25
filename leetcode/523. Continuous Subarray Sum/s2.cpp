@@ -1,18 +1,16 @@
 // OJ: https://leetcode.com/problems/continuous-subarray-sum
 // Auther: github.com/lzl124631x
-// Time: O(N)
-// Space: O(K)
+// Time: O(N^2)
+// Space: O(1)
 class Solution {
 public:
   bool checkSubarraySum(vector<int>& nums, int k) {
-    unordered_map<int, int> m {{ 0, -1 }};
-    int sum = 0;
-    for (int i = 0; i < nums.size(); ++i) {
-      sum += nums[i];
-      if (k) sum %= k;
-      if (m.count(sum)) {
-        if (m[sum] < i - 1) return true;
-      } else m[sum] = i;
+    for (int i = 1; i < nums.size(); ++i) {
+      for (int j = 0; j < i; ++j) {
+        nums[j] += nums[i];
+        if (k) nums[j] %= k;
+        if (!nums[j]) return true;
+      }
     }
     return false;
   }
