@@ -1,15 +1,19 @@
 // OJ: https://leetcode.com/problems/partition-equal-subset-sum
 // Auther: github.com/lzl124631x
-// Time: O(N)
-// Space: O(MAX_NUM, MAX_ARRAY_SIZE)
+// Time: O(NS)
+// Space: O(S) where S the sum of nums.
 class Solution {
+private:
+  bool subsetSum(vector<int> &nums, int S) {
+    vector<int> dp(S + 1);
+    dp[0] = 1;
+    for (int n : nums)
+      for (int i = S; i >= n; --i) dp[i] += dp[i - n];
+    return dp[S];
+  }
 public:
   bool canPartition(vector<int>& nums) {
-    const int MAX_NUM = 100;
-    const int MAX_ARRAY_SIZE = 200;
-    bitset<MAX_NUM * MAX_ARRAY_SIZE / 2 + 1> bits(1);
     int sum = accumulate(nums.begin(), nums.end(), 0);
-    for (auto n : nums) bits |= bits << n;
-    return !(sum & 1) && bits[sum >> 1];
+    return sum % 2 == 0 && subsetSum(nums, sum / 2);
   }
 };
