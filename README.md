@@ -154,7 +154,7 @@ My Code for LeetCode OJ.
 394 | Decode String | Medium
 17 | Letter Combinations of a Phone Number | Medium
 129 | Sum Root to Leaf Numbers | Medium
-35 | Search Insert Position | Medium
+35 | Search Insert Position | Easy
 33 | Search in Rotated Sorted Array | Hard
 81 | Search in Rotated Sorted Array II | Medium
 10 | Regular Expression Matching | Hard
