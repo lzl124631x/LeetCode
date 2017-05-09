@@ -336,3 +336,4 @@ My Code for LeetCode OJ.
 562 | Longest Line of Consecutive One in Matrix | Medium
 70 | Climbing Stairs | Easy
 96 | Unique Binary Search Trees | Medium
+310 | Minimum Height Trees | Medium
