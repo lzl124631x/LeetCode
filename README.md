@@ -4,7 +4,7 @@ Author: github.com/lzl124631x
 
 My C++ Code for LeetCode OJ.
 
-Please give this repo a :star: if you like it. Thanks.
+Please give this repo a :star: if you :heart: it. Thanks. :blush:
 
 \# | Title | Difficulty | Solution
 ---|---|---|---
