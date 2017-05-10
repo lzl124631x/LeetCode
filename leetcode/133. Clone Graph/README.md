@@ -1,5 +1,5 @@
 # [133. Clone Graph](https://leetcode.com/problems/clone-graph)
-DFS/BFS即可, 利用`unordered_map`记录新旧节点的映射关系, 同时用来避免重复创建节点.
+Simply DFS/BFS. An `unordered_map` is used to record the mapping between the original and copied nodes, and to ensure each node is only copied once.
 
 ## Solution 1: DFS
 ```cpp
