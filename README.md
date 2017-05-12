@@ -197,7 +197,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 26 | Remove Duplicates from Sorted Array | Easy |
 316 | Remove Duplicate Letters | Hard |
 494 | Target Sum | Medium |
-491 | Increasing Subsequences | Medium |
+491 | Increasing Subsequences | Medium | [Solution](leetcode/491.%20Increasing%20Subsequences)
 329 | Longest Increasing Path in a Matrix | Hard |
 332 | Reconstruct Itinerary | Medium |
 301 | Remove Invalid Parentheses | Hard |
