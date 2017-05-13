@@ -1,22 +1,25 @@
-// https://discuss.leetcode.com/topic/79921/my-c-elegant-solution-with-back-tracking
+// OJ: https://leetcode.com/problems/beautiful-arrangement
+// Auther: github.com/lzl124631x
+// Time: O(N^2 * logN)
+// Space: O(N)
 class Solution {
 private:
-    int count(vector<int> &v, int N) {
-        if (N <= 0) return 1;
-        int cnt = 0;
-        for (int i = 0; i < N; ++i) {
-            if (v[i] % N == 0 || N % v[i] == 0) {
-                swap(v[i], v[N - 1]);
-                cnt += count(v, N - 1);
-                swap(v[i], v[N - 1]);
-            }
-        }
-        return cnt;
+  int dfs(set<int> &s, int pos, int N) {
+    if (pos == N) return 1;
+    int cnt = 0;
+    for (auto it = s.begin(); it != s.end(); ++it) {
+      int n = *it;
+      if (n % (pos + 1) && (pos + 1) % n) continue;
+      s.erase(n);
+      cnt += dfs(s, pos + 1, N);
+      s.insert(n);
     }
+    return cnt;
+  }
 public:
-    int countArrangement(int N) {
-        vector<int> v(N);
-        for (int i = 0; i < N; ++i) v[i] = i + 1;
-        return count(v, N);
-    }
+  int countArrangement(int N) {
+    set<int> s;
+    for (int i = 1; i <= N; ++i) s.insert(i);
+    return dfs(s, 0, N);
+  }
 };

@@ -276,7 +276,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 3 | Longest Substring Without Repeating Characters | Medium |
 32 | Longest Valid Parentheses | Hard |
 520 | Detect Capital | Easy |
-526 | Beautiful Arrangement | Medium |
+526 | Beautiful Arrangement | Medium | [Solution](leetcode/526.%20Beautiful%20Arrangement)
 525 | Contiguous Array | Medium |
 517 | Super Washing Machines | Hard |
 43 | Multiply Strings | Medium |
