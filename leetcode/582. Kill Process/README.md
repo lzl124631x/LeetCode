@@ -32,7 +32,7 @@ Kill 5 will also kill 10.
 
 Use a `unordered_map<int, vector<int>>` to keep the parent-children relationship and DFS from the `kill` process towards its children recursively.
 
-```
+```cpp
 // OJ: https://leetcode.com/problems/kill-process
 // Auther: github.com/lzl124631x
 // Time: O(N)
