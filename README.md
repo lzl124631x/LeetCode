@@ -341,6 +341,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 310 | Minimum Height Trees | Medium |
 93 | Restore IP Addresses | Medium | [Solution](leetcode/93.%20Restore%20IP%20Addresses)
 581 | Shortest Unsorted Continuous Subarray | Easy | [Solution](leetcode/581.%20Shortest%20Unsorted%20Continuous%20Subarray)
+582 | Kill Process | Medium | [Solution](leetcode/582.%20Kill%20Process)
 
 # License
 
