@@ -31,7 +31,7 @@ Typical DFS. Use a `vector<vector<int>> cnt`, where `cnt[i][j]` is the length of
 
 For each position `matrix[x][y]`,
 * if `cnt[x][y]` is not zero, which means it's already visited, return `cnt[x][y]` right away.
-* otherwise, probe the 4 directions, `cnt[x][y]` is one greater than its neightbor's.
+* otherwise, probe the 4 directions, `cnt[x][y]` is one greater than its largest neightbor.
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-increasing-path-in-a-matrix
