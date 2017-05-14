@@ -342,6 +342,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 93 | Restore IP Addresses | Medium | [Solution](leetcode/93.%20Restore%20IP%20Addresses)
 581 | Shortest Unsorted Continuous Subarray | Easy | [Solution](leetcode/581.%20Shortest%20Unsorted%20Continuous%20Subarray)
 582 | Kill Process | Medium | [Solution](leetcode/582.%20Kill%20Process)
+583 | Delete Operation for Two Strings | Medium | [Solution](leetcode/583.%20Delete%20Operation%20for%20Two%20Strings)
 
 # License
 
