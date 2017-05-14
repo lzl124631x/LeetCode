@@ -339,7 +339,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 70 | Climbing Stairs | Easy |
 96 | Unique Binary Search Trees | Medium |
 310 | Minimum Height Trees | Medium |
-93 | Restore IP Addresses | Medium | [Solution](leetcode/93.%20Restore%20IP Addresses)
+93 | Restore IP Addresses | Medium | [Solution](leetcode/93.%20Restore%20IP%20Addresses)
 
 # License
 
