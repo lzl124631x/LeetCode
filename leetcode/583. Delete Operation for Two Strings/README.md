@@ -17,7 +17,7 @@ Explanation: You need one step to make "sea" to "ea" and another step to make "e
 
 A variation of LCS problem. The result should be `M + N - 2 * len(LCS)`.
 
-```
+```cpp
 // OJ: https://leetcode.com/problems/delete-operation-for-two-strings
 // Auther: github.com/lzl124631x
 // Time: O(MN)
