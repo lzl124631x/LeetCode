@@ -1,34 +1,30 @@
+// OJ: https://leetcode.com/problems/longest-increasing-path-in-a-matrix
+// Auther: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(MN)
 class Solution {
 private:
-    vector<vector<int>> dir {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
-    vector<vector<int>> memo;
-    int M, N;
-    vector<vector<int>> matrix;
-    int ans = 0;
-    int dfs(int i, int j) {
-        if (memo[i][j] > 0) return memo[i][j];
-        int maxLen = 1;
-        for (auto d : dir) {
-            int dx = i + d[0], dy = j + d[1];
-            if (dx >= 0 && dx < M && dy >= 0 && dy < N && matrix[dx][dy] < matrix[i][j]) {
-                int len = dfs(dx, dy);
-                maxLen = max(maxLen, 1 + len);
-            } 
-        }
-        ans = max(ans, maxLen);
-        return memo[i][j] = maxLen;
+  int M, N, ans = 0, dirs[4][2] = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+  vector<vector<int>> cnt;
+  int dfs(vector<vector<int>> &matrix, int x, int y) {
+    if (cnt[x][y]) return cnt[x][y];
+    cnt[x][y] = 1;
+    for (auto dir : dirs) {
+      int i = x + dir[0], j = y + dir[1];
+      if (i < 0 || i >= M || j < 0 || j >= N || matrix[i][j] <= matrix[x][y]) continue;
+      cnt[x][y] = max(cnt[x][y], 1 + dfs(matrix, i, j));
     }
+    ans = max(ans, cnt[x][y]);
+    return cnt[x][y];
+  }
 public:
-    int longestIncreasingPath(vector<vector<int>>& matrix) {
-        this->matrix = matrix;
-        if (matrix.empty() || matrix[0].empty()) return 0;
-        M = matrix.size(), N = matrix[0].size();
-        memo = vector<vector<int>>(M, vector<int>(N));
-        for (int i = 0; i < M; ++i) {
-            for (int j = 0; j < N; ++j) {
-                dfs(i, j);
-            }
-        }
-        return ans;
-    }
+  int longestIncreasingPath(vector<vector<int>>& matrix) {
+    if (matrix.empty() || matrix[0].empty()) return 0;
+    M = matrix.size(), N = matrix[0].size();
+    cnt = vector<vector<int>> (M, vector<int>(N, 0));
+    for (int i = 0; i < M; ++i)
+      for (int j = 0; j < N; ++j)
+        dfs(matrix, i, j);
+    return ans;
+  }
 };
