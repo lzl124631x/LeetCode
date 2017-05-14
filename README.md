@@ -340,6 +340,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 96 | Unique Binary Search Trees | Medium |
 310 | Minimum Height Trees | Medium |
 93 | Restore IP Addresses | Medium | [Solution](leetcode/93.%20Restore%20IP%20Addresses)
+581 | Shortest Unsorted Continuous Subarray | Easy | [Solution](leetcode/581.%20Shortest%20Unsorted%20Continuous%20Subarray)
 
 # License
 
