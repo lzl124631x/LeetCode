@@ -1,7 +1,7 @@
 // OJ: https://leetcode.com/problems/can-place-flowers
 // Auther: github.com/lzl124631x
 // Time: O(N)
-// Space: O(N)
+// Space: O(1)
 class Solution {
 public:
   bool canPlaceFlowers(vector<int>& flowerbed, int n) {
