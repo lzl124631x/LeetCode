@@ -344,6 +344,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 582 | Kill Process | Medium | [Solution](leetcode/582.%20Kill%20Process)
 583 | Delete Operation for Two Strings | Medium | [Solution](leetcode/583.%20Delete%20Operation%20for%20Two%20Strings)
 605 | Can Place Flowers | Easy | [Solution](leetcode/605.%20Can%20Place%20Flowers)
+606 | Construct String from Binary Tree | Easy | [Solution](leetcode/606.%20Construct%20String%20from%20Binary%20Tree)
 
 # License
 
