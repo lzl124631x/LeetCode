@@ -285,7 +285,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 151 | Reverse Words in a String | Medium |
 215 | Kth Largest Element in an Array | Medium |
 202 | Happy Number | Easy |
-532 | K-diff Pairs in an Array | Easy |
+532 | K-diff Pairs in an Array | Easy | [Solution](leetcode/532.%20K-diff%20Pairs%20in%20an%20Array)
 530 | Minimum Absolute Difference in BST | Easy |
 504 | Base 7 | Easy |
 535 | Encode and Decode TinyURL | Medium |
