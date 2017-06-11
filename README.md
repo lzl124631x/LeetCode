@@ -350,6 +350,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 146 | LRU Cache | Hard | [Solution](leetcode/146.%20LRU%20Cache)
 617 | Merge Two Binary Trees | Easy | [Solution](leetcode/617.%20Merge%20Two%20Binary%20Trees)
 604 | Design Compressed String Iterator | Easy | [Solution](leetcode/604.%20Design%20Compressed%20String%20Iterator)
+611 | Valid Triangle Number | Medium | [Solution](leetcode/611.%20Valid%20Triangle%20Number)
 
 # License
 
