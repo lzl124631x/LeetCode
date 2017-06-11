@@ -351,6 +351,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 617 | Merge Two Binary Trees | Easy | [Solution](leetcode/617.%20Merge%20Two%20Binary%20Trees)
 604 | Design Compressed String Iterator | Easy | [Solution](leetcode/604.%20Design%20Compressed%20String%20Iterator)
 611 | Valid Triangle Number | Medium | [Solution](leetcode/611.%20Valid%20Triangle%20Number)
+616 | Add Bold Tag in String | Medium | [Solution](leetcode/616.%20Add%20Bold%20Tag%20in%20String)
 
 # License
 
