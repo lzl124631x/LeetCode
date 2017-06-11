@@ -349,6 +349,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 591 | Tag Validator | Hard | [Solution](leetcode/591.%20Tag%20Validator)
 146 | LRU Cache | Hard | [Solution](leetcode/146.%20LRU%20Cache)
 617 | Merge Two Binary Trees | Easy | [Solution](leetcode/617.%20Merge%20Two%20Binary%20Trees)
+604 | Design Compressed String Iterator | Easy | [Solution](leetcode/604.%20Design%20Compressed%20String%20Iterator)
 
 # License
 
