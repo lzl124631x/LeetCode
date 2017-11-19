@@ -105,7 +105,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 214 | Shortest Palindrome | Hard |
 468 | Validate IP Address | Medium |
 385 | Mini Parser | Medium |
-72 | Edit Distance | Hard |
+72 | Edit Distance | Hard | [Solution](leetcode/72.%20Edit%20Distance)
 53 | Maximum Subarray | Medium |
 363 | Max Sum of Rectangle No Larger Than K | Hard |
 354 | Russian Doll Envelopes | Hard |
