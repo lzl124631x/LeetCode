@@ -2,6 +2,7 @@
 // Author: github.com/lzl124631x
 // Time: O(N) where N is character count in paragraph
 // Space: O(N)
+// Ref: https://leetcode.com/problems/most-common-word/discuss/184971/C%2B%2B-4ms-straightforward-solution
 class Solution {
 public:
     string mostCommonWord(string paragraph, vector<string>& banned) {
