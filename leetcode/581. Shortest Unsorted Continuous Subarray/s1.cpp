@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/shortest-unsorted-continuous-subarray
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(1)
 class Solution {

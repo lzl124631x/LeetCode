@@ -34,7 +34,7 @@ A function `load` is used to load the next letter, if neccessary. It will be cal
 
 ```cpp
 // OJ: https://leetcode.com/problems/design-compressed-string-iterator
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(1)
 // Space: O(1)
 class StringIterator {

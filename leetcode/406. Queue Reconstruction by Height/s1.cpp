@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/queue-reconstruction-by-height
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(1)
 // Ref: https://discuss.leetcode.com/topic/60470/6-lines-concise-c

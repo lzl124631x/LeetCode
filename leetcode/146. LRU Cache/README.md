@@ -42,7 +42,7 @@ The `put` logic is:
 
 ```cpp
 // OJ: https://leetcode.com/problems/lru-cache
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time:
 //    get: O(1)
 //    put: O(1)

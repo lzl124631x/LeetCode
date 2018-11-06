@@ -42,7 +42,7 @@ The idea is quite straightforward: create a mapping from the content to path. Fi
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-duplicate-file-in-system
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
 class Solution {

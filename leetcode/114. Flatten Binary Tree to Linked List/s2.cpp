@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/flatten-binary-tree-to-linked-list
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(logN)
 class Solution {

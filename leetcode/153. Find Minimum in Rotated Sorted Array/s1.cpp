@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/find-minimum-in-rotated-sorted-array
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(logN)
 // Space: O(1)
 class Solution {

@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(logN)
 class Solution {

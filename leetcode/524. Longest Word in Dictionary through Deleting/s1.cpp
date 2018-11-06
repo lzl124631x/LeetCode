@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/longest-word-in-dictionary-through-deleting
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(SD), where S is length of string s, D is the sum of lengths of strings in d.
 // Space: O(1)
 class Solution {

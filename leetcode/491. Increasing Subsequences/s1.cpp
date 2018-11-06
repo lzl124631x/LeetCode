@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/increasing-subsequences
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(2^N)
 // Space: O(2^N)
 class Solution {

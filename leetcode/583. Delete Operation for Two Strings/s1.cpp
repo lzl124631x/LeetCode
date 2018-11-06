@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/delete-operation-for-two-strings
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(MN)
 class Solution {

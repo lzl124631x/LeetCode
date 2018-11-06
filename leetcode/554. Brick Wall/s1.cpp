@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/brick-wall
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(K) (K is # of unique numbers)
 class Solution {

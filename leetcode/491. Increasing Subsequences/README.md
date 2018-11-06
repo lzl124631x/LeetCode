@@ -23,7 +23,7 @@ Finally, remove all the vectors holding only one number from `ans`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/increasing-subsequences
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(2^N)
 // Space: O(2^N)
 class Solution {
@@ -59,7 +59,7 @@ Add any subsequences of length greater than 1.
 
 ```cpp
 // OJ: https://leetcode.com/problems/permutations-ii
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(2^N)
 // Space: O(2^N)
 class Solution {
@@ -88,7 +88,7 @@ public:
 
 ```cpp
 // OJ: https://leetcode.com/problems/permutations-ii
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(2^N)
 // Space: O(N)
 class Solution {

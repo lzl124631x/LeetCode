@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/convert-bst-to-greater-tree
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(logN)
 class Solution {

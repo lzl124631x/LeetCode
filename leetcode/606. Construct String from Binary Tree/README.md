@@ -41,7 +41,7 @@ Plain DFS. Notice when you should add the left/right child part.
 
 ```cpp
 // OJ: https://leetcode.com/problems/construct-string-from-binary-tree
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
 class Solution {

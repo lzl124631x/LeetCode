@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/add-bold-tag-in-string
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(DWK)
 //    where D is size of dict, W is average length of words in dict
 //    K is average occurrence of words in s.

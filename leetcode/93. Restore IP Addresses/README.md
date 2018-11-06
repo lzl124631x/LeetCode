@@ -13,7 +13,7 @@ Plain backtracking. Maximum depth is 4. Be aware of the cases where ip segment s
 
 ```cpp
 // OJ: https://leetcode.com/problems/restore-ip-addresses
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(1)
 // Space: O(1)
 class Solution {

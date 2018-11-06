@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/climbing-stairs
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
 class Solution {

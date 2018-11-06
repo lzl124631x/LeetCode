@@ -19,7 +19,7 @@ Naive insertion sort. For `nums[i]`, if its insertion position `pos[i]` is not t
 
 ```cpp
 // OJ: https://leetcode.com/problems/shortest-unsorted-continuous-subarray
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(1)
 class Solution {

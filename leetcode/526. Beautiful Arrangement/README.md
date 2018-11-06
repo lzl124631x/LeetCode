@@ -34,7 +34,7 @@ Use an `vector<int> nums` to hold all the numbers. For each position `pos (0 <= 
 
 ```cpp
 // OJ: https://leetcode.com/problems/beautiful-arrangement
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(N)
 class Solution {
@@ -67,7 +67,7 @@ But actually it doesn't reduce the overall complexity. While the number of `dfs`
 
 ```cpp
 // OJ: https://leetcode.com/problems/beautiful-arrangement
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2 * logN)
 // Space: O(N)
 class Solution {
@@ -99,7 +99,7 @@ Compared to solution 1, rather than marking the current number as `0`, we `swap`
 
 ```cpp
 // OJ: https://leetcode.com/problems/beautiful-arrangement
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(N)
 // Ref: https://discuss.leetcode.com/topic/79921/my-c-elegant-solution-with-back-tracking

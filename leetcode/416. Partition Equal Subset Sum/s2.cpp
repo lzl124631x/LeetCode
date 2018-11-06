@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/partition-equal-subset-sum
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(MAX_NUM, MAX_ARRAY_SIZE)
 // Ref: https://discuss.leetcode.com/topic/62334/simple-c-4-line-solution-using-a-bitset

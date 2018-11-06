@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/best-time-to-buy-and-sell-stock
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
 class Solution {

@@ -34,7 +34,7 @@ Use a `unordered_map<int, vector<int>>` to keep the parent-children relationship
 
 ```cpp
 // OJ: https://leetcode.com/problems/kill-process
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
 class Solution {

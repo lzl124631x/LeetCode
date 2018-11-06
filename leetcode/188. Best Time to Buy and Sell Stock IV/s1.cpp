@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(NK)
 // Space: O(K)
 // Ref: https://discuss.leetcode.com/topic/8984/a-concise-dp-solution-in-java

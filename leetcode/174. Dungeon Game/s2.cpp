@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/dungeon-game
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(MN)
 // Ref: https://discuss.leetcode.com/topic/6912/c-dp-solution

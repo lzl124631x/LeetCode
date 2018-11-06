@@ -39,7 +39,7 @@ When search rightward from `start`, use `int diff = 0` to denote the difference 
 
 ```cpp
 // OJ: https://leetcode.com/problems/contiguous-array
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(N)
 class Solution {
@@ -77,7 +77,7 @@ For each running sum,
 
 ```cpp
 // OJ: https://leetcode.com/problems/contiguous-array
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
 // Ref: https://discuss.leetcode.com/topic/79906/easy-java-o-n-solution-presum-hashmap/

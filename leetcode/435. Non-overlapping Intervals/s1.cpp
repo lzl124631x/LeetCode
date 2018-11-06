@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/non-overlapping-intervals
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(1)
 // Ref: https://discuss.leetcode.com/topic/65594/java-least-is-most

@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/non-overlapping-intervals
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(1)
 class Solution {

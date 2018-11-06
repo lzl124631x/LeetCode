@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/construct-binary-tree-from-string
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(logN)
 class Solution {

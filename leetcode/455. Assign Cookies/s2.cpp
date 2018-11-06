@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/assign-cookies
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(max(GlogG, SlogS))
 // Space: O(1)
 class Solution {

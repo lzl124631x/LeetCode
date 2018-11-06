@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/maximum-gap
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
 // Ref: https://discuss.leetcode.com/topic/5999/bucket-sort-java-solution-with-explanation-o-n-time-and-space

@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(1)
 // Ref: https://discuss.leetcode.com/topic/66709/c-easy-understood-solution-sort

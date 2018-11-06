@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/binary-watch
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(1)
 // Space: O(1)
 // Ref: https://discuss.leetcode.com/topic/59401/straight-forward-6-line-c-solution-no-need-to-explain

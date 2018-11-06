@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/subsets
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N * 2^N)
 // Space: O(1)
 // Ref: https://discuss.leetcode.com/topic/2764/my-solution-using-bit-manipulation

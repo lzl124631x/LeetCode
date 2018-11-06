@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/palindrome-partitioning
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(2^N)
 // Space: O(N^2)
 // Ref: https://discuss.leetcode.com/topic/37756/java-dp-dfs-solution

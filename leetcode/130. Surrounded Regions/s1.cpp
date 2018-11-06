@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/surrounded-regions
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(MN)
 class Solution {

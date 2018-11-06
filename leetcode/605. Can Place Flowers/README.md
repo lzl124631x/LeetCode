@@ -25,7 +25,7 @@ A placeable plot should be empty, as well as its direct neighbors, if any. So, g
 
 ```cpp
 // OJ: https://leetcode.com/problems/can-place-flowers
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
 class Solution {

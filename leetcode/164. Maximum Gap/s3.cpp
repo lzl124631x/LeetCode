@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/maximum-gap
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(1)
 class Solution {

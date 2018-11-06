@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/partition-equal-subset-sum
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(NS)
 // Space: O(S) where S the sum of nums.
 class Solution {

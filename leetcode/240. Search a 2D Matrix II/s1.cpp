@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/search-a-2d-matrix-ii
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(M + N)
 // Space: O(1)
 class Solution {

@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/unique-binary-search-trees
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(N)
 class Solution {

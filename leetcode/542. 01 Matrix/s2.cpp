@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/01-matrix
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(1)
 // Ref: https://discuss.leetcode.com/topic/83472/18-line-c-dp-solution-o-n-easy-to-understand

@@ -31,7 +31,7 @@ Simply follow the question description, you'll get the following recursive solut
 
 ```cpp
 // OJ: https://leetcode.com/problems/merge-two-binary-trees
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
 class Solution {
@@ -54,7 +54,7 @@ This solution is same as solution 1 except that for non-overlapping parts, it co
 
 ```cpp
 // OJ: https://leetcode.com/problems/merge-two-binary-trees
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
 class Solution {

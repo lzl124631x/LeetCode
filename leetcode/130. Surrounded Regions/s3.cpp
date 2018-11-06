@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/surrounded-regions
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(MN)
 // Ref: https://discuss.leetcode.com/topic/1944/solve-it-using-union-find

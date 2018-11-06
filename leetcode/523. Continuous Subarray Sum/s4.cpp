@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/continuous-subarray-sum
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(K)
 // Ref: https://discuss.leetcode.com/topic/80892/concise-c-solution-use-set-instead-of-map

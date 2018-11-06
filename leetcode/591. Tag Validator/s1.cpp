@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/tag-validator
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(H)
 class Solution {

@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/permutations-ii
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N!)
 // Space: O(N^2)
 // Ref: https://discuss.leetcode.com/topic/8831/a-simple-c-solution-in-only-20-lines

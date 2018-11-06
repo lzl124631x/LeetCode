@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/contiguous-array
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
 // Ref: https://discuss.leetcode.com/topic/79906/easy-java-o-n-solution-presum-hashmap/

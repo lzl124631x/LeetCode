@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/heaters
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(1)
 // Ref: https://discuss.leetcode.com/topic/71450/simple-java-solution-with-2-pointers

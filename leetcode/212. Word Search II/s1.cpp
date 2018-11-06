@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/word-search-ii
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(MN4^K)
 // Space: O(WK)
 // Where K is the average length of words.

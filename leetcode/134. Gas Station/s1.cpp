@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/gas-station
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
 // Note: Imagine an array D, where D[i] = gas[i] - cost[i].

@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/evaluate-division
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
 // Ref: https://discuss.leetcode.com/topic/59146/java-ac-solution-using-graph

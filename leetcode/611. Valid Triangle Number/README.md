@@ -27,7 +27,7 @@ To optimize it, I first sort `nums` in ascending order. And for each doublet `a`
 
 ```cpp
 // OJ: https://leetcode.com/problems/valid-triangle-number
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2logN)
 // Space: O(1)
 class Solution {
@@ -65,7 +65,7 @@ Same as solution 1, just uses built-in functions `lower_bound` and `upper_bound`
 
 ```cpp
 // OJ: https://leetcode.com/problems/valid-triangle-number
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2logN)
 // Space: O(1)
 class Solution {

@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/permutations-ii
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N!)
 // Space: O(N^2)
 class Solution {

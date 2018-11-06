@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/find-largest-value-in-each-tree-row
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
 class Solution {

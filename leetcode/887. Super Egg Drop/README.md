@@ -38,7 +38,7 @@ Hence, we needed 2 moves in the worst case to know what F is with certainty.
 2.  `1 <= N <= 10000`
 
 ## TLE Solution
-Assume we choose to throw the egg at floor i:
+Assume we choose to throw the egg at floor `i`:
 * If the egg breaks, we continue throwing between floors `[1, i - 1]`, with one less egg available
 * If the egg doesn't break, we continue throwing between floors `[i + 1, N]`, with the same number of eggs.
 In this way, for whichever floors region `[m, n] (1 <= m <= n <= N)`, we can regard floor `m - 1` is safe while floor `n + 1` is not safe. So the 2nd case above is analogous to throwing between floors `[1, N - i]`.
@@ -51,7 +51,7 @@ In the worse case we need to visit all the combinations of `k` and `n` `(k in [1
 
 ```cpp
 // OJ: https://leetcode.com/problems/super-egg-drop/
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(KN)
 // Space: O(KN)
 struct pair_hash {

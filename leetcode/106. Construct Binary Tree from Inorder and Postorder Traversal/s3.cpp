@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(logN)
 // Ref: https://discuss.leetcode.com/topic/3296/my-recursive-java-code-with-o-n-time-and-o-n-space/3

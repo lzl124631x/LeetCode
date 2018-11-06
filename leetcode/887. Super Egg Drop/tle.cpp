@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/super-egg-drop/
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(KN)
 // Space: O(KN)
 struct pair_hash {

@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/beautiful-arrangement
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(N)
 // Ref: https://discuss.leetcode.com/topic/79921/my-c-elegant-solution-with-back-tracking

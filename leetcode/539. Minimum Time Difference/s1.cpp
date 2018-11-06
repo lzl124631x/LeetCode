@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/minimum-time-difference
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(N)
 class Solution {

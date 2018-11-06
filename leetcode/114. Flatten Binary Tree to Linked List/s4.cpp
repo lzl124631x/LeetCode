@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/flatten-binary-tree-to-linked-list
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(logN)
 // Note: Left-to-right pre-order traversal has the reverse result of right-to-left post-order traversal.

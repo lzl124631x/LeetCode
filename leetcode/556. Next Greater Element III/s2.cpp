@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/next-greater-element-iii
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
 // Ref: https://discuss.leetcode.com/topic/85740/c-4-lines-next_permutation

@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/friend-circles
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N^2 * a(N)), where `a` is the inverse function of Ackermann function. O(a(N)) is faster than O(log(N)).
 // Space: O(N)
 class UnionFind {

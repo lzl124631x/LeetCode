@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/minimum-height-trees
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
 class Solution {

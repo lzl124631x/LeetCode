@@ -1,5 +1,5 @@
 // OJ: https://leetcode.com/problems/surrounded-regions
-// Auther: github.com/lzl124631x
+// Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(MN)
 // Ref: https://discuss.leetcode.com/topic/17224/a-really-simple-and-readable-c-solution-only-cost-12ms
