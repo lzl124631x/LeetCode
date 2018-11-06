@@ -353,7 +353,9 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 611 | Valid Triangle Number | Medium | [Solution](leetcode/611.%20Valid%20Triangle%20Number)
 616 | Add Bold Tag in String | Medium | [Solution](leetcode/616.%20Add%20Bold%20Tag%20in%20String)
 616 | Add Bold Tag in String | Medium | [Solution](leetcode/616.%20Add%20Bold%20Tag%20in%20String)
-887 | Super Egg Drop | Hard |[Solution](leetcode/887.%20Super%20Egg%20Drop/)
+887 | Super Egg Drop | Hard |[Solution](leetcode/887.%20Super%20Egg%20Drop)
+819 | Most Common Word | Easy |[Solution](leetcode/819.%20Most%20Common%20Word)
+860 | Lemonade Change | Easy |[Solution](leetcode/860.%20Lemonade%20Change)
 # License
 
 All rights reserved by github.com/lzl124631x. Contact me if you want to redistribute the code. No commercial use.

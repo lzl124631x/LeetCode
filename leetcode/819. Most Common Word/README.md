@@ -69,7 +69,7 @@ public:
 ```
 
 ## Solution 2.
-```
+```cpp
 // OJ: https://leetcode.com/problems/most-common-word/
 // Author: github.com/lzl124631x
 // Time: O(N) where N is character count in paragraph
