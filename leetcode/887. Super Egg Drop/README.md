@@ -82,3 +82,32 @@ public:
     }
 };
 ```
+
+## Solution 1.
+Denote `f(K, S)` as the max number of floors that is solvable given `K` eggs and `S` steps.
+
+After I throw an egg:
+* If the egg is broken, I should continue throw the eggs within lower floors. The max number of lower floors I can handle is `f(K - 1, S - 1)`.
+* If the egg is not broken, I should continue throw the eggs within upper floors. The max number of upper floors I can handle is `f(K, S - 1)`.
+
+So the max total number of floors I can handle is 1 plus the result of the above two cases, i.e. `f(K, S) = 1 + f(K - 1, S - 1) + f(K, S - 1)`.
+```
+// OJ: https://leetcode.com/problems/super-egg-drop/
+// Author: github.com/lzl124631x
+// Time: O(SK) where S is the result.
+// Space: O(K)
+// Ref: https://leetcode.com/problems/super-egg-drop/discuss/159508/easy-to-understand
+class Solution {
+public:
+    int superEggDrop(int K, int N) {
+        int step = 0;
+        vector<int> dp(K + 1);
+        for (; dp[K] < N; ++step) {
+            for (int k = K; k > 0; --k) {
+                dp[k] += 1 + dp[k - 1];
+            }
+        }
+        return step;
+    }
+};
+```
