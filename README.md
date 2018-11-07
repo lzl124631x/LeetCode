@@ -357,6 +357,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 819 | Most Common Word | Easy | [Solution](leetcode/819.%20Most%20Common%20Word)
 860 | Lemonade Change | Easy | [Solution](leetcode/860.%20Lemonade%20Change)
 572 | Subtree of Another Tree | Easy | [Solution](leetcode/572.%20Subtree%20of%20Another%20Tree)
+794 | Valid Tic-Tac-Toe State | Medium | [Solution](leetcode/794.%20Valid%20Tic-Tac-Toe%20State)
 # License
 
 All rights reserved by github.com/lzl124631x. Contact me if you want to redistribute the code. No commercial use.
