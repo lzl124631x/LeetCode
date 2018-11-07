@@ -91,7 +91,7 @@ After I throw an egg:
 * If the egg is not broken, I should continue throw the eggs within upper floors. The max number of upper floors I can handle is `f(K, S - 1)`.
 
 So the max total number of floors I can handle is 1 plus the result of the above two cases, i.e. `f(K, S) = 1 + f(K - 1, S - 1) + f(K, S - 1)`.
-```
+```cpp
 // OJ: https://leetcode.com/problems/super-egg-drop/
 // Author: github.com/lzl124631x
 // Time: O(SK) where S is the result.
