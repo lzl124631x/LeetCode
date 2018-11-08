@@ -2,35 +2,12 @@
 // Time: O(N + klogN)
 // Space: O(1)
 class Solution {
-private:
-  void percolateDown(vector<int>&nums, int end, int hole) {
-    if (hole < 0 || hole >= end) return;
-    int child = (hole << 1) + 1;
-    while (child < end) {
-      if (child + 1 < end && nums[child + 1] > nums[child]) {
-        ++child;
-      }
-      if (nums[hole] > nums[child]) {
-        break;
-      }
-      swap(nums[hole], nums[child]);
-      hole = child;
-      child = (hole << 1) + 1;
-    }
-  }
-  void heapify(vector<int>&nums) {
-    for (int i = (nums.size() >> 1) - 1; i >= 0; --i) {
-      percolateDown(nums, nums.size(), i);
-    }
-  }
 public:
   int findKthLargest(vector<int>& nums, int k) {
-    heapify(nums);
-    int size = nums.size();
-    for (int i = 1; i < k; ++i) {
-      swap(nums[0], nums[size - 1]);
-      --size;
-      percolateDown(nums, size, 0);
+    make_heap(nums.begin(), nums.end());
+    while (--k) {
+      pop_heap(nums.begin(), nums.end());
+      nums.pop_back();
     }
     return nums[0];
   }

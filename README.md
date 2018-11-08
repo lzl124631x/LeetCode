@@ -360,6 +360,8 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 794 | Valid Tic-Tac-Toe State | Medium | [Solution](leetcode/794.%20Valid%20Tic-Tac-Toe%20State)
 528 | Random Pick with Weight | Medium | [Solution](leetcode/528.%20Random%20Pick%20with%20Weight)
 745 | Prefix and Suffix Search | Hard | [Solution](leetcode/Prefix%20and%20Suffix%20Search)
+899 | Orderly Queue | Hard | [Solution](leetcode/899.%20Orderly%20Queue)
+
 # License
 
 All rights reserved by github.com/lzl124631x. Contact me if you want to redistribute the code. No commercial use.
