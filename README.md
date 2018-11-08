@@ -361,6 +361,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 528 | Random Pick with Weight | Medium | [Solution](leetcode/528.%20Random%20Pick%20with%20Weight)
 745 | Prefix and Suffix Search | Hard | [Solution](leetcode/Prefix%20and%20Suffix%20Search)
 899 | Orderly Queue | Hard | [Solution](leetcode/899.%20Orderly%20Queue)
+724 | Find Pivot Index | Easy | [Solution](leetcode/724.%20Find%20Pivot%20Index)
 
 # License
 
