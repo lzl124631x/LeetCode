@@ -76,7 +76,7 @@ Now, what if our assumption "there are no duplicate points" is wrong? Just merge
 // Author: github.com/lzl124631x
 // Time: O(N^3)
 //   In worse case, when visiting ith point, there will be O(i^2)
-//   lines, but the neighbor points are of constant size 2. So in
+//   lines, but all the lines are of constant size 2. So in
 //   sum it's O(N^3), not O(N^4).
 // Space: O(N^2)
 namespace std {
