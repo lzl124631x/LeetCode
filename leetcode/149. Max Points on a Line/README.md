@@ -51,7 +51,7 @@ Assume `c` is not on line `(a, b)`, we add `(a, c)` and `(b, c)` to the `lines`.
 (b, c)
 ```
 
-For the next point `d`, assume `d` is on line `(b, c)`, then add `d` into this line.
+For the next point `d`, assume `d` is on line `(b, c)` but not on the other lines, then add `d` into this line.
 
 ```
 (a, b)
