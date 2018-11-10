@@ -366,6 +366,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 149 | Max Points on a Line | Hard | [Solution](leetcode/149.%20Max%20Points%20on%20a%20Line)
 824 | Goat Latin | Easy | [Solution](leetcode/824.%20Goat%20Latin) 
 725 | Split Linked List in Parts | Medium | [Solution](leetcode/725.%20Split%20Linked%20List%20in%20Parts)
+867 | Transpose Matrix | Easy | [Solution](leetcode/867.%20Transpose%20Matrix)
 
 # License
 
