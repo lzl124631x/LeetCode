@@ -364,7 +364,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 724 | Find Pivot Index | Easy | [Solution](leetcode/724.%20Find%20Pivot%20Index)
 936 | Stamping The Sequence | Hard | [Solution](leetcode/936.%20Stamping%20The%20Sequence)
 149 | Max Points on a Line | Hard | [Solution](leetcode/149.%20Max%20Points%20on%20a%20Line)
-824 | Goat Latin | Easy | [Solution](leetcode/824.%20Goat%20Latin)
+824 | Goat Latin | Easy | [Solution](leetcode/824.%20Goat%20Latin) 
 
 # License
 
