@@ -37,16 +37,13 @@ public:
     vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) {
         if (A.empty() || A[0].empty()) return {};
         int M = A.size(), N = A[0].size();
+        vector<vector<int>> v(M, vector<int>(N));
         for (int i = 0; i < M; ++i) {
-            int L = 0, R = N - 1;
-            while (L < R) swap(A[i][L++], A[i][R--]);
-        }
-        for (auto &row: A) {
-            for (auto &n: row) {
-                n = 1 - n;
+            for (int j = 0; j < N; ++j) {
+                v[i][N - j - 1] = 1 - A[i][j];
             }
         }
-        return A;
+        return v;
     }
 };
 ```
