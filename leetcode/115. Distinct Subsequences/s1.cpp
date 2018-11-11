@@ -1,6 +1,6 @@
 // OJ: https://leetcode.com/problems/distinct-subsequences
 // Author: github.com/lzl124631x
-// Time: O(2^S), since there are O(2^S) subsequences. But the memo helped reduce lots of duplicate computation.
+// Time: O(2^S), since there are O(2^S) subsequences. But the memo helps reduce lots of duplicate computation.
 // Space: O(ST)
 class Solution {
 private:
