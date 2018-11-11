@@ -42,7 +42,7 @@ As shown below, there are 5 ways you can generate "bag" from S.
     ^^^
 ```
 
-## Solution 1. DPF + memo
+## Solution 1. DFS + memo
 
 ```cpp
 // OJ: https://leetcode.com/problems/distinct-subsequences
