@@ -110,7 +110,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 363 | Max Sum of Rectangle No Larger Than K | Hard |
 354 | Russian Doll Envelopes | Hard |
 300 | Longest Increasing Subsequence | Medium |
-115 | Distinct Subsequences | Hard |
+115 | Distinct Subsequences | Hard | [Solution](leetcode/115.%20Distinct%20Subsequences)
 321 | Create Maximum Number | Hard |
 121 | Best Time to Buy and Sell Stock | Easy |
 122 | Best Time to Buy and Sell Stock II | Medium |
