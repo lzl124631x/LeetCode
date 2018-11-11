@@ -370,6 +370,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 832 | Flipping an Image | Easy | [Solution](leetcode/832.%20Flipping%20an%20Image)
 835 | Image Overlap | Medium | [Solution](leetcode/835.%20Image%20Overlap)
 937 | Reorder Log Files | Easy | [Solution](leetcode/937.%20Reorder%20Log%20Files)
+938 | Range Sum of BST | Easy | [Solution](leetcode/938.%20Range%20Sum%20of%20BST)
 
 # License
 
