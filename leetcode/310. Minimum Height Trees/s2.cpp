@@ -1,12 +1,12 @@
 // OJ: https://leetcode.com/problems/minimum-height-trees
 // Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(N)
+// Time: O(E)
+// Space: O(E)
 class Solution {
 public:
   vector<int> findMinHeightTrees(int n, vector<pair<int, int>>& edges) {
     if (n == 1) return { 0 };
-    map<int, set<int>> m;
+    unordered_map<int, unordered_set<int>> m;
     for (auto e : edges) {
       m[e.first].insert(e.second);
       m[e.second].insert(e.first);
@@ -16,11 +16,11 @@ public:
     while (m.size() > 2) {
       int cnt = q.size();
       while (cnt--) {
-        int from = q.front(), to = *m[from].begin();
+        int leaf = q.front(), neighbor = *m[leaf].begin();
         q.pop();
-        m[to].erase(from);
-        m.erase(from);
-        if (m[to].size() == 1) q.push(to);
+        m[neighbor].erase(leaf);
+        m.erase(leaf);
+        if (m[neighbor].size() == 1) q.push(neighbor);
       }
     }
     vector<int> ans;
