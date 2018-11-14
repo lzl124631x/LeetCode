@@ -373,6 +373,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 938 | Range Sum of BST | Easy | [Solution](leetcode/938.%20Range%20Sum%20of%20BST)
 939 | Minimum Area Rectangle | Medium | [Solution](leetcode/939.%20Minimum%20Area%20Rectangle)
 95 | Unique Binary Search Trees II | Medium | [Solution](leetcode/95.%20Unique%20Binary%20Search%20Trees%20II)
+241 | Different Ways to Add Parentheses | Medium | [Solution](leetcode/241.%20Different%20Ways%20to%20Add%20Parentheses)
 
 # License
 
