@@ -7,18 +7,14 @@ private:
     vector<string> toRPN(string &s) {
         vector<string> rpn;
         stack<char> ops;
-        for (auto it = s.begin(); it != s.end();) {
-            while (it != s.end() && isspace(*it)) ++it;
-            if (it == s.end()) break;
-            if (isdigit(*it)) {
-                string num;
-                while (it != s.end() && isdigit(*it)) {
-                    num += *it;
-                    ++it;
-                }
-                rpn.push_back(num);
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == ' ') continue;
+            if (isdigit(s[i])) {
+                int begin = i;
+                while (i + 1 < s.size() && isdigit(s[i + 1])) ++i;
+                rpn.push_back(s.substr(begin, i - begin + 1));
             } else {
-                switch(*it) {
+                switch(s[i]) {
                     case '+':
                     case '-':
                         if (ops.size() && ops.top() != '(') {
@@ -26,9 +22,7 @@ private:
                             ops.pop();
                         }
                         // fall through
-                    case '(':
-                        ops.push(*it);
-                        break;
+                    case '(': ops.push(s[i]); break;
                     case ')': 
                         while (ops.top() != '(') {
                             rpn.push_back(string(1, ops.top()));
@@ -37,7 +31,6 @@ private:
                         ops.pop();
                         break;
                 }
-                ++it;
             }
         }
         while (ops.size()) {
