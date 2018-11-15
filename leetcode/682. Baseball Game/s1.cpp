@@ -11,8 +11,8 @@ public:
             else {
                 switch(op[0]) {
                     case 'C': v.pop_back(); break;
-                    case 'D': v.back() *= 2; break;
-                    case '+': v.push_back(v[v.size() - 1] + v[v.size() - 2]); break;
+                    case 'D': v.push_back(v.back() * 2); break;
+                    case '+': v.push_back(v.back() + v[v.size() - 2]); break;
                 }
             }
         }
