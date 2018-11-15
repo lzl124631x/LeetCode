@@ -376,6 +376,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 241 | Different Ways to Add Parentheses | Medium | [Solution](leetcode/241.%20Different%20Ways%20to%20Add%20Parentheses)
 935 | Knight Dialer | Medium | [Solution](leetcode/935.%20Knight%20Dialer)
 875 | Koko Eating Bananas | Medium | [Solution](leetcode/875.%20Koko%20Eating%20Bananas)
+876 | Middle of the Linked List | Easy | [Solution](leetcode/876.%20Middle%20of%20the%20Linked%20List)
 
 # License
 
