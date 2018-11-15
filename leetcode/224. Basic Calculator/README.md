@@ -1,3 +1,34 @@
+# [224. Basic Calculator (Hard)](https://leetcode.com/problems/basic-calculator/)
+
+Implement a basic calculator to evaluate a simple expression string.
+
+The expression string may contain open `(` and closing parentheses `)`, the plus `+` or minus sign `-`, **non-negative** integers and empty spaces .
+
+**Example 1:**
+
+**Input:** "1 + 1"  
+**Output:** 2
+
+**Example 2:**
+
+**Input:** " 2-1 + 2 "  
+**Output:** 3
+
+**Example 3:**
+
+**Input:** "(1+(4+5+2)-3)+(6+8)"  
+**Output:** 23
+
+**Note:**
+
+*   You may assume that the given expression is always valid.
+*   **Do not** use the `eval` built-in library function.
+
+## Solution 1. Reverse Polish Notation (RPN)
+
+Converts the expression to RPN then evaluate the RPN.
+
+```cpp
 // https://leetcode.com/problems/basic-calculator
 // Author: github.com/lzl124631x
 // Time: O(N)
@@ -67,3 +98,53 @@ public:
         return calcRPN(toRPN(s));
     }
 };
+```
+
+## Solution 2.
+
+Similar idea as Solution 1, but compute the data on the fly.
+
+```cpp
+// https://leetcode.com/problems/basic-calculator
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+private:
+  stack<int> num;
+  stack<char> op;
+  void eval(bool popLeftParen) {
+    while (op.size() && op.top() != '(') {
+      int n = num.top();
+      num.pop();
+      switch (op.top()) {
+        case '+': num.top() += n; break;
+        case '-': num.top() -= n; break;
+      }
+      op.pop();
+    }
+    if (popLeftParen) op.pop();
+  }
+public:
+  int calculate(string s) {
+    for (int i = 0; i < s.size(); ++i) {
+      if (s[i] == ' ') continue;
+      if (isdigit(s[i])) {
+        int begin = i;
+        while (i + 1 < s.size() && isdigit(s[i + 1])) ++i;
+        num.push(stoi(s.substr(begin, i - begin + 1)));
+      } else {
+        switch(s[i]) {
+          case '+':
+          case '-': eval(false);
+          // fall through
+          case '(': op.push(s[i]); break;
+          case ')': eval(true); break;
+        }
+      }
+    }
+    eval(false);
+    return num.top();
+  }
+};
+```

@@ -211,7 +211,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 86 | Partition List | Medium |
 331 | Verify Preorder Serialization of a Binary Tree | Medium |
 486 | Predict the Winner | Medium |
-224 | Basic Calculator | Hard |
+224 | Basic Calculator | Hard | [Solution](leetcode/224.%20Basic%20Calculator)
 150 | Evaluate Reverse Polish Notation | Medium |
 227 | Basic Calculator II | Medium |
 327 | Count of Range Sum | Hard |

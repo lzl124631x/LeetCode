@@ -1,81 +1,42 @@
+// https://leetcode.com/problems/basic-calculator
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
 class Solution {
+private:
+  stack<int> num;
+  stack<char> op;
+  void eval(bool popLeftParen) {
+    while (op.size() && op.top() != '(') {
+      int n = num.top();
+      num.pop();
+      switch (op.top()) {
+        case '+': num.top() += n; break;
+        case '-': num.top() -= n; break;
+      }
+      op.pop();
+    }
+    if (popLeftParen) op.pop();
+  }
 public:
-    int calculate(string str) {
-        return evalSuffix(infixToSuffix(str));
+  int calculate(string s) {
+    for (int i = 0; i < s.size(); ++i) {
+      if (s[i] == ' ') continue;
+      if (isdigit(s[i])) {
+        int begin = i;
+        while (i + 1 < s.size() && isdigit(s[i + 1])) ++i;
+        num.push(stoi(s.substr(begin, i - begin + 1)));
+      } else {
+        switch(s[i]) {
+          case '+':
+          case '-': eval(false);
+          // fall through
+          case '(': op.push(s[i]); break;
+          case ')': eval(true); break;
+        }
+      }
     }
-public:
-    string infixToSuffix(string str) {
-        string out;
-        stack<char> s;
-        bool afterDigit = false;
-        for (int i = 0; i < str.length(); ++i) {
-            char c = str[i];
-            if (isspace(c)) continue;
-            if (isdigit(c)) {
-                out += c;
-                afterDigit = true;
-            } else {
-                if (afterDigit) {
-                    out += '#'; // number separater.
-                    afterDigit = false;
-                }
-                if (c == '+' || c == '-') {
-                    if (!s.empty() && s.top() != '(') {
-                        out += s.top();
-                        s.pop();
-                    }
-                    s.push(c);
-                } else if (c == '(') {
-                    s.push(c);
-                } else if (c == ')') {
-                    while (!s.empty() && s.top() != '(') {
-                        out += s.top();
-                        s.pop();
-                    }
-                    if (!s.empty()) {
-                        s.pop();
-                    }
-                }
-            }
-        }
-        if (afterDigit) {
-            out += '#';
-        }
-        while (!s.empty()) {
-            out += s.top();
-            s.pop();
-        }
-        return out;
-    }
-    
-    int evalSuffix(string str) {
-        stack<int> s;
-        for (int i = 0; i < str.length(); ++i) {
-            char c = str[i];
-            if (isdigit(c)) {
-                int start = i;
-                while (i < str.length() && isdigit(str[i])) ++i;
-                s.push(evalNum(str.substr(start, i - start)));
-            } else {
-                int b = s.top();
-                s.pop();
-                int a = s.top();
-                s.pop();
-                if (c == '+') {
-                    s.push(a + b);
-                } else {
-                    s.push(a - b);
-                }
-            }
-        }
-        return s.top();
-    }
-    
-    int evalNum(string str) {
-        int out = 0;
-        for (int i = 0; i < str.length(); ++i) {
-            out = out * 10 + (str[i] - '0');
-        }
-        return out;
-    }
+    eval(false);
+    return num.top();
+  }
 };
