@@ -375,6 +375,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 95 | Unique Binary Search Trees II | Medium | [Solution](leetcode/95.%20Unique%20Binary%20Search%20Trees%20II)
 241 | Different Ways to Add Parentheses | Medium | [Solution](leetcode/241.%20Different%20Ways%20to%20Add%20Parentheses)
 935 | Knight Dialer | Medium | [Solution](leetcode/935.%20Knight%20Dialer)
+875 | Koko Eating Bananas | Medium | [Solution](leetcode/875.%20Koko%20Eating%20Bananas)
 
 # License
 
