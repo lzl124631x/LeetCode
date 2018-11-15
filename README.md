@@ -384,6 +384,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 783 | Minimum Distance Between BST Nodes | Easy | [Solution](leetcode/783.%20Minimum%20Distance%20Between%20BST%20Nodes)
 705 | Design HashSet | Easy | [Solution](leetcode/705.%20Design%20HashSet)
 784 | Letter Case Permutation | Easy | [Solution](leetcode/784.%20Letter%20Case%20Permutation)
+682 | Baseball Game | Easy | [Solution](leetcode/682.%20Baseball%20Game)
 
 # License
 
