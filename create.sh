@@ -15,9 +15,7 @@ cd leetcode/
 folder=$qid". "$title
 mkdir "$folder"
 cd "$folder"
-echo "# [$folder (??)]($link)
-
-" > README.md
+cat "../../quiz.js" > README.md
 echo "// OJ: $link
 // Author: github.com/lzl124631x
 // Time: O()
