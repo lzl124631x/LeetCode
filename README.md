@@ -397,6 +397,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 883 | Projection Area of 3D Shapes | Easy | [Solution](leetcode/883.%20Projection%20Area%20of%203D%20Shapes)
 908 | Smallest Range I | Easy | [Solution](leetcode/908.%20Smallest%20Range%20I)
 589 | N-ary Tree Preorder Traversal | Easy | [Solution](leetcode/589.%20N-ary%20Tree%20Preorder%20Traversal)
+559 | Maximum Depth of N-ary Tree | Easy | [Solution](leetcode/559.%20Maximum%20Depth%20of%20N-ary%20Tree)
 
 # License
 
