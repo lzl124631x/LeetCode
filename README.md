@@ -387,6 +387,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 682 | Baseball Game | Easy | [Solution](leetcode/682.%20Baseball%20Game)
 771 | Jewels and Stones | Easy | [Solution](leetcode/771.%20Jewels%20and%20Stones)
 709 | To Lower Case | Easy | [Solution](leetcode/709.%20To%20Lower%20Case)
+804 | Unique Morse Code Words | Easy | [Solution](leetcode/804.%20Unique%20Morse%20Code%20Words)
 
 # License
 
