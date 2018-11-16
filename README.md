@@ -396,6 +396,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 933 | Number of Recent Calls | Easy | [Solution](leetcode/933.%20Number%20of%20Recent%20Calls)
 883 | Projection Area of 3D Shapes | Easy | [Solution](leetcode/883.%20Projection%20Area%20of%203D%20Shapes)
 908 | Smallest Range I | Easy | [Solution](leetcode/908.%20Smallest%20Range%20I)
+589 | N-ary Tree Preorder Traversal | Easy | [Solution](leetcode/589.%20N-ary%20Tree%20Preorder%20Traversal)
 
 # License
 
