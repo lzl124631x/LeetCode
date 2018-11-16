@@ -1,1 +1,0 @@
-copy(`# [${$('.css-1ponsav').textContent} (${$('[diff]').textContent})](${location.href})\n\n${$('.content__eAC7').children[0].innerHTML}`)

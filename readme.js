@@ -1,0 +1,1 @@
+copy(`${$('.css-1ponsav').textContent.replace('.', ' |')} | ${$('[diff]').textContent} | [Solution](leetcode/${encodeURIComponent($('.css-1ponsav').textContent)})`)
