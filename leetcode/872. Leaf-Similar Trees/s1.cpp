@@ -1,20 +1,21 @@
-// OJ: https://leetcode.com/problems/leaf-similar-trees/
+// OJ: https://leetcode.com/problems/toeplitz-matrix
 // Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(N)
+// Time: O(MN)
+// Space: O(1)
 class Solution {
-private:
-    void dfs(TreeNode *root, vector<int> &v) {
-        if (!root) return;
-        if (!root->left && !root->right) v.push_back(root->val);
-        dfs(root->left, v);
-        dfs(root->right, v);
-    }
 public:
-    bool leafSimilar(TreeNode* root1, TreeNode* root2) {
-        vector<int> a, b;
-        dfs(root1, a);
-        dfs(root2, b);
-        return a == b;
+    bool isToeplitzMatrix(vector<vector<int>>& matrix) {
+        int M = matrix.size(), N = matrix[0].size();
+        for (int i = 0; i < M; ++i) {
+            for (int x = i + 1, y = 1; x < M && y < N; ++x, ++y) {
+                if (matrix[x][y] != matrix[x - 1][y - 1]) return false;
+            }
+        }
+        for (int i = 1; i < N; ++i) {
+            for (int x = 1, y = i + 1; x < M && y < N; ++x, ++y) {
+                if (matrix[x][y] != matrix[x - 1][y - 1]) return false;
+            }
+        }
+        return true;
     }
 };
