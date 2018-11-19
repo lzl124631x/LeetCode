@@ -62,3 +62,45 @@ public:
     }
 };
 ```
+
+## Solution 2. Most Common Index Distance.
+
+If the image is sparse matrix, we can save computation in the following way.
+
+To make the problem simpler, think of two 1d arrays, we want to compute the `largestOverlap` of them. We can store the indexes of 1s into `va` and `vb`, and compute the most common distance between `va[i]` and `vb[j]`.
+
+For the 2d arrays, the distance becomes 2d as well. Instead of using pairs, we encode `x, y` into `100 * x + y`, and the distance becomes `100 * delta_x + delta_y`. The most common distance is the answer.
+
+```cpp
+// OJ: https://leetcode.com/problems/image-overlap/
+// Author: github.com/lzl124631x
+// Time: O(N^2+AB) where A and B are the counts of 1s in image `A` and `B`.
+// Space: O(N^2+AB)
+// Ref: https://leetcode.com/problems/image-overlap/discuss/130623/C%2B%2BJavaPython-Straight-Forward
+class Solution {
+private:
+    vector<int> flatten(vector<vector<int>>& A) {
+        int N = A.size();
+        vector<int> ans;
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (A[i][j] == 1) ans.push_back(i * 100 + j);
+            }
+        }
+        return ans;
+    }
+public:
+    int largestOverlap(vector<vector<int>>& A, vector<vector<int>>& B) {
+        auto va = flatten(A), vb = flatten(B);
+        unordered_map<int, int> m;
+        for (int i : va) {
+            for (int j : vb) {
+                m[i - j]++;
+            }
+        }
+        int ans = 0;
+        for (auto p : m) ans = max(ans, p.second);
+        return ans;
+    }
+};
+```
