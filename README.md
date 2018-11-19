@@ -403,6 +403,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 872 | Leaf-Similar Trees | Easy | [Solution](leetcode/872.%20Leaf-Similar%20Trees)
 677 | Map Sum Pairs | Medium | [Solution](leetcode/677.%20Map%20Sum%20Pairs)
 926 | Flip String to Monotone Increasing | Medium | [Solution](leetcode/926.%20Flip%20String%20to%20Monotone%20Increasing)
+739 | Daily Temperatures | Medium | [Solution](leetcode/739.%20Daily%20Temperatures)
 
 # License
 
