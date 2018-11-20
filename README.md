@@ -183,7 +183,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 136 | Single Number | Easy |
 137 | Single Number II | Medium |
 260 | Single Number III | Medium |
-78 | Subsets | Medium |
+78 | Subsets | Medium | [Solution](leetcode/78.%20Subsets)
 90 | Subsets II | Medium |
 147 | Insertion Sort List | Medium |
 88 | Merge Sorted Array | Easy |

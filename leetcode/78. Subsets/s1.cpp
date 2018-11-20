@@ -4,22 +4,21 @@
 // Space: O(N)
 class Solution {
 private:
-  vector<vector<int>> ans;
-  void dfs(vector<int> &nums, int start, int len, vector<int> &tmp) {
-    if (!len) {
-      ans.push_back(tmp);
-      return;
+    vector<vector<int>> ans;
+    void dfs(vector<int>& nums, int i, vector<int> &v) {
+        if (i == nums.size()) {
+            ans.push_back(v);
+            return;
+        }
+        v.push_back(nums[i]);
+        dfs(nums, i + 1, v);
+        v.pop_back();
+        dfs(nums, i + 1, v);
     }
-    for (int i = start; i <= nums.size() - len; ++i) {
-      tmp.push_back(nums[i]);
-      dfs(nums, i + 1, len - 1, tmp);
-      tmp.pop_back();
-    }
-  }
 public:
-  vector<vector<int>> subsets(vector<int>& nums) {
-    vector<int> tmp;
-    for (int len = 0; len <= nums.size(); ++len) dfs(nums, 0, len, tmp);
-    return ans;
-  }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> v;
+        dfs(nums, 0, v);
+        return ans;
+    }
 };

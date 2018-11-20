@@ -2,15 +2,15 @@
 // Author: github.com/lzl124631x
 // Time: O(N * 2^N)
 // Space: O(1)
-// Ref: https://discuss.leetcode.com/topic/2764/my-solution-using-bit-manipulation
 class Solution {
 public:
   vector<vector<int>> subsets(vector<int>& nums) {
-    int N = 1 << nums.size();
-    vector<vector<int>> ans(N, vector<int>());
+    vector<vector<int>> ans(1);
     for (int i = 0; i < nums.size(); ++i) {
-      for (int j = 0; j < N; ++j) {
-        if ((j >> i) & 1) ans[j].push_back(nums[i]);
+      int len = ans.size();
+      for (int j = 0; j < len; ++j) {
+        ans.push_back(ans[j]);
+        ans.back().push_back(nums[i]);
       }
     }
     return ans;
