@@ -1,23 +1,26 @@
+// OJ: https://leetcode.com/problems/subsets-ii/
+// Author: github.com/lzl124631x
+// Time: O(N * 2^N)
+// Space: O(N)
 class Solution {
 private:
     vector<vector<int>> ans;
-    void dfs(vector<int> &nums, int start, vector<int> &sub, int leftLen) {
-        if (leftLen == 0) {
-            ans.push_back(sub);
+    void dfs(vector<int>& nums, int i, vector<int> &v) {
+        if (i == nums.size()) {
+            ans.push_back(v);
             return;
         }
-        for (int i = start; i <= nums.size() - leftLen; ++i) {
-            if (i != start && nums[i] == nums[i - 1]) continue;
-            sub.push_back(nums[i]);
-            dfs(nums, i + 1, sub, leftLen - 1);
-            sub.pop_back();
-        }
+        v.push_back(nums[i]);
+        dfs(nums, i + 1, v);
+        v.pop_back();
+        while (i + 1 < nums.size() && nums[i] == nums[i + 1]) ++i;
+        dfs(nums, i + 1, v);
     }
 public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
         vector<int> v;
-        for (int i = 0; i <= nums.size(); ++i) dfs(nums, 0, v, i);
+        sort(nums.begin(), nums.end());
+        dfs(nums, 0, v);
         return ans;
     }
 };
