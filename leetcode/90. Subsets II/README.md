@@ -24,7 +24,7 @@
 ```cpp
 // OJ: https://leetcode.com/problems/subsets-ii/
 // Author: github.com/lzl124631x
-// Time: O(N * 2^N)
+// Time: O(N^2 * 2^N)
 // Space: O(N)
 class Solution {
 private:
@@ -55,7 +55,7 @@ public:
 ```cpp
 // OJ: https://leetcode.com/problems/subsets-ii/
 // Author: github.com/lzl124631x
-// Time: O(N * 2^N)
+// Time: O(N^2 * 2^N)
 // Space: O(N)
 class Solution {
 private:
