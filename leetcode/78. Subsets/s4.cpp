@@ -1,6 +1,6 @@
 // OJ: https://leetcode.com/problems/subsets
 // Author: github.com/lzl124631x
-// Time: O(N * 2^N)
+// Time: O(N^2 * 2^N)
 // Space: O(1)
 class Solution {
 public:
