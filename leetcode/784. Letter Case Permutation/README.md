@@ -33,7 +33,7 @@ private:
             return;
         }
         dfs(S, i + 1);
-        S[i] += (S[i] >= 'a' && S[i] <= 'z') ? ('A' - 'a') : ('a' - 'A');
+        S[i] += ('A' - 'a') * ((S[i] >= 'a' && S[i] <= 'z') ? 1 : -1);
         dfs(S, i + 1);
     }
 public:
