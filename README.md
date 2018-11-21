@@ -407,6 +407,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 921 | Minimum Add to Make Parentheses Valid | Medium | [Solution](leetcode/921.%20Minimum%20Add%20to%20Make%20Parentheses%20Valid)
 836 | Rectangle Overlap | Easy | [Solution](leetcode/836.%20Rectangle%20Overlap)
 703 | Kth Largest Element in a Stream | Easy | [Solution](leetcode/703.%20Kth%20Largest%20Element%20in%20a%20Stream)
+911 | Online Election | Medium | [Solution](leetcode/911.%20Online%20Election)
 
 # License
 
