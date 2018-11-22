@@ -413,6 +413,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 747 | Largest Number At Least Twice of Others | Easy | [Solution](leetcode/747.%20Largest%20Number%20At%20Least%20Twice%20of%20Others)
 429 | N-ary Tree Level Order Traversal | Easy | [Solution](leetcode/429.%20N-ary%20Tree%20Level%20Order%20Traversal)
 537 | Complex Number Multiplication | Medium | [Solution](leetcode/537.%20Complex%20Number%20Multiplication)
+870 | Advantage Shuffle | Medium | [Solution](leetcode/870.%20Advantage%20Shuffle)
 
 # License
 
