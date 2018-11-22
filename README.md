@@ -409,6 +409,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 703 | Kth Largest Element in a Stream | Easy | [Solution](leetcode/703.%20Kth%20Largest%20Element%20in%20a%20Stream)
 911 | Online Election | Medium | [Solution](leetcode/911.%20Online%20Election)
 701 | Insert into a Binary Search Tree | Medium | [Solution](leetcode/701.%20Insert%20into%20a%20Binary%20Search%20Tree)
+670 | Maximum Swap | Medium | [Solution](leetcode/670.%20Maximum%20Swap)
 
 # License
 
