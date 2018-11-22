@@ -415,6 +415,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 537 | Complex Number Multiplication | Medium | [Solution](leetcode/537.%20Complex%20Number%20Multiplication)
 870 | Advantage Shuffle | Medium | [Solution](leetcode/870.%20Advantage%20Shuffle)
 636 | Exclusive Time of Functions | Medium | [Solution](leetcode/636.%20Exclusive%20Time%20of%20Functions)
+684 | Redundant Connection | Medium | [Solution](leetcode/684.%20Redundant%20Connection)
 
 # License
 
