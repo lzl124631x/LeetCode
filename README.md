@@ -417,6 +417,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 636 | Exclusive Time of Functions | Medium | [Solution](leetcode/636.%20Exclusive%20Time%20of%20Functions)
 684 | Redundant Connection | Medium | [Solution](leetcode/684.%20Redundant%20Connection)
 599 | Minimum Index Sum of Two Lists | Easy | [Solution](leetcode/599.%20Minimum%20Index%20Sum%20of%20Two%20Lists)
+566 | Reshape the Matrix | Easy | [Solution](leetcode/566.%20Reshape%20the%20Matrix)
 
 # License
 
