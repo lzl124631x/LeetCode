@@ -419,6 +419,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 599 | Minimum Index Sum of Two Lists | Easy | [Solution](leetcode/599.%20Minimum%20Index%20Sum%20of%20Two%20Lists)
 566 | Reshape the Matrix | Easy | [Solution](leetcode/566.%20Reshape%20the%20Matrix)
 744 | Find Smallest Letter Greater Than Target | Easy | [Solution](leetcode/744.%20Find%20Smallest%20Letter%20Greater%20Than%20Target)
+942 | DI String Match | Easy | [Solution](leetcode/942.%20DI%20String%20Match)
 
 # License
 
