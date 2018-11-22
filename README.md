@@ -180,7 +180,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 24 | Swap Nodes in Pairs | Easy |
 62 | Unique Paths | Medium |
 63 | Unique Paths II | Medium |
-136 | Single Number | Easy |
+136 | Single Number | Easy | [Solution](leetcode/136.%20Single%20Number)
 137 | Single Number II | Medium | [Solution](leetcode/137.%20Single%20Number%20II)
 260 | Single Number III | Medium |
 78 | Subsets | Medium | [Solution](leetcode/78.%20Subsets)
