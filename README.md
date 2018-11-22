@@ -182,7 +182,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 63 | Unique Paths II | Medium |
 136 | Single Number | Easy | [Solution](leetcode/136.%20Single%20Number)
 137 | Single Number II | Medium | [Solution](leetcode/137.%20Single%20Number%20II)
-260 | Single Number III | Medium |
+260 | Single Number III | Medium | [Solution](leetcode/260.%20Single%20Number%20III)
 78 | Subsets | Medium | [Solution](leetcode/78.%20Subsets)
 90 | Subsets II | Medium | [Solution](leetcode/90.%20Subsets%20II)
 147 | Insertion Sort List | Medium |
