@@ -5,8 +5,8 @@
 class Solution {
 public:
     int surfaceArea(vector<vector<int>>& grid) {
-        int M = grid.size(), N = grid[0].size(), area = 0;
-        for (int i = 0; i < M; ++i) {
+        int N = grid.size(), area = 0;
+        for (int i = 0; i < N; ++i) {
             int prev = 0;
             for (int j = 0; j < N; ++j) {
                 if (grid[i][j]) area += 2;
@@ -17,7 +17,7 @@ public:
         }
         for (int i = 0; i < N; ++i) {
             int prev = 0;
-            for (int j = 0; j < M; ++j) {
+            for (int j = 0; j < N; ++j) {
                 area += abs(grid[j][i] - prev);
                 prev = grid[j][i];
             }
