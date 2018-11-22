@@ -420,6 +420,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 566 | Reshape the Matrix | Easy | [Solution](leetcode/566.%20Reshape%20the%20Matrix)
 744 | Find Smallest Letter Greater Than Target | Easy | [Solution](leetcode/744.%20Find%20Smallest%20Letter%20Greater%20Than%20Target)
 942 | DI String Match | Easy | [Solution](leetcode/942.%20DI%20String%20Match)
+892 | Surface Area of 3D Shapes | Easy | [Solution](leetcode/892.%20Surface%20Area%20of%203D%20Shapes)
 
 # License
 
