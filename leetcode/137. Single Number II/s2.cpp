@@ -7,12 +7,12 @@ public:
     int singleNumber(vector<int>& nums) {
         int ans = 0;
         for (int i = 0; i < 32; ++i) {
-            int bit = 0;
+            unsigned long bit = 0, mask = 1 << i;
             for (int n : nums) {
-                bit += (n >> i) & 1;
-                if (bit >= 3) bit = 0;
+                bit += (unsigned)n & mask;
+                if (bit && (bit % 3 == 0)) bit = 0;
             }
-            ans |= bit << i;
+            ans |= bit;
         }
         return ans;
     }
