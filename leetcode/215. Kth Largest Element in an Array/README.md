@@ -1,19 +1,33 @@
 # [215. Kth Largest Element in an Array (Medium)](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
-Find the **k**th largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+<p>Find the <strong>k</strong>th largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
 
-**Example 1:**
+<p><strong>Example 1:</strong></p>
 
-**Input:** `[3,2,1,5,6,4]` and k = 2  
-**Output:** 5
+<pre><strong>Input:</strong> <code>[3,2,1,5,6,4] </code>and k = 2
+<strong>Output:</strong> 5
+</pre>
 
-**Example 2:**
+<p><strong>Example 2:</strong></p>
 
-**Input:** `[3,2,3,1,2,4,5,5,6]` and k = 4  
-**Output:** 4
+<pre><strong>Input:</strong> <code>[3,2,3,1,2,4,5,5,6] </code>and k = 4
+<strong>Output:</strong> 4</pre>
 
-**Note:**  
-You may assume k is always valid, 1 ≤ k ≤ array's length.
+<p><strong>Note: </strong><br>
+You may assume k is always valid, 1 ≤ k ≤ array's length.</p>
+
+
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Google](https://leetcode.com/company/google), [Apple](https://leetcode.com/company/apple)
+
+**Related Topics**:  
+[Divide and Conquer](https://leetcode.com/tag/divide-and-conquer/), [Heap](https://leetcode.com/tag/heap/)
+
+**Similar Questions**:
+* [Wiggle Sort II (Medium)](https://leetcode.com/problems/wiggle-sort-ii/)
+* [Top K Frequent Elements (Medium)](https://leetcode.com/problems/top-k-frequent-elements/)
+* [Third Maximum Number (Easy)](https://leetcode.com/problems/third-maximum-number/)
+* [Kth Largest Element in a Stream (Easy)](https://leetcode.com/problems/kth-largest-element-in-a-stream/)
 
 ## Solution 1. Heap Sort
 
