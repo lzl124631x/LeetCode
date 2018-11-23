@@ -16,7 +16,11 @@
 
 ## Solution 1.
 
-Assume `x` is the result of XORing all the numbers. The lowest bit 1 in `x` is a bit where the two result number differs. We can use this bit to group the numbers in two groups, and the numbers of result will fall into different groups.
+Assume result numbers are `a` and `b`, and `x` is the result of XORing all the numbers.
+
+For any bit `1` in `x`, it means `a` and `b` differs in this bit, and we can use this bit to group the numbers in two groups, one containing `a` and the other containing `b`.
+
+`x ^ (x & (x - 1))` is a trick that we can use to extract the lowest bit `1`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/goat-latin/
