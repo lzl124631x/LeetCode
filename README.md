@@ -426,6 +426,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 244 | Shortest Word Distance II | Medium | [Solution](leetcode/244.%20Shortest%20Word%20Distance%20II)
 9 | Palindrome Number | Easy | [Solution](leetcode/9.%20Palindrome%20Number)
 840 | Magic Squares In Grid | Easy | [Solution](leetcode/840.%20Magic%20Squares%20In%20Grid)
+590 | N-ary Tree Postorder Traversal | Easy | [Solution](leetcode/590.%20N-ary%20Tree%20Postorder%20Traversal)
 
 # License
 
