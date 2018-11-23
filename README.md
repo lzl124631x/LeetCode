@@ -424,6 +424,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 659 | Split Array into Consecutive Subsequences | Medium | [Solution](leetcode/659.%20Split%20Array%20into%20Consecutive%20Subsequences)
 366 | Find Leaves of Binary Tree | Medium | [Solution](leetcode/366.%20Find%20Leaves%20of%20Binary%20Tree)
 244 | Shortest Word Distance II | Medium | [Solution](leetcode/244.%20Shortest%20Word%20Distance%20II)
+9 | Palindrome Number | Easy | [Solution](leetcode/9.%20Palindrome%20Number)
 
 # License
 
