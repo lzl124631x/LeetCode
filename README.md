@@ -10,7 +10,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 ---|---|---|---
 412 | Fizz Buzz | Easy | [Solution](leetcode/412.%20Fizz%20Buzz)
 463 | Island Perimeter | Easy | [Solution](leetcode/463.%20Island%20Perimeter)
-344 | Reverse String | Easy |
+344 | Reverse String | Easy | [Solution](leetcode/344.%20Reverse%20String)
 371 | Sum of Two Integers | Easy |
 415 | Add Strings | Easy |
 441 | Arranging Coins | Easy |
