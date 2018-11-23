@@ -1,31 +1,37 @@
-# [244. Shortest Word Distance II (Medium)](https://leetcode.com/problems/shortest-word-distance-ii/)
+# [400. Nth Digit (Easy)](https://leetcode.com/problems/nth-digit/)
 
-<p>Design a class which receives a list of words in the constructor, and implements a method that takes two words <em>word1</em> and <em>word2</em> and return the shortest distance between these two words in the list. Your method will be called <em>repeatedly</em> many times with different parameters.&nbsp;</p>
+<p>Find the <i>n</i><sup>th</sup> digit of the infinite integer sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... </p>
 
-<p><strong>Example:</strong><br>
-Assume that words = <code>["practice", "makes", "perfect", "coding", "makes"]</code>.</p>
+<p><b>Note:</b><br>
+<i>n</i> is positive and will fit within the range of a 32-bit signed integer (<i>n</i> &lt; 2<sup>31</sup>).
+</p>
 
-<pre><b>Input:</b> <em>word1</em> = <code>“coding”</code>, <em>word2</em> = <code>“practice”</code>
-<b>Output:</b> 3
+<p><b>Example 1:</b>
+</p><pre><b>Input:</b>
+3
+
+<b>Output:</b>
+3
 </pre>
+<p></p>
 
-<pre><b>Input:</b> <em>word1</em> = <code>"makes"</code>, <em>word2</em> = <code>"coding"</code>
-<b>Output:</b> 1</pre>
+<p><b>Example 2:</b>
+</p><pre><b>Input:</b>
+11
 
-<p><strong>Note:</strong><br>
-You may assume that <em>word1</em> <strong>does not equal to</strong> <em>word2</em>, and <em>word1</em> and <em>word2</em> are both in the list.</p>
+<b>Output:</b>
+0
 
+<b>Explanation:</b>
+The 11th digit of the sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... is a 0, which is part of the number 10.
+</pre>
+<p></p>
 
 **Companies**:  
-LinkedIn
+[Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[Hash Table](https://leetcode.com/tag/hash-table/), [Design](https://leetcode.com/tag/design/)
-
-**Similar Questions**:
-* [Merge Two Sorted Lists (Easy)](https://leetcode.com/problems/merge-two-sorted-lists/)
-* [Shortest Word Distance (Easy)](https://leetcode.com/problems/shortest-word-distance/)
-* [Shortest Word Distance III (Medium)](https://leetcode.com/problems/shortest-word-distance-iii/)
+[Math](https://leetcode.com/tag/math/)
 
 ## Solution 1.
 
