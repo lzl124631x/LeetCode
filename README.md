@@ -422,6 +422,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 942 | DI String Match | Easy | [Solution](leetcode/942.%20DI%20String%20Match)
 892 | Surface Area of 3D Shapes | Easy | [Solution](leetcode/892.%20Surface%20Area%20of%203D%20Shapes)
 659 | Split Array into Consecutive Subsequences | Medium | [Solution](leetcode/659.%20Split%20Array%20into%20Consecutive%20Subsequences)
+366 | Find Leaves of Binary Tree | Medium | [Solution](leetcode/366.%20Find%20Leaves%20of%20Binary%20Tree)
 
 # License
 
