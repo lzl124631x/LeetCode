@@ -28,7 +28,7 @@ The 11th digit of the sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... is a 0, wh
 <p></p>
 
 **Companies**:  
-Google
+[Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
 [Math](https://leetcode.com/tag/math/)
