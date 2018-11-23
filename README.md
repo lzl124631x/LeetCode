@@ -26,7 +26,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 350 | Intersection of Two Arrays II | Easy |
 409 | Longest Palindrome | Easy |
 453 | Minimum Moves to Equal Array Elements | Easy |
-400 | Nth Digit | Easy |
+400 | Nth Digit | Easy | [Solution](leetcode/400.%20Nth%20Digit)
 447 | Number of Boomerangs | Easy |
 342 | Power of Four | Easy |
 383 | Ransom Note | Easy |

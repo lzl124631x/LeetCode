@@ -1,3 +1,7 @@
+// OJ: https://leetcode.com/problems/nth-digit/
+// Author: github.com/lzl124631x
+// Time: O(lgN)
+// Space: O(1)
 class Solution {
 public:
     int findNthDigit(int n) {
