@@ -421,6 +421,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 744 | Find Smallest Letter Greater Than Target | Easy | [Solution](leetcode/744.%20Find%20Smallest%20Letter%20Greater%20Than%20Target)
 942 | DI String Match | Easy | [Solution](leetcode/942.%20DI%20String%20Match)
 892 | Surface Area of 3D Shapes | Easy | [Solution](leetcode/892.%20Surface%20Area%20of%203D%20Shapes)
+659 | Split Array into Consecutive Subsequences | Medium | [Solution](leetcode/659.%20Split%20Array%20into%20Consecutive%20Subsequences)
 
 # License
 
