@@ -1,35 +1,37 @@
-# [412. Fizz Buzz (Easy)](https://leetcode.com/problems/fizz-buzz/)
+# [400. Nth Digit (Easy)](https://leetcode.com/problems/nth-digit/)
 
-<p>Write a program that outputs the string representation of numbers from 1 to <i>n</i>.</p>
+<p>Find the <i>n</i><sup>th</sup> digit of the infinite integer sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... </p>
 
-<p>But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.</p>
+<p><b>Note:</b><br>
+<i>n</i> is positive and will fit within the range of a 32-bit signed integer (<i>n</i> &lt; 2<sup>31</sup>).
+</p>
 
-<p><b>Example:</b>
-</p><pre>n = 15,
+<p><b>Example 1:</b>
+</p><pre><b>Input:</b>
+3
 
-Return:
-[
-    "1",
-    "2",
-    "Fizz",
-    "4",
-    "Buzz",
-    "Fizz",
-    "7",
-    "8",
-    "Fizz",
-    "Buzz",
-    "11",
-    "Fizz",
-    "13",
-    "14",
-    "FizzBuzz"
-]
+<b>Output:</b>
+3
+</pre>
+<p></p>
+
+<p><b>Example 2:</b>
+</p><pre><b>Input:</b>
+11
+
+<b>Output:</b>
+0
+
+<b>Explanation:</b>
+The 11th digit of the sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... is a 0, which is part of the number 10.
 </pre>
 <p></p>
 
 **Companies**:  
-Apple, Google, Microsoft
+[Google](https://leetcode.com/company/google)
+
+**Related Topics**:  
+[Math](https://leetcode.com/tag/math/)
 
 ## Solution 1.
 
