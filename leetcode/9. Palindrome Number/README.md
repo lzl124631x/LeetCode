@@ -28,7 +28,7 @@
 
 
 **Companies**:  
-JPMorgan, Amazon, Bloomberg, Adobe, Microsoft, Facebook, Yahoo, Tencent
+[JPMorgan](https://leetcode.com/company/jpmorgan), [Amazon](https://leetcode.com/company/amazon), [Bloomberg](https://leetcode.com/company/bloomberg), [Adobe](https://leetcode.com/company/adobe), [Microsoft](https://leetcode.com/company/microsoft), [Facebook](https://leetcode.com/company/facebook), [Yahoo](https://leetcode.com/company/yahoo), [Tencent](https://leetcode.com/company/tencent)
 
 **Related Topics**:  
 [Math](https://leetcode.com/tag/math/)
