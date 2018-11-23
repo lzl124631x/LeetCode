@@ -9,7 +9,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 \# | Title | Difficulty | Solution
 ---|---|---|---
 412 | Fizz Buzz | Easy | [Solution](leetcode/412.%20Fizz%20Buzz)
- |463 | Island Perimeter | Easy |
+463 | Island Perimeter | Easy | [Solution](leetcode/463.%20Island%20Perimeter)
 344 | Reverse String | Easy |
 371 | Sum of Two Integers | Easy |
 415 | Add Strings | Easy |
