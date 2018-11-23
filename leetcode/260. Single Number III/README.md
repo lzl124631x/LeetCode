@@ -14,6 +14,16 @@
 	<li>Your algorithm should run in linear runtime complexity. Could you implement it using only constant space complexity?</li>
 </ol>
 
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Yahoo](https://leetcode.com/company/yahoo)
+
+**Related Topics**:  
+[Bit Manipulation](https://leetcode.com/tag/bit-manipulation/)
+
+**Similar Questions**:
+* [Single Number (Easy)](https://leetcode.com/problems/single-number/)
+* [Single Number II (Medium)](https://leetcode.com/problems/single-number-ii/)
+
 ## Solution 1.
 
 Assume result numbers are `a` and `b`, and `x` is the result of XORing all the numbers.
@@ -23,7 +33,7 @@ For any bit `1` in `x`, it means `a` and `b` differs in this bit, and we can use
 `x ^ (x & (x - 1))` is a trick that we can use to extract the lowest bit `1`.
 
 ```cpp
-// OJ: https://leetcode.com/problems/goat-latin/
+// OJ: https://leetcode.com/problems/single-number-iii/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
