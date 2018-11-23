@@ -25,7 +25,7 @@
 
 
 **Companies**:  
-Facebook, Bloomberg, Google
+[Facebook](https://leetcode.com/company/facebook), [Bloomberg](https://leetcode.com/company/bloomberg), [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
 [Hash Table](https://leetcode.com/tag/hash-table/)
