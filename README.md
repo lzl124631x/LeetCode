@@ -12,7 +12,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 463 | Island Perimeter | Easy | [Solution](leetcode/463.%20Island%20Perimeter)
 344 | Reverse String | Easy | [Solution](leetcode/344.%20Reverse%20String)
 371 | Sum of Two Integers | Easy | [Solution](leetcode/371.%20Sum%20of%20Two%20Integers)
-415 | Add Strings | Easy |
+415 | Add Strings | Easy | [Solution](leetcode/415.%20Add%20Strings)
 441 | Arranging Coins | Easy |
 455 | Assign Cookies | Easy |
 401 | Binary Watch | Easy |
