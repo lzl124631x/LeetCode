@@ -428,6 +428,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 840 | Magic Squares In Grid | Easy | [Solution](leetcode/840.%20Magic%20Squares%20In%20Grid)
 590 | N-ary Tree Postorder Traversal | Easy | [Solution](leetcode/590.%20N-ary%20Tree%20Postorder%20Traversal)
 629 | K Inverse Pairs Array | Hard | [Solution](leetcode/629.%20K%20Inverse%20Pairs%20Array)
+666 | Path Sum IV | Medium | [Solution](leetcode/666.%20Path%20Sum%20IV)
 
 # License
 
