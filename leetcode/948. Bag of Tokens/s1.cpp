@@ -12,7 +12,7 @@ public:
                 P -= tokens[i++];
                 S++;
             }
-            if (i < j && S && P + tokens[j] >= tokens[i]) {
+            if (i < j && S) {
                 S--;
                 P += tokens[j--];
             } else break;
