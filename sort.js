@@ -1,0 +1,1 @@
+copy(list.split('\n').map(x => {return {d: +x.split(' ')[0], x }}).sort((a, b) => a.d - b.d).map(x => x.x).join('\n'))
