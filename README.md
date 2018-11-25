@@ -372,6 +372,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 617 | Merge Two Binary Trees | Easy | [Solution](leetcode/617.%20Merge%20Two%20Binary%20Trees)
 629 | K Inverse Pairs Array | Hard | [Solution](leetcode/629.%20K%20Inverse%20Pairs%20Array)
 636 | Exclusive Time of Functions | Medium | [Solution](leetcode/636.%20Exclusive%20Time%20of%20Functions)
+637 | Average of Levels in Binary Tree | Easy | [Solution](leetcode/637.%20Average%20of%20Levels%20in%20Binary%20Tree)
 657 | Robot Return to Origin | Easy | [Solution](leetcode/657.%20Robot%20Return%20to%20Origin)
 659 | Split Array into Consecutive Subsequences | Medium | [Solution](leetcode/659.%20Split%20Array%20into%20Consecutive%20Subsequences)
 666 | Path Sum IV | Medium | [Solution](leetcode/666.%20Path%20Sum%20IV)
