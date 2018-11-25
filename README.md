@@ -50,6 +50,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 49 | Group Anagrams | Medium |
 53 | Maximum Subarray | Medium |
 54 | Spiral Matrix | Medium |
+55 | Jump Game | Medium | [Solution](leetcode/55.%20Jump%20Game)
 58 | Length of Last Word | Easy |
 59 | Spiral Matrix II | Medium |
 61 | Rotate List | Medium |
