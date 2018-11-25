@@ -431,6 +431,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 666 | Path Sum IV | Medium | [Solution](leetcode/666.%20Path%20Sum%20IV)
 688 | Knight Probability in Chessboard | Medium | [Solution](leetcode/688.%20Knight%20Probability%20in%20Chessboard)
 339 | Nested List Weight Sum | Easy | [Solution](leetcode/339.%20Nested%20List%20Weight%20Sum)
+946 | Validate Stack Sequences | Medium | [Solution](leetcode/946.%20Validate%20Stack%20Sequences)
 
 # License
 
