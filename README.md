@@ -430,6 +430,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 629 | K Inverse Pairs Array | Hard | [Solution](leetcode/629.%20K%20Inverse%20Pairs%20Array)
 666 | Path Sum IV | Medium | [Solution](leetcode/666.%20Path%20Sum%20IV)
 688 | Knight Probability in Chessboard | Medium | [Solution](leetcode/688.%20Knight%20Probability%20in%20Chessboard)
+339 | Nested List Weight Sum | Easy | [Solution](leetcode/339.%20Nested%20List%20Weight%20Sum)
 
 # License
 
