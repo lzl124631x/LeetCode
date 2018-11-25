@@ -92,7 +92,8 @@ V
 class Solution {
 public:
     int kInversePairs(int n, int k) {
-        long long mod = 1e9 + 7;
+        if (k > n * (n - 1) / 2) return 0;
+        int mod = 1e9 + 7;
         vector<int> prev(1, 1);
         for (int i = 1; i <= n; ++i) {
             vector<int> cnt(min(k + 1, (int)prev.size() + i - 1));
@@ -104,7 +105,86 @@ public:
             }
             prev = cnt;
         }
-        return k >= prev.size() ? 0 : prev[k];
+        return prev[k];
+    }
+};
+```
+
+## Solution 2. DP
+
+Denote `F(N, K)` as the result.
+
+Observations:
+* Valid range of `K` is `[0, N * (N - 1) / 2]`. `F(N, K) = 0` if `K` &notin; `[0, N * (N - 1) / 2]`.
+* `F(N, 0) = F(N, N * (N - 1) / 2) = 1`.
+
+For `F(N, K)`, let's pick 1, 2, ..., N as the first number:
+* When 1 is picked, we need to compute `F(N - 1, K)`.
+* When 2 is picked, we need to compute `F(N - 1, K - 1)`.
+* ...
+* When N is picked, we need to compute `F(N - 1, K - (N - 1))`.
+
+Eventually `F(N, K) = Sum(F(N - 1, K) + F(N - 1, K - 1) + ... + F(N - 1, K - (N - 1))`.
+
+We can use this formula to compute `F(n, K)` for `N = 1, 2, 3, ..., N`.
+
+```cpp
+// OJ: https://leetcode.com/problems/k-inverse-pairs-array/
+// Author: github.com/lzl124631x
+// Time: O(NK * min(N, K))
+// Space: O(K)
+class Solution {
+public:
+    int kInversePairs(int N, int K) {
+        if (K > N * (N - 1) / 2) return 0;
+        vector<int> m(K + 1, 0);
+        m[0] = 1;
+        int mod = 1e9 + 7;
+        for (int n = 2; n <= N; ++n) {
+            for (int k = min(K, (n * (n - 1) / 2)); k > 0; --k) {
+                for (int i = max(0, k - n + 1); i < k && m[i]; ++i) {
+                    m[k] = (m[k] + m[i]) % mod;
+                }
+            }
+        }
+        return m[K];
+    }
+};
+```
+
+## Solution 3. DP + Cumulative Sum
+
+In Solution 2, we alway compute the sum of a segment of the previous row. Considering this, we can use Cumulative Sum to make it faster.
+
+Denote `G(N, K)` as `Sum{k=[0,K]}(F(N, k))`.
+
+```
+G(N, K) = G(N, K - 1) + F(N, K)
+        = G(N, K - 1) + [F(N - 1, K - min(K, N - 1)) + ... + F(N - 1, K)]
+        = G(N, K - 1) + [G(N - 1, K) - G(N - 1, K - min(K, N - 1) - 1)]
+```
+
+After all the `G(N, K)` are computed, we can get `F(N, K) = G(N, K) - G(N, K - 1)`.
+
+```cpp
+// OJ: https://leetcode.com/problems/k-inverse-pairs-array/
+// Author: github.com/lzl124631x
+// Time: O(NK)
+// Space: O(K)
+class Solution {
+public:
+    int kInversePairs(int N, int K) {
+        if (K > N * (N - 1) / 2) return 0;
+        vector<vector<int>> dp(2, vector<int>(K + 1, 0));
+        dp[0][0] = dp[1][0] = 1;
+        int mod = 1e9 + 7;
+        for (int n = 2; n <= N; ++n) {
+            int bound = min(K, n * (n - 1) / 2);
+            for (int k = 1; k <= bound; ++k) {
+                dp[n % 2][k] = (dp[n % 2][k - 1] + (mod + dp[(n - 1) % 2][k] - dp[(n - 1) % 2][k - min(k, n - 1) - 1]) % mod) % mod;
+            }
+        }
+        return dp[N % 2][K];
     }
 };
 ```

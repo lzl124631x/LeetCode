@@ -5,7 +5,8 @@
 class Solution {
 public:
     int kInversePairs(int n, int k) {
-        long long mod = 1e9 + 7;
+        if (k > n * (n - 1) / 2) return 0;
+        int mod = 1e9 + 7;
         vector<int> prev(1, 1);
         for (int i = 1; i <= n; ++i) {
             vector<int> cnt(min(k + 1, (int)prev.size() + i - 1));
@@ -17,6 +18,6 @@ public:
             }
             prev = cnt;
         }
-        return k >= prev.size() ? 0 : prev[k];
+        return prev[k];
     }
 };
