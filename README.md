@@ -327,6 +327,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 516 | Longest Palindromic Subsequence | Medium |
 517 | Super Washing Machines | Hard |
 520 | Detect Capital | Easy |
+521 | Longest Uncommon Subsequence I  | Easy | [Solution](leetcode/521.%20Longest%20Uncommon%20Subsequence%20I%20)
 523 | Continuous Subarray Sum | Medium |
 524 | Longest Word in Dictionary through Deleting | Medium |
 525 | Contiguous Array | Medium | [Solution](leetcode/525.%20Contiguous%20Array)
