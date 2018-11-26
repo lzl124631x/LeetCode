@@ -401,6 +401,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 771 | Jewels and Stones | Easy | [Solution](leetcode/771.%20Jewels%20and%20Stones)
 783 | Minimum Distance Between BST Nodes | Easy | [Solution](leetcode/783.%20Minimum%20Distance%20Between%20BST%20Nodes)
 784 | Letter Case Permutation | Easy | [Solution](leetcode/784.%20Letter%20Case%20Permutation)
+788 | Rotated Digits | Easy | [Solution](leetcode/788.%20Rotated%20Digits)
 794 | Valid Tic-Tac-Toe State | Medium | [Solution](leetcode/794.%20Valid%20Tic-Tac-Toe%20State)
 804 | Unique Morse Code Words | Easy | [Solution](leetcode/804.%20Unique%20Morse%20Code%20Words)
 806 | Number of Lines To Write String | Easy | [Solution](leetcode/806.%20Number%20of%20Lines%20To%20Write%20String)
