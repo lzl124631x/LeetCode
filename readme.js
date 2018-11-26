@@ -1,1 +1,2 @@
-copy(`${$('.css-1ponsav').textContent.replace('.', ' |')} | ${$('[diff]').textContent} | [Solution](leetcode/${encodeURIComponent($('.css-1ponsav').textContent)})`)
+let title = $('.css-1ponsav').textContent.trim();
+copy(`${title.replace('.', ' |')} | ${$('[diff]').textContent} | [Solution](leetcode/${encodeURIComponent(title.trim())})`)
