@@ -393,6 +393,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 744 | Find Smallest Letter Greater Than Target | Easy | [Solution](leetcode/744.%20Find%20Smallest%20Letter%20Greater%20Than%20Target)
 745 | Prefix and Suffix Search | Hard | [Solution](leetcode/Prefix%20and%20Suffix%20Search)
 747 | Largest Number At Least Twice of Others | Easy | [Solution](leetcode/747.%20Largest%20Number%20At%20Least%20Twice%20of%20Others)
+766 | Toeplitz Matrix | Easy | [Solution](leetcode/766.%20Toeplitz%20Matrix)
 771 | Jewels and Stones | Easy | [Solution](leetcode/771.%20Jewels%20and%20Stones)
 783 | Minimum Distance Between BST Nodes | Easy | [Solution](leetcode/783.%20Minimum%20Distance%20Between%20BST%20Nodes)
 784 | Letter Case Permutation | Easy | [Solution](leetcode/784.%20Letter%20Case%20Permutation)

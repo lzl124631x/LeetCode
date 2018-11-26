@@ -1,141 +1,80 @@
-# [883. Projection Area of 3D Shapes (Easy)](https://leetcode.com/problems/projection-area-of-3d-shapes/)
+# [766. Toeplitz Matrix (Easy)](https://leetcode.com/problems/toeplitz-matrix/submissions/)
 
-<p>On a&nbsp;<code>N&nbsp;*&nbsp;N</code> grid, we place some&nbsp;<code>1 * 1 * 1&nbsp;</code>cubes that are axis-aligned with the x, y, and z axes.</p>
+<p>A matrix is <em>Toeplitz</em> if every diagonal from top-left to bottom-right has the same element.</p>
 
-<p>Each value&nbsp;<code>v = grid[i][j]</code>&nbsp;represents a tower of&nbsp;<code>v</code>&nbsp;cubes placed on top of grid cell <code>(i, j)</code>.</p>
+<p>Now given an <code>M x N</code> matrix, return&nbsp;<code>True</code>&nbsp;if and only if the matrix is <em>Toeplitz</em>.<br>
+&nbsp;</p>
 
-<p>Now we view the&nbsp;<em>projection</em>&nbsp;of these cubes&nbsp;onto the xy, yz, and zx planes.</p>
-
-<p>A projection is like a shadow, that&nbsp;maps our 3 dimensional figure to a 2 dimensional plane.&nbsp;</p>
-
-<p>Here, we are viewing the "shadow" when looking at the cubes from the top, the front, and the side.</p>
-
-<p>Return the total area of all three projections.</p>
-
-<p>&nbsp;</p>
-
-<div>
-<ul>
-</ul>
-</div>
-
-<div>
-<div>
-<ul>
-</ul>
-</div>
-</div>
-
-<div>
-<div>
-<div>
-<div>
-<ul>
-</ul>
-</div>
-</div>
-</div>
-</div>
-
-<div>
-<div>
-<div>
-<div>
-<div>
-<div>
-<div>
-<div>
-<ul>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div>
 <p><strong>Example 1:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-1-1">[[2]]</span>
-<strong>Output: </strong><span id="example-output-1">5</span>
+<pre><strong>Input:
+</strong>matrix = [
+&nbsp; [1,2,3,4],
+&nbsp; [5,1,2,3],
+&nbsp; [9,5,1,2]
+]
+<strong>Output:</strong> True
+<strong>Explanation:</strong>
+In the above grid, the&nbsp;diagonals are:
+"[9]", "[5, 5]", "[1, 1, 1]", "[2, 2, 2]", "[3, 3]", "[4]".
+In each diagonal all elements are the same, so the answer is True.
 </pre>
 
-<div>
 <p><strong>Example 2:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-2-1">[[1,2],[3,4]]</span>
-<strong>Output: </strong><span id="example-output-2">17</span>
-<strong>Explanation: </strong>
-Here are the three projections ("shadows") of the shape made with each axis-aligned plane.
-<img alt="" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/08/02/shadow.png" style="width: 749px; height: 200px;">
+<pre><strong>Input:
+</strong>matrix = [
+&nbsp; [1,2],
+&nbsp; [2,2]
+]
+<strong>Output:</strong> False
+<strong>Explanation:</strong>
+The diagonal "[1, 2]" has different elements.
 </pre>
 
-<div>
-<p><strong>Example 3:</strong></p>
+<p><br>
+<strong>Note:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-3-1">[[1,0],[0,2]]</span>
-<strong>Output: </strong><span id="example-output-3">8</span>
-</pre>
+<ol>
+	<li><code>matrix</code> will be a 2D array of integers.</li>
+	<li><code>matrix</code> will have a number of rows and columns in range <code>[1, 20]</code>.</li>
+	<li><code>matrix[i][j]</code> will be integers in range <code>[0, 99]</code>.</li>
+</ol>
 
-<div>
-<p><strong>Example 4:</strong></p>
+<p><br>
+<strong>Follow up:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-4-1">[[1,1,1],[1,0,1],[1,1,1]]</span>
-<strong>Output: </strong><span id="example-output-4">14</span>
-</pre>
+<ol>
+	<li>What if the matrix is stored on disk, and the memory is limited such that you can only load at most one row of the matrix into the memory at once?</li>
+	<li>What if the matrix is so large that you can only load up a partial row into the memory at once?</li>
+</ol>
 
-<div>
-<p><strong>Example 5:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-5-1">[[2,2,2],[2,1,2],[2,2,2]]</span>
-<strong>Output: </strong><span id="example-output-5">21</span>
-</pre>
+**Companies**:  
+[Google](https://leetcode.com/company/google)
 
-<p>&nbsp;</p>
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/)
 
-<div>
-<div>
-<div>
-<p><span><strong>Note:</strong></span></p>
-
-<ul>
-	<li><code>1 &lt;= grid.length = grid[0].length&nbsp;&lt;= 50</code></li>
-	<li><code>0 &lt;= grid[i][j] &lt;= 50</code></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
+**Similar Questions**:
+* [Valid Word Square (Easy)](https://leetcode.com/problems/valid-word-square/)
 
 ## Solution 1.
 
 ```cpp
-// OJ: https://leetcode.com/problems/projection-area-of-3d-shapes/
+// OJ: https://leetcode.com/problems/toeplitz-matrix/submissions/
 // Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(1)
 class Solution {
 public:
-    int projectionArea(vector<vector<int>>& grid) {
-        int cnt = 0;
-        for (int N = grid.size(), i = 0; i < N; ++i) {
-            int max1 = 0, max2 = 0;
-            for (int j = 0; j < N; ++j) {
-                if (grid[i][j]) ++cnt;
-                max1 = max(max1, grid[i][j]);
-                max2 = max(max2, grid[j][i]);
+    bool isToeplitzMatrix(vector<vector<int>>& matrix) {
+        for (int i = 1; i < matrix.size(); ++i) {
+            for (int j = 1; j < matrix[0].size(); ++j) {
+                if (matrix[i][j] != matrix[i - 1][j - 1]) return false;
             }
-            cnt += max1 + max2;
         }
-        return cnt;
+        return true;
     }
 };
 ```
