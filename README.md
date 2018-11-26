@@ -202,6 +202,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 344 | Reverse String | Easy | [Solution](leetcode/344.%20Reverse%20String)
 344 | Reverse String | Easy |
 345 | Reverse Vowels of a String | Easy |
+346 | Moving Average from Data Stream | Easy | [Solution](leetcode/346.%20Moving%20Average%20from%20Data%20Stream)
 349 | Intersection of Two Arrays | Easy |
 350 | Intersection of Two Arrays II | Easy |
 352 | Data Stream as Disjoint Intervals | Hard |
