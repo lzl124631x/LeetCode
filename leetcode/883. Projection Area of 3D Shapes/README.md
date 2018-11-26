@@ -12,50 +12,6 @@
 
 <p>Return the total area of all three projections.</p>
 
-<p>&nbsp;</p>
-
-<div>
-<ul>
-</ul>
-</div>
-
-<div>
-<div>
-<ul>
-</ul>
-</div>
-</div>
-
-<div>
-<div>
-<div>
-<div>
-<ul>
-</ul>
-</div>
-</div>
-</div>
-</div>
-
-<div>
-<div>
-<div>
-<div>
-<div>
-<div>
-<div>
-<div>
-<ul>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 <div>
 <p><strong>Example 1:</strong></p>
 
@@ -114,6 +70,9 @@ Here are the three projections ("shadows") of the shape made with each axis-alig
 </div>
 </div>
 
+
+**Related Topics**:  
+[Math](https://leetcode.com/tag/math/)
 
 ## Solution 1.
 
