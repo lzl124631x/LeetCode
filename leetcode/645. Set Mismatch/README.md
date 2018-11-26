@@ -35,3 +35,77 @@ public:
     }
 };
 ```
+
+## Solution 2. Sort
+
+```cpp
+// OJ: https://leetcode.com/problems/set-mismatch/submissions/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int dup, missing = 1;
+        for (int i = 1; i < nums.size(); ++i) {
+            if (nums[i] == nums[i - 1]) dup = nums[i];
+            else if (nums[i] > nums[i - 1] + 1) missing = nums[i - 1] + 1;
+        }
+        return { dup, nums.back() != nums.size() ? nums.size() : missing };
+    }
+};
+```
+
+## Solution 3. Extra Counts Array
+
+Same idea as Solution 1, but Solution 1 actually requires `2N` space, while this approach requires `N` space.
+
+```cpp
+// OJ: https://leetcode.com/problems/set-mismatch/solution/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& nums) {
+        vector<int> cnts(nums.size(), 0);
+        int dup, missing;
+        for (int n : nums) cnts[n - 1]++;
+        for (int i = 0; i < cnts.size(); ++i) {
+            if (cnts[i] == 0) missing = i + 1;
+            else if (cnts[i] == 2) dup = i + 1;
+        }
+        return { dup, missing };
+    }
+};
+```
+
+## Solution 4. Using Constant Space
+
+If we can encode the Counts Array into `nums`, we can save space.
+
+When we visit a number `n` in `nums`, we invert `nums[abs(n) - 1]`. If the number `n` just appears once, the corresponding `nums[abs(n) - 1]` will be negative. When we see a negative `nums[abs(n) - 1]`, it means `n` has been visited -- it's the duplicate.
+
+If `nums[i]` is left positive, then `i + 1` is the missing number.
+
+```cpp
+// OJ: https://leetcode.com/problems/set-mismatch/submissions/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& nums) {
+        int dup, missing;
+        for (int n : nums) {
+            if (nums[abs(n) - 1] < 0) dup = abs(n);
+            else nums[abs(n) - 1] *= -1;
+        }
+        for (int i = 0; i < nums.size(); ++i) {
+            if (nums[i] > 0) missing = i + 1;
+        }
+        return { dup, missing };
+    }
+};
+```
