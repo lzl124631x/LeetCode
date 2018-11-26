@@ -434,6 +434,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 937 | Reorder Log Files | Easy | [Solution](leetcode/937.%20Reorder%20Log%20Files)
 938 | Range Sum of BST | Easy | [Solution](leetcode/938.%20Range%20Sum%20of%20BST)
 939 | Minimum Area Rectangle | Medium | [Solution](leetcode/939.%20Minimum%20Area%20Rectangle)
+940 | Distinct Subsequences II | Hard | [Solution](leetcode/940.%20Distinct%20Subsequences%20II)
 942 | DI String Match | Easy | [Solution](leetcode/942.%20DI%20String%20Match)
 945 | Minimum Increment to Make Array Unique | Medium | [Solution](leetcode/945.%20Minimum%20Increment%20to%20Make%20Array%20Unique)
 946 | Validate Stack Sequences | Medium | [Solution](leetcode/946.%20Validate%20Stack%20Sequences)
