@@ -44,6 +44,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 40 | Combination Sum II | Medium |
 42 | Trapping Rain Water | Hard |
 43 | Multiply Strings | Medium |
+45 | Jump Game II | Hard | [Solution](leetcode/45.%20Jump%20Game%20II)
 46 | Permutations | Medium |
 47 | Permutations II | Medium |
 48 | Rotate Image | Medium |
