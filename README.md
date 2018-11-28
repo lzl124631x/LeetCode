@@ -168,6 +168,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 260 | Single Number III | Medium | [Solution](leetcode/260.%20Single%20Number%20III)
 263 | Ugly Number | Easy |
 264 | Ugly Number II | Medium |
+270 | Closest Binary Search Tree Value | Easy | [Solution](leetcode/270.%20Closest%20Binary%20Search%20Tree%20Value)
 278 | First Bad Version | Easy |
 279 | Perfect Squares | Medium |
 297 | Serialize and Deserialize Binary Tree | Hard |
