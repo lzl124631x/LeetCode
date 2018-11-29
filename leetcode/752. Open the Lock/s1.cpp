@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/problems/open-the-lock/submissions/
+// OJ: https://leetcode.com/problems/open-the-lock/
 // Author: github.com/lzl124631x
 // Time: O(A^N) where A is the number of digits in our alphabet, N is the number of digits in the lock.
 // Space: O(A^N)

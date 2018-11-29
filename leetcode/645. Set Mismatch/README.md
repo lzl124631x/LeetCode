@@ -39,7 +39,7 @@ public:
 ## Solution 2. Sort
 
 ```cpp
-// OJ: https://leetcode.com/problems/set-mismatch/submissions/
+// OJ: https://leetcode.com/problems/set-mismatch/
 // Author: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(1)
@@ -90,7 +90,7 @@ When we visit a number `n` in `nums`, we invert `nums[abs(n) - 1]`. If the numbe
 If `nums[i]` is left positive, then `i + 1` is the missing number.
 
 ```cpp
-// OJ: https://leetcode.com/problems/set-mismatch/submissions/
+// OJ: https://leetcode.com/problems/set-mismatch/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)

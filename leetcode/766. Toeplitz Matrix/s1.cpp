@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/problems/toeplitz-matrix/submissions/
+// OJ: https://leetcode.com/problems/toeplitz-matrix/
 // Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(1)

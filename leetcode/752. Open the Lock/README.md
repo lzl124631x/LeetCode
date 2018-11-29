@@ -63,7 +63,7 @@ As we are looking for the shortest distance, BFS is perfect for this problem. (D
 Turn string "0000" ~ "9999" to numbers. Start from `0`, and use BFS to try to reach `target`.
 
 ```cpp
-// OJ: https://leetcode.com/problems/open-the-lock/submissions/
+// OJ: https://leetcode.com/problems/open-the-lock/
 // Author: github.com/lzl124631x
 // Time: O(A^N) where A is the number of digits in our alphabet,
 //                    N is the number of digits in the lock.

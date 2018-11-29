@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/problems/distinct-subsequences-ii/submissions/
+// OJ: https://leetcode.com/problems/distinct-subsequences-ii/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)

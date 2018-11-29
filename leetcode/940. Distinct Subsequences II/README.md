@@ -70,7 +70,7 @@ dp[1][0] = 0
 It doesn't matter `dp[0][0]` or `dp[0][1]` as long as only one equals 1.
 
 ```cpp
-// OJ: https://leetcode.com/problems/distinct-subsequences-ii/submissions/
+// OJ: https://leetcode.com/problems/distinct-subsequences-ii/
 // Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(N)
@@ -101,7 +101,7 @@ The `dp` array is mainly for computing the the sum of duplicates. And the iterat
 If we store the sum of previous `dp[1][k]` where `S[k - 1] == S[i - 1]`, we can reduce the `2N` extra space to constant space.
 
 ```cpp
-// OJ: https://leetcode.com/problems/distinct-subsequences-ii/submissions/
+// OJ: https://leetcode.com/problems/distinct-subsequences-ii/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
@@ -126,7 +126,7 @@ public:
 Same idea as Solution 2, but shorter and unnoticeably slower (it's `O(26N)` while solution 2 is real `O(N)`).
 
 ```cpp
-// OJ: https://leetcode.com/problems/distinct-subsequences-ii/submissions/
+// OJ: https://leetcode.com/problems/distinct-subsequences-ii/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
@@ -147,7 +147,7 @@ public:
 In solution 2 we notice that we always sum `pick` and `noPick`, meaning we only care about the sum. 
 
 ```cpp
-// OJ: https://leetcode.com/problems/distinct-subsequences-ii/submissions/
+// OJ: https://leetcode.com/problems/distinct-subsequences-ii/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)

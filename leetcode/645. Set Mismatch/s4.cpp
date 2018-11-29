@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/problems/set-mismatch/submissions/
+// OJ: https://leetcode.com/problems/set-mismatch/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)

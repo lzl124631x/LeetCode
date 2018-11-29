@@ -1,4 +1,4 @@
-# [766. Toeplitz Matrix (Easy)](https://leetcode.com/problems/toeplitz-matrix/submissions/)
+# [766. Toeplitz Matrix (Easy)](https://leetcode.com/problems/toeplitz-matrix/)
 
 <p>A matrix is <em>Toeplitz</em> if every diagonal from top-left to bottom-right has the same element.</p>
 
@@ -62,7 +62,7 @@ The diagonal "[1, 2]" has different elements.
 ## Solution 1.
 
 ```cpp
-// OJ: https://leetcode.com/problems/toeplitz-matrix/submissions/
+// OJ: https://leetcode.com/problems/toeplitz-matrix/
 // Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(1)
