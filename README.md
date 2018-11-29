@@ -392,6 +392,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 703 | Kth Largest Element in a Stream | Easy | [Solution](leetcode/703.%20Kth%20Largest%20Element%20in%20a%20Stream)
 705 | Design HashSet | Easy | [Solution](leetcode/705.%20Design%20HashSet)
 709 | To Lower Case | Easy | [Solution](leetcode/709.%20To%20Lower%20Case)
+720 | Longest Word in Dictionary | Easy | [Solution](leetcode/720.%20Longest%20Word%20in%20Dictionary)
 724 | Find Pivot Index | Easy | [Solution](leetcode/724.%20Find%20Pivot%20Index)
 725 | Split Linked List in Parts | Medium | [Solution](leetcode/725.%20Split%20Linked%20List%20in%20Parts)
 728 | Self Dividing Numbers | Easy | [Solution](leetcode/728.%20Self%20Dividing%20Numbers)
