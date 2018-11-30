@@ -78,7 +78,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 88 | Merge Sorted Array | Easy |
 89 | Gray Code | Medium |
 90 | Subsets II | Medium | [Solution](leetcode/90.%20Subsets%20II)
-91 | Decode Ways | Medium |
+91 | Decode Ways | Medium | [Solution](leetcode/91.%20Decode%20Ways)
 92 | Reverse Linked List II | Medium |
 93 | Restore IP Addresses | Medium | [Solution](leetcode/93.%20Restore%20IP%20Addresses)
 94 | Binary Tree Inorder Traversal | Medium |
