@@ -39,7 +39,7 @@ Denote `dp[i]` as the result for substring `S[0..i]` (`i` &isin; `[0, N - 1]`).
 
 For each letter `S[i]`, we have two options:
 1. Use `S[i]` to decode. `S[i]` shouldn't be `'0'`.
-2. Use `S[i - 1]` and `S[i]` to decode. `S[i - 1]` shouldn't be 0 and the number `S[i - 1]` and `S[i]` formed shouldn't be greater than 26.
+2. Use `S[i - 1]` and `S[i]` to decode. `S[i - 1]` shouldn't be `'0'` and the number `S[i - 1]` and `S[i]` formed shouldn't be greater than 26.
 
 When `dp[i] == 0`, we should stop right away and return 0.
 
