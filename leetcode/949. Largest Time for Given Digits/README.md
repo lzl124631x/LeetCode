@@ -46,7 +46,7 @@
 class Solution {
 private:
     string ans;
-    void permutate(string &s, int start) {
+    void permute(string &s, int start) {
         if (start == s.size()) {
             ans = max(ans, s);
             return;
@@ -56,7 +56,7 @@ private:
                || (start == 1 && s[start - 1] == '2' && s[i] > '3')
                || (start == 2 && s[i] > '5')) continue;
             swap(s[start], s[i]);
-            permutate(s, start + 1);
+            permute(s, start + 1);
             swap(s[start], s[i]);
         }
     }
@@ -64,7 +64,7 @@ public:
     string largestTimeFromDigits(vector<int>& A) {
         string s;
         for (int i : A) s.push_back('0' + i);
-        permutate(s, 0);
+        permute(s, 0);
         if (ans.size()) ans.insert(2, ":");
         return ans.size() ? ans : "";
     }
