@@ -453,6 +453,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 946 | Validate Stack Sequences | Medium | [Solution](leetcode/946.%20Validate%20Stack%20Sequences)
 947 | Most Stones Removed with Same Row or Column | Medium | [Solution](leetcode/947.%20Most%20Stones%20Removed%20with%20Same%20Row%20or%20Column)
 948 | Bag of Tokens | Medium | [Solution](leetcode/948.%20Bag%20of%20Tokens)
+949 | Largest Time for Given Digits | Easy | [Solution](leetcode/949.%20Largest%20Time%20for%20Given%20Digits)
 
 # License
 
