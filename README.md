@@ -231,7 +231,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 383 | Ransom Note | Easy |
 384 | Shuffle an Array | Medium |
 385 | Mini Parser | Medium |
-386 | Lexicographical Numbers | Medium |
+386 | Lexicographical Numbers | Medium | [Solution](leetcode/386.%20Lexicographical%20Numbers)
 387 | First Unique Character in a String | Easy |
 388 | Longest Absolute File Path | Medium |
 389 | Find the Difference | Easy |

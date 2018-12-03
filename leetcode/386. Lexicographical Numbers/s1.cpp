@@ -1,3 +1,7 @@
+// OJ: https://leetcode.com/problems/lexicographical-numbers/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
 class Solution {
 public:
     vector<int> lexicalOrder(int n) {
