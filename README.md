@@ -450,6 +450,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 940 | Distinct Subsequences II | Hard | [Solution](leetcode/940.%20Distinct%20Subsequences%20II)
 941 | Valid Mountain Array | Easy | [Solution](leetcode/941.%20Valid%20Mountain%20Array)
 942 | DI String Match | Easy | [Solution](leetcode/942.%20DI%20String%20Match)
+944 | Delete Columns to Make Sorted | Easy | [Solution](leetcode/944.%20Delete%20Columns%20to%20Make%20Sorted)
 945 | Minimum Increment to Make Array Unique | Medium | [Solution](leetcode/945.%20Minimum%20Increment%20to%20Make%20Array%20Unique)
 946 | Validate Stack Sequences | Medium | [Solution](leetcode/946.%20Validate%20Stack%20Sequences)
 947 | Most Stones Removed with Same Row or Column | Medium | [Solution](leetcode/947.%20Most%20Stones%20Removed%20with%20Same%20Row%20or%20Column)
