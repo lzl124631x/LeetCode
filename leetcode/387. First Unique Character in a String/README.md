@@ -28,7 +28,7 @@ return 2.
 ## Solution 1.
 
 ```cpp
-// OJ: https://leetcode.com/problems/first-unique-character-in-a-string/submissions/
+// OJ: https://leetcode.com/problems/first-unique-character-in-a-string/
 // Author: github.com/lzl124631x
 // Time: O(S)
 // Space: O(1)

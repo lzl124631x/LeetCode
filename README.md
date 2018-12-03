@@ -233,7 +233,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 385 | Mini Parser | Medium |
 386 | Lexicographical Numbers | Medium | [Solution](leetcode/386.%20Lexicographical%20Numbers)
 387 | First Unique Character in a String | Easy | [Solution](leetcode/387.%20First%20Unique%20Character%20in%20a%20String)
-388 | Longest Absolute File Path | Medium |
+388 | Longest Absolute File Path | Medium | [Solution](leetcode/388.%20Longest%20Absolute%20File%20Path)
 389 | Find the Difference | Easy |
 390 | Elimination Game | Medium |
 391 | Perfect Rectangle | Hard |
