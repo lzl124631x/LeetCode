@@ -456,6 +456,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 949 | Largest Time for Given Digits | Easy | [Solution](leetcode/949.%20Largest%20Time%20for%20Given%20Digits)
 950 | Reveal Cards In Increasing Order | Medium | [Solution](leetcode/950.%20Reveal%20Cards%20In%20Increasing%20Order)
 951 | Flip Equivalent Binary Trees | Medium | [Solution](leetcode/951.%20Flip%20Equivalent%20Binary%20Trees)
+952 | Largest Component Size by Common Factor | Hard | [Solution](leetcode/952.%20Largest%20Component%20Size%20by%20Common%20Factor)
 
 # License
 
