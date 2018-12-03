@@ -1,3 +1,7 @@
+// OJ: https://leetcode.com/problems/first-unique-character-in-a-string/submissions/
+// Author: github.com/lzl124631x
+// Time: O(S)
+// Space: O(1)
 class Solution {
 public:
     int firstUniqChar(string s) {
