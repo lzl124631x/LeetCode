@@ -209,7 +209,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 350 | Intersection of Two Arrays II | Easy |
 352 | Data Stream as Disjoint Intervals | Hard |
 354 | Russian Doll Envelopes | Hard |
-355 | Design Twitter | Medium |
+355 | Design Twitter | Medium | [Solution](leetcode/355.%20Design%20Twitter)
 357 | Count Numbers with Unique Digits | Medium |
 363 | Max Sum of Rectangle No Larger Than K | Hard |
 365 | Water and Jug Problem | Medium |
