@@ -365,6 +365,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 589 | N-ary Tree Preorder Traversal | Easy | [Solution](leetcode/589.%20N-ary%20Tree%20Preorder%20Traversal)
 590 | N-ary Tree Postorder Traversal | Easy | [Solution](leetcode/590.%20N-ary%20Tree%20Postorder%20Traversal)
 591 | Tag Validator | Hard | [Solution](leetcode/591.%20Tag%20Validator)
+594 | Longest Harmonious Subsequence | Easy | [Solution](leetcode/594.%20Longest%20Harmonious%20Subsequence)
 599 | Minimum Index Sum of Two Lists | Easy | [Solution](leetcode/599.%20Minimum%20Index%20Sum%20of%20Two%20Lists)
 604 | Design Compressed String Iterator | Easy | [Solution](leetcode/604.%20Design%20Compressed%20String%20Iterator)
 605 | Can Place Flowers | Easy | [Solution](leetcode/605.%20Can%20Place%20Flowers)
