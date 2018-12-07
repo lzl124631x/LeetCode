@@ -386,6 +386,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 669 | Trim a Binary Search Tree | Easy | [Solution](leetcode/669.%20Trim%20a%20Binary%20Search%20Tree)
 670 | Maximum Swap | Medium | [Solution](leetcode/670.%20Maximum%20Swap)
 677 | Map Sum Pairs | Medium | [Solution](leetcode/677.%20Map%20Sum%20Pairs)
+678 | Valid Parenthesis String | Medium | [Solution](leetcode/678.%20Valid%20Parenthesis%20String)
 682 | Baseball Game | Easy | [Solution](leetcode/682.%20Baseball%20Game)
 684 | Redundant Connection | Medium | [Solution](leetcode/684.%20Redundant%20Connection)
 688 | Knight Probability in Chessboard | Medium | [Solution](leetcode/688.%20Knight%20Probability%20in%20Chessboard)
