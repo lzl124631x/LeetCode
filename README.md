@@ -435,6 +435,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 887 | Super Egg Drop | Hard | [Solution](leetcode/887.%20Super%20Egg%20Drop)
 892 | Surface Area of 3D Shapes | Easy | [Solution](leetcode/892.%20Surface%20Area%20of%203D%20Shapes)
 897 | Increasing Order Search Tree | Easy | [Solution](leetcode/897.%20Increasing%20Order%20Search%20Tree)
+896 | Monotonic Array | Easy | [Solution](leetcode/896.%20Monotonic%20Array)
 899 | Orderly Queue | Hard | [Solution](leetcode/899.%20Orderly%20Queue)
 905 | Sort Array By Parity | Easy | [Solution](leetcode/905.%20Sort%20Array%20By%20Parity)
 908 | Smallest Range I | Easy | [Solution](leetcode/908.%20Smallest%20Range%20I)
