@@ -344,7 +344,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 537 | Complex Number Multiplication | Medium | [Solution](leetcode/537.%20Complex%20Number%20Multiplication)
 538 | Convert BST to Greater Tree | Medium |
 539 | Minimum Time Difference | Medium |
-540 | Single Element in a Sorted Array | Medium |
+540 | Single Element in a Sorted Array | Medium | [Solution](leetcode/540.%20Single%20Element%20in%20a%20Sorted%20Array)
 541 | Reverse String II | Easy |
 542 | 01 Matrix | Medium |
 543 | Diameter of Binary Tree | Easy |
