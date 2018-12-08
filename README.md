@@ -426,6 +426,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 836 | Rectangle Overlap | Easy | [Solution](leetcode/836.%20Rectangle%20Overlap)
 840 | Magic Squares In Grid | Easy | [Solution](leetcode/840.%20Magic%20Squares%20In%20Grid)
 852 | Peak Index in a Mountain Array | Easy | [Solution](leetcode/852.%20Peak%20Index%20in%20a%20Mountain%20Array)
+859 | Buddy Strings | Easy | [Solution](leetcode/859.%20Buddy%20Strings)
 860 | Lemonade Change | Easy | [Solution](leetcode/860.%20Lemonade%20Change)
 863 | All Nodes Distance K in Binary Tree | Medium | [Solution](leetcode/863.%20All%20Nodes%20Distance%20K%20in%20Binary%20Tree)
 867 | Transpose Matrix | Easy | [Solution](leetcode/867.%20Transpose%20Matrix)
