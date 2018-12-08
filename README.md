@@ -391,6 +391,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 682 | Baseball Game | Easy | [Solution](leetcode/682.%20Baseball%20Game)
 684 | Redundant Connection | Medium | [Solution](leetcode/684.%20Redundant%20Connection)
 688 | Knight Probability in Chessboard | Medium | [Solution](leetcode/688.%20Knight%20Probability%20in%20Chessboard)
+694 | Number of Distinct Islands | Medium | [Solution](leetcode/694.%20Number%20of%20Distinct%20Islands)
 700 | Search in a Binary Search Tree | Easy | [Solution](leetcode/700.%20Search%20in%20a%20Binary%20Search%20Tree)
 701 | Insert into a Binary Search Tree | Medium | [Solution](leetcode/701.%20Insert%20into%20a%20Binary%20Search%20Tree)
 703 | Kth Largest Element in a Stream | Easy | [Solution](leetcode/703.%20Kth%20Largest%20Element%20in%20a%20Stream)
