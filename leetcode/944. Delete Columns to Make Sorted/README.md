@@ -1,4 +1,4 @@
-# [944. Delete Columns to Make Sorted (Easy)](https://leetcode.com/problems/delete-columns-to-make-sorted/submissions/)
+# [944. Delete Columns to Make Sorted (Easy)](https://leetcode.com/problems/delete-columns-to-make-sorted)
 
 <p>We are given an array&nbsp;<code>A</code> of <code>N</code> lowercase letter strings, all of the same length.</p>
 
@@ -60,7 +60,7 @@ If we chose D = {}, then a column ["b","a","h"] would not be in non-decreasing s
 ## Solution 1.
 
 ```cpp
-// OJ: https://leetcode.com/problems/delete-columns-to-make-sorted/submissions/
+// OJ: https://leetcode.com/problems/delete-columns-to-make-sorted
 // Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(1)

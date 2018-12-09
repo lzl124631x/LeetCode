@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/problems/delete-columns-to-make-sorted/submissions/
+// OJ: https://leetcode.com/problems/delete-columns-to-make-sorted
 // Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(1)

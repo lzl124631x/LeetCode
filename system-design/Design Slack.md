@@ -47,3 +47,6 @@ When the server receives a new message, it use websocket to broadcast the messag
 At the same time, the server stores the message into DB and Cache.
 
 DB Choice: NoSQL. Because it's mainly about storing large amount of data. Seldom do we do JOINs.
+
+# Reference
+* [How Slack Works](https://www.youtube.com/watch?v=WE9c9AZe-DY)
