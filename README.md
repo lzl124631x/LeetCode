@@ -469,6 +469,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 951 | Flip Equivalent Binary Trees | Medium | [Solution](leetcode/951.%20Flip%20Equivalent%20Binary%20Trees)
 952 | Largest Component Size by Common Factor | Hard | [Solution](leetcode/952.%20Largest%20Component%20Size%20by%20Common%20Factor)
 953 | Verifying an Alien Dictionary | Easy | [Solution](leetcode/953.%20Verifying%20an%20Alien%20Dictionary)
+954 | Array of Doubled Pairs | Medium | [Solution](leetcode/954.%20Array%20of%20Doubled%20Pairs)
 
 # License
 
