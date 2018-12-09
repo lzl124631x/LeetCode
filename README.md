@@ -471,6 +471,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 953 | Verifying an Alien Dictionary | Easy | [Solution](leetcode/953.%20Verifying%20an%20Alien%20Dictionary)
 954 | Array of Doubled Pairs | Medium | [Solution](leetcode/954.%20Array%20of%20Doubled%20Pairs)
 955 | Delete Columns to Make Sorted II | Medium | [Solution](leetcode/955.%20Delete%20Columns%20to%20Make%20Sorted%20II)
+956 | Tallest Billboard | Hard | [Solution](leetcode/956.%20Tallest%20Billboard)
 
 # License
 
