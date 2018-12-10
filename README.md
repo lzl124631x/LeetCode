@@ -75,6 +75,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 84 | Largest Rectangle in Histogram | Medium |
 85 | Maximal Rectangle | Hard |
 86 | Partition List | Medium |
+87 | Scramble String | Hard | [Solution](leetcode/87.%20Scramble%20String)
 88 | Merge Sorted Array | Easy |
 89 | Gray Code | Medium |
 90 | Subsets II | Medium | [Solution](leetcode/90.%20Subsets%20II)
