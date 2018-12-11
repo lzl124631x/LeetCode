@@ -106,6 +106,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 121 | Best Time to Buy and Sell Stock | Easy |
 122 | Best Time to Buy and Sell Stock II | Medium |
 123 | Best Time to Buy and Sell Stock III | Hard |
+125 | Valid Palindrome | Easy | [Solution](leetcode/125.%20Valid%20Palindrome)
 126 | Word Ladder II | Hard |
 127 | Word Ladder | Hard |
 129 | Sum Root to Leaf Numbers | Medium |
