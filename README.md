@@ -280,6 +280,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 440 | K-th Smallest in Lexicographical Order| Hard |
 441 | Arranging Coins | Easy |
 442 | Find All Duplicates in an Array | Medium |
+443 | String Compression | Easy | [Solution](leetcode/443.%20String%20Compression)
 445 | Add Two Numbers II | Medium |
 446 | Arithmetic Slices II - Subsequence | Hard |
 447 | Number of Boomerangs | Easy |
