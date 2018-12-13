@@ -317,6 +317,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 486 | Predict the Winner | Medium |
 487 | Max Consecutive Ones II | Medium |
 488 | Zuma Game | Hard |
+490 | The Maze | Medium | [Solution](leetcode/490.%20The%20Maze)
 491 | Increasing Subsequences | Medium | [Solution](leetcode/491.%20Increasing%20Subsequences)
 492 | Construct the Rectangle | Easy |
 494 | Target Sum | Medium |
