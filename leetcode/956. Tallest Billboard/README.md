@@ -80,7 +80,7 @@ The recursion is `dp[i][s] = max(dp[i+1][s], dp[i+1][s-rods[i]], rods[i] + dp[i+
 NOTE: in the following implementation we use `sum = 5000` as `sum = 0` to simply code.
 
 ```cpp
-// OJ: https://leetcode.com/problems/tallest-billboard/submissions/
+// OJ: https://leetcode.com/problems/tallest-billboard
 // Author: github.com/lzl124631x
 // Time: O(NS) where N is the length of `rods`,
 //             and S is the maximum of `sum(rods[i..j])`

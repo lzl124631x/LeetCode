@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/problems/tallest-billboard/submissions/
+// OJ: https://leetcode.com/problems/tallest-billboard
 // Author: github.com/lzl124631x
 // Time: O(NS) where N is the length of `rods`,
 //             and S is the maximum of `sum(rods[i..j])`
