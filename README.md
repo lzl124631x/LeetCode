@@ -406,6 +406,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 724 | Find Pivot Index | Easy | [Solution](leetcode/724.%20Find%20Pivot%20Index)
 725 | Split Linked List in Parts | Medium | [Solution](leetcode/725.%20Split%20Linked%20List%20in%20Parts)
 728 | Self Dividing Numbers | Easy | [Solution](leetcode/728.%20Self%20Dividing%20Numbers)
+735 | Asteroid Collision | Medium | [Solution](leetcode/735.%20Asteroid%20Collision)
 739 | Daily Temperatures | Medium | [Solution](leetcode/739.%20Daily%20Temperatures)
 744 | Find Smallest Letter Greater Than Target | Easy | [Solution](leetcode/744.%20Find%20Smallest%20Letter%20Greater%20Than%20Target)
 745 | Prefix and Suffix Search | Hard | [Solution](leetcode/Prefix%20and%20Suffix%20Search)
