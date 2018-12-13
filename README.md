@@ -175,6 +175,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 270 | Closest Binary Search Tree Value | Easy | [Solution](leetcode/270.%20Closest%20Binary%20Search%20Tree%20Value)
 278 | First Bad Version | Easy |
 279 | Perfect Squares | Medium |
+285 | Inorder Successor in BST | Medium | [Solution](leetcode/285.%20Inorder%20Successor%20in%20BST)
 297 | Serialize and Deserialize Binary Tree | Hard |
 299 | Bulls and Cows | Easy |
 300 | Longest Increasing Subsequence | Medium |
