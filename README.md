@@ -412,6 +412,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 739 | Daily Temperatures | Medium | [Solution](leetcode/739.%20Daily%20Temperatures)
 744 | Find Smallest Letter Greater Than Target | Easy | [Solution](leetcode/744.%20Find%20Smallest%20Letter%20Greater%20Than%20Target)
 745 | Prefix and Suffix Search | Hard | [Solution](leetcode/Prefix%20and%20Suffix%20Search)
+746 | Min Cost Climbing Stairs | Easy | [Solution](leetcode/746.%20Min%20Cost%20Climbing%20Stairs)
 747 | Largest Number At Least Twice of Others | Easy | [Solution](leetcode/747.%20Largest%20Number%20At%20Least%20Twice%20of%20Others)
 752 | Open the Lock | Medium | [Solution](leetcode/752.%20Open%20the%20Lock)
 755 | Pour Water | Medium | [Solution](leetcode/755.%20Pour%20Water)
