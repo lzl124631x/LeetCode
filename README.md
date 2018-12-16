@@ -485,6 +485,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 956 | Tallest Billboard | Hard | [Solution](leetcode/956.%20Tallest%20Billboard)
 957 | Prison Cells After N Days | Medium | [Solution](leetcode/957.%20Prison%20Cells%20After%20N%20Days)
 958 | Check Completeness of a Binary Tree | Medium | [Solution](leetcode/958.%20Check%20Completeness%20of%20a%20Binary%20Tree)
+959 | Regions Cut By Slashes | Medium | [Solution](leetcode/959.%20Regions%20Cut%20By%20Slashes)
 
 # License
 
