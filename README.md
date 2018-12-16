@@ -483,6 +483,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 954 | Array of Doubled Pairs | Medium | [Solution](leetcode/954.%20Array%20of%20Doubled%20Pairs)
 955 | Delete Columns to Make Sorted II | Medium | [Solution](leetcode/955.%20Delete%20Columns%20to%20Make%20Sorted%20II)
 956 | Tallest Billboard | Hard | [Solution](leetcode/956.%20Tallest%20Billboard)
+958 | Check Completeness of a Binary Tree | Medium | [Solution](leetcode/958.%20Check%20Completeness%20of%20a%20Binary%20Tree)
 
 # License
 
