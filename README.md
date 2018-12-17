@@ -305,7 +305,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 466 | Count The Repetitions | Hard |
 467 | Unique Substrings in Wraparound String | Medium |
 468 | Validate IP Address | Medium |
-472 | Concatenated Words | Hard |
+472 | Concatenated Words | Hard | [Solution](leetcode/472.%20Concatenated%20Words)
 473 | Matchsticks to Square | Medium |
 474 | Ones and Zeroes | Medium |
 475 | Heaters | Easy |
