@@ -118,6 +118,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 137 | Single Number II | Medium | [Solution](leetcode/137.%20Single%20Number%20II)
 138 | Copy List with Random Pointer | Medium |
 139 | Word Break | Medium |
+140 | Word Break II | Hard | [Solution](leetcode/140.%20Word%20Break%20II)
 141 | Linked List Cycle | Easy |
 142 | Linked List Cycle II | Medium |
 143 | Reorder List | Medium |
