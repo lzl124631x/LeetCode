@@ -134,7 +134,7 @@ public:
 
 The Solution 2 actually requires `2 * min(M, N)` space, we can further reduce it to `min(M, N)`.
 
-One thing that prevents us from using one dimensional array is the dependency between `dp[i + 1][j + 1]` and `dp[i + 1][j]` since they are in the same row. We can store `dp[i + 1][j]` in a temporary variable.
+One thing that prevents us from using one dimensional array is the dependency between `dp[i + 1][j + 1]` and `dp[i][j]` since when we visit `dp[i + 1][j + 1]`, `dp[i][j]` is overwritten by `dp[i + 1][j]`. We can store `dp[i][j]` in a temporary variable.
 
 ```cpp
 // OJ: https://leetcode.com/problems/edit-distance
