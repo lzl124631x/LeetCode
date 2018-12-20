@@ -405,6 +405,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 703 | Kth Largest Element in a Stream | Easy | [Solution](leetcode/703.%20Kth%20Largest%20Element%20in%20a%20Stream)
 705 | Design HashSet | Easy | [Solution](leetcode/705.%20Design%20HashSet)
 709 | To Lower Case | Easy | [Solution](leetcode/709.%20To%20Lower%20Case)
+712 | Minimum ASCII Delete Sum for Two Strings | Medium | [Solution](leetcode/712.%20Minimum%20ASCII%20Delete%20Sum%20for%20Two%20Strings)
 720 | Longest Word in Dictionary | Easy | [Solution](leetcode/720.%20Longest%20Word%20in%20Dictionary)
 724 | Find Pivot Index | Easy | [Solution](leetcode/724.%20Find%20Pivot%20Index)
 725 | Split Linked List in Parts | Medium | [Solution](leetcode/725.%20Split%20Linked%20List%20in%20Parts)
