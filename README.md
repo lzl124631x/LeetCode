@@ -276,6 +276,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 421 | Maximum XOR of Two Numbers in an Array | Medium |
 423 | Reconstruct Original Digits from English | Medium |
 424 | Longest Repeating Character Replacement | Medium |
+427 | Construct Quad Tree | Easy | [Solution](leetcode/427.%20Construct%20Quad%20Tree)
 429 | N-ary Tree Level Order Traversal | Easy | [Solution](leetcode/429.%20N-ary%20Tree%20Level%20Order%20Traversal)
 432 | All O`one Data Structure | Hard |
 434 | Number of Segments in a String | Easy |
