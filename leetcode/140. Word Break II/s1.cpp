@@ -1,6 +1,6 @@
 // OJ: https://leetcode.com/problems/word-break-ii
 // Author: github.com/lzl124631x
-// Time: O(2^M) where M is the max length of string in wordDict.
+// Time: O(sum{i * (i - 1) / 2 | i in [1, S]}) where S is the length of s.
 // Space: O(C) where C is the length sum of wordDict
 class Solution {
 private:
