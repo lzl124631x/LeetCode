@@ -384,6 +384,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 616 | Add Bold Tag in String | Medium | [Solution](leetcode/616.%20Add%20Bold%20Tag%20in%20String)
 616 | Add Bold Tag in String | Medium | [Solution](leetcode/616.%20Add%20Bold%20Tag%20in%20String)
 617 | Merge Two Binary Trees | Easy | [Solution](leetcode/617.%20Merge%20Two%20Binary%20Trees)
+622 | Design Circular Queue | Medium | [Solution](leetcode/622.%20Design%20Circular%20Queue)
 629 | K Inverse Pairs Array | Hard | [Solution](leetcode/629.%20K%20Inverse%20Pairs%20Array)
 636 | Exclusive Time of Functions | Medium | [Solution](leetcode/636.%20Exclusive%20Time%20of%20Functions)
 637 | Average of Levels in Binary Tree | Easy | [Solution](leetcode/637.%20Average%20of%20Levels%20in%20Binary%20Tree)
