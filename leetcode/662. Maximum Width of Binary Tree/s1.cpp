@@ -10,17 +10,17 @@ public:
         q.push(make_pair(root, 0));
         int ans = INT_MIN;
         while (q.size()) {
-            int cnt = q.size(), minVal = INT_MAX, maxVal = INT_MIN;
-            while (cnt--) {
+            int cnt = q.size(), left, right;
+            for (int i = 0; i < cnt; ++i) {
                 auto &p = q.front();
                 q.pop();
                 root = p.first;
-                minVal = min(minVal, p.second);
-                maxVal = max(maxVal, p.second);
+                if (i == 0) left = p.second;
+                if (i == cnt - 1) right = p.second;
                 if (root->left) q.push(make_pair(root->left, p.second * 2));
                 if (root->right) q.push(make_pair(root->right, p.second * 2 + 1));
             }
-            ans = max(ans, maxVal - minVal + 1);
+            ans = max(ans, right - left + 1);
         }
         return ans;
     }
