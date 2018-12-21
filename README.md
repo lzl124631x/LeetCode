@@ -168,6 +168,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 240 | Search a 2D Matrix II | Medium |
 241 | Different Ways to Add Parentheses | Medium | [Solution](leetcode/241.%20Different%20Ways%20to%20Add%20Parentheses)
 244 | Shortest Word Distance II | Medium | [Solution](leetcode/244.%20Shortest%20Word%20Distance%20II)
+247 | Strobogrammatic Number II | Medium | [Solution](leetcode/247.%20Strobogrammatic%20Number%20II)
 257 | Binary Tree Paths | Easy |
 266 | Palindrome Permutation | Easy | [Solution](leetcode/266.%20Palindrome%20Permutation)
 359 | Logger Rate Limiter | Easy | [Solution](leetcode/359.%20Logger%20Rate%20Limiter)
