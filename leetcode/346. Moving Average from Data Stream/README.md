@@ -15,7 +15,7 @@ m.next(5) = (10 + 3 + 5) / 3
 
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg), [Twitter](https://leetcode.com/company/twitter), [Microsoft](https://leetcode.com/company/microsoft)
+[Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg), [Twitter](https://leetcode.com/company/twitter), [Uber](https://leetcode.com/company/uber)
 
 **Related Topics**:  
 [Design](https://leetcode.com/tag/design/), [Queue](https://leetcode.com/tag/queue/)
