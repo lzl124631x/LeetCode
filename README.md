@@ -453,6 +453,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 869 | Reordered Power of 2 | Medium | [Solution](leetcode/869.%20Reordered%20Power%20of%202)
 870 | Advantage Shuffle | Medium | [Solution](leetcode/870.%20Advantage%20Shuffle)
 872 | Leaf-Similar Trees | Easy | [Solution](leetcode/872.%20Leaf-Similar%20Trees)
+874 | Walking Robot Simulation | Easy | [Solution](leetcode/874.%20Walking%20Robot%20Simulation)
 875 | Koko Eating Bananas | Medium | [Solution](leetcode/875.%20Koko%20Eating%20Bananas)
 876 | Middle of the Linked List | Easy | [Solution](leetcode/876.%20Middle%20of%20the%20Linked%20List)
 881 | Boats to Save People | Medium | [Solution](leetcode/881.%20Boats%20to%20Save%20People)
