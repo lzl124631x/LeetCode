@@ -121,7 +121,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 140 | Word Break II | Hard | [Solution](leetcode/140.%20Word%20Break%20II)
 141 | Linked List Cycle | Easy |
 142 | Linked List Cycle II | Medium |
-143 | Reorder List | Medium |
+143 | Reorder List | Medium | [Solution](leetcode/143.%20Reorder%20List)
 144 | Binary Tree Preorder Traversal | Medium |
 145 | Binary Tree Postorder Traversal | Hard |
 146 | LRU Cache | Hard | [Solution](leetcode/146.%20LRU%20Cache)

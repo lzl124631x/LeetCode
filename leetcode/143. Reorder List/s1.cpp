@@ -1,40 +1,43 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+// OJ: https://leetcode.com/problems/reorder-list/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
 class Solution {
 private:
-    ListNode *reverseList(ListNode *head) {
-        ListNode newHead(0);
+    ListNode *reverse(ListNode* head) {
+        ListNode dummy(0);
         while (head) {
-            ListNode *p = head;
+            ListNode *node = head;
             head = head->next;
-            p->next = newHead.next;
-            newHead.next = p;
+            node->next = dummy.next;
+            dummy.next = node;
         }
-        return newHead.next;
+        return dummy.next;
+    }
+    int getLength(ListNode *head) {
+        int len = 0;
+        while (head) {
+            head = head->next;
+            len++;
+        }
+        return len;
     }
 public:
     void reorderList(ListNode* head) {
         if (!head) return;
-        ListNode *fast = head, *slow = head, *rightHead;
-        while (fast->next && fast->next->next) {
-            fast = fast->next->next;
-            slow = slow->next;
-        }
-        rightHead = slow->next;
-        slow->next = NULL;
-        rightHead = reverseList(rightHead);
-        while (rightHead) {
-            ListNode *p = rightHead;
-            rightHead = rightHead->next;
-            p->next = head->next;
-            head->next = p;
-            head = p->next;
+        int len = (getLength(head) - 1) / 2;
+        ListNode *p = head, *q;
+        while (len--) p = p->next;
+        q = p->next;
+        p->next = NULL;
+        q = reverse(q);
+        p = head;
+        while (q) {
+            ListNode *node = q;
+            q = q->next;
+            node->next = p->next;
+            p->next = node;
+            p = node->next;
         }
     }
 };
