@@ -137,7 +137,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 167 | Two Sum II - Input array is sorted | Medium |
 169 | Majority Element | Easy |
 173 | Binary Search Tree Iterator | Medium |
-174 | Dungeon Game | Hard |
+174 | Dungeon Game | Hard | [Solution](leetcode/174.%20Dungeon%20Game)
 188 | Best Time to Buy and Sell Stock IV | Hard |
 190 | Reverse Bits | Easy |
 198 | House Robber | Easy |
