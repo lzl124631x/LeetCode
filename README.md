@@ -428,6 +428,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 760 | Find Anagram Mappings | Easy | [Solution](leetcode/760.%20Find%20Anagram%20Mappings)
 766 | Toeplitz Matrix | Easy | [Solution](leetcode/766.%20Toeplitz%20Matrix)
 767 | Reorganize String | Medium | [Solution](leetcode/767.%20Reorganize%20String)
+770 | Basic Calculator IV | Hard | [Solution](leetcode/770.%20Basic%20Calculator%20IV)
 771 | Jewels and Stones | Easy | [Solution](leetcode/771.%20Jewels%20and%20Stones)
 783 | Minimum Distance Between BST Nodes | Easy | [Solution](leetcode/783.%20Minimum%20Distance%20Between%20BST%20Nodes)
 784 | Letter Case Permutation | Easy | [Solution](leetcode/784.%20Letter%20Case%20Permutation)
