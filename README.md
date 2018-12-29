@@ -385,6 +385,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 606 | Construct String from Binary Tree | Easy | [Solution](leetcode/606.%20Construct%20String%20from%20Binary%20Tree)
 609 | Find Duplicate File in System | Medium | [Solution](leetcode/609.%20Find%20Duplicate%20File%20in%20System)
 611 | Valid Triangle Number | Medium | [Solution](leetcode/611.%20Valid%20Triangle%20Number)
+613 | Shortest Distance in a Line | Easy | [Solution](leetcode/613.%20Shortest%20Distance%20in%20a%20Line)
 616 | Add Bold Tag in String | Medium | [Solution](leetcode/616.%20Add%20Bold%20Tag%20in%20String)
 616 | Add Bold Tag in String | Medium | [Solution](leetcode/616.%20Add%20Bold%20Tag%20in%20String)
 617 | Merge Two Binary Trees | Easy | [Solution](leetcode/617.%20Merge%20Two%20Binary%20Trees)
