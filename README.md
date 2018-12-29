@@ -426,6 +426,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 703 | Kth Largest Element in a Stream | Easy | [Solution](leetcode/703.%20Kth%20Largest%20Element%20in%20a%20Stream)
 704 | Binary Search | Easy | [Solution](leetcode/704.%20Binary%20Search)
 705 | Design HashSet | Easy | [Solution](leetcode/705.%20Design%20HashSet)
+706 | Design HashMap | Easy | [Solution](leetcode/706.%20Design%20HashMap)
 707 | Design Linked List | Easy | [Solution](leetcode/707.%20Design%20Linked%20List)
 709 | To Lower Case | Easy | [Solution](leetcode/709.%20To%20Lower%20Case)
 712 | Minimum ASCII Delete Sum for Two Strings | Medium | [Solution](leetcode/712.%20Minimum%20ASCII%20Delete%20Sum%20for%20Two%20Strings)
