@@ -180,6 +180,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 278 | First Bad Version | Easy |
 279 | Perfect Squares | Medium |
 285 | Inorder Successor in BST | Medium | [Solution](leetcode/285.%20Inorder%20Successor%20in%20BST)
+293 | Flip Game | Easy | [Solution](leetcode/293.%20Flip%20Game)
 297 | Serialize and Deserialize Binary Tree | Hard |
 299 | Bulls and Cows | Easy |
 300 | Longest Increasing Subsequence | Medium |
