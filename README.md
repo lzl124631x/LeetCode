@@ -140,6 +140,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 174 | Dungeon Game | Hard | [Solution](leetcode/174.%20Dungeon%20Game)
 188 | Best Time to Buy and Sell Stock IV | Hard |
 190 | Reverse Bits | Easy |
+195 | Tenth Line | Easy | [Solution](leetcode/195.%20Tenth%20Line)
 198 | House Robber | Easy |
 202 | Happy Number | Easy |
 204 | Count Primes | Easy |
