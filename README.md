@@ -461,6 +461,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 862 | Shortest Subarray with Sum at Least K | Hard | [Solution](leetcode/862.%20Shortest%20Subarray%20with%20Sum%20at%20Least%20K)
 863 | All Nodes Distance K in Binary Tree | Medium | [Solution](leetcode/863.%20All%20Nodes%20Distance%20K%20in%20Binary%20Tree)
 867 | Transpose Matrix | Easy | [Solution](leetcode/867.%20Transpose%20Matrix)
+868 | Binary Gap | Easy | [Solution](leetcode/868.%20Binary%20Gap)
 869 | Reordered Power of 2 | Medium | [Solution](leetcode/869.%20Reordered%20Power%20of%202)
 870 | Advantage Shuffle | Medium | [Solution](leetcode/870.%20Advantage%20Shuffle)
 872 | Leaf-Similar Trees | Easy | [Solution](leetcode/872.%20Leaf-Similar%20Trees)
