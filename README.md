@@ -454,6 +454,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 804 | Unique Morse Code Words | Easy | [Solution](leetcode/804.%20Unique%20Morse%20Code%20Words)
 806 | Number of Lines To Write String | Easy | [Solution](leetcode/806.%20Number%20of%20Lines%20To%20Write%20String)
 811 | Subdomain Visit Count | Easy | [Solution](leetcode/811.%20Subdomain%20Visit%20Count)
+812 | Largest Triangle Area | Easy | [Solution](leetcode/812.%20Largest%20Triangle%20Area)
 817 | Linked List Components | Medium | [Solution](leetcode/817.%20Linked%20List%20Components)
 819 | Most Common Word | Easy | [Solution](leetcode/819.%20Most%20Common%20Word)
 821 | Shortest Distance to a Character | Easy | [Solution](leetcode/821.%20Shortest%20Distance%20to%20a%20Character)
