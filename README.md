@@ -374,6 +374,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 566 | Reshape the Matrix | Easy | [Solution](leetcode/566.%20Reshape%20the%20Matrix)
 572 | Subtree of Another Tree | Easy | [Solution](leetcode/572.%20Subtree%20of%20Another%20Tree)
 575 | Distribute Candies | Easy | [Solution](leetcode/575.%20Distribute%20Candies)
+577 | Employee Bonus | Easy | [Solution](leetcode/577.%20Employee%20Bonus)
 581 | Shortest Unsorted Continuous Subarray | Easy | [Solution](leetcode/581.%20Shortest%20Unsorted%20Continuous%20Subarray)
 582 | Kill Process | Medium | [Solution](leetcode/582.%20Kill%20Process)
 583 | Delete Operation for Two Strings | Medium | [Solution](leetcode/583.%20Delete%20Operation%20for%20Two%20Strings)
