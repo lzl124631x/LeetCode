@@ -375,6 +375,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 582 | Kill Process | Medium | [Solution](leetcode/582.%20Kill%20Process)
 583 | Delete Operation for Two Strings | Medium | [Solution](leetcode/583.%20Delete%20Operation%20for%20Two%20Strings)
 584 | Find Customer Referee | Easy | [Solution](leetcode/584.%20Find%20Customer%20Referee)
+586 | Customer Placing the Largest Number of Orders | Easy | [Solution](leetcode/586.%20Customer%20Placing%20the%20Largest%20Number%20of%20Orders)
 589 | N-ary Tree Preorder Traversal | Easy | [Solution](leetcode/589.%20N-ary%20Tree%20Preorder%20Traversal)
 590 | N-ary Tree Postorder Traversal | Easy | [Solution](leetcode/590.%20N-ary%20Tree%20Postorder%20Traversal)
 591 | Tag Validator | Hard | [Solution](leetcode/591.%20Tag%20Validator)
