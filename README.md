@@ -398,6 +398,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 622 | Design Circular Queue | Medium | [Solution](leetcode/622.%20Design%20Circular%20Queue)
 627 | Swap Salary | Easy | [Solution](leetcode/627.%20Swap%20Salary)
 629 | K Inverse Pairs Array | Hard | [Solution](leetcode/629.%20K%20Inverse%20Pairs%20Array)
+603 | Consecutive Available Seats | Easy | [Solution](leetcode/603.%20Consecutive%20Available%20Seats)
 636 | Exclusive Time of Functions | Medium | [Solution](leetcode/636.%20Exclusive%20Time%20of%20Functions)
 637 | Average of Levels in Binary Tree | Easy | [Solution](leetcode/637.%20Average%20of%20Levels%20in%20Binary%20Tree)
 638 | Shopping Offers | Medium | [Solution](leetcode/638.%20Shopping%20Offers)
