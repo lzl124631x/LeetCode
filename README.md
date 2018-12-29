@@ -422,6 +422,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 700 | Search in a Binary Search Tree | Easy | [Solution](leetcode/700.%20Search%20in%20a%20Binary%20Search%20Tree)
 701 | Insert into a Binary Search Tree | Medium | [Solution](leetcode/701.%20Insert%20into%20a%20Binary%20Search%20Tree)
 703 | Kth Largest Element in a Stream | Easy | [Solution](leetcode/703.%20Kth%20Largest%20Element%20in%20a%20Stream)
+704 | Binary Search | Easy | [Solution](leetcode/704.%20Binary%20Search)
 705 | Design HashSet | Easy | [Solution](leetcode/705.%20Design%20HashSet)
 707 | Design Linked List | Easy | [Solution](leetcode/707.%20Design%20Linked%20List)
 709 | To Lower Case | Easy | [Solution](leetcode/709.%20To%20Lower%20Case)
