@@ -391,6 +391,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 616 | Add Bold Tag in String | Medium | [Solution](leetcode/616.%20Add%20Bold%20Tag%20in%20String)
 616 | Add Bold Tag in String | Medium | [Solution](leetcode/616.%20Add%20Bold%20Tag%20in%20String)
 617 | Merge Two Binary Trees | Easy | [Solution](leetcode/617.%20Merge%20Two%20Binary%20Trees)
+620 | Not Boring Movies | Easy | [Solution](leetcode/620.%20Not%20Boring%20Movies)
 622 | Design Circular Queue | Medium | [Solution](leetcode/622.%20Design%20Circular%20Queue)
 627 | Swap Salary | Easy | [Solution](leetcode/627.%20Swap%20Salary)
 629 | K Inverse Pairs Array | Hard | [Solution](leetcode/629.%20K%20Inverse%20Pairs%20Array)
