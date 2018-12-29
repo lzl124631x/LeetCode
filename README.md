@@ -410,6 +410,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 638 | Shopping Offers | Medium | [Solution](leetcode/638.%20Shopping%20Offers)
 643 | Maximum Average Subarray I | Easy | [Solution](leetcode/643.%20Maximum%20Average%20Subarray%20I)
 653 | Two Sum IV - Input is a BST | Easy | [Solution](leetcode/653.%20Two%20Sum%20IV%20-%20Input%20is%20a%20BST)
+654 | Maximum Binary Tree | Medium | [Solution](leetcode/654.%20Maximum%20Binary%20Tree)
 657 | Robot Return to Origin | Easy | [Solution](leetcode/657.%20Robot%20Return%20to%20Origin)
 659 | Split Array into Consecutive Subsequences | Medium | [Solution](leetcode/659.%20Split%20Array%20into%20Consecutive%20Subsequences)
 662 | Maximum Width of Binary Tree | Medium | [Solution](leetcode/662.%20Maximum%20Width%20of%20Binary%20Tree)
