@@ -138,6 +138,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 169 | Majority Element | Easy |
 173 | Binary Search Tree Iterator | Medium |
 174 | Dungeon Game | Hard | [Solution](leetcode/174.%20Dungeon%20Game)
+182 | Duplicate Emails | Easy | [Solution](leetcode/182.%20Duplicate%20Emails)
 188 | Best Time to Buy and Sell Stock IV | Hard |
 190 | Reverse Bits | Easy |
 195 | Tenth Line | Easy | [Solution](leetcode/195.%20Tenth%20Line)
