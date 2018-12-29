@@ -167,6 +167,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 239 | Sliding Window Maximum | Hard |
 240 | Search a 2D Matrix II | Medium |
 241 | Different Ways to Add Parentheses | Medium | [Solution](leetcode/241.%20Different%20Ways%20to%20Add%20Parentheses)
+243 | Shortest Word Distance | Easy | [Solution](leetcode/243.%20Shortest%20Word%20Distance)
 244 | Shortest Word Distance II | Medium | [Solution](leetcode/244.%20Shortest%20Word%20Distance%20II)
 247 | Strobogrammatic Number II | Medium | [Solution](leetcode/247.%20Strobogrammatic%20Number%20II)
 257 | Binary Tree Paths | Easy |
