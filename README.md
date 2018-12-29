@@ -446,6 +446,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 811 | Subdomain Visit Count | Easy | [Solution](leetcode/811.%20Subdomain%20Visit%20Count)
 817 | Linked List Components | Medium | [Solution](leetcode/817.%20Linked%20List%20Components)
 819 | Most Common Word | Easy | [Solution](leetcode/819.%20Most%20Common%20Word)
+821 | Shortest Distance to a Character | Easy | [Solution](leetcode/821.%20Shortest%20Distance%20to%20a%20Character)
 824 | Goat Latin | Easy | [Solution](leetcode/824.%20Goat%20Latin) 
 828 | Unique Letter String | Hard | [Solution](leetcode/828.%20Unique%20Letter%20String)
 832 | Flipping an Image | Easy | [Solution](leetcode/832.%20Flipping%20an%20Image)
