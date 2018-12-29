@@ -391,6 +391,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 604 | Design Compressed String Iterator | Easy | [Solution](leetcode/604.%20Design%20Compressed%20String%20Iterator)
 605 | Can Place Flowers | Easy | [Solution](leetcode/605.%20Can%20Place%20Flowers)
 606 | Construct String from Binary Tree | Easy | [Solution](leetcode/606.%20Construct%20String%20from%20Binary%20Tree)
+607 | Sales Person | Easy | [Solution](leetcode/607.%20Sales%20Person)
 609 | Find Duplicate File in System | Medium | [Solution](leetcode/609.%20Find%20Duplicate%20File%20in%20System)
 610 | Triangle Judgement | Easy | [Solution](leetcode/610.%20Triangle%20Judgement)
 611 | Valid Triangle Number | Medium | [Solution](leetcode/611.%20Valid%20Triangle%20Number)
