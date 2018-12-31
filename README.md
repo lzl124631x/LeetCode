@@ -472,6 +472,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 819 | Most Common Word | Easy | [Solution](leetcode/819.%20Most%20Common%20Word)
 821 | Shortest Distance to a Character | Easy | [Solution](leetcode/821.%20Shortest%20Distance%20to%20a%20Character)
 824 | Goat Latin | Easy | [Solution](leetcode/824.%20Goat%20Latin) 
+825 | Friends Of Appropriate Ages | Medium | [Solution](leetcode/825.%20Friends%20Of%20Appropriate%20Ages)
 828 | Unique Letter String | Hard | [Solution](leetcode/828.%20Unique%20Letter%20String)
 832 | Flipping an Image | Easy | [Solution](leetcode/832.%20Flipping%20an%20Image)
 835 | Image Overlap | Medium | [Solution](leetcode/835.%20Image%20Overlap)
