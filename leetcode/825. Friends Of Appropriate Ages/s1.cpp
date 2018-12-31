@@ -5,8 +5,7 @@
 class Solution {
 private:
     bool request(int A, int B) {
-        return !(B <= .5 * A + 7
-                || B > A);
+        return !(B <= .5 * A + 7 || B > A);
     }
 public:
     int numFriendRequests(vector<int>& ages) {
