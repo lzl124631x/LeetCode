@@ -311,7 +311,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 462 | Minimum Moves to Equal Array Elements II | Medium |
 463 | Island Perimeter | Easy | [Solution](leetcode/463.%20Island%20Perimeter)
 464 | Can I Win | Medium |
-466 | Count The Repetitions | Hard |
+466 | Count The Repetitions | Hard | [Solution](leetcode/466.%20Count%20The%20Repetitions)
 467 | Unique Substrings in Wraparound String | Medium |
 468 | Validate IP Address | Medium |
 472 | Concatenated Words | Hard | [Solution](leetcode/472.%20Concatenated%20Words)
