@@ -459,6 +459,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 783 | Minimum Distance Between BST Nodes | Easy | [Solution](leetcode/783.%20Minimum%20Distance%20Between%20BST%20Nodes)
 784 | Letter Case Permutation | Easy | [Solution](leetcode/784.%20Letter%20Case%20Permutation)
 788 | Rotated Digits | Easy | [Solution](leetcode/788.%20Rotated%20Digits)
+791 | Custom Sort String | Medium | [Solution](leetcode/791.%20Custom%20Sort%20String)
 794 | Valid Tic-Tac-Toe State | Medium | [Solution](leetcode/794.%20Valid%20Tic-Tac-Toe%20State)
 800 | Similar RGB Color | Easy | [Solution](leetcode/800.%20Similar%20RGB%20Color)
 804 | Unique Morse Code Words | Easy | [Solution](leetcode/804.%20Unique%20Morse%20Code%20Words)
