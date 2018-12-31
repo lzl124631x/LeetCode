@@ -182,6 +182,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 271 | Encode and Decode Strings | Medium | [Solution](leetcode/271.%20Encode%20and%20Decode%20Strings)
 278 | First Bad Version | Easy |
 279 | Perfect Squares | Medium |
+280 | Wiggle Sort | Medium | [Solution](leetcode/280.%20Wiggle%20Sort)
 285 | Inorder Successor in BST | Medium | [Solution](leetcode/285.%20Inorder%20Successor%20in%20BST)
 293 | Flip Game | Easy | [Solution](leetcode/293.%20Flip%20Game)
 297 | Serialize and Deserialize Binary Tree | Hard |
