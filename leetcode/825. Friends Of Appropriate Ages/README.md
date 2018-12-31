@@ -76,7 +76,6 @@ public:
                 ans += cnts[i] * cnts[j];
                 if (i == j) ans -= cnts[i];
             }
-                if (request(j + 1, i + 1)) ans += cnts[i] * cnts[j];
         }
         return ans;
     }
