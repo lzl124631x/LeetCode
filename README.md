@@ -416,6 +416,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 657 | Robot Return to Origin | Easy | [Solution](leetcode/657.%20Robot%20Return%20to%20Origin)
 659 | Split Array into Consecutive Subsequences | Medium | [Solution](leetcode/659.%20Split%20Array%20into%20Consecutive%20Subsequences)
 662 | Maximum Width of Binary Tree | Medium | [Solution](leetcode/662.%20Maximum%20Width%20of%20Binary%20Tree)
+663 | Equal Tree Partition | Medium | [Solution](leetcode/663.%20Equal%20Tree%20Partition)
 666 | Path Sum IV | Medium | [Solution](leetcode/666.%20Path%20Sum%20IV)
 669 | Trim a Binary Search Tree | Easy | [Solution](leetcode/669.%20Trim%20a%20Binary%20Search%20Tree)
 670 | Maximum Swap | Medium | [Solution](leetcode/670.%20Maximum%20Swap)
