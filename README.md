@@ -371,6 +371,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 554 | Brick Wall | Medium |
 556 | Next Greater Element III | Medium |
 557 | Reverse Words in a String III | Easy |
+558 | Quad Tree Intersection | Easy | [Solution](leetcode/558.%20Quad%20Tree%20Intersection)
 559 | Maximum Depth of N-ary Tree | Easy | [Solution](leetcode/559.%20Maximum%20Depth%20of%20N-ary%20Tree)
 561 | Array Partition I | Easy |
 562 | Longest Line of Consecutive One in Matrix | Medium |
