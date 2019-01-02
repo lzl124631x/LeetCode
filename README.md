@@ -507,6 +507,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 896 | Monotonic Array | Easy | [Solution](leetcode/896.%20Monotonic%20Array)
 899 | Orderly Queue | Hard | [Solution](leetcode/899.%20Orderly%20Queue)
 905 | Sort Array By Parity | Easy | [Solution](leetcode/905.%20Sort%20Array%20By%20Parity)
+906 | Super Palindromes | Hard | [Solution](leetcode/906.%20Super%20Palindromes)
 908 | Smallest Range I | Easy | [Solution](leetcode/908.%20Smallest%20Range%20I)
 911 | Online Election | Medium | [Solution](leetcode/911.%20Online%20Election)
 914 | X of a Kind in a Deck of Cards | Easy | [Solution](leetcode/914.%20X%20of%20a%20Kind%20in%20a%20Deck%20of%20Cards)
