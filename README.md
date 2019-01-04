@@ -136,7 +136,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 166 | Fraction to Recurring Decimal | Medium |
 167 | Two Sum II - Input array is sorted | Medium |
 169 | Majority Element | Easy |
-173 | Binary Search Tree Iterator | Medium |
+173 | Binary Search Tree Iterator | Medium | [Solution](leetcode/173.%20Binary%20Search%20Tree%20Iterator)
 174 | Dungeon Game | Hard | [Solution](leetcode/174.%20Dungeon%20Game)
 182 | Duplicate Emails | Easy | [Solution](leetcode/182.%20Duplicate%20Emails)
 188 | Best Time to Buy and Sell Stock IV | Hard |

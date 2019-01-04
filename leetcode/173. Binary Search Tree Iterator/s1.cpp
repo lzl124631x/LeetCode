@@ -1,42 +1,27 @@
-/**
- * Definition for binary tree
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
+// OJ: https://leetcode.com/problems/binary-search-tree-iterator/
+// Author: github.com/lzl124631x
+// Time: O(1) amortized
+// Space: O(logN)
 class BSTIterator {
 private:
     stack<TreeNode*> s;
-    void pushNode(TreeNode *root) {
-        while (root) {
-            s.push(root);
-            root = root->left;
+    void pushNodes(TreeNode *node) {
+        while (node) {
+            s.push(node);
+            node = node->left;
         }
     }
 public:
-    BSTIterator(TreeNode *root) {
-        pushNode(root);
+    BSTIterator(TreeNode* root) {
+        pushNodes(root);
     }
-
-    /** @return whether we have a next smallest number */
-    bool hasNext() {
-        return !s.empty();
-    }
-
-    /** @return the next smallest number */
     int next() {
-        TreeNode *root = s.top();
+        auto node = s.top();
         s.pop();
-        pushNode(root->right);
-        return root->val;
+        if (node->right) pushNodes(node->right);
+        return node->val;
+    }
+    bool hasNext() {
+        return s.size();
     }
 };
-
-/**
- * Your BSTIterator will be called like this:
- * BSTIterator i = BSTIterator(root);
- * while (i.hasNext()) cout << i.next();
- */
