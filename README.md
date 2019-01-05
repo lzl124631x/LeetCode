@@ -318,7 +318,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 473 | Matchsticks to Square | Medium |
 474 | Ones and Zeroes | Medium |
 475 | Heaters | Easy |
-476 | Number Complement | Easy |
+476 | Number Complement | Easy | [Solution](leetcode/476.%20Number%20Complement)
 477 | Total Hamming Distance | Medium |
 480 | Sliding Window Median | Hard |
 481 | Magical String | Medium |
