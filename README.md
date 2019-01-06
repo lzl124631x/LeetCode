@@ -548,6 +548,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 968 | Binary Tree Cameras | Hard | [Solution](leetcode/968.%20Binary%20Tree%20Cameras)
 969 | Pancake Sorting | Medium | [Solution](leetcode/969.%20Pancake%20Sorting)
 970 | Powerful Integers | Easy | [Solution](leetcode/970.%20Powerful%20Integers)
+971 | Flip Binary Tree To Match Preorder Traversal | Medium | [Solution](leetcode/971.%20Flip%20Binary%20Tree%20To%20Match%20Preorder%20Traversal)
 
 # License
 
