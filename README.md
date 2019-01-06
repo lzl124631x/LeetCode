@@ -546,6 +546,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 961 | N-Repeated Element in Size 2N Array | Easy | [Solution](leetcode/961.%20N-Repeated%20Element%20in%20Size%202N%20Array)
 962 | Maximum Width Ramp | Medium | [Solution](leetcode/962.%20Maximum%20Width%20Ramp)
 968 | Binary Tree Cameras | Hard | [Solution](leetcode/968.%20Binary%20Tree%20Cameras)
+969 | Pancake Sorting | Medium | [Solution](leetcode/969.%20Pancake%20Sorting)
 970 | Powerful Integers | Easy | [Solution](leetcode/970.%20Powerful%20Integers)
 
 # License
