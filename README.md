@@ -32,6 +32,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 25 | Reverse Nodes in k-Group | Hard |
 26 | Remove Duplicates from Sorted Array | Easy |
 27 | Remove Element | Easy |
+29 | Divide Two Integers | Medium | [Solution](leetcode/29.%20Divide%20Two%20Integers)
 30 | Substring with Concatenation of All Words | Hard |
 31 | Next Permutation | Medium |
 32 | Longest Valid Parentheses | Hard |
