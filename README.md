@@ -477,6 +477,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 824 | Goat Latin | Easy | [Solution](leetcode/824.%20Goat%20Latin) 
 825 | Friends Of Appropriate Ages | Medium | [Solution](leetcode/825.%20Friends%20Of%20Appropriate%20Ages)
 828 | Unique Letter String | Hard | [Solution](leetcode/828.%20Unique%20Letter%20String)
+829 | Consecutive Numbers Sum | Hard | [Solution](leetcode/829.%20Consecutive%20Numbers%20Sum)
 832 | Flipping an Image | Easy | [Solution](leetcode/832.%20Flipping%20an%20Image)
 835 | Image Overlap | Medium | [Solution](leetcode/835.%20Image%20Overlap)
 836 | Rectangle Overlap | Easy | [Solution](leetcode/836.%20Rectangle%20Overlap)
