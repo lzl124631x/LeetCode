@@ -67,7 +67,7 @@ public:
 
 ## Solution 2.
 
-Replace all 0s with 1s, and now the question becomes finding the longest contiguous array that sums up to 0. 
+Replace all `0`s with `-1`s, and now the question becomes finding the longest contiguous array that sums up to 0. 
 
 Use `unordered_map<int, int> m` to store the mapping between the running sum and the index of its first occurrence. `m` initially holds `{ 0, -1 }` which means a pseudo running sum `0` at index `-1`.
 
@@ -83,18 +83,16 @@ For each running sum,
 // Ref: https://discuss.leetcode.com/topic/79906/easy-java-o-n-solution-presum-hashmap/
 class Solution {
 public:
-  int findMaxLength(vector<int>& nums) {
-    for (int i = 0; i < nums.size(); ++i) {
-      if (!nums[i]) nums[i] = -1;
+    int findMaxLength(vector<int>& nums) {
+        for (int &n : nums) if (!n) n = -1;
+        unordered_map<int, int> m {{ 0, -1 }};
+        int ans = 0, sum = 0;
+        for (int i = 0; i < nums.size(); ++i) {
+            sum += nums[i];
+            if (m.find(sum) == m.end()) m[sum] = i;
+            else ans = max(ans, i - m[sum]);
+        }
+        return ans;
     }
-    unordered_map<int, int> m {{ 0, -1 }};
-    int ans = 0, sum = 0;
-    for (int i = 0; i < nums.size(); ++i) {
-      sum += nums[i];
-      if (m.count(sum)) ans = max(ans, i - m[sum]);
-      else m[sum] = i;
-    }
-    return ans;
-  }
 };
 ```
