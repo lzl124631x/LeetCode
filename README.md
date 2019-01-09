@@ -197,7 +197,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 310 | Minimum Height Trees | Medium | [Solution](leetcode/310.%20Minimum%20Height%20Trees)
 313 | Super Ugly Number | Medium |
 315 | Count of Smaller Numbers After Self | Hard |
-316 | Remove Duplicate Letters | Hard |
+316 | Remove Duplicate Letters | Hard | [Solution](leetcode/316.%20Remove%20Duplicate%20Letters)
 321 | Create Maximum Number | Hard |
 322 | Coin Change | Medium |
 324 | Wiggle Sort II | Medium |
