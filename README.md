@@ -428,6 +428,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 682 | Baseball Game | Easy | [Solution](leetcode/682.%20Baseball%20Game)
 684 | Redundant Connection | Medium | [Solution](leetcode/684.%20Redundant%20Connection)
 688 | Knight Probability in Chessboard | Medium | [Solution](leetcode/688.%20Knight%20Probability%20in%20Chessboard)
+690 | Employee Importance | Easy | [Solution](leetcode/690.%20Employee%20Importance)
 693 | Binary Number with Alternating Bits | Easy | [Solution](leetcode/693.%20Binary%20Number%20with%20Alternating%20Bits)
 694 | Number of Distinct Islands | Medium | [Solution](leetcode/694.%20Number%20of%20Distinct%20Islands)
 700 | Search in a Binary Search Tree | Easy | [Solution](leetcode/700.%20Search%20in%20a%20Binary%20Search%20Tree)
