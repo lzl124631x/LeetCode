@@ -343,6 +343,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 504 | Base 7 | Easy |
 506 | Relative Ranks | Easy |
 508 | Most Frequent Subtree Sum | Medium |
+509 | Fibonacci Number | Easy | [Solution](leetcode/509.%20Fibonacci%20Number)
 513 | Find Bottom Left Tree Value | Medium |
 515 | Find Largest Value in Each Tree Row | Medium |
 516 | Longest Palindromic Subsequence | Medium |
