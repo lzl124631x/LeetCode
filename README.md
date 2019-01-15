@@ -144,7 +144,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 190 | Reverse Bits | Easy |
 195 | Tenth Line | Easy | [Solution](leetcode/195.%20Tenth%20Line)
 198 | House Robber | Easy |
-202 | Happy Number | Easy |
+202 | Happy Number | Easy | [Solution](leetcode/202.%20Happy%20Number)
 204 | Count Primes | Easy |
 206 | Reverse Linked List | Easy | [Solution](leetcode/206.%20Reverse%20Linked%20List)
 207 | Course Schedule | Medium |
