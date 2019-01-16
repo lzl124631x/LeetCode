@@ -369,7 +369,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 542 | 01 Matrix | Medium |
 543 | Diameter of Binary Tree | Easy |
 544 | Output Contest Matches | Medium | [Solution](leetcode/544.%20Output%20Contest%20Matches)
-547 | Friend Circles | Medium |
+547 | Friend Circles | Medium | [Solution](leetcode/547.%20Friend%20Circles)
 549 | Binary Tree Longest Consecutive Sequence II | Medium |
 652 | Find Duplicate Subtrees | Medium | [Solution](leetcode/652.%20Find%20Duplicate%20Subtrees)
 554 | Brick Wall | Medium |
