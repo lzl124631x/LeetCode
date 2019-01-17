@@ -482,6 +482,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 821 | Shortest Distance to a Character | Easy | [Solution](leetcode/821.%20Shortest%20Distance%20to%20a%20Character)
 824 | Goat Latin | Easy | [Solution](leetcode/824.%20Goat%20Latin) 
 825 | Friends Of Appropriate Ages | Medium | [Solution](leetcode/825.%20Friends%20Of%20Appropriate%20Ages)
+826 | Most Profit Assigning Work | Medium | [Solution](leetcode/826.%20Most%20Profit%20Assigning%20Work)
 828 | Unique Letter String | Hard | [Solution](leetcode/828.%20Unique%20Letter%20String)
 829 | Consecutive Numbers Sum | Hard | [Solution](leetcode/829.%20Consecutive%20Numbers%20Sum)
 832 | Flipping an Image | Easy | [Solution](leetcode/832.%20Flipping%20an%20Image)
