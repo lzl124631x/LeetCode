@@ -372,7 +372,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 547 | Friend Circles | Medium | [Solution](leetcode/547.%20Friend%20Circles)
 549 | Binary Tree Longest Consecutive Sequence II | Medium |
 652 | Find Duplicate Subtrees | Medium | [Solution](leetcode/652.%20Find%20Duplicate%20Subtrees)
-554 | Brick Wall | Medium |
+554 | Brick Wall | Medium | [Solution](leetcode/554.%20Brick%20Wall)
 556 | Next Greater Element III | Medium |
 557 | Reverse Words in a String III | Easy |
 558 | Quad Tree Intersection | Easy | [Solution](leetcode/558.%20Quad%20Tree%20Intersection)

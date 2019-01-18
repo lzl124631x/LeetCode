@@ -1,7 +1,7 @@
 // OJ: https://leetcode.com/problems/brick-wall
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(K) (K is # of unique numbers)
+// Space: O(W) where W is the width of wall
 class Solution {
 public:
   int leastBricks(vector<vector<int>>& wall) {
