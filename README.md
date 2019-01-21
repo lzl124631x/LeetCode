@@ -56,7 +56,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 58 | Length of Last Word | Easy |
 59 | Spiral Matrix II | Medium |
 61 | Rotate List | Medium |
-62 | Unique Paths | Medium |
+62 | Unique Paths | Medium | [Solution](leetcode/62.%20Unique%20Paths)
 63 | Unique Paths II | Medium | [Solution](leetcode/63.%20Unique%20Paths%20II)
 66 | Plus One | Easy |
 67 | Add Binary | Easy |
