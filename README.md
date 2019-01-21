@@ -55,6 +55,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 55 | Jump Game | Medium | [Solution](leetcode/55.%20Jump%20Game)
 58 | Length of Last Word | Easy |
 59 | Spiral Matrix II | Medium |
+60 | Permutation Sequence | Medium | [Solution](leetcode/60.%20Permutation%20Sequence)
 61 | Rotate List | Medium |
 62 | Unique Paths | Medium | [Solution](leetcode/62.%20Unique%20Paths)
 63 | Unique Paths II | Medium | [Solution](leetcode/63.%20Unique%20Paths%20II)
