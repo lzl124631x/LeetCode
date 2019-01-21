@@ -67,6 +67,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 74 | Search a 2D Matrix | Medium |
 75 | Sort Colors | Medium |
 76 | Minimum Window Substring | Hard | [Solution](leetcode/76.%20Minimum%20Window%20Substring)
+77 | Combinations | Medium | [Solution](leetcode/77.%20Combinations)
 78 | Subsets | Medium | [Solution](leetcode/78.%20Subsets)
 79 | Word Search | Medium |
 80 | Remove Duplicates from Sorted Array II | Medium |
