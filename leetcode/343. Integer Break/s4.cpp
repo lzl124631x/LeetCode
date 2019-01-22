@@ -1,4 +1,8 @@
-// https://discuss.leetcode.com/topic/45341/a-simple-explanation-of-the-math-part-and-a-o-n-solution
+// OJ: https://leetcode.com/problems/integer-break/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://discuss.leetcode.com/topic/45341/a-simple-explanation-of-the-math-part-and-a-o-n-solution
 class Solution {
 public:
     int integerBreak(int n) {

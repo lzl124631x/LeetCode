@@ -217,7 +217,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 339 | Nested List Weight Sum | Easy | [Solution](leetcode/339.%20Nested%20List%20Weight%20Sum)
 341 | Flatten Nested List Iterator | Medium |
 342 | Power of Four | Easy |
-343 | Integer Break | Medium |
+343 | Integer Break | Medium | [Solution](leetcode/343.%20Integer%20Break)
 344 | Reverse String | Easy | [Solution](leetcode/344.%20Reverse%20String)
 344 | Reverse String | Easy |
 345 | Reverse Vowels of a String | Easy | [Solution](leetcode/345.%20Reverse%20Vowels%20of%20a%20String)
