@@ -184,7 +184,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 270 | Closest Binary Search Tree Value | Easy | [Solution](leetcode/270.%20Closest%20Binary%20Search%20Tree%20Value)
 271 | Encode and Decode Strings | Medium | [Solution](leetcode/271.%20Encode%20and%20Decode%20Strings)
 278 | First Bad Version | Easy |
-279 | Perfect Squares | Medium |
+279 | Perfect Squares | Medium | [Solution](leetcode/279.%20Perfect%20Squares)
 280 | Wiggle Sort | Medium | [Solution](leetcode/280.%20Wiggle%20Sort)
 285 | Inorder Successor in BST | Medium | [Solution](leetcode/285.%20Inorder%20Successor%20in%20BST)
 293 | Flip Game | Easy | [Solution](leetcode/293.%20Flip%20Game)
