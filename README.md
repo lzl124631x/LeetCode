@@ -375,7 +375,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 544 | Output Contest Matches | Medium | [Solution](leetcode/544.%20Output%20Contest%20Matches)
 547 | Friend Circles | Medium | [Solution](leetcode/547.%20Friend%20Circles)
 549 | Binary Tree Longest Consecutive Sequence II | Medium |
-652 | Find Duplicate Subtrees | Medium | [Solution](leetcode/652.%20Find%20Duplicate%20Subtrees)
+553 | Optimal Division | Medium | [Solution](leetcode/553.%20Optimal%20Division)
 554 | Brick Wall | Medium | [Solution](leetcode/554.%20Brick%20Wall)
 556 | Next Greater Element III | Medium |
 557 | Reverse Words in a String III | Easy |
@@ -419,6 +419,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 637 | Average of Levels in Binary Tree | Easy | [Solution](leetcode/637.%20Average%20of%20Levels%20in%20Binary%20Tree)
 638 | Shopping Offers | Medium | [Solution](leetcode/638.%20Shopping%20Offers)
 643 | Maximum Average Subarray I | Easy | [Solution](leetcode/643.%20Maximum%20Average%20Subarray%20I)
+652 | Find Duplicate Subtrees | Medium | [Solution](leetcode/652.%20Find%20Duplicate%20Subtrees)
 653 | Two Sum IV - Input is a BST | Easy | [Solution](leetcode/653.%20Two%20Sum%20IV%20-%20Input%20is%20a%20BST)
 654 | Maximum Binary Tree | Medium | [Solution](leetcode/654.%20Maximum%20Binary%20Tree)
 655 | Print Binary Tree | Medium | [Solution](leetcode/655.%20Print%20Binary%20Tree)
