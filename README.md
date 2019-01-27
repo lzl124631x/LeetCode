@@ -8,382 +8,382 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 
 \# | Title | Difficulty | Solution
 ---|---|---|---
-1 | Two Sum | Easy |
-2 | Add Two Numbers | Medium |
-3 | Longest Substring Without Repeating Characters | Medium |
-6 | ZigZag Conversion | Easy |
-7 | Reverse Integer | Easy |
+1 | Two Sum | Easy | [Solution](leetcode/1.%20Two%20Sum)
+2 | Add Two Numbers | Medium | [Solution](leetcode/2.%20Add%20Two%20Numbers)
+3 | Longest Substring Without Repeating Characters | Medium | [Solution](leetcode/3.%20Longest%20Substring%20Without%20Repeating%20Characters)
+6 | ZigZag Conversion | Easy | [Solution](leetcode/6.%20ZigZag%20Conversion)
+7 | Reverse Integer | Easy | [Solution](leetcode/7.%20Reverse%20Integer)
 9 | Palindrome Number | Easy | [Solution](leetcode/9.%20Palindrome%20Number)
-10 | Regular Expression Matching | Hard |
-11 | Container With Most Water | Medium |
-12 | Integer to Roman | Medium |
-13 | Roman to Integer | Easy |
-14 | Longest Common Prefix | Easy |
-15 | 3Sum | Medium |
-16 | 3Sum Closest | Medium |
-17 | Letter Combinations of a Phone Number | Medium |
-18 | 4Sum | Medium |
-19 | Remove Nth Node From End of List | Easy |
-20 | Valid Parentheses | Easy |
-21 | Merge Two Sorted Lists | Easy |
-22 | Generate Parentheses | Medium |
-23 | Merge k Sorted Lists | Hard |
-24 | Swap Nodes in Pairs | Easy |
-25 | Reverse Nodes in k-Group | Hard |
-26 | Remove Duplicates from Sorted Array | Easy |
-27 | Remove Element | Easy |
+10 | Regular Expression Matching | Hard | [Solution](leetcode/10.%20Regular%20Expression%20Matching)
+11 | Container With Most Water | Medium | [Solution](leetcode/11.%20Container%20With%20Most%20Water)
+12 | Integer to Roman | Medium | [Solution](leetcode/12.%20Integer%20to%20Roman)
+13 | Roman to Integer | Easy | [Solution](leetcode/13.%20Roman%20to%20Integer)
+14 | Longest Common Prefix | Easy | [Solution](leetcode/14.%20Longest%20Common%20Prefix)
+15 | 3Sum | Medium | [Solution](leetcode/15.%203Sum)
+16 | 3Sum Closest | Medium | [Solution](leetcode/16.%203Sum%20Closest)
+17 | Letter Combinations of a Phone Number | Medium | [Solution](leetcode/17.%20Letter%20Combinations%20of%20a%20Phone%20Number)
+18 | 4Sum | Medium | [Solution](leetcode/18.%204Sum)
+19 | Remove Nth Node From End of List | Easy | [Solution](leetcode/19.%20Remove%20Nth%20Node%20From%20End%20of%20List)
+20 | Valid Parentheses | Easy | [Solution](leetcode/20.%20Valid%20Parentheses)
+21 | Merge Two Sorted Lists | Easy | [Solution](leetcode/21.%20Merge%20Two%20Sorted%20Lists)
+22 | Generate Parentheses | Medium | [Solution](leetcode/22.%20Generate%20Parentheses)
+23 | Merge k Sorted Lists | Hard | [Solution](leetcode/23.%20Merge%20k%20Sorted%20Lists)
+24 | Swap Nodes in Pairs | Easy | [Solution](leetcode/24.%20Swap%20Nodes%20in%20Pairs)
+25 | Reverse Nodes in k-Group | Hard | [Solution](leetcode/25.%20Reverse%20Nodes%20in%20k-Group)
+26 | Remove Duplicates from Sorted Array | Easy | [Solution](leetcode/26.%20Remove%20Duplicates%20from%20Sorted%20Array)
+27 | Remove Element | Easy | [Solution](leetcode/27.%20Remove%20Element)
 29 | Divide Two Integers | Medium | [Solution](leetcode/29.%20Divide%20Two%20Integers)
-30 | Substring with Concatenation of All Words | Hard |
-31 | Next Permutation | Medium |
-32 | Longest Valid Parentheses | Hard |
-33 | Search in Rotated Sorted Array | Hard |
-34 | Search for a Range | Medium |
-35 | Search Insert Position | Easy |
-36 | Valid Sudoku | Easy |
-38 | Count and Say | Easy |
-39 | Combination Sum | Medium |
-40 | Combination Sum II | Medium |
-42 | Trapping Rain Water | Hard |
-43 | Multiply Strings | Medium |
+30 | Substring with Concatenation of All Words | Hard | [Solution](leetcode/30.%20Substring%20with%20Concatenation%20of%20All%20Words)
+31 | Next Permutation | Medium | [Solution](leetcode/31.%20Next%20Permutation)
+32 | Longest Valid Parentheses | Hard | [Solution](leetcode/32.%20Longest%20Valid%20Parentheses)
+33 | Search in Rotated Sorted Array | Hard | [Solution](leetcode/33.%20Search%20in%20Rotated%20Sorted%20Array)
+34 | Search for a Range | Medium | [Solution](leetcode/34.%20Search%20for%20a%20Range)
+35 | Search Insert Position | Easy | [Solution](leetcode/35.%20Search%20Insert%20Position)
+36 | Valid Sudoku | Easy | [Solution](leetcode/36.%20Valid%20Sudoku)
+38 | Count and Say | Easy | [Solution](leetcode/38.%20Count%20and%20Say)
+39 | Combination Sum | Medium | [Solution](leetcode/39.%20Combination%20Sum)
+40 | Combination Sum II | Medium | [Solution](leetcode/40.%20Combination%20Sum%20II)
+42 | Trapping Rain Water | Hard | [Solution](leetcode/42.%20Trapping%20Rain%20Water)
+43 | Multiply Strings | Medium | [Solution](leetcode/43.%20Multiply%20Strings)
 45 | Jump Game II | Hard | [Solution](leetcode/45.%20Jump%20Game%20II)
-46 | Permutations | Medium |
-47 | Permutations II | Medium |
-48 | Rotate Image | Medium |
-49 | Group Anagrams | Medium |
-53 | Maximum Subarray | Medium |
-54 | Spiral Matrix | Medium |
+46 | Permutations | Medium | [Solution](leetcode/46.%20Permutations)
+47 | Permutations II | Medium | [Solution](leetcode/47.%20Permutations%20II)
+48 | Rotate Image | Medium | [Solution](leetcode/48.%20Rotate%20Image)
+49 | Group Anagrams | Medium | [Solution](leetcode/49.%20Group%20Anagrams)
+53 | Maximum Subarray | Medium | [Solution](leetcode/53.%20Maximum%20Subarray)
+54 | Spiral Matrix | Medium | [Solution](leetcode/54.%20Spiral%20Matrix)
 55 | Jump Game | Medium | [Solution](leetcode/55.%20Jump%20Game)
-58 | Length of Last Word | Easy |
-59 | Spiral Matrix II | Medium |
+58 | Length of Last Word | Easy | [Solution](leetcode/58.%20Length%20of%20Last%20Word)
+59 | Spiral Matrix II | Medium | [Solution](leetcode/59.%20Spiral%20Matrix%20II)
 60 | Permutation Sequence | Medium | [Solution](leetcode/60.%20Permutation%20Sequence)
-61 | Rotate List | Medium |
+61 | Rotate List | Medium | [Solution](leetcode/61.%20Rotate%20List)
 62 | Unique Paths | Medium | [Solution](leetcode/62.%20Unique%20Paths)
 63 | Unique Paths II | Medium | [Solution](leetcode/63.%20Unique%20Paths%20II)
-66 | Plus One | Easy |
-67 | Add Binary | Easy |
-69 | Sqrt(x) | Medium |
-70 | Climbing Stairs | Easy |
-71 | Simplify Path | Medium |
+66 | Plus One | Easy | [Solution](leetcode/66.%20Plus%20One)
+67 | Add Binary | Easy | [Solution](leetcode/67.%20Add%20Binary)
+69 | Sqrt(x) | Medium | [Solution](leetcode/69.%20Sqrt(x))
+70 | Climbing Stairs | Easy | [Solution](leetcode/70.%20Climbing%20Stairs)
+71 | Simplify Path | Medium | [Solution](leetcode/71.%20Simplify%20Path)
 72 | Edit Distance | Hard | [Solution](leetcode/72.%20Edit%20Distance)
-74 | Search a 2D Matrix | Medium |
-75 | Sort Colors | Medium |
+74 | Search a 2D Matrix | Medium | [Solution](leetcode/74.%20Search%20a%202D%20Matrix)
+75 | Sort Colors | Medium | [Solution](leetcode/75.%20Sort%20Colors)
 76 | Minimum Window Substring | Hard | [Solution](leetcode/76.%20Minimum%20Window%20Substring)
 77 | Combinations | Medium | [Solution](leetcode/77.%20Combinations)
 78 | Subsets | Medium | [Solution](leetcode/78.%20Subsets)
-79 | Word Search | Medium |
-80 | Remove Duplicates from Sorted Array II | Medium |
-81 | Search in Rotated Sorted Array II | Medium |
-82 | Remove Duplicates from Sorted List II | Medium |
-83 | Remove Duplicates from Sorted List | Easy |
-84 | Largest Rectangle in Histogram | Medium |
-85 | Maximal Rectangle | Hard |
-86 | Partition List | Medium |
+79 | Word Search | Medium | [Solution](leetcode/79.%20Word%20Search)
+80 | Remove Duplicates from Sorted Array II | Medium | [Solution](leetcode/80.%20Remove%20Duplicates%20from%20Sorted%20Array%20II)
+81 | Search in Rotated Sorted Array II | Medium | [Solution](leetcode/81.%20Search%20in%20Rotated%20Sorted%20Array%20II)
+82 | Remove Duplicates from Sorted List II | Medium | [Solution](leetcode/82.%20Remove%20Duplicates%20from%20Sorted%20List%20II)
+83 | Remove Duplicates from Sorted List | Easy | [Solution](leetcode/83.%20Remove%20Duplicates%20from%20Sorted%20List)
+84 | Largest Rectangle in Histogram | Medium | [Solution](leetcode/84.%20Largest%20Rectangle%20in%20Histogram)
+85 | Maximal Rectangle | Hard | [Solution](leetcode/85.%20Maximal%20Rectangle)
+86 | Partition List | Medium | [Solution](leetcode/86.%20Partition%20List)
 87 | Scramble String | Hard | [Solution](leetcode/87.%20Scramble%20String)
-88 | Merge Sorted Array | Easy |
-89 | Gray Code | Medium |
+88 | Merge Sorted Array | Easy | [Solution](leetcode/88.%20Merge%20Sorted%20Array)
+89 | Gray Code | Medium | [Solution](leetcode/89.%20Gray%20Code)
 90 | Subsets II | Medium | [Solution](leetcode/90.%20Subsets%20II)
 91 | Decode Ways | Medium | [Solution](leetcode/91.%20Decode%20Ways)
-92 | Reverse Linked List II | Medium |
+92 | Reverse Linked List II | Medium | [Solution](leetcode/92.%20Reverse%20Linked%20List%20II)
 93 | Restore IP Addresses | Medium | [Solution](leetcode/93.%20Restore%20IP%20Addresses)
-94 | Binary Tree Inorder Traversal | Medium |
+94 | Binary Tree Inorder Traversal | Medium | [Solution](leetcode/94.%20Binary%20Tree%20Inorder%20Traversal)
 95 | Unique Binary Search Trees II | Medium | [Solution](leetcode/95.%20Unique%20Binary%20Search%20Trees%20II)
-96 | Unique Binary Search Trees | Medium |
-98 | Validate Binary Search Tree | Medium |
-100 | Same Tree | Easy |
-101 | Symmetric Tree | Easy |
-102 | Binary Tree Level Order Traversal | Easy |
-103 | Binary Tree Zigzag Level Order Traversal | Medium |
-104 | Maximum Depth of Binary Tree | Easy |
-106 | Construct Binary Tree from Inorder and Postorder Traversal | Medium |
-107 | Binary Tree Level Order Traversal II | Easy |
-108 | Convert Sorted Array to Binary Search Tree | Easy |
-109 | Convert Sorted List to Binary Search Tree | Medium |
-110 | Balanced Binary Tree | Easy |
-111 | Minimum Depth of Binary Tree | Easy |
-112 | Path Sum | Easy |
-113 | Path Sum II | Medium |
-114 | Flatten Binary Tree to Linked List | Medium |
+96 | Unique Binary Search Trees | Medium | [Solution](leetcode/96.%20Unique%20Binary%20Search%20Trees)
+98 | Validate Binary Search Tree | Medium | [Solution](leetcode/98.%20Validate%20Binary%20Search%20Tree)
+100 | Same Tree | Easy | [Solution](leetcode/100.%20Same%20Tree)
+101 | Symmetric Tree | Easy | [Solution](leetcode/101.%20Symmetric%20Tree)
+102 | Binary Tree Level Order Traversal | Easy | [Solution](leetcode/102.%20Binary%20Tree%20Level%20Order%20Traversal)
+103 | Binary Tree Zigzag Level Order Traversal | Medium | [Solution](leetcode/103.%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal)
+104 | Maximum Depth of Binary Tree | Easy | [Solution](leetcode/104.%20Maximum%20Depth%20of%20Binary%20Tree)
+106 | Construct Binary Tree from Inorder and Postorder Traversal | Medium | [Solution](leetcode/106.%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal)
+107 | Binary Tree Level Order Traversal II | Easy | [Solution](leetcode/107.%20Binary%20Tree%20Level%20Order%20Traversal%20II)
+108 | Convert Sorted Array to Binary Search Tree | Easy | [Solution](leetcode/108.%20Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree)
+109 | Convert Sorted List to Binary Search Tree | Medium | [Solution](leetcode/109.%20Convert%20Sorted%20List%20to%20Binary%20Search%20Tree)
+110 | Balanced Binary Tree | Easy | [Solution](leetcode/110.%20Balanced%20Binary%20Tree)
+111 | Minimum Depth of Binary Tree | Easy | [Solution](leetcode/111.%20Minimum%20Depth%20of%20Binary%20Tree)
+112 | Path Sum | Easy | [Solution](leetcode/112.%20Path%20Sum)
+113 | Path Sum II | Medium | [Solution](leetcode/113.%20Path%20Sum%20II)
+114 | Flatten Binary Tree to Linked List | Medium | [Solution](leetcode/114.%20Flatten%20Binary%20Tree%20to%20Linked%20List)
 115 | Distinct Subsequences | Hard | [Solution](leetcode/115.%20Distinct%20Subsequences)
-116 | Populating Next Right Pointers in Each Node | Medium |
-117 | Populating Next Right Pointers in Each Node II | Medium |
-121 | Best Time to Buy and Sell Stock | Easy |
-122 | Best Time to Buy and Sell Stock II | Medium |
-123 | Best Time to Buy and Sell Stock III | Hard |
+116 | Populating Next Right Pointers in Each Node | Medium | [Solution](leetcode/116.%20Populating%20Next%20Right%20Pointers%20in%20Each%20Node)
+117 | Populating Next Right Pointers in Each Node II | Medium | [Solution](leetcode/117.%20Populating%20Next%20Right%20Pointers%20in%20Each%20Node%20II)
+121 | Best Time to Buy and Sell Stock | Easy | [Solution](leetcode/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock)
+122 | Best Time to Buy and Sell Stock II | Medium | [Solution](leetcode/122.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II)
+123 | Best Time to Buy and Sell Stock III | Hard | [Solution](leetcode/123.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III)
 125 | Valid Palindrome | Easy | [Solution](leetcode/125.%20Valid%20Palindrome)
-126 | Word Ladder II | Hard |
-127 | Word Ladder | Hard |
-129 | Sum Root to Leaf Numbers | Medium |
-130 | Surrounded Regions | Medium |
-131 | Palindrome Partitioning | Medium |
+126 | Word Ladder II | Hard | [Solution](leetcode/126.%20Word%20Ladder%20II)
+127 | Word Ladder | Hard | [Solution](leetcode/127.%20Word%20Ladder)
+129 | Sum Root to Leaf Numbers | Medium | [Solution](leetcode/129.%20Sum%20Root%20to%20Leaf%20Numbers)
+130 | Surrounded Regions | Medium | [Solution](leetcode/130.%20Surrounded%20Regions)
+131 | Palindrome Partitioning | Medium | [Solution](leetcode/131.%20Palindrome%20Partitioning)
 133 | Clone Graph | Medium | [Solution](leetcode/133.%20Clone%20Graph/)
-134 | Gas Station | Medium |
+134 | Gas Station | Medium | [Solution](leetcode/134.%20Gas%20Station)
 136 | Single Number | Easy | [Solution](leetcode/136.%20Single%20Number)
 137 | Single Number II | Medium | [Solution](leetcode/137.%20Single%20Number%20II)
-138 | Copy List with Random Pointer | Medium |
-139 | Word Break | Medium |
+138 | Copy List with Random Pointer | Medium | [Solution](leetcode/138.%20Copy%20List%20with%20Random%20Pointer)
+139 | Word Break | Medium | [Solution](leetcode/139.%20Word%20Break)
 140 | Word Break II | Hard | [Solution](leetcode/140.%20Word%20Break%20II)
-141 | Linked List Cycle | Easy |
-142 | Linked List Cycle II | Medium |
+141 | Linked List Cycle | Easy | [Solution](leetcode/141.%20Linked%20List%20Cycle)
+142 | Linked List Cycle II | Medium | [Solution](leetcode/142.%20Linked%20List%20Cycle%20II)
 143 | Reorder List | Medium | [Solution](leetcode/143.%20Reorder%20List)
-144 | Binary Tree Preorder Traversal | Medium |
-145 | Binary Tree Postorder Traversal | Hard |
+144 | Binary Tree Preorder Traversal | Medium | [Solution](leetcode/144.%20Binary%20Tree%20Preorder%20Traversal)
+145 | Binary Tree Postorder Traversal | Hard | [Solution](leetcode/145.%20Binary%20Tree%20Postorder%20Traversal)
 146 | LRU Cache | Hard | [Solution](leetcode/146.%20LRU%20Cache)
-147 | Insertion Sort List | Medium |
-148 | Sort List | Medium |
+147 | Insertion Sort List | Medium | [Solution](leetcode/147.%20Insertion%20Sort%20List)
+148 | Sort List | Medium | [Solution](leetcode/148.%20Sort%20List)
 149 | Max Points on a Line | Hard | [Solution](leetcode/149.%20Max%20Points%20on%20a%20Line)
-150 | Evaluate Reverse Polish Notation | Medium |
+150 | Evaluate Reverse Polish Notation | Medium | [Solution](leetcode/150.%20Evaluate%20Reverse%20Polish%20Notation)
 151 | Reverse Words in a String | Medium | [Solution](leetcode/151.%20Reverse%20Words%20in%20a%20String)
 152 | Maximum Product Subarray | Medium | [Solution](leetcode/152.%20Maximum%20Product%20Subarray)
-153 | Find Minimum in Rotated Sorted Array | Medium |
-154 | Find Minimum in Rotated Sorted Array II | Hard |
-164 | Maximum Gap | Hard |
-166 | Fraction to Recurring Decimal | Medium |
-167 | Two Sum II - Input array is sorted | Medium |
-169 | Majority Element | Easy |
+153 | Find Minimum in Rotated Sorted Array | Medium | [Solution](leetcode/153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array)
+154 | Find Minimum in Rotated Sorted Array II | Hard | [Solution](leetcode/154.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array%20II)
+164 | Maximum Gap | Hard | [Solution](leetcode/164.%20Maximum%20Gap)
+166 | Fraction to Recurring Decimal | Medium | [Solution](leetcode/166.%20Fraction%20to%20Recurring%20Decimal)
+167 | Two Sum II - Input array is sorted | Medium | [Solution](leetcode/167.%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted)
+169 | Majority Element | Easy | [Solution](leetcode/169.%20Majority%20Element)
 173 | Binary Search Tree Iterator | Medium | [Solution](leetcode/173.%20Binary%20Search%20Tree%20Iterator)
 174 | Dungeon Game | Hard | [Solution](leetcode/174.%20Dungeon%20Game)
 182 | Duplicate Emails | Easy | [Solution](leetcode/182.%20Duplicate%20Emails)
-188 | Best Time to Buy and Sell Stock IV | Hard |
-190 | Reverse Bits | Easy |
+188 | Best Time to Buy and Sell Stock IV | Hard | [Solution](leetcode/188.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV)
+190 | Reverse Bits | Easy | [Solution](leetcode/190.%20Reverse%20Bits)
 195 | Tenth Line | Easy | [Solution](leetcode/195.%20Tenth%20Line)
-198 | House Robber | Easy |
+198 | House Robber | Easy | [Solution](leetcode/198.%20House%20Robber)
 202 | Happy Number | Easy | [Solution](leetcode/202.%20Happy%20Number)
-204 | Count Primes | Easy |
+204 | Count Primes | Easy | [Solution](leetcode/204.%20Count%20Primes)
 206 | Reverse Linked List | Easy | [Solution](leetcode/206.%20Reverse%20Linked%20List)
-207 | Course Schedule | Medium |
-208 | Implement Trie (Prefix Tree) | Medium |
-210 | Course Schedule II | Medium |
-211 | Add and Search Word - Data structure design | Medium |
-212 | Word Search II | Hard |
-213 | House Robber II | Medium |
-214 | Shortest Palindrome | Hard |
-215 | Kth Largest Element in an Array | Medium |
-216 | Combination Sum III | Medium |
-218 | The Skyline Problem | Hard |
-221 | Maximal Square | Medium |
-222 | Count Complete Tree Nodes | Medium |
-223 | Rectangle Area | Medium |
+207 | Course Schedule | Medium | [Solution](leetcode/207.%20Course%20Schedule)
+208 | Implement Trie (Prefix Tree) | Medium | [Solution](leetcode/208.%20Implement%20Trie%20(Prefix%20Tree))
+210 | Course Schedule II | Medium | [Solution](leetcode/210.%20Course%20Schedule%20II)
+211 | Add and Search Word - Data structure design | Medium | [Solution](leetcode/211.%20Add%20and%20Search%20Word%20-%20Data%20structure%20design)
+212 | Word Search II | Hard | [Solution](leetcode/212.%20Word%20Search%20II)
+213 | House Robber II | Medium | [Solution](leetcode/213.%20House%20Robber%20II)
+214 | Shortest Palindrome | Hard | [Solution](leetcode/214.%20Shortest%20Palindrome)
+215 | Kth Largest Element in an Array | Medium | [Solution](leetcode/215.%20Kth%20Largest%20Element%20in%20an%20Array)
+216 | Combination Sum III | Medium | [Solution](leetcode/216.%20Combination%20Sum%20III)
+218 | The Skyline Problem | Hard | [Solution](leetcode/218.%20The%20Skyline%20Problem)
+221 | Maximal Square | Medium | [Solution](leetcode/221.%20Maximal%20Square)
+222 | Count Complete Tree Nodes | Medium | [Solution](leetcode/222.%20Count%20Complete%20Tree%20Nodes)
+223 | Rectangle Area | Medium | [Solution](leetcode/223.%20Rectangle%20Area)
 224 | Basic Calculator | Hard | [Solution](leetcode/224.%20Basic%20Calculator)
-225 | Implement Stack using Queues | Easy |
-226 | Invert Binary Tree | Easy |
-227 | Basic Calculator II | Medium |
-229 | Majority Element II | Medium |
-232 | Implement Queue using Stacks | Easy |
+225 | Implement Stack using Queues | Easy | [Solution](leetcode/225.%20Implement%20Stack%20using%20Queues)
+226 | Invert Binary Tree | Easy | [Solution](leetcode/226.%20Invert%20Binary%20Tree)
+227 | Basic Calculator II | Medium | [Solution](leetcode/227.%20Basic%20Calculator%20II)
+229 | Majority Element II | Medium | [Solution](leetcode/229.%20Majority%20Element%20II)
+232 | Implement Queue using Stacks | Easy | [Solution](leetcode/232.%20Implement%20Queue%20using%20Stacks)
 234 | Palindrome Linked List | Easy | [Solution](leetcode/234.%20Palindrome%20Linked%20List)
-239 | Sliding Window Maximum | Hard |
-240 | Search a 2D Matrix II | Medium |
+239 | Sliding Window Maximum | Hard | [Solution](leetcode/239.%20Sliding%20Window%20Maximum)
+240 | Search a 2D Matrix II | Medium | [Solution](leetcode/240.%20Search%20a%202D%20Matrix%20II)
 241 | Different Ways to Add Parentheses | Medium | [Solution](leetcode/241.%20Different%20Ways%20to%20Add%20Parentheses)
 243 | Shortest Word Distance | Easy | [Solution](leetcode/243.%20Shortest%20Word%20Distance)
 244 | Shortest Word Distance II | Medium | [Solution](leetcode/244.%20Shortest%20Word%20Distance%20II)
 247 | Strobogrammatic Number II | Medium | [Solution](leetcode/247.%20Strobogrammatic%20Number%20II)
-257 | Binary Tree Paths | Easy |
+257 | Binary Tree Paths | Easy | [Solution](leetcode/257.%20Binary%20Tree%20Paths)
 266 | Palindrome Permutation | Easy | [Solution](leetcode/266.%20Palindrome%20Permutation)
 359 | Logger Rate Limiter | Easy | [Solution](leetcode/359.%20Logger%20Rate%20Limiter)
 260 | Single Number III | Medium | [Solution](leetcode/260.%20Single%20Number%20III)
-263 | Ugly Number | Easy |
-264 | Ugly Number II | Medium |
+263 | Ugly Number | Easy | [Solution](leetcode/263.%20Ugly%20Number)
+264 | Ugly Number II | Medium | [Solution](leetcode/264.%20Ugly%20Number%20II)
 270 | Closest Binary Search Tree Value | Easy | [Solution](leetcode/270.%20Closest%20Binary%20Search%20Tree%20Value)
 271 | Encode and Decode Strings | Medium | [Solution](leetcode/271.%20Encode%20and%20Decode%20Strings)
-278 | First Bad Version | Easy |
+278 | First Bad Version | Easy | [Solution](leetcode/278.%20First%20Bad%20Version)
 279 | Perfect Squares | Medium | [Solution](leetcode/279.%20Perfect%20Squares)
 280 | Wiggle Sort | Medium | [Solution](leetcode/280.%20Wiggle%20Sort)
 285 | Inorder Successor in BST | Medium | [Solution](leetcode/285.%20Inorder%20Successor%20in%20BST)
 293 | Flip Game | Easy | [Solution](leetcode/293.%20Flip%20Game)
-297 | Serialize and Deserialize Binary Tree | Hard |
-299 | Bulls and Cows | Easy |
-300 | Longest Increasing Subsequence | Medium |
-301 | Remove Invalid Parentheses | Hard |
-303 | Range Sum Query - Immutable | Easy |
-304 | Range Sum Query 2D - Immutable | Medium |
-307 | Range Sum Query - Mutable | Medium |
-309 | Best Time to Buy and Sell Stock with Cooldown | Hard |
+297 | Serialize and Deserialize Binary Tree | Hard | [Solution](leetcode/297.%20Serialize%20and%20Deserialize%20Binary%20Tree)
+299 | Bulls and Cows | Easy | [Solution](leetcode/299.%20Bulls%20and%20Cows)
+300 | Longest Increasing Subsequence | Medium | [Solution](leetcode/300.%20Longest%20Increasing%20Subsequence)
+301 | Remove Invalid Parentheses | Hard | [Solution](leetcode/301.%20Remove%20Invalid%20Parentheses)
+303 | Range Sum Query - Immutable | Easy | [Solution](leetcode/303.%20Range%20Sum%20Query%20-%20Immutable)
+304 | Range Sum Query 2D - Immutable | Medium | [Solution](leetcode/304.%20Range%20Sum%20Query%202D%20-%20Immutable)
+307 | Range Sum Query - Mutable | Medium | [Solution](leetcode/307.%20Range%20Sum%20Query%20-%20Mutable)
+309 | Best Time to Buy and Sell Stock with Cooldown | Hard | [Solution](leetcode/309.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Cooldown)
 310 | Minimum Height Trees | Medium | [Solution](leetcode/310.%20Minimum%20Height%20Trees)
-313 | Super Ugly Number | Medium |
-315 | Count of Smaller Numbers After Self | Hard |
+313 | Super Ugly Number | Medium | [Solution](leetcode/313.%20Super%20Ugly%20Number)
+315 | Count of Smaller Numbers After Self | Hard | [Solution](leetcode/315.%20Count%20of%20Smaller%20Numbers%20After%20Self)
 316 | Remove Duplicate Letters | Hard | [Solution](leetcode/316.%20Remove%20Duplicate%20Letters)
-321 | Create Maximum Number | Hard |
-322 | Coin Change | Medium |
-324 | Wiggle Sort II | Medium |
-327 | Count of Range Sum | Hard |
-328 | Odd Even Linked List | Medium |
+321 | Create Maximum Number | Hard | [Solution](leetcode/321.%20Create%20Maximum%20Number)
+322 | Coin Change | Medium | [Solution](leetcode/322.%20Coin%20Change)
+324 | Wiggle Sort II | Medium | [Solution](leetcode/324.%20Wiggle%20Sort%20II)
+327 | Count of Range Sum | Hard | [Solution](leetcode/327.%20Count%20of%20Range%20Sum)
+328 | Odd Even Linked List | Medium | [Solution](leetcode/328.%20Odd%20Even%20Linked%20List)
 329 | Longest Increasing Path in a Matrix | Hard | [Solution](leetcode/329.%20Longest%20Increasing%20Path%20in%20a%20Matrix)
-330 | Patching Array | Hard |
-331 | Verify Preorder Serialization of a Binary Tree | Medium |
-332 | Reconstruct Itinerary | Medium |
-334 | Increasing Triplet Subsequence | Medium |
-335 | Self Crossing | Hard |
-336 | Palindrome Pairs | Hard |
-337 | House Robber III | Medium |
-338 | Counting Bits | Medium |
+330 | Patching Array | Hard | [Solution](leetcode/330.%20Patching%20Array)
+331 | Verify Preorder Serialization of a Binary Tree | Medium | [Solution](leetcode/331.%20Verify%20Preorder%20Serialization%20of%20a%20Binary%20Tree)
+332 | Reconstruct Itinerary | Medium | [Solution](leetcode/332.%20Reconstruct%20Itinerary)
+334 | Increasing Triplet Subsequence | Medium | [Solution](leetcode/334.%20Increasing%20Triplet%20Subsequence)
+335 | Self Crossing | Hard | [Solution](leetcode/335.%20Self%20Crossing)
+336 | Palindrome Pairs | Hard | [Solution](leetcode/336.%20Palindrome%20Pairs)
+337 | House Robber III | Medium | [Solution](leetcode/337.%20House%20Robber%20III)
+338 | Counting Bits | Medium | [Solution](leetcode/338.%20Counting%20Bits)
 339 | Nested List Weight Sum | Easy | [Solution](leetcode/339.%20Nested%20List%20Weight%20Sum)
-341 | Flatten Nested List Iterator | Medium |
-342 | Power of Four | Easy |
+341 | Flatten Nested List Iterator | Medium | [Solution](leetcode/341.%20Flatten%20Nested%20List%20Iterator)
+342 | Power of Four | Easy | [Solution](leetcode/342.%20Power%20of%20Four)
 343 | Integer Break | Medium | [Solution](leetcode/343.%20Integer%20Break)
 344 | Reverse String | Easy | [Solution](leetcode/344.%20Reverse%20String)
-344 | Reverse String | Easy |
+344 | Reverse String | Easy | [Solution](leetcode/344.%20Reverse%20String)
 345 | Reverse Vowels of a String | Easy | [Solution](leetcode/345.%20Reverse%20Vowels%20of%20a%20String)
 346 | Moving Average from Data Stream | Easy | [Solution](leetcode/346.%20Moving%20Average%20from%20Data%20Stream)
-349 | Intersection of Two Arrays | Easy |
-350 | Intersection of Two Arrays II | Easy |
-352 | Data Stream as Disjoint Intervals | Hard |
-354 | Russian Doll Envelopes | Hard |
+349 | Intersection of Two Arrays | Easy | [Solution](leetcode/349.%20Intersection%20of%20Two%20Arrays)
+350 | Intersection of Two Arrays II | Easy | [Solution](leetcode/350.%20Intersection%20of%20Two%20Arrays%20II)
+352 | Data Stream as Disjoint Intervals | Hard | [Solution](leetcode/352.%20Data%20Stream%20as%20Disjoint%20Intervals)
+354 | Russian Doll Envelopes | Hard | [Solution](leetcode/354.%20Russian%20Doll%20Envelopes)
 355 | Design Twitter | Medium | [Solution](leetcode/355.%20Design%20Twitter)
-357 | Count Numbers with Unique Digits | Medium |
-363 | Max Sum of Rectangle No Larger Than K | Hard |
-365 | Water and Jug Problem | Medium |
+357 | Count Numbers with Unique Digits | Medium | [Solution](leetcode/357.%20Count%20Numbers%20with%20Unique%20Digits)
+363 | Max Sum of Rectangle No Larger Than K | Hard | [Solution](leetcode/363.%20Max%20Sum%20of%20Rectangle%20No%20Larger%20Than%20K)
+365 | Water and Jug Problem | Medium | [Solution](leetcode/365.%20Water%20and%20Jug%20Problem)
 366 | Find Leaves of Binary Tree | Medium | [Solution](leetcode/366.%20Find%20Leaves%20of%20Binary%20Tree)
-367 | Valid Perfect Square | Easy |
-368 | Largest Divisible Subset | Medium |
+367 | Valid Perfect Square | Easy | [Solution](leetcode/367.%20Valid%20Perfect%20Square)
+368 | Largest Divisible Subset | Medium | [Solution](leetcode/368.%20Largest%20Divisible%20Subset)
 371 | Sum of Two Integers | Easy | [Solution](leetcode/371.%20Sum%20of%20Two%20Integers)
-371 | Sum of Two Integers | Easy |
-372 | Super Pow | Medium |
-373 | Find K Pairs with Smallest Sums | Medium |
-374 | Guess Number Higher or Lower | Easy |
-375 | Guess Number Higher or Lower II | Medium |
-376 | Wiggle Subsequence | Medium |
-377 | Combination Sum IV | Medium |
-378 | Kth Smallest Element in a Sorted Matrix | Medium |
-380 | Insert Delete GetRandom O(1) | Hard |
-381 | Insert Delete GetRandom O(1) - Duplicates allowed | Hard |
-382 | Linked List Random Node | Medium |
-383 | Ransom Note | Easy |
-384 | Shuffle an Array | Medium |
-385 | Mini Parser | Medium |
+371 | Sum of Two Integers | Easy | [Solution](leetcode/371.%20Sum%20of%20Two%20Integers)
+372 | Super Pow | Medium | [Solution](leetcode/372.%20Super%20Pow)
+373 | Find K Pairs with Smallest Sums | Medium | [Solution](leetcode/373.%20Find%20K%20Pairs%20with%20Smallest%20Sums)
+374 | Guess Number Higher or Lower | Easy | [Solution](leetcode/374.%20Guess%20Number%20Higher%20or%20Lower)
+375 | Guess Number Higher or Lower II | Medium | [Solution](leetcode/375.%20Guess%20Number%20Higher%20or%20Lower%20II)
+376 | Wiggle Subsequence | Medium | [Solution](leetcode/376.%20Wiggle%20Subsequence)
+377 | Combination Sum IV | Medium | [Solution](leetcode/377.%20Combination%20Sum%20IV)
+378 | Kth Smallest Element in a Sorted Matrix | Medium | [Solution](leetcode/378.%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix)
+380 | Insert Delete GetRandom O(1) | Hard | [Solution](leetcode/380.%20Insert%20Delete%20GetRandom%20O(1))
+381 | Insert Delete GetRandom O(1) - Duplicates allowed | Hard | [Solution](leetcode/381.%20Insert%20Delete%20GetRandom%20O(1)%20-%20Duplicates%20allowed)
+382 | Linked List Random Node | Medium | [Solution](leetcode/382.%20Linked%20List%20Random%20Node)
+383 | Ransom Note | Easy | [Solution](leetcode/383.%20Ransom%20Note)
+384 | Shuffle an Array | Medium | [Solution](leetcode/384.%20Shuffle%20an%20Array)
+385 | Mini Parser | Medium | [Solution](leetcode/385.%20Mini%20Parser)
 386 | Lexicographical Numbers | Medium | [Solution](leetcode/386.%20Lexicographical%20Numbers)
 387 | First Unique Character in a String | Easy | [Solution](leetcode/387.%20First%20Unique%20Character%20in%20a%20String)
 388 | Longest Absolute File Path | Medium | [Solution](leetcode/388.%20Longest%20Absolute%20File%20Path)
-389 | Find the Difference | Easy |
-390 | Elimination Game | Medium |
-391 | Perfect Rectangle | Hard |
-392 | Is Subsequence | Medium |
-393 | UTF-8 Validation | Medium |
-394 | Decode String | Medium |
-395 | Longest Substring with At Least K Repeating Characters | Medium |
-396 | Rotate Function | Easy |
-397 | Integer Replacement | Medium |
-398 | Random Pick Index | Medium |
-399 | Evaluate Division | Medium |
+389 | Find the Difference | Easy | [Solution](leetcode/389.%20Find%20the%20Difference)
+390 | Elimination Game | Medium | [Solution](leetcode/390.%20Elimination%20Game)
+391 | Perfect Rectangle | Hard | [Solution](leetcode/391.%20Perfect%20Rectangle)
+392 | Is Subsequence | Medium | [Solution](leetcode/392.%20Is%20Subsequence)
+393 | UTF-8 Validation | Medium | [Solution](leetcode/393.%20UTF-8%20Validation)
+394 | Decode String | Medium | [Solution](leetcode/394.%20Decode%20String)
+395 | Longest Substring with At Least K Repeating Characters | Medium | [Solution](leetcode/395.%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters)
+396 | Rotate Function | Easy | [Solution](leetcode/396.%20Rotate%20Function)
+397 | Integer Replacement | Medium | [Solution](leetcode/397.%20Integer%20Replacement)
+398 | Random Pick Index | Medium | [Solution](leetcode/398.%20Random%20Pick%20Index)
+399 | Evaluate Division | Medium | [Solution](leetcode/399.%20Evaluate%20Division)
 400 | Nth Digit | Easy | [Solution](leetcode/400.%20Nth%20Digit)
-401 | Binary Watch | Easy |
-402 | Remove K Digits | Medium |
-403 | Frog Jump | Hard |
-404 | Sum of Left Leaves | Easy |
-405 | Convert a Number to Hexadecimal | Easy |
-406 | Queue Reconstruction by Height | Medium |
-407 | Trapping Rain Water II | Hard |
-409 | Longest Palindrome | Easy |
-410 | Split Array Largest Sum | Hard |
+401 | Binary Watch | Easy | [Solution](leetcode/401.%20Binary%20Watch)
+402 | Remove K Digits | Medium | [Solution](leetcode/402.%20Remove%20K%20Digits)
+403 | Frog Jump | Hard | [Solution](leetcode/403.%20Frog%20Jump)
+404 | Sum of Left Leaves | Easy | [Solution](leetcode/404.%20Sum%20of%20Left%20Leaves)
+405 | Convert a Number to Hexadecimal | Easy | [Solution](leetcode/405.%20Convert%20a%20Number%20to%20Hexadecimal)
+406 | Queue Reconstruction by Height | Medium | [Solution](leetcode/406.%20Queue%20Reconstruction%20by%20Height)
+407 | Trapping Rain Water II | Hard | [Solution](leetcode/407.%20Trapping%20Rain%20Water%20II)
+409 | Longest Palindrome | Easy | [Solution](leetcode/409.%20Longest%20Palindrome)
+410 | Split Array Largest Sum | Hard | [Solution](leetcode/410.%20Split%20Array%20Largest%20Sum)
 412 | Fizz Buzz | Easy | [Solution](leetcode/412.%20Fizz%20Buzz)
-412 | Fizz Buzz | Easy |
-413 | Arithmetic Slices | Medium |
-414 | Third Maximum Number | Easy |
+412 | Fizz Buzz | Easy | [Solution](leetcode/412.%20Fizz%20Buzz)
+413 | Arithmetic Slices | Medium | [Solution](leetcode/413.%20Arithmetic%20Slices)
+414 | Third Maximum Number | Easy | [Solution](leetcode/414.%20Third%20Maximum%20Number)
 415 | Add Strings | Easy | [Solution](leetcode/415.%20Add%20Strings)
-416 | Partition Equal Subset Sum | Medium |
-417 | Pacific Atlantic Water Flow | Medium |
-419 | Battleships in a Board | Medium |
-420 | Strong Password Checker | Hard |
-421 | Maximum XOR of Two Numbers in an Array | Medium |
-423 | Reconstruct Original Digits from English | Medium |
-424 | Longest Repeating Character Replacement | Medium |
+416 | Partition Equal Subset Sum | Medium | [Solution](leetcode/416.%20Partition%20Equal%20Subset%20Sum)
+417 | Pacific Atlantic Water Flow | Medium | [Solution](leetcode/417.%20Pacific%20Atlantic%20Water%20Flow)
+419 | Battleships in a Board | Medium | [Solution](leetcode/419.%20Battleships%20in%20a%20Board)
+420 | Strong Password Checker | Hard | [Solution](leetcode/420.%20Strong%20Password%20Checker)
+421 | Maximum XOR of Two Numbers in an Array | Medium | [Solution](leetcode/421.%20Maximum%20XOR%20of%20Two%20Numbers%20in%20an%20Array)
+423 | Reconstruct Original Digits from English | Medium | [Solution](leetcode/423.%20Reconstruct%20Original%20Digits%20from%20English)
+424 | Longest Repeating Character Replacement | Medium | [Solution](leetcode/424.%20Longest%20Repeating%20Character%20Replacement)
 427 | Construct Quad Tree | Easy | [Solution](leetcode/427.%20Construct%20Quad%20Tree)
 429 | N-ary Tree Level Order Traversal | Easy | [Solution](leetcode/429.%20N-ary%20Tree%20Level%20Order%20Traversal)
-432 | All O`one Data Structure | Hard |
-434 | Number of Segments in a String | Easy |
-435 | Non-overlapping Intervals | Medium |
-436 | Find Right Interval | Medium |
-437 | Path Sum III | Easy |
-438 | Find All Anagrams in a String | Easy |
-440 | K-th Smallest in Lexicographical Order| Hard |
-441 | Arranging Coins | Easy |
-442 | Find All Duplicates in an Array | Medium |
+432 | All O`one Data Structure | Hard | [Solution](leetcode/432.%20All%20O`one%20Data%20Structure)
+434 | Number of Segments in a String | Easy | [Solution](leetcode/434.%20Number%20of%20Segments%20in%20a%20String)
+435 | Non-overlapping Intervals | Medium | [Solution](leetcode/435.%20Non-overlapping%20Intervals)
+436 | Find Right Interval | Medium | [Solution](leetcode/436.%20Find%20Right%20Interval)
+437 | Path Sum III | Easy | [Solution](leetcode/437.%20Path%20Sum%20III)
+438 | Find All Anagrams in a String | Easy | [Solution](leetcode/438.%20Find%20All%20Anagrams%20in%20a%20String)
+440 | K-th Smallest in Lexicographical Order| Hard | [Solution](leetcode/440.%20K-th%20Smallest%20in%20Lexicographical%20Orde)
+441 | Arranging Coins | Easy | [Solution](leetcode/441.%20Arranging%20Coins)
+442 | Find All Duplicates in an Array | Medium | [Solution](leetcode/442.%20Find%20All%20Duplicates%20in%20an%20Array)
 443 | String Compression | Easy | [Solution](leetcode/443.%20String%20Compression)
-445 | Add Two Numbers II | Medium |
-446 | Arithmetic Slices II - Subsequence | Hard |
-447 | Number of Boomerangs | Easy |
-448 | Find All Numbers Disappeared in an Array | Easy |
-449 | Serialize and Deserialize BST | Medium |
-450 | Delete Node in a BST | Medium |
-451 | Sort Characters By Frequency | Medium |
-452 | Minimum Number of Arrows to Burst Balloons | Medium |
-453 | Minimum Moves to Equal Array Elements | Easy |
+445 | Add Two Numbers II | Medium | [Solution](leetcode/445.%20Add%20Two%20Numbers%20II)
+446 | Arithmetic Slices II - Subsequence | Hard | [Solution](leetcode/446.%20Arithmetic%20Slices%20II%20-%20Subsequence)
+447 | Number of Boomerangs | Easy | [Solution](leetcode/447.%20Number%20of%20Boomerangs)
+448 | Find All Numbers Disappeared in an Array | Easy | [Solution](leetcode/448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array)
+449 | Serialize and Deserialize BST | Medium | [Solution](leetcode/449.%20Serialize%20and%20Deserialize%20BST)
+450 | Delete Node in a BST | Medium | [Solution](leetcode/450.%20Delete%20Node%20in%20a%20BST)
+451 | Sort Characters By Frequency | Medium | [Solution](leetcode/451.%20Sort%20Characters%20By%20Frequency)
+452 | Minimum Number of Arrows to Burst Balloons | Medium | [Solution](leetcode/452.%20Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons)
+453 | Minimum Moves to Equal Array Elements | Easy | [Solution](leetcode/453.%20Minimum%20Moves%20to%20Equal%20Array%20Elements)
 454 | 4Sum II | Medium | [Solution](leetcode/454.%204Sum%20II)
-455 | Assign Cookies | Easy |
-456 | 132 Pattern | Medium |
-459 | Repeated Substring Pattern | Easy |
-460 | LFU Cache | Hard |
-461 | Hamming Distance | Easy |
-462 | Minimum Moves to Equal Array Elements II | Medium |
+455 | Assign Cookies | Easy | [Solution](leetcode/455.%20Assign%20Cookies)
+456 | 132 Pattern | Medium | [Solution](leetcode/456.%20132%20Pattern)
+459 | Repeated Substring Pattern | Easy | [Solution](leetcode/459.%20Repeated%20Substring%20Pattern)
+460 | LFU Cache | Hard | [Solution](leetcode/460.%20LFU%20Cache)
+461 | Hamming Distance | Easy | [Solution](leetcode/461.%20Hamming%20Distance)
+462 | Minimum Moves to Equal Array Elements II | Medium | [Solution](leetcode/462.%20Minimum%20Moves%20to%20Equal%20Array%20Elements%20II)
 463 | Island Perimeter | Easy | [Solution](leetcode/463.%20Island%20Perimeter)
-464 | Can I Win | Medium |
+464 | Can I Win | Medium | [Solution](leetcode/464.%20Can%20I%20Win)
 466 | Count The Repetitions | Hard | [Solution](leetcode/466.%20Count%20The%20Repetitions)
-467 | Unique Substrings in Wraparound String | Medium |
-468 | Validate IP Address | Medium |
+467 | Unique Substrings in Wraparound String | Medium | [Solution](leetcode/467.%20Unique%20Substrings%20in%20Wraparound%20String)
+468 | Validate IP Address | Medium | [Solution](leetcode/468.%20Validate%20IP%20Address)
 472 | Concatenated Words | Hard | [Solution](leetcode/472.%20Concatenated%20Words)
-473 | Matchsticks to Square | Medium |
-474 | Ones and Zeroes | Medium |
-475 | Heaters | Easy |
+473 | Matchsticks to Square | Medium | [Solution](leetcode/473.%20Matchsticks%20to%20Square)
+474 | Ones and Zeroes | Medium | [Solution](leetcode/474.%20Ones%20and%20Zeroes)
+475 | Heaters | Easy | [Solution](leetcode/475.%20Heaters)
 476 | Number Complement | Easy | [Solution](leetcode/476.%20Number%20Complement)
-477 | Total Hamming Distance | Medium |
+477 | Total Hamming Distance | Medium | [Solution](leetcode/477.%20Total%20Hamming%20Distance)
 478 | Generate Random Point in a Circle | Medium | [Solution](leetcode/478.%20Generate%20Random%20Point%20in%20a%20Circle)
-480 | Sliding Window Median | Hard |
-481 | Magical String | Medium |
-482 | License Key Formatting | Medium |
-483 | Smallest Good Base | Hard |
-485 | Max Consecutive Ones | Easy |
-486 | Predict the Winner | Medium |
-487 | Max Consecutive Ones II | Medium |
-488 | Zuma Game | Hard |
+480 | Sliding Window Median | Hard | [Solution](leetcode/480.%20Sliding%20Window%20Median)
+481 | Magical String | Medium | [Solution](leetcode/481.%20Magical%20String)
+482 | License Key Formatting | Medium | [Solution](leetcode/482.%20License%20Key%20Formatting)
+483 | Smallest Good Base | Hard | [Solution](leetcode/483.%20Smallest%20Good%20Base)
+485 | Max Consecutive Ones | Easy | [Solution](leetcode/485.%20Max%20Consecutive%20Ones)
+486 | Predict the Winner | Medium | [Solution](leetcode/486.%20Predict%20the%20Winner)
+487 | Max Consecutive Ones II | Medium | [Solution](leetcode/487.%20Max%20Consecutive%20Ones%20II)
+488 | Zuma Game | Hard | [Solution](leetcode/488.%20Zuma%20Game)
 489 | Robot Room Cleaner | Hard | [Solution](leetcode/489.%20Robot%20Room%20Cleaner)
 490 | The Maze | Medium | [Solution](leetcode/490.%20The%20Maze)
 491 | Increasing Subsequences | Medium | [Solution](leetcode/491.%20Increasing%20Subsequences)
-492 | Construct the Rectangle | Easy |
-494 | Target Sum | Medium |
-495 | Teemo Attacking | Medium |
-496 | Next Greater Element I | Medium |
-498 | Diagonal Traverse | Medium |
-500 | Keyboard Row | Easy |
-501 | Find Mode in Binary Search Tree | Easy |
-502 | IPO | Hard |
-503 | Next Greater Element II | Medium |
-504 | Base 7 | Easy |
-506 | Relative Ranks | Easy |
-508 | Most Frequent Subtree Sum | Medium |
+492 | Construct the Rectangle | Easy | [Solution](leetcode/492.%20Construct%20the%20Rectangle)
+494 | Target Sum | Medium | [Solution](leetcode/494.%20Target%20Sum)
+495 | Teemo Attacking | Medium | [Solution](leetcode/495.%20Teemo%20Attacking)
+496 | Next Greater Element I | Medium | [Solution](leetcode/496.%20Next%20Greater%20Element%20I)
+498 | Diagonal Traverse | Medium | [Solution](leetcode/498.%20Diagonal%20Traverse)
+500 | Keyboard Row | Easy | [Solution](leetcode/500.%20Keyboard%20Row)
+501 | Find Mode in Binary Search Tree | Easy | [Solution](leetcode/501.%20Find%20Mode%20in%20Binary%20Search%20Tree)
+502 | IPO | Hard | [Solution](leetcode/502.%20IPO)
+503 | Next Greater Element II | Medium | [Solution](leetcode/503.%20Next%20Greater%20Element%20II)
+504 | Base 7 | Easy | [Solution](leetcode/504.%20Base%207)
+506 | Relative Ranks | Easy | [Solution](leetcode/506.%20Relative%20Ranks)
+508 | Most Frequent Subtree Sum | Medium | [Solution](leetcode/508.%20Most%20Frequent%20Subtree%20Sum)
 509 | Fibonacci Number | Easy | [Solution](leetcode/509.%20Fibonacci%20Number)
-513 | Find Bottom Left Tree Value | Medium |
-515 | Find Largest Value in Each Tree Row | Medium |
-516 | Longest Palindromic Subsequence | Medium |
-517 | Super Washing Machines | Hard |
-520 | Detect Capital | Easy |
+513 | Find Bottom Left Tree Value | Medium | [Solution](leetcode/513.%20Find%20Bottom%20Left%20Tree%20Value)
+515 | Find Largest Value in Each Tree Row | Medium | [Solution](leetcode/515.%20Find%20Largest%20Value%20in%20Each%20Tree%20Row)
+516 | Longest Palindromic Subsequence | Medium | [Solution](leetcode/516.%20Longest%20Palindromic%20Subsequence)
+517 | Super Washing Machines | Hard | [Solution](leetcode/517.%20Super%20Washing%20Machines)
+520 | Detect Capital | Easy | [Solution](leetcode/520.%20Detect%20Capital)
 521 | Longest Uncommon Subsequence I | Easy | [Solution](leetcode/521.%20Longest%20Uncommon%20Subsequence%20I)
-523 | Continuous Subarray Sum | Medium |
-524 | Longest Word in Dictionary through Deleting | Medium |
+523 | Continuous Subarray Sum | Medium | [Solution](leetcode/523.%20Continuous%20Subarray%20Sum)
+524 | Longest Word in Dictionary through Deleting | Medium | [Solution](leetcode/524.%20Longest%20Word%20in%20Dictionary%20through%20Deleting)
 525 | Contiguous Array | Medium | [Solution](leetcode/525.%20Contiguous%20Array)
 526 | Beautiful Arrangement | Medium | [Solution](leetcode/526.%20Beautiful%20Arrangement)
 528 | Random Pick with Weight | Medium | [Solution](leetcode/528.%20Random%20Pick%20with%20Weight)
-529 | Minesweeper | Medium |
-530 | Minimum Absolute Difference in BST | Easy |
+529 | Minesweeper | Medium | [Solution](leetcode/529.%20Minesweeper)
+530 | Minimum Absolute Difference in BST | Easy | [Solution](leetcode/530.%20Minimum%20Absolute%20Difference%20in%20BST)
 532 | K-diff Pairs in an Array | Easy | [Solution](leetcode/532.%20K-diff%20Pairs%20in%20an%20Array)
-535 | Encode and Decode TinyURL | Medium |
-536 | Construct Binary Tree from String | Medium |
+535 | Encode and Decode TinyURL | Medium | [Solution](leetcode/535.%20Encode%20and%20Decode%20TinyURL)
+536 | Construct Binary Tree from String | Medium | [Solution](leetcode/536.%20Construct%20Binary%20Tree%20from%20String)
 537 | Complex Number Multiplication | Medium | [Solution](leetcode/537.%20Complex%20Number%20Multiplication)
-538 | Convert BST to Greater Tree | Medium |
-539 | Minimum Time Difference | Medium |
+538 | Convert BST to Greater Tree | Medium | [Solution](leetcode/538.%20Convert%20BST%20to%20Greater%20Tree)
+539 | Minimum Time Difference | Medium | [Solution](leetcode/539.%20Minimum%20Time%20Difference)
 540 | Single Element in a Sorted Array | Medium | [Solution](leetcode/540.%20Single%20Element%20in%20a%20Sorted%20Array)
-541 | Reverse String II | Easy |
-542 | 01 Matrix | Medium |
-543 | Diameter of Binary Tree | Easy |
+541 | Reverse String II | Easy | [Solution](leetcode/541.%20Reverse%20String%20II)
+542 | 01 Matrix | Medium | [Solution](leetcode/542.%2001%20Matrix)
+543 | Diameter of Binary Tree | Easy | [Solution](leetcode/543.%20Diameter%20of%20Binary%20Tree)
 544 | Output Contest Matches | Medium | [Solution](leetcode/544.%20Output%20Contest%20Matches)
 547 | Friend Circles | Medium | [Solution](leetcode/547.%20Friend%20Circles)
-549 | Binary Tree Longest Consecutive Sequence II | Medium |
+549 | Binary Tree Longest Consecutive Sequence II | Medium | [Solution](leetcode/549.%20Binary%20Tree%20Longest%20Consecutive%20Sequence%20II)
 553 | Optimal Division | Medium | [Solution](leetcode/553.%20Optimal%20Division)
 554 | Brick Wall | Medium | [Solution](leetcode/554.%20Brick%20Wall)
-556 | Next Greater Element III | Medium |
-557 | Reverse Words in a String III | Easy |
+556 | Next Greater Element III | Medium | [Solution](leetcode/556.%20Next%20Greater%20Element%20III)
+557 | Reverse Words in a String III | Easy | [Solution](leetcode/557.%20Reverse%20Words%20in%20a%20String%20III)
 558 | Quad Tree Intersection | Easy | [Solution](leetcode/558.%20Quad%20Tree%20Intersection)
 559 | Maximum Depth of N-ary Tree | Easy | [Solution](leetcode/559.%20Maximum%20Depth%20of%20N-ary%20Tree)
-561 | Array Partition I | Easy |
-562 | Longest Line of Consecutive One in Matrix | Medium |
-563 | Binary Tree Tilt | Easy |
+561 | Array Partition I | Easy | [Solution](leetcode/561.%20Array%20Partition%20I)
+562 | Longest Line of Consecutive One in Matrix | Medium | [Solution](leetcode/562.%20Longest%20Line%20of%20Consecutive%20One%20in%20Matrix)
+563 | Binary Tree Tilt | Easy | [Solution](leetcode/563.%20Binary%20Tree%20Tilt)
 566 | Reshape the Matrix | Easy | [Solution](leetcode/566.%20Reshape%20the%20Matrix)
 572 | Subtree of Another Tree | Easy | [Solution](leetcode/572.%20Subtree%20of%20Another%20Tree)
 575 | Distribute Candies | Easy | [Solution](leetcode/575.%20Distribute%20Candies)
