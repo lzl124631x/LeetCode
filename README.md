@@ -323,6 +323,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 475 | Heaters | Easy |
 476 | Number Complement | Easy | [Solution](leetcode/476.%20Number%20Complement)
 477 | Total Hamming Distance | Medium |
+478 | Generate Random Point in a Circle | Medium | [Solution](leetcode/478.%20Generate%20Random%20Point%20in%20a%20Circle)
 480 | Sliding Window Median | Hard |
 481 | Magical String | Medium |
 482 | License Key Formatting | Medium |
