@@ -515,6 +515,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 885 | Spiral Matrix III | Medium | [Solution](leetcode/885.%20Spiral%20Matrix%20III)
 887 | Super Egg Drop | Hard | [Solution](leetcode/887.%20Super%20Egg%20Drop)
 888 | Fair Candy Swap | Easy | [Solution](leetcode/888.%20Fair%20Candy%20Swap)
+890 | Find and Replace Pattern | Medium | [Solution](leetcode/890.%20Find%20and%20Replace%20Pattern)
 892 | Surface Area of 3D Shapes | Easy | [Solution](leetcode/892.%20Surface%20Area%20of%203D%20Shapes)
 893 | Groups of Special-Equivalent Strings | Easy | [Solution](leetcode/893.%20Groups%20of%20Special-Equivalent%20Strings)
 897 | Increasing Order Search Tree | Easy | [Solution](leetcode/897.%20Increasing%20Order%20Search%20Tree)
