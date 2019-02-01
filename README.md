@@ -509,6 +509,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 874 | Walking Robot Simulation | Easy | [Solution](leetcode/874.%20Walking%20Robot%20Simulation)
 875 | Koko Eating Bananas | Medium | [Solution](leetcode/875.%20Koko%20Eating%20Bananas)
 876 | Middle of the Linked List | Easy | [Solution](leetcode/876.%20Middle%20of%20the%20Linked%20List)
+877 | Stone Game | Medium | [Solution](leetcode/877.%20Stone%20Game)
 881 | Boats to Save People | Medium | [Solution](leetcode/881.%20Boats%20to%20Save%20People)
 883 | Projection Area of 3D Shapes | Easy | [Solution](leetcode/883.%20Projection%20Area%20of%203D%20Shapes)
 884 | Uncommon Words from Two Sentences | Easy | [Solution](leetcode/884.%20Uncommon%20Words%20from%20Two%20Sentences)
