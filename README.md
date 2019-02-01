@@ -133,6 +133,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 149 | Max Points on a Line | Hard | [Solution](leetcode/149.%20Max%20Points%20on%20a%20Line)
 150 | Evaluate Reverse Polish Notation | Medium |
 151 | Reverse Words in a String | Medium | [Solution](leetcode/151.%20Reverse%20Words%20in%20a%20String)
+152 | Maximum Product Subarray | Medium | [Solution](leetcode/152.%20Maximum%20Product%20Subarray)
 153 | Find Minimum in Rotated Sorted Array | Medium |
 154 | Find Minimum in Rotated Sorted Array II | Hard |
 164 | Maximum Gap | Hard |
