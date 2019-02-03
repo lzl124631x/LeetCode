@@ -1,11 +1,7 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+// OJ: https://leetcode.com/problems/merge-k-sorted-lists/
+// Author: github.com/lzl124631x
+// Time: O(NlogK)
+// Space: O(K)
 struct Cmp {
     bool operator()(const ListNode *a, const ListNode *b) {
         return a->val > b->val;
@@ -14,10 +10,10 @@ struct Cmp {
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        ListNode head(0), *tail = &head;
+        ListNode dummy(0), *tail = &dummy;
         priority_queue<ListNode*, vector<ListNode*>, Cmp> q;
-        for (auto node : lists) {
-            if (node) q.push(node);
+        for (auto list : lists) {
+            if (list) q.push(list); // avoid pushing NULL list.
         }
         while (q.size()) {
             auto node = q.top();
@@ -26,6 +22,6 @@ public:
             tail->next = node;
             tail = node;
         }
-        return head.next;
+        return dummy.next;
     }
 };

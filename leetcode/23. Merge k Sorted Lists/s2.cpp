@@ -1,21 +1,17 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+// OJ: https://leetcode.com/problems/merge-k-sorted-lists/
+// Author: github.com/lzl124631x
+// Time: O(NlogK)
+// Space: O(1)
 class Solution {
 private:
-    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+    ListNode* mergeTwoLists(ListNode* a, ListNode* b) {
         ListNode head(0), *tail = &head;
-        while (l1 && l2) {
-            if (l1->val < l2->val) { tail->next = l1; l1 = l1->next; }
-            else { tail->next = l2; l2 = l2->next; }
+        while (a && b) {
+            if (a->val < b->val) { tail->next = a; a = a->next; }
+            else { tail->next = b; b = b->next; }
             tail = tail->next;
         }
-        tail->next = l1 ? l1 : l2;
+        tail->next = a ? a : b;
         return head.next;
     }
 public:
