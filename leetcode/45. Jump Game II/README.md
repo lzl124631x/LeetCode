@@ -27,9 +27,17 @@
 **Similar Questions**:
 * [Jump Game (Medium)](https://leetcode.com/problems/jump-game/)
 
+## Idea
+
+This problem is asking for **the shortest distance**, so **BFS** should be the first solution we come up with.
+
+The following solutions are variants of BFS.
+
+Normally we use `queue` to keep track of the active indexes. But for this problem, we just need to track the **furthest index we can reach**.
+
 ## Solution 1.
 
-Use an `vector<int> endsAt` store the furthest index we can go. `endsAt[i]` means we can reach `endsAt[i]` given `i` steps. It starts with a single 0 at position 0, and will be strictly ascending.
+Use `vector<int> endsAt` to store the furthest index we can go. `endsAt[i]` means we can reach `endsAt[i]` given `i` steps. It starts with a single 0 at position 0, and will be strictly ascending.
 
 For index `i` &isin; `[0, N - 2]`, use binary search to find the minimum step needed to get to index `i`. Try to use `i + nums[i]` to update `endsAt`.
 
@@ -58,11 +66,13 @@ public:
 };
 ```
 
-## Solution 2. Greedy
+## Solution 2. BFS + Greedy
+
+In essense, this solution is BFS. It's separating the points into groups that can be reached given different steps.
 
 Let's say given `jumps` jumps, we can reach at most index `jumpsEnd`.
 
-Once the current point reaches `jumpsEnd`, we have to trigger another jump to extend `jumpsEnd`. And `jumpsEnd` should extend to `furthest` which is the fursthest index we can jump to given points between index `0` and `jumpsEnd`.
+Once the current point reaches `jumpsEnd`, we have to trigger another jump to extend `jumpsEnd`. And `jumpsEnd` should extend to `furthest` which is the fursthest index we can jump to given the points between index `0` and `jumpsEnd`.
 
 Keep the above steps for points `[0..(N - 1)]`:
 
