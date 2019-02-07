@@ -138,6 +138,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 154 | Find Minimum in Rotated Sorted Array II | Hard | [Solution](leetcode/154.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array%20II)
 157 | Read N Characters Given Read4 | Easy | [Solution](leetcode/157.%20Read%20N%20Characters%20Given%20Read4)
 158 | Read N Characters Given Read4 II - Call multiple times | Hard | [Solution](leetcode/158.%20Read%20N%20Characters%20Given%20Read4%20II%20-%20Call%20multiple%20times)
+159 | Longest Substring with At Most Two Distinct Characters | Hard | [Solution](leetcode/159.%20Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters)
 164 | Maximum Gap | Hard | [Solution](leetcode/164.%20Maximum%20Gap)
 166 | Fraction to Recurring Decimal | Medium | [Solution](leetcode/166.%20Fraction%20to%20Recurring%20Decimal)
 167 | Two Sum II - Input array is sorted | Medium | [Solution](leetcode/167.%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted)
