@@ -572,4 +572,4 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 
 # License
 
-All rights reserved by github.com/lzl124631x. Contact me if you want to redistribute the code. No commercial use.
+All rights reserved by [github.com/lzl124631x](https://github.com/lzl124631x). Contact me if you want to redistribute the code. No commercial use.
