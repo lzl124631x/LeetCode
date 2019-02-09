@@ -569,6 +569,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 970 | Powerful Integers | Easy | [Solution](leetcode/970.%20Powerful%20Integers)
 971 | Flip Binary Tree To Match Preorder Traversal | Medium | [Solution](leetcode/971.%20Flip%20Binary%20Tree%20To%20Match%20Preorder%20Traversal)
 973 | K Closest Points to Origin | Easy | [Solution](leetcode/973.%20K%20Closest%20Points%20to%20Origin)
+977 | Squares of a Sorted Array | Easy | [Solution](leetcode/977.%20Squares%20of%20a%20Sorted%20Array)
 
 # License
 
