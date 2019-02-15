@@ -186,6 +186,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 250 | Count Univalue Subtrees | Medium | [Solution](leetcode/250.%20Count%20Univalue%20Subtrees)
 253 | Meeting Rooms II | Medium | [Solution](leetcode/253.%20Meeting%20Rooms%20II)
 257 | Binary Tree Paths | Easy | [Solution](leetcode/257.%20Binary%20Tree%20Paths)
+259 | 3Sum Smaller | Medium | [Solution](leetcode/259.%203Sum%20Smaller)
 266 | Palindrome Permutation | Easy | [Solution](leetcode/266.%20Palindrome%20Permutation)
 260 | Single Number III | Medium | [Solution](leetcode/260.%20Single%20Number%20III)
 263 | Ugly Number | Easy | [Solution](leetcode/263.%20Ugly%20Number)
