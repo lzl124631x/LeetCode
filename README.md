@@ -189,6 +189,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 259 | 3Sum Smaller | Medium | [Solution](leetcode/259.%203Sum%20Smaller)
 266 | Palindrome Permutation | Easy | [Solution](leetcode/266.%20Palindrome%20Permutation)
 260 | Single Number III | Medium | [Solution](leetcode/260.%20Single%20Number%20III)
+261 | Graph Valid Tree | Medium | [Solution](leetcode/261.%20Graph%20Valid%20Tree)
 263 | Ugly Number | Easy | [Solution](leetcode/263.%20Ugly%20Number)
 264 | Ugly Number II | Medium | [Solution](leetcode/264.%20Ugly%20Number%20II)
 270 | Closest Binary Search Tree Value | Easy | [Solution](leetcode/270.%20Closest%20Binary%20Search%20Tree%20Value)
