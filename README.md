@@ -222,6 +222,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 330 | Patching Array | Hard | [Solution](leetcode/330.%20Patching%20Array)
 331 | Verify Preorder Serialization of a Binary Tree | Medium | [Solution](leetcode/331.%20Verify%20Preorder%20Serialization%20of%20a%20Binary%20Tree)
 332 | Reconstruct Itinerary | Medium | [Solution](leetcode/332.%20Reconstruct%20Itinerary)
+333 | Largest BST Subtree | Medium | [Solution](leetcode/333.%20Largest%20BST%20Subtree)
 334 | Increasing Triplet Subsequence | Medium | [Solution](leetcode/334.%20Increasing%20Triplet%20Subsequence)
 335 | Self Crossing | Hard | [Solution](leetcode/335.%20Self%20Crossing)
 336 | Palindrome Pairs | Hard | [Solution](leetcode/336.%20Palindrome%20Pairs)
