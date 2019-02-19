@@ -236,6 +236,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 344 | Reverse String | Easy | [Solution](leetcode/344.%20Reverse%20String)
 345 | Reverse Vowels of a String | Easy | [Solution](leetcode/345.%20Reverse%20Vowels%20of%20a%20String)
 346 | Moving Average from Data Stream | Easy | [Solution](leetcode/346.%20Moving%20Average%20from%20Data%20Stream)
+348 | Design Tic-Tac-Toe | Medium | [Solution](leetcode/348.%20Design%20Tic-Tac-Toe)
 349 | Intersection of Two Arrays | Easy | [Solution](leetcode/349.%20Intersection%20of%20Two%20Arrays)
 350 | Intersection of Two Arrays II | Easy | [Solution](leetcode/350.%20Intersection%20of%20Two%20Arrays%20II)
 352 | Data Stream as Disjoint Intervals | Hard | [Solution](leetcode/352.%20Data%20Stream%20as%20Disjoint%20Intervals)
