@@ -251,6 +251,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 367 | Valid Perfect Square | Easy | [Solution](leetcode/367.%20Valid%20Perfect%20Square)
 368 | Largest Divisible Subset | Medium | [Solution](leetcode/368.%20Largest%20Divisible%20Subset)
 369 | Plus One Linked List | Medium | [Solution](leetcode/369.%20Plus%20One%20Linked%20List)
+370 | Range Addition | Medium | [Solution](leetcode/370.%20Range%20Addition)
 371 | Sum of Two Integers | Easy | [Solution](leetcode/371.%20Sum%20of%20Two%20Integers)
 371 | Sum of Two Integers | Easy | [Solution](leetcode/371.%20Sum%20of%20Two%20Integers)
 372 | Super Pow | Medium | [Solution](leetcode/372.%20Super%20Pow)
