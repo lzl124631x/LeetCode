@@ -261,6 +261,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 376 | Wiggle Subsequence | Medium | [Solution](leetcode/376.%20Wiggle%20Subsequence)
 377 | Combination Sum IV | Medium | [Solution](leetcode/377.%20Combination%20Sum%20IV)
 378 | Kth Smallest Element in a Sorted Matrix | Medium | [Solution](leetcode/378.%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix)
+379 | Design Phone Directory | Medium | [Solution](leetcode/379.%20Design%20Phone%20Directory)
 380 | Insert Delete GetRandom O(1) | Hard | [Solution](leetcode/380.%20Insert%20Delete%20GetRandom%20O(1))
 381 | Insert Delete GetRandom O(1) - Duplicates allowed | Hard | [Solution](leetcode/381.%20Insert%20Delete%20GetRandom%20O(1)%20-%20Duplicates%20allowed)
 382 | Linked List Random Node | Medium | [Solution](leetcode/382.%20Linked%20List%20Random%20Node)
