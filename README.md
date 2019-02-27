@@ -407,6 +407,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 562 | Longest Line of Consecutive One in Matrix | Medium | [Solution](leetcode/562.%20Longest%20Line%20of%20Consecutive%20One%20in%20Matrix)
 563 | Binary Tree Tilt | Easy | [Solution](leetcode/563.%20Binary%20Tree%20Tilt)
 566 | Reshape the Matrix | Easy | [Solution](leetcode/566.%20Reshape%20the%20Matrix)
+567 | Permutation in String | Medium | [Solution](leetcode/567.%20Permutation%20in%20String)
 572 | Subtree of Another Tree | Easy | [Solution](leetcode/572.%20Subtree%20of%20Another%20Tree)
 575 | Distribute Candies | Easy | [Solution](leetcode/575.%20Distribute%20Candies)
 577 | Employee Bonus | Easy | [Solution](leetcode/577.%20Employee%20Bonus)
