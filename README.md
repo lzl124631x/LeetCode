@@ -441,6 +441,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 636 | Exclusive Time of Functions | Medium | [Solution](leetcode/636.%20Exclusive%20Time%20of%20Functions)
 637 | Average of Levels in Binary Tree | Easy | [Solution](leetcode/637.%20Average%20of%20Levels%20in%20Binary%20Tree)
 638 | Shopping Offers | Medium | [Solution](leetcode/638.%20Shopping%20Offers)
+640 | Solve the Equation | Medium | [Solution](leetcode/640.%20Solve%20the%20Equation)
 643 | Maximum Average Subarray I | Easy | [Solution](leetcode/643.%20Maximum%20Average%20Subarray%20I)
 652 | Find Duplicate Subtrees | Medium | [Solution](leetcode/652.%20Find%20Duplicate%20Subtrees)
 653 | Two Sum IV - Input is a BST | Easy | [Solution](leetcode/653.%20Two%20Sum%20IV%20-%20Input%20is%20a%20BST)
