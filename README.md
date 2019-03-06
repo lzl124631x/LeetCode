@@ -185,6 +185,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 247 | Strobogrammatic Number II | Medium | [Solution](leetcode/247.%20Strobogrammatic%20Number%20II)
 249 | Group Shifted Strings | Medium | [Solution](leetcode/249.%20Group%20Shifted%20Strings)
 250 | Count Univalue Subtrees | Medium | [Solution](leetcode/250.%20Count%20Univalue%20Subtrees)
+252 | Meeting Rooms | Easy | [Solution](leetcode/252.%20Meeting%20Rooms)
 253 | Meeting Rooms II | Medium | [Solution](leetcode/253.%20Meeting%20Rooms%20II)
 257 | Binary Tree Paths | Easy | [Solution](leetcode/257.%20Binary%20Tree%20Paths)
 259 | 3Sum Smaller | Medium | [Solution](leetcode/259.%203Sum%20Smaller)
