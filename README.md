@@ -148,6 +148,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 174 | Dungeon Game | Hard | [Solution](leetcode/174.%20Dungeon%20Game)
 175 | Combine Two Tables | Easy | [Solution](leetcode/175.%20Combine%20Two%20Tables)
 176 | Second Highest Salary | Easy | [Solution](leetcode/176.%20Second%20Highest%20Salary)
+181 | Employees Earning More Than Their Managers | Easy | [Solution](leetcode/181.%20Employees%20Earning%20More%20Than%20Their%20Managers)
 182 | Duplicate Emails | Easy | [Solution](leetcode/182.%20Duplicate%20Emails)
 188 | Best Time to Buy and Sell Stock IV | Hard | [Solution](leetcode/188.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV)
 190 | Reverse Bits | Easy | [Solution](leetcode/190.%20Reverse%20Bits)
