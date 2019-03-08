@@ -423,6 +423,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 591 | Tag Validator | Hard | [Solution](leetcode/591.%20Tag%20Validator)
 594 | Longest Harmonious Subsequence | Easy | [Solution](leetcode/594.%20Longest%20Harmonious%20Subsequence)
 595 | Big Countries | Easy | [Solution](leetcode/595.%20Big%20Countries)
+597 | Friend Requests I: Overall Acceptance Rate | Easy | [Solution](leetcode/597.%20Friend%20Requests%20I%3A%20Overall%20Acceptance%20Rate)
 599 | Minimum Index Sum of Two Lists | Easy | [Solution](leetcode/599.%20Minimum%20Index%20Sum%20of%20Two%20Lists)
 604 | Design Compressed String Iterator | Easy | [Solution](leetcode/604.%20Design%20Compressed%20String%20Iterator)
 605 | Can Place Flowers | Easy | [Solution](leetcode/605.%20Can%20Place%20Flowers)
