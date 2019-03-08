@@ -456,6 +456,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 666 | Path Sum IV | Medium | [Solution](leetcode/666.%20Path%20Sum%20IV)
 669 | Trim a Binary Search Tree | Easy | [Solution](leetcode/669.%20Trim%20a%20Binary%20Search%20Tree)
 670 | Maximum Swap | Medium | [Solution](leetcode/670.%20Maximum%20Swap)
+674 | Longest Continuous Increasing Subsequence | Easy | [Solution](leetcode/674.%20Longest%20Continuous%20Increasing%20Subsequence)
 677 | Map Sum Pairs | Medium | [Solution](leetcode/677.%20Map%20Sum%20Pairs)
 678 | Valid Parenthesis String | Medium | [Solution](leetcode/678.%20Valid%20Parenthesis%20String)
 682 | Baseball Game | Easy | [Solution](leetcode/682.%20Baseball%20Game)
