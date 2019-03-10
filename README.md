@@ -295,6 +295,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 405 | Convert a Number to Hexadecimal | Easy | [Solution](leetcode/405.%20Convert%20a%20Number%20to%20Hexadecimal)
 406 | Queue Reconstruction by Height | Medium | [Solution](leetcode/406.%20Queue%20Reconstruction%20by%20Height)
 407 | Trapping Rain Water II | Hard | [Solution](leetcode/407.%20Trapping%20Rain%20Water%20II)
+408 | Valid Word Abbreviation | Easy | [Solution](leetcode/408.%20Valid%20Word%20Abbreviation)
 409 | Longest Palindrome | Easy | [Solution](leetcode/409.%20Longest%20Palindrome)
 410 | Split Array Largest Sum | Hard | [Solution](leetcode/410.%20Split%20Array%20Largest%20Sum)
 412 | Fizz Buzz | Easy | [Solution](leetcode/412.%20Fizz%20Buzz)
