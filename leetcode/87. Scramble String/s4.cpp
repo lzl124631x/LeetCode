@@ -21,8 +21,10 @@ public:
         if (s1 == s2) return true;
         if (!areAnagram(s1, s2)) return false;
         for (int len = 1; len < s1.size(); ++len) {
-            if ((isScramble(s1.substr(0, len), s2.substr(0, len)) && isScramble(s1.substr(len), s2.substr(len)))
-               || (isScramble(s1.substr(0, len), s2.substr(s2.size() - len)) && isScramble(s1.substr(len), s2.substr(0, s2.size() - len))))
+            if ((isScramble(s1.substr(0, len), s2.substr(0, len))
+                && isScramble(s1.substr(len), s2.substr(len)))
+               || (isScramble(s1.substr(0, len), s2.substr(s2.size() - len))
+                    && isScramble(s1.substr(len), s2.substr(0, s2.size() - len))))
                 return true;
         }
         return false;

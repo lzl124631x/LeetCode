@@ -222,7 +222,7 @@ public:
 
 ## Solution 4.
 
-`areAnagram` is the most important optimization here because it can eliminate lots computation of sub-cases. Time `4ms`.
+`areAnagram` is the most important optimization here because it can eliminate lots computation of sub-cases. Even without storing visited result, this optization is good to reduce the time to `4ms`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/scramble-string
@@ -248,8 +248,10 @@ public:
         if (s1 == s2) return true;
         if (!areAnagram(s1, s2)) return false;
         for (int len = 1; len < s1.size(); ++len) {
-            if ((isScramble(s1.substr(0, len), s2.substr(0, len)) && isScramble(s1.substr(len), s2.substr(len)))
-               || (isScramble(s1.substr(0, len), s2.substr(s2.size() - len)) && isScramble(s1.substr(len), s2.substr(0, s2.size() - len))))
+            if ((isScramble(s1.substr(0, len), s2.substr(0, len))
+                && isScramble(s1.substr(len), s2.substr(len)))
+               || (isScramble(s1.substr(0, len), s2.substr(s2.size() - len))
+                    && isScramble(s1.substr(len), s2.substr(0, s2.size() - len))))
                 return true;
         }
         return false;
