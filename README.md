@@ -604,6 +604,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 977 | Squares of a Sorted Array | Easy | [Solution](leetcode/977.%20Squares%20of%20a%20Sorted%20Array)
 979 | Distribute Coins in Binary Tree | Medium | [Solution](leetcode/979.%20Distribute%20Coins%20in%20Binary%20Tree)
 999 | Available Captures for Rook | Easy | [Solution](leetcode/999.%20Available%20Captures%20for%20Rook)
+1002 | Find Common Characters | Easy | [Solution](leetcode/1002.%20Find%20Common%20Characters)
 1008 | Construct Binary Search Tree from Preorder Traversal | Medium | [Solution](leetcode/1008.%20Construct%20Binary%20Search%20Tree%20from%20Preorder%20Traversal)
 
 # License
