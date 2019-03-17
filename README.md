@@ -610,6 +610,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1008 | Construct Binary Search Tree from Preorder Traversal | Medium | [Solution](leetcode/1008.%20Construct%20Binary%20Search%20Tree%20from%20Preorder%20Traversal)
 1012 | Complement of Base 10 Integer | Easy | [Solution](leetcode/1012.%20Complement%20of%20Base%2010%20Integer)
 1013 | Pairs of Songs With Total Durations Divisible by 60 | Easy | [Solution](leetcode/1013.%20Pairs%20of%20Songs%20With%20Total%20Durations%20Divisible%20by%2060)
+1014 | Capacity To Ship Packages Within D Days | Medium | [Solution](leetcode/1014.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
 
 # License
 
