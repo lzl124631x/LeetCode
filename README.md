@@ -608,6 +608,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 999 | Available Captures for Rook | Easy | [Solution](leetcode/999.%20Available%20Captures%20for%20Rook)
 1002 | Find Common Characters | Easy | [Solution](leetcode/1002.%20Find%20Common%20Characters)
 1008 | Construct Binary Search Tree from Preorder Traversal | Medium | [Solution](leetcode/1008.%20Construct%20Binary%20Search%20Tree%20from%20Preorder%20Traversal)
+1012 | Complement of Base 10 Integer | Easy | [Solution](leetcode/1012.%20Complement%20of%20Base%2010%20Integer)
 
 # License
 
