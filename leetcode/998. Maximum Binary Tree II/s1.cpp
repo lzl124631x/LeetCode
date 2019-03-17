@@ -6,11 +6,9 @@ class Solution {
 public:
     TreeNode* insertIntoMaxTree(TreeNode* root, int val) {
         TreeNode *node = root, *prev = NULL;
-        while (node) {
-            if (val < node->val) {
-                prev = node;
-                node = node->right;
-            } else break;
+        while (node && val < node->val) {
+            prev = node;
+            node = node->right;
         }
         auto n = new TreeNode(val);
         if (prev) prev->right = n;
