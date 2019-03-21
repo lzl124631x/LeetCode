@@ -532,6 +532,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 852 | Peak Index in a Mountain Array | Easy | [Solution](leetcode/852.%20Peak%20Index%20in%20a%20Mountain%20Array)
 859 | Buddy Strings | Easy | [Solution](leetcode/859.%20Buddy%20Strings)
 860 | Lemonade Change | Easy | [Solution](leetcode/860.%20Lemonade%20Change)
+861 | Score After Flipping Matrix | Medium | [Solution](leetcode/861.%20Score%20After%20Flipping%20Matrix)
 862 | Shortest Subarray with Sum at Least K | Hard | [Solution](leetcode/862.%20Shortest%20Subarray%20with%20Sum%20at%20Least%20K)
 863 | All Nodes Distance K in Binary Tree | Medium | [Solution](leetcode/863.%20All%20Nodes%20Distance%20K%20in%20Binary%20Tree)
 867 | Transpose Matrix | Easy | [Solution](leetcode/867.%20Transpose%20Matrix)
