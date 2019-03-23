@@ -1,8 +1,12 @@
+// OJ: https://leetcode.com/problems/next-greater-element-i/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& findNums, vector<int>& nums) {
         stack<int> s;
-        map<int, int> m;
+        unordered_map<int, int> m;
         for (int n : nums) {
             while (s.size() && s.top() < n) {
                 m[s.top()] = n;
