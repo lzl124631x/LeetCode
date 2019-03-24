@@ -481,6 +481,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 712 | Minimum ASCII Delete Sum for Two Strings | Medium | [Solution](leetcode/712.%20Minimum%20ASCII%20Delete%20Sum%20for%20Two%20Strings)
 718 | Maximum Length of Repeated Subarray | Medium | [Solution](leetcode/718.%20Maximum%20Length%20of%20Repeated%20Subarray)
 720 | Longest Word in Dictionary | Easy | [Solution](leetcode/720.%20Longest%20Word%20in%20Dictionary)
+723 | Candy Crush | Medium | [Solution](leetcode/723.%20Candy%20Crush)
 724 | Find Pivot Index | Easy | [Solution](leetcode/724.%20Find%20Pivot%20Index)
 725 | Split Linked List in Parts | Medium | [Solution](leetcode/725.%20Split%20Linked%20List%20in%20Parts)
 728 | Self Dividing Numbers | Easy | [Solution](leetcode/728.%20Self%20Dividing%20Numbers)
