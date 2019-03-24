@@ -26,7 +26,7 @@ private:
         int val = abs(board[i][j]);
         board[i][j] = -val;
         for (int k = 0; k < 2; ++k) {
-            if (c & (1 << k) == 0) continue;
+            if ((c & (1 << k)) == 0) continue;
             int x = i, y = j;
             auto dir = dirs[k];
             do {

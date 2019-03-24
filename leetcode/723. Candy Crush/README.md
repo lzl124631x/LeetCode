@@ -89,6 +89,10 @@ public:
 
 ## Solution 2.
 
+Memo to myself: NEVER EVER be lazy to wrap bitwise operators in parenthesis!!
+
+I used to write `c & (1 << k) == 0`. But because bitwise operators have **lower precedence** than `==`, it's actually wrong! It should be `(c & (1 << k)) == 0`!
+
 ```cpp
 // OJ: https://leetcode.com/problems/candy-crush/
 // Author: github.com/lzl124631x
@@ -118,7 +122,7 @@ private:
         int val = abs(board[i][j]);
         board[i][j] = -val;
         for (int k = 0; k < 2; ++k) {
-            if (c & (1 << k) == 0) continue;
+            if ((c & (1 << k)) == 0) continue;
             int x = i, y = j;
             auto dir = dirs[k];
             do {
