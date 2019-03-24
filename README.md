@@ -411,6 +411,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 563 | Binary Tree Tilt | Easy | [Solution](leetcode/563.%20Binary%20Tree%20Tilt)
 566 | Reshape the Matrix | Easy | [Solution](leetcode/566.%20Reshape%20the%20Matrix)
 567 | Permutation in String | Medium | [Solution](leetcode/567.%20Permutation%20in%20String)
+570 | Managers with at Least 5 Direct Reports | Medium | [Solution](leetcode/570.%20Managers%20with%20at%20Least%205%20Direct%20Reports)
 572 | Subtree of Another Tree | Easy | [Solution](leetcode/572.%20Subtree%20of%20Another%20Tree)
 575 | Distribute Candies | Easy | [Solution](leetcode/575.%20Distribute%20Candies)
 577 | Employee Bonus | Easy | [Solution](leetcode/577.%20Employee%20Bonus)
