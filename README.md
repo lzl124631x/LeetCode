@@ -136,6 +136,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 152 | Maximum Product Subarray | Medium | [Solution](leetcode/152.%20Maximum%20Product%20Subarray)
 153 | Find Minimum in Rotated Sorted Array | Medium | [Solution](leetcode/153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array)
 154 | Find Minimum in Rotated Sorted Array II | Hard | [Solution](leetcode/154.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array%20II)
+156 | Binary Tree Upside Down | Medium | [Solution](leetcode/156.%20Binary%20Tree%20Upside%20Down)
 157 | Read N Characters Given Read4 | Easy | [Solution](leetcode/157.%20Read%20N%20Characters%20Given%20Read4)
 158 | Read N Characters Given Read4 II - Call multiple times | Hard | [Solution](leetcode/158.%20Read%20N%20Characters%20Given%20Read4%20II%20-%20Call%20multiple%20times)
 159 | Longest Substring with At Most Two Distinct Characters | Hard | [Solution](leetcode/159.%20Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters)
