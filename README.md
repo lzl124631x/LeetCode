@@ -473,6 +473,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 693 | Binary Number with Alternating Bits | Easy | [Solution](leetcode/693.%20Binary%20Number%20with%20Alternating%20Bits)
 694 | Number of Distinct Islands | Medium | [Solution](leetcode/694.%20Number%20of%20Distinct%20Islands)
 695 | Max Area of Island | Medium | [Solution](leetcode/695.%20Max%20Area%20of%20Island)
+697 | Degree of an Array | Easy | [Solution](leetcode/697.%20Degree%20of%20an%20Array)
 700 | Search in a Binary Search Tree | Easy | [Solution](leetcode/700.%20Search%20in%20a%20Binary%20Search%20Tree)
 701 | Insert into a Binary Search Tree | Medium | [Solution](leetcode/701.%20Insert%20into%20a%20Binary%20Search%20Tree)
 702 | Search in a Sorted Array of Unknown Size | Medium | [Solution](leetcode/702.%20Search%20in%20a%20Sorted%20Array%20of%20Unknown%20Size)
