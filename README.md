@@ -310,6 +310,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 419 | Battleships in a Board | Medium | [Solution](leetcode/419.%20Battleships%20in%20a%20Board)
 420 | Strong Password Checker | Hard | [Solution](leetcode/420.%20Strong%20Password%20Checker)
 421 | Maximum XOR of Two Numbers in an Array | Medium | [Solution](leetcode/421.%20Maximum%20XOR%20of%20Two%20Numbers%20in%20an%20Array)
+422 | Valid Word Square | Easy | [Solution](leetcode/422.%20Valid%20Word%20Square)
 423 | Reconstruct Original Digits from English | Medium | [Solution](leetcode/423.%20Reconstruct%20Original%20Digits%20from%20English)
 424 | Longest Repeating Character Replacement | Medium | [Solution](leetcode/424.%20Longest%20Repeating%20Character%20Replacement)
 427 | Construct Quad Tree | Easy | [Solution](leetcode/427.%20Construct%20Quad%20Tree)
