@@ -518,6 +518,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 791 | Custom Sort String | Medium | [Solution](leetcode/791.%20Custom%20Sort%20String)
 794 | Valid Tic-Tac-Toe State | Medium | [Solution](leetcode/794.%20Valid%20Tic-Tac-Toe%20State)
 795 | Number of Subarrays with Bounded Maximum | Medium | [Solution](leetcode/795.%20Number%20of%20Subarrays%20with%20Bounded%20Maximum)
+796 | Rotate String | Easy | [Solution](leetcode/796.%20Rotate%20String)
 797 | All Paths From Source to Target | Medium | [Solution](leetcode/797.%20All%20Paths%20From%20Source%20to%20Target)
 800 | Similar RGB Color | Easy | [Solution](leetcode/800.%20Similar%20RGB%20Color)
 804 | Unique Morse Code Words | Easy | [Solution](leetcode/804.%20Unique%20Morse%20Code%20Words)
