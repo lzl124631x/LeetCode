@@ -84,7 +84,7 @@ public:
 // OJ: https://leetcode.com/problems/sort-an-array/
 // Author: github.com/lzl124631x
 // Time: O(NlogN)
-// Space: O(1)
+// Space: O(N)
 class Solution {
 private:
     vector<int> tmp;
