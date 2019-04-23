@@ -573,6 +573,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 906 | Super Palindromes | Hard | [Solution](leetcode/906.%20Super%20Palindromes)
 908 | Smallest Range I | Easy | [Solution](leetcode/908.%20Smallest%20Range%20I)
 911 | Online Election | Medium | [Solution](leetcode/911.%20Online%20Election)
+912 | Sort an Array | Medium | [Solution](leetcode/912.%20Sort%20an%20Array)
 914 | X of a Kind in a Deck of Cards | Easy | [Solution](leetcode/914.%20X%20of%20a%20Kind%20in%20a%20Deck%20of%20Cards)
 917 | Reverse Only Letters | Easy | [Solution](leetcode/917.%20Reverse%20Only%20Letters)
 919 | Complete Binary Tree Inserter | Medium | [Solution](leetcode/919.%20Complete%20Binary%20Tree%20Inserter)
