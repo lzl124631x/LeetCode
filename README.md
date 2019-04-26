@@ -631,6 +631,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1019 | Next Greater Node In Linked List | Medium | [Solution](leetcode/1019.%20Next%20Greater%20Node%20In%20Linked%20List)
 1021 | Remove Outermost Parentheses | Easy | [Solution](leetcode/1021.%20Remove%20Outermost%20Parentheses)
 1028 | Recover a Tree From Preorder Traversal | Hard | [Solution](leetcode/1028.%20Recover%20a%20Tree%20From%20Preorder%20Traversal)
+1030 | Matrix Cells in Distance Order | Easy | [Solution](leetcode/1030.%20Matrix%20Cells%20in%20Distance%20Order)
 
 # License
 
