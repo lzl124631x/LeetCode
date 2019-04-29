@@ -18,6 +18,9 @@
 **Companies**:  
 [Uber](https://leetcode.com/company/uber)
 
+**Related Topics**:  
+[String](https://leetcode.com/tag/string/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+
 ## Solution 1.
 
 ```cpp
