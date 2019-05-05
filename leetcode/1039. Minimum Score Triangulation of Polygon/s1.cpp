@@ -1,6 +1,6 @@
 // OJ: https://leetcode.com/problems/minimum-score-triangulation-of-polygon/
 // Author: github.com/lzl124631x
-// Time: O(N^2)
+// Time: O(N^3)
 // Space: O(N^2)
 // Ref: https://leetcode.com/problems/minimum-score-triangulation-of-polygon/discuss/286753/C%2B%2B-with-picture
 class Solution {
