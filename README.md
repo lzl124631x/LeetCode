@@ -584,6 +584,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 919 | Complete Binary Tree Inserter | Medium | [Solution](leetcode/919.%20Complete%20Binary%20Tree%20Inserter)
 921 | Minimum Add to Make Parentheses Valid | Medium | [Solution](leetcode/921.%20Minimum%20Add%20to%20Make%20Parentheses%20Valid)
 922 | Sort Array By Parity II | Easy | [Solution](leetcode/922.%20Sort%20Array%20By%20Parity%20II)
+924 | Minimize Malware Spread | Hard | [Solution](leetcode/924.%20Minimize%20Malware%20Spread)
 926 | Flip String to Monotone Increasing | Medium | [Solution](leetcode/926.%20Flip%20String%20to%20Monotone%20Increasing)
 929 | Unique Email Addresses | Easy | [Solution](leetcode/929.%20Unique%20Email%20Addresses)
 931 | Minimum Falling Path Sum | Medium | [Solution](leetcode/931.%20Minimum%20Falling%20Path%20Sum)
