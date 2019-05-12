@@ -586,6 +586,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 922 | Sort Array By Parity II | Easy | [Solution](leetcode/922.%20Sort%20Array%20By%20Parity%20II)
 924 | Minimize Malware Spread | Hard | [Solution](leetcode/924.%20Minimize%20Malware%20Spread)
 926 | Flip String to Monotone Increasing | Medium | [Solution](leetcode/926.%20Flip%20String%20to%20Monotone%20Increasing)
+928 | Minimize Malware Spread II | Hard | [Solution](leetcode/928.%20Minimize%20Malware%20Spread%20II)
 929 | Unique Email Addresses | Easy | [Solution](leetcode/929.%20Unique%20Email%20Addresses)
 931 | Minimum Falling Path Sum | Medium | [Solution](leetcode/931.%20Minimum%20Falling%20Path%20Sum)
 933 | Number of Recent Calls | Easy | [Solution](leetcode/933.%20Number%20of%20Recent%20Calls)
