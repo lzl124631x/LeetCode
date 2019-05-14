@@ -256,6 +256,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 360 | Sort Transformed Array | Medium | [Solution](leetcode/360.%20Sort%20Transformed%20Array)
 361 | Bomb Enemy | Medium | [Solution](leetcode/361.%20Bomb%20Enemy)
 363 | Max Sum of Rectangle No Larger Than K | Hard | [Solution](leetcode/363.%20Max%20Sum%20of%20Rectangle%20No%20Larger%20Than%20K)
+364 | Nested List Weight Sum II | Medium | [Solution](leetcode/364.%20Nested%20List%20Weight%20Sum%20II)
 365 | Water and Jug Problem | Medium | [Solution](leetcode/365.%20Water%20and%20Jug%20Problem)
 366 | Find Leaves of Binary Tree | Medium | [Solution](leetcode/366.%20Find%20Leaves%20of%20Binary%20Tree)
 367 | Valid Perfect Square | Easy | [Solution](leetcode/367.%20Valid%20Perfect%20Square)
