@@ -472,6 +472,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 669 | Trim a Binary Search Tree | Easy | [Solution](leetcode/669.%20Trim%20a%20Binary%20Search%20Tree)
 670 | Maximum Swap | Medium | [Solution](leetcode/670.%20Maximum%20Swap)
 674 | Longest Continuous Increasing Subsequence | Easy | [Solution](leetcode/674.%20Longest%20Continuous%20Increasing%20Subsequence)
+676 | Implement Magic Dictionary | Medium | [Solution](leetcode/676.%20Implement%20Magic%20Dictionary)
 677 | Map Sum Pairs | Medium | [Solution](leetcode/677.%20Map%20Sum%20Pairs)
 678 | Valid Parenthesis String | Medium | [Solution](leetcode/678.%20Valid%20Parenthesis%20String)
 680 | Valid Palindrome II | Easy | [Solution](leetcode/680.%20Valid%20Palindrome%20II)
