@@ -437,6 +437,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 595 | Big Countries | Easy | [Solution](leetcode/595.%20Big%20Countries)
 597 | Friend Requests I: Overall Acceptance Rate | Easy | [Solution](leetcode/597.%20Friend%20Requests%20I%3A%20Overall%20Acceptance%20Rate)
 599 | Minimum Index Sum of Two Lists | Easy | [Solution](leetcode/599.%20Minimum%20Index%20Sum%20of%20Two%20Lists)
+600 | Non-negative Integers without Consecutive Ones | Hard | [Solution](leetcode/600.%20Non-negative%20Integers%20without%20Consecutive%20Ones)
 604 | Design Compressed String Iterator | Easy | [Solution](leetcode/604.%20Design%20Compressed%20String%20Iterator)
 605 | Can Place Flowers | Easy | [Solution](leetcode/605.%20Can%20Place%20Flowers)
 606 | Construct String from Binary Tree | Easy | [Solution](leetcode/606.%20Construct%20String%20from%20Binary%20Tree)
