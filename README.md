@@ -534,6 +534,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 804 | Unique Morse Code Words | Easy | [Solution](leetcode/804.%20Unique%20Morse%20Code%20Words)
 806 | Number of Lines To Write String | Easy | [Solution](leetcode/806.%20Number%20of%20Lines%20To%20Write%20String)
 807 | Max Increase to Keep City Skyline | Medium | [Solution](leetcode/807.%20Max%20Increase%20to%20Keep%20City%20Skyline)
+809 | Expressive Words | Medium | [Solution](leetcode/809.%20Expressive%20Words)
 811 | Subdomain Visit Count | Easy | [Solution](leetcode/811.%20Subdomain%20Visit%20Count)
 812 | Largest Triangle Area | Easy | [Solution](leetcode/812.%20Largest%20Triangle%20Area)
 817 | Linked List Components | Medium | [Solution](leetcode/817.%20Linked%20List%20Components)
