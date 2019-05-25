@@ -51,21 +51,14 @@ We have two options for each step:
 
 Where `M` is the count of 'A's already added.
 
+Let `j = k + 1`, we can see the rule of multiplication: to multiply by `j`, the cost is `j + 1` (`j >= 2`)
+
 Let `dp[i]` be the largest number of written 'A's possible after `i` keypresses.
 
 ```
 dp[i] = max{
-    dp[i - 1] + 1                            Addition
-    dp[i - (k + 2)] * (k + 1)                Multiplication, where k >= 1 && k <= i - 3 (because i - (k + 2) >= 1)
-}
-```
-
-Let `j = k + 1`, we have
-
-```
-dp[i] = max{
-    dp[i - 1] + 1                            Addition
-    dp[i - j - 1] * j                        Multiplication, where j is in [2, i - 2]
+    dp[i - 1] + 1                      Addition
+    dp[i - (j + 1)] * j                Multiplication, where j >= 2 && j <= i - 2
 }
 ```
 
@@ -82,6 +75,33 @@ public:
         for (int i = 1; i <= N; ++i) {
             dp[i] = dp[i - 1] + 1;
             for (int j = 2; j < i - 1; ++j) dp[i] = max(dp[i], dp[i - j - 1] * j);
+        }
+        return dp[N];
+    }
+};
+```
+
+## Solution 2. DP
+
+In the multiplcation case of Solution 1:
+* When `j` is even, i.e. `j = 2p` (`p >= 1`), the cost of multiply by `j` is `2p + 1`. We can instead multiply by `p` first, then multiply by `2`, and the total cost is `(p + 1) + (2 + 1) = p + 4`. When `p + 4 <= 2p + 1`, i.e. `p >= 3` or `j >= 6`, we should pick the second way for lower cost.
+* When `j` is odd, i.e. `j = 2p+1` (`p >= 1`), the cost of multiply by `j` is `2p + 2`. We can instead multiply by `p + 1` first, then multiply by `2`, and the total cost is `(p + 1 + 1) + (2 + 1) = p + 5`. When `p + 5 <= 2p + 2`, i.e. `p >= 3` or `j >= 7`, we should pick the second way for lower cost.
+
+In sum, multiplying by `j >= 6` is not optimal, so we at most multiply by 5, and the range of `j` is `[2, min(i - 2, 5)]`
+
+```cpp
+// OJ: https://leetcode.com/problems/4-keys-keyboard/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/4-keys-keyboard/solution/
+class Solution {
+public:
+    int maxA(int N) {
+        vector<int> dp(N + 1);
+        for (int i = 1; i <= N; ++i) {
+            dp[i] = dp[i - 1] + 1;
+            for (int j = min(i - 2, 5); j >= 2; --j) dp[i] = max(dp[i], dp[i - j - 1] * j);
         }
         return dp[N];
     }
