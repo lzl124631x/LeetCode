@@ -1,11 +1,14 @@
+// OJ: https://leetcode.com/problems/maximum-subarray/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        int minSub = 0, ans = INT_MIN, sum = 0;
+        int ans = INT_MIN, cur = INT_MIN;
         for (int n : nums) {
-            sum += n;
-            ans = max(ans, sum - minSub);
-            minSub = min(minSub, sum);
+            cur = max(cur, 0) + n;
+            ans = max(ans, cur);
         }
         return ans;
     }
