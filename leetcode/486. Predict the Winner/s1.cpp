@@ -1,7 +1,10 @@
+// OJ: https://leetcode.com/problems/predict-the-winner/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N^2)
 class Solution {
 public:
     bool PredictTheWinner(vector<int>& nums) {
-        if (nums.empty()) return true;
         int N = nums.size();
         unordered_map<int, unordered_map<int, int>> dp;
         for (int i = 0; i < N; ++i) dp[i][1] = nums[i];
