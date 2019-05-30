@@ -556,6 +556,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 841 | Keys and Rooms | Medium | [Solution](leetcode/841.%20Keys%20and%20Rooms)
 852 | Peak Index in a Mountain Array | Easy | [Solution](leetcode/852.%20Peak%20Index%20in%20a%20Mountain%20Array)
 859 | Buddy Strings | Easy | [Solution](leetcode/859.%20Buddy%20Strings)
+856 | Score of Parentheses | Medium | [Solution](leetcode/856.%20Score%20of%20Parentheses)
 860 | Lemonade Change | Easy | [Solution](leetcode/860.%20Lemonade%20Change)
 861 | Score After Flipping Matrix | Medium | [Solution](leetcode/861.%20Score%20After%20Flipping%20Matrix)
 862 | Shortest Subarray with Sum at Least K | Hard | [Solution](leetcode/862.%20Shortest%20Subarray%20with%20Sum%20at%20Least%20K)
