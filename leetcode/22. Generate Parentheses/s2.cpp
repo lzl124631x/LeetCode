@@ -1,3 +1,7 @@
+// OJ: https://leetcode.com/problems/generate-parentheses/
+// Author: github.com/lzl124631x
+// Time: O(C(N)) where C(N) is the Nth Catalan number
+// Space: O(N)
 class Solution {
 private:
     vector<string> ans;
