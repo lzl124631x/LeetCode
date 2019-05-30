@@ -60,6 +60,11 @@
 </div>
 </div>
 
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [ServiceNow](https://leetcode.com/company/servicenow)
+
+**Related Topics**:  
+[Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/)
 
 ## Solution 1.
 
