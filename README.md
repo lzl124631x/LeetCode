@@ -112,6 +112,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 121 | Best Time to Buy and Sell Stock | Easy | [Solution](leetcode/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock)
 122 | Best Time to Buy and Sell Stock II | Medium | [Solution](leetcode/122.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II)
 123 | Best Time to Buy and Sell Stock III | Hard | [Solution](leetcode/123.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III)
+124 | Binary Tree Maximum Path Sum | Hard | [Solution](leetcode/124.%20Binary%20Tree%20Maximum%20Path%20Sum)
 125 | Valid Palindrome | Easy | [Solution](leetcode/125.%20Valid%20Palindrome)
 126 | Word Ladder II | Hard | [Solution](leetcode/126.%20Word%20Ladder%20II)
 127 | Word Ladder | Hard | [Solution](leetcode/127.%20Word%20Ladder)
