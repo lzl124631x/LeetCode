@@ -1,24 +1,20 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+// OJ: https://leetcode.com/problems/partition-list/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
 class Solution {
 public:
     ListNode* partition(ListNode* head, int x) {
         ListNode ltHead(0), *ltTail = &ltHead, geHead(0), *geTail = &geHead;
         while (head) {
-            ListNode *p = head;
+            auto node = head;
             head = head->next;
-            if (p->val < x) {
-                ltTail->next = p;
-                ltTail = p;
+            if (node->val < x) {
+                ltTail->next = node;
+                ltTail = node;
             } else {
-                geTail->next = p;
-                geTail = p;
+                geTail->next = node;
+                geTail = node;
             }
         }
         ltTail->next = geHead.next;
