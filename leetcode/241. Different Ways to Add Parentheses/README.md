@@ -27,12 +27,20 @@ Given a string of numbers and operators, return all possible results from comput
 
 ## Solution 1. Divide And Conquer
 
+> Tip: find the pattern of the length of output given `N` operators in `input`.
+> |0|1|2|3|4|...|
+> |---|---|---|---|---|---|
+> |1|1|2|5|14|...|
+> This is a Catalan Number Sequence. For this sequence, it's very likely that you can use "Divide and Conquer" -- separating the input as two parts, solve the subproblem of the smaller parts and merge them.
+
 For each operator, use it to separate the expression into two parts. Compute the `diffWaysToCompute` for both the left and right parts, and merge the results.
 
 ```cpp
 // OJ: https://leetcode.com/problems/different-ways-to-add-parentheses/
 // Author: github.com/lzl124631x
-// Time: O(C(N)) where N is the count of operators in `input` and C(N) is the Nth Catalan Number
+// Time: S * O(C(N))
+//          where S is the length of `input`,
+//          N is the count of operators in `input` and C(N) is the Nth Catalan Number
 // Space: O(C(N))
 class Solution {
 public:

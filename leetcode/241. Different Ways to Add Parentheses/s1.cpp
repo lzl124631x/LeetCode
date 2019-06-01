@@ -1,6 +1,8 @@
 // OJ: https://leetcode.com/problems/different-ways-to-add-parentheses/
 // Author: github.com/lzl124631x
-// Time: O(C(N)) where N is the count of operators in `input` and C(N) is the Nth Catalan Number
+// Time: S * O(C(N))
+//          where S is the length of `input`,
+//          N is the count of operators in `input` and C(N) is the Nth Catalan Number
 // Space: O(C(N))
 class Solution {
 public:
