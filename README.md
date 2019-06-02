@@ -658,6 +658,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1038 | Binary Search Tree to Greater Sum Tree | Medium | [Solution](leetcode/1038.%20Binary%20Search%20Tree%20to%20Greater%20Sum%20Tree)
 1039 | Minimum Score Triangulation of Polygon | Medium | [Solution](leetcode/1039.%20Minimum%20Score%20Triangulation%20of%20Polygon)
 1071 | Greatest Common Divisor of Strings | Easy | [Solution](leetcode/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
+1072 | Flip Columns For Maximum Number of Equal Rows | Medium | [Solution](leetcode/1072.%20Flip%20Columns%20For%20Maximum%20Number%20of%20Equal%20Rows)
 1073 | Adding Two Negabinary Numbers | Medium | [Solution](leetcode/1073.%20Adding%20Two%20Negabinary%20Numbers)
 
 # License
