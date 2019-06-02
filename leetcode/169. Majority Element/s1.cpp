@@ -1,15 +1,19 @@
+// OJ: https://leetcode.com/problems/majority-element/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        if (nums.empty()) return 0;
-        int cnt = 0, val = 0;
+        int ans = 0, cnt = 0;
         for (int n : nums) {
-            if (!cnt) {
-                val = n;
-                ++cnt;
-            } else if (val != n) --cnt;
-            else ++cnt;
+            if (ans == n) ++cnt;
+            else if (cnt > 0) --cnt;
+            else {
+                ans = n;
+                cnt = 1;
+            }
         }
-        return val;
+        return ans;
     }
 };
