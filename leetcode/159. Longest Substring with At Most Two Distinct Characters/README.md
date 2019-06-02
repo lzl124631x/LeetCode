@@ -38,18 +38,12 @@
 class Solution {
 public:
     int lengthOfLongestSubstringTwoDistinct(string s) {
-        int i = 0, j = 0, ans = 0;
-        unordered_map<char, int> cnt;
+        vector<int> m(128, 0);
+        int i = 0, j = 0, ans = 0, cnt = 0;
         while (j < s.size()) {
-            while (j < s.size()) {
-                cnt[s[j++]]++;
-                if (cnt.size() > 2) break;
-                ans = max(ans, j - i);
-            }
-            while (i < j && cnt.size() > 2) {
-                char c = s[i++];
-                cnt[c]--;
-                if (!cnt[c]) cnt.erase(c);
+            if (m[s[j++]]++ == 0) ++cnt;
+            while (cnt > 2) {
+                if (m[s[i++]]-- == 1) --cnt;
             }
             ans = max(ans, j - i);
         }
