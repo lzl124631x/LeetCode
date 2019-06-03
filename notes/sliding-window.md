@@ -33,9 +33,13 @@ int findSubstring(string s){
 }
 ```
 
-When finding minimum, the counter condition should be `true` for **valid** window.
+When finding minimum:
+* this template works when initially counter condition is invalid, so we are extending the window to find the first valid window.
+* the counter condition should be `true` for **valid** window, i.e. shrinking the valid window to find the minimum.
 
-When finding maximum, the counter condition should be `true` for **invalid** window.
+When finding maximum:
+* this template works when initially counter condition is valid, so we are extending valid window as large as possible until it becomes invalid.
+* the counter condition should be `true` for **invalid** window, i.e. shrinking the invalid window until it becomes valid again.
 
 ## Problems
 
