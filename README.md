@@ -239,6 +239,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 337 | House Robber III | Medium | [Solution](leetcode/337.%20House%20Robber%20III)
 338 | Counting Bits | Medium | [Solution](leetcode/338.%20Counting%20Bits)
 339 | Nested List Weight Sum | Easy | [Solution](leetcode/339.%20Nested%20List%20Weight%20Sum)
+340 | Longest Substring with At Most K Distinct Characters | Hard | [Solution](leetcode/340.%20Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters)
 341 | Flatten Nested List Iterator | Medium | [Solution](leetcode/341.%20Flatten%20Nested%20List%20Iterator)
 342 | Power of Four | Easy | [Solution](leetcode/342.%20Power%20of%20Four)
 343 | Integer Break | Medium | [Solution](leetcode/343.%20Integer%20Break)
