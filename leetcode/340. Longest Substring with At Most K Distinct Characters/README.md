@@ -1,4 +1,50 @@
-var companyClass = '.company-tag-wrapper__1rBy a';
-var topicClass = '.topic-tag__1jni';
-var similarQuestionClass = '.question__3owm';
-copy(`# [${$('#question-title').textContent} (${$('[diff]').textContent})](${location.href})\n\n${$('.question-content__JfgR').children[0].innerHTML}\n\n${$$(companyClass).length? `**Companies**:  \n${$$(companyClass).map(x => `[${$('.btn-content__lOBM', x).textContent}](${x.href})`).join(', ')}\n\n` : ''}${ $$(topicClass).length ?`**Related Topics**:  \n${$$(topicClass).map(x => `[${x.textContent}](${x.href})`).join(', ')}\n\n` : '' }${ $$(similarQuestionClass).length ? `**Similar Questions**:\n${$$(similarQuestionClass).map(x => { let link = $('.title__3BnH', x); return `* [${link.textContent} (${$('.difficulty__2LSw',x).textContent})](${link.href})` }).join('\n')}\n\n` : '' }## Solution 1.\n\n\`\`\`cpp\n\n\`\`\``)
+# [340. Longest Substring with At Most K Distinct Characters (Hard)](https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/)
+
+<p>Given a string, find the length of the longest substring T that contains at most <i>k</i> distinct characters.</p>
+
+<p><strong>Example 1:</strong></p>
+
+<div>
+<pre><strong>Input: </strong>s = <span id="example-input-1-1">"eceba"</span>, k = <span id="example-input-1-2">2</span>
+<strong>Output: </strong><span id="example-output-1">3</span>
+<strong>Explanation: </strong>T is "ece" which its length is 3.</pre>
+
+<div>
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input: </strong>s = <span id="example-input-2-1">"aa"</span>, k = <span id="example-input-2-2">1</span>
+<strong>Output: </strong>2
+<strong>Explanation: </strong>T is "aa" which its length is 2.
+</pre>
+</div>
+</div>
+
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google)
+
+**Related Topics**:  
+[Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
+
+## Solution 1.
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int lengthOfLongestSubstringKDistinct(string s, int k) {
+        vector<int> m(128, 0);
+        int i = 0, j = 0, ans = 0, cnt = 0;
+        while (j < s.size()) {
+            if (m[s[j++]]++ == 0) cnt++;
+            while (cnt > k) {
+                if (m[s[i++]]-- == 1) cnt--;
+            }
+            ans = max(ans, j - i);
+        }
+        return ans;
+    }
+};
+```
