@@ -5,14 +5,14 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int ans = 0, i = 0, j = 0;
-        unordered_set<char> st;
+        vector<int> m(128, 0);
+        int i = 0, j = 0, cnt = 0, ans = 0;
         while (j < s.size()) {
-            while (j < s.size() && !st.count(s[j])) st.insert(s[j++]);
+            if (m[s[j++]]++ == 1) cnt++;
+            while (cnt) {
+                if (m[s[i++]]-- == 2) cnt--;
+            }
             ans = max(ans, j - i);
-            while (i < j && s[i] != s[j]) st.erase(s[i++]);
-            ++i;
-            ++j;
         }
         return ans;
     }

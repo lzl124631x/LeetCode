@@ -1,4 +1,8 @@
-// https://discuss.leetcode.com/topic/24739/c-code-in-9-lines
+// OJ: https://leetcode.com/problems/longest-substring-without-repeating-characters/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://discuss.leetcode.com/topic/24739/c-code-in-9-lines
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
