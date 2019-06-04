@@ -661,6 +661,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1071 | Greatest Common Divisor of Strings | Easy | [Solution](leetcode/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
 1072 | Flip Columns For Maximum Number of Equal Rows | Medium | [Solution](leetcode/1072.%20Flip%20Columns%20For%20Maximum%20Number%20of%20Equal%20Rows)
 1073 | Adding Two Negabinary Numbers | Medium | [Solution](leetcode/1073.%20Adding%20Two%20Negabinary%20Numbers)
+1074 | Number of Submatrices That Sum to Target | Hard | [Solution](leetcode/1074.%20Number%20of%20Submatrices%20That%20Sum%20to%20Target)
 
 # License
 
