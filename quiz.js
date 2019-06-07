@@ -1,4 +1,4 @@
-var title = `# [${$('#question-title').textContent} (${$('[diff]').textContent})](${location.href})\n\n`;
+var title = `# [${$('[data-cy=question-title]').textContent} (${$('[diff]').textContent})](${location.href})\n\n`;
 var question = `${$('.question-content__JfgR').children[0].innerHTML}\n\n`;
 
 var companyClass = '.company-tag-wrapper__1rBy a';
