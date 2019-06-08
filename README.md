@@ -663,6 +663,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1073 | Adding Two Negabinary Numbers | Medium | [Solution](leetcode/1073.%20Adding%20Two%20Negabinary%20Numbers)
 1074 | Number of Submatrices That Sum to Target | Hard | [Solution](leetcode/1074.%20Number%20of%20Submatrices%20That%20Sum%20to%20Target)
 5083 | Occurrences After Bigram | Easy | [Solution](leetcode/5083.%20Occurrences%20After%20Bigram)
+5087 | Letter Tile Possibilities | Medium | [Solution](leetcode/5087.%20Letter%20Tile%20Possibilities)
 
 # License
 
