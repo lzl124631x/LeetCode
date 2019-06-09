@@ -1,6 +1,6 @@
 // OJ: https://leetcode.com/problems/occurrences-after-bigram/
 // Author: github.com/lzl124631x
-// Time: O(N^2)
+// Time: O(N)
 // Space: O(N)
 class Solution {
 public:
