@@ -91,7 +91,19 @@ So for this question, we only need to consider the `N` suffix substrings of `s`.
 
 We just brute-forcely compare all the suffix strings.
 
-One optimization we do for the `"a.....a"` case is `if (i + j == N) break`. It means we've matched string `i` all the way to the end, and string `i` is a substring of `start`. In this case, string `start` is already the largest.
+One optimization we do for the `"a.....a"` case is `if (i + j == N) break`. My reasoning is as follows.
+
+When `i + j == N`, the string `i` is of pattern `ABA`, where `j` is the start index of the second string segment `A`.
+
+Example
+```
+ i           j
+[ddac](abac)[ddac]
+```
+
+Note that string `A` and `B` won't have any character greater than `s[i]` because otherwise `i` will be moved to that greater character first.
+
+Since we've already moved to `s[j]`, it means there is no better solution between `i+1` and `j - 1`. So we only need to think about the indexes after `j`. For each `k` in `[j + 1, N)`, we can find a counterpart `t` in `[i + 1, i + N - j)`, and string `t` must be better than string `k` since they have the same prefix and string `t` is longer. And because string `t` is no better than string `i`, so we can ignore all indexes after `j`.
 
 Note that this optimization can't pass test case `"a....ab"` though.
 
