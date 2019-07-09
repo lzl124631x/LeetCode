@@ -40,6 +40,10 @@
 
 ## Solution 1.
 
+Compute difference between the date and 1971/1/1 which is Friday.
+
+When the input is exactly 1971/1/1, the `d + day` will be `1`. To get `Friday`, we need to shift it by `4`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/day-of-the-week/
 // Author: github.com/lzl124631x
