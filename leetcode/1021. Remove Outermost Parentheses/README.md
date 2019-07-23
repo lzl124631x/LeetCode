@@ -1,4 +1,4 @@
-# [1021. Remove Outermost Parentheses (Easy)](https://leetcode.com/problems/remove-outermost-parentheses/submissions/)
+# [1021. Remove Outermost Parentheses (Easy)](https://leetcode.com/problems/remove-outermost-parentheses/)
 
 <p>A valid parentheses string is either empty <code>("")</code>, <code>"(" + A + ")"</code>, or <code>A + B</code>, where <code>A</code> and <code>B</code> are valid parentheses strings, and <code>+</code> represents string concatenation.&nbsp; For example, <code>""</code>, <code>"()"</code>, <code>"(())()"</code>, and <code>"(()(()))"</code> are all valid parentheses strings.</p>
 
@@ -66,7 +66,7 @@ After removing outer parentheses of each part, this is "" + "" = "".
 ## Solution 1.
 
 ```cpp
-// OJ: https://leetcode.com/problems/remove-outermost-parentheses/submissions/
+// OJ: https://leetcode.com/problems/remove-outermost-parentheses/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)

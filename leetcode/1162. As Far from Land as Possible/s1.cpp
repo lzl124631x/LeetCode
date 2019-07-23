@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/problems/as-far-from-land-as-possible/submissions/
+// OJ: https://leetcode.com/problems/as-far-from-land-as-possible/
 // Author: github.com/lzl124631x
 // Time: O(MNL) where grid is of size M*N and L is the count of lands.
 // Space: O(L)

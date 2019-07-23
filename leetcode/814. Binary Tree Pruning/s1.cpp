@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/problems/binary-tree-pruning/submissions/
+// OJ: https://leetcode.com/problems/binary-tree-pruning/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(logN)

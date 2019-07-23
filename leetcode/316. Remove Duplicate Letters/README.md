@@ -76,7 +76,7 @@ public:
 Same idea as Solution 1, use iterative method instead of recursive.
 
 ```cpp
-// OJ: https://leetcode.com/problems/remove-duplicate-letters/submissions/
+// OJ: https://leetcode.com/problems/remove-duplicate-letters/
 // Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(N)

@@ -1,4 +1,4 @@
-# [814. Binary Tree Pruning (Medium)](https://leetcode.com/problems/binary-tree-pruning/submissions/)
+# [814. Binary Tree Pruning (Medium)](https://leetcode.com/problems/binary-tree-pruning/)
 
 <p>We are given the head node <code>root</code>&nbsp;of a binary tree, where additionally every node's value is either a 0 or a 1.</p>
 
@@ -50,7 +50,7 @@ The diagram on the right represents the answer.
 ## Solution 1.
 
 ```cpp
-// OJ: https://leetcode.com/problems/binary-tree-pruning/submissions/
+// OJ: https://leetcode.com/problems/binary-tree-pruning/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(logN)

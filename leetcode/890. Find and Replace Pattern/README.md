@@ -41,7 +41,7 @@ since a and b map to the same letter.</pre>
 ## Solution 1.
 
 ```cpp
-// OJ: https://leetcode.com/problems/find-and-replace-pattern/submissions/
+// OJ: https://leetcode.com/problems/find-and-replace-pattern/
 // Author: github.com/lzl124631x
 // Time: O(CW) where C is count of words and W is word length
 // Space: O(W)

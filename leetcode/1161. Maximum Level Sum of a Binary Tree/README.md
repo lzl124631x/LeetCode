@@ -38,7 +38,7 @@ So we return the level with the maximum sum which is level 2.
 ## Solution 1. Level-order Traversal
 
 ```cpp
-// OJ: https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/submissions/
+// OJ: https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)

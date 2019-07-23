@@ -57,7 +57,7 @@ For example, to compute `F(1, 10, 1, 3)`, we:
 So we can iteratively compute `F` from small scale to large scale.
 
 ```cpp
-// OJ: https://leetcode.com/problems/stone-game/submissions/
+// OJ: https://leetcode.com/problems/stone-game/
 // Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(N)
@@ -84,7 +84,7 @@ public:
 Notice that the length of `piles` is even. So Alex can always pick piles with either even indices (`piles[0], piles[2], ..., piles[n-2]`) or odd indices (`piles[1], piles[3], ..., piles[n-1]`). Since the total number of stones is odd, so Alex can simply pick the group with more stones.
 
 ```cpp
-// OJ: https://leetcode.com/problems/stone-game/submissions/
+// OJ: https://leetcode.com/problems/stone-game/
 // Author: github.com/lzl124631x
 // Time: O(1)
 // Space: O(1)

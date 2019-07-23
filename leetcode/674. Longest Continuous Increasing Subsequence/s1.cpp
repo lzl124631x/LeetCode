@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/problems/longest-continuous-increasing-subsequence/submissions/
+// OJ: https://leetcode.com/problems/longest-continuous-increasing-subsequence/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)

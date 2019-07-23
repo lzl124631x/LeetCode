@@ -1,4 +1,4 @@
-# [577. Employee Bonus (Easy)](https://leetcode.com/problems/employee-bonus/submissions/)
+# [577. Employee Bonus (Easy)](https://leetcode.com/problems/employee-bonus/)
 
 <p>
 Select all employee's name and bonus whose bonus is &lt; 1000.
@@ -49,7 +49,7 @@ Example ouput:
 ## Solution 1.
 
 ```sql
-# OJ: https://leetcode.com/problems/employee-bonus/submissions/
+# OJ: https://leetcode.com/problems/employee-bonus/
 # Author: github.com/lzl124631x
 SELECT
     Employee.name, Bonus.bonus

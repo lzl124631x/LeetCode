@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/problems/as-far-from-land-as-possible/submissions/
+// OJ: https://leetcode.com/problems/as-far-from-land-as-possible/
 // Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(MN)

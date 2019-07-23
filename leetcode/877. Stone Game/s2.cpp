@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/problems/stone-game/submissions/
+// OJ: https://leetcode.com/problems/stone-game/
 // Author: github.com/lzl124631x
 // Time: O(1)
 // Space: O(1)

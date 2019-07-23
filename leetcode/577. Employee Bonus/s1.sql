@@ -1,4 +1,4 @@
-# OJ: https://leetcode.com/problems/employee-bonus/submissions/
+# OJ: https://leetcode.com/problems/employee-bonus/
 # Author: github.com/lzl124631x
 SELECT
     Employee.name, Bonus.bonus

@@ -1,4 +1,4 @@
-# [674. Longest Continuous Increasing Subsequence (Easy)](https://leetcode.com/problems/longest-continuous-increasing-subsequence/submissions/)
+# [674. Longest Continuous Increasing Subsequence (Easy)](https://leetcode.com/problems/longest-continuous-increasing-subsequence/)
 
 <p>
 Given an unsorted array of integers, find the length of longest <code>continuous</code> increasing subsequence (subarray).
@@ -36,7 +36,7 @@ Length of the array will not exceed 10,000.
 ## Solution 1.
 
 ```cpp
-// OJ: https://leetcode.com/problems/longest-continuous-increasing-subsequence/submissions/
+// OJ: https://leetcode.com/problems/longest-continuous-increasing-subsequence/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)

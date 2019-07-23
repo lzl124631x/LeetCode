@@ -54,7 +54,7 @@ For each water cell, compute its minimal distance to all lands. The maximum of t
 Note that if `dist` is already smaller than or equal to the current best answer `ans`, this cell should be skipped because it can't yield better result (`if (dist <= ans) break;`).
 
 ```cpp
-// OJ: https://leetcode.com/problems/as-far-from-land-as-possible/submissions/
+// OJ: https://leetcode.com/problems/as-far-from-land-as-possible/
 // Author: github.com/lzl124631x
 // Time: O(MNL) where grid is of size M*N and L is the count of lands.
 // Space: O(L)
@@ -91,7 +91,7 @@ public:
 Starts from lands, do BFS layer by layer. The maximum layer number you get is the answer.
 
 ```cpp
-// OJ: https://leetcode.com/problems/as-far-from-land-as-possible/submissions/
+// OJ: https://leetcode.com/problems/as-far-from-land-as-possible/
 // Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(MN)

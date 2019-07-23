@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/submissions/
+// OJ: https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
