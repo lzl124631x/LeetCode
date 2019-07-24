@@ -74,7 +74,9 @@ public:
 
 ## Solution 1. Custom Sort
 
-Separate each `letterLog` as a pair of identifier and log content. When sorting, try comparing log contents first, if they are the same, use log identifier to break the tie.
+1. Split `logs` into `letterLogs` and `digitLogs`. Separate each `letterLog` as a pair of identifier and log content.
+1. Sort `letterLogs`. Try comparing log contents first, if they are the same, use log identifier to break the tie.
+1. Return the concatenation of `letterLogs` and `digitLogs`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/reorder-data-in-log-files/
