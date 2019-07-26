@@ -5,11 +5,10 @@
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        partial_sum(nums.begin(), nums.end(), nums.begin());
-        int minSum = 0, ans = INT_MIN;
-        for (int n : nums) {
-            ans = max(ans, n - minSum);
-            minSum = min(minSum, n);
+        int ans = nums[0];
+        for (int i = 1; i < nums.size(); ++i) {
+            nums[i] += max(nums[i - 1], 0);
+            ans = max(ans, nums[i]);
         }
         return ans;
     }
