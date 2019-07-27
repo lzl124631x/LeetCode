@@ -20,7 +20,7 @@
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Divide and Conquer](https://leetcode.com/tag/divide-and-conquer/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
-## Solution 1. Rolling Sum
+## Solution 1. Rolling Sum + Greedy
 
 We can first get the rolling sum so that `sum[i] = nums[0] + ... + sum[i]`. With `partial_sum` we can do that in place.
 
@@ -122,6 +122,40 @@ public:
             ans = max(ans, cur);
         }
         return ans;
+    }
+};
+```
+
+## Solution 5. Divide and Conquer
+
+See details [here](https://leetcode.com/problems/maximum-subarray/solution/)
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-subarray/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(logN)
+class Solution {
+private:
+    int crossSum(vector<int>& nums, int L, int R, int p) {
+        if (L == R) return nums[L];
+        int left = INT_MIN, right = INT_MIN, i, sum;
+        for (i = p, sum = 0; i >= L; --i) left = max(left, sum += nums[i]);
+        for (i = p + 1, sum = 0; i <= R; ++i) right = max(right, sum += nums[i]);
+        return left + right;
+    }
+    
+    int helper(vector<int>& nums, int L, int R) {
+        if (L == R) return nums[L];
+        int p = (L + R) / 2;
+        int left = helper(nums, L, p);
+        int right = helper(nums, p + 1, R);
+        int cross = crossSum(nums, L, R, p);
+        return max(left, max(right, cross));
+    }
+public:
+    int maxSubArray(vector<int>& nums) {
+        return helper(nums, 0, nums.size() - 1);
     }
 };
 ```
