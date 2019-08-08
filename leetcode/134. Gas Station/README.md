@@ -98,6 +98,32 @@ The current point must have `gas[i] - cost[i] < 0`, so we'll need to try to star
 
 Finally, if `total` is non-negative, `ans` should be the start point.
 
+Now let's prove this algorithm works.
+
+First of all, assume the start point we found is `s`. Then this algorithm guarantees we can reach point `0` from `s`.
+
+How can we prove the last part of the roundtrip -- from `0` to `s`?
+
+We use proof by contradiction to prove this works.
+
+Assume there is a point `k` (`0 < k <= s`) that is unreachable in the roundtrip starting from `s`.
+
+Let `D[i] = gas[i] - cost[i]`.
+
+Since `total >= 0`, we have `sum{ D[i] | 0 <= i < N } >= 0`, i.e.:
+
+```
+sum{ D[i] | 0 < i <= k } + sum{ D[i] | k < i < s } + sum{ D[i] | s <= i <= N } >= 0
+```
+
+According to the algorithm, `sum{ D[i] | k < i < s } < 0` must be true.
+
+So `sum{ D[i] | 0 < i <= k } + sum{ D[i] | s <= i <= N } >= 0`.
+
+And because we had the assumption that `k` is unreachable from `s`, we also have `sum{ D[i] | 0 < i <= k } + sum{ D[i] | s <= i <= N } < 0`
+
+So here we have contradiction, which proves that such `k` doesn't exist.
+
 ```cpp
 // OJ: https://leetcode.com/problems/gas-station
 // Author: github.com/lzl124631x
