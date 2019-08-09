@@ -1,13 +1,19 @@
-// https://discuss.leetcode.com/topic/79938/very-short-easy-java-o-n-solution
+// OJ: https://leetcode.com/problems/super-washing-machines/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/super-washing-machines/solution/
 class Solution {
 public:
-    int findMinMoves(vector<int>& m) {
-        int sum = accumulate(m.begin(), m.end(), 0), N = m.size();
+    int findMinMoves(vector<int>& machines) {
+        int N = machines.size(), sum = accumulate(machines.begin(), machines.end(), 0);
         if (sum % N) return -1;
-        int target = sum / N, ans = 0, cnt = 0;
-        for (int i = 0; i < N; ++i) {
-            cnt += m[i] - target;
-            ans = max(ans, max(abs(cnt), m[i] - target));
+        int avg = sum / N, curSum = 0, maxSum = 0, ans = 0;
+        for (int &n : machines) n -= avg;
+        for (int n : machines) {
+            curSum += n;
+            maxSum = max(maxSum, abs(curSum));
+            ans = max(ans, max(maxSum, n));
         }
         return ans;
     }
