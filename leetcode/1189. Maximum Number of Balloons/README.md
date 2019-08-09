@@ -55,8 +55,8 @@ public:
     int maxNumberOfBalloons(string text) {
         int cnt[26] = {0};
         for (char c : text) cnt[c - 'a']++;
-        return min(min(cnt['b' - 'a'], min(cnt['a' - 'a'], cnt['n' - 'a'])),
-            min(cnt['l' - 'a'] / 2, cnt['o' - 'a'] / 2));
+        return min({ cnt['b' - 'a'], cnt['a' - 'a'], cnt['n' - 'a'],
+                     cnt['l' - 'a'] / 2, cnt['o' - 'a'] / 2 });
     }
 };
 ```
