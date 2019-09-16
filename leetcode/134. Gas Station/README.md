@@ -86,7 +86,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Greedy
 
 The circuit can be completed if the sum of `gas[i] - cost[i]` is non-negative, which is denoted using `total`.
 
