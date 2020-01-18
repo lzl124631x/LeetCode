@@ -514,6 +514,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 748 | Shortest Completing Word | Easy | [Solution](leetcode/748.%20Shortest%20Completing%20Word)
 750 | Number Of Corner Rectangles | Medium | [Solution](leetcode/750.%20Number%20Of%20Corner%20Rectangles)
 752 | Open the Lock | Medium | [Solution](leetcode/752.%20Open%20the%20Lock)
+753 | Cracking the Safe | Hard | [Solution](leetcode/753.%20Cracking%20the%20Safe)
 754 | Reach a Number | Easy | [Solution](leetcode/754.%20Reach%20a%20Number)
 755 | Pour Water | Medium | [Solution](leetcode/755.%20Pour%20Water)
 760 | Find Anagram Mappings | Easy | [Solution](leetcode/760.%20Find%20Anagram%20Mappings)
