@@ -52,24 +52,22 @@ private:
     unordered_set<string> s;
     string ans;
     int N, K, cnt;
-    void dfs(string &str) {
-        if (ans.size()) {
-            return;
-        }
+    bool dfs(string &str) {
         if (s.size() == cnt) {
             ans = str;
-            return;
+            return true;
         }
         for (int i = 0; i < K; ++i) {
             str.push_back('0' + i);
             auto pwd = str.substr(str.size() - N, N);
             if (!s.count(pwd)) {
                 s.insert(pwd);
-                dfs(str);
+                if (dfs(str)) return true;
                 s.erase(pwd);
             }
             str.pop_back();
         }
+        return false;
     }
 public:
     string crackSafe(int n, int k) {
