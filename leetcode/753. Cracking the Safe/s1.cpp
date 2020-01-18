@@ -17,8 +17,8 @@ private:
         }
         for (int i = 0; i < K; ++i) {
             str.push_back('0' + i);
-            auto pwd = str.size() >= N ? str.substr(str.size() - N, N) : "";
-            if (pwd.size() && !s.count(pwd)) {
+            auto pwd = str.substr(str.size() - N, N);
+            if (!s.count(pwd)) {
                 s.insert(pwd);
                 dfs(str);
                 s.erase(pwd);
