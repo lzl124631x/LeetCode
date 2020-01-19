@@ -89,3 +89,57 @@ public:
     }
 };
 ```
+
+## Solution 2. DFS (post-order Hierholzer's algorithm)
+
+We can think of this problem as the problem of finding an Euler path (a path visiting every edge exactly once) on the following graph: there are `k^(n − 1)` nodes with each node standing for `n - 1` digits and having `k` edges
+
+For example, when `k = 4, n = 3`, the nodes are `'00', '01', '02', ..., '32', '33'` and each node has 4 edges `'0', '1', '2', '3'`. A node plus edge represents a _complete edge_ which forms a password and is a substring of our answer.
+
+Any connected directed graph where all nodes have equal in-degree and out-degree has an Euler circuit (an Euler path ending where it started.) Because our graph is highly connected and symmetric, we should expect intuitively that taking any path greedily in some order will probably result in an Euler path.
+
+This intuition is called Hierholzer's algorithm: whenever there is an Euler cycle, we can construct it greedily. Please see my note of this algorithm [here](../notes/euler-path.md).
+
+Note that we shouldn't add the edge into the answer right after we visit it, because it will cause us to get stuck prematurely. For example, with `k = 2, n = 2`, we have the nodes `'0', '1'`. If we greedily visit complete edges `'00', '01', '10'`, we will be stuck at the node `'0'` prematurely. So we should record the edges in post-order, that is after finding a complete Euler circuit, keep recording the edges into answer as we back-tracking to the start node.
+
+Again, take the `k = 2, n = 2` as example, we visit the complete edges in the following order:
+
+```
+00
+01
+10 (stuck, back-track)
+11
+10 (all edges visited!)
+```
+
+So when we reached `0` in the end, we start to pop the edges we've visited into answer, i.e. `0 -> 1 -> 1 -> 0`. And in the end push the start node `0` into the answer -- `'01100'`.
+
+```cpp
+// OJ: https://leetcode.com/problems/cracking-the-safe/
+// Author: github.com/lzl124631x
+// Time: O(N^(K^N))
+// Space: O(N*(K^N))
+// Ref: https://leetcode.com/problems/cracking-the-safe/solution/
+class Solution {
+private:
+    unordered_set<string> s;
+    string ans;
+    void dfs(string node, int k) {
+        for (char i = '0'; i < '0' + k; ++i) {
+            auto pwd = node + i;
+            if (!s.count(pwd)) {
+                s.insert(pwd);
+                dfs(pwd.substr(1), k);
+                ans.push_back(i);
+            }
+        }
+    }
+public:
+    string crackSafe(int n, int k) {
+        if (n == 1 && k == 1) return "0";
+        string str(n - 1, '0');
+        dfs(str, k);
+        return ans + str;
+    }
+};
+```
