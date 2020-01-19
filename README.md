@@ -435,6 +435,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 589 | N-ary Tree Preorder Traversal | Easy | [Solution](leetcode/589.%20N-ary%20Tree%20Preorder%20Traversal)
 590 | N-ary Tree Postorder Traversal | Easy | [Solution](leetcode/590.%20N-ary%20Tree%20Postorder%20Traversal)
 591 | Tag Validator | Hard | [Solution](leetcode/591.%20Tag%20Validator)
+593 | Valid Square | Medium | [Solution](leetcode/593.%20Valid%20Square)
 594 | Longest Harmonious Subsequence | Easy | [Solution](leetcode/594.%20Longest%20Harmonious%20Subsequence)
 595 | Big Countries | Easy | [Solution](leetcode/595.%20Big%20Countries)
 597 | Friend Requests I: Overall Acceptance Rate | Easy | [Solution](leetcode/597.%20Friend%20Requests%20I%3A%20Overall%20Acceptance%20Rate)
