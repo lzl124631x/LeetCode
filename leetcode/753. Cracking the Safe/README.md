@@ -42,6 +42,16 @@
 
 ## Solution 1. DFS
 
+Given `n` and `k`, there will be `k^n` unique passwords. When I was solving this problem, I had an assumption that
+* the best answer should have each of those passwords appear exactly once
+* each password should exactly use the last `n-1` digits of its previous password.
+
+This assumption can be proved by [De Bruijn sequence](https://en.wikipedia.org/wiki/De_Bruijn_sequence).
+
+So the answer should be of length `n + k^n - 1`.
+
+We can use DFS to try all digits at each level and backtrack if the new digit can't form a new password. Once we've visited `k^n` unique passwords, we know that we've found the answer.
+
 ```cpp
 // OJ: https://leetcode.com/problems/cracking-the-safe/
 // Author: github.com/lzl124631x
