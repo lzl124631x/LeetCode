@@ -674,6 +674,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 5086 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/5086.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
 5087 | Letter Tile Possibilities | Medium | [Solution](leetcode/5087.%20Letter%20Tile%20Possibilities)
 5315 | Maximum 69 Number | Easy | [Solution](leetcode/5315.%20Maximum%2069%20Number)
+5316 | Print Words Vertically | Medium | [Solution](leetcode/5316.%20Print%20Words%20Vertically)
 
 # License
 
