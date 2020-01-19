@@ -675,6 +675,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 5087 | Letter Tile Possibilities | Medium | [Solution](leetcode/5087.%20Letter%20Tile%20Possibilities)
 5315 | Maximum 69 Number | Easy | [Solution](leetcode/5315.%20Maximum%2069%20Number)
 5316 | Print Words Vertically | Medium | [Solution](leetcode/5316.%20Print%20Words%20Vertically)
+5317 | Delete Leaves With a Given Value | Medium | [Solution](leetcode/5317.%20Delete%20Leaves%20With%20a%20Given%20Value)
 
 # License
 
