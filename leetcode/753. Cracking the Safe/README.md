@@ -98,7 +98,7 @@ For example, when `k = 4, n = 3`, the nodes are `'00', '01', '02', ..., '32', '3
 
 Any connected directed graph where all nodes have equal in-degree and out-degree has an Euler circuit (an Euler path ending where it started.) Because our graph is highly connected and symmetric, we should expect intuitively that taking any path greedily in some order will probably result in an Euler path.
 
-This intuition is called Hierholzer's algorithm: whenever there is an Euler cycle, we can construct it greedily. Please see my note of this algorithm [here](../notes/euler-path.md).
+This intuition is called Hierholzer's algorithm: whenever there is an Euler cycle, we can construct it greedily. Please see my note of this algorithm [here](../../notes/euler-path.md).
 
 Note that we shouldn't add the edge into the answer right after we visit it, because it will cause us to get stuck prematurely. For example, with `k = 2, n = 2`, we have the nodes `'0', '1'`. If we greedily visit complete edges `'00', '01', '10'`, we will be stuck at the node `'0'` prematurely. So we should record the edges in post-order, that is after finding a complete Euler circuit, keep recording the edges into answer as we back-tracking to the start node.
 
