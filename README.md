@@ -673,6 +673,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 5084 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/5084.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
 5086 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/5086.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
 5087 | Letter Tile Possibilities | Medium | [Solution](leetcode/5087.%20Letter%20Tile%20Possibilities)
+5315 | Maximum 69 Number | Easy | [Solution](leetcode/5315.%20Maximum%2069%20Number)
 
 # License
 
