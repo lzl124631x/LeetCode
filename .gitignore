@@ -3,3 +3,4 @@
 Book/
 *.sublime-workspace
 .vscode
+test/
