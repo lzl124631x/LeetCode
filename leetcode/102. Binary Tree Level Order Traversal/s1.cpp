@@ -1,12 +1,7 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
+// OJ: https://leetcode.com/problems/binary-tree-level-order-traversal/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
@@ -15,7 +10,7 @@ public:
         queue<TreeNode*> q;
         q.push(root);
         int cnt = 1;
-        while (!q.empty()) {
+        while (q.size()) {
             int nextCnt = 0;
             vector<int> level;
             while (cnt--) {
