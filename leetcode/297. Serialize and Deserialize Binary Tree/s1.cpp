@@ -1,12 +1,5 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
+// OJ: https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
+// Author: github.com/lzl124631x
 class Codec {
 private:
     TreeNode *getNode(vector<string> &v, int &i) {
@@ -14,8 +7,6 @@ private:
         return s == "#" ? NULL : new TreeNode(stoi(s));
     }
 public:
-
-    // Encodes a tree to a single string.
     string serialize(TreeNode* root) {
         if (!root) return "";
         queue<TreeNode*> q;
@@ -33,8 +24,6 @@ public:
         }
         return ans;
     }
-
-    // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
         if (data.empty()) return NULL;
         stringstream ss(data);
@@ -56,7 +45,3 @@ public:
         return root;
     }
 };
-
-// Your Codec object will be instantiated and called as such:
-// Codec codec;
-// codec.deserialize(codec.serialize(root));
