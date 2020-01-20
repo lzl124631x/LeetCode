@@ -8,7 +8,7 @@ _The count of inversion_ of an array indicates how far the array is from sorted.
 
 Brute force method is trivial -- for each number, count how many number to its right is smaller than it. The time complexit is `O(N^2)` and space complexity is `O(1)`.
 
-## Merge Sort
+## Merge Sort (Divide and Conquer)
 
 During the merge, if we need to select a number `x` from the right part, we can add the inversion count by the count of remaining items in the left part, because they must be all greater than `x`.
 
