@@ -1,12 +1,7 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
+// OJ: https://leetcode.com/problems/binary-tree-postorder-traversal/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
