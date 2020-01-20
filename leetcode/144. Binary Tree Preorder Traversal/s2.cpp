@@ -1,12 +1,7 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
+// OJ: https://leetcode.com/problems/binary-tree-preorder-traversal/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
@@ -14,7 +9,7 @@ public:
         vector<int> v;
         stack<TreeNode*> s;
         s.push(root);
-        while (!s.empty()) {
+        while (s.size()) {
             root = s.top();
             s.pop();
             v.push_back(root->val);
