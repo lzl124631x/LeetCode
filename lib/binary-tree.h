@@ -39,7 +39,7 @@ struct TreeNode {
 string nilToken = "null";
 
 TreeNode* deserialize(string str) {
-	auto v = deserializeStringArray(str);
+	auto v = stringToVector(str);
 	if (v.empty()) return NULL;
 	queue<TreeNode*> q;
 	auto root = new TreeNode(stoi(v[0]));

@@ -20,7 +20,7 @@ string vectorToString(vector<T> v){
 	return ans.str();
 }
 
-vector<string> deserializeStringArray(string str) {
+vector<string> stringToVector(string str) {
 	str = str.substr(1, str.size() - 2);
 	istringstream ss(str);
 	string token;
