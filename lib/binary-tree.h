@@ -11,31 +11,6 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-// vector<int> breathFirstTraversal(TreeNode *root){
-// 	if(!root) return vector<int>();
-// 	vector<int> v;
-// 	queue<TreeNode*> q;
-// 	q.push(root);
-// 	int num = 1;
-// 	while(num){
-// 		int nextNum = 0;
-// 		while(num--){
-// 			TreeNode *n = q.front(); q.pop();
-// 			v.push_back(n->val);
-// 			if(n->left){
-// 				nextNum++;
-// 				q.push(n->left);
-// 			}
-// 			if(n->right){
-// 				nextNum++;
-// 				q.push(n->right);
-// 			}
-// 		}
-// 		num = nextNum;
-// 	}
-// 	return v;
-// }
-
 string nilToken = "null";
 
 TreeNode* deserialize(string str) {
