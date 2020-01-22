@@ -1,15 +1,28 @@
-// https://discuss.leetcode.com/topic/76347/3ms-ac-c-long-long-int-binary-search
+// OJ: https://leetcode.com/problems/smallest-good-base/
+// Author: github.com/lzl124631x
+// Time: O(logN)
+// Space: O(1)
+typedef unsigned long long ULL;
 class Solution {
-    typedef unsigned long long ull;
+private:
+    ULL getValue(ULL base, int cnt) {
+        ULL ans = 1, p = 1;
+        while (--cnt) ans += (p *= base);
+        return ans;
+    }
 public:
     string smallestGoodBase(string n) {
-        ull num = (ull)stoll(n);
-        int maxlen = log(num) / log(2) + 1;
-        for(int k = maxlen; k >= 3; --k){
-            ull b = pow(num, 1.0 / (k - 1)), sum = 1, cur = 1;
-            for (int i = 1; i < k; ++i) sum += (cur *= b);
-            if (sum == num) return to_string(b);
-        }  
-        return to_string(num - 1);
+        ULL num = stoull(n), ans = num - 1, cnt = 3, k, val;
+        while (true) {
+            k = pow(num, 1 / (double)(cnt - 1));
+            if (k < 2) break;
+            do {
+                val = getValue(k, cnt);
+                if (val == num) ans = k;
+                --k;
+            } while (val > num);
+            ++cnt;
+        }      
+        return to_string(ans);
     }
 };
