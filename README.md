@@ -295,7 +295,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 397 | Integer Replacement | Medium | [Solution](leetcode/397.%20Integer%20Replacement)
 398 | Random Pick Index | Medium | [Solution](leetcode/398.%20Random%20Pick%20Index)
 399 | Evaluate Division | Medium | [Solution](leetcode/399.%20Evaluate%20Division)
-400 | Nth Digit | Easy | [Solution](leetcode/400.%20Nth%20Digit)
+400 | Nth Digit | Medium | [Solution](leetcode/400.%20Nth%20Digit)
 401 | Binary Watch | Easy | [Solution](leetcode/401.%20Binary%20Watch)
 402 | Remove K Digits | Medium | [Solution](leetcode/402.%20Remove%20K%20Digits)
 403 | Frog Jump | Hard | [Solution](leetcode/403.%20Frog%20Jump)
