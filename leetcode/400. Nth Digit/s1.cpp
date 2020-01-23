@@ -5,19 +5,14 @@
 class Solution {
 public:
     int findNthDigit(int n) {
-        int k, r, len = 1;
-        long long total = 0, p = 1;
-        while (n > total + p * 9 * len) {
-            total += p * 9 * len;
-            p *= 10;
-            len++;
+        long long len = 1, p = 1, cnt = 9;
+        while (n > cnt) {
+            n -= cnt;
+            ++len;
+            cnt = 9 * len * (p *= 10);
         }
-        k = p + (n - total - 1) / len;
-        r = (n - total - 1) % len;
-        r = len - r - 1;
-        while (r--) {
-            k /= 10;
-        }
+        int k = p + (n - 1) / len, r = (n - 1) % len, i = len - r - 1;
+        while (i--) k /= 10;
         return k % 10;
     }
 };
