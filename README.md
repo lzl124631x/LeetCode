@@ -291,7 +291,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 393 | UTF-8 Validation | Medium | [Solution](leetcode/393.%20UTF-8%20Validation)
 394 | Decode String | Medium | [Solution](leetcode/394.%20Decode%20String)
 395 | Longest Substring with At Least K Repeating Characters | Medium | [Solution](leetcode/395.%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters)
-396 | Rotate Function | Easy | [Solution](leetcode/396.%20Rotate%20Function)
+396 | Rotate Function | Medium | [Solution](leetcode/396.%20Rotate%20Function)
 397 | Integer Replacement | Medium | [Solution](leetcode/397.%20Integer%20Replacement)
 398 | Random Pick Index | Medium | [Solution](leetcode/398.%20Random%20Pick%20Index)
 399 | Evaluate Division | Medium | [Solution](leetcode/399.%20Evaluate%20Division)
