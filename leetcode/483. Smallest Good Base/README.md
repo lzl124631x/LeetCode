@@ -46,6 +46,26 @@
 
 ## Solution 1.
 
+`n - 1` is the greatest good base since `n base(n-1) = 11`.
+
+Assume `x` is the next smaller good base, then `n base(x) = 111` or `x^2 + x + 1 = n`. `x = sqrt(n - x - 1) < sqrt(n)`.
+
+Let `k = sqrt(n)` and assume `val base(k) = 111`. `val` should be greater than `n`.
+
+Then we keep decrement `k` to approach `x`, and the `val` which satisfies `val base(k) = 111` approaches `n` as well.
+
+We keep decrementing `k` until `val <= num`.
+
+If `val == n`, we find a good base `k`; otherwise (`val < n`), `k` is not a good base.
+
+We continue to look for the next smaller good base `y`, then `n base(y) = 1111` or `y^3 + y^2 + y + 1 = n`. `y = cbrt(n - y^2 - y - 1) < cbrt(n)`.
+
+So we can do similar approach as above, let `k = cbrt(n)` and try to approach `y`.
+
+As we keep looking for the next good base `z`, we start from `k = pow(n, 1 / (cnt - 1))` where `cnt` is the number of ones in `n base(z)`.
+
+We stop the process once `k < 2`. The last good base we found is the answer.
+
 ```cpp
 // OJ: https://leetcode.com/problems/smallest-good-base/
 // Author: github.com/lzl124631x
