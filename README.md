@@ -60,6 +60,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 61 | Rotate List | Medium | [Solution](leetcode/61.%20Rotate%20List)
 62 | Unique Paths | Medium | [Solution](leetcode/62.%20Unique%20Paths)
 63 | Unique Paths II | Medium | [Solution](leetcode/63.%20Unique%20Paths%20II)
+65 | Valid Number | Hard | [Solution](leetcode/65.%20Valid%20Number)
 66 | Plus One | Easy | [Solution](leetcode/66.%20Plus%20One)
 67 | Add Binary | Easy | [Solution](leetcode/67.%20Add%20Binary)
 69 | Sqrt(x) | Medium | [Solution](leetcode/69.%20Sqrt(x))
