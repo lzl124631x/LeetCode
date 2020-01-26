@@ -55,18 +55,21 @@
 class Solution {
 public:
     string getPermutation(int n, int k) {
+        int fac = 1;
         string ans;
-        for (int i = 1; i <= n; ++i) ans += '0' + i;
-        k--;
-        for (int i = n; i > 0; --i) {
-            int p = 1;
-            for (int j = 1; j < i; ++j) p *= j;
-            int t = n - i + k / p, tmp = ans[t];
-            for (; t > n - i; --t) ans[t] = ans[t - 1];
-            ans[n - i] = tmp;
-            k %= p;
+        for (int i = 1; i <= n; ++i) {
+            fac *= i;
+            ans += '0' + i;
         }
-        return ans.substr(0, n);
+        --k;
+        for (int i = 0; i < n; ++i) {
+            fac /= n - i;
+            int j = k / fac + i, tmp = ans[j];
+            for (; j > i; --j) ans[j] = ans[j - 1];
+            ans[j] = tmp;
+            k %= fac;
+        }
+        return ans;
     }
 };
 ```
