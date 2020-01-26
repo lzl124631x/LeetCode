@@ -673,6 +673,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1326 | Minimum Number of Taps to Open to Water a Garden | Hard | [Solution](leetcode/1326.%20Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden)
 1328 | Break a Palindrome | Medium | [Solution](leetcode/1328.%20Break%20a%20Palindrome)
 1329 | Sort the Matrix Diagonally | Medium | [Solution](leetcode/1329.%20Sort%20the%20Matrix%20Diagonally)
+1330 | Reverse Subarray To Maximize Array Value | Hard | [Solution](leetcode/1330.%20Reverse%20Subarray%20To%20Maximize%20Array%20Value)
 1331 | Rank Transform of an Array | Easy | [Solution](leetcode/1331.%20Rank%20Transform%20of%20an%20Array)
 1332 | Remove Palindromic Subsequences | Easy | [Solution](leetcode/1332.%20Remove%20Palindromic%20Subsequences)
 1333 | Filter Restaurants by Vegan-Friendly, Price and Distance | Medium | [Solution](leetcode/1333.%20Filter%20Restaurants%20by%20Vegan-Friendly%2C%20Price%20and%20Distance)
