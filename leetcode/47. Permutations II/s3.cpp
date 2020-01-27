@@ -1,24 +1,27 @@
 // OJ: https://leetcode.com/problems/permutations-ii
 // Author: github.com/lzl124631x
-// Time: O(N * N!)
-// Space: O(1)
+// Time: O(N! * N^2)
+// Space: O(N^2)
 class Solution {
 private:
-  bool nextPermutation(vector<int> &nums) {
-    int i = nums.size() - 2, j = nums.size() - 1;
-    while (i >= 0 && nums[i] >= nums[i + 1]) --i;
-    if (i >= 0) {
-        while (j > i && nums[j] <= nums[i]) --j;
-        swap(nums[i], nums[j]);
+  vector<vector<int>> ans;
+  void permute(vector<int> &nums, int start) {
+    if (start == nums.size()) {
+      ans.push_back(nums);
+      return;
     }
-    reverse(nums.begin() + i + 1, nums.end());
-    return i != -1;
+    unordered_set<int> s;
+    for (int i = start; i < nums.size(); ++i) {
+      if (s.count(nums[i])) continue;
+      swap(nums[i], nums[start]);
+      permute(nums, start + 1);
+      swap(nums[i], nums[start]);
+      s.insert(nums[i]);
+    }
   }
 public:
   vector<vector<int>> permuteUnique(vector<int>& nums) {
-    sort(nums.begin(), nums.end());
-    vector<vector<int>> ans { nums };
-    while (nextPermutation(nums)) ans.push_back(nums);
+    permute(nums, 0);
     return ans;
   }
 };

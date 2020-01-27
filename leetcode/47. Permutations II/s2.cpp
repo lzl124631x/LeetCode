@@ -1,26 +1,32 @@
 // OJ: https://leetcode.com/problems/permutations-ii
 // Author: github.com/lzl124631x
-// Time: O(N!)
-// Space: O(N^2)
-// Ref: https://discuss.leetcode.com/topic/8831/a-simple-c-solution-in-only-20-lines
+// Time: O(N! * N^2)
+// Space: O(N)
 class Solution {
-private:
-  vector<vector<int>> ans;
-  void permute(vector<int> nums, int start) {
-    if (start == nums.size() - 1) {
-      ans.push_back(nums);
-      return;
+    vector<vector<int>> ans;
+    void move(vector<int> &nums, int from, int to) {
+        int tmp = nums[from], d = from > to ? -1 : 1;
+        for (int i = from; i != to; i += d) nums[i] = nums[i + d];
+        nums[to] = tmp;
     }
-    for (int i = start; i < nums.size(); ++i) {
-      if (i != start && nums[i] == nums[start]) continue;
-      swap(nums[i], nums[start]);
-      permute(nums, start + 1);
+    void permutate(vector<int> &nums, int start) {
+        if (start == nums.size()) {
+            ans.push_back(nums);
+            return;
+        }
+        int prev =  nums[start];
+        for (int i = start; i < nums.size(); ++i) {
+            if (i != start && nums[i] == prev) continue;
+            move(nums, i, start);
+            permutate(nums, start + 1);
+            move(nums, start, i);
+            prev = nums[i];
+        }
     }
-  }
 public:
-  vector<vector<int>> permuteUnique(vector<int>& nums) {
-    sort(nums.begin(), nums.end());
-    permute(nums, 0);
-    return ans;
-  }
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        permutate(nums, 0);
+        return ans;
+    }
 };
