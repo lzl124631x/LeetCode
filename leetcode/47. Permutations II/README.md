@@ -28,7 +28,7 @@
 ```cpp
 // OJ: https://leetcode.com/problems/permutations-ii
 // Author: github.com/lzl124631x
-// Time: O(N! * N^2)
+// Time: O(N! * N)
 // Space: O(N^2)
 // Ref: https://discuss.leetcode.com/topic/8831/a-simple-c-solution-in-only-20-lines
 class Solution {
@@ -60,7 +60,7 @@ public:
 ```cpp
 // OJ: https://leetcode.com/problems/permutations-ii
 // Author: github.com/lzl124631x
-// Time: O(N! * N^2)
+// Time: O(N! * N)
 // Space: O(N)
 class Solution {
     vector<vector<int>> ans;
@@ -97,7 +97,7 @@ public:
 ```cpp
 // OJ: https://leetcode.com/problems/permutations-ii
 // Author: github.com/lzl124631x
-// Time: O(N! * N^2)
+// Time: O(N! * N)
 // Space: O(N^2)
 class Solution {
 private:
@@ -129,7 +129,7 @@ public:
 ```cpp
 // OJ: https://leetcode.com/problems/permutations-ii
 // Author: github.com/lzl124631x
-// Time: O(N! * N)
+// Time: O(N!)
 // Space: O(1)
 class Solution {
 private:

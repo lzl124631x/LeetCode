@@ -1,6 +1,6 @@
 // OJ: https://leetcode.com/problems/permutations-ii
 // Author: github.com/lzl124631x
-// Time: O(N! * N^2)
+// Time: O(N! * N)
 // Space: O(N^2)
 class Solution {
 private:
