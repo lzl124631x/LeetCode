@@ -12,7 +12,7 @@ private:
         swap(nums[i], nums[j]);
     }
     reverse(nums.begin() + i + 1, nums.end());
-    return i != -1;
+    return i >= 0;
   }
 public:
   vector<vector<int>> permuteUnique(vector<int>& nums) {
