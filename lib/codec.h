@@ -53,16 +53,4 @@ vector<vector<int> > scanVector(int m, int n){
 	return v;
 }
 
-vector<int> scanVector(){
-	vector<int> v;
-	string str;
-	cin >> str;
-	char *s = (char*) str.c_str(), *p = strtok(s, ",");
-	while(p){
-		v.push_back(atoi(p));
-		p = strtok(NULL, ",");
-	}
-	return v;
-}
-
 #endif
