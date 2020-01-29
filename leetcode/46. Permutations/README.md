@@ -1,4 +1,4 @@
-# [46. Permutations (Medium)](https://leetcode.com/problems/permutations/submissions/)
+# [46. Permutations (Medium)](https://leetcode.com/problems/permutations/)
 
 <p>Given a collection of <strong>distinct</strong> integers, return all possible permutations.</p>
 
@@ -26,7 +26,24 @@
 * [Permutation Sequence (Medium)](https://leetcode.com/problems/permutation-sequence/)
 * [Combinations (Medium)](https://leetcode.com/problems/combinations/)
 
-## Solution 1.
+## Solution 1. DFS
+
+For a particular DFS level, let `start` be the index of element we manipulate in this level.
+
+We swap `nums[start]` with a digit whose index `>= start`.
+
+After the swap, we DFS one step further, i.e. `dfs(nums, start + 1)`.
+
+Once the children DFS returns, we recover the array by swapping them back.
+
+The exit condition of DFS is when the `start` index points to the last digit, then we can push the current `nums` into answers.
+
+The initial call is `dfs(nums, 0)`.
+
+Note that:
+
+1. This function doesn't care whether the `nums` is sorted.
+1. The permutations generated is NOT in lexigraphical order. For example, if input is `[1,2,3]`, then output is `[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,2,1],[3,1,2]]`
 
 ```cpp
 // OJ: https://leetcode.com/problems/permutations/
@@ -54,7 +71,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Use NextPermutation
 
 ```cpp
 // OJ: https://leetcode.com/problems/permutations/

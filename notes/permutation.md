@@ -52,8 +52,14 @@ And to get the next permutation, we need to reverse the subarray starting from `
 
 For example, `nums = [1,6,3,5,4,2]`, then `i = 2` pointing to `3` and `j = 4` pointing to `4`. We swap `nums[i]` and `nums[j]` so swapping them gives `[1,6,4,5,3,2]`, then reverse the subarray starting from `2` to the end, getting `[1,6,4,2,3,5]`.
 
+## Permutations (distinct digits)
+
+[46. Permutations (Medium)](https://leetcode.com/problems/permutations/)
+
+Please see [my notes here](../leetcode/46.%20Permutations)
+
 ## Problems
 
-* [46. Permutations (Medium)](https://leetcode.com/problems/permutations/submissions/)
+* [46. Permutations (Medium)](https://leetcode.com/problems/permutations/)
 * [31. Next Permutation (Medium)](https://leetcode.com/problems/next-permutation/)
 * [47. Permutations II (Medium)](https://leetcode.com/problems/permutations-ii/)
