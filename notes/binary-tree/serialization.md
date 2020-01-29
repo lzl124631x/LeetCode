@@ -70,4 +70,4 @@ public:
 };
 ```
 
-See more my solutions [here]((../leetcode/297.%20Serialize%20and%20Deserialize%20Binary%20Tree))
+See more my solutions [here](../../leetcode/297.%20Serialize%20and%20Deserialize%20Binary%20Tree)
