@@ -9,16 +9,16 @@ class Solution {
         for (int i = from; i != to; i += d) nums[i] = nums[i + d];
         nums[to] = tmp;
     }
-    void permutate(vector<int> &nums, int start) {
+    void permute(vector<int> &nums, int start) {
         if (start == nums.size()) {
             ans.push_back(nums);
             return;
         }
-        int prev =  nums[start];
+        int prev = nums[start];
         for (int i = start; i < nums.size(); ++i) {
             if (i != start && nums[i] == prev) continue;
             move(nums, i, start);
-            permutate(nums, start + 1);
+            permute(nums, start + 1);
             move(nums, start, i);
             prev = nums[i];
         }
@@ -26,7 +26,7 @@ class Solution {
 public:
     vector<vector<int>> permuteUnique(vector<int>& nums) {
         sort(nums.begin(), nums.end());
-        permutate(nums, 0);
+        permute(nums, 0);
         return ans;
     }
 };

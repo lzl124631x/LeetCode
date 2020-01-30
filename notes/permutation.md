@@ -56,7 +56,13 @@ For example, `nums = [1,6,3,5,4,2]`, then `i = 2` pointing to `3` and `j = 4` po
 
 [46. Permutations (Medium)](https://leetcode.com/problems/permutations/)
 
-Please see [my notes here](../leetcode/46.%20Permutations)
+See [my notes here](../leetcode/46.%20Permutations)
+
+## Permutations (might contain duplicate)
+
+[47. Permutations II (Medium)](https://leetcode.com/problems/permutations-ii/)
+
+See [my notes here](../leetcode/47.%20Permutations%20II)
 
 ## Problems
 
