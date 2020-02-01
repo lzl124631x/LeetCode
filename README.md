@@ -671,6 +671,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1185 | Day of the Week | Easy | [Solution](leetcode/1185.%20Day%20of%20the%20Week)
 1189 | Maximum Number of Balloons | Easy | [Solution](leetcode/1189.%20Maximum%20Number%20of%20Balloons)
 1190 | Reverse Substrings Between Each Pair of Parentheses | Medium | [Solution](leetcode/1190.%20Reverse%20Substrings%20Between%20Each%20Pair%20of%20Parentheses)
+1220 | Count Vowels Permutation | Hard | [Solution](leetcode/1220.%20Count%20Vowels%20Permutation)
 1326 | Minimum Number of Taps to Open to Water a Garden | Hard | [Solution](leetcode/1326.%20Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden)
 1328 | Break a Palindrome | Medium | [Solution](leetcode/1328.%20Break%20a%20Palindrome)
 1329 | Sort the Matrix Diagonally | Medium | [Solution](leetcode/1329.%20Sort%20the%20Matrix%20Diagonally)
