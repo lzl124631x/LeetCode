@@ -509,6 +509,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 733 | Flood Fill | Easy | [Solution](leetcode/733.%20Flood%20Fill)
 735 | Asteroid Collision | Medium | [Solution](leetcode/735.%20Asteroid%20Collision)
 739 | Daily Temperatures | Medium | [Solution](leetcode/739.%20Daily%20Temperatures)
+743 | Network Delay Time | Medium | [Solution](leetcode/743.%20Network%20Delay%20Time)
 744 | Find Smallest Letter Greater Than Target | Easy | [Solution](leetcode/744.%20Find%20Smallest%20Letter%20Greater%20Than%20Target)
 745 | Prefix and Suffix Search | Hard | [Solution](leetcode/Prefix%20and%20Suffix%20Search)
 746 | Min Cost Climbing Stairs | Easy | [Solution](leetcode/746.%20Min%20Cost%20Climbing%20Stairs)

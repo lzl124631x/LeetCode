@@ -7,6 +7,8 @@ It's a greedy BFS algorithm.
 ## Implementation
 
 ```cpp
+// Time: O(E + VlogV)
+// Space: O(E)
 typedef unordered_map<int, unordered_map<int, int>> Graph;
 typedef pair<int, int> iPair;
 vector<int> dijkstra(Graph &graph, int N, int source) {
