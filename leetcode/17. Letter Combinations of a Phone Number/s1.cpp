@@ -1,21 +1,26 @@
+// OJ: https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+// Author: github.com/lzl124631x
+// Time: O(4^N)
+// Space: O(N)
 class Solution {
-private:
-    vector<string> M{ "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+    vector<string> m{"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    vector<string> ans;
+    void dfs(string &digits, int start, string &str) {
+        if (start == digits.size()) {
+            ans.push_back(str);
+            return;
+        }
+        for (char c : m[digits[start] - '2']) {
+            str.push_back(c);
+            dfs(digits, start + 1, str);
+            str.pop_back();
+        }
+    }
 public:
     vector<string> letterCombinations(string digits) {
-        vector<string> ans;
-        for (char c : digits) {
-            if (c <= '1' || c > '9') return {};
-            vector<string> next;
-            string m = M[c - '2'];
-            if (ans.empty()) ans.push_back("");
-            for (string s : ans) {
-                for (char c : m) {
-                    next.push_back(s + c);
-                }
-            }
-            ans = next;
-        }
+        if (digits.empty()) return {};
+        string str;
+        dfs(digits, 0, str);
         return ans;
     }
 };
