@@ -684,6 +684,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1335 | Minimum Difficulty of a Job Schedule | Hard | [Solution](leetcode/1335.%20Minimum%20Difficulty%20of%20a%20Job%20Schedule)
 1341 | The K Weakest Rows in a Matrix | Easy | [Solution](leetcode/1341.%20The%20K%20Weakest%20Rows%20in%20a%20Matrix)
 1342 | Reduce Array Size to The Half | Medium | [Solution](leetcode/1342.%20Reduce%20Array%20Size%20to%20The%20Half)
+1343 | Maximum Product of Splitted Binary Tree | Medium | [Solution](leetcode/1343.%20Maximum%20Product%20of%20Splitted%20Binary%20Tree)
 5083 | Occurrences After Bigram | Easy | [Solution](leetcode/5083.%20Occurrences%20After%20Bigram)
 5084 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/5084.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
 5086 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/5086.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
