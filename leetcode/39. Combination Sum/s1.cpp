@@ -1,30 +1,24 @@
+// OJ: https://leetcode.com/problems/combination-sum/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N)
 class Solution {
-private:
-    vector<vector<int>> res;
-    void rec(vector<int> &c, int t, int pos, vector<int> &tmp) {
-        if (t == 0) {
-            res.push_back(tmp);
-            return;
+    vector<vector<int>> dfs(vector<int>& A, int target, int start) {
+        if (!target) return {{}};
+        if (start == A.size()) return {};
+        int n = A[start];
+        auto ans = dfs(A, target, start + 1);
+        if (target >= n) {
+            auto tmp = dfs(A, target - n, start);
+            for (auto v : tmp) {
+                v.push_back(n);
+                ans.push_back(v);
+            }
         }
-        if (pos >= c.size()) return;
-        int x = c[pos];
-        int n = 1;
-        while (t - n * x >= 0) {
-            tmp.push_back(x);
-            ++n;
-        }
-        --n;
-        while (n >= 0) {
-            rec(c, t - n * x, pos + 1, tmp);
-            if (n > 0) tmp.pop_back();
-            --n;
-        }
+        return ans;
     }
 public:
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        sort(candidates.begin(), candidates.end());
-        vector<int> tmp;
-        rec(candidates, target, 0, tmp);
-        return res;
+    vector<vector<int>> combinationSum(vector<int>& A, int target) {
+        return dfs(A, target, 0);
     }
 };
