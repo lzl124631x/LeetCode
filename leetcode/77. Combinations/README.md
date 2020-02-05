@@ -35,23 +35,22 @@
 // Time: O(K!)
 // Space: O(K)
 class Solution {
-private:
     vector<vector<int>> ans;
-    void dfs(int start, int n, int k, vector<int>& tmp) {
+    void dfs(int n, int k, int start, vector<int> &tmp) {
         if (tmp.size() == k) {
             ans.push_back(tmp);
             return;
         }
-        for (int i = start; i <= n - k + 1 + tmp.size(); ++i) {
-            tmp.push_back(i);
-            dfs(i + 1, n, k, tmp);
+        for (int i = start, end = n - k + tmp.size(); i <= end; ++i) {
+            tmp.push_back(i + 1);
+            dfs(n, k, i + 1, tmp);
             tmp.pop_back();
         }
     }
 public:
     vector<vector<int>> combine(int n, int k) {
         vector<int> tmp;
-        dfs(1, n, k, tmp);
+        dfs(n, k, 0, tmp);
         return ans;
     }
 };
