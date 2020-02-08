@@ -1,0 +1,102 @@
+# [1345. Jump Game IV (Hard)](https://leetcode.com/problems/jump-game-iv/)
+
+<p>Given an array of&nbsp;integers <code>arr</code>, you are initially positioned at the first index of the array.</p>
+
+<p>In one step you can jump from index <code>i</code> to index:</p>
+
+<ul>
+	<li><code>i + 1</code> where:&nbsp;<code>i + 1 &lt; arr.length</code>.</li>
+	<li><code>i - 1</code> where:&nbsp;<code>i - 1 &gt;= 0</code>.</li>
+	<li><code>j</code> where: <code>arr[i] == arr[j]</code> and <code>i != j</code>.</li>
+</ul>
+
+<p>Return <em>the minimum number of steps</em> to reach the <strong>last index</strong> of the array.</p>
+
+<p>Notice that you can not jump outside of the array at any time.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> arr = [100,-23,-23,404,100,23,23,23,3,404]
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> You need three jumps from index 0 --&gt; 4 --&gt; 3 --&gt; 9. Note that index 9 is the last index of the array.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> arr = [7]
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> Start index is the last index. You don't need to jump.
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> arr = [7,6,9,6,9,6,9,7]
+<strong>Output:</strong> 1
+<strong>Explanation:</strong> You can jump directly from index 0 to index 7 which is last index of the array.
+</pre>
+
+<p><strong>Example 4:</strong></p>
+
+<pre><strong>Input:</strong> arr = [6,1,9]
+<strong>Output:</strong> 2
+</pre>
+
+<p><strong>Example 5:</strong></p>
+
+<pre><strong>Input:</strong> arr = [11,22,7,7,7,7,7,7,7,22,13]
+<strong>Output:</strong> 3
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= arr.length &lt;= 5 * 10^4</code></li>
+	<li><code>-10^8 &lt;= arr[i] &lt;= 10^8</code></li>
+</ul>
+
+**Related Topics**:  
+[Breadth-first Search](https://leetcode.com/tag/breadth-first-search/)
+
+## Solution 1.
+
+```cpp
+// OJ: https://leetcode.com/problems/jump-game-iv/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+    inline bool push(vector<int> &v, queue<int>& q, int i, int step) {
+        if (v[i] == INT_MAX) {
+            v[i] = step;
+            q.push(i);
+        }
+        return !i;
+    }
+public:
+    int minJumps(vector<int>& arr) {
+        unordered_map<int, vector<int>> m;
+        int N = arr.size(), step = 1;
+        for (int i = 0; i < N; ++i) m[arr[i]].push_back(i);
+        vector<int> v(N, INT_MAX);
+        queue<int> q;
+        q.push(N - 1);
+        v[N - 1] = 0;
+        while (q.size()) {
+            int cnt = q.size();
+            while (cnt--) {
+                int i = q.front();
+                q.pop();
+                for (auto n : m[arr[i]]) {
+                    if (push(v, q, n, step)) break;
+                }
+                if (i + 1 < N && push(v, q, i + 1, step)) break;
+                if (i - 1 >= 0 && push(v, q, i - 1, step)) break;
+            }
+            ++step;
+        }
+        return v[0];
+    }
+};
+```
