@@ -62,7 +62,7 @@
 class Solution {
 public:
     double angleClock(int h, int m) {
-        double a = h % 12 * 30 + m / 2.0, b = m * 6, d = abs(a - b);
+        double a = h * 30 + m * 0.5, b = m * 6, d = abs(a - b);
         return min(d, 360 - d);
     }
 };
