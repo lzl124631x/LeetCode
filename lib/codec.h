@@ -7,6 +7,8 @@
 #include <sstream>
 using namespace std;
 
+template<typename T> void _R(T &x) { cin >> x; }
+
 template<typename T>
 string vectorToString(vector<T> v){
 	auto i = v.begin();
@@ -26,6 +28,21 @@ vector<string> stringToVector(string str) {
 	string token;
 	vector<string> ans;
 	while (getline(ss, token, ',')) ans.push_back(token);
+	return ans;
+}
+
+vector<int> stringToIntVector(string str) {
+	str = str.substr(1, str.size() - 2);
+	istringstream ss(str);
+	string token;
+	vector<int> ans;
+	while (getline(ss, token, ',')) ans.push_back(stoi(token));
+	return ans;
+}
+
+vector<int> toIntVector(vector<string> v) {
+	vector<int> ans(v.size(), 0);
+	for (int i = 0; i < v.size(); ++i) ans[i] = stoi(v[i]);
 	return ans;
 }
 

@@ -27,4 +27,24 @@ using namespace std;
 	do{ clk_end = clock();\
 	cout << "Time[" << (double)(clk_end - clk_start) / CLOCKS_PER_SEC << "s]" << endl; }while(0)
 
+#define SZ(X) ((int)(X).size())
+#define FOR(I, S, E) for (int I = (A); I < (B); ++I)
+#define FOR_(I, S, E) for (int I = (A); I <= (B); ++I)
+#define PB push_back
+#define MP make_pair
+
+typedef long long LL;
+typedef unsigned long long ULL;
+typedef long double LD;
+typedef pair<int, int> PII;
+typedef pair<LL, LL> PLL;
+typedef vector<int> VI;
+typedef vector<LL> VL;
+typedef vector<PII> VPII;
+typedef vector<PLL> VPLL;
+typedef vector<string> VS;
+typedef vector<vector<int>> VVI;
+
+int MOD = 1e9+7;
+void ADD(LL& x,LL v){x=(x+v)%MOD;if(x<0)x+=MOD;}
 #endif
