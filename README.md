@@ -693,6 +693,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1343 | Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold | Medium | [Solution](leetcode/1343.%20Number%20of%20Sub-arrays%20of%20Size%20K%20and%20Average%20Greater%20than%20or%20Equal%20to%20Threshold)
 1344 | Angle Between Hands of a Clock | Medium | [Solution](leetcode/1344.%20Angle%20Between%20Hands%20of%20a%20Clock)
 1345 | Jump Game IV | Hard | [Solution](leetcode/1345.%20Jump%20Game%20IV)
+1346 | Check If N and Its Double Exist | Easy | [Solution](leetcode/1346.%20Check%20If%20N%20and%20Its%20Double%20Exist)
 5083 | Occurrences After Bigram | Easy | [Solution](leetcode/5083.%20Occurrences%20After%20Bigram)
 5084 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/5084.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
 5086 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/5086.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
