@@ -1,3 +1,10 @@
+# Union Find
+
+## Implementation
+
+The time complexity of one operation in `UnionFind` containing `N` elements is `O(alpha(N))` where `alpha(N)` is the inverse function of Ackermann function. Note that `O(alpha(N))` is even more efficient than `O(logN)`.
+
+```cpp
 class UnionFind {
 private:
     vector<int> id, rank;
@@ -23,3 +30,8 @@ public:
     bool connected(int i, int j) { return find(i) == find(j); }
     int getCount() { return cnt; }
 };
+```
+
+## Problems
+
+* [1319. Number of Operations to Make Network Connected (Medium)](https://leetcode.com/problems/number-of-operations-to-make-network-connected/)
