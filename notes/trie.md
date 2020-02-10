@@ -1,3 +1,8 @@
+# Trie
+
+## Implementation
+
+```cpp
 class TrieNode {
 public:
     TrieNode *next[26] = {};
@@ -34,3 +39,4 @@ public:
         return searchToNode(prefix);
     }
 };
+```
