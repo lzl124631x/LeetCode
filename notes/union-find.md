@@ -2,6 +2,28 @@
 
 ## Implementation
 
+### Basic
+```cpp
+class UnionFind {
+    vector<int> id;
+public:
+    UnionFind(int n) : id(n) {
+        for (int i = 0; i < n; ++i) id[i] = i;
+    }
+    void connect(int a, int b) {
+        id[find(a)] = find(b);
+    }
+    int find(int a) {
+        return id[a] == a ? a : (id[a] = find(id[a]));
+    }
+    bool connected(int a, int b) {
+        return find(a) == find(b);
+    }
+};
+```
+
+### Merge using Rank
+
 The time complexity of one operation in `UnionFind` containing `N` elements is `O(alpha(N))` where `alpha(N)` is the inverse function of Ackermann function. Note that `O(alpha(N))` is even more efficient than `O(logN)`.
 
 ```cpp
@@ -35,3 +57,4 @@ public:
 ## Problems
 
 * [1319. Number of Operations to Make Network Connected (Medium)](https://leetcode.com/problems/number-of-operations-to-make-network-connected/)
+* [990. Satisfiability of Equality Equations (Medium)](https://leetcode.com/problems/satisfiability-of-equality-equations/)
