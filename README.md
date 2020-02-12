@@ -678,6 +678,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1267 | Count Servers that Communicate | Medium | [Solution](leetcode/1267.%20Count%20Servers%20that%20Communicate)
 1286 | Iterator for Combination | Medium | [Solution](leetcode/1286.%20Iterator%20for%20Combination)
 1290 | Convert Binary Number in a Linked List to Integer | Easy | [Solution](leetcode/1290.%20Convert%20Binary%20Number%20in%20a%20Linked%20List%20to%20Integer)
+1295 | Find Numbers with Even Number of Digits | Easy | [Solution](leetcode/1295.%20Find%20Numbers%20with%20Even%20Number%20of%20Digits)
 1313 | Decompress Run-Length Encoded List | Easy | [Solution](leetcode/1313.%20Decompress%20Run-Length%20Encoded%20List)
 1319 | Number of Operations to Make Network Connected | Medium | [Solution](leetcode/1319.%20Number%20of%20Operations%20to%20Make%20Network%20Connected)
 1326 | Minimum Number of Taps to Open to Water a Garden | Hard | [Solution](leetcode/1326.%20Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden)
