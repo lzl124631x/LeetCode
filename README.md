@@ -675,6 +675,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1189 | Maximum Number of Balloons | Easy | [Solution](leetcode/1189.%20Maximum%20Number%20of%20Balloons)
 1190 | Reverse Substrings Between Each Pair of Parentheses | Medium | [Solution](leetcode/1190.%20Reverse%20Substrings%20Between%20Each%20Pair%20of%20Parentheses)
 1220 | Count Vowels Permutation | Hard | [Solution](leetcode/1220.%20Count%20Vowels%20Permutation)
+1252 | Cells with Odd Values in a Matrix | Easy | [Solution](leetcode/1252.%20Cells%20with%20Odd%20Values%20in%20a%20Matrix)
 1266 | Minimum Time Visiting All Points | Easy | [Solution](leetcode/1266.%20Minimum%20Time%20Visiting%20All%20Points)
 1267 | Count Servers that Communicate | Medium | [Solution](leetcode/1267.%20Count%20Servers%20that%20Communicate)
 1286 | Iterator for Combination | Medium | [Solution](leetcode/1286.%20Iterator%20for%20Combination)
