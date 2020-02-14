@@ -202,6 +202,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 261 | Graph Valid Tree | Medium | [Solution](leetcode/261.%20Graph%20Valid%20Tree)
 263 | Ugly Number | Easy | [Solution](leetcode/263.%20Ugly%20Number)
 264 | Ugly Number II | Medium | [Solution](leetcode/264.%20Ugly%20Number%20II)
+268 | Missing Number | Easy | [Solution](leetcode/268.%20Missing%20Number)
 270 | Closest Binary Search Tree Value | Easy | [Solution](leetcode/270.%20Closest%20Binary%20Search%20Tree%20Value)
 271 | Encode and Decode Strings | Medium | [Solution](leetcode/271.%20Encode%20and%20Decode%20Strings)
 278 | First Bad Version | Easy | [Solution](leetcode/278.%20First%20Bad%20Version)
