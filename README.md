@@ -117,6 +117,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 125 | Valid Palindrome | Easy | [Solution](leetcode/125.%20Valid%20Palindrome)
 126 | Word Ladder II | Hard | [Solution](leetcode/126.%20Word%20Ladder%20II)
 127 | Word Ladder | Hard | [Solution](leetcode/127.%20Word%20Ladder)
+128 | Longest Consecutive Sequence | Hard | [Solution](leetcode/128.%20Longest%20Consecutive%20Sequence)
 129 | Sum Root to Leaf Numbers | Medium | [Solution](leetcode/129.%20Sum%20Root%20to%20Leaf%20Numbers)
 130 | Surrounded Regions | Medium | [Solution](leetcode/130.%20Surrounded%20Regions)
 131 | Palindrome Partitioning | Medium | [Solution](leetcode/131.%20Palindrome%20Partitioning)
