@@ -707,6 +707,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1347 | Minimum Number of Steps to Make Two Strings Anagram | Medium | [Solution](leetcode/1347.%20Minimum%20Number%20of%20Steps%20to%20Make%20Two%20Strings%20Anagram)
 1348 | Tweet Counts Per Frequency | Medium | [Solution](leetcode/1348.%20Tweet%20Counts%20Per%20Frequency)
 1351 | Count Negative Numbers in a Sorted Matrix | Easy | [Solution](leetcode/1351.%20Count%20Negative%20Numbers%20in%20a%20Sorted%20Matrix)
+1352 | Product of the Last K Numbers | Medium | [Solution](leetcode/1352.%20Product%20of%20the%20Last%20K%20Numbers)
 5083 | Occurrences After Bigram | Easy | [Solution](leetcode/5083.%20Occurrences%20After%20Bigram)
 5084 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/5084.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
 5086 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/5086.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
