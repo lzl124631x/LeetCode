@@ -7,6 +7,13 @@
 
 ## Implementation
 
+Let `dist[u]` be the length of the shortest path from `src` to `u`.
+
+Initially `dist[src] = 0` and `dist[u] = INF` for all other vertices.
+
+Repeat `V - 1` times (since the path in the graph is at most of length `V - 1`):
+* For each edge `E = (u, v, weight)`, try to use `E` to update the `dist[v]`: If `dist[u] + weight < dist[v]`, then `dist[v] = dist[u] + weight`.
+
 ```cpp
 // Time: O(VE)
 // Space: O(V)
