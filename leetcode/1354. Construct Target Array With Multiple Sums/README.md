@@ -82,7 +82,7 @@ typedef long long LL;
 class Solution {
 public:
     bool isPossible(vector<int>& A) {
-        LL sum = accumulate(A.begin(), A.end(), (LL)0);
+        LL sum = accumulate(A.begin(), A.end(), 0LL);
         priority_queue<LL> pq(A.begin(), A.end());
         while (pq.top() != 1) {
             LL n = pq.top();
