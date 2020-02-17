@@ -4,7 +4,8 @@ A [**component**](https://en.wikipedia.org/wiki/Component_(graph_theory)) in a g
 
 Count connected components in a graph.
 
-## DFS
+## Implementation
+### DFS
 
 ```cpp
 void bfs(vector<vector<int>> &G, vector<bool> &visited, int start) {
@@ -33,7 +34,7 @@ int getComponentCount(vector<vector<int>> &G) {
 }
 ```
 
-## BFS
+### BFS
 
 ```cpp
 void bfs(vector<vector<int>> &G, vector<bool> &visited, int start) {
@@ -62,7 +63,7 @@ int getComponentCount(vector<vector<int>> &G) {
 }
 ```
 
-## Union Find
+### Union Find
 
 
 ```cpp
@@ -95,3 +96,7 @@ int getComponentCount(vector<vector<int>> &G) {
     return uf.getCount();
 }
 ```
+
+## Problems
+
+* [947. Most Stones Removed with Same Row or Column (Medium)](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/)
