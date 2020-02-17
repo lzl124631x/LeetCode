@@ -708,6 +708,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1348 | Tweet Counts Per Frequency | Medium | [Solution](leetcode/1348.%20Tweet%20Counts%20Per%20Frequency)
 1351 | Count Negative Numbers in a Sorted Matrix | Easy | [Solution](leetcode/1351.%20Count%20Negative%20Numbers%20in%20a%20Sorted%20Matrix)
 1352 | Product of the Last K Numbers | Medium | [Solution](leetcode/1352.%20Product%20of%20the%20Last%20K%20Numbers)
+1353 | Maximum Number of Events That Can Be Attended | Medium | [Solution](leetcode/1353.%20Maximum%20Number%20of%20Events%20That%20Can%20Be%20Attended)
 1354 | Construct Target Array With Multiple Sums | Hard | [Solution](leetcode/1354.%20Construct%20Target%20Array%20With%20Multiple%20Sums)
 5083 | Occurrences After Bigram | Easy | [Solution](leetcode/5083.%20Occurrences%20After%20Bigram)
 5084 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/5084.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
