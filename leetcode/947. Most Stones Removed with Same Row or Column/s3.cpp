@@ -3,20 +3,27 @@
 // Time: O(N^2)
 // Space: O(N^2)
 class Solution {
-    void dfs(vector<vector<int>> &G, vector<bool> &visited, int start) {
+    void bfs(vector<vector<int>> &G, vector<bool> &visited, int start) {
         visited[start] = true;
-        for (int n : G[start]) {
-            if (visited[n]) continue;
-            dfs(G, visited, n);
+        queue<int> q;
+        q.push(start);
+        while (q.size()) {
+            int u = q.front();
+            q.pop();
+            for (int v : G[u]) {
+                if (visited[v]) continue;
+                visited[v] = true;
+                q.push(v);
+            }
         }
     }
     int getComponentCount(vector<vector<int>> &G) {
-        vector<bool> visited(G.size());
         int ans = 0;
+        vector<bool> visited(G.size());
         for (int i = 0; i < G.size(); ++i) {
             if (visited[i]) continue;
             ++ans;
-            dfs(G, visited, i);
+            bfs(G, visited, i);
         }
         return ans;
     }

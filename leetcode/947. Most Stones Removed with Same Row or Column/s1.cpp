@@ -2,6 +2,7 @@
 // Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(N^2)
+// Ref: https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/solution/
 class Solution {
 public:
     int removeStones(vector<vector<int>>& stones) {

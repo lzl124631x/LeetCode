@@ -45,7 +45,7 @@
 **Related Topics**:  
 [Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Union Find](https://leetcode.com/tag/union-find/)
 
-## Solution 1. DFS
+## Solution 1. DFS Iterative
 
 Let's call stone `A` and `B` are neighbors if they are in the same row/column.
 
@@ -60,6 +60,7 @@ So we use DFS to visit the stones in the same component, and each component can 
 // Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(N^2)
+// Ref: https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/solution/
 class Solution {
 public:
     int removeStones(vector<vector<int>>& stones) {
@@ -99,7 +100,99 @@ public:
 };
 ```
 
-## Solution 2. Union Find
+## Solution 2. DFS Recursive
+
+```cpp
+// OJ: https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N^2)
+class Solution {
+    void dfs(vector<vector<int>> &G, vector<bool> &visited, int start) {
+        visited[start] = true;
+        for (int n : G[start]) {
+            if (visited[n]) continue;
+            dfs(G, visited, n);
+        }
+    }
+    int getComponentCount(vector<vector<int>> &G) {
+        vector<bool> visited(G.size());
+        int ans = 0;
+        for (int i = 0; i < G.size(); ++i) {
+            if (visited[i]) continue;
+            ++ans;
+            dfs(G, visited, i);
+        }
+        return ans;
+    }
+public:
+    int removeStones(vector<vector<int>>& stones) {
+        int N = stones.size();
+        vector<vector<int>> G(N);
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (stones[i][0] == stones[j][0] || stones[i][1] == stones[j][1]) {
+                    G[i].push_back(j);
+                    G[j].push_back(i);
+                }
+            }
+        }
+        return stones.size() - getComponentCount(G);
+    }
+};
+```
+
+## Solution 3. BFS
+
+```cpp
+// OJ: https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N^2)
+class Solution {
+    void bfs(vector<vector<int>> &G, vector<bool> &visited, int start) {
+        visited[start] = true;
+        queue<int> q;
+        q.push(start);
+        while (q.size()) {
+            int u = q.front();
+            q.pop();
+            for (int v : G[u]) {
+                if (visited[v]) continue;
+                visited[v] = true;
+                q.push(v);
+            }
+        }
+    }
+    int getComponentCount(vector<vector<int>> &G) {
+        int ans = 0;
+        vector<bool> visited(G.size());
+        for (int i = 0; i < G.size(); ++i) {
+            if (visited[i]) continue;
+            ++ans;
+            bfs(G, visited, i);
+        }
+        return ans;
+    }
+public:
+    int removeStones(vector<vector<int>>& stones) {
+        int N = stones.size();
+        vector<vector<int>> G(N);
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (stones[i][0] == stones[j][0] || stones[i][1] == stones[j][1]) {
+                    G[i].push_back(j);
+                    G[j].push_back(i);
+                }
+            }
+        }
+        return stones.size() - getComponentCount(G);
+    }
+};
+```
+
+
+## Solution 4. Union Find
 
 ```cpp
 // OJ: https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
@@ -107,34 +200,25 @@ public:
 // Time: O(N^2)
 // Space: O(N)
 class UnionFind {
-private:
-    vector<int> ids, ranks;
+    vector<int> id, rank;
     int cnt;
-    int find(int i) {
-        if (ids[i] == i) return i;
-        return ids[i] = find(ids[i]);
-    }
 public:
-    UnionFind(int cnt) : cnt(cnt) {
-        ids = vector<int>(cnt);
-        ranks = vector<int>(cnt);
-        for (int i = 0; i < cnt; ++i) ids[i] = i;
+    UnionFind(int n) : cnt(n), id(n), rank(n, 1) {
+        for (int i = 0; i < n; ++i) id[i] = i;
     }
-    bool connected(int i, int j) {
-        return find(i) == find(j);
+    int find(int a) {
+        return id[a] == a ? a : (id[a] = find(id[a]));
     }
-    void connect(int i, int j) {
-        if (connected(i, j)) return;
-        int a = find(i), b = find(j);
-        int r1 = ranks[a], r2 = ranks[b];
-        if (r1 > r2) ids[b] = a;
-        else {
-            ids[a] = b;
-            if (r1 == r2) ranks[b]++;
-        }
+    void connect(int a, int b) {
+        int x = find(a), y = find(b);
+        if (x == y) return;
+        if (rank[x] <= rank[y]) {
+            id[x] = y;
+            if (rank[x] == rank[y]) rank[y]++;
+        } else id[y] = x;
         --cnt;
     }
-    int count() { return cnt; }
+    int getCount() { return cnt; }
 };
 class Solution {
 public:
@@ -148,7 +232,7 @@ public:
                 }
             }
         }
-        return stones.size() - uf.count();
+        return stones.size() - uf.getCount();
     }
 };
 ```
