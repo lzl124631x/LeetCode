@@ -5,6 +5,9 @@ A [**component**](https://en.wikipedia.org/wiki/Component_(graph_theory)) in a g
 Count connected components in a graph.
 
 ## Implementation
+
+Implement a function `int getComponentCount(vector<vector<int>> &G)`, where `G` is an adjacency list representation of the graph, and the return value is the count of components in the graph.
+
 ### DFS
 
 ```cpp
