@@ -3,6 +3,9 @@
 ## Implementation
 
 ### Basic
+
+Note that there is a path compression in the `find` function.
+
 ```cpp
 class UnionFind {
     vector<int> id;
@@ -54,7 +57,34 @@ public:
 };
 ```
 
+### Get Size of Union
+
+We can use a `size` array to keep track of the size of each union.
+
+```cpp
+class UnionFind {
+    vector<int> id, size;
+public:
+    UnionFind(int n) : id(n), size(n, 1) {
+        for (int i = 0; i < n; ++i) id[i] = i;
+    }
+    void connect(int a, int b) {
+        int x = find(a), y = find(b);
+        if (x == y) return;
+        id[x] = y;
+        size[y] += size[x];
+    }
+    int find(int a) {
+        return id[a] == a ? a : (id[a] = find(id[a]));
+    }
+    int getSize(int a) {
+        return size[find(a)];
+    }
+};
+```
+
 ## Problems
 
 * [1319. Number of Operations to Make Network Connected (Medium)](https://leetcode.com/problems/number-of-operations-to-make-network-connected/)
 * [990. Satisfiability of Equality Equations (Medium)](https://leetcode.com/problems/satisfiability-of-equality-equations/)
+* [924. Minimize Malware Spread (Hard)](https://leetcode.com/problems/minimize-malware-spread/)
