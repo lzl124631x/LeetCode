@@ -1,26 +1,28 @@
+// OJ: https://leetcode.com/problems/maximal-square/
+// Author: github.com/lzl124631x
+// Time: O((MN)^2)
+// Space: O(1)
 class Solution {
 public:
-    int maximalSquare(vector<vector<char>>& matrix) {
-        if (matrix.empty() || matrix[0].empty()) return 0;
-        int M = matrix.size(), N = matrix[0].size();
-        vector<vector<int>> dp(M, vector<int>(N, 0));
-        int maxSize = 0;
-        for (int i = 0; i < N; ++i) {
-            dp[0][i] = matrix[0][i] - '0';
-            maxSize = max(maxSize, dp[0][i]);
-        }
+    int maximalSquare(vector<vector<char>>& A) {
+        if (A.empty() || A[0].empty()) return 0;
+        int M = A.size(), N = A[0].size(), ans = 0;
         for (int i = 0; i < M; ++i) {
-            dp[i][0] = matrix[i][0] - '0';
-            maxSize = max(maxSize, dp[i][0]);
-        }
-        for (int i = 1; i < M; ++i) {
-            for (int j = 1; j < N; ++j) {
-                if (matrix[i][j] == '1') {
-                    dp[i][j] = min(dp[i - 1][j], min(dp[i][j - 1], dp[i - 1][j - 1])) + 1;
-                    maxSize = max(maxSize, dp[i][j]);
+            for (int j = 0; j < N; ++j) {
+                int k = 0;
+                bool stop = false;
+                for (; i + k < M && j + k < N; ++k) {
+                    for (int t = 0; t < k + 1 && !stop; ++t) {
+                        if (A[i + t][j + k] == '0') stop = true;
+                    }
+                    for (int t = 0; t < k + 1 && !stop; ++t) {
+                        if (A[i + k][j + t] == '0') stop = true;
+                    }
+                    if (stop) break;
                 }
+                ans = max(ans, k);
             }
         }
-        return maxSize * maxSize;
+        return ans * ans;
     }
 };
