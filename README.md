@@ -561,6 +561,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 832 | Flipping an Image | Easy | [Solution](leetcode/832.%20Flipping%20an%20Image)
 835 | Image Overlap | Medium | [Solution](leetcode/835.%20Image%20Overlap)
 836 | Rectangle Overlap | Easy | [Solution](leetcode/836.%20Rectangle%20Overlap)
+837 | New 21 Game | Medium | [Solution](leetcode/837.%20New%2021%20Game)
 840 | Magic Squares In Grid | Easy | [Solution](leetcode/840.%20Magic%20Squares%20In%20Grid)
 841 | Keys and Rooms | Medium | [Solution](leetcode/841.%20Keys%20and%20Rooms)
 852 | Peak Index in a Mountain Array | Easy | [Solution](leetcode/852.%20Peak%20Index%20in%20a%20Mountain%20Array)
