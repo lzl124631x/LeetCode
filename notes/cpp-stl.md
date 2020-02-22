@@ -19,3 +19,21 @@
 `multimap`: The keys are sorted and duplicate keys are allowed.
 
 `unordered_set`, `unordered_map`, `unordered_multiset`, `unordered_multimap` are not sorted and organize their elements using hash tables. When you don't care about the ordering, use them. Their average time complexities are constants.
+
+## Priority Queue
+
+By default, `priority_queue` uses `less` as comparator, and is **Max-heap.** (In fact, STL always use `less` as the default comparator whenever it needs comparison.)
+
+If you want to get a Min-heap, use `priority_queue<int, vector<int>, greater<int>>`.
+
+It uses `make_heap`, `push_heap` and `pop_heap` algorithm functions under the hood.
+
+### Why is it Max-heap by default?
+
+According to http://www.cplusplus.com/reference/queue/priority_queue/
+
+> Elements are popped from the "back" of the specific container, which is known as the top of the priority queue.
+
+So `priority_queue` uses `less` to sort the elements in ascending order -- the smaller the element is, the closer it is to the front.
+
+And since the **last element** if regarded as the top, so it is the largest element. Thus, by default `priority_queue` is a Max-heap. 
