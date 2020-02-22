@@ -714,6 +714,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1354 | Construct Target Array With Multiple Sums | Hard | [Solution](leetcode/1354.%20Construct%20Target%20Array%20With%20Multiple%20Sums)
 1356 | Sort Integers by The Number of 1 Bits | Easy | [Solution](leetcode/1356.%20Sort%20Integers%20by%20The%20Number%20of%201%20Bits)
 1357 | Apply Discount Every n Orders | Medium | [Solution](leetcode/1357.%20Apply%20Discount%20Every%20n%20Orders)
+1358 | Number of Substrings Containing All Three Characters | Medium | [Solution](leetcode/1358.%20Number%20of%20Substrings%20Containing%20All%20Three%20Characters)
 5083 | Occurrences After Bigram | Easy | [Solution](leetcode/5083.%20Occurrences%20After%20Bigram)
 5084 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/5084.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
 5086 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/5086.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
