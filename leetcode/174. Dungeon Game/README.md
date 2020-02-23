@@ -67,6 +67,29 @@
 
 ## Solution 1.
 
+Let `dp[i][j]` be the minimum health required at `dungeon[i][j]`. `dp[i][j]` should be at least `1`.
+
+We can compute it from `dp[M - 1][N - 1]` to `dp[0][0]` and `dp[0][0]` is the answer.
+
+Let `prev` be minimum health required in the previous step. `prev = min(dp[i + 1][j], dp[i][j + 1])`.
+
+If `dungeon[i][j] < 0`, `dp[i][j] = prev - dungeon[i][j] > 1`.
+
+If `dungeon[i][j] >= 0`, `dp[i][j] = max(1, prev - dungeon[i][j])`.
+
+So combining these two cases, `dp[i][j] = max(1, prev - dungeon[i][j])` for `i` in `[0, M-1)` and `j` in `[0, N-1)`.
+
+For the corner case `i = M - 1` or `j = N - 1`, either `dp[i + 1][j]` or `dp[i][j + 1]` is nonexistent and we can treat it as `Infinity`.
+
+If both of them are `Infinity`, i.e. `i = M - 1, j = N - 1`, `dp[i][j] = max(1, 1 - dungeon[i][j])`. So we can regard `prev` as `1`.
+
+So in sum:
+
+```
+dp[i][j] = max(1, (prev === Infinity ? 1 : prev) - dungeon[i][j])
+           where prev = min(dp[i + 1][j], dp[i][j + 1])
+```
+
 ```cpp
 // OJ: https://leetcode.com/problems/dungeon-game
 // Author: github.com/lzl124631x
@@ -86,5 +109,30 @@ public:
     }
     return dungeon[0][0];
   }
+};
+```
+
+## Solution 2.
+
+In case it's not allowed to change the input array.
+
+```cpp
+// OJ: https://leetcode.com/problems/dungeon-game
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(N)
+class Solution {
+public:
+    int calculateMinimumHP(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size();
+        vector<int> dp(N + 1, INT_MAX);
+        dp[N - 1] = 1;
+        for (int i = M - 1; i >= 0; --i) {
+            for (int j = N - 1; j >= 0; --j) {
+                dp[j] = max(min(dp[j + 1], dp[j]) - A[i][j], 1);
+            }
+        }
+        return dp[0];
+    }
 };
 ```
