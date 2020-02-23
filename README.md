@@ -716,6 +716,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1357 | Apply Discount Every n Orders | Medium | [Solution](leetcode/1357.%20Apply%20Discount%20Every%20n%20Orders)
 1358 | Number of Substrings Containing All Three Characters | Medium | [Solution](leetcode/1358.%20Number%20of%20Substrings%20Containing%20All%20Three%20Characters)
 1359 | Count All Valid Pickup and Delivery Options | Hard | [Solution](leetcode/1359.%20Count%20All%20Valid%20Pickup%20and%20Delivery%20Options)
+1360 | Number of Days Between Two Dates | Easy | [Solution](leetcode/1360.%20Number%20of%20Days%20Between%20Two%20Dates)
 5083 | Occurrences After Bigram | Easy | [Solution](leetcode/5083.%20Occurrences%20After%20Bigram)
 5084 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/5084.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
 5086 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/5086.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
