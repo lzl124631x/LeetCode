@@ -674,6 +674,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1073 | Adding Two Negabinary Numbers | Medium | [Solution](leetcode/1073.%20Adding%20Two%20Negabinary%20Numbers)
 1074 | Number of Submatrices That Sum to Target | Hard | [Solution](leetcode/1074.%20Number%20of%20Submatrices%20That%20Sum%20to%20Target)
 1108 | Defanging an IP Address | Easy | [Solution](leetcode/1108.%20Defanging%20an%20IP%20Address)
+1154 | Day of the Year | Easy | [Solution](leetcode/1154.%20Day%20of%20the%20Year)
 1184 | Distance Between Bus Stops | Easy | [Solution](leetcode/1184.%20Distance%20Between%20Bus%20Stops)
 1185 | Day of the Week | Easy | [Solution](leetcode/1185.%20Day%20of%20the%20Week)
 1189 | Maximum Number of Balloons | Easy | [Solution](leetcode/1189.%20Maximum%20Number%20of%20Balloons)
