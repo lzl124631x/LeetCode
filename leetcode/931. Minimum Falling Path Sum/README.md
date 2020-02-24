@@ -51,9 +51,9 @@ public:
         vector<vector<int>> dp(2, vector<int>(N, 0));
         for (int i = 0; i < N; ++i) {
             for (int j = 0; j < N; ++j) {
-                dp[(i + 1) % 2][j] = A[i][j] + min(j - 1 >= 0 ? dp[i % 2][j - 1] : INT_MAX,
-                                   min(dp[i % 2][j],
-                                       j + 1 < N ? dp[i % 2][j + 1] : INT_MAX));
+                dp[(i + 1) % 2][j] = A[i][j] + min({ j - 1 >= 0 ? dp[i % 2][j - 1] : INT_MAX,
+                                                     dp[i % 2][j],
+                                                     j + 1 < N ? dp[i % 2][j + 1] : INT_MAX });
             }
         }
         return *min_element(dp[N % 2].begin(), dp[N % 2].end());
@@ -76,9 +76,9 @@ public:
         int N = A.size();
         for (int i = 1; i < N; ++i) {
             for (int j = 0; j < N; ++j) {
-                A[i][j] += min(j - 1 >= 0 ? A[i - 1][j - 1] : INT_MAX,
-                                   min(A[i - 1][j],
-                                       j + 1 < N ? A[i - 1][j + 1] : INT_MAX));
+                A[i][j] += min({ j - 1 >= 0 ? A[i - 1][j - 1] : INT_MAX,
+                                 A[i - 1][j],
+                                 j + 1 < N ? A[i - 1][j + 1] : INT_MAX });
             }
         }
         return *min_element(A.back().begin(), A.back().end());

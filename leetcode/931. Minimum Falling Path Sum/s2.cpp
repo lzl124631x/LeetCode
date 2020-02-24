@@ -8,9 +8,9 @@ public:
         int N = A.size();
         for (int i = 1; i < N; ++i) {
             for (int j = 0; j < N; ++j) {
-                A[i][j] += min(j - 1 >= 0 ? A[i - 1][j - 1] : INT_MAX,
-                                   min(A[i - 1][j],
-                                       j + 1 < N ? A[i - 1][j + 1] : INT_MAX));
+                A[i][j] += min({ j - 1 >= 0 ? A[i - 1][j - 1] : INT_MAX,
+                                 A[i - 1][j],
+                                 j + 1 < N ? A[i - 1][j + 1] : INT_MAX });
             }
         }
         return *min_element(A.back().begin(), A.back().end());
