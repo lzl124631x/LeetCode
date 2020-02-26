@@ -429,6 +429,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 570 | Managers with at Least 5 Direct Reports | Medium | [Solution](leetcode/570.%20Managers%20with%20at%20Least%205%20Direct%20Reports)
 572 | Subtree of Another Tree | Easy | [Solution](leetcode/572.%20Subtree%20of%20Another%20Tree)
 575 | Distribute Candies | Easy | [Solution](leetcode/575.%20Distribute%20Candies)
+576 | Out of Boundary Paths | Medium | [Solution](leetcode/576.%20Out%20of%20Boundary%20Paths)
 577 | Employee Bonus | Easy | [Solution](leetcode/577.%20Employee%20Bonus)
 581 | Shortest Unsorted Continuous Subarray | Easy | [Solution](leetcode/581.%20Shortest%20Unsorted%20Continuous%20Subarray)
 582 | Kill Process | Medium | [Solution](leetcode/582.%20Kill%20Process)
