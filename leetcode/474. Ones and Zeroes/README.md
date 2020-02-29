@@ -44,6 +44,16 @@
 
 ## Solution 1. DP
 
+Let `dp[i + 1][j][k]` be the answer of subproblem if we only use the first `i + 1` strings (`strs[0]` to `strs[i]`) given `m = j`, `n = k`.
+
+```
+dp[i + 1][j][k] = max(
+                        dp[i][j][k],                          // If we don't use strs[i]
+                        1 + dp[i][j - zero[i]][k - one[i]]    // If we use strs[i] 
+                     )
+```
+where `zero[i]` and `one[i]` are the counts of zeros and ones in `strs[i]` respectively.
+
 ```cpp
 // OJ: https://leetcode.com/problems/ones-and-zeroes/
 // Author: github.com/lzl124631x
@@ -51,30 +61,23 @@
 // Space: O(MNS)
 class Solution {
 public:
-    int findMaxForm(vector<string>& strs, int M, int N) {
+    int findMaxForm(vector<string>& strs, int m, int n) {
         int S = strs.size();
-        vector<vector<vector<int>>> dp(M + 1, vector<vector<int>>(N + 1, vector<int>(S + 1, 0)));
-        vector<pair<int, int>> cnts(S);
+        vector<vector<vector<int>>> dp(S + 1, vector<vector<int>>(m + 1, vector<int>(n + 1)));
         for (int i = 0; i < S; ++i) {
-            auto str = strs[i];
-            cnts[i].first = count(str.begin(), str.end(), '0');
-            cnts[i].second = count(str.begin(), str.end(), '1');
-        }
-        for (int k = 1; k <= S; ++k) {
-            int zeros = cnts[k - 1].first, ones = cnts[k - 1].second;
-            for (int i = 0; i <= M; ++i) {
-                for (int j = 0; j <= N; ++j) {
-                    dp[i][j][k] = dp[i][j][k - 1];
-                    if (zeros <= i && ones <= j) dp[i][j][k] = max(dp[i][j][k], 1 + dp[i - zeros][j - ones][k - 1]);
+            int zero = count(strs[i].begin(), strs[i].end(), '0'), one = strs[i].size() - zero;
+            for (int j = 0; j <= m; ++j) {
+                for (int k = 0; k <= n; ++k) {
+                    dp[i + 1][j][k] = max(dp[i][j][k], j >= zero && k >= one ? 1 + dp[i][j - zero][k - one] : 0);
                 }
             }
         }
-        return dp[M][N][S];
+        return dp[S][m][n];
     }
 };
 ```
 
-## Solution 2.
+## Solution 2. DP with Space Optimization
 
 ```cpp
 // OJ: https://leetcode.com/problems/ones-and-zeroes/
@@ -84,17 +87,13 @@ public:
 class Solution {
 public:
     int findMaxForm(vector<string>& strs, int m, int n) {
-        int dp[m + 1][n + 1], len = strs.size();
-        memset(dp, 0, sizeof(dp));
-        for (int i = 0; i < len; ++i) {
-            int cm = 0, cn = 0;
-            for (char c : strs[i]) {
-                if (c == '0') ++cm;
-                else ++cn;
-            }
-            for (int im = m; im >= cm; --im) {
-                for (int in = n; in >= cn; --in) {
-                    dp[im][in] = max(dp[im][in], dp[im - cm][in - cn] + 1);
+        int S = strs.size();
+        vector<vector<int>> dp(m + 1, vector<int>(n + 1));
+        for (int i = 0; i < S; ++i) {
+            int zero = count(strs[i].begin(), strs[i].end(), '0'), one = strs[i].size() - zero;
+            for (int j = m; j >= 0; --j) {
+                for (int k = n; k >= 0; --k) {
+                    dp[j][k] = max(dp[j][k], j >= zero && k >= one ? 1 + dp[j - zero][k - one] : 0);
                 }
             }
         }

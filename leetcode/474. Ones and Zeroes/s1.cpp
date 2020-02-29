@@ -4,24 +4,17 @@
 // Space: O(MNS)
 class Solution {
 public:
-    int findMaxForm(vector<string>& strs, int M, int N) {
+    int findMaxForm(vector<string>& strs, int m, int n) {
         int S = strs.size();
-        vector<vector<vector<int>>> dp(M + 1, vector<vector<int>>(N + 1, vector<int>(S + 1, 0)));
-        vector<pair<int, int>> cnts(S);
+        vector<vector<vector<int>>> dp(S + 1, vector<vector<int>>(m + 1, vector<int>(n + 1)));
         for (int i = 0; i < S; ++i) {
-            auto str = strs[i];
-            cnts[i].first = count(str.begin(), str.end(), '0');
-            cnts[i].second = count(str.begin(), str.end(), '1');
-        }
-        for (int k = 1; k <= S; ++k) {
-            int zeros = cnts[k - 1].first, ones = cnts[k - 1].second;
-            for (int i = 0; i <= M; ++i) {
-                for (int j = 0; j <= N; ++j) {
-                    dp[i][j][k] = dp[i][j][k - 1];
-                    if (zeros <= i && ones <= j) dp[i][j][k] = max(dp[i][j][k], 1 + dp[i - zeros][j - ones][k - 1]);
+            int zero = count(strs[i].begin(), strs[i].end(), '0'), one = strs[i].size() - zero;
+            for (int j = 0; j <= m; ++j) {
+                for (int k = 0; k <= n; ++k) {
+                    dp[i + 1][j][k] = max(dp[i][j][k], j >= zero && k >= one ? 1 + dp[i][j - zero][k - one] : 0);
                 }
             }
         }
-        return dp[M][N][S];
+        return dp[S][m][n];
     }
 };
