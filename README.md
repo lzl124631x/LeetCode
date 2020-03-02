@@ -544,6 +544,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 797 | All Paths From Source to Target | Medium | [Solution](leetcode/797.%20All%20Paths%20From%20Source%20to%20Target)
 800 | Similar RGB Color | Easy | [Solution](leetcode/800.%20Similar%20RGB%20Color)
 804 | Unique Morse Code Words | Easy | [Solution](leetcode/804.%20Unique%20Morse%20Code%20Words)
+805 | Split Array With Same Average | Hard | [Solution](leetcode/805.%20Split%20Array%20With%20Same%20Average)
 806 | Number of Lines To Write String | Easy | [Solution](leetcode/806.%20Number%20of%20Lines%20To%20Write%20String)
 807 | Max Increase to Keep City Skyline | Medium | [Solution](leetcode/807.%20Max%20Increase%20to%20Keep%20City%20Skyline)
 809 | Expressive Words | Medium | [Solution](leetcode/809.%20Expressive%20Words)
