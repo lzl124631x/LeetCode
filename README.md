@@ -468,6 +468,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 643 | Maximum Average Subarray I | Easy | [Solution](leetcode/643.%20Maximum%20Average%20Subarray%20I)
 647 | Palindromic Substrings | Medium | [Solution](leetcode/647.%20Palindromic%20Substrings)
 648 | Replace Words | Medium | [Solution](leetcode/648.%20Replace%20Words)
+650 | 2 Keys Keyboard | Medium | [Solution](leetcode/650.%202%20Keys%20Keyboard)
 651 | 4 Keys Keyboard | Medium | [Solution](leetcode/651.%204%20Keys%20Keyboard)
 652 | Find Duplicate Subtrees | Medium | [Solution](leetcode/652.%20Find%20Duplicate%20Subtrees)
 653 | Two Sum IV - Input is a BST | Easy | [Solution](leetcode/653.%20Two%20Sum%20IV%20-%20Input%20is%20a%20BST)
