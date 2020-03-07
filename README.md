@@ -701,6 +701,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1319 | Number of Operations to Make Network Connected | Medium | [Solution](leetcode/1319.%20Number%20of%20Operations%20to%20Make%20Network%20Connected)
 1323 | Maximum 69 Number | Easy | [Solution](leetcode/5315.%20Maximum%2069%20Number)
 1324 | Print Words Vertically | Medium | [Solution](leetcode/5316.%20Print%20Words%20Vertically)
+1325 | Delete Leaves With a Given Value | Medium | [Solution](leetcode/5317.%20Delete%20Leaves%20With%20a%20Given%20Value)
 1326 | Minimum Number of Taps to Open to Water a Garden | Hard | [Solution](leetcode/1326.%20Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden)
 1328 | Break a Palindrome | Medium | [Solution](leetcode/1328.%20Break%20a%20Palindrome)
 1329 | Sort the Matrix Diagonally | Medium | [Solution](leetcode/1329.%20Sort%20the%20Matrix%20Diagonally)
@@ -734,7 +735,6 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1371 | Find the Longest Substring Containing Vowels in Even Counts | Medium | [Solution](leetcode/1371.%20Find%20the%20Longest%20Substring%20Containing%20Vowels%20in%20Even%20Counts)
 1372 | Longest ZigZag Path in a Binary Tree | Medium | [Solution](leetcode/1372.%20Longest%20ZigZag%20Path%20in%20a%20Binary%20Tree)
 1373 | Maximum Sum BST in Binary Tree | Hard | [Solution](leetcode/1373.%20Maximum%20Sum%20BST%20in%20Binary%20Tree)
-5317 | Delete Leaves With a Given Value | Medium | [Solution](leetcode/5317.%20Delete%20Leaves%20With%20a%20Given%20Value)
 5318 | Minimum Number of Taps to Open to Water a Garden | Hard | [Solution](leetcode/5318.%20Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden)
 
 # License

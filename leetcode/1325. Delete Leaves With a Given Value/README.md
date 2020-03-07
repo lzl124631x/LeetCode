@@ -1,4 +1,4 @@
-# [5317. Delete Leaves With a Given Value (Medium)](https://leetcode.com/problems/delete-leaves-with-a-given-value/)
+# [1325. Delete Leaves With a Given Value (Medium)](https://leetcode.com/problems/delete-leaves-with-a-given-value/)
 
 <p>Given a binary tree&nbsp;<code>root</code>&nbsp;and an integer&nbsp;<code>target</code>, delete all the&nbsp;<strong>leaf nodes</strong>&nbsp;with value <code>target</code>.</p>
 
