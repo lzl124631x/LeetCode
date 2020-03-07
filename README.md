@@ -735,7 +735,6 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1371 | Find the Longest Substring Containing Vowels in Even Counts | Medium | [Solution](leetcode/1371.%20Find%20the%20Longest%20Substring%20Containing%20Vowels%20in%20Even%20Counts)
 1372 | Longest ZigZag Path in a Binary Tree | Medium | [Solution](leetcode/1372.%20Longest%20ZigZag%20Path%20in%20a%20Binary%20Tree)
 1373 | Maximum Sum BST in Binary Tree | Hard | [Solution](leetcode/1373.%20Maximum%20Sum%20BST%20in%20Binary%20Tree)
-5318 | Minimum Number of Taps to Open to Water a Garden | Hard | [Solution](leetcode/5318.%20Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden)
 
 # License
 
