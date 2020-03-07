@@ -15,3 +15,7 @@ function lowbit(int x) {
     return x & (-x);
 }
 ```
+
+## Reference 
+
+* https://oi-wiki.org/math/bit/
