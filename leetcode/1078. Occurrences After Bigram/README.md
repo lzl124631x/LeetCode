@@ -1,4 +1,4 @@
-# [5083. Occurrences After Bigram (Easy)](https://leetcode.com/problems/occurrences-after-bigram/)
+# [1078. Occurrences After Bigram (Easy)](https://leetcode.com/problems/occurrences-after-bigram/)
 
 <p>Given words <code>first</code> and <code>second</code>, consider occurrences in some&nbsp;<code>text</code> of the form "<code>first second third</code>", where <code>second</code> comes immediately after <code>first</code>, and <code>third</code> comes immediately after <code>second</code>.</p>
 
