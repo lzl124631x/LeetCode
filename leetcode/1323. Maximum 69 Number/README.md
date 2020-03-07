@@ -1,4 +1,4 @@
-# [5315. Maximum 69 Number (Easy)](https://leetcode.com/problems/maximum-69-number)
+# [1323. Maximum 69 Number (Easy)](https://leetcode.com/problems/maximum-69-number)
 
 <p>Given a positive integer <code>num</code> consisting only of digits 6 and 9.</p>
 
