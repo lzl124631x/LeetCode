@@ -1,4 +1,4 @@
-# [5316. Print Words Vertically (Medium)](https://leetcode.com/problems/print-words-vertically/)
+# [1324. Print Words Vertically (Medium)](https://leetcode.com/problems/print-words-vertically/)
 
 <p>Given a string <code>s</code>.&nbsp;Return&nbsp;all the words vertically in the same order in which they appear in <code>s</code>.<br>
 Words are returned as a list of strings, complete with&nbsp;spaces when is necessary. (Trailing spaces are not allowed).<br>
