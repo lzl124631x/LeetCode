@@ -1,4 +1,4 @@
-# [5087. Letter Tile Possibilities (Medium)](https://leetcode.com/problems/letter-tile-possibilities/)
+# [1079. Letter Tile Possibilities (Medium)](https://leetcode.com/problems/letter-tile-possibilities/)
 
 <p>You have a set of <code>tiles</code>, where each tile has one letter <code>tiles[i]</code> printed on it.&nbsp; Return the number of possible non-empty sequences of letters you can make.</p>
 
