@@ -727,6 +727,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1370 | Increasing Decreasing String | Easy | [Solution](leetcode/1370.%20Increasing%20Decreasing%20String)
 1371 | Find the Longest Substring Containing Vowels in Even Counts | Medium | [Solution](leetcode/1371.%20Find%20the%20Longest%20Substring%20Containing%20Vowels%20in%20Even%20Counts)
 1372 | Longest ZigZag Path in a Binary Tree | Medium | [Solution](leetcode/1372.%20Longest%20ZigZag%20Path%20in%20a%20Binary%20Tree)
+1373 | Maximum Sum BST in Binary Tree | Hard | [Solution](leetcode/1373.%20Maximum%20Sum%20BST%20in%20Binary%20Tree)
 5083 | Occurrences After Bigram | Easy | [Solution](leetcode/5083.%20Occurrences%20After%20Bigram)
 5084 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/5084.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
 5086 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/5086.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
