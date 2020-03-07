@@ -35,7 +35,7 @@
 **Related Topics**:  
 [String](https://leetcode.com/tag/string/)
 
-## Solution 1. Greedy
+## Solution 1. Greedy + State Compression
 
 At the first glance it's like a sliding window problem. For a find maximum sliding window problem, the initial state should be valid, then keep extending the 2nd pointer until the state becomes invalid (now the maximum is found), then move the first pointer to get back the valid state again.
 
