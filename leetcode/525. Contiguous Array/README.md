@@ -84,13 +84,12 @@ For each running sum,
 class Solution {
 public:
     int findMaxLength(vector<int>& nums) {
-        for (int &n : nums) if (!n) n = -1;
-        unordered_map<int, int> m {{ 0, -1 }};
-        int ans = 0, sum = 0;
-        for (int i = 0; i < nums.size(); ++i) {
-            sum += nums[i];
-            if (m.find(sum) == m.end()) m[sum] = i;
-            else ans = max(ans, i - m[sum]);
+        unordered_map<int, int> m{{0, -1}};
+        int N = nums.size(), sum = 0, ans = 0;
+        for (int i = 0; i < N; ++i) {
+            sum += nums[i] ? 1 : -1;
+            if (m.count(sum)) ans = max(ans, i - m[sum]);
+            else m[sum] = i;
         }
         return ans;
     }
