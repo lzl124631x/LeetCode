@@ -737,6 +737,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1373 | Maximum Sum BST in Binary Tree | Hard | [Solution](leetcode/1373.%20Maximum%20Sum%20BST%20in%20Binary%20Tree)
 1374 | Generate a String With Characters That Have Odd Counts | Easy | [Solution](leetcode/1374.%20Generate%20a%20String%20With%20Characters%20That%20Have%20Odd%20Counts)
 1375 | Bulb Switcher III | Medium | [Solution](leetcode/1375.%20Bulb%20Switcher%20III)
+1376 | Time Needed to Inform All Employees | Medium | [Solution](leetcode/1376.%20Time%20Needed%20to%20Inform%20All%20Employees)
 
 # License
 
