@@ -16,9 +16,7 @@ public:
                 auto p = q.front();
                 q.pop();
                 ans = max(ans, p.second);
-                for (int sub : m[p.first]) {
-                    q.push({ sub, p.second + informTime[sub] });
-                }
+                for (int sub : m[p.first]) q.push({ sub, p.second + informTime[sub] });
             }
         }
         return ans;
