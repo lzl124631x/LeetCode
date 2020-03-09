@@ -5,12 +5,12 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
-        int doRob = 0, doNotRob = 0;
+        int rob = 0, skip = 0;
         for (int n : nums) {
-            int tmp = doNotRob;
-            doNotRob = max(doRob, doNotRob);
-            doRob = tmp + n;
+            int tmp = skip;
+            skip = max(rob, skip);
+            rob = tmp + n;
         }
-        return max(doRob, doNotRob);
+        return max(rob, skip);
     }
 };

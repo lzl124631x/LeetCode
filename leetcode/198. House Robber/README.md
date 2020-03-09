@@ -36,7 +36,35 @@
 * [Coin Path (Hard)](https://leetcode.com/problems/coin-path/)
 * [Delete and Earn (Medium)](https://leetcode.com/problems/delete-and-earn/)
 
-## Solution 1.
+## Solution 1. DP
+
+For `nums[i]`, we have two options, rob or skip.
+
+Let `rob[i]` and `skip[i]` be the best outcome we can get if we rob or skip the `house[i]` respectively.
+
+```
+rob[i] = nums[i] + skip[i - 1]
+skip[i] = max(rob[i - 1], skip[i - 1])
+```
+
+Since `rob[i]` and `skip[i]` are only dependent on `rob[i - 1]`  and `skip[i - 1]`, we can reduce the space complexity to `O(1)` by only storing the current `rob` and `skip`.
+
+So initially we have `rob = 0`, `skip = 0`, and for each `nums[i]`, we have 
+
+```
+rob2 = nums[i] + skip
+skip2 = max(rob, skip)
+```
+
+Then we can assign `rob2` back to `rob`, and `skip2` back to `skip`.
+
+Further more, since `skip` is the only one required by both `rob2` and `skip2`, we can do the following:
+
+```
+tmp = skip
+skip = max(rob, skip)
+rob = tmp + nums[i]
+```
 
 ```cpp
 // OJ: https://leetcode.com/problems/house-robber/
@@ -46,18 +74,36 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
-        int doRob = 0, doNotRob = 0;
+        int rob = 0, skip = 0;
         for (int n : nums) {
-            int tmp = doNotRob;
-            doNotRob = max(doRob, doNotRob);
-            doRob = tmp + n;
+            int tmp = skip;
+            skip = max(rob, skip);
+            rob = tmp + n;
         }
-        return max(doRob, doNotRob);
+        return max(rob, skip);
     }
 };
 ```
 
 ## Solution 2.
+
+Let `dp[i]` be the best outcome we can get at `nums[i]`.
+
+```
+dp[i] = max(
+            dp[i - 1],             // skip the current house
+            dp[i - 2] + nums[i]    // rob the current house
+)
+```
+
+So `dp[i]` is only dependent on the previous 2 values. We can reduce the space complexity to `O(1)` by storing the previous two values:
+
+```
+cur = max(
+            prev,
+            prev2 + nums[i]
+)
+```
 
 ```cpp
 // OJ: https://leetcode.com/problems/house-robber/
