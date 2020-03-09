@@ -1,26 +1,16 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
+// OJ: https://leetcode.com/problems/house-robber-iii/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
 class Solution {
-private:
-    int rob(TreeNode* root, int &robMax, int &notRobMax) {
-        if (!root) return 0;
-        int leftRobMax = 0, leftNotRobMax = 0, rightRobMax = 0, rightNotRobMax = 0;
-        int leftMax = rob(root->left, leftRobMax, leftNotRobMax);
-        int rightMax = rob(root->right, rightRobMax, rightNotRobMax);
-        robMax = root->val + leftNotRobMax + rightNotRobMax;
-        notRobMax = leftMax + rightMax;
-        return max(robMax, notRobMax);
+    pair<int, int> dfs(TreeNode *root) {
+        if (!root) return {0, 0};
+        auto a = dfs(root->left), b = dfs(root->right);
+        return { root->val + a.second + b.second, max(a.first, a.second) + max(b.first, b.second) };
     }
 public:
     int rob(TreeNode* root) {
-        int robMax = 0, notRobMax = 0;
-        return rob(root, robMax, notRobMax);
+        auto p = dfs(root);
+        return max(p.first, p.second);
     }
 };
