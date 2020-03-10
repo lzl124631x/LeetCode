@@ -324,6 +324,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 424 | Longest Repeating Character Replacement | Medium | [Solution](leetcode/424.%20Longest%20Repeating%20Character%20Replacement)
 427 | Construct Quad Tree | Easy | [Solution](leetcode/427.%20Construct%20Quad%20Tree)
 429 | N-ary Tree Level Order Traversal | Easy | [Solution](leetcode/429.%20N-ary%20Tree%20Level%20Order%20Traversal)
+430 | Flatten a Multilevel Doubly Linked List | Medium | [Solution](leetcode/430.%20Flatten%20a%20Multilevel%20Doubly%20Linked%20List)
 432 | All O`one Data Structure | Hard | [Solution](leetcode/432.%20All%20O`one%20Data%20Structure)
 434 | Number of Segments in a String | Easy | [Solution](leetcode/434.%20Number%20of%20Segments%20in%20a%20String)
 435 | Non-overlapping Intervals | Medium | [Solution](leetcode/435.%20Non-overlapping%20Intervals)
