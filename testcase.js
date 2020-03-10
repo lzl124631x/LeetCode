@@ -1,1 +1,1 @@
-copy($$('strong').filter(x => x.innerText === "Input:").map(x => x.nextSibling.textContent.trim()).map(x => x.replace(/(\,\ )?\w+\ =\ /g, '\n').trim()).join('\n'))
+copy($$('strong').filter(x => x.innerText.trim() === "Input:").map(x => x.nextSibling.textContent.split('\n')[0].trim()).map(x => x.replace(/(\,\ )?\w+\ =\ /g, '\n').trim()).join('\n'))
