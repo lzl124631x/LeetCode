@@ -663,6 +663,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1014 | Best Sightseeing Pair | Medium | [Solution](leetcode/1014.%20Best%20Sightseeing%20Pair)
 1016 | Binary String With Substrings Representing 1 To N | Medium | [Solution](leetcode/1016.%20Binary%20String%20With%20Substrings%20Representing%201%20To%20N)
 1019 | Next Greater Node In Linked List | Medium | [Solution](leetcode/1019.%20Next%20Greater%20Node%20In%20Linked%20List)
+1020 | Number of Enclaves | Medium | [Solution](leetcode/1020.%20Number%20of%20Enclaves)
 1021 | Remove Outermost Parentheses | Easy | [Solution](leetcode/1021.%20Remove%20Outermost%20Parentheses)
 1022 | Sum of Root To Leaf Binary Numbers | Easy | [Solution](leetcode/1022.%20Sum%20of%20Root%20To%20Leaf%20Binary%20Numbers)
 1025 | Divisor Game | Easy | [Solution](leetcode/1025.%20Divisor%20Game)
