@@ -384,6 +384,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 503 | Next Greater Element II | Medium | [Solution](leetcode/503.%20Next%20Greater%20Element%20II)
 504 | Base 7 | Easy | [Solution](leetcode/504.%20Base%207)
 506 | Relative Ranks | Easy | [Solution](leetcode/506.%20Relative%20Ranks)
+507 | Perfect Number | Easy | [Solution](leetcode/507.%20Perfect%20Number)
 508 | Most Frequent Subtree Sum | Medium | [Solution](leetcode/508.%20Most%20Frequent%20Subtree%20Sum)
 509 | Fibonacci Number | Easy | [Solution](leetcode/509.%20Fibonacci%20Number)
 513 | Find Bottom Left Tree Value | Medium | [Solution](leetcode/513.%20Find%20Bottom%20Left%20Tree%20Value)
