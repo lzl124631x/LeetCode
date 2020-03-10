@@ -85,7 +85,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. DP
 
 Let `dp[i]` be the best outcome we can get at `nums[i]`.
 
@@ -122,4 +122,16 @@ public:
         return prev;
     }
 };
+```
+
+```py
+# OJ: https://leetcode.com/problems/house-robber/
+# Author: github.com/lzl124631x
+# Time: O(N)
+# Space: O(1)
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        prev, cur = 0, 0
+        for n in nums: prev, cur = cur, max(cur, prev + n)
+        return cur
 ```
