@@ -1,18 +1,20 @@
 // OJ: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii
 // Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
-// Ref: https://discuss.leetcode.com/topic/5934/is-it-best-solution-with-o-n-o-1
+// Time: O(KN)
+// Space: O(K)
 class Solution {
 public:
-  int maxProfit(vector<int>& prices) {
-    int buy1 = INT_MIN, sell1 = 0, buy2 = INT_MIN, sell2 = 0;
-    for (int p : prices) {
-      buy1 = max(buy1, -p);
-      sell1 = max(sell1, buy1 + p);
-      buy2 = max(buy2, sell1 - p);
-      sell2 = max(sell2, buy2 + p);
+    int maxProfit(vector<int>& A) {
+        if (A.empty()) return 0;
+        int N = A.size();
+        vector<int> dp(3);
+        vector<int> maxVal(3, INT_MIN);
+        for (int i = 0; i < N; ++i) {
+            for (int k = 1; k < 3; ++k) {
+                maxVal[k] = max(maxVal[k], dp[k - 1] - A[i]);
+                dp[k] = max(dp[k], A[i] + maxVal[k]);
+            }
+        }
+        return dp[2];
     }
-    return sell2;
-  }
 };
