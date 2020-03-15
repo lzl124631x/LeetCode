@@ -573,6 +573,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 840 | Magic Squares In Grid | Easy | [Solution](leetcode/840.%20Magic%20Squares%20In%20Grid)
 841 | Keys and Rooms | Medium | [Solution](leetcode/841.%20Keys%20and%20Rooms)
 852 | Peak Index in a Mountain Array | Easy | [Solution](leetcode/852.%20Peak%20Index%20in%20a%20Mountain%20Array)
+857 | Minimum Cost to Hire K Workers | Hard | [Solution](leetcode/857.%20Minimum%20Cost%20to%20Hire%20K%20Workers)
 859 | Buddy Strings | Easy | [Solution](leetcode/859.%20Buddy%20Strings)
 856 | Score of Parentheses | Medium | [Solution](leetcode/856.%20Score%20of%20Parentheses)
 860 | Lemonade Change | Easy | [Solution](leetcode/860.%20Lemonade%20Change)
