@@ -746,6 +746,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1375 | Bulb Switcher III | Medium | [Solution](leetcode/1375.%20Bulb%20Switcher%20III)
 1376 | Time Needed to Inform All Employees | Medium | [Solution](leetcode/1376.%20Time%20Needed%20to%20Inform%20All%20Employees)
 1377 | Frog Position After T Seconds | Hard | [Solution](leetcode/1377.%20Frog%20Position%20After%20T%20Seconds)
+1380 | Lucky Numbers in a Matrix | Easy | [Solution](leetcode/1380.%20Lucky%20Numbers%20in%20a%20Matrix)
 
 # License
 
