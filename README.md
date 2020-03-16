@@ -6,6 +6,10 @@ My C++ Code for LeetCode OJ.
 
 Please give this repo a :star: if it inspires you. Thanks. :blush:
 
+Drag and drop the following link into your bookmark. Then you can click this bookmark to extract the testcases!
+
+[Testcase](javascript:!function(e){!function(e){const t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select(),document.execCommand("copy"),document.body.removeChild(t)}(Array.from(e.querySelectorAll("strong, b")).filter(e=>"Input:"===e.innerText.trim()).map(e=>e.nextSibling.textContent.split("\n")[0].trim()).map(e=>e.replace(/(\,\ )?\w+\ =\ /g,"\n").trim()).join("\n"))}(document);)
+
 \# | Title | Difficulty | Solution
 ---|---|---|---
 1 | Two Sum | Easy | [Solution](leetcode/1.%20Two%20Sum)
