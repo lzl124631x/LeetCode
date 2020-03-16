@@ -1,55 +1,44 @@
-// https://leetcode.com/articles/range-sum-query-mutable/
+// OJ: https://leetcode.com/problems/range-sum-query-mutable/
+// Author: github.com/lzl124631x
+// Time: 
+//      NumArray: O(N)
+//      update: O(1)
+//      sumRange: O(logN)
+// Space: O(N)
 class NumArray {
-private:
     vector<int> tree;
-    int n;
-    
+    int N;
     void buildTree(vector<int> &nums) {
-        for (int i = n, j = 0; j < n; ++i, ++j) tree[i] = nums[j];
-        for (int i = n - 1; i > 0; --i) tree[i] = tree[i * 2] + tree[i * 2 + 1];
+        for (int i = 0, j = N; i < N;) tree[j++] = nums[i++];
+        for (int i = N - 1; i > 0; --i) tree[i] = tree[2 * i] + tree[2 * i + 1];
     }
 public:
-    NumArray(vector<int> &nums) : n(nums.size()) {
-        if (n == 0) return;
-        tree = vector<int>(2 * n);
+    NumArray(vector<int>& nums) {
+        if (nums.empty()) return;
+        N = nums.size();
+        tree = vector<int>(N * 2);
         buildTree(nums);
     }
-
+    
     void update(int i, int val) {
-        i += n;
+        i += N;
         tree[i] = val;
         while (i > 0) {
-            int left = i, right = i;
-            if (i % 2 == 0) ++right;
-            else --left;
-            tree[i / 2] = tree[left] + tree[right];
             i /= 2;
+            tree[i] = tree[2 * i] + tree[2 * i + 1];
         }
     }
-
+    
     int sumRange(int i, int j) {
+        i += N;
+        j += N;
         int sum = 0;
-        i += n;
-        j += n;
         while (i <= j) {
-            if (i % 2 == 1) {
-                sum += tree[i];
-                ++i;
-            }
-            if (j % 2 == 0) {
-                sum += tree[j];
-                --j;
-            }
+            if (i % 2) sum += tree[i++];
+            if (j % 2 == 0) sum += tree[j--];
             i /= 2;
             j /= 2;
         }
         return sum;
     }
 };
-
-
-// Your NumArray object will be instantiated and called as such:
-// NumArray numArray(nums);
-// numArray.sumRange(0, 1);
-// numArray.update(1, 10);
-// numArray.sumRange(1, 2);

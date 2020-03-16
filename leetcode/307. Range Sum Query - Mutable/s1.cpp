@@ -1,3 +1,10 @@
+// OJ: https://leetcode.com/problems/range-sum-query-mutable/
+// Author: github.com/lzl124631x
+// Time:
+//      NumArray: O(N)
+//      update: O(1)
+//      sumRange: O(N)
+// Space: O(N)
 class NumArray {
 private:
     vector<int> sums;
@@ -22,10 +29,3 @@ public:
         return sums[j + 1] - sums[i];
     }
 };
-
-
-// Your NumArray object will be instantiated and called as such:
-// NumArray numArray(nums);
-// numArray.sumRange(0, 1);
-// numArray.update(1, 10);
-// numArray.sumRange(1, 2);
