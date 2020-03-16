@@ -8,7 +8,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 
 Drag and drop the following link into your bookmark. Then you can click this bookmark to extract the testcases!
 
-[Testcase](javascript:!function(e)%7B!function(e)%7Bconst%20t%3Ddocument.createElement(%22textarea%22)%3Bt.value%3De%2Ct.setAttribute(%22readonly%22%2C%22%22)%2Ct.style.position%3D%22absolute%22%2Ct.style.left%3D%22-9999px%22%2Cdocument.body.appendChild(t)%2Ct.select()%2Cdocument.execCommand(%22copy%22)%2Cdocument.body.removeChild(t)%7D(Array.from(e.querySelectorAll(%22strong%2C%20b%22)).filter(e%3D%3E%22Input%3A%22%3D%3D%3De.innerText.trim()).map(e%3D%3Ee.nextSibling.textContent.split(%22%0A%22)%5B0%5D.trim()).map(e%3D%3Ee.replace(%2F(%2C%20)%3Fw%2B%20%3D%20%2Fg%2C%22%0A%22).trim()).join(%22%0A%22))%7D(document))
+<a href="javascript:!function(e)%7B!function(e)%7Bconst%20t%3Ddocument.createElement(%22textarea%22)%3Bt.value%3De%2Ct.setAttribute(%22readonly%22%2C%22%22)%2Ct.style.position%3D%22absolute%22%2Ct.style.left%3D%22-9999px%22%2Cdocument.body.appendChild(t)%2Ct.select()%2Cdocument.execCommand(%22copy%22)%2Cdocument.body.removeChild(t)%7D(Array.from(e.querySelectorAll(%22strong%2C%20b%22)).filter(e%3D%3E%22Input%3A%22%3D%3D%3De.innerText.trim()).map(e%3D%3Ee.nextSibling.textContent.split(%22%0A%22)%5B0%5D.trim()).map(e%3D%3Ee.replace(%2F(%2C%20)%3Fw%2B%20%3D%20%2Fg%2C%22%0A%22).trim()).join(%22%0A%22))%7D(document)">Testcase</a>
 
 \# | Title | Difficulty | Solution
 ---|---|---|---
