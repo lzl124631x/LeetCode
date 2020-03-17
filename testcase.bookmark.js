@@ -47,6 +47,9 @@
     if (a) {
         $('#custom_testcase').checked = true;
         $('.testcase-input-base').className = 'testcase-input-base';
-        a.value = t;
+        a.focus();
+        a.select();
+        // Directly setting the value of textarea doesn't work because the viewModel of LeetCode resets it when you click "Run"
+        // document.execCommand('paste') doesn't work because it's blocked by Chrome by default
     }
 }(document)
