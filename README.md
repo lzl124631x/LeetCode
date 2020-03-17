@@ -6,6 +6,9 @@ My C++ Code for LeetCode OJ.
 
 Please give this repo a :star: if it inspires you. Thanks. :blush:
 
+😩 Hate manually copy & pasting the example testcases when solving LeetCode problems?  
+👉 Try my [LeetCode Testcase Extractor](https://liuzhenglai.com/post/5e6f2551e9a0d01760b274d8)
+
 \# | Title | Difficulty | Solution
 ---|---|---|---
 1 | Two Sum | Easy | [Solution](leetcode/1.%20Two%20Sum)
