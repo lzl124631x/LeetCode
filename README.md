@@ -420,6 +420,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 547 | Friend Circles | Medium | [Solution](leetcode/547.%20Friend%20Circles)
 549 | Binary Tree Longest Consecutive Sequence II | Medium | [Solution](leetcode/549.%20Binary%20Tree%20Longest%20Consecutive%20Sequence%20II)
 551 | Student Attendance Record I | Easy | [Solution](leetcode/551.%20Student%20Attendance%20Record%20I)
+552 | Student Attendance Record II | Hard | [Solution](leetcode/552.%20Student%20Attendance%20Record%20II)
 553 | Optimal Division | Medium | [Solution](leetcode/553.%20Optimal%20Division)
 554 | Brick Wall | Medium | [Solution](leetcode/554.%20Brick%20Wall)
 556 | Next Greater Element III | Medium | [Solution](leetcode/556.%20Next%20Greater%20Element%20III)
