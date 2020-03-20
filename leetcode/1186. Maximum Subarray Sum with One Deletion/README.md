@@ -39,28 +39,30 @@
 ## Solution 1. DP
 
 Let:
-* `dp[i + 1][0]` be the maximum sum of subarrays that end at `A[i]` and don't without deletion.
-* `dp[i + 1][1]` be the maximum sum of subarrays that end at `A[i]` and have one deletion.
+* `dp[i][0]` be the maximum sum of subarrays that end at `A[i]` and don't without deletion.
+* `dp[i][1]` be the maximum sum of subarrays that end at `A[i]` and have one deletion.
 
-For `dp[i + 1][0]`, we have two options:
+For `dp[i][0]`, we have two options:
 1. Only pick `A[i]` -- `A[i]`.
-1. Append `A[i]` to previous best result without deletion -- `dp[i][0] + A[i]`
-So `dp[i + 1][0] = max(A[i], dp[i][0] + A[i])`.
+1. Append `A[i]` to previous best result without deletion -- `dp[i - 1][0] + A[i]`
+So `dp[i][0] = max(A[i], dp[i - 1][0] + A[i])`.
 
-For `dp[i + 1][1]`, we have two options:
-1. treat `A[i]` as deleted and use the previous best result without deletion -- `dp[i][0]`.
-1. Append `A[i]` to the previous best result with deletion -- `dp[i][1] + A[i]`.
+For `dp[i][1]`, we have two options:
+1. treat `A[i]` as deleted and use the previous best result without deletion -- `dp[i - 1][0]`.
+1. Append `A[i]` to the previous best result with deletion -- `dp[i - 1][1] + A[i]`.
 
 So in sum:
 
 ```
-dp[i + 1][0] = max(A[i], dp[i][0] + A[i])
-dp[i + 1][1] = max(dp[i][0], dp[i][1] + A[i])
+dp[i][0] = max(A[i], dp[i - 1][0] + A[i])
+dp[i][1] = max(dp[i - 1][0], dp[i - 1][1] + A[i])
+    where i >= 1
 
-dp[0][0] = dp[0][1] = -INF
+dp[0][0] = A[0]
+dp[0][1] = -INF
 ```
 
-We treat invalid states as `-INF` so that we can ignore them when comparing `max`.
+Note that in implementation `dp[0][0]` can be set as `0` since it's only used in `A[1] + dp[0][1]` and thus setting it to `0` safely ignores it.
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/
@@ -70,13 +72,13 @@ We treat invalid states as `-INF` so that we can ignore them when comparing `max
 class Solution {
 public:
     int maximumSum(vector<int>& A) {
-        int N = A.size(), ans = INT_MIN;
-        auto dp = vector<vector<int>>(N + 1, vector<int>(2));
-        dp[0][0] = dp[0][1] = INT_MIN;
-        for (int i = 0; i < N; ++i) {
-            dp[i + 1][0] = max(A[i], dp[i][0] == INT_MIN ? INT_MIN : (dp[i][0] + A[i]));
-            dp[i + 1][1] = max(dp[i][1] == INT_MIN ? INT_MIN : (A[i] + dp[i][1]), dp[i][0]);
-            ans = max({ ans, dp[i + 1][0], dp[i + 1][1] });
+        int N = A.size(), ans = A[0];
+        auto dp = vector<vector<int>>(N, vector<int>(2));
+        dp[0][0] = A[0];
+        for (int i = 1; i < N; ++i) {
+            dp[i][0] = max(A[i], dp[i - 1][0] + A[i]);
+            dp[i][1] = max(A[i] + dp[i - 1][1], dp[i - 1][0]);
+            ans = max({ ans, dp[i][0], dp[i][1] });
         }
         return ans;
     }
@@ -85,7 +87,7 @@ public:
 
 ## Solution 2. DP with Space Optimization
 
-Since `dp[i + 1][x]` is only dependent on `dp[i][y]`, we can reduce the `dp` array from `N * 2` to `2 * 2`.
+Since `dp[i][x]` is only dependent on `dp[i - 1][y]`, we can reduce the `dp` array from `N * 2` to `2 * 2`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/
@@ -95,14 +97,40 @@ Since `dp[i + 1][x]` is only dependent on `dp[i][y]`, we can reduce the `dp` arr
 class Solution {
 public:
     int maximumSum(vector<int>& A) {
-        int N = A.size(), ans = INT_MIN;
-        auto dp = vector<vector<int>>(2, vector<int>(2));
-        dp[0][0] = dp[0][1] = INT_MIN;
-        for (int i = 0; i < N; ++i) {
-            dp[(i + 1) % 2][0] = max(A[i], dp[i % 2][0] == INT_MIN ? INT_MIN : (dp[i % 2][0] + A[i]));
-            dp[(i + 1) % 2][1] = max(dp[i % 2][1] == INT_MIN ? INT_MIN : (A[i] + dp[i % 2][1]), dp[i % 2][0]);
-            ans = max({ ans, dp[(i + 1) % 2][0], dp[(i + 1) % 2][1] });
+        int N = A.size(), ans = A[0];
+        int pick = A[0], skip = 0;
+        for (int i = 1; i < N; ++i) {
+            int p = max(A[i], pick + A[i]), s = max(A[i] + skip, pick);
+            pick = p;
+            skip = s;
+            ans = max({ ans, p, s });
         }
+        return ans;
+    }
+};
+```
+
+## Solution 3.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/discuss/377397/Intuitive-Java-Solution-With-Explanation
+class Solution {
+public:
+    int maximumSum(vector<int>& A) {
+        int N = A.size(), ans = A[0];
+        vector<int> maxEndHere(N), maxStartHere(N);
+        maxEndHere[0] = A[0];
+        for (int i = 1; i < N; ++i) {
+            maxEndHere[i] = max(A[i], maxEndHere[i - 1] + A[i]);
+            ans = max(ans, maxEndHere[i]);
+        }
+        maxStartHere[N - 1] = A[N - 1];
+        for (int i = N - 2; i >= 0; --i) maxStartHere[i] = max(A[i], maxStartHere[i + 1] + A[i]);
+        for (int i = 1; i < N - 1; ++i) ans = max(ans, maxEndHere[i - 1] + maxStartHere[i + 1]);
         return ans;
     }
 };
