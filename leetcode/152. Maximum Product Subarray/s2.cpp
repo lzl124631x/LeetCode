@@ -4,13 +4,12 @@
 // Space: O(1)
 class Solution {
 public:
-    int maxProduct(vector<int>& nums) {
+    int maxProduct(vector<int>& A) {
         int maxProd = 1, minProd = 1, ans = INT_MIN;
-        for (int n : nums) {
-            int maxP = max(max(maxProd * n, minProd * n), n);
-            int minP = min(min(maxProd * n, minProd * n), n);
-            maxProd = maxP;
-            minProd = minP;
+        for (int n : A) {
+            int a = n * maxProd, b = n * minProd;
+            maxProd = max({n, a, b});
+            minProd = min({n, a, b});
             ans = max(ans, maxProd);
         }
         return ans;

@@ -31,7 +31,7 @@
 
 ## Solution 1. Two Pointers
 
-In facrt, we don't care the number, we care the sign. The problem is the same as finding the longest subarray with even number negative numbers without 0.
+In fact, we don't care the number, we care the sign. The problem is the same as finding the longest subarray with even number negative numbers without 0.
 
 We can use two pointers.
 * the fast pointer keeps reading number until it reaches 0 or end of array; meanwhile, we keep updating answer with the greatest product we've seen.
@@ -45,40 +45,35 @@ We can use two pointers.
 // Space: O(1)
 class Solution {
 public:
-    int maxProduct(vector<int>& nums) {
-        int ans = INT_MIN, N = nums.size(), prod = 1;
-        for (int i = 0, j = 0; j < N; ) {
-            while (j < N && nums[j]) {
-                prod *= nums[j++];
+    int maxProduct(vector<int>& A) {
+        int ans = A[0], N = A.size(), j = 0;
+        while (j < N) {
+            int prod = 1;
+            int i = j;
+            while (j < N && A[j] != 0) {
+                prod *= A[j++];
                 ans = max(ans, prod);
             }
-            while (prod < 0 && i < j - 1) {
-                prod /= nums[i++];
-                ans = max(ans, prod);
+            if (j < N) ans = max(ans, 0);
+            while (i < N && prod < 0) {
+                prod /= A[i++];
+                if (i != j) ans = max(ans, prod);
             }
-            while (j < N && !nums[j]) {
-                i = ++j;
-                ans = max(ans, 0);
-                prod = 1;
-            }
+            while (j < N && A[j] == 0) ++j;
         }
         return ans;
     }
 };
 ```
 
-## Solution 2. Greedy
+## Solution 2. DP
 
-Consider a similar problem with more restriction: find the maximum product subarray of `A_1...A_n` that must ends with `An`.
+Let `max[i]` be the maximum product of subarrays ending at `A[i]`, `min[i]` be the minimum product of subarrays ending at `A[i]`.
 
-Assume the product of the answer is `F(A_1...A_n)`, and the product of the corresponding minimum product subarray is `G(A_1...A_n)`.
-
-`F(A_1...A_n)` is the greatest one of:
-* `F(A_1...A_(n-1)) * A_n`
-* `G(A_1...A_(n-1)) * A_n`
-* `A_n`
-
-So we can keep computing `F` and `G` and the answer is the max `F` we've seen.
+```
+max[i] = max(A[i], A[i] * max[i - 1], A[i] * min[i - 1])
+min[i] = min(A[i], A[i] * max[i - 1], A[i] * min[i - 1])
+```
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-product-subarray/
@@ -87,13 +82,12 @@ So we can keep computing `F` and `G` and the answer is the max `F` we've seen.
 // Space: O(1)
 class Solution {
 public:
-    int maxProduct(vector<int>& nums) {
+    int maxProduct(vector<int>& A) {
         int maxProd = 1, minProd = 1, ans = INT_MIN;
-        for (int n : nums) {
-            int maxP = max(max(maxProd * n, minProd * n), n);
-            int minP = min(min(maxProd * n, minProd * n), n);
-            maxProd = maxP;
-            minProd = minP;
+        for (int n : A) {
+            int a = n * maxProd, b = n * minProd;
+            maxProd = max({n, a, b});
+            minProd = min({n, a, b});
             ans = max(ans, maxProd);
         }
         return ans;
