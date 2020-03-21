@@ -1,18 +1,22 @@
+// OJ: https://leetcode.com/problems/arithmetic-slices-ii-subsequence/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N^2)
+// Ref: https://leetcode.com/problems/arithmetic-slices-ii-subsequence/solution/
 class Solution {
+    typedef long long LL;
 public:
     int numberOfArithmeticSlices(vector<int>& A) {
-        if (A.empty()) return 0;
-        int cnt = 0, N = A.size();
-        vector<unordered_map<long long, int>> dp(N);
-        unordered_set<int> s(A.begin(), A.end());
+        int N = A.size(), ans = 0;
+        vector<unordered_map<LL, int>> dp(N);
         for (int i = 1; i < N; ++i) {
             for (int j = 0; j < i; ++j) {
-                long long d = (long long)A[i] - A[j];
-                int count = dp[j].count(d) ? dp[j][d] : 0;
-                cnt += count;
-                if (s.count(A[i] + d)) dp[i][d] += 1 + count;
+                LL d = (LL)A[i] - A[j];
+                int sum = dp[j].count(d) ? dp[j][d] : 0;
+                dp[i][d] += sum + 1;
+                ans += sum;
             }
         }
-        return cnt;
+        return ans;
     }
 };
