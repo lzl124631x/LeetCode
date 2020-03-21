@@ -761,6 +761,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1382 | Balance a Binary Search Tree | Medium | [Solution](leetcode/1382.%20Balance%20a%20Binary%20Search%20Tree)
 1383 | Maximum Performance of a Team | Hard | [Solution](leetcode/1383.%20Maximum%20Performance%20of%20a%20Team)
 1385 | Find the Distance Value Between Two Arrays | Easy | [Solution](leetcode/1385.%20Find%20the%20Distance%20Value%20Between%20Two%20Arrays)
+1386 | Cinema Seat Allocation | Medium | [Solution](leetcode/1386.%20Cinema%20Seat%20Allocation)
 
 # License
 
