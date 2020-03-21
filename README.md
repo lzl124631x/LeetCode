@@ -762,6 +762,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1383 | Maximum Performance of a Team | Hard | [Solution](leetcode/1383.%20Maximum%20Performance%20of%20a%20Team)
 1385 | Find the Distance Value Between Two Arrays | Easy | [Solution](leetcode/1385.%20Find%20the%20Distance%20Value%20Between%20Two%20Arrays)
 1386 | Cinema Seat Allocation | Medium | [Solution](leetcode/1386.%20Cinema%20Seat%20Allocation)
+1387 | Sort Integers by The Power Value | Medium | [Solution](leetcode/1387.%20Sort%20Integers%20by%20The%20Power%20Value)
 
 # License
 
