@@ -766,6 +766,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1389 | Create Target Array in the Given Order | Easy | [Solution](leetcode/1389.%20Create%20Target%20Array%20in%20the%20Given%20Order)
 1390 | Four Divisors | Medium | [Solution](leetcode/1390.%20Four%20Divisors)
 1391 | Check if There is a Valid Path in a Grid | Medium | [Solution](leetcode/1391.%20Check%20if%20There%20is%20a%20Valid%20Path%20in%20a%20Grid)
+1392 | Longest Happy Prefix | Hard | [Solution](leetcode/1392.%20Longest%20Happy%20Prefix)
 
 # License
 
