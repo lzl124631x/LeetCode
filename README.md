@@ -765,6 +765,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1387 | Sort Integers by The Power Value | Medium | [Solution](leetcode/1387.%20Sort%20Integers%20by%20The%20Power%20Value)
 1389 | Create Target Array in the Given Order | Easy | [Solution](leetcode/1389.%20Create%20Target%20Array%20in%20the%20Given%20Order)
 1390 | Four Divisors | Medium | [Solution](leetcode/1390.%20Four%20Divisors)
+1391 | Check if There is a Valid Path in a Grid | Medium | [Solution](leetcode/1391.%20Check%20if%20There%20is%20a%20Valid%20Path%20in%20a%20Grid)
 
 # License
 
