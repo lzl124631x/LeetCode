@@ -21,36 +21,92 @@
 **Related Topics**:  
 [String](https://leetcode.com/tag/string/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
-## Solution 1.
+## Solution 1. DP Top-down (DFS + Memo)
 
 ```cpp
 // OJ: https://leetcode.com/problems/interleaving-string/
 // Author: github.com/lzl124631x
-// Time: O(2^N)
-// Space: O(N^3)
+// Time: O(2^(M+N))
+// Space: O(MN)
 class Solution {
-private:
-    string a, b, c;
-    unordered_map<string, bool> m;
-    string getKey(int a, int b, int c) {
-        return to_string(a) + "-" + to_string(b) + "-" + to_string(c);
-    }
-    bool isInterleave(int x, int y, int z) {
-        if (!x && !y && !z) return true;
-        string key = getKey(x, y, z);
-        if (m.find(key) != m.end()) return m[key];
-        bool ans = false;
-        if (x > 0 && a[x - 1] == c[z - 1]) ans = isInterleave(x - 1, y, z - 1);
-        if (!ans && y > 0 && b[y - 1] == c[z - 1]) ans = isInterleave(x, y - 1, z - 1);
-        return m[key] = ans;
+    int M, N;
+    vector<vector<int>> m;
+    int dfs(string &a, string &b, string &c, int i, int j) {
+        if (i == M && j == N) return 1;
+        if (m[i][j] != 0) return m[i][j];
+        int val = -1;
+        if (i < M && a[i] == c[i + j]) val = dfs(a, b, c, i + 1, j);
+        if (val != 1 && j < N && b[j] == c[i + j]) val = dfs(a, b, c, i, j + 1);
+        return m[i][j] = val;
     }
 public:
     bool isInterleave(string s1, string s2, string s3) {
-        if (s1.size() + s2.size() != s3.size()) return false;
-        a = s1;
-        b = s2;
-        c = s3;
-        return isInterleave(s1.size(), s2.size(), s3.size());
+        M = s1.size(), N = s2.size();
+        if (M + N != s3.size()) return false;
+        m.assign(M + 1, vector<int>(N + 1));
+        return dfs(s1, s2, s3, 0, 0) == 1;
+    }
+};
+```
+
+## Solution 2. DP Bottom-up
+
+Let `dp[i][j]` be whether `a[0..i]` and `b[0..j]` can form `c[0..(i+j)]`.
+
+```
+dp[i][j] =  either dp[i + 1][j] if i < M && a[i] == c[i+j]
+            or     dp[i][j + 1] if j < N && b[j] == c[i+j]
+            or     false
+
+dp[M][N] = true
+```
+
+```cpp
+// OJ: https://leetcode.com/problems/interleaving-string/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(MN)
+class Solution {
+public:
+    bool isInterleave(string a, string b, string c) {
+        int M = a.size(), N = b.size();
+        if (M + N != c.size()) return false;
+        vector<vector<int>> dp(M + 1, vector<int>(N + 1));
+        dp[M][N] = true;
+        for (int i = M; i >= 0; --i) {
+            for (int j = N; j >= 0; --j) {
+                if (i < M && a[i] == c[i + j]) dp[i][j] |= dp[i + 1][j];
+                if (j < N && b[j] == c[i + j]) dp[i][j] |= dp[i][j + 1];
+            }
+        }
+        return dp[0][0];
+    }
+};
+```
+
+## Solution 3. DP with Space Optimization
+
+Since `dp[i][j]` is only dependent on `dp[i+1][j]` and `dp[i][j+1]`, we can reduce the `dp` array from 2D to 1D.
+
+```cpp
+// OJ: https://leetcode.com/problems/interleaving-string/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(N)
+class Solution {
+public:
+    bool isInterleave(string a, string b, string c) {
+        int M = a.size(), N = b.size();
+        if (M + N != c.size()) return false;
+        vector<int> dp(N + 1);
+        for (int i = M; i >= 0; --i) {
+            for (int j = N; j >= 0; --j) {
+                if (i == M && j == N) dp[j] = true;
+                else dp[j] = (i < M && a[i] == c[i + j] && dp[j])
+                    || (j < N && b[j] == c[i + j] && dp[j + 1]);
+            }
+        }
+        return dp[0];
     }
 };
 ```

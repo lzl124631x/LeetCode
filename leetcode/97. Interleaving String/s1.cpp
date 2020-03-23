@@ -1,29 +1,23 @@
 // OJ: https://leetcode.com/problems/interleaving-string/
 // Author: github.com/lzl124631x
-// Time: O(2^N)
-// Space: O(N^3)
+// Time: O(2^(M+N))
+// Space: O(MN)
 class Solution {
-private:
-    string a, b, c;
-    unordered_map<string, bool> m;
-    string getKey(int a, int b, int c) {
-        return to_string(a) + "-" + to_string(b) + "-" + to_string(c);
-    }
-    bool isInterleave(int x, int y, int z) {
-        if (!x && !y && !z) return true;
-        string key = getKey(x, y, z);
-        if (m.find(key) != m.end()) return m[key];
-        bool ans = false;
-        if (x > 0 && a[x - 1] == c[z - 1]) ans = isInterleave(x - 1, y, z - 1);
-        if (!ans && y > 0 && b[y - 1] == c[z - 1]) ans = isInterleave(x, y - 1, z - 1);
-        return m[key] = ans;
+    int M, N;
+    vector<vector<int>> m;
+    int dfs(string &a, string &b, string &c, int i, int j) {
+        if (i == M && j == N) return 1;
+        if (m[i][j] != 0) return m[i][j];
+        int val = -1;
+        if (i < M && a[i] == c[i + j]) val = dfs(a, b, c, i + 1, j);
+        if (val != 1 && j < N && b[j] == c[i + j]) val = dfs(a, b, c, i, j + 1);
+        return m[i][j] = val;
     }
 public:
     bool isInterleave(string s1, string s2, string s3) {
-        if (s1.size() + s2.size() != s3.size()) return false;
-        a = s1;
-        b = s2;
-        c = s3;
-        return isInterleave(s1.size(), s2.size(), s3.size());
+        M = s1.size(), N = s2.size();
+        if (M + N != s3.size()) return false;
+        m.assign(M + 1, vector<int>(N + 1));
+        return dfs(s1, s2, s3, 0, 0) == 1;
     }
 };
