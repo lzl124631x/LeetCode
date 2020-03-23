@@ -1,38 +1,25 @@
+// OJ: https://leetcode.com/problems/regular-expression-matching/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(M)
 class Solution {
 private:
-    int M, N;
-    vector<vector<int>> memo;
-    int isMatch(string s, int i, string p, int j) {
-        if (memo[i][j] != 0) return memo[i][j];
-        while (i < M && j < N) {
-            if (j + 1 >= N || p[j + 1] != '*') {
-                if (p[j] != '.' && s[i] != p[j]) {
-                    return memo[i][j] = -1;
-                }
-                ++i;
-                ++j;
-            } else {
-                char c = p[j];
-                j += 2;
-                do {
-                    memo[i][j] = isMatch(s, i, p, j);
-                    if (memo[i][j] == 1) return 1;
-                    if (c == '.' || s[i] == c) ++i;
-                    else {
-                        return memo[i][j] = -1;
-                    }
-                } while (i < M);
-            }
+    inline bool matchChar(string &s, int i, string &p, int j) {
+        return p[j] == '.' ? i < s.size() : s[i] == p[j];
+    }
+    bool isMatch(string s, int i, string p, int j) {
+        if (j == p.size()) return i == s.size();
+        if (j + 1 < p.size() && p[j + 1] == '*') {
+            bool ans = false;
+            while (!(ans = isMatch(s, i, p, j + 2))
+            && matchChar(s, i, p, j)) ++i;
+            return ans;
+        } else {
+            return matchChar(s, i, p, j) && isMatch(s, i + 1, p, j + 1);
         }
-        if (i == M) {
-            while (j + 1 < N && p[j + 1] == '*') j += 2;
-        }
-        return i == M && j == N ? 1 : -1;
     }
 public:
     bool isMatch(string s, string p) {
-        M = s.size(), N = p.size();
-        memo = vector<vector<int>>(M + 1, vector<int>(N + 1, 0));
-        return isMatch(s, 0, p, 0) == 1;
+        return isMatch(s, 0, p, 0);
     }
 };
