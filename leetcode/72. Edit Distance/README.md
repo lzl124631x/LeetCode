@@ -46,11 +46,9 @@ exection -&gt; execution (insert 'u')
 
 ## Solution 1. DP
 
-For simplicity, I use `A` denoting `word1`, `B` denoting `word2`.
-
 Considering the typical "longest common sequence (LCS)" problem, we can use the same DP strategy for this problem, that is, branching based on the equality of `A[i]` and `B[j]`.
 
-Denote `dp[i + 1][j + 1]` as the result for `A[0..i]` and `B[0..j]`.
+Let `dp[i + 1][j + 1]` as the result for `A[0..i]` and `B[0..j]`.
 
 * If `A[i]` equals `B[j]`, `dp[i + 1][j + 1] = dp[i][j]`.
 * If `A[i]` doesn't equal `B[j]`, the best result comes from the `min` of the following 3 cases:
@@ -91,7 +89,31 @@ public:
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
                 if (A[i] == B[j]) dp[i + 1][j + 1] = dp[i][j];
-                else dp[i + 1][j + 1] = 1 + min(dp[i][j], min(dp[i][j + 1], dp[i + 1][j]));
+                else dp[i + 1][j + 1] = 1 + min({ dp[i][j], dp[i][j + 1], dp[i + 1][j] });
+            }
+        }
+        return dp[M][N];
+    }
+};
+```
+
+Or in another form.
+
+```cpp
+// OJ: https://leetcode.com/problems/edit-distance
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(MN)
+class Solution {
+public:
+    int minDistance(string A, string B) {
+        int M = A.size(), N = B.size();
+        vector<vector<int>> dp(M + 1, vector<int>(N + 1, INT_MAX));
+        for (int i = 0; i <= M; ++i) {
+            for (int j = 0; j <= N; ++j) {
+                if (i == 0 || j == 0) dp[i][j] = i + j;
+                else if (A[i - 1] == B[j - 1]) dp[i][j] = dp[i - 1][j - 1];
+                else dp[i][j] = 1 + min({ dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1] });
             }
         }
         return dp[M][N];
@@ -130,6 +152,31 @@ public:
 };
 ```
 
+Or in another form
+
+```cpp
+// OJ: https://leetcode.com/problems/edit-distance
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(min(M, N))
+class Solution {
+public:
+    int minDistance(string A, string B) {
+        int M = A.size(), N = B.size();
+        if (M < N) swap(A, B), swap(M, N); 
+        vector<vector<int>> dp(2, vector<int>(N + 1, INT_MAX));
+        for (int i = 0; i <= M; ++i) {
+            for (int j = 0; j <= N; ++j) {
+                if (i == 0 || j == 0) dp[i % 2][j] = i + j;
+                else if (A[i - 1] == B[j - 1]) dp[i % 2][j] = dp[(i - 1) % 2][j - 1];
+                else dp[i % 2][j] = 1 + min({ dp[(i - 1) % 2][j], dp[i % 2][j - 1], dp[(i - 1) % 2][j - 1] });
+            }
+        }
+        return dp[M % 2][N];
+    }
+};
+```
+
 ## Solution 3. Further Space Optimization
 
 The Solution 2 actually requires `2 * min(M, N)` space, we can further reduce it to `min(M, N)`.
@@ -159,6 +206,34 @@ public:
                 if (word1[i - 1] == word2[j - 1]) dp[j] = pre;
                 else dp[j] = min(pre, min(dp[j - 1], dp[j])) + 1;
                 pre = tmp;
+            }
+        }
+        return dp[N];
+    }
+};
+```
+
+Or in another form
+
+```cpp
+// OJ: https://leetcode.com/problems/edit-distance
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(min(M, N))
+class Solution {
+public:
+    int minDistance(string A, string B) {
+        int M = A.size(), N = B.size();
+        if (M < N) swap(A, B), swap(M, N); 
+        vector<int> dp(N + 1, INT_MAX);
+        for (int i = 0; i <= M; ++i) {
+            int prev;
+            for (int j = 0; j <= N; ++j) {
+                int cur = dp[j];
+                if (i == 0 || j == 0) dp[j] = i + j;
+                else if (A[i - 1] == B[j - 1]) dp[j] = prev;
+                else dp[j] = 1 + min({ dp[j], dp[j - 1], prev });
+                prev = cur;
             }
         }
         return dp[N];
