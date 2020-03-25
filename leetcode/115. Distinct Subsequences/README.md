@@ -42,7 +42,7 @@ As shown below, there are 5 ways you can generate "bag" from S.
     ^^^
 ```
 
-## Solution 1. DFS + memo
+## Solution 1. DP Top-down (DFS + memo)
 
 ```cpp
 // OJ: https://leetcode.com/problems/distinct-subsequences
@@ -118,10 +118,11 @@ dp(i, 0) = 1  (0 <= i <= S)
 // Time: O(ST)
 // Space: O(ST)
 class Solution {
+    typedef long long LL;
 public:
     int numDistinct(string s, string t) {
         int M = s.size(), N = t.size();
-        vector<vector<int>> dp(M + 1, vector<int>(N + 1, 0));
+        vector<vector<LL>> dp(M + 1, vector<LL>(N + 1, 0));
         for (int i = 0; i <= M; ++i) dp[i][0] = 1;
         for (int i = 1; i <= M; ++i) {
             for (int j = 1; j <= N; ++j) {
@@ -130,6 +131,30 @@ public:
             }
         }
         return dp[M][N];
+    }
+};
+```
+
+Or in another form:
+
+```cpp
+// OJ: https://leetcode.com/problems/distinct-subsequences
+// Author: github.com/lzl124631x
+// Time: O(ST)
+// Space: O(ST)
+class Solution {
+    typedef long long LL;
+public:
+    int numDistinct(string s, string t) {
+        int M = s.size(), N = t.size();
+        vector<vector<LL>> dp(M + 1, vector<LL>(N + 1));
+        for (int i = M; i >= 0; --i) {
+            for (int j = N; j >= 0; --j) {
+                if (i == M || j == N) dp[i][j] = j == N;
+                else dp[i][j] = dp[i + 1][j] + (s[i] == t[j] ? dp[i + 1][j + 1] : 0);
+            }
+        }
+        return dp[0][0];
     }
 };
 ```
@@ -157,9 +182,10 @@ So if we loop from `i = 1` to `i = S` while `j = T` to `j = 1`, using just one d
 // Time: O(ST)
 // Space: O(T)
 class Solution {
+    typedef long long LL;
 public:
     int numDistinct(string s, string t) {
-        vector<int> dp(t.size() + 1);
+        vector<LL> dp(t.size() + 1);
         dp[0] = 1;
         for (int i = 0; i < s.size(); ++i) {
             for (int j = t.size(); j > 0; --j) {
@@ -167,6 +193,57 @@ public:
             }
         }
         return dp[t.size()];
+    }
+};
+```
+
+Or in another form:
+
+```cpp
+// OJ: https://leetcode.com/problems/distinct-subsequences
+// Author: github.com/lzl124631x
+// Time: O(ST)
+// Space: O(T)
+class Solution {
+    typedef long long LL;
+public:
+    int numDistinct(string s, string t) {
+        int M = s.size(), N = t.size();
+        vector<LL> dp(N + 1);
+        for (int i = M; i >= 0; --i) {
+            int prev;
+            for (int j = N; j >= 0; --j) {
+                int cur = dp[j];
+                if (i == M || j == N) dp[j] = j == N;
+                else if (s[i] == t[j]) dp[j] += prev;
+                prev = cur;
+            }
+        }
+        return dp[0];
+    }
+};
+```
+
+Or:
+
+```cpp
+// OJ: https://leetcode.com/problems/distinct-subsequences
+// Author: github.com/lzl124631x
+// Time: O(ST)
+// Space: O(T)
+class Solution {
+    typedef long long LL;
+public:
+    int numDistinct(string s, string t) {
+        int M = s.size(), N = t.size();
+        vector<LL> dp(N + 1);
+        for (int i = M; i >= 0; --i) {
+            for (int j = 0; j <= N; ++j) {
+                if (i == M || j == N) dp[j] = j == N;
+                else if (s[i] == t[j]) dp[j] += dp[j + 1];
+            }
+        }
+        return dp[0];
     }
 };
 ```
