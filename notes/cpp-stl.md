@@ -43,3 +43,7 @@ According to http://www.cplusplus.com/reference/queue/priority_queue/
 So `priority_queue` uses `less` to sort the elements in ascending order -- the smaller the element is, the closer it is to the front.
 
 And since the **last element** if regarded as the top, so it is the largest element. Thus, by default `priority_queue` is a Max-heap. 
+
+## Algorithm
+
+* `iota`: Fills the range `[first, last)` with sequentially increasing values, starting with value and repetitively evaluating `++value`. Generating a sequentially increasing index array is one example use case as shown [here](https://leetcode.com/problems/maximum-profit-in-job-scheduling/discuss/409188/C%2B%2B-with-picture)
