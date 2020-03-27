@@ -79,7 +79,31 @@ public:
 };
 ```
 
-## Solution 2.
+Or in another form:
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(MN)
+class Solution {
+public:
+    int minimumDeleteSum(string s, string t) {
+        int M = s.size(), N = t.size();
+        vector<vector<int>> dp(M + 1, vector<int>(N + 1, 1e9));
+        for (int i = 0; i <= M; ++i) {
+            for (int j = 0; j <= N; ++j) {
+                if (!i && !j) dp[i][j] = 0;
+                else if (i && j && s[i - 1] == t[j - 1]) dp[i][j] = dp[i - 1][j - 1];
+                else dp[i][j] = min(i ? dp[i - 1][j] + s[i - 1] : 1e9, j ? dp[i][j - 1] + t[j - 1] : 1e9);
+            }
+        }
+        return dp[M][N];
+    }
+};
+```
+
+## Solution 2. DP with Space Optimization
 
 Use rolling array to optimize the space to `2 * min(M, N)`.
 
@@ -107,7 +131,7 @@ public:
 };
 ```
 
-## Solution 3.
+## Solution 3. DP with Further Space Optimization
 
 One thing that prevents us from using one dimensional array is the dependency between `dp[i + 1][j + 1]` and `dp[i][j]` since when we visit `dp[i + 1][j + 1]`, `dp[i][j]` is overwritten by `dp[i + 1][j]`. We can store `dp[i][j]` in a temporary variable.
 
@@ -131,6 +155,34 @@ public:
                 if (s1[i - 1] == s2[j - 1]) dp[j] = prev;
                 else dp[j] = min(s1[i - 1] + dp[j], s2[j - 1] + dp[j - 1]);
                 prev = next;
+            }
+        }
+        return dp[N];
+    }
+};
+```
+
+Or:
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(min(M, N))
+class Solution {
+public:
+    int minimumDeleteSum(string s, string t) {
+        int M = s.size(), N = t.size();
+        if (M < N) swap(M, N), swap(s, t);
+        vector<int> dp(N + 1, 1e9);
+        for (int i = 0; i <= M; ++i) {
+            int prev;
+            for (int j = 0; j <= N; ++j) {
+                int cur = dp[j];
+                if (!i && !j) dp[j] = 0;
+                else if (i && j && s[i - 1] == t[j - 1]) dp[j] = prev;
+                else dp[j] = min(i ? dp[j] + s[i - 1] : 1e9, j ? dp[j - 1] + t[j - 1] : 1e9);
+                prev = cur;
             }
         }
         return dp[N];
