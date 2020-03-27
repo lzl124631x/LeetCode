@@ -764,6 +764,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1385 | Find the Distance Value Between Two Arrays | Easy | [Solution](leetcode/1385.%20Find%20the%20Distance%20Value%20Between%20Two%20Arrays)
 1386 | Cinema Seat Allocation | Medium | [Solution](leetcode/1386.%20Cinema%20Seat%20Allocation)
 1387 | Sort Integers by The Power Value | Medium | [Solution](leetcode/1387.%20Sort%20Integers%20by%20The%20Power%20Value)
+1388 | Pizza With 3n Slices | Hard | [Solution](leetcode/1388.%20Pizza%20With%203n%20Slices)
 1389 | Create Target Array in the Given Order | Easy | [Solution](leetcode/1389.%20Create%20Target%20Array%20in%20the%20Given%20Order)
 1390 | Four Divisors | Medium | [Solution](leetcode/1390.%20Four%20Divisors)
 1391 | Check if There is a Valid Path in a Grid | Medium | [Solution](leetcode/1391.%20Check%20if%20There%20is%20a%20Valid%20Path%20in%20a%20Grid)
