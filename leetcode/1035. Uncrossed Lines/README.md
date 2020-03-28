@@ -56,11 +56,13 @@ We cannot draw 3 uncrossed lines, because the line from A[1]=4 to B[2]=4 will in
 * [Edit Distance (Hard)](https://leetcode.com/problems/edit-distance/)
 
 ## Solution 1. DP
+This problem is equivalent to longest common subsequence.
 
 Let `dp[i + 1][j + 1]` be the maximum number of connecting lines between `A[0..i]` and `B[0..j]`.
 
 ```
-dp[i+1][j+1] = max( dp[i+1][j], dp[i][j+1], A[i] == B[j] ? 1 + dp[i][j] : 0)
+dp[i+1][j+1] = max( dp[i+1][j], dp[i][j+1] )         if A[i] != B[j]
+               1 + dp[i][j]                          if A[i] == B[j]
 dp[0][0] = 0
 ```
 
@@ -76,7 +78,8 @@ public:
         vector<vector<int>> dp(M + 1, vector<int>(N + 1));
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                dp[i + 1][j + 1] = max({ dp[i][j + 1], dp[i + 1][j], A[i] == B[j] ? 1 + dp[i][j] : 0 });
+                if (A[i] == B[j]) dp[i + 1][j + 1] = 1 + dp[i][j];
+                else dp[i + 1][j + 1] = max(dp[i][j + 1], dp[i + 1][j]);
             }
         }
         return dp[M][N];
@@ -101,7 +104,8 @@ public:
             int prev = 0;
             for (int j = 0; j < N; ++j) {
                 int cur = dp[j + 1];
-                dp[j + 1] = max({ dp[j + 1], dp[j], A[i] == B[j] ? 1 + prev : 0 });
+                if (A[i] == B[j]) dp[j + 1] = 1 + prev;
+                else dp[j + 1] = max(dp[j + 1], dp[j]);
                 prev = cur;
             }
         }

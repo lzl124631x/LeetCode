@@ -9,7 +9,8 @@ public:
         vector<vector<int>> dp(M + 1, vector<int>(N + 1));
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                dp[i + 1][j + 1] = max({ dp[i][j + 1], dp[i + 1][j], A[i] == B[j] ? 1 + dp[i][j] : 0 });
+                if (A[i] == B[j]) dp[i + 1][j + 1] = 1 + dp[i][j];
+                else dp[i + 1][j + 1] = max(dp[i][j + 1], dp[i + 1][j]);
             }
         }
         return dp[M][N];

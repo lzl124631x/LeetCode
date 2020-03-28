@@ -12,7 +12,8 @@ public:
             int prev = 0;
             for (int j = 0; j < N; ++j) {
                 int cur = dp[j + 1];
-                dp[j + 1] = max({ dp[j + 1], dp[j], A[i] == B[j] ? 1 + prev : 0 });
+                if (A[i] == B[j]) dp[j + 1] = 1 + prev;
+                else dp[j + 1] = max(dp[j + 1], dp[j]);
                 prev = cur;
             }
         }
