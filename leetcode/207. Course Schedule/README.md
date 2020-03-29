@@ -43,13 +43,13 @@
 * [Course Schedule II (Medium)](https://leetcode.com/problems/course-schedule-ii/)
 * [Course Schedule II (Medium)](https://leetcode.com/problems/course-schedule-ii/)
 
-## Solution 1. Topological Sort
+## Solution 1. Topological Sort (BFS)
 
 ```cpp
 // OJ: https://leetcode.com/problems/course-schedule/
 // Author: github.com/lzl124631x
-// Time: O(N + E)
-// Space: O(N + E)
+// Time: O(V + E)
+// Space: O(V + E)
 class Solution {
 public:
     bool canFinish(int N, vector<vector<int>>& E) {
@@ -86,8 +86,8 @@ Once an edge has been used, we remove the edge to prevent going through it again
 ```cpp
 // OJ: https://leetcode.com/problems/course-schedule/
 // Author: github.com/lzl124631x
-// Time: O(N + E)
-// Space: O(N + E)
+// Time: O(V + E)
+// Space: O(V + E)
 class Solution {
     unordered_map<int, vector<int>> next;
     vector<bool> seen;
@@ -106,6 +106,38 @@ public:
         for (auto e : E) next[e[1]].push_back(e[0]);
         seen.assign(N, false);
         for (int i = 0; i < N; ++i) {
+            if (hasCircle(i)) return false;
+        }
+        return true;
+    }
+};
+```
+
+## Solution 3. Topological Sort (DFS) 
+
+```cpp
+// OJ: https://leetcode.com/problems/course-schedule/
+// Author: github.com/lzl124631x
+// Time: O(E + V)
+// Space: O(E + V)
+class Solution {
+    unordered_map<int, vector<int>> G;
+    vector<int> seen;
+    bool hasCircle(int u) {
+        if (seen[u]) return seen[u] == -1;
+        seen[u] = -1;
+        for (int v : G[u]) {
+            if (hasCircle(v)) return true;
+        }
+        seen[u] = 1;
+        return false;
+    }
+public:
+    bool canFinish(int N, vector<vector<int>>& E) {
+        for (auto e : E) G[e[1]].push_back(e[0]);
+        seen.assign(N, 0);
+        for (int i = 0; i < N; ++i) {
+            if (seen[i]) continue;
             if (hasCircle(i)) return false;
         }
         return true;

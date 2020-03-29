@@ -1,7 +1,7 @@
 // OJ: https://leetcode.com/problems/course-schedule/
 // Author: github.com/lzl124631x
-// Time: O(N + E)
-// Space: O(N + E)
+// Time: O(V + E)
+// Space: O(V + E)
 class Solution {
     unordered_map<int, vector<int>> next;
     vector<bool> seen;
