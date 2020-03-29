@@ -1,24 +1,29 @@
+// OJ: https://leetcode.com/problems/course-schedule/
+// Author: github.com/lzl124631x
+// Time: O(N + E)
+// Space: O(N + E)
 class Solution {
-private:
-    unordered_map<int, set<int>> next;
-    vector<bool> v;
-    bool hasCircle(int start) {
-        if (v[start]) return true;
-        v[start] = true;
-        auto n = next[start];
-        for (int to : n) {
-            if (hasCircle(to)) return true;
-            next[start].erase(to);
-        }
-        return v[start] = false;
-    }
 public:
-    bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
-        for (auto p : prerequisites) next[p.first].insert(p.second);
-        for (int i = 0; i < numCourses; ++i) {
-            v = vector<bool>(numCourses, false);
-            if (hasCircle(i)) return false;
+    bool canFinish(int N, vector<vector<int>>& E) {
+        unordered_map<int, vector<int>> m;
+        vector<int> indegree(N);
+        for (auto &pre : E) {
+            m[pre[1]].push_back(pre[0]);
+            indegree[pre[0]]++;
         }
-        return true;
+        queue<int> q;
+        for (int i = 0; i < N; ++i) {
+            if (indegree[i] == 0) q.push(i);
+        }
+        int visited = 0;
+        while (q.size()) {
+            int u = q.front();
+            q.pop();
+            ++visited;
+            for (int v : m[u]) {
+                if (--indegree[v] == 0) q.push(v);
+            }
+        }
+        return visited == N;
     }
 };

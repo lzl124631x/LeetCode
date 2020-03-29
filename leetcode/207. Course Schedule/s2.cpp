@@ -1,28 +1,27 @@
+// OJ: https://leetcode.com/problems/course-schedule/
+// Author: github.com/lzl124631x
+// Time: O(N + E)
+// Space: O(N + E)
 class Solution {
+    unordered_map<int, vector<int>> next;
+    vector<bool> seen;
+    bool hasCircle(int u) {
+        if (seen[u]) return true;
+        seen[u] = true;
+        auto n = next[u];
+        for (int i = n.size() - 1; i >= 0; --i) {
+            if (hasCircle(n[i])) return true;
+            next[u].pop_back();
+        }
+        return seen[u] = false;
+    }
 public:
-    bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
-        vector<set<int>> out(numCourses);
-        vector<int> in(numCourses);
-        for (auto p : prerequisites) {
-            if (out[p.second].find(p.first) == out[p.second].end()) {
-                out[p.second].insert(p.first);
-                in[p.first]++;
-            }
+    bool canFinish(int N, vector<vector<int>>& E) {
+        for (auto e : E) next[e[1]].push_back(e[0]);
+        seen.assign(N, false);
+        for (int i = 0; i < N; ++i) {
+            if (hasCircle(i)) return false;
         }
-        queue<int> live;
-        for (int i = 0; i < numCourses; ++i) {
-            if (in[i] == 0) live.push(i);
-        }
-        int cnt = 0;
-        while (!live.empty()) {
-            int n = live.front();
-            live.pop();
-            ++cnt;
-            for (int o : out[n]) {
-                --in[o];
-                if (in[o] == 0) live.push(o);
-            }
-        }
-        return cnt == numCourses;
+        return true;
     }
 };
