@@ -53,7 +53,7 @@
 
 ## Solution 1. DP
 
-This problem is similar to "given two strings `s` and `t` and count how many insertions are needed to make them the same".
+This problem is similar to "given two strings `s` and `t`, count how many insertions are needed to make them the same".
 
 In this problem, `t` is the reversed `s`.
 
