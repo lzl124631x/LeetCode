@@ -1,29 +1,29 @@
+// OJ: https://leetcode.com/problems/course-schedule-ii/
+// Author: github.com/lzl124631x
+// Time: O(V + E)
+// Space: O(V + E)
 class Solution {
 public:
-    vector<int> findOrder(int numCourses, vector<pair<int, int>>& prerequisites) {
-        if (numCourses == 0) return {};
-        vector<set<int>> out(numCourses);
-        vector<int> in(numCourses);
-        for (auto p : prerequisites) {
-            if (out[p.second].find(p.first) == out[p.second].end()) {
-                out[p.second].insert(p.first);
-                in[p.first]++;
-            }
+    vector<int> findOrder(int N, vector<vector<int>>& E) {
+        unordered_map<int, vector<int>> G;
+        vector<int> indegree(N);
+        for (auto &e : E) {
+            G[e[1]].push_back(e[0]);
+            indegree[e[0]]++;
         }
-        queue<int> live;
-        for (int i = 0; i < numCourses; ++i) {
-            if (in[i] == 0) live.push(i);
+        queue<int> q;
+        for (int i = 0; i < N; ++i) {
+            if (indegree[i] == 0) q.push(i);
         }
         vector<int> ans;
-        while (!live.empty()) {
-            int n = live.front();
-            live.pop();
-            ans.push_back(n);
-            for (int o : out[n]) {
-                in[o]--;
-                if (in[o] == 0) live.push(o);
+        while (q.size()) {
+            int u = q.front();
+            q.pop();
+            ans.push_back(u);
+            for (int v : G[u]) {
+                if (--indegree[v] == 0) q.push(v);
             }
         }
-        return ans.size() == numCourses ? ans : vector<int>{};
+        return ans.size() == N ? ans : vector<int>{};
     }
 };
