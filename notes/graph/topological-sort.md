@@ -13,33 +13,33 @@ Topological sorting for Directed Acyclic Graph (DAG) is a linear ordering of ver
 1. If the number of visited vertices equals the total number of vertices, it's a DAG; otherwise, there must be a circle in the graph.
 
 ```cpp
-// OJ: https://leetcode.com/problems/course-schedule/
+// OJ: https://leetcode.com/problems/course-schedule-ii/
 // Author: github.com/lzl124631x
 // Time: O(V + E)
 // Space: O(V + E)
 class Solution {
 public:
-    bool canFinish(int N, vector<vector<int>>& E) {
-        unordered_map<int, vector<int>> m;
+    vector<int> findOrder(int N, vector<vector<int>>& E) {
+        unordered_map<int, vector<int>> G;
         vector<int> indegree(N);
-        for (auto &pre : E) {
-            m[pre[1]].push_back(pre[0]);
-            indegree[pre[0]]++;
+        for (auto &e : E) {
+            G[e[1]].push_back(e[0]);
+            indegree[e[0]]++;
         }
         queue<int> q;
         for (int i = 0; i < N; ++i) {
             if (indegree[i] == 0) q.push(i);
         }
-        int visited = 0;
+        vector<int> ans;
         while (q.size()) {
             int u = q.front();
             q.pop();
-            ++visited;
-            for (int v : m[u]) {
+            ans.push_back(u);
+            for (int v : G[u]) {
                 if (--indegree[v] == 0) q.push(v);
             }
         }
-        return visited == N;
+        return ans.size() == N ? ans : vector<int>{};
     }
 };
 ```
@@ -53,31 +53,34 @@ Each vertex has three states:
 3. 1 = has been visited in a prevous DFS session and this vertex is not in a circle.
 
 ```cpp
-// OJ: https://leetcode.com/problems/course-schedule/
+// OJ: https://leetcode.com/problems/course-schedule-ii/
 // Author: github.com/lzl124631x
-// Time: O(E + V)
-// Space: O(E + V)
+// Time: O(V + E)
+// Space: O(V + E)
 class Solution {
+    vector<int> ans;
     unordered_map<int, vector<int>> G;
     vector<int> seen;
-    bool hasCircle(int u) {
-        if (seen[u]) return seen[u] == -1;
+    bool dfs(int u) {
+        if (seen[u]) return seen[u] == 1;
         seen[u] = -1;
         for (int v : G[u]) {
-            if (hasCircle(v)) return true;
+            if (!dfs(v)) return false;
         }
         seen[u] = 1;
-        return false;
+        ans.push_back(u);
+        return true;
     }
 public:
-    bool canFinish(int N, vector<vector<int>>& E) {
-        for (auto e : E) G[e[1]].push_back(e[0]);
+    vector<int> findOrder(int N, vector<vector<int>>& E) {
         seen.assign(N, 0);
+        for (auto &e : E) G[e[1]].push_back(e[0]);
         for (int i = 0; i < N; ++i) {
             if (seen[i]) continue;
-            if (hasCircle(i)) return false;
+            if (!dfs(i)) return {};
         }
-        return true;
+        reverse(begin(ans), end(ans));
+        return ans;
     }
 };
 ```
@@ -85,3 +88,4 @@ public:
 ## Problems
 
 * [207. Course Schedule (Medium)](https://leetcode.com/problems/course-schedule/)
+* [210. Course Schedule II (Medium)](https://leetcode.com/problems/course-schedule-ii/)
