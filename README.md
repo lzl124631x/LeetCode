@@ -698,6 +698,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1079 | Letter Tile Possibilities | Medium | [Solution](leetcode/5087.%20Letter%20Tile%20Possibilities)
 1080 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/5084.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
 1081 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/5086.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
+1092 | Shortest Common Supersequence | Hard | [Solution](leetcode/1092.%20Shortest%20Common%20Supersequence)
 1104 | Path In Zigzag Labelled Binary Tree | Medium | [Solution](leetcode/1104.%20Path%20In%20Zigzag%20Labelled%20Binary%20Tree)
 1184 | Distance Between Bus Stops | Easy | [Solution](leetcode/1184.%20Distance%20Between%20Bus%20Stops)
 1185 | Day of the Week | Easy | [Solution](leetcode/1185.%20Day%20of%20the%20Week)
