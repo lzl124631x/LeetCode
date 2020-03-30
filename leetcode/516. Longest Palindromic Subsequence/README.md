@@ -27,7 +27,17 @@ One possible longest palindromic subsequence is "bb".
 **Companies**:  
 [Amazon](https://leetcode.com/company/amazon), [LinkedIn](https://leetcode.com/company/linkedin), [Microsoft](https://leetcode.com/company/microsoft), [Facebook](https://leetcode.com/company/facebook)
 
-## Solution 1.
+## Solution 1. DP
+
+Let `dp[i][j]` be the length of the longest palindrome subsequence of `s[i..j]`.
+
+```
+dp[i][j] = 2 + dp[i+1][j-1]              If s[i] == s[j]
+         = max(dp[i+1][j], dp[i][j-1])   If s[i] != s[j]
+dp[i][i] = 1
+```
+
+The answer is `dp[0][N-1]`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-palindromic-subsequence
@@ -37,22 +47,30 @@ One possible longest palindromic subsequence is "bb".
 class Solution {
 public:
   int longestPalindromeSubseq(string s) {
-    if (s.empty()) return 0;
-    vector<vector<int>> m(s.size(), vector<int>(s.size(), 0));
-    for (int i = 0; i < s.size(); ++i) m[i][i] = 1;
-    for (int len = 2; len <= s.size(); ++len) {
-      for (int i = 0; i <= s.size() - len; ++i) {
-        int j = i + len - 1;
-        if (s[i] == s[j]) m[i][j] = max(2 + m[i + 1][j - 1], max(m[i + 1][j], m[i][j - 1]));
-        else m[i][j] = max(m[i + 1][j], m[i][j - 1]);
+      int N = s.size();
+      vector<vector<int>> dp(N, vector<int>(N));
+      for (int i = 0; i < N; ++i) dp[i][i] = 1;
+      for (int len = 2; len <= N; ++len) {
+          for (int i = 0; i <= N - len; ++i) {
+              int j = i + len - 1;
+              if (s[i] == s[j]) dp[i][j] = 2 + dp[i + 1][j - 1];
+              else dp[i][j] = max(dp[i + 1][j], dp[i][j - 1]);
+          }
       }
-    }
-    return m[0][s.size() - 1];
+      return dp[0][N - 1];
   }
 };
 ```
 
-## Solution 2.
+## Solution 2. DP
+
+Let `dp[i][j]` be the length of the longest palindrome subsequence of `s[0..(i-1)]` and `t[0..(j-1)]` where `t` is the reverse of `s`.
+
+```
+dp[i][j] = 1 + dp[i-1][j-1]                 If s[i-1] == t[j-1]
+           max(dp[i-1][j], dp[i][j-1])      If s[i-1] != t[j-1]
+dp[0][i] = dp[i][0] = 0
+```
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-palindromic-subsequence
@@ -61,21 +79,23 @@ public:
 // Space: O(N^2)
 class Solution {
 public:
-  int longestPalindromeSubseq(string s) {
-    int N = s.size();
-    vector<vector<int>> dp(N + 1, vector<int>(N + 1, 0));
-    for (int i = 0; i < N; ++i) {
-      for (int j = 0; j < N; ++j) {
-        if (s[i] == s[N - 1 - j]) dp[i + 1][j + 1] = dp[i][j] + 1;
-        else dp[i + 1][j + 1] = maax(dp[i][j + 1], dp[i + 1][j]);
-      }
+    int longestPalindromeSubseq(string s) {
+        int N = s.size();
+        vector<vector<int>> dp(N + 1, vector<int>(N + 1));
+        for (int i = 1; i <= N; ++i) {
+            for (int j = 1; j <= N; ++j) {
+                if (s[i - 1] == s[N - j]) dp[i][j] = 1 + dp[i - 1][j - 1];
+                else dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+        return dp[N][N];
     }
-    return dp[N][N];
-  }
 };
 ```
 
-## Solution 3.
+## Solution 3. DP + Space Optimization
+
+Since `dp[i][j]` is only dependent on `dp[i-1][j-1]`, `dp[i-1][j]` and `dp[i][j-1]`, we can reduce the space of `dp` array from `N * N` to `1 * N` with a temporary variable storing `dp[i-1][j-1]`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-palindromic-subsequence
@@ -84,16 +104,19 @@ public:
 // Space: O(N)
 class Solution {
 public:
-  int longestPalindromeSubseq(string s) {
-    int N = s.size();
-    vector<vector<int>> dp(2, vector<int>(N + 1, 0));
-    for (int i = 0; i < N; ++i) {
-      for (int j = 0; j < N; ++j) {
-        if (s[i] == s[N - 1 - j]) dp[(i + 1) % 2][j + 1] = dp[i % 2][j] + 1;
-        else dp[(i + 1) % 2][j + 1] = max(dp[i % 2][j + 1], dp[(i + 1) % 2][j]);
-      }
+    int longestPalindromeSubseq(string s) {
+        int N = s.size();
+        vector<int> dp(N + 1);
+        for (int i = 1; i <= N; ++i) {
+            int prev = 0;
+            for (int j = 1; j <= N; ++j) {
+                int cur = dp[j];
+                if (s[i - 1] == s[N - j]) dp[j] = 1 + prev;
+                else dp[j] = max(dp[j], dp[j - 1]);
+                prev = cur;
+            }
+        }
+        return dp[N];
     }
-    return dp[N % 2][N];
-  }
 };
 ```
