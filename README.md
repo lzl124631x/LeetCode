@@ -716,6 +716,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1290 | Convert Binary Number in a Linked List to Integer | Easy | [Solution](leetcode/1290.%20Convert%20Binary%20Number%20in%20a%20Linked%20List%20to%20Integer)
 1295 | Find Numbers with Even Number of Digits | Easy | [Solution](leetcode/1295.%20Find%20Numbers%20with%20Even%20Number%20of%20Digits)
 1301 | Number of Paths with Max Score | Hard | [Solution](leetcode/1301.%20Number%20of%20Paths%20with%20Max%20Score)
+1312 | Minimum Insertion Steps to Make a String Palindrome | Hard | [Solution](leetcode/1312.%20Minimum%20Insertion%20Steps%20to%20Make%20a%20String%20Palindrome)
 1313 | Decompress Run-Length Encoded List | Easy | [Solution](leetcode/1313.%20Decompress%20Run-Length%20Encoded%20List)
 1319 | Number of Operations to Make Network Connected | Medium | [Solution](leetcode/1319.%20Number%20of%20Operations%20to%20Make%20Network%20Connected)
 1323 | Maximum 69 Number | Easy | [Solution](leetcode/5315.%20Maximum%2069%20Number)
