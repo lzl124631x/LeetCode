@@ -1,5 +1,5 @@
 !function(d) {
-    var $=d.querySelector.bind(d);
+    var $ = (selector, startNode) => (startNode || document).querySelector(selector);
     var $$=d.querySelectorAll.bind(d);
     var s=$('.source-content'); // In context, there is a source-content with the same testcases, ignore it.
     s&&s.parentNode.removeChild(s);

@@ -1,5 +1,5 @@
 !function(d) {
-    var $=d.querySelector.bind(d);
+    var $ = (selector, startNode) => (startNode || document).querySelector(selector);
     var $$=d.querySelectorAll.bind(d);
     function copy(str) { // Chrome Console API is not available :( Have to use this way.
         const el = d.createElement('textarea');
