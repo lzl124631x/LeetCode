@@ -1,7 +1,7 @@
 // OJ: https://leetcode.com/problems/palindrome-partitioning-iii/
 // Author: github.com/lzl124631x
-// Time: O(K * N^2)
-// Space: O(K * N^2)
+// Time: O(K * N^3)
+// Space: O(K * N^3)
 class Solution {
     typedef long long LL;
     inline void setMin(LL &a, LL b) { a = min(a, b); }
