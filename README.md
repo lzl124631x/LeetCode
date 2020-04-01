@@ -694,6 +694,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1074 | Number of Submatrices That Sum to Target | Hard | [Solution](leetcode/1074.%20Number%20of%20Submatrices%20That%20Sum%20to%20Target)
 1078 | Occurrences After Bigram | Easy | [Solution](leetcode/1078.%20Occurrences%20After%20Bigram)
 1108 | Defanging an IP Address | Easy | [Solution](leetcode/1108.%20Defanging%20an%20IP%20Address)
+1143 | Longest Common Subsequence | Medium | [Solution](leetcode/1143.%20Longest%20Common%20Subsequence)
 1154 | Day of the Year | Easy | [Solution](leetcode/1154.%20Day%20of%20the%20Year)
 1079 | Letter Tile Possibilities | Medium | [Solution](leetcode/5087.%20Letter%20Tile%20Possibilities)
 1080 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/5084.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
