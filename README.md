@@ -712,6 +712,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1266 | Minimum Time Visiting All Points | Easy | [Solution](leetcode/1266.%20Minimum%20Time%20Visiting%20All%20Points)
 1267 | Count Servers that Communicate | Medium | [Solution](leetcode/1267.%20Count%20Servers%20that%20Communicate)
 1277 | Count Square Submatrices with All Ones | Medium | [Solution](leetcode/1277.%20Count%20Square%20Submatrices%20with%20All%20Ones)
+1278 | Palindrome Partitioning III | Hard | [Solution](leetcode/1278.%20Palindrome%20Partitioning%20III)
 1286 | Iterator for Combination | Medium | [Solution](leetcode/1286.%20Iterator%20for%20Combination)
 1289 | Minimum Falling Path Sum II | Hard | [Solution](leetcode/1289.%20Minimum%20Falling%20Path%20Sum%20II)
 1290 | Convert Binary Number in a Linked List to Integer | Easy | [Solution](leetcode/1290.%20Convert%20Binary%20Number%20in%20a%20Linked%20List%20to%20Integer)
