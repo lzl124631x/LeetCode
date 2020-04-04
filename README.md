@@ -777,6 +777,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1391 | Check if There is a Valid Path in a Grid | Medium | [Solution](leetcode/1391.%20Check%20if%20There%20is%20a%20Valid%20Path%20in%20a%20Grid)
 1392 | Longest Happy Prefix | Hard | [Solution](leetcode/1392.%20Longest%20Happy%20Prefix)
 1399 | Count Largest Group | Easy | [Solution](leetcode/1399.%20Count%20Largest%20Group)
+1400 | Construct K Palindrome Strings | Medium | [Solution](leetcode/1400.%20Construct%20K%20Palindrome%20Strings)
 
 # License
 
