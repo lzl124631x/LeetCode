@@ -563,6 +563,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 809 | Expressive Words | Medium | [Solution](leetcode/809.%20Expressive%20Words)
 811 | Subdomain Visit Count | Easy | [Solution](leetcode/811.%20Subdomain%20Visit%20Count)
 812 | Largest Triangle Area | Easy | [Solution](leetcode/812.%20Largest%20Triangle%20Area)
+813 | Largest Sum of Averages | Medium | [Solution](leetcode/813.%20Largest%20Sum%20of%20Averages)
 817 | Linked List Components | Medium | [Solution](leetcode/817.%20Linked%20List%20Components)
 819 | Most Common Word | Easy | [Solution](leetcode/819.%20Most%20Common%20Word)
 821 | Shortest Distance to a Character | Easy | [Solution](leetcode/821.%20Shortest%20Distance%20to%20a%20Character)
