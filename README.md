@@ -778,6 +778,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1392 | Longest Happy Prefix | Hard | [Solution](leetcode/1392.%20Longest%20Happy%20Prefix)
 1399 | Count Largest Group | Easy | [Solution](leetcode/1399.%20Count%20Largest%20Group)
 1400 | Construct K Palindrome Strings | Medium | [Solution](leetcode/1400.%20Construct%20K%20Palindrome%20Strings)
+1401 | Circle and Rectangle Overlapping | Medium | [Solution](leetcode/1401.%20Circle%20and%20Rectangle%20Overlapping)
 
 # License
 
