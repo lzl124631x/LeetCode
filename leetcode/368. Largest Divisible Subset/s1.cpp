@@ -1,30 +1,33 @@
+// OJ: https://leetcode.com/problems/largest-divisible-subset/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N)
 class Solution {
 public:
-    vector<int> largestDivisibleSubset(vector<int>& nums) {
-        vector<int> v;
-        if (nums.empty()) return v;
-        sort(nums.begin(), nums.end());
-        vector<int> dp(nums.size(), 1);
-        vector<int> prev(nums.size(), -1);
-        int maxLen = 1, maxEnd = 0;
-        for (int i = 1; i < nums.size(); ++i) {
+    vector<int> largestDivisibleSubset(vector<int>& A) {
+        if (A.empty()) return {};
+        sort(A.begin(), A.end());
+        int N = A.size(), maxLen = 1, best = 0;
+        vector<int> cnt(N, 1);
+        for (int i = 1; i < N; ++i) {
             for (int j = 0; j < i; ++j) {
-                if ((nums[i] % nums[j] == 0
-                || nums[j] % nums[i] == 0)
-                && dp[j] + 1 > dp[i]) {
-                    dp[i] = dp[j] + 1;
-                    prev[i] = j;
-                    if (dp[i] > maxLen) {
-                        maxLen = dp[i];
-                        maxEnd = i;
-                    }
-                }
+                if (A[i] % A[j] == 0) cnt[i] = max(cnt[i], cnt[j] + 1);
+            }
+            if (cnt[i] > maxLen) {
+                maxLen = cnt[i];
+                best = i;
             }
         }
-        while (maxEnd != -1) {
-            v.push_back(nums[maxEnd]);
-            maxEnd = prev[maxEnd];
+        vector<int> ans{A[best]};
+        while (cnt[best] != 1) {
+            for (int i = best - 1; i >= 0; --i) {
+                if (cnt[i] == cnt[best] - 1) {
+                    best = i;
+                    break;
+                }
+            }
+            ans.push_back(A[best]);
         }
-        return v;
+        return ans;
     }
 };
