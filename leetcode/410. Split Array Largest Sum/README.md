@@ -34,28 +34,48 @@ where the largest sum among the two subarrays is only 18.
 
 ## Solution 1. DP
 
-Let `dp(i, j)` be the answer to subproblem where we split `A[0] ~ A[j-1]` `i` times.
+Let `dp[m][i]` be the answer to the subproblem with `m` subarrays within `A[0..i]`.
 
-So `1 <= i <= m` and `1 <= j <= N`.
-
-Our goal is `dp(m, N)`.
+Let `sum[i][j]` be the sum of numbers in `A[i..j]`.
 
 ```
-dp(i, j) = min {
-  max(dp(i-1, j-1), S(i-1,i)),
-  max(dp(i-2, j-1), S(i-2,i)),
-  ...
-  max(dp(2, j-1), S(2, i)),
-  max(dp(1, j-1), S(1, i))
-}
+dp[1][i] = sum[0][i]
+dp[k][i] = min(max(dp[k-1][j-1], sum[j][i]) | m - 1 <= j <= i)
 ```
-where `S(a, b) = A[a] + A[a+1] + ... + A[b-1]`.
 
-Special cases:
+```cpp
+// OJ: https://leetcode.com/problems/split-array-largest-sum/
+// Author: github.com/lzl124631x
+// Time: O(N^2 * M)
+// Space: O(N^2 + NM)
+class Solution {
+    typedef long long LL;
+public:
+    int splitArray(vector<int>& A, int M) {
+        int N = A.size();
+        vector<vector<LL>> sum(N, vector<LL>(N, 0)), dp(M + 1, vector<LL>(N, INT_MAX));
+        for (int i = 0; i < N; ++i) {
+            LL s = 0;
+            for (int j = i; j < N; ++j) {
+                sum[i][j] = (s += A[j]);
+            }
+        }
+        for (int i = 0; i < N; ++i) dp[1][i] = sum[0][i];
+        for (int m = 2; m <= M; ++m) {
+            for (int i = m - 1; i < N; ++i) {
+                for (int j = m - 1; j <= i; ++j) {
+                    dp[m][i] = min(dp[m][i], max(dp[m - 1][j - 1], sum[j][i]));
+                }
+            }
+        }
+        return dp[M][N - 1];
+    }
+};
+```
 
-1. `dp(i, j)` is meaningless if `i > j`.
-2. `dp(i, j) = max(A[0], A[1], ..., A[j-1])` if `i == j`.
-3. `dp(1, j) = S(0, j)`.
+## Solution 2. DP
+
+We can compute `sum` on the fly.
 
 ```cpp
 // OJ: https://leetcode.com/problems/split-array-largest-sum/
@@ -63,29 +83,62 @@ Special cases:
 // Time: O(N^2 * M)
 // Space: O(NM)
 class Solution {
+    typedef long long LL;
 public:
-    int splitArray(vector<int>& nums, int m) {
-        int N = nums.size();
-        vector<vector<long long>> dp(m + 1, vector<long long>(N + 1, LLONG_MAX));
-        dp[0][0] = 0;
-        for (int i = 1; i <= N && i <= m; ++i) dp[i][i] = max(dp[i - 1][i - 1], (long long)nums[i - 1]);
-        for (int i = 2; i <= N; ++i) dp[1][i] = dp[1][i - 1] + nums[i - 1];
-        for (int i = 1; i <= m; ++i) {
-            for (int j = i + 1; j <= N; ++j) {
-                long long s = 0;
-                for (int k = j - 1; k >= 0; --k) {
-                    long long val = min(dp[i][j], max(s += nums[k], dp[i - 1][k]));
-                    if (val > dp[i][j]) break;
-                    dp[i][j] = val;
+    int splitArray(vector<int>& A, int M) {
+        int N = A.size();
+        vector<vector<LL>> dp(M + 1, vector<LL>(N, INT_MAX));
+        LL s = 0;
+        for (int i = 0; i < N; ++i) dp[1][i] = (s += A[i]);
+        for (int m = 2; m <= M; ++m) {
+            for (int i = m - 1; i < N; ++i) {
+                LL sum = 0;
+                for (int j = i; j >= m - 1; --j) {
+                    sum += A[j];
+                    dp[m][i] = min(dp[m][i], max(dp[m - 1][j - 1], sum));
                 }
             }
         }
-        return dp[m][N];
+        return dp[M][N - 1];
     }
 };
 ```
 
-## Solution 2. Binary Search
+## Solution 3. DP + Space Optimization
+
+Given the `dp` dependency, we can just use 1D `dp` array.
+
+```cpp
+// OJ: https://leetcode.com/problems/split-array-largest-sum/
+// Author: github.com/lzl124631x
+// Time: O(N^2 * M)
+// Space: O(N)
+class Solution {
+    typedef long long LL;
+public:
+    int splitArray(vector<int>& A, int M) {
+        int N = A.size();
+        vector<LL> dp(N, INT_MAX);
+        LL s = 0;
+        for (int i = 0; i < N; ++i) dp[i] = (s += A[i]);
+        for (int m = 2; m <= M; ++m) {
+            for (int i = N - 1; i >= m - 1; --i) {
+                LL sum = 0;
+                dp[i] = INT_MAX;
+                for (int j = i; j >= m - 1; --j) {
+                    sum += A[j];
+                    dp[i] = min(dp[i], max(dp[j - 1], sum));
+                }
+            }
+        }
+        return dp[N - 1];
+    }
+};
+```
+
+## Solution 4. Binary Answer
+
+The answer is between the maximum element and the sum of all the elements.
 
 ```cpp
 // OJ: https://leetcode.com/problems/split-array-largest-sum/
@@ -94,36 +147,28 @@ public:
 // Space: O(1)
 // Ref: https://discuss.leetcode.com/topic/61324/clear-explanation-8ms-binary-search-java
 class Solution {
-private:
-    bool isValid(int M, vector<int> &nums, int m) {
-        int sum = 0, cnt = 1;
-        for (int n : nums) {
-            if (sum + n > M) {
-                sum = n;
+    typedef long long LL;
+    int split(vector<int> &A, LL M) {
+        LL cnt = 0, sum = 0;
+        for (int i = 0; i < A.size(); ++i) {
+            sum += A[i];
+            if (sum > M) {
+                sum = A[i];
                 ++cnt;
-                if (cnt > m) return false;
-            } else {
-                sum += n;
             }
         }
-        return true;
+        return cnt + 1;
     }
 public:
-    int splitArray(vector<int>& nums, int m) {
-        int N = nums.size(), maxNum = INT_MIN, sum = 0;
-        for (int n : nums) {
-            maxNum = max(maxNum, n);
-            sum += n;
-        }
+    int splitArray(vector<int>& A, int m) {
+        LL sum = accumulate(begin(A), end(A), (LL)0);
         if (m == 1) return sum;
-        int L = maxNum, R = sum;
+        LL L = *max_element(begin(A), end(A)), R = sum;
         while (L <= R) {
-            int M = (L + R) / 2;
-            if (isValid(M, nums, m)) {
-                R = M - 1;
-            } else {
-                L = M + 1;
-            }
+            LL M = (L + R) / 2;
+            int n = split(A, M);
+            if (n <= m) R = M - 1;
+            else L = M + 1;
         }
         return L;
     }
