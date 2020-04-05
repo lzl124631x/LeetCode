@@ -780,6 +780,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1400 | Construct K Palindrome Strings | Medium | [Solution](leetcode/1400.%20Construct%20K%20Palindrome%20Strings)
 1401 | Circle and Rectangle Overlapping | Medium | [Solution](leetcode/1401.%20Circle%20and%20Rectangle%20Overlapping)
 1402 | Reducing Dishes | Hard | [Solution](leetcode/1402.%20Reducing%20Dishes)
+1403 | Minimum Subsequence in Non-Increasing Order | Easy | [Solution](leetcode/1403.%20Minimum%20Subsequence%20in%20Non-Increasing%20Order)
 
 # License
 
