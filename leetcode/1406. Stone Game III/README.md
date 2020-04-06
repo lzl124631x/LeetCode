@@ -62,6 +62,22 @@ Remember that both play optimally so here Alice will choose the scenario that ma
 
 ## Solution 1. DP
 
+This problem is similar to [1140. Stone Game II](https://leetcode.com/problems/stone-game-ii/).
+
+For each round, my best option in this turn must be the worst option of the other player in the next turn.
+
+Let `dp[i]` be the best result the current player can get at this `i`th element.
+
+```
+dp[i] = max(
+            A[i] - dp[i+1],                    // If I only pick one
+            A[i] + A[i+1] - dp[i+2]            // If I pick two
+            A[i] + A[i+1] + A[i+2] - dp[i+3]   // If I pick three
+)
+```
+
+So we can compute `dp[i]` from the end of the array. `dp[i] = 0` if `i >= N`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/stone-game-iii/
 // Author: github.com/lzl124631x
@@ -88,6 +104,8 @@ public:
 ```
 
 ## Solution 2. DP + Space Optimization
+
+Since `dp[i]` is only dependent to the next 3 `dp` values. We can reduce the `dp` array side from `N` to `4`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/stone-game-iii/
