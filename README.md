@@ -214,6 +214,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 280 | Wiggle Sort | Medium | [Solution](leetcode/280.%20Wiggle%20Sort)
 281 | Zigzag Iterator | Medium | [Solution](leetcode/281.%20Zigzag%20Iterator)
 285 | Inorder Successor in BST | Medium | [Solution](leetcode/285.%20Inorder%20Successor%20in%20BST)
+289 | Game of Life | Medium | [Solution](leetcode/289.%20Game%20of%20Life)
 293 | Flip Game | Easy | [Solution](leetcode/293.%20Flip%20Game)
 297 | Serialize and Deserialize Binary Tree | Hard | [Solution](leetcode/297.%20Serialize%20and%20Deserialize%20Binary%20Tree)
 298 | Binary Tree Longest Consecutive Sequence | Medium | [Solution](leetcode/298.%20Binary%20Tree%20Longest%20Consecutive%20Sequence)
