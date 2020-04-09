@@ -697,6 +697,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1073 | Adding Two Negabinary Numbers | Medium | [Solution](leetcode/1073.%20Adding%20Two%20Negabinary%20Numbers)
 1074 | Number of Submatrices That Sum to Target | Hard | [Solution](leetcode/1074.%20Number%20of%20Submatrices%20That%20Sum%20to%20Target)
 1078 | Occurrences After Bigram | Easy | [Solution](leetcode/1078.%20Occurrences%20After%20Bigram)
+1105 | Filling Bookcase Shelves | Medium | [Solution](leetcode/1105.%20Filling%20Bookcase%20Shelves)
 1108 | Defanging an IP Address | Easy | [Solution](leetcode/1108.%20Defanging%20an%20IP%20Address)
 1111 | Maximum Nesting Depth of Two Valid Parentheses Strings | Medium | [Solution](leetcode/1111.%20Maximum%20Nesting%20Depth%20of%20Two%20Valid%20Parentheses%20Strings)
 1143 | Longest Common Subsequence | Medium | [Solution](leetcode/1143.%20Longest%20Common%20Subsequence)
