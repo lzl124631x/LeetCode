@@ -5,20 +5,11 @@
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-        int cnt = 0;
-        ListNode *node = head;
-        while (node) {
-            node = node->next;
-            ++cnt;
+        auto slow = head, fast = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        cnt = (cnt + 1) / 2;
-        ListNode *fast = head;
-        while (cnt--) fast = fast->next;
-        node = head;
-        while (fast) {
-            node = node->next;
-            fast = fast->next;
-        }
-        return node;
+        return slow;
     }
 };
