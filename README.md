@@ -227,6 +227,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 307 | Range Sum Query - Mutable | Medium | [Solution](leetcode/307.%20Range%20Sum%20Query%20-%20Mutable)
 309 | Best Time to Buy and Sell Stock with Cooldown | Hard | [Solution](leetcode/309.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Cooldown)
 310 | Minimum Height Trees | Medium | [Solution](leetcode/310.%20Minimum%20Height%20Trees)
+312 | Burst Balloons | Hard | [Solution](leetcode/312.%20Burst%20Balloons)
 313 | Super Ugly Number | Medium | [Solution](leetcode/313.%20Super%20Ugly%20Number)
 315 | Count of Smaller Numbers After Self | Hard | [Solution](leetcode/315.%20Count%20of%20Smaller%20Numbers%20After%20Self)
 316 | Remove Duplicate Letters | Hard | [Solution](leetcode/316.%20Remove%20Duplicate%20Letters)
