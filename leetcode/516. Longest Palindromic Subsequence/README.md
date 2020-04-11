@@ -62,7 +62,58 @@ public:
 };
 ```
 
-## Solution 2. DP
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-palindromic-subsequence
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N^2)
+class Solution {
+public:
+    int longestPalindromeSubseq(string s) {
+        int N = s.size();
+        vector<vector<int>> dp(N + 1, vector<int>(N + 1));
+        for (int i = N - 1; i >= 0; --i) {
+            for (int j = i; j <= N - 1; ++j) {
+                if (i == j) dp[i][j] = 1;
+                else if (s[i] == s[j]) dp[i][j] = 2 + dp[i + 1][j - 1];
+                else dp[i][j] = max(dp[i + 1][j], dp[i][j - 1]);
+            }
+        }
+        return dp[0][N - 1];
+    }
+};
+```
+
+## Solution 2. DP + Space Optimization
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-palindromic-subsequence
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N)
+class Solution {
+public:
+    int longestPalindromeSubseq(string s) {
+        int N = s.size();
+        vector<int> dp(N + 1);
+        for (int i = N - 1; i >= 0; --i) {
+            int prev = 0;
+            for (int j = i; j <= N - 1; ++j) {
+                int cur = dp[j];
+                if (i == j) dp[j] = 1;
+                else if (s[i] == s[j]) dp[j] = 2 + prev;
+                else dp[j] = max(dp[j], dp[j - 1]);
+                prev = cur;
+            }
+        }
+        return dp[N - 1];
+    }
+};
+```
+
+## Solution 3. LCS
 
 Let `dp[i][j]` be the length of the longest palindrome subsequence of `s[0..(i-1)]` and `t[0..(j-1)]` where `t` is the reverse of `s`.
 
@@ -93,7 +144,7 @@ public:
 };
 ```
 
-## Solution 3. DP + Space Optimization
+## Solution 4. LCS + Space Optimization
 
 Since `dp[i][j]` is only dependent on `dp[i-1][j-1]`, `dp[i-1][j]` and `dp[i][j-1]`, we can reduce the space of `dp` array from `N * N` to `1 * N` with a temporary variable storing `dp[i-1][j-1]`.
 
@@ -117,6 +168,35 @@ public:
             }
         }
         return dp[N];
+    }
+};
+```
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-palindromic-subsequence
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N)
+class Solution {
+    int lcs(string &s, string &t) {
+        int M = s.size(), N = t.size();
+        if (M < N) swap(M, N), swap(s, t);
+        vector<int> dp(N + 1);
+        for (int i = 1; i <= M; ++i) {
+            int prev = 0;
+            for (int j = 1; j <= N; ++j) {
+                int cur = dp[j];
+                if (s[i - 1] == t[j - 1]) dp[j] = 1 + prev;
+                else dp[j] = max(dp[j], dp[j - 1]);
+                prev = cur;
+            }
+        }
+        return dp[N];
+    }
+public:
+    int longestPalindromeSubseq(string s) {
+        string t(s.rbegin(), s.rend());
+        return lcs(s, t);
     }
 };
 ```

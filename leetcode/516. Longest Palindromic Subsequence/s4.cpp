@@ -7,16 +7,15 @@ public:
     int longestPalindromeSubseq(string s) {
         int N = s.size();
         vector<int> dp(N + 1);
-        for (int i = N - 1; i >= 0; --i) {
+        for (int i = 1; i <= N; ++i) {
             int prev = 0;
-            for (int j = i; j <= N - 1; ++j) {
+            for (int j = 1; j <= N; ++j) {
                 int cur = dp[j];
-                if (i == j) dp[j] = 1;
-                else if (s[i] == s[j]) dp[j] = 2 + prev;
+                if (s[i - 1] == s[N - j]) dp[j] = 1 + prev;
                 else dp[j] = max(dp[j], dp[j - 1]);
                 prev = cur;
             }
         }
-        return dp[N - 1];
+        return dp[N];
     }
 };
