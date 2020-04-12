@@ -791,6 +791,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1404 | Number of Steps to Reduce a Number in Binary Representation to One | Medium | [Solution](leetcode/1404.%20Number%20of%20Steps%20to%20Reduce%20a%20Number%20in%20Binary%20Representation%20to%20One)
 1405 | Longest Happy String | Medium | [Solution](leetcode/1405.%20Longest%20Happy%20String)
 1406 | Stone Game III | Hard | [Solution](leetcode/1406.%20Stone%20Game%20III)
+1409 | Queries on a Permutation With Key | Medium | [Solution](leetcode/1409.%20Queries%20on%20a%20Permutation%20With%20Key)
 
 # License
 
