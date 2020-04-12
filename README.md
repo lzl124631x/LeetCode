@@ -794,6 +794,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1408 | String Matching in an Array | Easy | [Solution](leetcode/1408.%20String%20Matching%20in%20an%20Array)
 1409 | Queries on a Permutation With Key | Medium | [Solution](leetcode/1409.%20Queries%20on%20a%20Permutation%20With%20Key)
 1410 | HTML Entity Parser | Medium | [Solution](leetcode/1410.%20HTML%20Entity%20Parser)
+1411 | Number of Ways to Paint N × 3 Grid | Hard | [Solution](leetcode/1411.%20Number%20of%20Ways%20to%20Paint%20N%20%C3%97%203%20Grid)
 
 # License
 
