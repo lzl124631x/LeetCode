@@ -693,6 +693,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1038 | Binary Search Tree to Greater Sum Tree | Medium | [Solution](leetcode/1038.%20Binary%20Search%20Tree%20to%20Greater%20Sum%20Tree)
 1039 | Minimum Score Triangulation of Polygon | Medium | [Solution](leetcode/1039.%20Minimum%20Score%20Triangulation%20of%20Polygon)
 1043 | Partition Array for Maximum Sum | Medium | [Solution](leetcode/1043.%20Partition%20Array%20for%20Maximum%20Sum)
+1046 | Last Stone Weight | Easy | [Solution](leetcode/1046.%20Last%20Stone%20Weight)
 1053 | Previous Permutation With One Swap | Medium | [Solution](leetcode/1053.%20Previous%20Permutation%20With%20One%20Swap)
 1071 | Greatest Common Divisor of Strings | Easy | [Solution](leetcode/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
 1072 | Flip Columns For Maximum Number of Equal Rows | Medium | [Solution](leetcode/1072.%20Flip%20Columns%20For%20Maximum%20Number%20of%20Equal%20Rows)
