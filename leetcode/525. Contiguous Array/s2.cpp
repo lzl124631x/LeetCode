@@ -1,7 +1,7 @@
 // OJ: https://leetcode.com/problems/contiguous-array
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(1)
+// Space: O(N)
 // Ref: https://discuss.leetcode.com/topic/79906/easy-java-o-n-solution-presum-hashmap/
 class Solution {
 public:
