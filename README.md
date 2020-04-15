@@ -672,6 +672,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 986 | Interval List Intersections | Medium | [Solution](leetcode/986.%20Interval%20List%20Intersections)
 998 | Maximum Binary Tree II | Medium | [Solution](leetcode/998.%20Maximum%20Binary%20Tree%20II)
 999 | Available Captures for Rook | Easy | [Solution](leetcode/999.%20Available%20Captures%20for%20Rook)
+1000 | Minimum Cost to Merge Stones | Hard | [Solution](leetcode/1000.%20Minimum%20Cost%20to%20Merge%20Stones)
 1002 | Find Common Characters | Easy | [Solution](leetcode/1002.%20Find%20Common%20Characters)
 1004 | Max Consecutive Ones III | Medium | [Solution](leetcode/1004.%20Max%20Consecutive%20Ones%20III)
 1008 | Construct Binary Search Tree from Preorder Traversal | Medium | [Solution](leetcode/1008.%20Construct%20Binary%20Search%20Tree%20from%20Preorder%20Traversal)
