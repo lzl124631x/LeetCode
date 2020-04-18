@@ -1,7 +1,7 @@
 // OJ: https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(3^N)
+// Space: O(1)
 class Solution {
     string addOne(string &s) {
         int i = s.size() - 1;
