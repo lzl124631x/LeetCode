@@ -166,6 +166,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 190 | Reverse Bits | Easy | [Solution](leetcode/190.%20Reverse%20Bits)
 195 | Tenth Line | Easy | [Solution](leetcode/195.%20Tenth%20Line)
 198 | House Robber | Easy | [Solution](leetcode/198.%20House%20Robber)
+200 | Number of Islands | Medium | [Solution](leetcode/200.%20Number%20of%20Islands)
 202 | Happy Number | Easy | [Solution](leetcode/202.%20Happy%20Number)
 204 | Count Primes | Easy | [Solution](leetcode/204.%20Count%20Primes)
 206 | Reverse Linked List | Easy | [Solution](leetcode/206.%20Reverse%20Linked%20List)
