@@ -804,6 +804,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1413 | Minimum Value to Get Positive Step by Step Sum | Easy | [Solution](leetcode/1413.%20Minimum%20Value%20to%20Get%20Positive%20Step%20by%20Step%20Sum)
 1414 | Find the Minimum Number of Fibonacci Numbers Whose Sum Is K | Medium | [Solution](leetcode/1414.%20Find%20the%20Minimum%20Number%20of%20Fibonacci%20Numbers%20Whose%20Sum%20Is%20K)
 1415 | The k-th Lexicographical String of All Happy Strings of Length n | Medium | [Solution](leetcode/1415.%20The%20k-th%20Lexicographical%20String%20of%20All%20Happy%20Strings%20of%20Length%20n)
+1416 | Restore The Array | Hard | [Solution](leetcode/1416.%20Restore%20The%20Array)
 
 # License
 
