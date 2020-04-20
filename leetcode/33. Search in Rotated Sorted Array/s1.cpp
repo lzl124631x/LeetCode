@@ -1,3 +1,7 @@
+// OJ: https://leetcode.com/problems/search-in-rotated-sorted-array/
+// Author: github.com/lzl124631x
+// Time: O(logN)
+// Space: O(1)
 class Solution {
 public:
     int search(vector<int>& nums, int target) {

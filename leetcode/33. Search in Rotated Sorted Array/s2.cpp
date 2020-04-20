@@ -1,3 +1,7 @@
+// OJ: https://leetcode.com/problems/search-in-rotated-sorted-array/
+// Author: github.com/lzl124631x
+// Time: O(logN)
+// Space: O(1)
 // https://discuss.leetcode.com/topic/3538/concise-o-log-n-binary-search-solution
 class Solution {
 public:
