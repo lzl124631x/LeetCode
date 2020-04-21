@@ -2,38 +2,27 @@
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
+// https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/discuss/574912/JavaC%2B%2B-DFS-Memoization-with-Picture-Clean-code
 class Solution {
-    typedef unsigned long long ULL;
-    int N, mod = 1e9+7;
-    unordered_map<int, ULL> m;
-    int key(vector<vector<int>> &v, int x) {
-        if (x == -1) return 0;
-        int n = 0;
-        for (int i = 0; i < 3; ++i) n = n * 10 + v[x][i];
-        n *= 10000;
-        return n + x;
-    }
-    int dp(vector<vector<int>> &v, int x, int y) {
-        if (y >= 3) {
-            x++;
-            y = 0;
+    int memo[5001][4][4][4] = {0}, mod = 1e9+7;
+    int dp(int n, int a, int b, int c) {
+        if (n == 0) return 1;
+        if (memo[n][a][b][c]) return memo[n][a][b][c];
+        int ans = 0, colors[3] = {1, 2, 3};
+        for (int aa : colors) {
+            if (aa == a) continue;
+            for (int bb : colors) {
+                if (bb == b || bb == aa) continue;
+                for (int cc : colors) {
+                    if (cc == c || cc == bb) continue;
+                    ans = (ans + dp(n - 1, aa, bb, cc)) % mod;
+                }
+            }
         }
-        if (x == N) return 1;
-        int k = key(v, x - 1);
-        if (y == 0 && m.count(k)) return m[k];
-        int cnt = 0;
-        for (int i = 1; i <= 3; ++i) {
-            if ((x > 0 && v[x - 1][y] == i) || (y > 0 && v[x][y - 1] == i)) continue;
-            v[x][y] = i;
-            cnt = (cnt + dp(v, x, y + 1)) % mod;
-        }
-        if (y == 0) m[k] = cnt;
-        return cnt;
+        return memo[n][a][b][c] = ans;
     }
 public:
     int numOfWays(int n) {
-        N = n;
-        vector<vector<int>> v(n, vector<int>(3));
-        return dp(v, 0, 0);
+        return dp(n, 0, 0, 0);
     }
 };
