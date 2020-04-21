@@ -759,6 +759,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1346 | Check If N and Its Double Exist | Easy | [Solution](leetcode/1346.%20Check%20If%20N%20and%20Its%20Double%20Exist)
 1347 | Minimum Number of Steps to Make Two Strings Anagram | Medium | [Solution](leetcode/1347.%20Minimum%20Number%20of%20Steps%20to%20Make%20Two%20Strings%20Anagram)
 1348 | Tweet Counts Per Frequency | Medium | [Solution](leetcode/1348.%20Tweet%20Counts%20Per%20Frequency)
+1349 | Maximum Students Taking Exam | Hard | [Solution](leetcode/1349.%20Maximum%20Students%20Taking%20Exam)
 1351 | Count Negative Numbers in a Sorted Matrix | Easy | [Solution](leetcode/1351.%20Count%20Negative%20Numbers%20in%20a%20Sorted%20Matrix)
 1352 | Product of the Last K Numbers | Medium | [Solution](leetcode/1352.%20Product%20of%20the%20Last%20K%20Numbers)
 1353 | Maximum Number of Events That Can Be Attended | Medium | [Solution](leetcode/1353.%20Maximum%20Number%20of%20Events%20That%20Can%20Be%20Attended)
