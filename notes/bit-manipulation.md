@@ -27,9 +27,21 @@ for (int i = val; i >= 0; --i)
 
 `target |= 1 << index`
 
+## Unset a bit at `index`
+
+`target &= ~(1 << index)`
+
 ## Toggle a bit at `index`
 
 `target ^= 1 << index`
+
+## Check a bit at `index`
+
+`(target >> index) & 1`
+
+## Set a bit at `index` with `x`
+
+`target = (target & ~(1 << index)) | (x << index)`
 
 ## Get the lowest bit
 
