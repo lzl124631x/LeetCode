@@ -1,7 +1,7 @@
 // OJ: https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/
 // Author: github.com/lzl124631x
 // Time: O(N^2)
-// Space: O(N)
+// Space: O(H)
 class Solution {
 private:
     TreeNode* construct(vector<int> &preorder, int begin, int end) {

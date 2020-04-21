@@ -32,7 +32,7 @@
 // OJ: https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/
 // Author: github.com/lzl124631x
 // Time: O(N^2)
-// Space: O(N)
+// Space: O(H)
 class Solution {
 private:
     TreeNode* construct(vector<int> &preorder, int begin, int end) {
@@ -47,6 +47,30 @@ private:
 public:
     TreeNode* bstFromPreorder(vector<int>& preorder) {
         return construct(preorder, 0, preorder.size());
+    }
+};
+```
+
+Or use `find_if`:
+
+```cpp
+// OJ: https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(H)
+class Solution {
+    typedef vector<int>::iterator iter;
+    TreeNode* dfs(vector<int>& A, iter begin, iter end) {
+        if (begin == end) return NULL;
+        auto root = new TreeNode(*begin);
+        auto mid = find_if(begin + 1, end, [&](int x) { return x > *begin; });
+        root->left = dfs(A, begin + 1, mid);
+        root->right = dfs(A, mid, end);
+        return root;
+    }
+public:
+    TreeNode* bstFromPreorder(vector<int>& A) {
+        return dfs(A, A.begin(), A.end());
     }
 };
 ```
