@@ -13,15 +13,13 @@ public:
   LRUCache(int capacity) : capacity(capacity) {}
 
   int get(int key) {
-    auto it = m.find(key);
-    if (it == m.end()) return -1;
-    data.splice(data.begin(), data, it->second);
+    if (!m.count(key)) return -1;
+    data.splice(data.begin(), data, m[key]);
     m[key] = data.begin();
     return data.front().second;
   }
 
   void put(int key, int value) {
-    if (!capacity) return;
     if (get(key) == -1) {
       if (data.size() == capacity) {
         auto p = data.back();
