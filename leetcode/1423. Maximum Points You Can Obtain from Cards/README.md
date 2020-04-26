@@ -56,9 +56,13 @@
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
 
-## Solution 1.
+## Solution 1. Sliding Window
 
 The cards selected must exist at the left edge or right edge of the array. So we can start from "selecting all cards from the right edge", then select one card from left edge and remove one card from right, and so forth.
+
+We use `right` as the sum of cards we selected at the right edge, and `left` as the sum of the cards at the left edge.
+
+We start with computing the `k` elements at the right edge as `right`, then for each `i` in range `[0, k)`, we add `A[i]` to `left`, and deduct `A[N - k + i]` from `right`, the result is the maximum `left + right`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
