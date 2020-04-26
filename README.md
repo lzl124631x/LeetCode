@@ -810,6 +810,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1415 | The k-th Lexicographical String of All Happy Strings of Length n | Medium | [Solution](leetcode/1415.%20The%20k-th%20Lexicographical%20String%20of%20All%20Happy%20Strings%20of%20Length%20n)
 1416 | Restore The Array | Hard | [Solution](leetcode/1416.%20Restore%20The%20Array)
 1422 | Maximum Score After Splitting a String | Easy | [Solution](leetcode/1422.%20Maximum%20Score%20After%20Splitting%20a%20String)
+1423 | Maximum Points You Can Obtain from Cards | Medium | [Solution](leetcode/1423.%20Maximum%20Points%20You%20Can%20Obtain%20from%20Cards)
 ? | Leftmost Column with at Least a One | ? | [Solution](leetcode/Leftmost%20Column%20with%20at%20Least%20a%20One)
 
 # License
