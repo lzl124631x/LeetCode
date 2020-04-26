@@ -45,7 +45,7 @@ left = "01110" and right = "1", score = 2 + 1 = 3
 
 ## Solution 1.
 
-`zero` and `one` are the counts of `0`s in `left` and `1`s in right.
+`zero` and `one` are the counts of `0`s in `left` and `1`s in `right`.
 
 First compute the count of all `1`s as `one`. Then for each `i` in range `[0, N - 2]`, increment `zero` if `s[i] == '0'` and decrement `one` if `s[i] == '1'`. The maximum `zero + one` is the result.
 
