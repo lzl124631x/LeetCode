@@ -722,6 +722,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1184 | Distance Between Bus Stops | Easy | [Solution](leetcode/1184.%20Distance%20Between%20Bus%20Stops)
 1185 | Day of the Week | Easy | [Solution](leetcode/1185.%20Day%20of%20the%20Week)
 1186 | Maximum Subarray Sum with One Deletion | Medium | [Solution](leetcode/1186.%20Maximum%20Subarray%20Sum%20with%20One%20Deletion)
+1187 | Make Array Strictly Increasing | Hard | [Solution](leetcode/1187.%20Make%20Array%20Strictly%20Increasing)
 1189 | Maximum Number of Balloons | Easy | [Solution](leetcode/1189.%20Maximum%20Number%20of%20Balloons)
 1190 | Reverse Substrings Between Each Pair of Parentheses | Medium | [Solution](leetcode/1190.%20Reverse%20Substrings%20Between%20Each%20Pair%20of%20Parentheses)
 1220 | Count Vowels Permutation | Hard | [Solution](leetcode/1220.%20Count%20Vowels%20Permutation)
