@@ -1,7 +1,7 @@
 // OJ: https://leetcode.com/problems/arithmetic-slices-ii-subsequence/
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(N^2)
+// Space: O(N^2)
 class Solution {
 public:
     int numberOfArithmeticSlices(vector<int>& A) {
@@ -15,7 +15,8 @@ public:
                 long num = 2l * A[j] - A[i];
                 if (num < INT_MIN || num > INT_MAX || !pos.count(num)) continue;
                 for (int k : pos[num]) {
-                    if (k < j) dp[i][j] += dp[j][k] + 1;
+                    if (k >= j) break;
+                    dp[i][j] += dp[j][k] + 1;
                 }
                 ans += dp[i][j];
             }
