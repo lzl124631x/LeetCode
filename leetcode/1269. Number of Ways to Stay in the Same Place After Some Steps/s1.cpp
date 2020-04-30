@@ -10,8 +10,8 @@ public:
         dp[0][0] = 1;
         arrLen = min(251, arrLen);
         for (int i = 1; i <= steps; ++i) {
-            for (int j = 0; j < arrLen; ++j) dp[i % 2][j] = 0;
             for (int j = 0; j < arrLen; ++j) {
+                dp[i % 2][j] = 0;
                 for (int d : diff) {
                     int t = j + d;
                     if (t < 0 || t >= arrLen) continue;
