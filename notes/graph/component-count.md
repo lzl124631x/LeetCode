@@ -103,3 +103,4 @@ int getComponentCount(vector<vector<int>> &G) {
 ## Problems
 
 * [947. Most Stones Removed with Same Row or Column (Medium)](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/)
+* [200. Number of Islands (Medium)](https://leetcode.com/problems/number-of-islands/)

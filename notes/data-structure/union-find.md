@@ -88,3 +88,51 @@ public:
 * [1319. Number of Operations to Make Network Connected (Medium)](https://leetcode.com/problems/number-of-operations-to-make-network-connected/)
 * [990. Satisfiability of Equality Equations (Medium)](https://leetcode.com/problems/satisfiability-of-equality-equations/)
 * [924. Minimize Malware Spread (Hard)](https://leetcode.com/problems/minimize-malware-spread/)
+* [947. Most Stones Removed with Same Row or Column (Medium)](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/)
+
+静态联通性
+200
+130
+952 (等价类)
+959 
+990
+
+动态连通性. find和union穿插的.
+305
+
+时光倒流
+803
+
+最小生成树
+kruskal
+
+
+线段树
+
+懒标记
+权值线段树
+218
+307
+308
+315
+327
+493
+699
+715
+732
+850
+1157
+1353
+
+lazy tag / lazy propogation
+延迟修改
+
+
+树状数组
+307
+
+lowbit(x) = x & (-x)
+
+12 = (01100)2
+-12 = (10100)2
+12 & (-12) = (00100)2

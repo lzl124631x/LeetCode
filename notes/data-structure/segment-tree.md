@@ -1,14 +1,8 @@
 # Segment Tree
 
-* Used for solving range query problems like finding minimum, maximum, sum, greatest common divisor, least common denominator in array in logarithmic time
-* Perfect binary tree
+Segment tree is a data structure that supports queries and update on intervals.
 
-## Range Sum Query
-
-[307. Range Sum Query - Mutable (Medium)](https://leetcode.com/problems/range-sum-query-mutable/)
-
-1. Given `s` and `t`, return the sum from `A[s]` to `A[t]`.
-1. Given `i` and `x`, change `A[i]` to `x`.
+It can be used for solving range query problems like finding minimum, maximum, sum, greatest common divisor, least common denominator in array in logarithmic time.
 
 ## Implementation
 
@@ -124,6 +118,12 @@ public:
     }
 };
 ```
+
+## Lazy Propogation
+
+When we want to update an interval all at once, we need to use lazy propagation to ensure good run-time complexity.
+
+
 
 ## Problems
 

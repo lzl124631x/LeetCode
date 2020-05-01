@@ -1,4 +1,8 @@
-// https://discuss.leetcode.com/topic/14939/my-c-code-using-one-priority-queue-812-ms
+// OJ: https://leetcode.com/problems/the-skyline-problem/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+// Ref: https://discuss.leetcode.com/topic/14939/my-c-code-using-one-priority-queue-812-ms
 bool cmp(vector<int> &a, vector<int> &b) {
     return a[0] < b[0];
 }

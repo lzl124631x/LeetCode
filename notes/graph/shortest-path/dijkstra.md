@@ -4,7 +4,17 @@ Dijkstra's original algorithm found the shortest path between two given nodes, b
 
 It's a greedy BFS algorithm.
 
+## Algorithm
+
+Give a graph `G = <V, E>`. Put the start point `v0` into a vertices set `S`. Let `M` be the edges between `S` and `V/S`.
+
 ## Implementation
+
+Let `pq` be a `priority_queue` of pairs of the cost (i.e. the length of the shortest path from `src`) and the vertex index. The element with the smallest cost is at the top of the queue (i.e. min-heap). Initially `pq` only has `(0, src)` in it.
+
+Let `dist[u]` be the cost of `u`. Initially `dist[src] = 0` and `dist[u] = INF` for all other vertices.
+
+
 
 ```cpp
 // Time: O(E + VlogV)

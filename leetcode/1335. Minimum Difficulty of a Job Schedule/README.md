@@ -56,7 +56,15 @@ The difficulty of the schedule = 6 + 1 = 7
 **Related Topics**:  
 [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
-## Solution 1.
+## Solution 1. DP
+
+Let `dp[d][i]` be the answer for the subproblem with `d` days at `i`th job.
+
+Let `mx[i][j]` be the maximum value in `A[i..j]`.
+
+```
+dp[d][i] = min( dp[d-1][j-1] + mx[j][i] | d-1 <= j <= i )
+```
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/
@@ -64,29 +72,97 @@ The difficulty of the schedule = 6 + 1 = 7
 // Time: O(N^2 * D)
 // Space: O(N^2 + ND)
 class Solution {
-    int get(int from, int to) { return from * 1000 + to; }
+    typedef long long LL;
+    inline void setMin(LL &a, LL b) { a = min(a, b); }
 public:
-    int minDifficulty(vector<int>& A, int d) {
-        unordered_map<int, int> m;
+    int minDifficulty(vector<int>& A, int D) {
         int N = A.size();
+        if (D > N) return -1;
+        vector<vector<LL>> mx(N, vector<LL>(N)), dp(D + 1, vector<LL>(N, 1e9));
         for (int i = 0; i < N; ++i) {
-            int maxV = A[i];
-            for (int j = i; j < N; ++j) {
-                m[get(i, j)] = maxV = max(maxV, A[j]);
-            }
+            for (int j = i; j < N; ++j) mx[i][j] = *max_element(A.begin() + i, A.begin() + j + 1);
         }
-        vector<vector<int>> dp(N + 1, vector<int>(d + 1, INT_MAX));
-        for (int i = 0; i < N; ++i) dp[i + 1][1] = m[get(0,i)];
-        for (int j = 2; j <= d; ++j) {
-            for (int i = 0; i < N; ++i) {
-                int minV = INT_MAX;
-                for (int k = 0; k < i; ++k) {
-                    minV = min(minV, dp[k + 1][j - 1] == INT_MAX ? INT_MAX : dp[k + 1][j - 1] + m[get(k + 1, i)]);
+        for (int i = 0; i < N; ++i) dp[1][i] = mx[0][i];
+        for (int d = 2; d <= D; ++d) {
+            for (int i = d - 1; i < N; ++i) {
+                for (int j = d - 1; j <= i; ++j) {
+                    setMin(dp[d][i], dp[d - 1][j - 1] + mx[j][i]);
                 }
-                dp[i + 1][j] = minV;
             }
         }
-        return dp[N][d] == INT_MAX ? -1 : dp[N][d];
+        return dp[D][N - 1];
     }
 };
 ```
+
+## Solution 2. DP
+
+We can compute the `mx` while computing `dp` instead of computing `mx` array beforehand.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/
+// Author: github.com/lzl124631x
+// Time: O(N^2 * D)
+// Space: O(ND) 
+class Solution {
+    typedef long long LL;
+    inline void setMin(LL &a, LL b) { a = min(a, b); }
+public:
+    int minDifficulty(vector<int>& A, int D) {
+        int N = A.size(), inf = 1e9;
+        if (D > N) return -1;
+        vector<vector<LL>> dp(D + 1, vector<LL>(N, inf));
+        for (int i = 0; i < N; ++i) dp[1][i] = i == 0 ? A[0] : max(dp[1][i - 1], (LL)A[i]);
+        for (int d = 2; d <= D; ++d) {
+            for (int i = d - 1; i < N; ++i) {
+                int mx = 0;
+                for (int j = i; j >= d - 1; --j) {
+                    mx = max(mx, A[j]);
+                    setMin(dp[d][i], dp[d - 1][j - 1] + mx);
+                }
+            }
+        }
+        return dp[D][N - 1];
+    }
+};
+```
+
+## Solution 3. DP
+
+Since `dp[d][i]` is dependent on `dp[d-1][j-1]` and `j <= i`, we can flip the loop direction and just need 1D `dp` array.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/
+// Author: github.com/lzl124631x
+// Time: O(NND)
+// Space: O(N)
+class Solution {
+    typedef long long LL;
+    inline void setMin(LL &a, LL b) { a = min(a, b); }
+public:
+    int minDifficulty(vector<int>& A, int D) {
+        int N = A.size(), inf = 1e9;
+        if (D > N) return -1;
+        vector<LL> dp(N);
+        for (int i = 0; i < N; ++i) dp[i] = i == 0 ? A[0] : max(dp[i - 1], (LL)A[i]);
+        for (int d = 2; d <= D; ++d) {
+            for (int i = N - 1; i >= d - 1; --i) {
+                int mx = 0;
+                dp[i] = inf;
+                for (int j = i; j >= d - 1; --j) {
+                    mx = max(mx, A[j]);
+                    setMin(dp[i], dp[j - 1] + mx);
+                }
+            }
+        }
+        return dp[N - 1];
+    }
+};
+```
+
+## Solution 4. DP + Monotonic Min Stack
+
+TODO
+https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/discuss/490316/JavaC%2B%2BPython3-DP-O(nd)-Solution
+
+https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/discuss/495000/C%2B%2B-0ms!-O(d*n)-time-O(n)-space.-DP-%2B-MonotonicMinimum-Stack
