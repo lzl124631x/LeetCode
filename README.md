@@ -741,6 +741,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1301 | Number of Paths with Max Score | Hard | [Solution](leetcode/1301.%20Number%20of%20Paths%20with%20Max%20Score)
 1312 | Minimum Insertion Steps to Make a String Palindrome | Hard | [Solution](leetcode/1312.%20Minimum%20Insertion%20Steps%20to%20Make%20a%20String%20Palindrome)
 1313 | Decompress Run-Length Encoded List | Easy | [Solution](leetcode/1313.%20Decompress%20Run-Length%20Encoded%20List)
+1316 | Distinct Echo Substrings | Hard | [Solution](leetcode/1316.%20Distinct%20Echo%20Substrings)
 1319 | Number of Operations to Make Network Connected | Medium | [Solution](leetcode/1319.%20Number%20of%20Operations%20to%20Make%20Network%20Connected)
 1323 | Maximum 69 Number | Easy | [Solution](leetcode/5315.%20Maximum%2069%20Number)
 1324 | Print Words Vertically | Medium | [Solution](leetcode/5316.%20Print%20Words%20Vertically)
