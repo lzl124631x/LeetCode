@@ -6,10 +6,8 @@ class Solution {
 public:
     int numJewelsInStones(string J, string S) {
         unordered_set<char> s(J.begin(), J.end());
-        int cnt = 0;
-        for (char c : S) {
-            if (s.find(c) != s.end()) ++cnt;
-        }
-        return cnt;
+        int ans = 0;
+        for (char c : S) ans += s.count(c);
+        return ans;
     }
 };
