@@ -819,6 +819,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1424 | Diagonal Traverse II | Medium | [Solution](leetcode/1424.%20Diagonal%20Traverse%20II)
 1436 | Destination City | Easy | [Solution](leetcode/1436.%20Destination%20City)
 1437 | Check If All 1's Are at Least Length K Places Away | Medium | [Solution](leetcode/1437.%20Check%20If%20All%201's%20Are%20at%20Least%20Length%20K%20Places%20Away)
+1438 | Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit | Medium | [Solution](leetcode/1438.%20Longest%20Continuous%20Subarray%20With%20Absolute%20Diff%20Less%20Than%20or%20Equal%20to%20Limit)
 ? | Leftmost Column with at Least a One | ? | [Solution](leetcode/Leftmost%20Column%20with%20at%20Least%20a%20One)
 ? | First Unique Number | ? | [Solution](leetcode/First%20Unique%20Number)
 ? | Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree | ? | [Solution](leetcode/Check%20If%20a%20String%20Is%20a%20Valid%20Sequence%20from%20Root%20to%20Leaves%20Path%20in%20a%20Binary%20Tree)
