@@ -1,13 +1,14 @@
+// OJ: https://leetcode.com/problems/ransom-note/
+// Author: github.com/lzl124631x
+// Time: O(M + N)
+// Space: O(1)
 class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
-        int C[26] = {0};
-        for (char c : magazine) {
-            C[c - 'a']++;
-        }
+        int cnt[26] = {0};
+        for (char c : magazine) cnt[c - 'a']++;
         for (char c : ransomNote) {
-            C[c - 'a']--;
-            if (C[c - 'a'] < 0) return false;
+            if (--cnt[c - 'a'] < 0) return false;
         }
         return true;
     }
