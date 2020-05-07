@@ -91,3 +91,74 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/jump-game-v/
+// Author: github.com/lzl124631x
+// Time: O(ND)
+// Space: O(N)
+class Solution {
+    vector<int> m;
+    int N;
+    int dp(vector<int> &A, int d, int i) {
+        if (m[i]) return m[i];
+        int ans = 1;
+        for (int k = 0; k < 2; ++k) {
+            int maxVal = INT_MIN;
+            for (int j = 1; j <= d; ++j) {
+                int t = k == 0 ? i + j : i - j;
+                if (t >= N || t < 0 || A[t] >= A[i]) break;
+                maxVal = max(maxVal, A[t]);
+                if (A[t] != maxVal) continue;
+                ans = max(ans, 1 + dp(A, d, t));
+            }
+        }
+        return m[i] = ans;
+    }
+public:
+    int maxJumps(vector<int>& A, int d) {
+        N = A.size();
+        m.assign(N, 0);
+        int ans = 0;
+        for (int i = 0; i < N; ++i) ans = max(ans, dp(A, d, i));
+        return ans;
+    }
+};
+```
+
+## Solution 2. DP + Monotonous Stack
+
+```cpp
+// OJ: https://leetcode.com/problems/jump-game-v/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int maxJumps(vector<int>& A, int d) {
+        int N = A.size();
+        vector<int> dp(N + 1, 1), left, right;
+        A.push_back(INT_MAX);
+        for (int i = 0; i <= N; ++i) {
+            while (left.size() && A[left.back()] < A[i]) {
+                int pre = A[left.back()];
+                while (left.size() && A[left.back()] == pre) {
+                    int j = left.back();
+                    left.pop_back();
+                    if (i - j <= d) dp[i] = max(dp[i], dp[j] + 1);
+                    right.push_back(j);
+                }
+                while (right.size()) {
+                    int j = right.back();
+                    right.pop_back();
+                    if (left.size() && j - left.back() <= d) dp[left.back()] = max(dp[left.back()], dp[j] + 1);
+                }
+            }
+            left.push_back(i);
+        }
+        return *max_element(dp.begin(), dp.end() - 1);
+    }
+};
+```
