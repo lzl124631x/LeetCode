@@ -676,6 +676,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 980 | Unique Paths III | Hard | [Solution](leetcode/980.%20Unique%20Paths%20III)
 985 | Sum of Even Numbers After Queries | Easy | [Solution](leetcode/985.%20Sum%20of%20Even%20Numbers%20After%20Queries)
 986 | Interval List Intersections | Medium | [Solution](leetcode/986.%20Interval%20List%20Intersections)
+993 | Cousins in Binary Tree | Easy | [Solution](leetcode/993.%20Cousins%20in%20Binary%20Tree)
 998 | Maximum Binary Tree II | Medium | [Solution](leetcode/998.%20Maximum%20Binary%20Tree%20II)
 999 | Available Captures for Rook | Easy | [Solution](leetcode/999.%20Available%20Captures%20for%20Rook)
 1000 | Minimum Cost to Merge Stones | Hard | [Solution](leetcode/1000.%20Minimum%20Cost%20to%20Merge%20Stones)
