@@ -674,6 +674,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 977 | Squares of a Sorted Array | Easy | [Solution](leetcode/977.%20Squares%20of%20a%20Sorted%20Array)
 979 | Distribute Coins in Binary Tree | Medium | [Solution](leetcode/979.%20Distribute%20Coins%20in%20Binary%20Tree)
 980 | Unique Paths III | Hard | [Solution](leetcode/980.%20Unique%20Paths%20III)
+983 | Minimum Cost For Tickets | Medium | [Solution](leetcode/983.%20Minimum%20Cost%20For%20Tickets)
 985 | Sum of Even Numbers After Queries | Easy | [Solution](leetcode/985.%20Sum%20of%20Even%20Numbers%20After%20Queries)
 986 | Interval List Intersections | Medium | [Solution](leetcode/986.%20Interval%20List%20Intersections)
 993 | Cousins in Binary Tree | Easy | [Solution](leetcode/993.%20Cousins%20in%20Binary%20Tree)
