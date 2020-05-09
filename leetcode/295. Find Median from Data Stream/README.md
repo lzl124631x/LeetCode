@@ -78,3 +78,33 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/find-median-from-data-stream/
+// Author: github.com/lzl124631x
+// Time:
+//      MedianFinder: O(1)
+//      addNum: O(logN)
+//      findMedian: O(1)
+// Space: O(N)
+class MedianFinder {
+    priority_queue<int> small;
+    priority_queue<int, vector<int>, greater<int>> great;
+public:
+    MedianFinder() {}
+    void addNum(int num) {
+        great.push(num);
+        small.push(great.top());
+        great.pop();
+        if (small.size() > great.size()) {
+            great.push(small.top());
+            small.pop();
+        }
+    }
+    double findMedian() {
+        return small.size() == great.size() ? (small.top() + great.top()) / 2. : (small.size() > great.size() ? small.top() : great.top());
+    }
+};
+```
