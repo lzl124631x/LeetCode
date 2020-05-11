@@ -824,6 +824,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1422 | Maximum Score After Splitting a String | Easy | [Solution](leetcode/1422.%20Maximum%20Score%20After%20Splitting%20a%20String)
 1423 | Maximum Points You Can Obtain from Cards | Medium | [Solution](leetcode/1423.%20Maximum%20Points%20You%20Can%20Obtain%20from%20Cards)
 1424 | Diagonal Traverse II | Medium | [Solution](leetcode/1424.%20Diagonal%20Traverse%20II)
+1425 | Constrained Subsequence Sum | Hard | [Solution](leetcode/1425.%20Constrained%20Subsequence%20Sum)
 1436 | Destination City | Easy | [Solution](leetcode/1436.%20Destination%20City)
 1437 | Check If All 1's Are at Least Length K Places Away | Medium | [Solution](leetcode/1437.%20Check%20If%20All%201's%20Are%20at%20Least%20Length%20K%20Places%20Away)
 1438 | Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit | Medium | [Solution](leetcode/1438.%20Longest%20Continuous%20Subarray%20With%20Absolute%20Diff%20Less%20Than%20or%20Equal%20to%20Limit)
