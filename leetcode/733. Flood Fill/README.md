@@ -37,7 +37,7 @@ to the starting pixel.
 **Similar Questions**:
 * [Island Perimeter (Easy)](https://leetcode.com/problems/island-perimeter/)
 
-## Solution 1.
+## Solution 1. DFS
 
 ```cpp
 // OJ: https://leetcode.com/problems/flood-fill/
