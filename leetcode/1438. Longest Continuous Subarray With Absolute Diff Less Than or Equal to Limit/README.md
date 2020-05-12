@@ -75,3 +75,72 @@ public:
     }
 };
 ```
+
+## Solution 2. Monotonous Deque
+
+We use monotonous deques to keep track of the max/min values within the window. See [239. Sliding Window Maximum (Hard)](https://leetcode.com/problems/sliding-window-maximum/) for the idea.
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int longestSubarray(vector<int>& A, int k) {
+        deque<int> mx{A[0]}, mn{A[0]};
+        int N = A.size(), ans = 1, i = 0, j = 1;
+        while (j < N) {
+            while (j < N && mx.front() - mn.front() <= k) { 
+                while (mx.size() && mx.back() < A[j]) mx.pop_back();
+                mx.push_back(A[j]);
+                while (mn.size() && mn.back() > A[j]) mn.pop_back();
+                mn.push_back(A[j]);
+                ++j;
+                if (mx.front() - mn.front() <= k) ans = max(ans, j - i);
+            }
+            while (i < j && mx.front() - mn.front() > k) {
+                if (A[i] == mx.front()) mx.pop_front();
+                if (A[i] == mn.front()) mn.pop_front();
+                ++i;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3. Monotonous Deque
+
+Similar to Solution 2, but since we are looking for the maximum window, we don't shrink the window.
+
+If the window is valid, we only increment the right edge.
+
+Otherwise, we increment the left edge as well to shift the window as a whole.
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/discuss/609771/JavaC%2B%2BPython-Deques-O(N)
+class Solution {
+public:
+    int longestSubarray(vector<int>& A, int k) {
+        deque<int> mx, mn;
+        int i = 0, j = 0;
+        for (; j < A.size(); ++j) {
+            while (mx.size() && mx.back() < A[j]) mx.pop_back();
+            while (mn.size() && mn.back() > A[j]) mn.pop_back();
+            mx.push_back(A[j]);
+            mn.push_back(A[j]);
+            if (mx.front() - mn.front() > k) {
+                if (A[i] == mx.front()) mx.pop_front();
+                if (A[i] == mn.front()) mn.pop_front();
+                ++i;
+            }
+        }
+        return j - i;
+    }
+};
+```
