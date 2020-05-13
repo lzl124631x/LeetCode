@@ -68,7 +68,7 @@ Maintain a "monoqueue" of indices of `P`: a deque of indices `x_0, x_1, ...` suc
 
 When adding a new index `y`, we'll pop `x_i` from the end of the deque so that `P[x_0], P[x_1], ..., P[y]` will be increasing.
 
-If `P[y] >= P[x_0] + K`, then (as previously described), we don't need to consider this `x_0` again, and we can pop it from the front of the deque.
+If `P[y] >= P[x_0] + K`, then (as previously described) we don't need to consider this `x_0` again, and we can pop it from the front of the deque.
 
 ```cpp
 // OJ: https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/
@@ -80,7 +80,7 @@ class Solution {
 public:
     int shortestSubarray(vector<int>& A, int K) {
         int N = A.size(), ans = INT_MAX;
-        vector<long long> P(N + 1);
+        vector<long> P(N + 1);
         for (int i = 0; i < N; ++i) P[i + 1] = P[i] + A[i];
         deque<int> q;
         for (int y = 0; y < P.size(); ++y) {

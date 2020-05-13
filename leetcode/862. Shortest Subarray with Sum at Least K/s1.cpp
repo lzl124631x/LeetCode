@@ -7,7 +7,7 @@ class Solution {
 public:
     int shortestSubarray(vector<int>& A, int K) {
         int N = A.size(), ans = INT_MAX;
-        vector<long long> P(N + 1);
+        vector<long> P(N + 1);
         for (int i = 0; i < N; ++i) P[i + 1] = P[i] + A[i];
         deque<int> q;
         for (int y = 0; y < P.size(); ++y) {
