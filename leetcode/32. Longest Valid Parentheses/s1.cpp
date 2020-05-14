@@ -1,3 +1,7 @@
+// OJ: https://leetcode.com/problems/longest-valid-parentheses/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
 class Solution {
 public:
     int longestValidParentheses(string s) {
