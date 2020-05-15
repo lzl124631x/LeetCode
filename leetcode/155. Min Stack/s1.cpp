@@ -3,22 +3,22 @@
 // Time: O(1) for all
 // Space: O(N)
 class MinStack {
-    stack<int> s;
-    stack<pair<int, int>> d; // cnt, val
+    stack<int> mn;
+    stack<int> val;
 public:
     MinStack() {}
     void push(int x) {
-        s.push(x);
-        if (d.empty() || x < d.top().second) d.emplace(s.size(), x);
+        val.push(x);
+        if (mn.empty() || mn.top() >= x) mn.push(x);
     }
     void pop() {
-        if (s.size() == d.top().first) d.pop();
-        s.pop();
+        if (val.top() == mn.top()) mn.pop();
+        val.pop();
     }
     int top() {
-        return s.top();
+        return val.top();
     }
     int getMin() {
-        return d.top().second;
+        return mn.top();
     }
 };
