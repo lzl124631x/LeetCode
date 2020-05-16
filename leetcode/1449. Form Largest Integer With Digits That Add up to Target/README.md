@@ -125,13 +125,8 @@ So `dp[i + 1][c - A[i]] == "0"` means that we can't form a valid string using di
 // Time: O(T)
 // Space: O(T)
 class Solution {
-    bool isGreaterThan(string &a, string &b) {
-        if (a.size() != b.size()) return a.size() > b.size();
-        for (int i = 0; i < a.size(); ++i) {
-            if (a[i] == b[i]) continue;
-            return a[i] > b[i];
-        }
-        return false;
+    inline bool isGreaterThan(string &a, string &b) {
+        return a.size() != b.size() ? a.size() > b.size() : a > b;
     }
 public:
     string largestNumber(vector<int>& A, int T) {
@@ -156,18 +151,13 @@ public:
 Since `dp[i + 1][c]` is only dependent on `dp[i][c]` and `dp[i + 1][c - A[i]]`, we can further reduce the size of the `dp` array from `N * T` to `1 * T`.
 
 ```cpp
-// OJ: https://leetcode.com/problems/form-largest-integer-with-digits-that-add-up-to-target/
+// OJ: https://leetcode.com/problems/form-largest-integer-with-digits-that-add-up-to-target
 // Author: github.com/lzl124631x
 // Time: O(T)
 // Space: O(T)
 class Solution {
-    bool isGreaterThan(string &a, string &b) {
-        if (a.size() != b.size()) return a.size() > b.size();
-        for (int i = 0; i < a.size(); ++i) {
-            if (a[i] == b[i]) continue;
-            return a[i] > b[i];
-        }
-        return false;
+    inline bool isGreaterThan(string &a, string &b) {
+        return a.size() != b.size() ? a.size() > b.size() : a > b;
     }
 public:
     string largestNumber(vector<int>& A, int T) {

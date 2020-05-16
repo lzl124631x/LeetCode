@@ -3,13 +3,8 @@
 // Time: O(T)
 // Space: O(T)
 class Solution {
-    bool isGreaterThan(string &a, string &b) {
-        if (a.size() != b.size()) return a.size() > b.size();
-        for (int i = 0; i < a.size(); ++i) {
-            if (a[i] == b[i]) continue;
-            return a[i] > b[i];
-        }
-        return false;
+    inline bool isGreaterThan(string &a, string &b) {
+        return a.size() != b.size() ? a.size() > b.size() : a > b;
     }
 public:
     string largestNumber(vector<int>& A, int T) {
