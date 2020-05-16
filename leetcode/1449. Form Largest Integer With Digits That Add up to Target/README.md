@@ -113,6 +113,12 @@ Now we reduce the time complexity of getting `dp[i + 1][c]` to `O(1)`.
 
 Since `N` is just `9`, so both the time and space complexities are `O(T)`.
 
+Note that in implementation, we initialize `dp` in this way:
+* `dp[i][0] = ""`. When `c` is `0`, `""` is a valid string that we can get out of it.
+* `dp[i][c] = "0"` where `c != 0`. We use `"0"` as a invalid string because we can't use `'0'` in the integer.
+
+So `dp[i + 1][c - A[i]] == "0"` means that we can't form a valid string using digits from `1` to `i+1` with cost `c - A[i]`, and thus we can't add digit `i+1` in front of `dp[i + 1][c - A[i]]`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/form-largest-integer-with-digits-that-add-up-to-target/
 // Author: github.com/lzl124631x
