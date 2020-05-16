@@ -1,19 +1,21 @@
-// OJ: https://leetcode.com/problems/partition-equal-subset-sum
+// OJ: https://leetcode.com/problems/partition-equal-subset-sum/
 // Author: github.com/lzl124631x
 // Time: O(NS)
-// Space: O(S) where S the sum of nums.
+// Space: O(NS)
 class Solution {
-private:
-  bool subsetSum(vector<int> &nums, int S) {
-    vector<int> dp(S + 1);
-    dp[0] = 1;
-    for (int n : nums)
-      for (int i = S; i >= n; --i) dp[i] += dp[i - n];
-    return dp[S];
-  }
 public:
-  bool canPartition(vector<int>& nums) {
-    int sum = accumulate(nums.begin(), nums.end(), 0);
-    return sum % 2 == 0 && subsetSum(nums, sum / 2);
-  }
+    bool canPartition(vector<int>& A) {
+        int sum = accumulate(begin(A), end(A), 0);
+        if (sum % 2) return false;
+        int N = A.size();
+        sum /= 2;
+        vector<vector<bool>> dp(N + 1, vector<bool>(sum + 1, false));
+        for (int i = 0; i <= N; ++i) dp[i][0] = true;
+        for (int i = 0; i < N; ++i) {
+            for (int j = 1; j <= sum; ++j) {
+                dp[i + 1][j] = dp[i][j] || (j >= A[i] && dp[i][j - A[i]]);
+            }
+        }
+        return dp[N][sum];
+    }
 };
