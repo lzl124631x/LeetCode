@@ -833,6 +833,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1444 | Number of Ways of Cutting a Pizza | Hard | [Solution](leetcode/1444.%20Number%20of%20Ways%20of%20Cutting%20a%20Pizza)
 1439 | Find the Kth Smallest Sum of a Matrix With Sorted Rows | Hard | [Solution](leetcode/1439.%20Find%20the%20Kth%20Smallest%20Sum%20of%20a%20Matrix%20With%20Sorted%20Rows)
 1448 | Count Good Nodes in Binary Tree | Medium | [Solution](leetcode/1448.%20Count%20Good%20Nodes%20in%20Binary%20Tree)
+1449 | Form Largest Integer With Digits That Add up to Target | Hard | [Solution](leetcode/1449.%20Form%20Largest%20Integer%20With%20Digits%20That%20Add%20up%20to%20Target)
 ? | Leftmost Column with at Least a One | ? | [Solution](leetcode/Leftmost%20Column%20with%20at%20Least%20a%20One)
 ? | First Unique Number | ? | [Solution](leetcode/First%20Unique%20Number)
 ? | Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree | ? | [Solution](leetcode/Check%20If%20a%20String%20Is%20a%20Valid%20Sequence%20from%20Root%20to%20Leaves%20Path%20in%20a%20Binary%20Tree)
