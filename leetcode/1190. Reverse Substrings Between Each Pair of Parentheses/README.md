@@ -60,26 +60,57 @@ We scan through the string. Once we see `(`, we go one layer deeper. Each layer 
 // Space: O(N^2)
 class Solution {
 private:
-    string helper(string &s, int &i) {
+    string solve(string &s, int &i) {
         string ans;
         int N = s.size();
         while (i < N) {
             while (i < N && s[i] != '(' && s[i] != ')') ans += s[i++];
-            if (i >= N || s[i] == ')') break;
-            ++i;
-            string mid = helper(s, i);
+            if (i < N) ++i;
+            if (i >= N || s[i - 1] == ')') break;
+            auto mid = solve(s, i);
             reverse(mid.begin(), mid.end());
             ans += mid;
-            while (i < N && s[i] != ')') ans += s[i++];
-            if (i >= N) break;
-            ++i;
         }
         return ans;
     }
 public:
     string reverseParentheses(string s) {
         int i = 0;
-        return helper(s, i);
+        return solve(s, i);
+    }
+};
+```
+
+## Solution 2. 
+
+```cpp
+// OJ: https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/discuss/383670/JavaC%2B%2BPython-Why-not-O(N)
+class Solution {
+public:
+    string reverseParentheses(string s) {
+        int N = s.size();
+        vector<int> open, pair(N);
+        for (int i = 0; i < N; ++i) {
+            if (s[i] == '(') open.push_back(i);
+            else if (s[i] == ')') {
+                int j = open.back();
+                open.pop_back();
+                pair[i] = j;
+                pair[j] = i;
+            }
+        }
+        string ans;
+        for (int i = 0, d = 1; i < N; i += d) {
+            if (s[i] == '(' || s[i] == ')') {
+                i = pair[i];
+                d = -d;
+            } else ans += s[i];
+        }
+        return ans;
     }
 };
 ```
