@@ -734,6 +734,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1190 | Reverse Substrings Between Each Pair of Parentheses | Medium | [Solution](leetcode/1190.%20Reverse%20Substrings%20Between%20Each%20Pair%20of%20Parentheses)
 1203 | Sort Items by Groups Respecting Dependencies | Hard | [Solution](leetcode/1203.%20Sort%20Items%20by%20Groups%20Respecting%20Dependencies)
 1207 | Unique Number of Occurrences | Easy | [Solution](leetcode/1207.%20Unique%20Number%20of%20Occurrences)
+1209 | Remove All Adjacent Duplicates in String II | Medium | [Solution](leetcode/1209.%20Remove%20All%20Adjacent%20Duplicates%20in%20String%20II)
 1220 | Count Vowels Permutation | Hard | [Solution](leetcode/1220.%20Count%20Vowels%20Permutation)
 1232 | Check If It Is a Straight Line | Easy | [Solution](leetcode/1232.%20Check%20If%20It%20Is%20a%20Straight%20Line)
 1235 | Maximum Profit in Job Scheduling | Hard | [Solution](leetcode/1235.%20Maximum%20Profit%20in%20Job%20Scheduling)
