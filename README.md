@@ -632,6 +632,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 912 | Sort an Array | Medium | [Solution](leetcode/912.%20Sort%20an%20Array)
 914 | X of a Kind in a Deck of Cards | Easy | [Solution](leetcode/914.%20X%20of%20a%20Kind%20in%20a%20Deck%20of%20Cards)
 917 | Reverse Only Letters | Easy | [Solution](leetcode/917.%20Reverse%20Only%20Letters)
+918 | Maximum Sum Circular Subarray | Medium | [Solution](leetcode/918.%20Maximum%20Sum%20Circular%20Subarray)
 919 | Complete Binary Tree Inserter | Medium | [Solution](leetcode/919.%20Complete%20Binary%20Tree%20Inserter)
 921 | Minimum Add to Make Parentheses Valid | Medium | [Solution](leetcode/921.%20Minimum%20Add%20to%20Make%20Parentheses%20Valid)
 922 | Sort Array By Parity II | Easy | [Solution](leetcode/922.%20Sort%20Array%20By%20Parity%20II)
