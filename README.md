@@ -554,6 +554,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 765 | Couples Holding Hands | Hard | [Solution](leetcode/765.%20Couples%20Holding%20Hands)
 766 | Toeplitz Matrix | Easy | [Solution](leetcode/766.%20Toeplitz%20Matrix)
 767 | Reorganize String | Medium | [Solution](leetcode/767.%20Reorganize%20String)
+769 | Max Chunks To Make Sorted | Medium | [Solution](leetcode/769.%20Max%20Chunks%20To%20Make%20Sorted)
 770 | Basic Calculator IV | Hard | [Solution](leetcode/770.%20Basic%20Calculator%20IV)
 771 | Jewels and Stones | Easy | [Solution](leetcode/771.%20Jewels%20and%20Stones)
 775 | Global and Local Inversions | Medium | [Solution](leetcode/775.%20Global%20and%20Local%20Inversions)
