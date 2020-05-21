@@ -3,28 +3,31 @@
 // Time: O(1) amortized.
 // Space: O(1)
 class MyQueue {
-private:
-  stack<int> sin, sout;
+    stack<int> in, out;
 public:
-  MyQueue() {}
-  void push(int x) {
-    sin.push(x);
-  }
-  int pop() {
-    int val = peek();
-    sout.pop();
-    return val;
-  }
-  int peek() {
-    if (sout.empty()) {
-      while (sin.size()) {
-        sout.push(sin.top());
-        sin.pop();
-      }
+    MyQueue() {}
+    
+    void push(int x) {
+        in.push(x);
     }
-    return sout.top();
-  }
-  bool empty() {
-    return sin.empty() && sout.empty();
-  }
+    
+    int pop() {
+        int val = peek();
+        out.pop();
+        return val;
+    }
+    
+    int peek() {
+        if (out.empty()) {
+            while (in.size()) {
+                out.push(in.top());
+                in.pop();
+            }
+        }
+        return out.top();
+    }
+    
+    bool empty() {
+        return in.empty() && out.empty();
+    }
 };
