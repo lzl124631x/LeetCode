@@ -1,61 +1,36 @@
-/**
- * // This is the interface that allows for creating nested lists.
- * // You should not implement it, or speculate about its implementation
- * class NestedInteger {
- *   public:
- *     // Return true if this NestedInteger holds a single integer, rather than a nested list.
- *     bool isInteger() const;
- *
- *     // Return the single integer that this NestedInteger holds, if it holds a single integer
- *     // The result is undefined if this NestedInteger holds a nested list
- *     int getInteger() const;
- *
- *     // Return the nested list that this NestedInteger holds, if it holds a nested list
- *     // The result is undefined if this NestedInteger holds a single integer
- *     const vector<NestedInteger> &getList() const;
- * };
- */
+// OJ: https://leetcode.com/problems/flatten-nested-list-iterator/
+// Author: github.com/lzl124631x
+// Time: O(1) amortized
+// Space: O(D) where D is the max depth of the list
 class NestedIterator {
-private:
-    stack<pair<vector<NestedInteger>::iterator, vector<NestedInteger>::iterator>> s; // current, end
-    
-    void validate () {
-        while (!s.empty()) {
-            auto &p = s.top();
-            auto &it = p.first, &end = p.second;
-            if (it == end) {
+    typedef vector<NestedInteger>::iterator iter;
+    stack<pair<iter, iter>> s;
+    void goToInteger() {
+        while (s.size()) {
+            if (s.top().first == s.top().second) {
                 s.pop();
-            } else if (it->isInteger()) break;
+                if (s.size()) s.top().first++;
+            } else if (s.top().first->isInteger()) break;
             else {
-                auto &list = it->getList();
-                s.top().first++;
-                s.push(make_pair(list.begin(), list.end()));
+                auto &list = s.top().first->getList();
+                s.emplace(list.begin(), list.end());
             }
         }
     }
 public:
-    NestedIterator(vector<NestedInteger> &nestedList) {
-        s.push(make_pair(nestedList.begin(), nestedList.end()));
-        validate();
+    NestedIterator(vector<NestedInteger> &list) {
+        s.emplace(list.begin(), list.end());
+        goToInteger();
     }
-
+    
     int next() {
-        if (!hasNext()) return 0;
-        auto &p = s.top();
-        auto &cur = p.first, &end = p.second;
-        int ans = cur->getInteger();
-        ++cur;
-        validate();
-        return ans;
+        int val = s.top().first->getInteger();
+        s.top().first++;
+        goToInteger();
+        return val;
     }
-
+    
     bool hasNext() {
-        return !s.empty();
+        return s.size();
     }
 };
-
-/**
- * Your NestedIterator object will be instantiated and called as such:
- * NestedIterator i(nestedList);
- * while (i.hasNext()) cout << i.next();
- */
