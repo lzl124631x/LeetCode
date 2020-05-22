@@ -49,6 +49,39 @@ Total number of squares = 6 + 1 = <b>7</b>.
 
 ## Solution 1. DP
 
+Let `dp[i][j]` be the side length of the max square with all ones.
+
+```
+dp[i + 1][j + 1] = min( dp[i][j], dp[i + 1][j], dp[i][j + 1] ) + 1
+dp[0][i] = dp[i][0] = 0
+```
+
+The answer is the sum of all `dp[i + 1][j + 1]`.
+
+```cpp
+// OJ: https://leetcode.com/problems/count-square-submatrices-with-all-ones/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(MN)
+class Solution {
+public:
+    int countSquares(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size(), ans = 0;
+        vector<vector<int>> dp(M + 1, vector<int>(N + 1));
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (A[i][j] == 0) continue;
+                dp[i + 1][j + 1] = min({ dp[i][j], dp[i + 1][j], dp[i][j + 1] }) + 1;
+                ans += dp[i + 1][j + 1];
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2. DP
+
 ```cpp
 // OJ: https://leetcode.com/problems/count-square-submatrices-with-all-ones/
 // Author: github.com/lzl124631x
@@ -56,13 +89,17 @@ Total number of squares = 6 + 1 = <b>7</b>.
 // Space: O(N)
 class Solution {
 public:
-    int countSquares(vector<vector<int>>& matrix) {
-        int ans = 0, M = matrix.size(), N = matrix[0].size();
-        vector<vector<int>> dp(M + 1, vector<int>(N + 1));
+    int countSquares(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size(), ans = 0;
+        vector<int> dp(N + 1);
         for (int i = 0; i < M; ++i) {
+            int prev = 0;
             for (int j = 0; j < N; ++j) {
-                int n = matrix[i][j] == 1 ? min({ dp[i % 2][j], dp[(i + 1) % 2][j], dp[i % 2][j + 1] }) + 1 : 0;
-                ans += dp[(i + 1) % 2][j + 1] = n;
+                int cur = dp[j + 1];
+                if (A[i][j] == 0) dp[j + 1] = 0;
+                else dp[j + 1] = min({ prev, dp[j], dp[j + 1] }) + 1;
+                ans += dp[j + 1];
+                prev = cur;
             }
         }
         return ans;
