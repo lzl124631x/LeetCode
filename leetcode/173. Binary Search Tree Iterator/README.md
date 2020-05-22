@@ -54,7 +54,7 @@ iterator.hasNext(); // return false
 // OJ: https://leetcode.com/problems/binary-search-tree-iterator/
 // Author: github.com/lzl124631x
 // Time: O(1) amortized
-// Space: O(logN)
+// Space: O(H)
 class BSTIterator {
 private:
     stack<TreeNode*> s;
