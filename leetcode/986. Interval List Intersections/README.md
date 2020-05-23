@@ -49,13 +49,13 @@
 // Space: O(1)
 class Solution {
 public:
-    vector<Interval> intervalIntersection(vector<Interval>& A, vector<Interval>& B) {
+    vector<vector<int>> intervalIntersection(vector<vector<int>>& A, vector<vector<int>>& B) {
         int M = A.size(), N = B.size();
-        vector<Interval> ans;
-        for (int i = 0, j = 0; i < M && j < N;) {
-            int s = max(A[i].start, B[j].start), e = min(A[i].end, B[j].end);
-            if (s <= e) ans.emplace_back(s, e);
-            if (A[i].end < B[j].end) ++i;
+        vector<vector<int>> ans;
+        for (int i = 0, j = 0; i < M && j < N; ) {
+            int s = max(A[i][0], B[j][0]), e = min(A[i][1], B[j][1]);
+            if (s <= e) ans.push_back({ s, e });
+            if (A[i][1] < B[j][1]) ++i;
             else ++j;
         }
         return ans;
