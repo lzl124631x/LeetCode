@@ -1,17 +1,21 @@
+// OJ: https://leetcode.com/problems/next-greater-element-ii/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
 class Solution {
 public:
-  vector<int> nextGreaterElements(vector<int>& nums) {
-    int N = nums.size();
-    stack<int> s;
-    vector<int> ans(N, -1);
-    for (int i = 0; i < 2 * N; ++i) {
-      int n = nums[i % N];
-      while (s.size() && nums[s.top()] < n) {
-        ans[s.top()] = n;
-        s.pop();
-      }
-      s.push(i % N);
+    vector<int> nextGreaterElements(vector<int>& A) {
+        stack<int> s;
+        int N = A.size();
+        vector<int> ans(N, -1);
+        for (int i = 0; i < 2 * N; ++i) {
+            int n = A[i % N];
+            while (s.size() && A[s.top()] < n) {
+                ans[s.top()] = n;
+                s.pop();
+            }
+            s.push(i % N);
+        }
+        return ans;
     }
-    return ans;
-  }
 };
