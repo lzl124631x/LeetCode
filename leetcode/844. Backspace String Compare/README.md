@@ -61,24 +61,18 @@
 // Time: O(N)
 // Space: O(1)
 class Solution {
-private:
-    int normalize(string &S) {
-        int length = 0;
-        for (char c : S) {
-            if (c == '#') {
-                if (length) --length;
-            } else S[length++] = c;
+    string normalize(string &s) {
+        int len = 0;
+        for (char c : s) {
+            if (c == '#') len = max(len - 1, 0);
+            else s[len++] = c;
         }
-        return length;
+        s.resize(len);
+        return s;
     }
 public:
     bool backspaceCompare(string S, string T) {
-        int s = normalize(S), t = normalize(T);
-        if (s != t) return false;
-        for (int i = 0; i < s; ++i) {
-            if (S[i] != T[i]) return false;
-        }
-        return true;
+        return normalize(S) == normalize(T);
     }
 };
 ```
@@ -96,25 +90,23 @@ class Solution {
     void back(string &s, int &i) {
         if (i < 0 || s[i] != '#') return;
         int cnt = 0;
-        while (i >= 0 && (s[i] == '#' || cnt)) {
-            while (i >= 0 && s[i] == '#') ++cnt, --i;
-            while (i >= 0 && s[i] != '#' && cnt) --cnt, --i;
+        for (; i >= 0 && (cnt || s[i] == '#'); --i) {
+            if (s[i] == '#') ++cnt;
+            else --cnt;
         }
     }
 public:
-    bool backspaceCompare(string s, string t) {
-        int i = s.size(), j = t.size();
-        while (i >= 0 && j >= 0) {
-            back(s, i);
-            back(t, j);
-            if (i >= 0 && j >= 0) {
-                if (s[i] == t[j]) --i, --j;
-                else return false;
-            }
+    bool backspaceCompare(string S, string T) {
+        int i = S.size() - 1, j = T.size() - 1;
+        while (i >= 0 || j >= 0) {
+            back(S, i);
+            back(T, j);
+            if ((i >= 0 && j < 0) || (i < 0 && j >= 0)) return false;
+            for (; i >= 0 && j >= 0 && S[i] != '#' && T[j] != '#'; --i, --j) {
+                if (S[i] != T[j]) return false;
+            } 
         }
-        back(s, i);
-        back(t, j);
-        return i < 0 && j < 0;
+        return true;
     }
 };
 ```

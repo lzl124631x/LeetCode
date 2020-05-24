@@ -3,23 +3,17 @@
 // Time: O(N)
 // Space: O(1)
 class Solution {
-private:
-    int normalize(string &S) {
-        int length = 0;
-        for (char c : S) {
-            if (c == '#') {
-                if (length) --length;
-            } else S[length++] = c;
+    string normalize(string &s) {
+        int len = 0;
+        for (char c : s) {
+            if (c == '#') len = max(len - 1, 0);
+            else s[len++] = c;
         }
-        return length;
+        s.resize(len);
+        return s;
     }
 public:
     bool backspaceCompare(string S, string T) {
-        int s = normalize(S), t = normalize(T);
-        if (s != t) return false;
-        for (int i = 0; i < s; ++i) {
-            if (S[i] != T[i]) return false;
-        }
-        return true;
+        return normalize(S) == normalize(T);
     }
 };
