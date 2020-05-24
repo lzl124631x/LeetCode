@@ -3,27 +3,25 @@
 // Time: O(N)
 // Space: O(N)
 class Solution {
-private:
     ListNode *reverseList(ListNode *head) {
-        ListNode dummy(0);
+        ListNode h;
         while (head) {
-            auto p = head;
+            auto node = head;
             head = head->next;
-            p->next = dummy.next;
-            dummy.next = p;
+            node->next = h.next;
+            h.next = node;
         }
-        return dummy.next;
+        return h.next;
     }
 public:
     vector<int> nextLargerNodes(ListNode* head) {
         vector<int> ans;
         stack<int> s;
         head = reverseList(head);
-        while (head) {
-            while (s.size() && head->val >= s.top()) s.pop();
+        for (; head; head = head->next) {
+            while (s.size() && s.top() <= head->val) s.pop();
             ans.push_back(s.size() ? s.top() : 0);
             s.push(head->val);
-            head = head->next;
         }
         reverse(ans.begin(), ans.end());
         return ans;

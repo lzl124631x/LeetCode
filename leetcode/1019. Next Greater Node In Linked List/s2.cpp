@@ -7,16 +7,15 @@ public:
     vector<int> nextLargerNodes(ListNode* head) {
         vector<int> ans;
         stack<int> s;
-        while (head) {
-            ans.push_back(0);
-            int i = 2;
-            while (s.size() && s.top() < head->val) {
-                ans[ans.size() - i++] = head->val;
+        for (; head; head = head->next) ans.push_back(head->val);
+        for (int i = 0; i < ans.size(); ++i) {
+            while (s.size() && ans[s.top()] < ans[i]) {
+                ans[s.top()] = ans[i];
                 s.pop();
             }
-            s.push(head->val);
-            head = head->next;
+            s.push(i);
         }
+        for (; s.size(); s.pop()) ans[s.top()] = 0;
         return ans;
     }
 };

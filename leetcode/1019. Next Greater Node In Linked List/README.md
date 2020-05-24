@@ -49,7 +49,7 @@
 **Related Topics**:  
 [Linked List](https://leetcode.com/tag/linked-list/), [Stack](https://leetcode.com/tag/stack/)
 
-## Solution 1.
+## Solution 1. Monostack
 
 ```cpp
 // OJ: https://leetcode.com/problems/next-greater-node-in-linked-list/
@@ -57,27 +57,25 @@
 // Time: O(N)
 // Space: O(N)
 class Solution {
-private:
     ListNode *reverseList(ListNode *head) {
-        ListNode dummy(0);
+        ListNode h;
         while (head) {
-            auto p = head;
+            auto node = head;
             head = head->next;
-            p->next = dummy.next;
-            dummy.next = p;
+            node->next = h.next;
+            h.next = node;
         }
-        return dummy.next;
+        return h.next;
     }
 public:
     vector<int> nextLargerNodes(ListNode* head) {
         vector<int> ans;
         stack<int> s;
         head = reverseList(head);
-        while (head) {
-            while (s.size() && head->val >= s.top()) s.pop();
+        for (; head; head = head->next) {
+            while (s.size() && s.top() <= head->val) s.pop();
             ans.push_back(s.size() ? s.top() : 0);
             s.push(head->val);
-            head = head->next;
         }
         reverse(ans.begin(), ans.end());
         return ans;
@@ -85,7 +83,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Monostack
 
 ```cpp
 // OJ: https://leetcode.com/problems/next-greater-node-in-linked-list/
@@ -97,16 +95,15 @@ public:
     vector<int> nextLargerNodes(ListNode* head) {
         vector<int> ans;
         stack<int> s;
-        while (head) {
-            ans.push_back(0);
-            int i = 2;
-            while (s.size() && s.top() < head->val) {
-                ans[ans.size() - i++] = head->val;
+        for (; head; head = head->next) ans.push_back(head->val);
+        for (int i = 0; i < ans.size(); ++i) {
+            while (s.size() && ans[s.top()] < ans[i]) {
+                ans[s.top()] = ans[i];
                 s.pop();
             }
-            s.push(head->val);
-            head = head->next;
+            s.push(i);
         }
+        for (; s.size(); s.pop()) ans[s.top()] = 0;
         return ans;
     }
 };
