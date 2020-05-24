@@ -55,6 +55,8 @@
 
 ## Solution 1.
 
+Update the `S` and `T` to the results of applying backspaces, then compare the strings.
+
 ```cpp
 // OJ: https://leetcode.com/problems/backspace-string-compare/
 // Author: github.com/lzl124631x
@@ -79,7 +81,7 @@ public:
 
 ## Solution 2.
 
-If it's not allowed to change the input string.
+If it's not allowed to change the input string, we scan backward. `back` function is used to skip all characters that are deleted using backspaces. After `back`, the indexes are pointing to characters that we need to compare.
 
 ```cpp
 // OJ: https://leetcode.com/problems/backspace-string-compare/
