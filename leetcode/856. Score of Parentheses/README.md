@@ -55,7 +55,7 @@
 **Related Topics**:  
 [String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/)
 
-## Solution 1.
+## Solution 1. Divide and Conquer
 
 ```cpp
 // OJ: https://leetcode.com/problems/score-of-parentheses/
@@ -76,7 +76,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Divide and Conquer
 
 Same idea as Solution 1, but more space efficient.
 
@@ -99,6 +99,114 @@ private:
 public:
     int scoreOfParentheses(string S) {
         return score(S, 0, S.size());
+    }
+};
+```
+
+## Solution 3. DFS
+
+```cpp
+// OJ: https://leetcode.com/problems/score-of-parentheses/solution/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+    int dfs(string &s, int &i) {
+        int ans = 0;
+        while (i < s.size() && s[i] == '(') { 
+            if (i + 1 < s.size() && s[i + 1] == ')') {
+                i += 2;
+                ++ans;
+            } else {
+                ++i;
+                ans += 2 * dfs(s, i);
+                ++i;
+            }
+        }
+        return ans;
+    }
+public:
+    int scoreOfParentheses(string s) {
+        int i = 0;
+        return dfs(s, i);
+    }
+};
+```
+
+## Soltuion 4. Stack
+
+```cpp
+// OJ: https://leetcode.com/problems/score-of-parentheses/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int scoreOfParentheses(string s) {
+        stack<int> st;
+        st.push(0);
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == '(') {
+                if (i + 1 < s.size() && s[i + 1] == ')') {
+                    ++i;
+                    st.top()++;
+                } else st.push(0);
+            } else {
+                int val = 2 * st.top();
+                st.pop();
+                st.top() += val;
+            }
+        }
+        return st.top();
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/score-of-parentheses/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int scoreOfParentheses(string s) {
+        stack<int> st;
+        st.push(0);
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == '(') st.push(0);
+            else {
+                int val = max(2 * st.top(), 1);
+                st.pop();
+                st.top() += val;
+            }
+        }
+        return st.top();
+    }
+};
+```
+
+## Solution 5.
+
+```cpp
+// OJ: https://leetcode.com/problems/score-of-parentheses/solution/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/score-of-parentheses/solution/
+class Solution {
+public:
+    int scoreOfParentheses(string S) {
+        int ans = 0, depth = 0;
+        for (int i = 0; i < S.size(); ++i) {
+            if (S[i] == '(') ++depth;
+            else {
+                --depth;
+                if (i - 1 >= 0 && S[i - 1] == '(') ans += 1 << depth;
+            }
+        }
+        return ans;
     }
 };
 ```
