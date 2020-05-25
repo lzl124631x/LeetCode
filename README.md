@@ -835,6 +835,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1425 | Constrained Subsequence Sum | Hard | [Solution](leetcode/1425.%20Constrained%20Subsequence%20Sum)
 1428 | Leftmost Column with at Least a One | Medium | [Solution](leetcode/1428.%20Leftmost%20Column%20with%20at%20Least%20a%20One)
 1429 | First Unique Number | Medium | [Solution](leetcode/1429.%20First%20Unique%20Number)
+1430 | Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree | Medium | [Solution](leetcode/1430.%20Check%20If%20a%20String%20Is%20a%20Valid%20Sequence%20from%20Root%20to%20Leaves%20Path%20in%20a%20Binary%20Tree)
 1436 | Destination City | Easy | [Solution](leetcode/1436.%20Destination%20City)
 1437 | Check If All 1's Are at Least Length K Places Away | Medium | [Solution](leetcode/1437.%20Check%20If%20All%201's%20Are%20at%20Least%20Length%20K%20Places%20Away)
 1438 | Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit | Medium | [Solution](leetcode/1438.%20Longest%20Continuous%20Subarray%20With%20Absolute%20Diff%20Less%20Than%20or%20Equal%20to%20Limit)
@@ -848,7 +849,6 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1456 | Maximum Number of Vowels in a Substring of Given Length | Medium | [Solution](leetcode/1456.%20Maximum%20Number%20of%20Vowels%20in%20a%20Substring%20of%20Given%20Length)
 1457 | Pseudo-Palindromic Paths in a Binary Tree | Medium | [Solution](leetcode/1457.%20Pseudo-Palindromic%20Paths%20in%20a%20Binary%20Tree)
 1458 | Max Dot Product of Two Subsequences | Hard | [Solution](leetcode/1458.%20Max%20Dot%20Product%20of%20Two%20Subsequences)
-? | Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree | ? | [Solution](leetcode/Check%20If%20a%20String%20Is%20a%20Valid%20Sequence%20from%20Root%20to%20Leaves%20Path%20in%20a%20Binary%20Tree)
 
 # License
 
