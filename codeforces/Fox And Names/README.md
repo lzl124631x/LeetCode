@@ -5,19 +5,7 @@
 ## Solution 1. Topological Sort (BFS)
 
 ```cpp
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <iostream>
-#include <vector>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <stack>
-#include <queue>
-#include <unordered_set>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 #define CASET int ___T, case_n = 1; scanf("%d ", &___T); while (___T-- > 0)
 #define PRINTCASE printf("Case #%d: ",case_n++)
@@ -80,19 +68,7 @@ int main() {
 ## Solution 2. Topological Sort (DFS)
 
 ```cpp
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <iostream>
-#include <vector>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <stack>
-#include <queue>
-#include <unordered_set>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 #define CASET int ___T, case_n = 1; scanf("%d ", &___T); while (___T-- > 0)
 #define PRINTCASE printf("Case #%d: ",case_n++)
