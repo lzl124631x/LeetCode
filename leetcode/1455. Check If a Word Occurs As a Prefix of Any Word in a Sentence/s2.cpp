@@ -1,4 +1,4 @@
-// OJ: https://leetcode.com/contest/weekly-contest-190/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/
+// OJ: https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/
 // Author: github.com/lzl124631x
 // Time: O(S)
 // Space: O(1)

@@ -62,7 +62,7 @@
 Keep extracting word as `word` out of `s` and check if `w` is a prefix of `word`.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-190/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/
+// OJ: https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/
 // Author: github.com/lzl124631x
 // Time: O(S)
 // Space: O(S)
@@ -84,7 +84,7 @@ public:
 Some other variations that just require constant extra space for string comparison.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-190/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/
+// OJ: https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/
 // Author: github.com/lzl124631x
 // Time: O(S)
 // Space: O(S)
@@ -102,7 +102,7 @@ public:
 ```
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-190/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/
+// OJ: https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/
 // Author: github.com/lzl124631x
 // Time: O(S)
 // Space: O(S)
