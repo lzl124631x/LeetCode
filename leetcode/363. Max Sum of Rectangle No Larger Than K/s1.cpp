@@ -1,4 +1,8 @@
-// https://discuss.leetcode.com/topic/48875/accepted-c-codes-with-explanation-and-references
+// OJ: https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/
+// Author: github.com/lzl124631x
+// Time: O()
+// Space: O()
+// Ref: https://discuss.leetcode.com/topic/48875/accepted-c-codes-with-explanation-and-references
 class Solution {
 private:
     int maxSumSubarray(vector<int> &array, int bound) {
@@ -20,10 +24,7 @@ public:
         for (int i = 0; i < N; ++i) {
             vector<int> v(M, 0);
             for (int j = i; j < N; ++j) {
-                int currMax = 0;
-                for (int k = 0; k < M; ++k) {
-                    v[k] += matrix[k][j];
-                }
+                for (int k = 0; k < M; ++k) v[k] += matrix[k][j];
                 ans = max(ans, maxSumSubarray(v, bound));
             }
         }

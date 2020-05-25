@@ -108,3 +108,31 @@ public:
     }
 };
 ```
+
+## Solution 2. Multiset
+
+```cpp
+// OJ: https://leetcode.com/problems/find-median-from-data-stream/
+// Author: github.com/lzl124631x
+// Time:
+//      MedianFinder: O(1)
+//      addNum: O(logN)
+//      findMedian: O(1)
+// Space: O(N)
+class MedianFinder {
+    multiset<int> s;
+    multiset<int>::iterator mid;
+public:
+    MedianFinder() {}
+    void addNum(int num) {
+        int N = s.size() + 1;
+        s.insert(num);
+        if (N == 1) mid = s.begin();
+        else if (num < *mid) mid = N % 2 ? mid : prev(mid);
+        else mid = N % 2 ? next(mid) : mid;
+    }
+    double findMedian() {
+        return s.size() % 2 ? *mid : (*mid + *next(mid)) / 2.;
+    }
+};
+```

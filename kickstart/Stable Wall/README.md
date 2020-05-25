@@ -72,7 +72,7 @@ Case #4: EDCBA
   In sample case #4, the only possible answer is <code>EDCBA</code>.
   </p></div>
 
-## Solution 1.
+## Solution 1. Topological Sort (BFS)
 
 ```cpp
 #include <cstdio>
@@ -85,6 +85,7 @@ Case #4: EDCBA
 #include <unordered_map>
 #include <set>
 #include <stack>
+#include <queue>
 #include <unordered_set>
 using namespace std;
 #define CASET int ___T, case_n = 1; scanf("%d ", &___T); while (___T-- > 0)
@@ -97,40 +98,36 @@ using namespace std;
 #define REP(i,s,t) for(int i=(s);i<(t);i++)
 
 string solve(int R, int C, vector<string> A) {
-    unordered_map<char, unordered_set<char>> m;
-    unordered_set<char> s;
+    unordered_map<char, unordered_set<char>> G;
     for (int i = 0; i < C; ++i) {
         unordered_set<char> seen;
         for (int j = R - 1; j >= 0; --j) {
+            if (!G.count(A[j][i])) G[A[j][i]] = {};
             for (char c : seen) {
                 if (c == A[j][i]) continue;
-                m[A[j][i]].insert(c);
+                G[c].insert(A[j][i]);
             }
             seen.insert(A[j][i]);
-            s.insert(A[j][i]);
         }
+    }
+    unordered_map<char, int> indegree;
+    for (auto &p : G) {
+        for (char c : p.second) indegree[c]++;
+    }
+    queue<char> q;
+    for (auto &p : G) {
+        if (indegree[p.first] == 0) q.push(p.first);
     }
     string ans;
-    while (s.size()) {
-        char ch = '\0';
-        for (char c : s) {
-            if (m.count(c) == 0) {
-                ch = c;
-                break;
-            }
+    while (q.size()) {
+        char u = q.front();
+        q.pop();
+        ans.push_back(u);
+        for (char v : G[u]) {
+            if (--indegree[v] == 0) q.push(v);
         }
-        if (ch == '\0') return "-1";
-        ans.push_back(ch);
-        m.erase(ch);
-        s.erase(ch);
-        vector<char> rm;
-        for (auto &p : m) {
-            if (p.second.count(ch)) p.second.erase(ch);
-            if (p.second.empty()) rm.push_back(p.first);
-        }
-        for (char c : rm) m.erase(c);
     }
-    return ans;
+    return ans.size() == G.size() ? ans : "-1";
 }
 
 int main() {
@@ -148,5 +145,84 @@ int main() {
     }
     return 0;
 }
+```
 
+## Solution 2. Topological Sort (DFS)
+
+```cpp
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <stack>
+#include <queue>
+#include <unordered_set>
+#include <algorithm>
+using namespace std;
+#define CASET int ___T, case_n = 1; scanf("%d ", &___T); while (___T-- > 0)
+#define PRINTCASE printf("Case #%d: ",case_n++)
+#define PRINTCASE_ printf("Case #%d:\n",case_n++)
+#define RD(a) scanf("%d", &(a))
+#define RDD(a, b) scanf("%d%d", &(a), &(b))
+#define PD(a) printf("%d", (a))
+#define PD_(a) printf("%d\n", (a))
+#define REP(i,s,t) for(int i=(s);i<(t);i++)
+
+unordered_map<char, unordered_set<char>> G;
+string ans;
+unordered_map<char, int> seen;
+bool dfs(char u) {
+    if (seen[u]) return seen[u] == 1;
+    seen[u] = -1;
+    for (char v : G[u]) {
+        if (!dfs(v)) return false;
+    }
+    seen[u] = 1;
+    ans.push_back(u);
+    return true;
+}
+
+string solve(int R, int C, vector<string> A) {
+    for (int i = 0; i < C; ++i) {
+        unordered_set<char> seen;
+        for (int j = R - 1; j >= 0; --j) {
+            if (!G.count(A[j][i])) G[A[j][i]] = {};
+            for (char c : seen) {
+                if (c == A[j][i]) continue;
+                G[c].insert(A[j][i]);
+            }
+            seen.insert(A[j][i]);
+        }
+    }
+    for (auto &p : G) {
+        if (seen[p.first]) continue;
+        if (!dfs(p.first)) return "-1";
+    }
+    reverse(ans.begin(), ans.end());
+    return ans;
+}
+
+int main() {
+    // freopen("in", "r", stdin);
+    // freopen("out", "w", stdout);
+    CASET {
+        G.clear();
+        ans.clear();
+        seen.clear();
+        int R, C;
+        RDD(R, C);
+        vector<string> A(R);
+        REP(i, 0, R) {
+            cin >> A[i];
+        }
+        PRINTCASE;
+        cout << solve(R, C, A) << endl;
+    }
+    return 0;
+}
 ```
