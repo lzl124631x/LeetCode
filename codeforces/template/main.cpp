@@ -8,10 +8,7 @@ using namespace std;
 #define PD(a) printf("%d", (a))
 #define PD_(a) printf("%d\n", (a))
 #define REP(i,s,t) for(int i=(s);i<(t);i++)
-
-string solve(int R, int C, vector<string> A) {
-
-}
+#define PI 3.14159265
 
 int main() {
     // freopen("in", "r", stdin);
