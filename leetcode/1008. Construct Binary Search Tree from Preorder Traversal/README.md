@@ -74,3 +74,58 @@ public:
     }
 };
 ```
+
+## Solution 2. Stack
+
+We use a `stack<pair<TreeNode*, int>> s` to keep track of the parent nodes where the first item in the pair is the parent node, and the second item is the right bound of the parent node (i.e. the grandparent's node value).
+
+* If the current node value is smaller than the value of the parent node at the stack top, we should add this new node as the left child of the parent node, and push `node, s.top().first->val` to the stack top.
+* Otherwise, we keep popping the stack top until `A[i] < s.top().second`. Then we add the new node as the right child of the parent node at the stack top, and push `node, s.top().second` to the stack top.
+
+```cpp
+// OJ: https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+public:
+    TreeNode* bstFromPreorder(vector<int>& A) {
+        stack<pair<TreeNode*, int>> s;
+        s.emplace(new TreeNode(A[0]), INT_MAX);
+        auto root = s.top().first;
+        for (int i = 1; i < A.size(); ++i) { 
+            auto node = new TreeNode(A[i]);
+            if (A[i] < s.top().first->val) {
+                s.top().first->left = node;
+                s.emplace(node, s.top().first->val);
+            } else {
+                while (A[i] > s.top().second) s.pop();
+                s.top().first->right = node;
+                s.emplace(node, s.top().second);
+            }
+        }
+        return root;
+    }
+};
+```
+
+## Solution 3.
+
+```cpp
+// OJ: https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+// Ref: https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/discuss/252232/JavaC%2B%2BPython-O(N)-Solution
+class Solution {
+    int i = 0;
+public:
+    TreeNode* bstFromPreorder(vector<int>& A, int bound = INT_MAX) {
+        if (i == A.size() || A[i] > bound) return NULL;
+        auto root = new TreeNode(A[i++]);
+        root->left = bstFromPreorder(A, root->val);
+        root->right = bstFromPreorder(A, bound);
+        return root;
+    }
+};
+```
