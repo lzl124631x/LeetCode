@@ -4,39 +4,56 @@
 // Space: O(N)
 class Solution {
 private:
-  stack<int> num;
-  stack<char> op;
-  void eval(bool popLeftParen) {
-    while (op.size() && op.top() != '(') {
-      int n = num.top();
-      num.pop();
-      switch (op.top()) {
-        case '+': num.top() += n; break;
-        case '-': num.top() -= n; break;
-      }
-      op.pop();
-    }
-    if (popLeftParen) op.pop();
-  }
-public:
-  int calculate(string s) {
-    for (int i = 0; i < s.size(); ++i) {
-      if (s[i] == ' ') continue;
-      if (isdigit(s[i])) {
-        int begin = i;
-        while (i + 1 < s.size() && isdigit(s[i + 1])) ++i;
-        num.push(stoi(s.substr(begin, i - begin + 1)));
-      } else {
-        switch(s[i]) {
-          case '+':
-          case '-': eval(false);
-          // fall through
-          case '(': op.push(s[i]); break;
-          case ')': eval(true); break;
+    vector<string> toRPN(string &s) {
+        vector<string> rpn;
+        stack<char> ops;
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == ' ') continue;
+            if (isdigit(s[i])) {
+                int begin = i;
+                while (i + 1 < s.size() && isdigit(s[i + 1])) ++i;
+                rpn.push_back(s.substr(begin, i - begin + 1));
+            } else {
+                switch(s[i]) {
+                    case '+':
+                    case '-':
+                        if (ops.size() && ops.top() != '(') {
+                            rpn.push_back(string(1, ops.top()));
+                            ops.pop();
+                        }
+                        // fall through
+                    case '(': ops.push(s[i]); break;
+                    case ')': 
+                        while (ops.top() != '(') {
+                            rpn.push_back(string(1, ops.top()));
+                            ops.pop();
+                        }
+                        ops.pop();
+                        break;
+                }
+            }
         }
-      }
+        while (ops.size()) {
+            rpn.push_back(string(1, ops.top()));
+            ops.pop();
+        }
+        return rpn;
     }
-    eval(false);
-    return num.top();
-  }
+    int calcRPN(vector<string> rpn) {
+        stack<int> s;
+        for (auto &str : rpn) {
+            if (isdigit(str[0])) {
+                s.push(stoi(str));
+            } else {
+                int num = s.top();
+                s.pop();
+                s.top() += str[0] == '+' ? num : -num;
+            }
+        }
+        return s.top();
+    }
+public:
+    int calculate(string s) {
+        return calcRPN(toRPN(s));
+    }
 };

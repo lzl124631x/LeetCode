@@ -1,62 +1,69 @@
-// https://leetcode.com/problems/basic-calculator
+// OJ: https://leetcode.com/problems/basic-calculator/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
 class Solution {
-private:
-    vector<string> toRPN(string &s) {
-        vector<string> rpn;
-        stack<char> ops;
-        for (int i = 0; i < s.size(); ++i) {
-            if (s[i] == ' ') continue;
+    vector<string> tokenize(string &s) {
+        vector<string> ans;
+        for (int i = 0, N = s.size(); i < N; ) {
+            while (i < N && s[i] == ' ') ++i;
+            if (i >= N) break;
             if (isdigit(s[i])) {
-                int begin = i;
-                while (i + 1 < s.size() && isdigit(s[i + 1])) ++i;
-                rpn.push_back(s.substr(begin, i - begin + 1));
-            } else {
-                switch(s[i]) {
-                    case '+':
-                    case '-':
-                        if (ops.size() && ops.top() != '(') {
-                            rpn.push_back(string(1, ops.top()));
-                            ops.pop();
-                        }
-                        // fall through
-                    case '(': ops.push(s[i]); break;
-                    case ')': 
-                        while (ops.top() != '(') {
-                            rpn.push_back(string(1, ops.top()));
-                            ops.pop();
-                        }
+                int j = i;
+                while (i < N && isdigit(s[i])) ++i;
+                ans.push_back(s.substr(j, i - j));
+            } else ans.push_back(s.substr(i++, 1));
+        }
+        return ans;
+    }
+    vector<string> toRpn(vector<string> tokens) {
+        vector<string> ans;
+        stack<string> ops;
+        for (auto &s : tokens) {
+            switch (s[0]) {
+                case '(': ops.push(s); break;
+                case ')':
+                    while (ops.top() != "(") {
+                        ans.push_back(ops.top());
                         ops.pop();
-                        break;
-                }
+                    }
+                    ops.pop();
+                    break;
+                case '+': 
+                case '-':
+                    if (ops.size() && (ops.top() == "+" || ops.top() == "-")) {
+                        ans.push_back(ops.top());
+                        ops.pop();
+                    }
+                    ops.push(s);
+                    break;
+                default: ans.push_back(s); break;
             }
         }
         while (ops.size()) {
-            rpn.push_back(string(1, ops.top()));
+            ans.push_back(ops.top());
             ops.pop();
         }
-        return rpn;
+        return ans;
     }
-    int calcRPN(vector<string> rpn) {
+    int calc(vector<string> rpn) {
         stack<int> s;
-        for (auto &str : rpn) {
-            if (isdigit(str[0])) {
-                s.push(stoi(str));
-            } else {
-                int num = s.top();
-                s.pop();
-                switch(str[0]) {
-                    case '+': s.top() += num; break;
-                    case '-': s.top() -= num; break;
+        for (auto &t : rpn) {
+            switch (t[0]) {
+                case '+':
+                case '-': {
+                    int b = s.top();
+                    s.pop();
+                    s.top() += t == "+" ? b : -b;
+                    break;
                 }
+                default: s.push(stoi(t)); break;
             }
         }
         return s.top();
     }
 public:
     int calculate(string s) {
-        return calcRPN(toRPN(s));
+        return calc(toRpn(tokenize(s)));
     }
 };
