@@ -1,82 +1,40 @@
+// OJ: https://leetcode.com/problems/basic-calculator-ii/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
 class Solution {
-private:
-    string infixToSuffix(string &infix) {
-        string ans;
-        stack<char> op;
-        bool afterDigit = false;
-        for (int i = 0; i < infix.length(); ++i) {
-            char c = infix[i];
-            if (isspace(c)) continue;
-            if (isdigit(c)) {
-                ans += c;
-                afterDigit = true;
-            } else {
-                if (afterDigit) {
-                    ans += '#';
-                    afterDigit = false;
-                }
-                if (c == '+' || c == '-') {
-                    while (!op.empty() && op.top() != '(') {
-                        ans += op.top();
-                        op.pop();
-                    }
-                    op.push(c);
-                } else if (c == '*' || c == '/') {
-                    if (!op.empty() && op.top() != '(' && op.top() != '+' && op.top() != '-') {
-                        ans += op.top();
-                        op.pop();
-                    }
-                    op.push(c);
-                } else if (c == '(') {
-                    op.push(c);
-                } else if (c == ')') {
-                    while (!op.empty() && op.top() != '(') {
-                        ans += op.top();
-                        op.pop();
-                    }
-                    op.pop();
-                }
-            }
-        }
-        if (afterDigit) ans += '#';
-        while (!op.empty()) {
-            ans += op.top();
-            op.pop();
-        }
-        return ans;
+    stack<char> ops;
+    stack<int> nums;
+    inline int priority(char op) {
+        if (op == '\0') return 0;
+        return op == '*' || op == '/' ? 2 : 1;
     }
-    int evalSuffix(string str) {
-        stack<int> s;
-        for (int i = 0; i < str.size(); ++i) {
-            char c = str[i];
-            if (isdigit(c)) {
-                int start = i;
-                while (i < str.length() && isdigit(str[i])) ++i;
-                s.push(evalNum(str.substr(start, i - start)));
-            } else {
-                int b = s.top();
-                s.pop();
-                int a = s.top();
-                s.pop();
-                switch (c) {
-                    case '+': s.push(a + b); break;
-                    case '-': s.push(a - b); break;
-                    case '*': s.push(a * b); break;
-                    case '/': s.push(a / b); break;
-                }
+    void eval(char op = '\0') {
+        while (ops.size() && priority(op) <= priority(ops.top())) {
+            int n = nums.top();
+            nums.pop();
+            switch(ops.top()) {
+                case '+': nums.top() += n; break;
+                case '-': nums.top() -= n; break;
+                case '*': nums.top() *= n; break;
+                case '/': nums.top() /= n; break;
             }
+            ops.pop();
         }
-        return s.top();
-    }
-    int evalNum(string s) {
-        int ans = 0;
-        for (int i = 0; i < s.length(); ++i) {
-            ans = ans * 10 + (s[i] - '0');
-        }
-        return ans;
+        ops.push(op);
     }
 public:
     int calculate(string s) {
-        return evalSuffix(infixToSuffix(s));
+        for (int i = 0, N = s.size(); i < N; ++i) {
+            if (s[i] == ' ') continue;
+            if (isdigit(s[i])) {
+                int n = 0;
+                while (i < N && isdigit(s[i])) n = n * 10 + (s[i++] - '0');
+                --i;
+                nums.push(n);
+            } else eval(s[i]);
+        }
+        eval();
+        return nums.top();
     }
 };
