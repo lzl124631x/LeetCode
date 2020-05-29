@@ -52,12 +52,12 @@
 // Space: O(V + E)
 class Solution {
 public:
-    bool canFinish(int N, vector<vector<int>>& E) {
-        unordered_map<int, vector<int>> m;
+    bool canFinish(int N, vector<vector<int>>& A) {
+        unordered_map<int, vector<int>> G;
         vector<int> indegree(N);
-        for (auto &pre : E) {
-            m[pre[1]].push_back(pre[0]);
-            indegree[pre[0]]++;
+        for (auto &e : A) {
+            G[e[1]].push_back(e[0]);
+            indegree[e[0]]++;
         }
         queue<int> q;
         for (int i = 0; i < N; ++i) {
@@ -68,7 +68,7 @@ public:
             int u = q.front();
             q.pop();
             ++visited;
-            for (int v : m[u]) {
+            for (int v : G[u]) {
                 if (--indegree[v] == 0) q.push(v);
             }
         }
@@ -94,10 +94,10 @@ class Solution {
     bool hasCircle(int u) {
         if (seen[u]) return true;
         seen[u] = true;
-        auto n = next[u];
+        auto &n = next[u];
         for (int i = n.size() - 1; i >= 0; --i) {
             if (hasCircle(n[i])) return true;
-            next[u].pop_back();
+            n.pop_back();
         }
         return seen[u] = false;
     }

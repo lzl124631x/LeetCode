@@ -8,10 +8,10 @@ class Solution {
     bool hasCircle(int u) {
         if (seen[u]) return true;
         seen[u] = true;
-        auto n = next[u];
+        auto &n = next[u];
         for (int i = n.size() - 1; i >= 0; --i) {
             if (hasCircle(n[i])) return true;
-            next[u].pop_back();
+            n.pop_back();
         }
         return seen[u] = false;
     }
