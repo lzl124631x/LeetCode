@@ -53,7 +53,8 @@ For each `i, j, k`, we should try:
 ```
 dp[i][j][k] = sum( dp[t][j][k - 1] | i < t < M && slicing at row t is valid )
               + sum( dp[i][t][k - 1] | j < t < N && slicing at column t is valid)
-dp[i][j][1] = 1
+dp[i][j][1] = 1   // if there are any apples in the rectangle from `A[i][j]` to `A[M-1][N-1]`
+              0   // otherwise
 ```
 
 To check if slicing at row or column `t` is valid, we can precompute an array `cnt` where `cnt[i][j]` is the number of apples in the rectangle from `A[i][j]` to `A[M-1][N-1]`.
@@ -61,6 +62,14 @@ To check if slicing at row or column `t` is valid, we can precompute an array `c
 If we slice at row `t`, then `cnt[i][j] == cnt[t][j]` means that there is no apples in rectangle `A[i][j]` to `A[t][N-1]`, we should skip this `t` since it's an invalid slice.
 
 `cnt[t][j] == 0` means there is no apply in rectangle `A[t][j]` to `A[M-1][N-1]`, we should break at `t` since further extending `t` won't results in any valid slice.
+
+So we can update the formula as follows.
+
+```
+dp[i][j][k] = sum( dp[t][j][k - 1] | i < t < M && cnt[i][j] != cnt[t][j] && cnt[t][j] != 0 )
+              + sum( dp[i][t][k - 1] | j < t < N && cnt[i][j] != cnt[i][t] && cnt[i]t] != 0 )
+dp[i][j][1] = cnt[i][j] ? 1 : 0
+```
 
 ```cpp
 // OJ: https://leetcode.com/contest/weekly-contest-188/problems/number-of-ways-of-cutting-a-pizza/
@@ -83,7 +92,7 @@ public:
         vector<vector<vector<long>>> dp(M + 1, vector<vector<long>>(N + 1, vector<long>(K + 1)));
         for (int i = M - 1; i >= 0; --i) {
             for (int j = N - 1; j >= 0; --j) {
-                dp[i][j][1] = 1;
+                dp[i][j][1] = cnt[i][j] > 0;
                 for (int k = 2; k <= K; ++k) {
                     for (int t = i + 1; t < M; ++t) {
                         if (cnt[i][j] == cnt[t][j]) continue;
