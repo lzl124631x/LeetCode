@@ -1,24 +1,33 @@
-// https://discuss.leetcode.com/topic/54258/python-c-solutions
+// OJ: https://leetcode.com/problems/mini-parser/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H) where H is the maximum depth of the output
 class Solution {
+private:
+    NestedInteger deserialize(string s, int &i) {
+        NestedInteger ni;
+        if (i >= s.size()) return ni;
+        if (s[i] != '[') {
+            int n = 0, sign = 1;
+            if (s[i] == '-') {
+                sign = -1;
+                ++i;
+            }
+            while (i < s.size() && isdigit(s[i])) n = n * 10 + s[i++] - '0';
+            ni.setInteger(sign * n);
+        } else {
+            ++i;//[
+            while (i < s.size() && s[i] != ']') {
+                ni.add(deserialize(s, i));
+                if (i < s.size() && s[i] == ',') ++i;
+            }
+            ++i;//]
+        }
+        return ni;
+    }
 public:
     NestedInteger deserialize(string s) {
-        istringstream in(s);
-        return deserialize(in);
-    }
-private:
-    NestedInteger deserialize(istringstream &in) {
-        int number;
-        if (in >> number)
-            return NestedInteger(number);
-        in.clear();
-        in.get();
-        NestedInteger list;
-        while (in.peek() != ']') {
-            list.add(deserialize(in));
-            if (in.peek() == ',')
-                in.get();
-        }
-        in.get();
-        return list;
+        int i = 0;
+        return deserialize(s, i);
     }
 };
