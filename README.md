@@ -854,6 +854,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1460 | Make Two Arrays Equal by Reversing Sub-arrays | Easy | [Solution](leetcode/1460.%20Make%20Two%20Arrays%20Equal%20by%20Reversing%20Sub-arrays)
 1461 | Check If a String Contains All Binary Codes of Size K | Medium | [Solution](leetcode/1461.%20Check%20If%20a%20String%20Contains%20All%20Binary%20Codes%20of%20Size%20K)
 1462 | Course Schedule IV | Medium | [Solution](leetcode/1462.%20Course%20Schedule%20IV)
+1463 | Cherry Pickup II | Hard | [Solution](leetcode/1463.%20Cherry%20Pickup%20II)
 
 # License
 
