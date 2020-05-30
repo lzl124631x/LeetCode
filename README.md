@@ -851,6 +851,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1456 | Maximum Number of Vowels in a Substring of Given Length | Medium | [Solution](leetcode/1456.%20Maximum%20Number%20of%20Vowels%20in%20a%20Substring%20of%20Given%20Length)
 1457 | Pseudo-Palindromic Paths in a Binary Tree | Medium | [Solution](leetcode/1457.%20Pseudo-Palindromic%20Paths%20in%20a%20Binary%20Tree)
 1458 | Max Dot Product of Two Subsequences | Hard | [Solution](leetcode/1458.%20Max%20Dot%20Product%20of%20Two%20Subsequences)
+1460 | Make Two Arrays Equal by Reversing Sub-arrays | Easy | [Solution](leetcode/1460.%20Make%20Two%20Arrays%20Equal%20by%20Reversing%20Sub-arrays)
 
 # License
 
