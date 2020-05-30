@@ -852,6 +852,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1457 | Pseudo-Palindromic Paths in a Binary Tree | Medium | [Solution](leetcode/1457.%20Pseudo-Palindromic%20Paths%20in%20a%20Binary%20Tree)
 1458 | Max Dot Product of Two Subsequences | Hard | [Solution](leetcode/1458.%20Max%20Dot%20Product%20of%20Two%20Subsequences)
 1460 | Make Two Arrays Equal by Reversing Sub-arrays | Easy | [Solution](leetcode/1460.%20Make%20Two%20Arrays%20Equal%20by%20Reversing%20Sub-arrays)
+1461 | Check If a String Contains All Binary Codes of Size K | Medium | [Solution](leetcode/1461.%20Check%20If%20a%20String%20Contains%20All%20Binary%20Codes%20of%20Size%20K)
 
 # License
 
