@@ -532,6 +532,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 723 | Candy Crush | Medium | [Solution](leetcode/723.%20Candy%20Crush)
 724 | Find Pivot Index | Easy | [Solution](leetcode/724.%20Find%20Pivot%20Index)
 725 | Split Linked List in Parts | Medium | [Solution](leetcode/725.%20Split%20Linked%20List%20in%20Parts)
+726 | Number of Atoms | Hard | [Solution](leetcode/726.%20Number%20of%20Atoms)
 728 | Self Dividing Numbers | Easy | [Solution](leetcode/728.%20Self%20Dividing%20Numbers)
 730 | Count Different Palindromic Subsequences | Hard | [Solution](leetcode/730.%20Count%20Different%20Palindromic%20Subsequences)
 733 | Flood Fill | Easy | [Solution](leetcode/733.%20Flood%20Fill)
