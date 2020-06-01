@@ -3,8 +3,7 @@
 // Time: O(V + E)
 // Space: O(V^2)
 class Solution {
-    vector<vector<int>> G;
-    vector<vector<int>> m;
+    vector<vector<int>> G, m;
     bool dfs(int from, int to) {
         if (m[from][to] != -1) return m[from][to];
         bool ans = false;
@@ -21,9 +20,7 @@ public:
         G.assign(n, {});
         m.assign(n, vector<int>(n, -1));
         for (int i = 0; i < n; ++i) m[i][i] = 1;
-        for (auto &e : A) {
-            G[e[0]].push_back(e[1]);
-        }
+        for (auto &e : A) G[e[0]].push_back(e[1]);
         vector<bool> ans;
         for (auto &e : Q) ans.push_back(dfs(e[0], e[1]));
         return ans;

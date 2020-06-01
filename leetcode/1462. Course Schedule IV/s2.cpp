@@ -1,7 +1,7 @@
 // OJ: https://leetcode.com/problems/course-schedule-iv/
 // Author: github.com/lzl124631x
-// Time: O(N^3)
-// Space: O(N^2)
+// Time: O(V^3)
+// Space: O(V^2)
 class Solution {
 public:
     vector<bool> checkIfPrerequisite(int n, vector<vector<int>>& A, vector<vector<int>>& Q) {

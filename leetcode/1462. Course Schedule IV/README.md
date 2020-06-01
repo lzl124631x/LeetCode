@@ -73,8 +73,7 @@ We can first build a directed graph given the `prerequisite`. Then for each quer
 // Time: O(V + E)
 // Space: O(V^2)
 class Solution {
-    vector<vector<int>> G;
-    vector<vector<int>> m;
+    vector<vector<int>> G, m;
     bool dfs(int from, int to) {
         if (m[from][to] != -1) return m[from][to];
         bool ans = false;
@@ -91,9 +90,7 @@ public:
         G.assign(n, {});
         m.assign(n, vector<int>(n, -1));
         for (int i = 0; i < n; ++i) m[i][i] = 1;
-        for (auto &e : A) {
-            G[e[0]].push_back(e[1]);
-        }
+        for (auto &e : A) G[e[0]].push_back(e[1]);
         vector<bool> ans;
         for (auto &e : Q) ans.push_back(dfs(e[0], e[1]));
         return ans;
@@ -103,11 +100,13 @@ public:
 
 ## Solution 2. Floyd-Warshall
 
+We can use the Floyd-Warshall algorithm to fine all the shortest paths of any node pairs in a weighted graph. Here we can make simple adjustment to it to just store whether any node pairs are reachable.
+
 ```cpp
 // OJ: https://leetcode.com/problems/course-schedule-iv/
 // Author: github.com/lzl124631x
-// Time: O(N^3)
-// Space: O(N^2)
+// Time: O(V^3)
+// Space: O(V^2)
 class Solution {
 public:
     vector<bool> checkIfPrerequisite(int n, vector<vector<int>>& A, vector<vector<int>>& Q) {
