@@ -57,7 +57,7 @@ We can use a sliding window to keep track of the substring of length `k`, and ma
 ```cpp
 // OJ: https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/
 // Author: github.com/lzl124631x
-// Time: O(min(N, 2^K))
+// Time: O(N + min(N, 2^K))
 // Space: O(2^K)
 class Solution {
 public:
@@ -93,8 +93,9 @@ public:
         for (int i = 0; i < s.size(); ++i) {
             n = (n << 1) & mask | (s[i] - '0');
             if (i >= k - 1) st.insert(n);
+            if (st.size() == (1 << k)) return true;
         }
-        return st.size() == (1 << k);
+        return false;
     }
 };
 ```
