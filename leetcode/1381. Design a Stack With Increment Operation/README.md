@@ -82,8 +82,6 @@ public:
 
 ## Solution 2. Lazy Propogation
 
-Note that do not directly use `v.size() - 1` because `v.size()` is `unsigned` so `(unsigned) 0 - 1 = (unsigned) 0 - (unsigned) 1 = (00..00)2 - (00..01)2 = (11..11)2 = 4294967295`.
-
 ```cpp
 // OJ: https://leetcode.com/problems/design-a-stack-with-increment-operation/
 // Author: github.com/lzl124631x
