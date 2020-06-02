@@ -8,8 +8,7 @@ class CustomStack {
     int N;
     vector<int> v;
 public:
-    CustomStack(int maxSize): N(maxSize) {
-    }
+    CustomStack(int maxSize): N(maxSize) {}
     void push(int x) {
         if (v.size() >= N) return;
         v.push_back(x);

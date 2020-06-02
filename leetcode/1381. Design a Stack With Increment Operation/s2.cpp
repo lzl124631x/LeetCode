@@ -6,30 +6,28 @@
 // Space: O(N)
 // Ref: https://leetcode.com/problems/design-a-stack-with-increment-operation/discuss/539716/JavaC%2B%2BPython-Lazy-increment-O(1)
 class CustomStack {
-    int N;
-    stack<int> v;
-    vector<int> inc;
+    stack<int> s;
+    vector<int> update;
 public:
-    CustomStack(int maxSize): N(maxSize), inc(N) {
-    }
+    CustomStack(int maxSize) : update(maxSize) {}
     
     void push(int x) {
-        if (v.size() >= N) return;
-        v.push(x);
+        if (s.size() == update.size()) return;
+        s.push(x);
     }
     
     int pop() {
-        if (v.empty()) return -1;
-        int n = v.top(), i = v.size() - 1;
-        v.pop();
-        n += inc[i];
-        if (i - 1 >= 0) inc[i - 1] += inc[i];
-        inc[i] = 0;
-        return n;
+        if (s.empty()) return -1;
+        int ans = s.top(), index = s.size() - 1;
+        s.pop();
+        ans += update[index];
+        if (index - 1 >= 0) update[index - 1] += update[index];
+        update[index] = 0;
+        return ans;
     }
     
     void increment(int k, int val) {
-        k = min(k, (int)v.size()) - 1;
-        if (k >= 0) inc[k] += val;
+        k = min(k, (int)s.size()) - 1;
+        if (k >= 0) update[k] += val;
     }
 };
