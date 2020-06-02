@@ -49,7 +49,7 @@ customStack.pop();                            // return -1 --&gt; Stack is empty
 **Related Topics**:  
 [Stack](https://leetcode.com/tag/stack/), [Design](https://leetcode.com/tag/design/)
 
-## Solution 1.
+## Solution 1. Brute Force
 
 ```cpp
 // OJ: https://leetcode.com/problems/design-a-stack-with-increment-operation/
