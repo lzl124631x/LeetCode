@@ -728,6 +728,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1092 | Shortest Common Supersequence | Hard | [Solution](leetcode/1092.%20Shortest%20Common%20Supersequence)
 1104 | Path In Zigzag Labelled Binary Tree | Medium | [Solution](leetcode/1104.%20Path%20In%20Zigzag%20Labelled%20Binary%20Tree)
 1105 | Filling Bookcase Shelves | Medium | [Solution](leetcode/1105.%20Filling%20Bookcase%20Shelves)
+1106 | Parsing A Boolean Expression | Hard | [Solution](leetcode/1106.%20Parsing%20A%20Boolean%20Expression)
 1108 | Defanging an IP Address | Easy | [Solution](leetcode/1108.%20Defanging%20an%20IP%20Address)
 1111 | Maximum Nesting Depth of Two Valid Parentheses Strings | Medium | [Solution](leetcode/1111.%20Maximum%20Nesting%20Depth%20of%20Two%20Valid%20Parentheses%20Strings)
 1125 | Smallest Sufficient Team | Hard | [Solution](leetcode/1125.%20Smallest%20Sufficient%20Team)
