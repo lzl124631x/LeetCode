@@ -193,6 +193,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 230 | Kth Smallest Element in a BST | Medium | [Solution](leetcode/230.%20Kth%20Smallest%20Element%20in%20a%20BST)
 232 | Implement Queue using Stacks | Easy | [Solution](leetcode/232.%20Implement%20Queue%20using%20Stacks)
 234 | Palindrome Linked List | Easy | [Solution](leetcode/234.%20Palindrome%20Linked%20List)
+237 | Delete Node in a Linked List | Easy | [Solution](leetcode/237.%20Delete%20Node%20in%20a%20Linked%20List)
 238 | Product of Array Except Self | Medium | [Solution](leetcode/238.%20Product%20of%20Array%20Except%20Self)
 239 | Sliding Window Maximum | Hard | [Solution](leetcode/239.%20Sliding%20Window%20Maximum)
 240 | Search a 2D Matrix II | Medium | [Solution](leetcode/240.%20Search%20a%202D%20Matrix%20II)
