@@ -6,15 +6,12 @@
 class Solution {
 public:
     double new21Game(int N, int K, int W) {
-        vector<double> p(K + W + 1);
-        p[0] = 1;
+        if (N >= K + W - 1) return 1;
+        vector<double> dp(K + W);
+        dp[0] = 1;
         for (int i = 0; i < K; ++i) {
-            for (int j = 1; j <= W && i + j <= N; ++j) {
-                p[i + j] += p[i] / W;
-            }
+            for (int j = 1; j <= W && i + j <= N; ++j) dp[i + j] += dp[i] / W;
         }
-        double ans = 0;
-        for (int i = K; i <= N; ++i) ans += p[i];
-        return ans;
+        return accumulate(begin(dp) + K, begin(dp) + N + 1, 0.0);
     }
 };

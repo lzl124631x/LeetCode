@@ -41,9 +41,9 @@ In 6 out of W = 10 possibilities, she is at or below N = 6 points.
 
 ## Solution 1. Brute Force (TLE)
 
-Let `p[i]` be the possibility to land on node `i`.
+Let `dp[i]` be the possibility to land on node `i`.
 
-For each node `i` in `[0, K)`, try jump `j` step to node `i + j` where `j` is in `[1, W]`. When landing on node `i + j` from node `i`, `p[i + j]` should be increased by `p[i] / W`.
+For each node `i` in `[0, K)`, try jump `j` steps to node `i + j` where `j` is in `[1, W]`. When landing on node `i + j` from node `i`, `p[i + j]` should increase by `dp[i] / W`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/new-21-game/
@@ -54,39 +54,75 @@ For each node `i` in `[0, K)`, try jump `j` step to node `i + j` where `j` is in
 class Solution {
 public:
     double new21Game(int N, int K, int W) {
-        vector<double> p(K + W + 1);
-        p[0] = 1;
+        if (N >= K + W - 1) return 1;
+        vector<double> dp(K + W);
+        dp[0] = 1;
         for (int i = 0; i < K; ++i) {
-            for (int j = 1; j <= W && i + j <= N; ++j) {
-                p[i + j] += p[i] / W;
-            }
+            for (int j = 1; j <= W && i + j <= N; ++j) dp[i + j] += dp[i] / W;
         }
-        double ans = 0;
-        for (int i = K; i <= N; ++i) ans += p[i];
-        return ans;
+        return accumulate(begin(dp) + K, begin(dp) + N + 1, 0.0);
     }
 };
 ```
 
-## Solution 2. 
+## Solution 2. DP
+
+Let `dp[i]` be the probability of getting `i` points.
+
+Assume `K = 5, W = 3`.
+```
+dp[1] = 1/W
+dp[2] = 1/W + dp[1]/W
+dp[3] = 1/W + dp[1]/W + dp[2]/W
+
+dp[4] = dp[1]/W + dp[2]/W + dp[3]/W
+dp[5] = dp[2]/W + dp[3]/W + dp[4]/W
+
+dp[6] = dp[3]/W + dp[4]/W
+dp[7] = dp[4]/W
+```
+
+```
+dp[0] = 1
+dp[1] =         dp[0]/W
+dp[2] = dp[1] + dp[1]/W
+dp[3] = dp[2] + dp[2]/W
+
+dp[4] = dp[3] + dp[3]/W - dp[0]/W
+dp[5] = dp[4] + dp[4]/W - dp[1]/W
+
+dp[6] = dp[5]           - dp[2]/W
+dp[7] = dp[6]           - dp[3]/W
+```
+
+So we have the formula:
+
+```
+dp[0] = 1
+dp[i] = (i > 1 ? dp[i-1] : 0)
+         + (i <= K ? dp[i-1]/W : 0)
+         - (i-W-1 >= 0 ? dp[i-W-1]/W : 0)
+```
+
+The answer is `sum( dp[i] | K <= i <= N )`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/new-21-game/
 // Author: github.com/lzl124631x
-// Time: O(K + W)
-// Space: O(K + W)
+// Time: O(min(N, K + W))
+// Space: O(min(N, K + W))
 class Solution {
 public:
     double new21Game(int N, int K, int W) {
         if (!K || N >= K + W - 1) return 1;
-        vector<double> p(K + W + 1);
-        p[0] = 1;
+        vector<double> dp(N + 1);
+        dp[0] = 1;
         double ans = 0;
         for (int i = 1; i <= N; ++i) {
-            if (i > 1) p[i] += p[i - 1];
-            if (i <= K) p[i] += p[i - 1] / W;
-            if (i > W) p[i] -= p[i - W - 1] / W;
-            if (i >= K) ans += p[i]; 
+            if (i > 1) dp[i] += dp[i - 1];
+            if (i <= K) dp[i] += dp[i - 1] / W;
+            if (i > W) dp[i] -= dp[i - W - 1]/W;
+            if (i >= K) ans += dp[i];
         }
         return ans;
     }
