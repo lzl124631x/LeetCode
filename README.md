@@ -727,6 +727,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1080 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/5084.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
 1081 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/5086.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
 1092 | Shortest Common Supersequence | Hard | [Solution](leetcode/1092.%20Shortest%20Common%20Supersequence)
+1096 | Brace Expansion II | Hard | [Solution](leetcode/1096.%20Brace%20Expansion%20II)
 1104 | Path In Zigzag Labelled Binary Tree | Medium | [Solution](leetcode/1104.%20Path%20In%20Zigzag%20Labelled%20Binary%20Tree)
 1105 | Filling Bookcase Shelves | Medium | [Solution](leetcode/1105.%20Filling%20Bookcase%20Shelves)
 1106 | Parsing A Boolean Expression | Hard | [Solution](leetcode/1106.%20Parsing%20A%20Boolean%20Expression)

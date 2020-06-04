@@ -1,0 +1,6 @@
+"abc"
+"{a,b}"
+"{a,b}{c,{d,e}}"
+"{{a,z},a{b,c},{ab,z}}"
+"{{{c,g},{h,j},l}{a,{x,ia,o},w}}"
+"{{{c,g},{h,j},l}{a,{x,ia,o},w}{x,ia,o},{x,ia,o},a}"
