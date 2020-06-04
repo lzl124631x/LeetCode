@@ -706,6 +706,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1025 | Divisor Game | Easy | [Solution](leetcode/1025.%20Divisor%20Game)
 1027 | Longest Arithmetic Sequence | Medium | [Solution](leetcode/1027.%20Longest%20Arithmetic%20Sequence)
 1028 | Recover a Tree From Preorder Traversal | Hard | [Solution](leetcode/1028.%20Recover%20a%20Tree%20From%20Preorder%20Traversal)
+1029 | Two City Scheduling | Easy | [Solution](leetcode/1029.%20Two%20City%20Scheduling)
 1030 | Matrix Cells in Distance Order | Easy | [Solution](leetcode/1030.%20Matrix%20Cells%20in%20Distance%20Order)
 1031 | Maximum Sum of Two Non-Overlapping Subarrays | Medium | [Solution](leetcode/1031.%20Maximum%20Sum%20of%20Two%20Non-Overlapping%20Subarrays)
 1034 | Coloring A Border | Medium | [Solution](leetcode/1034.%20Coloring%20A%20Border)
