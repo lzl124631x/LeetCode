@@ -71,7 +71,7 @@ public:
     int next() {
         auto node = s.top();
         s.pop();
-        if (node->right) pushNodes(node->right);
+        pushNodes(node->right);
         return node->val;
     }
     bool hasNext() {
