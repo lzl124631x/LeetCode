@@ -48,7 +48,7 @@ iterator.hasNext(); // return false
 * [Peeking Iterator (Medium)](https://leetcode.com/problems/peeking-iterator/)
 * [Inorder Successor in BST (Medium)](https://leetcode.com/problems/inorder-successor-in-bst/)
 
-## Solution 1.
+## Solution 1. Stack
 
 ```cpp
 // OJ: https://leetcode.com/problems/binary-search-tree-iterator/
