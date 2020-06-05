@@ -1,19 +1,17 @@
+// OJ: https://leetcode.com/problems/132-pattern/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
 class Solution {
 public:
-    bool find132pattern(vector<int>& nums) {
-        if (nums.size() < 3) return false;
-        multiset<int> right(nums.begin() + 1, nums.end());
-        int minLeft = nums[0];
-        for (int i = 1; i < nums.size() - 1; ++i) {
-            int mid = nums[i];
-            auto it = right.find(mid);
-            right.erase(it);
-            if (mid <= minLeft) {
-                minLeft = mid;
-            } else {
-                auto r = right.upper_bound(mid - 1);
-                if (r != right.begin() && *prev(r) > minLeft) return true;
-            }
+    bool find132pattern(vector<int>& A) {
+        multiset<int, greater<int>> s(begin(A), end(A));
+        int mn = INT_MAX;
+        for (int n : A) {
+            mn = min(mn, n);
+            s.erase(s.find(n));
+            auto it = s.upper_bound(n);
+            if (it != s.end() && mn < *it) return true;
         }
         return false;
     }
