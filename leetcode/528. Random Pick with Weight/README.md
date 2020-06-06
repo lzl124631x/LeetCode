@@ -23,10 +23,11 @@ Note:
 The input is two lists: the subroutines called and their arguments. `Solution`'s constructor has one argument, the array `w`. `pickIndex` has no arguments. Arguments are always wrapped with a list, even if there aren't any.
 
 ## Solution 1. Naive
+
 ```cpp
 // OJ: https://leetcode.com/problems/random-pick-with-weight/
 // Author: github.com/lzl124631x
-// Time: O(W)
+// Time: O(W) for both APIs
 // Space: O(W)
 class Solution {
 private:
@@ -48,12 +49,14 @@ public:
 };
 ```
 
-## Solution 2. Binary Search.
+## Solution 2. Binary Search
 
 ```cpp
 // OJ: https://leetcode.com/problems/random-pick-with-weight/
 // Author: github.com/lzl124631x
-// Time: O(log(W))
+// Time:
+//      Solution: O(W)
+//      pickIndex: O(log(W))
 // Space: O(W)
 class Solution {
 private:
@@ -77,13 +80,14 @@ public:
     }
 };
 ```
-
 ## Solution 3. Binary Search with STL.
 
 ```cpp
 // OJ: https://leetcode.com/problems/random-pick-with-weight/
 // Author: github.com/lzl124631x
-// Time: O(log(W))
+// Time:
+//      Solution: O(W)
+//      pickIndex: O(log(W))
 // Space: O(W)
 class Solution {
 private:

@@ -1,6 +1,6 @@
 // OJ: https://leetcode.com/problems/random-pick-with-weight/
 // Author: github.com/lzl124631x
-// Time: O(W)
+// Time: O(W) for both APIs
 // Space: O(W)
 class Solution {
 private:

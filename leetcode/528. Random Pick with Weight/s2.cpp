@@ -1,6 +1,8 @@
 // OJ: https://leetcode.com/problems/random-pick-with-weight/
 // Author: github.com/lzl124631x
-// Time: O(log(W))
+// Time:
+//      Solution: O(W)
+//      pickIndex: O(log(W))
 // Space: O(W)
 class Solution {
 private:
