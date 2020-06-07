@@ -4,14 +4,14 @@
 // Space: O(1)
 class Solution {
 public:
-  vector<pair<int, int>> reconstructQueue(vector<pair<int, int>>& people) {
-    sort(people.begin(), people.end(), [](pair<int, int> &a, pair<int, int> &b) {
-      return a.second == b.second ? a.first > b.first : a.second < b.second;
+  vector<vector<int>> reconstructQueue(vector<vector<int>>& people) {
+    sort(people.begin(), people.end(), [](vector<int> &a, vector<int> &b) {
+      return a[1] == b[1] ? a[0] > b[0] : a[1] < b[1];
     });
-    vector<pair<int, int>> ans;
+    vector<vector<int>> ans;
     for (auto p : people) {
       int cnt = 0, i = 0;
-      while (i < ans.size() && cnt < p.second) cnt += (ans[i++].first >= p.first);
+      while (i < ans.size() && cnt < p[1]) cnt += (ans[i++][0] >= p[0]);
       ans.insert(ans.begin() + i, p);
     }
     return ans;
