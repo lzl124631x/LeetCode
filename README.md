@@ -863,6 +863,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1463 | Cherry Pickup II | Hard | [Solution](leetcode/1463.%20Cherry%20Pickup%20II)
 1464 | Maximum Product of Two Elements in an Array | Easy | [Solution](leetcode/1464.%20Maximum%20Product%20of%20Two%20Elements%20in%20an%20Array)
 1470 | Shuffle the Array | Easy | [Solution](leetcode/1470.%20Shuffle%20the%20Array)
+1471 | The k Strongest Values in an Array | Medium | [Solution](leetcode/1471.%20The%20k%20Strongest%20Values%20in%20an%20Array)
 
 # License
 
