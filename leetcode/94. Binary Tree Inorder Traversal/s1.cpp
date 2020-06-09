@@ -4,16 +4,16 @@
 // Space: O(H)
 class Solution {
 private:
-    vector<int> v;
-    void rec(TreeNode* root) {
+    vector<int> ans;
+    void dfs(TreeNode* root) {
         if (!root) return;
-        rec(root->left);
-        v.push_back(root->val);
-        rec(root->right);
+        dfs(root->left);
+        ans.push_back(root->val);
+        dfs(root->right);
     }
 public:
     vector<int> inorderTraversal(TreeNode* root) {
-        rec(root);
-        return v;
+        dfs(root);
+        return ans;
     }
 };

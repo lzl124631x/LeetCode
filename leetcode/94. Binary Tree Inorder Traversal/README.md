@@ -39,17 +39,17 @@
 // Space: O(H)
 class Solution {
 private:
-    vector<int> v;
-    void rec(TreeNode* root) {
+    vector<int> ans;
+    void dfs(TreeNode* root) {
         if (!root) return;
-        rec(root->left);
-        v.push_back(root->val);
-        rec(root->right);
+        dfs(root->left);
+        ans.push_back(root->val);
+        dfs(root->right);
     }
 public:
     vector<int> inorderTraversal(TreeNode* root) {
-        rec(root);
-        return v;
+        dfs(root);
+        return ans;
     }
 };
 ```
@@ -64,19 +64,19 @@ public:
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> v;
+        vector<int> ans;
         stack<TreeNode*> s;
-        while (root || !s.empty()) {
+        while (root || s.size()) {
             while (root) {
                 s.push(root);
                 root = root->left;
             }
             root = s.top();
             s.pop();
-            v.push_back(root->val);
+            ans.push_back(root->val);
             root = root->right;
         }
-        return v;
+        return ans;
     }
 };
 ```
