@@ -191,6 +191,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 227 | Basic Calculator II | Medium | [Solution](leetcode/227.%20Basic%20Calculator%20II)
 229 | Majority Element II | Medium | [Solution](leetcode/229.%20Majority%20Element%20II)
 230 | Kth Smallest Element in a BST | Medium | [Solution](leetcode/230.%20Kth%20Smallest%20Element%20in%20a%20BST)
+231 | Power of Two | Easy | [Solution](leetcode/231.%20Power%20of%20Two)
 232 | Implement Queue using Stacks | Easy | [Solution](leetcode/232.%20Implement%20Queue%20using%20Stacks)
 234 | Palindrome Linked List | Easy | [Solution](leetcode/234.%20Palindrome%20Linked%20List)
 237 | Delete Node in a Linked List | Easy | [Solution](leetcode/237.%20Delete%20Node%20in%20a%20Linked%20List)
