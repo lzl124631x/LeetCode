@@ -5,24 +5,22 @@
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
-        vector<int> v;
+        vector<int> ans;
         stack<TreeNode*> s;
         TreeNode *prev = NULL;
-        while (root || !s.empty()) {
+        while (root || s.size()) {
             while (root) {
                 s.push(root);
                 root = root->left;
             }
             root = s.top();
             if (!root->right || root->right == prev) {
+                ans.push_back(root->val);
                 s.pop();
-                v.push_back(root->val);
                 prev = root;
                 root = NULL;
-            } else {
-                root = root->right;
-            }
+            } else root = root->right;
         }
-        return v;
+        return ans;
     }
 };
