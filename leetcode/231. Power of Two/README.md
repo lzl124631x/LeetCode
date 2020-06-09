@@ -62,3 +62,20 @@ public:
     }
 };
 ```
+
+## Solution 3.
+
+`n & (n - 1)` removes the lowest bit of `n`. If it's zero, then `n` is power of 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/power-of-two/
+// Author: github.com/lzl124631x
+// Time: O(1)
+// Space: O(1)
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        return n > 0 && !(n & (n - 1));
+    }
+};
+```
