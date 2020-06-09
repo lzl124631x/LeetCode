@@ -9,25 +9,16 @@ public:
         vector<vector<int>> ans;
         queue<TreeNode*> q;
         q.push(root);
-        int cnt = 1;
         while (q.size()) {
-            int nextCnt = 0;
-            vector<int> level;
+            int cnt = q.size();
+            ans.push_back({});
             while (cnt--) {
                 root = q.front();
                 q.pop();
-                level.push_back(root->val);
-                if (root->left) {
-                    ++nextCnt;
-                    q.push(root->left);
-                }
-                if (root->right) {
-                    ++nextCnt;
-                    q.push(root->right);
-                }
+                ans.back().push_back(root->val);
+                if (root->left) q.push(root->left);
+                if (root->right) q.push(root->right);
             }
-            ans.push_back(level);
-            cnt = nextCnt;
         }
         return ans;
     }
