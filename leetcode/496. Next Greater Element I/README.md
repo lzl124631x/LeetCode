@@ -46,7 +46,7 @@ The Next Greater Number of a number <b>x</b> in <code>nums1</code> is the first 
 * [Next Greater Element III (Medium)](https://leetcode.com/problems/next-greater-element-iii/)
 * [Daily Temperatures (Medium)](https://leetcode.com/problems/daily-temperatures/)
 
-## Solution 1.
+## Solution 1. Monotonic Stack
 
 ```cpp
 // OJ: https://leetcode.com/problems/next-greater-element-i/
