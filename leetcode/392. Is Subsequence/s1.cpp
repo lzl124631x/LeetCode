@@ -1,11 +1,14 @@
+// OJ: https://leetcode.com/problems/is-subsequence/
+// Author: github.com/lzl124631x
+// Time: O(M + N)
+// Space: O(1)
 class Solution {
 public:
     bool isSubsequence(string s, string t) {
-        for (auto i = s.begin(), j = t.begin(); i != s.end(); ++i) {
-            while (j != t.end() && *i != *j) ++j;
-            if (j == t.end()) return false;
-            else ++j;
+        int i = 0, j = 0, M = s.size(), N = t.size();
+        for (; i < M && j < N; ++j) {
+            if (s[i] == t[j]) ++i;
         }
-        return true;
+        return i == M;
     }
 };
