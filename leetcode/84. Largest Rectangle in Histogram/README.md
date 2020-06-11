@@ -133,7 +133,7 @@ public:
 };
 ```
 
-## Solution 3.
+## Solution 3. DP
 
 Instead of using `stack`, we can reuse the previously computed `left` and `right` values to get the `left` and `right` values for the current `A[i]`.
 
