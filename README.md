@@ -566,6 +566,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 777 | Swap Adjacent in LR String | Medium | [Solution](leetcode/777.%20Swap%20Adjacent%20in%20LR%20String)
 783 | Minimum Distance Between BST Nodes | Easy | [Solution](leetcode/783.%20Minimum%20Distance%20Between%20BST%20Nodes)
 784 | Letter Case Permutation | Easy | [Solution](leetcode/784.%20Letter%20Case%20Permutation)
+785 | Is Graph Bipartite? | Medium | [Solution](leetcode/785.%20Is%20Graph%20Bipartite%3F)
 788 | Rotated Digits | Easy | [Solution](leetcode/788.%20Rotated%20Digits)
 791 | Custom Sort String | Medium | [Solution](leetcode/791.%20Custom%20Sort%20String)
 794 | Valid Tic-Tac-Toe State | Medium | [Solution](leetcode/794.%20Valid%20Tic-Tac-Toe%20State)
