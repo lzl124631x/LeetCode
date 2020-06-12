@@ -1,6 +1,6 @@
 // OJ: https://leetcode.com/problems/k-closest-points-to-origin/
 // Author: github.com/lzl124631x
-// Time: O(N)
+// Time: O(N) on average, O(N^2) in the worst case
 // Space: O(1)
 class Solution {
 private:
