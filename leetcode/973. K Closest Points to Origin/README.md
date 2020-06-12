@@ -47,7 +47,7 @@ We only want the closest K = 1 points from the origin, so the answer is just [[-
 **Related Topics**:  
 [Math](https://leetcode.com/tag/math/), [Divide and Conquer](https://leetcode.com/tag/divide-and-conquer/), [Sort](https://leetcode.com/tag/sort/)
 
-## Solution 1.
+## Solution 1. Sort
 
 ```cpp
 // OJ: https://leetcode.com/problems/k-closest-points-to-origin/
@@ -69,7 +69,80 @@ public:
 };
 ```
 
-## Solution 2. Quick Select
+## Solution 2. Heap
+
+Keep a min-heap of all elements and pop `K` times.
+
+Heap creation takes `O(N)`. Popping an element takes `O(logN)` which we repeat `K` times.
+
+```cpp
+// OJ: https://leetcode.com/problems/k-closest-points-to-origin/
+// Author: github.com/lzl124631x
+// Time: O(N + KlogN)
+// Space: O(N)
+class Solution {
+    int dist(vector<int> &p) {
+        return p[0] * p[0] + p[1] * p[1];
+    }
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& A, int K) {
+        auto cmp = [&](vector<int> &a, vector<int> &b) {
+            return dist(a) > dist(b);
+        };
+        priority_queue<vector<int>, vector<vector<int>>, decltype(cmp)> q(begin(A), end(A), cmp);
+        vector<vector<int>> ans;
+        while (ans.size() < K) {
+            ans.push_back(q.top());
+            q.pop();
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3. Heap
+
+If the space is limited, we can keep a min-heap of size `K`.
+
+We loop through each point:
+* If the heap has less than `K` elements, push the point into heap.
+* Otherwise, if the distance of the element is smaller than that of the heap top, we pop the heap top and push this point into heap.
+
+In the end, all the elements left in the heap forms the answer.
+
+```cpp
+// OJ: https://leetcode.com/problems/k-closest-points-to-origin/
+// Author: github.com/lzl124631x
+// Time: O(NlogK)
+// Space: O(K)
+class Solution {
+    int dist(const vector<int> &p) {
+        return p[0] * p[0] + p[1] * p[1];
+    }
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& A, int K) {
+        auto cmp = [&](const vector<int> &a, const vector<int> &b) {
+            return dist(a) < dist(b);
+        };
+        priority_queue<vector<int>, vector<vector<int>>, decltype(cmp)> q(cmp);
+        for (auto & p : A) {
+            if (q.size() == K) {
+                if (dist(p) >= dist(q.top())) continue;
+                q.pop();
+            }
+            q.push(p);
+        }
+        vector<vector<int>> ans;
+        while (q.size()) {
+            ans.push_back(q.top());
+            q.pop();
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 4. Quick Select
 
 ```cpp
 // OJ: https://leetcode.com/problems/k-closest-points-to-origin/
