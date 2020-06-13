@@ -22,7 +22,7 @@ The length of given array won't exceed 10000.
 * [Next Greater Element I (Easy)](https://leetcode.com/problems/next-greater-element-i/)
 * [Next Greater Element III (Medium)](https://leetcode.com/problems/next-greater-element-iii/)
 
-## Solution 1. Monostack
+## Solution 1. Monotonic stack
 
 ```cpp
 // OJ: https://leetcode.com/problems/next-greater-element-ii/
