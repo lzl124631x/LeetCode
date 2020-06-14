@@ -869,6 +869,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1472 | Design Browser History | Medium | [Solution](leetcode/1472.%20Design%20Browser%20History)
 1473 | Paint House III | Hard | [Solution](leetcode/1473.%20Paint%20House%20III)
 1475 | Final Prices With a Special Discount in a Shop | Easy | [Solution](leetcode/1475.%20Final%20Prices%20With%20a%20Special%20Discount%20in%20a%20Shop)
+1476 | Subrectangle Queries | Medium | [Solution](leetcode/1476.%20Subrectangle%20Queries)
 1478 | Allocate Mailboxes | Hard | [Solution](leetcode/1478.%20Allocate%20Mailboxes)
 
 # License
