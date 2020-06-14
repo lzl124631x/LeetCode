@@ -868,6 +868,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1471 | The k Strongest Values in an Array | Medium | [Solution](leetcode/1471.%20The%20k%20Strongest%20Values%20in%20an%20Array)
 1472 | Design Browser History | Medium | [Solution](leetcode/1472.%20Design%20Browser%20History)
 1473 | Paint House III | Hard | [Solution](leetcode/1473.%20Paint%20House%20III)
+1475 | Final Prices With a Special Discount in a Shop | Easy | [Solution](leetcode/1475.%20Final%20Prices%20With%20a%20Special%20Discount%20in%20a%20Shop)
 1478 | Allocate Mailboxes | Hard | [Solution](leetcode/1478.%20Allocate%20Mailboxes)
 
 # License
