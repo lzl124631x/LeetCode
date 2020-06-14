@@ -57,11 +57,13 @@ Minimum total distance from each houses to nearest mailboxes is |2-3| + |3-3| + 
 
 Given `i` and `j` which are the indexes of two houses, what's the optimal mailbox position?
 
-Consider input `[1, 4, 10]`, we should put the mailbox at `4` so that the total distance is `10 - 1`.
+Consider input `[1, 4, 10]`, we should put the mailbox at `4`.
 
-Consider input `[1, 2, 4, 10]`, we should put the mailbox at a position in range `[2, 4]`, so that the total distance is `(10 - 1) + (4 - 2)`.
+Consider input `[1, 2, 4, 10]`, we should put the mailbox at a position in range `[2, 4]`. Assume we pick `2`.
 
-Let `dist(i, j)` be this optimal total distance. `dist(i, j) = sum( A[i + k] - A[j - k] | k >= 0 && i + k < j - k )`.
+So in both cases we can pick `A[(i + j) / 2]`.
+
+Let `dist(i, j)` be this optimal total distance. `dist(i, j) = sum( abs(A[k] - A[(i + j) / 2] | i <= k <= j )`.
 
 Let `dp[k][i + 1]` be the answer to the subproblem with `k` mailboxes and houses `[0 .. i]`.
 
@@ -101,6 +103,53 @@ public:
             }
         }
         return dp[K][N];
+    }
+};
+```
+
+## Solution 2.
+
+Consider input `[1, 4, 10]`, we should put the mailbox at `4` so that the total distance is `10 - 1`.
+
+Consider input `[1, 2, 4, 10]`, we should put the mailbox at a position in range `[2, 4]`, so that the total distance is `(4 + 10) - (1 + 2)`.
+
+Let `dist(i, j)` be this optimal total distance. `dist(i, j) = sum((i + j + 1) / 2, j) - sum(i, (i + j) / 2)`, where `sum(a, b) = sum( A[i] | a <= i <= b )`.
+
+Let `presum[i + 1] = sum( A[k] | 0 <= k <= i )`. Then `sum(a, b) = presum(b + 1) - presum(a)`, so:
+
+```
+dist(i, j) = (presum(j + 1) - presum((i + j + 1) / 2)) - (presum((i + j) / 2 + 1) - presum(i))
+```
+
+Another optimization is that we can use 1D array for `dp`.
+
+```cpp
+// OJ: https://leetcode.com/problems/allocate-mailboxes/
+// Author: github.com/lzl124631x
+// Time: O(N^2 * K)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/allocate-mailboxes/discuss/685403/JavaC%2B%2BPython-DP-Solution
+class Solution {
+    int dist(vector<int> &presum, int i, int j) {
+        return (presum[j + 1] - presum[(i + j + 1) / 2]) - (presum[(i + j) / 2 + 1] - presum[i]);
+    }
+public:
+    int minDistance(vector<int>& A, int K) {
+        if (A.size() == K) return 0;
+        sort(begin(A), end(A));
+        int N = A.size(); 
+        vector<int> presum(N + 1);
+        for (int i = 0; i < N; ++i) presum[i + 1] = presum[i] + A[i];
+        vector<int> dp(N + 1, 1e6);
+        for (int i = 0; i < N; ++i) dp[i + 1] = dist(presum, 0, i);
+        for (int k = 2; k <= K; ++k) {
+            for (int i = N - 1; i >= 0; --i) {
+                for (int j = i; j >= k - 1; --j) {
+                    dp[i + 1] = min(dp[i + 1], dp[j] + dist(presum, j, i));
+                }
+            }
+        }
+        return dp[N];
     }
 };
 ```
