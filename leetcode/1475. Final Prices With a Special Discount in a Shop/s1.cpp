@@ -1,2 +1,19 @@
-var link = location.href.replace(/submissions\/$/, '')
-copy(`// OJ: ${link}\n// Author: github.com/lzl124631x\n// Time: O()\n// Space: O()\n${Array.from(document.querySelectorAll('span[role="presentation"]')).map(x => x.textContent.replace(/[^\x00-\x7F]/g, ' ')).filter(x => !/^\s*$/g.test(x)).join('\n')}`)
+// OJ: https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    vector<int> finalPrices(vector<int>& A) {
+        stack<int> s;
+        int N = A.size();
+        for (int i = 0; i < N; ++i) {
+            while (s.size() && A[s.top()] >= A[i]) {
+                A[s.top()] -= A[i];
+                s.pop();
+            }
+            s.push(i);
+        }
+        return A;
+    }
+};
