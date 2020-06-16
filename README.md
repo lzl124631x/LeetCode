@@ -871,6 +871,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1475 | Final Prices With a Special Discount in a Shop | Easy | [Solution](leetcode/1475.%20Final%20Prices%20With%20a%20Special%20Discount%20in%20a%20Shop)
 1476 | Subrectangle Queries | Medium | [Solution](leetcode/1476.%20Subrectangle%20Queries)
 1478 | Allocate Mailboxes | Hard | [Solution](leetcode/1478.%20Allocate%20Mailboxes)
+1480 | Running Sum of 1d Array | Easy | [Solution](leetcode/1480.%20Running%20Sum%20of%201d%20Array)
 
 # License
 
