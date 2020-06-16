@@ -29,8 +29,8 @@ Note that an empty tree is represented by `NULL`, therefore you would see the ex
 ```cpp
 // OJ: https://leetcode.com/problems/search-in-a-binary-search-tree/
 // Author: github.com/lzl124631x
-// Time: O(log(N))
-// Space: O(log(N))
+// Time: O(H)
+// Space: O(H)
 class Solution {
 public:
     TreeNode* searchBST(TreeNode* root, int val) {
