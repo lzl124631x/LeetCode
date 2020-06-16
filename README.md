@@ -874,6 +874,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1480 | Running Sum of 1d Array | Easy | [Solution](leetcode/1480.%20Running%20Sum%20of%201d%20Array)
 1481 | Least Number of Unique Integers after K Removals | Medium | [Solution](leetcode/1481.%20Least%20Number%20of%20Unique%20Integers%20after%20K%20Removals)
 1482 | Minimum Number of Days to Make m Bouquets | Medium | [Solution](leetcode/1482.%20Minimum%20Number%20of%20Days%20to%20Make%20m%20Bouquets)
+1483 | Kth Ancestor of a Tree Node | Hard | [Solution](leetcode/1483.%20Kth%20Ancestor%20of%20a%20Tree%20Node)
 
 # License
 
