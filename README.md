@@ -567,6 +567,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 783 | Minimum Distance Between BST Nodes | Easy | [Solution](leetcode/783.%20Minimum%20Distance%20Between%20BST%20Nodes)
 784 | Letter Case Permutation | Easy | [Solution](leetcode/784.%20Letter%20Case%20Permutation)
 785 | Is Graph Bipartite? | Medium | [Solution](leetcode/785.%20Is%20Graph%20Bipartite%3F)
+787 | Cheapest Flights Within K Stops | Medium | [Solution](leetcode/787.%20Cheapest%20Flights%20Within%20K%20Stops)
 788 | Rotated Digits | Easy | [Solution](leetcode/788.%20Rotated%20Digits)
 791 | Custom Sort String | Medium | [Solution](leetcode/791.%20Custom%20Sort%20String)
 794 | Valid Tic-Tac-Toe State | Medium | [Solution](leetcode/794.%20Valid%20Tic-Tac-Toe%20State)
