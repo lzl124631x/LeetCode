@@ -88,3 +88,7 @@ public:
     }
 };
 ```
+
+## Solution 3. 
+
+https://leetcode.com/problems/sum-of-mutated-array-closest-to-target/discuss/463268/JavaC%2B%2B-4ms-binary-search-short-readable-code-%2B-sorting-solution
