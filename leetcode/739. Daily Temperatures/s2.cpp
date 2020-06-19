@@ -1,19 +1,18 @@
 // OJ: https://leetcode.com/problems/daily-temperatures/
 // Author: github.com/lzl124631x
-// Time: O(T)
-// Space: O(T)
+// Time: O(N)
+// Space: O(N)
 class Solution {
 public:
     vector<int> dailyTemperatures(vector<int>& T) {
-        vector<int> indexes(T.size()), vals(T.size()), ans(T.size());
-        int length = 0;
-        for (int i = T.size() - 1; i >= 0; --i) {
-            auto p = lower_bound(vals.begin(), vals.begin() + length, T[i], greater<int>());
-            int pos = p - vals.begin();
-            vals[pos] = T[i];
-            indexes[pos] = i;
-            length = pos + 1;
-            ans[i] = pos > 0 ? indexes[pos - 1] - i : 0;
+        vector<int> ans(T.size());
+        stack<int> s;
+        for (int i = 0; i < T.size(); ++i) {
+            while (s.size() && T[s.top()] < T[i]) {
+                ans[s.top()] = i - s.top();
+                s.pop();
+            }
+            s.push(i);
         }
         return ans;
     }
