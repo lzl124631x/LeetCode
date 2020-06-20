@@ -64,30 +64,28 @@ The DFS idea is not hard to come up with. One optimization we should think about
 // Time: O(2^M) where M is the max length of string in wordDict.
 // Space: O(C) where C is the length sum of wordDict
 class Solution {
-private:
     int maxLen = 0;
-    vector<int> states;
+    unordered_set<string> ws;
+    vector<int> m;
     vector<string> ans;
-    unordered_set<string> dict;
-    bool dfs(string &s, int start, string tmp){
-        if (start == s.size()) {
+    bool dfs(string &s, int i, string tmp) {
+        if (i == s.size()) {
             ans.push_back(tmp);
-            return true;
+            return true; 
         }
-        if (states[start] == 2) return false;
-        states[start] = 2;
-        for(int end = start + 1; end <= s.size() && end - start <= maxLen; ++end){
-            string sub = s.substr(start, end - start);
-            if (dict.find(sub) == dict.end()) continue;
-            if (dfs(s, end, tmp.size() ? tmp + " " + sub : sub) == 1) states[start] = 1;
+        if (m[i] == 0) return m[i];
+        m[i] = 0;
+        for (int j = min((int)s.size(), i + maxLen); j > i; --j) {
+            auto sub = s.substr(i, j - i);
+            if (ws.count(sub) && dfs(s, j, tmp.size() ? tmp + " " + sub : sub)) m[i] = 1;
         }
-        return states[start] == 1;
+        return m[i];
     }
 public:
-    vector<string> wordBreak(string s, vector<string> &wordDict) {
-        dict = unordered_set<string>(wordDict.begin(), wordDict.end());
-        for (auto &s : wordDict) maxLen = max(maxLen, (int)s.size());
-        states = vector<int>(s.size(), 0); // 0 unvisited; 1 can research the end; 2 can not.
+    vector<string> wordBreak(string s, vector<string>& dict) {
+        ws = { dict.begin(), dict.end() };
+        for (auto &w : dict) maxLen = max(maxLen, (int)w.size());
+        m.assign(s.size(), -1); // -1 = unvisited, 0 = can not reach end, 1 = can reach end.
         dfs(s, 0, "");
         return ans;
     }
