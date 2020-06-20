@@ -1,24 +1,13 @@
-// OJ: https://leetcode.com/problems/permutation-sequence/
+// OJ: https://leetcode.com/explore/challenge/card/june-leetcoding-challenge/541/week-3-june-15th-june-21st/3366/
 // Author: github.com/lzl124631x
-// Time: O(N^2)
-// Space: O(1)
+// Time: O(NK)
+// Space: O(N)
 class Solution {
 public:
     string getPermutation(int n, int k) {
-        int fac = 1;
-        string ans;
-        for (int i = 1; i <= n; ++i) {
-            fac *= i;
-            ans += '0' + i;
-        }
-        --k;
-        for (int i = 0; i < n; ++i) {
-            fac /= n - i;
-            int j = k / fac + i, tmp = ans[j];
-            for (; j > i; --j) ans[j] = ans[j - 1];
-            ans[j] = tmp;
-            k %= fac;
-        }
-        return ans;
+        string s;
+        for (int i = 0; i < n; ++i) s += ('1' + i);
+        while (--k) next_permutation(s.begin(), s.end());
+        return s;
     }
 };
