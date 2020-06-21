@@ -881,6 +881,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1483 | Kth Ancestor of a Tree Node | Hard | [Solution](leetcode/1483.%20Kth%20Ancestor%20of%20a%20Tree%20Node)
 1486 | XOR Operation in an Array | Easy | [Solution](leetcode/1486.%20XOR%20Operation%20in%20an%20Array)
 1487 | Making File Names Unique | Medium | [Solution](leetcode/1487.%20Making%20File%20Names%20Unique)
+1488 | Avoid Flood in The City | Medium | [Solution](leetcode/1488.%20Avoid%20Flood%20in%20The%20City)
 
 # License
 
