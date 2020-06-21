@@ -112,6 +112,32 @@ public:
 };
 ```
 
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/dungeon-game
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(1)
+class Solution {
+public:
+    int calculateMinimumHP(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size();
+        for (int i = M - 1; i >= 0; --i) {
+            for (int j = N - 1; j >= 0; --j) {
+                int req;
+                if (i == M - 1 && j == N - 1) req = 1;
+                else if (i == M - 1) req = A[i][j + 1];
+                else if (j == N - 1) req = A[i + 1][j];
+                else req = min(A[i][j + 1], A[i + 1][j]);
+                A[i][j] = max(1, req - A[i][j]);
+            }
+        }
+        return A[0][0];
+    }
+};
+```
+
 ## Solution 2.
 
 In case it's not allowed to change the input array.
