@@ -35,15 +35,15 @@
 **Related Topics**:  
 [Tree](https://leetcode.com/tag/tree/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/)
 
-## Solution 1.
+## Solution 1. Post-order traversal
 
 For node `n`, let `f(n)` be the maximum path sum that STARTS from node `n` to its children. It means that the path can only go through one of its children, not both of them. We have:
 
 ```
-f(n) = n->val + max(0, max(f(n->left), f(n->right)))
+f(n) = n->val + max({ 0, f(n->left), f(n->right) })
 ```
 
-For each node `n`, we also need to try to update the maximum path sum using `max(0, f(n->left)) + max(0, f(n->right)) + n->val`.
+For each node `n`, we also need to try to update the maximum path sum using `n->val + max(0, f(n->left)) + max(0, f(n->right))`.
 
 In sum, we can use post order traversal to compute `f(n)` and update maximum path sum along the process.
 
