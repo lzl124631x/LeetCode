@@ -132,3 +132,49 @@ public:
     }
 };
 ```
+
+## Solution 2. Greedy
+
+I came with this solution first in the context but instead of using `set::upper_bound` I used `std::upper_bound` which degrades to `O(N)` complexity on `set` :(
+
+So remember! When doing `upper_bound `on `set`, must use `set::upper_bound`!
+
+Use a set `s` to store the index of available `0`s. Use map to store the mapping from a active lake to its index.
+
+If `A[i] == 0`, we just add it to `s` and set a dummy value `ans[i] = 1`. If might get overwritten later. If it's not overwritten, leaving this dummy value here is also correct.
+
+If `A[i] > 0`, we first check if it exists in `m`:
+
+* Only when the answer is yes, we need to find the smallest index in `s` that is greater than `m[A[i]]`. If there is no such index, we don't have available day to dry this lake, we should return `{}`. Otherwise, we dry `A[i]` using this index and erase this used index from `s`.
+* No matter if it's yes or no, we need to set `m[A[i]] = i` to add this active lake.
+
+```cpp
+// OJ: https://leetcode.com/problems/avoid-flood-in-the-city/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class Solution {
+public:
+    vector<int> avoidFlood(vector<int>& A) {
+        int N = A.size();
+        vector<int> ans(N, -1);
+        unordered_map<int, int> m;
+        set<int> s;
+        for (int i = 0; i < N; ++i) {
+            if (A[i] > 0) {
+                if (m.count(A[i])) {
+                    auto it = s.upper_bound(m[A[i]]);
+                    if (it == s.end()) return {};
+                    ans[*it] = A[i];
+                    s.erase(it);
+                }
+                m[A[i]] = i;
+            } else {
+                s.insert(i);
+                ans[i] = 1;
+            }
+        }
+        return ans;
+    }
+};
+```
