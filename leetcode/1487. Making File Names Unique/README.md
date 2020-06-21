@@ -66,7 +66,7 @@
 
 Store the smallest possible index of the name in a map `m`.
 
-If the name doesn't exist in `m`, then we can safely use the name and set `m[name] = 1` so that next time you come cross the same name, you can start from `name(1)`.
+If the name doesn't exist in `m`, then we can safely use the name and set `m[name] = 1` so that next time you come cross the same name, you can start from `name + "(" + 1 + ")"`.
 
 If the name already exist in `m`, instead of trying from `1` every time, we start trying from `m[name]`. The first `name + "(" + index + ")"` that doesn't show up in `m` will be the name we use. Then we set `m[name] = index + 1`, and `m[name + "(" + index + ")"] = 1`.
 
