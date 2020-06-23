@@ -5,15 +5,14 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        int ans = 0;
-        for (int i = 0; i < 32; ++i) {
-            unsigned long bit = 0, mask = 1 << i;
-            for (int n : nums) {
-                bit += (unsigned)n & mask;
-                if (bit && (bit % 3 == 0)) bit = 0;
-            }
-            ans |= bit;
+        int low = 0, high = 0;
+        for (int n : nums) {
+            int newLow, newHigh;
+            newLow = low ^ n;
+            newHigh = high | (low & n);
+            low = newLow ^ (newLow & newHigh);
+            high = newHigh ^ (newLow & newHigh);
         }
-        return ans;
+        return low;
     }
 };

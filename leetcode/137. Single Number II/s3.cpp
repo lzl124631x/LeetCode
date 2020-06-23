@@ -7,11 +7,11 @@ public:
     int singleNumber(vector<int>& nums) {
         int low = 0, high = 0;
         for (int n : nums) {
-            int newLow, newHigh;
-            newLow = low ^ n;
-            newHigh = high | (low & n);
-            low = newLow ^ (newLow & newHigh);
-            high = newHigh ^ (newLow & newHigh);
+            high ^= low & n;
+            low ^= n;
+            unsigned mask = ~(high & low);
+            high &= mask;
+            low &= mask;
         }
         return low;
     }

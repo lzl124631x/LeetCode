@@ -32,12 +32,11 @@ public:
     int singleNumber(vector<int>& nums) {
         int ans = 0;
         for (int i = 0; i < 32; ++i) {
-            int bit = 0;
+            int cnt = 0;
             for (int n : nums) {
-                bit += (n >> i) & 1;
-                if (bit >= 3) bit = 0;
+                cnt = (cnt + ((n >> i) & 1)) % 3;
             }
-            ans |= bit << i;
+            ans |= cnt << i;
         }
         return ans;
     }
@@ -45,30 +44,6 @@ public:
 ```
 
 ## Solution 2.
-
-```cpp
-// OJ: https://leetcode.com/problems/single-number-ii/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
-class Solution {
-public:
-    int singleNumber(vector<int>& nums) {
-        int ans = 0;
-        for (int i = 0; i < 32; ++i) {
-            unsigned long bit = 0, mask = 1 << i;
-            for (int n : nums) {
-                bit += (unsigned)n & mask;
-                if (bit % 3 == 0) bit = 0;
-            }
-            ans |= bit;
-        }
-        return ans;
-    }
-};
-```
-
-## Solution 3.
 
 ```cpp
 // OJ: https://leetcode.com/problems/single-number-ii/
@@ -91,7 +66,7 @@ public:
 };
 ```
 
-## Solution 4.
+## Solution 3.
 
 ```cpp
 // OJ: https://leetcode.com/problems/single-number-ii/
