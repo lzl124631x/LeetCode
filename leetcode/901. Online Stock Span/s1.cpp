@@ -3,16 +3,15 @@
 // Time: O(1) amortized
 // Space: O(N)
 class StockSpanner {
-    stack<pair<int, int>> s; // val, index
-    int i = 0;
+    vector<int> val = {INT_MAX}, prev = {-1};
 public:
-    StockSpanner() {
-        s.emplace(INT_MAX, -1);
-    }
+    StockSpanner() {}
+    
     int next(int price) {
-        while (s.top().first <= price) s.pop();
-        int span = i - s.top().second;
-        s.emplace(price, i++);
-        return span;
+        int i = val.size() - 1;
+        while (val[i] <= price) i = prev[i];
+        val.push_back(price);
+        prev.push_back(i);
+        return val.size() - i - 1;
     }
 };

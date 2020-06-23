@@ -45,6 +45,40 @@ Note that (for example) S.next(75) returned 4, because the last 4 prices
 
 ## Solution 1.
 
+Consider input `[5,3,1,2,4]`. When we scan `4`, we take a look at the previous value `2` which is smaller than `4` so we should continue scanning. We don't need to scan leftwards one by one if we store the index of the previous larger number.
+
+```
+index:  0  1  2  3  4
+val:    5  3  1  2  4
+prev:  -1  0  1  1  0
+```
+
+So when scanning `4`, we take a look at `2` first, and since it's smaller than `4`, we can jump to `prev[3] = 1`. The value at `1` is `3` which is again smaller so we continue to jump to `prev[1] = 0` and we see `5` which is greater, so we can know that the span is `4 - 0 = 4`.
+
+```cpp
+// OJ: https://leetcode.com/problems/online-stock-span/
+// Author: github.com/lzl124631x
+// Time: O(1) amortized
+// Space: O(N)
+class StockSpanner {
+    vector<int> val = {INT_MAX}, prev = {-1};
+public:
+    StockSpanner() {}
+    
+    int next(int price) {
+        int i = val.size() - 1;
+        while (val[i] <= price) i = prev[i];
+        val.push_back(price);
+        prev.push_back(i);
+        return val.size() - i - 1;
+    }
+};
+```
+
+## Solution 1. Monotonic Stack
+
+We don't need to store those intermediate smaller values since they will be skipped by jumping with the `prev` values.
+
 ```cpp
 // OJ: https://leetcode.com/problems/online-stock-span/
 // Author: github.com/lzl124631x
