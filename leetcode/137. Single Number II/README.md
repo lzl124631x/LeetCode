@@ -88,3 +88,23 @@ public:
     }
 };
 ```
+
+## Solution 4.
+
+```cpp
+// OJ: https://leetcode.com/problems/single-number-ii/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int one = 0, two = 0;
+        for (int n : nums) {
+            one = (one ^ n) & ~two;
+            two = (two ^ n) & ~one;
+        }
+        return one;
+    }
+};
+```
