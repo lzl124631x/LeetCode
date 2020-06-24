@@ -110,3 +110,5 @@ public:
     }
 };
 ```
+
+## Solution 2. Binary Lifting
