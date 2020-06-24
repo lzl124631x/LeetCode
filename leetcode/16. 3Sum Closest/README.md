@@ -27,7 +27,7 @@
 * [3Sum (Medium)](https://leetcode.com/problems/3sum/)
 * [3Sum Smaller (Medium)](https://leetcode.com/problems/3sum-smaller/)
 
-## Solution 1.
+## Solution 1. Two pointers
 
 ```cpp
 // OJ: https://leetcode.com/problems/3sum-closest/
