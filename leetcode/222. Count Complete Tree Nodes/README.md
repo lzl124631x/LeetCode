@@ -60,7 +60,7 @@ public:
 
 ## Solution 2.
 
-Minor optimization which prevents us from recomputing the lengths that we've already know.
+Minor optimization which prevents us from recomputing the lengths that we've already known.
 
 ```cpp
 // OJ: https://leetcode.com/problems/count-complete-tree-nodes/
@@ -88,6 +88,26 @@ class Solution {
 public:
     int countNodes(TreeNode* root) {
         return count(root);
+    }
+};
+```
+
+## Solution 3.
+
+```cpp
+// OJ: https://leetcode.com/problems/count-complete-tree-nodes/
+// Author: github.com/lzl124631x
+// Time: O(H^2)
+// Space: O(H)
+// Ref: https://leetcode.com/problems/count-complete-tree-nodes/discuss/61958/Concise-Java-solutions-O(log(n)2)
+class Solution {
+    int height(TreeNode *root) {
+        return root ? 1 + height(root->left) : -1;
+    }
+public:
+    int countNodes(TreeNode* root) {
+        int h = height(root);
+        return h < 0 ? 0 : (height(root->right) + 1 == h ? (1 << h) + countNodes(root->right) : (1 << (h - 1)) + countNodes(root->left));
     }
 };
 ```
