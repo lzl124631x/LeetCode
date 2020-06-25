@@ -44,7 +44,7 @@ Let `dp[i]` be true if `s[0..(i-1)]` can be segmented using `wordDict`.
 ```
 dp[0] = true
 dp[i] = true if dp[j] && s[j..i] is in dict
-        where i is in [1, S], j is in [0, i)
+        where 1 <= i <= N, 0 <= j < i
 ```
 
 ```cpp
@@ -55,14 +55,41 @@ dp[i] = true if dp[j] && s[j..i] is in dict
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& dict) {
-        unordered_set<string> ws(dict.begin(), dict.end());
+        unordered_set<string> st(begin(dict), end(dict));
         int N = s.size();
         vector<bool> dp(N + 1);
         dp[0] = true;
         for (int i = 1; i <= N; ++i) {
-            for (int j = i - 1; j >= 0 && !dp[i]; --j) {
-                if (!dp[j] || !ws.count(s.substr(j, i - j))) continue;
-                dp[i] = true;
+            for (int j = 0; j < i && !dp[i]; ++j) {
+                dp[i] = dp[j] && st.count(s.substr(j, i - j));
+            }
+        }
+        return dp[N];
+    }
+};
+```
+
+Minor optimization which won't check substrings whose lengths haven't shown up in the dictionary.
+
+```cpp
+// OJ: https://leetcode.com/problems/word-break/
+// Author: github.com/lzl124631x
+// Time: O(S^3)
+// Space: O(S + W)
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& dict) {
+        unordered_set<string> st(begin(dict), end(dict));
+        int N = s.size(), minLen = INT_MAX, maxLen = 0;
+        for (auto &w : dict) {
+            minLen = min(minLen, (int)w.size());
+            maxLen = max(maxLen, (int)w.size());
+        }
+        vector<bool> dp(N + 1, false);
+        dp[0] = true;
+        for (int i = 1; i <= N; ++i) {
+            for (int len = minLen; len <= maxLen && i - len >= 0 && !dp[i]; ++len) {
+                dp[i] = dp[i - len] && st.count(s.substr(i - len, len));
             }
         }
         return dp[N];
@@ -78,22 +105,56 @@ public:
 // Time: O(S^3)
 // Space: O(S + W)
 class Solution {
-    unordered_set<string> ws;
+    unordered_set<string> st;
     vector<int> m;
     bool dp(string &s, int i) {
         if (i == s.size()) return true;
         if (m[i] != -1) return m[i];
         m[i] = 0;
-        for (int j = s.size(); j > i && m[i] != 1; --j) {
-            if (!dp(s, j) || ws.count(s.substr(i, j - i)) == 0) continue;
+        for (int j = i + 1; j <= s.size() && m[i] != 1; ++j) {
+            if (!dp(s, j) || st.count(s.substr(i, j - i)) == 0) continue;
             m[i] = 1;
         }
         return m[i];
     }
 public:
-    bool wordBreak(string s, vector<string>& dist) {
-        ws = { dist.begin(), dist.end() };
+    bool wordBreak(string s, vector<string>& dict) {
         m.assign(s.size(), -1);
+        st = { begin(dict), end(dict) };
+        return dp(s, 0);
+    }
+};
+```
+
+Minor optimization which won't check substrings whose lengths haven't shown up in the dictionary.
+
+```cpp
+// OJ: https://leetcode.com/problems/word-break/
+// Author: github.com/lzl124631x
+// Time: O(S^3)
+// Space: O(S + W)
+class Solution {
+    unordered_set<string> st;
+    int minLen = INT_MAX, maxLen = 0;
+    vector<int> m;
+    bool dp(string &s, int i) {
+        if (i == s.size()) return true;
+        if (m[i] != -1) return m[i];
+        m[i] = 0;
+        for (int len = minLen; len <= maxLen && i + len <= s.size() && m[i] != 1; ++len) {
+            if (!dp(s, i + len) || st.count(s.substr(i, len)) == 0) continue;
+            m[i] = 1;
+        }
+        return m[i];
+    }
+public:
+    bool wordBreak(string s, vector<string>& dict) {
+        m.assign(s.size(), -1);
+        for (auto &w : dict) {
+            st.insert(w);
+            maxLen = max(maxLen, (int)w.size());
+            minLen = min(minLen, (int)w.size());
+        }
         return dp(s, 0);
     }
 };
