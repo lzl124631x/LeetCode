@@ -5,6 +5,6 @@ if [ -z $1 ]
     exit 1
 fi
 git add README.md
-git add leetcode/$1*
+git add leetcode/$1.*
 git commit -m $1
 git push
