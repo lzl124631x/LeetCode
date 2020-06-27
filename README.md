@@ -882,6 +882,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1486 | XOR Operation in an Array | Easy | [Solution](leetcode/1486.%20XOR%20Operation%20in%20an%20Array)
 1487 | Making File Names Unique | Medium | [Solution](leetcode/1487.%20Making%20File%20Names%20Unique)
 1488 | Avoid Flood in The City | Medium | [Solution](leetcode/1488.%20Avoid%20Flood%20in%20The%20City)
+1494 | Parallel Courses II | Hard | [Solution](leetcode/1494.%20Parallel%20Courses%20II)
 
 # License
 
