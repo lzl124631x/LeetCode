@@ -888,6 +888,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1493 | Longest Subarray of 1's After Deleting One Element | Medium | [Solution](leetcode/1493.%20Longest%20Subarray%20of%201's%20After%20Deleting%20One%20Element)
 1494 | Parallel Courses II | Hard | [Solution](leetcode/1494.%20Parallel%20Courses%20II)
 1496 | Path Crossing | Easy | [Solution](leetcode/1496.%20Path%20Crossing)
+1497 | Check If Array Pairs Are Divisible by k | Medium | [Solution](leetcode/1497.%20Check%20If%20Array%20Pairs%20Are%20Divisible%20by%20k)
 
 # License
 
