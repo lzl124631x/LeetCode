@@ -885,6 +885,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1488 | Avoid Flood in The City | Medium | [Solution](leetcode/1488.%20Avoid%20Flood%20in%20The%20City)
 1491 | Average Salary Excluding the Minimum and Maximum Salary | Easy | [Solution](leetcode/1491.%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary)
 1492 | The kth Factor of n | Medium | [Solution](leetcode/1492.%20The%20kth%20Factor%20of%20n)
+1493 | Longest Subarray of 1's After Deleting One Element | Medium | [Solution](leetcode/1493.%20Longest%20Subarray%20of%201's%20After%20Deleting%20One%20Element)
 1494 | Parallel Courses II | Hard | [Solution](leetcode/1494.%20Parallel%20Courses%20II)
 
 # License
