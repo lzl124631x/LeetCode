@@ -24,7 +24,7 @@
 * [Count Primes (Easy)](https://leetcode.com/problems/count-primes/)
 * [Ugly Number II (Medium)](https://leetcode.com/problems/ugly-number-ii/)
 
-## Solution 1.
+## Solution 1. DP Bottom-up
 
 ```cpp
 // OJ: https://leetcode.com/problems/perfect-squares/
@@ -47,7 +47,32 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. DP Top-down
+
+```cpp
+// OJ: https://leetcode.com/problems/perfect-squares/
+// Author: github.com/lzl124631x
+// Time: O(NS) where S is the count of square numbers less than n.
+// Space: O(N)
+class Solution {
+    vector<int> memo;
+    int dp(int n) {
+        if (n == 0) return 0;
+        if (memo[n]) return memo[n];
+        int ans = INT_MAX;
+        for (int i = 1; i * i <= n; ++i) ans = min(ans, 1 + dp(n - i * i));
+        return memo[n] = ans;
+    }
+public:
+    int numSquares(int n) {
+        memo.assign(n + 1, 0);
+        for (int i = 1; i * i <= n; ++i) memo[i * i] = 1;
+        return dp(n);
+    }
+};
+```
+
+## Solution 3.
 
 ```cpp
 // OJ: https://leetcode.com/problems/perfect-squares/
@@ -58,15 +83,13 @@ public:
 class Solution {
 public:
     int numSquares(int n) {
-        static vector<int> v{0};
-        while (v.size() <= n) {
-            int m = v.size(), minVal = INT_MAX;
-            for (int j = 1; j * j <= m; ++j) {
-                minVal = min(minVal, 1 + v[m - j * j]);
-            }
-            v.push_back(minVal);
+        static vector<int> dp{0};
+        while (dp.size() <= n) {
+            int m = dp.size(), minVal = INT_MAX;
+            for (int i = 1; i * i <= m; ++i) minVal = min(minVal, 1 + dp[m - i * i]);
+            dp.push_back(minVal);
         }
-        return v[n];
+        return dp[n];
     }
 };
 ```
