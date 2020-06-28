@@ -112,3 +112,55 @@ public:
     }
 };
 ```
+
+## Solution 4. Sliding Window
+
+Sliding window `[i, j]` without repeating characters.
+
+1. Keep extending the right edge.
+1. Only shrink when needed.
+1. The size of the current window is `j - i + 1`.
+1. Back to step 1 until reaching the end.
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-substring-without-repeating-characters/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        vector<int> cnt(128);
+        int i = 0, j = 0, ans = 0;
+        for (; j < s.size(); ++j) {
+            cnt[s[j]]++;
+            while (cnt[s[j]] > 1) cnt[s[i++]]--;
+            ans = max(ans, j - i + 1);
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 5. Sliding Window
+
+Sliding window `[i, j]` that is without repeating characters and never shrinks.
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-substring-without-repeating-characters/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        vector<int> cnt(128);
+        int i = 0, j = 0, k = 0;
+        for (; j < s.size(); ++j) {
+            if (++cnt[s[j]] == 2) ++k;
+            if (k >= 1) k -= --cnt[s[i++]] == 1;
+        }
+        return j - i;
+    }
+};
+```
