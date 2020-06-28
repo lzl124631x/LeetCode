@@ -58,6 +58,11 @@
 
 Use a map to store the frequencies of remainders and check if each remainder satisfies the requirement.
 
+1. If there are odd number `0` remainders, return false
+1. For `1 <= i < k / 2`, if `m[i] != m[k - i]`, return false.
+
+If `k` is an even number, we can return false if `m[k / 2] % 2 != 0` but it's not needed because if `m[k / 2]` is odd, one of the above conditions above must be false.
+
 ```cpp
 // OJ: https://leetcode.com/problems/check-if-array-pairs-are-divisible-by-k/
 // Author: github.com/lzl124631x
@@ -69,7 +74,7 @@ public:
         unordered_map<int, int> m;
         for (int n : A) m[(n % k + k) % k]++;
         if (m[0] % 2) return false;
-        for (int i = 1; i <= k / 2; ++i) {
+        for (int i = 1; i < k / 2; ++i) {
             if (m[i] != m[k - i]) return false;
         }
         return true;
