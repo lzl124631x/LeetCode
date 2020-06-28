@@ -144,7 +144,7 @@ public:
 };
 ```
 
-## Solution 1. DP
+## Solution 1. Bitmask DP
 
 If the `j`-th bit of `pre[i]` is 1, then there is an edge from `j` to `i`.
 
