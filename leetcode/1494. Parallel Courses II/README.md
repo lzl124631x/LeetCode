@@ -48,9 +48,9 @@
 **Related Topics**:  
 [Graph](https://leetcode.com/tag/graph/)
 
-## Solution 1. Topological Sort + Heap
+## WA. Topological Sort + Heap
 
-We should take the classes with the maximum level first.
+Many people mentioned the solution which uses topological sort and greedily picking the classes with the most outdegrees. It is wrong considering the following example.
 
 ```
         1  2        level 2
@@ -61,11 +61,48 @@ We should take the classes with the maximum level first.
            5        level 0
 ```
 
+All classes have the same outdegree but we should take classes `1` and `2` first. The answer should be `3`.
+
+Then the 2nd idea is that we take the classes with the maximum level first.
+
+But there is also counter example of this solution...
+
+```
+6
+[[1,4],[2,4],[3,4],[3,5],[3,6]]
+2
+```
+
+```
+1  2   3
+ \ | / | \
+   4   5  6
+```
+
+The classes `1`, `2`, `3` are all at level `1`, but we should take `3` first.
+
+Then shall we sort on both level and outdegrees?
+
+It's still wrong. Counter example below:
+
+```
+9
+[[1,4],[1,5],[2,5],[2,6],[3,6],[3,7],[8,4],[8,5],[9,6],[9,7]]
+3
+```
+
+Classes `1, 2, 3, 8, 9` have the same outdegree and level but we should pick `1, 2, 8` or `2, 3,9` first.
+
+Anyway, these greedy ideas are incorrect.
+
+Just for reference, I put the greedy solution using depth below.
+
 ```cpp
 // OJ: https://leetcode.com/problems/parallel-courses-ii/
 // Author: github.com/lzl124631x
 // Time: O((V + E) * logV)
 // Space: O(V + E)
+// NOTE: this is a wrong answer.
 class Solution {
     int dfs(vector<vector<int>> &G, vector<int> &level, int u) {
         if (level[u] != -1) return level[u];
@@ -103,6 +140,47 @@ public:
             for (auto &n : next) pq.push(n);
         }
         return ans;
+    }
+};
+```
+
+## Solution 1. DP
+
+If the `j`-th bit of `pre[i]` is 1, then there is an edge from `j` to `i`.
+
+Let `dp[i]` be the minimum number of semesters needed to take all the courses specified in `i`. If the `j`-th bit of `i` is 1, then `j`-th class is considered.
+
+Trivial case: `dp[0] = 0`. It takes no semester to finish 0 courses.
+
+Initialization: `dp[i] = N` because it won't take more than `N` semesters to finish all courses.
+
+```
+dp[i | s] = min( dp[i] + 1 | `s` is a non-empty subset of `next` and there are no more than K bits in `s`)
+            where `next` is the set of next available courses if courses in `i` are taken.
+```
+
+```cpp
+// OJ: https://leetcode.com/problems/parallel-courses-ii/
+// Author: github.com/lzl124631x
+// Time: O(3^N)
+// Space: O(2^N)
+class Solution {
+public:
+    int minNumberOfSemesters(int N, vector<vector<int>>& E, int K) {
+        vector<int> pre(N), dp(1 << N, N);
+        for (auto &e : E) pre[e[1] - 1] |= 1 << (e[0] - 1);
+        dp[0] = 0;
+        for (int i = 0; i < (1 << N); ++i) {
+            int next = 0;
+            for (int j = 0; j < N; ++j) {
+                if ((i & pre[j]) == pre[j]) next |= 1 << j; // If the current course set `i` covers all the prerequisite classes of `j`-th class, we can take `j`-th class.
+            }
+            next &= ~i; // remove the classes that are already covered by `i`.
+            for (int s = next; s; s = (s - 1) & next) { // enumerate all the non-empty subset of `next`.
+                if (__builtin_popcount(s) <= K) dp[i | s] = min(dp[i | s], dp[i] + 1);
+            }
+        }
+        return dp.back();
     }
 };
 ```
