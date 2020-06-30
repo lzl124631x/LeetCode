@@ -39,7 +39,7 @@ From the top-left corner, there are a total of 3 ways to reach the bottom-right 
 * [Minimum Path Sum (Medium)](https://leetcode.com/problems/minimum-path-sum/)
 * [Dungeon Game (Hard)](https://leetcode.com/problems/dungeon-game/)
 
-## Solution 1.
+## Solution 1. DP
 
 ```cpp
 // OJ: https://leetcode.com/problems/unique-paths/
@@ -49,12 +49,12 @@ From the top-left corner, there are a total of 3 ways to reach the bottom-right 
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-        vector<int> memo(n + 1, 0);
-        memo[n - 1] = 1;
-        for (int i = m - 1; i >= 0; --i) 
-            for (int j = n - 1; j >= 0; --j) 
-                memo[j] += memo[j + 1];
-        return memo[0];
+        vector<int> dp(n + 1, 0);
+        dp[n - 1] = 1;
+        for (int i = m - 1; i >= 0; --i) {
+            for (int j = n - 1; j >= 0; --j) dp[j] += dp[j + 1];
+        }
+        return dp[0];
     }
 };
 ```
@@ -71,10 +71,9 @@ The result is `(m + n - 2)! / ((m - 1)! * (n - 1)!)`.
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-        long long a = 1;
-        for (int i = 1; i <= n - 1; ++i)
-            a = a * (m - 1 + i) / i;
-        return a;
+        long ans = 1;
+        for (int i = 1; i <= n - 1; ++i) ans = ans * (m - 1 + i) / i;
+        return ans;
     }
 };
 ```
