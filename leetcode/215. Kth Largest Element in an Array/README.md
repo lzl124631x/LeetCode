@@ -37,115 +37,106 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.</p>
 // Time: O(N + klogN)
 // Space: O(1)
 class Solution {
-private:
-  void percolateDown(vector<int>&nums, int end, int index) {
-    if (index < 0 || index >= end) return;
-    int child = 2 * index + 1;
-    while (child < end) {
-      if (child + 1 < end && nums[child + 1] > nums[child]) ++child;
-      if (nums[index] > nums[child]) break;
-      swap(nums[index], nums[child]);
-      index = child;
-      child = 2 * index + 1;
+    void percolateDown(vector<int> &A, int end, int index) {
+        if (index < 0 || index >= end) return;
+        int child = 2 * index + 1;
+        while (child < end) {
+            if (child + 1 < end && A[child + 1] > A[child]) ++child;
+            if (A[index] > A[child]) break;
+            swap(A[index], A[child]);
+            index = child;
+            child = 2 * index + 1;
+        }
     }
-  }
-  void heapify(vector<int>&nums) {
-    for (int i = (nums.size() >> 1) - 1; i >= 0; --i) {
-      percolateDown(nums, nums.size(), i);
+    void heapify(vector<int> &A) {
+        for (int i = (A.size() >> 1) - 1; i >= 0; --i) percolateDown(A, A.size(), i);
     }
-  }
 public:
-  int findKthLargest(vector<int>& nums, int k) {
-    heapify(nums);
-    int size = nums.size();
-    for (int i = 1; i < k; ++i) {
-      swap(nums[0], nums[size - 1]);
-      --size;
-      percolateDown(nums, size, 0);
+    int findKthLargest(vector<int>& A, int k) {
+        heapify(A); // A[0] is the root. Max-root heap.
+        int N = A.size();
+        for (int i = 1; i < k; ++i) {
+            swap(A[0], A[N - 1]);
+            --N;
+            percolateDown(A, N, 0);
+        }
+        return A[0];
     }
-    return nums[0];
-  }
 };
 ```
 
-## Solution 2. Use STL
-
+## Solution 2. Heap Sort with STL
+ 
 ```cpp
+// https://leetcode.com/problems/kth-largest-element-in-an-array/
 // Author: github.com/lzl124631x
 // Time: O(N + klogN)
 // Space: O(1)
 class Solution {
 public:
-  int findKthLargest(vector<int>& nums, int k) {
-    make_heap(nums.begin(), nums.end());
-    while (--k) {
-      pop_heap(nums.begin(), nums.end());
-      nums.pop_back();
+    int findKthLargest(vector<int>& A, int k) {
+        make_heap(begin(A), end(A));
+        while (--k) {
+            pop_heap(begin(A), end(A));
+            A.pop_back();
+        }
+        return A[0];
     }
-    return nums[0];
-  }
 };
 ```
 
-## Solution 3. STL!
-```cpp
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
-class Solution {
-public:
-  int findKthLargest(vector<int>& nums, int k) {
-    make_heap(nums.begin(), nums.end());
-    sort_heap(nums.begin(), nums.end());
-    return nums[nums.size() - k];
-  }
-};
-```
+## Solution 3. priority_queue
 
-## Solution 4. priority_queue
+Min-heap
+
 ```cpp
+// https://leetcode.com/problems/kth-largest-element-in-an-array/
 // Author: github.com/lzl124631x
 // Time: O(k + (N - k)logk)
 // Space: O(k)
 class Solution {
 public:
-  int findKthLargest(vector<int>& nums, int k) {
-    priority_queue<int, vector<int>, greater<int>> q;
-    for (int n : nums) {
-      if (q.size() < k) q.push(n);
-      else if (q.top() < n) {
-        q.pop();
-        q.push(n);
-      }
+    int findKthLargest(vector<int>& A, int k) {
+        priority_queue<int, vector<int>, greater<int>> q;
+        for (int n : A) {
+            if (q.size() < k) q.push(n);
+            else if (q.top() < n) {
+                q.pop();
+                q.push(n);
+            }
+        }
+        return q.top();
     }
-    return q.top();
-  }
 };
 ```
 
-## Solution 5. 
+Max-heap
 
 ```cpp
+// https://leetcode.com/problems/kth-largest-element-in-an-array/
 // Author: github.com/lzl124631x
-// Time: O(k + (N - k)logk)
-// Space: O(1)
+// Time: O(N - k + klog(N - k))
+// Space: O(N - k)
 class Solution {
 public:
-  int findKthLargest(vector<int>& nums, int k) {
-    make_heap(nums.begin(), nums.begin() + k, greater<int>());
-    for (int i = k; i < nums.size(); ++i) {
-      if (nums[i] > nums[0]) {
-        pop_heap(nums.begin(), nums.end());
-        swap(nums[k - 1], nums[i]);
-        push_heap(nums.begin(), nums.end());
-      }
+    int findKthLargest(vector<int>& A, int k) {
+        priority_queue<int> q;
+        k = A.size() - k + 1;
+        for (int n : A) {
+            if (q.size() < k) q.push(n);
+            else if (q.top() > n) {
+                q.pop();
+                q.push(n);
+            }
+        }
+        return q.top();
     }
-    return nums[0];
-  }
 };
 ```
 
-## Solution 6. Quick Select
+## Solution 4. Quick Select
+
+Quick select with elements sorted in ascending order.
 
 ```cpp
 // OJ: https://leetcode.com/problems/kth-largest-element-in-an-array/
@@ -153,12 +144,12 @@ public:
 // Time: O(N) on averge, O(N^2) in the worst case
 // Space: O(1)
 class Solution {
-    int quickSelect(vector<int> &A, int L, int R) {
-        int M = rand() % (R - L + 1) + L, p = A[M], i = L, j = R;
+    int quickSelect(vector<int> &A, int L, int R, int M) {
+        int pivot = A[M], i = L, j = R;
         swap(A[L], A[M]);
         while (i < j) {
-            while (i < j && A[j] >= p) --j;
-            while (i < j && A[i] <= p) ++i;
+            while (i < j && A[j] >= pivot) --j;
+            while (i < j && A[i] <= pivot) ++i;
             if (i < j) swap(A[i], A[j]);
         }
         swap(A[L], A[i]);
@@ -170,11 +161,60 @@ public:
         k = A.size() - k;
         srand(NULL);
         while (true) {
-            M = quickSelect(A, L, R);
+            int M = quickSelect(A, L, R, L + rand() % (R - L + 1));
             if (M == k) return A[k];
             if (M > k) R = M - 1;
             else L = M + 1;
         }
+    }
+};
+```
+
+Quick select with elements sorted in descending order.
+
+```cpp
+// OJ: https://leetcode.com/problems/kth-largest-element-in-an-array/
+// Author: github.com/lzl124631x
+// Time: O(N) on averge, O(N^2) in the worst case
+// Space: O(1)
+class Solution {
+    int quickSelect(vector<int> &A, int L, int R, int M) {
+        int pivot = A[M], i = L, j = R;
+        swap(A[L], A[M]);
+        while (i < j) {
+            while (i < j && A[j] <= pivot) --j;
+            while (i < j && A[i] >= pivot) ++i;
+            if (i < j) swap(A[i], A[j]);
+        }
+        swap(A[L], A[j]);
+        return j;
+    }
+public:
+    int findKthLargest(vector<int>& A, int k) {
+        int L = 0, R = A.size() - 1;
+        --k;
+        while (true) {
+            int M = quickSelect(A, L, R, L + rand() % (R - L + 1));
+            if (M == k) return A[M];
+            if (M < k) L = M + 1;
+            else R = M - 1;
+        }
+    }
+};
+```
+
+Or STL
+
+```cpp
+// OJ: https://leetcode.com/problems/kth-largest-element-in-an-array/
+// Author: github.com/lzl124631x
+// Time: O(N) on average, O(N^2) in the worst case
+// Space: O(1)
+class Solution {
+public:
+    int findKthLargest(vector<int>& A, int k) {
+        nth_element(begin(A), begin(A) + k - 1, end(A), greater<int>());
+        return A[k - 1];
     }
 };
 ```
