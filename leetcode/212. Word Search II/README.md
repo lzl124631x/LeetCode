@@ -89,7 +89,7 @@ public:
 ```cpp
 // OJ: https://leetcode.com/problems/word-search-ii/
 // Author: github.com/lzl124631x
-// Time: O(WL + MN * 4^K) where M, N is the size of board, W is the size of words and L is the average length of word
+// Time: O(WL + MN * 4^L) where M, N is the size of board, W is the size of words and L is the average length of word
 // Space: O(WL)
 struct TrieNode {
     TrieNode *next[26] = {0};
