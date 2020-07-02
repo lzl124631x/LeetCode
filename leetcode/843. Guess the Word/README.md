@@ -44,8 +44,7 @@ Keep redoing these, you'll find the secret.
 // OJ: https://leetcode.com/problems/guess-the-word/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(N)
-// Ref: https://leetcode.com/problems/guess-the-word/discuss/133862/Random-Guess-and-Minimax-Guess-with-Comparison
+// Space: O(1)
 class Solution {
     int countSame(string &a, string &b) {
         int cnt = 0;
