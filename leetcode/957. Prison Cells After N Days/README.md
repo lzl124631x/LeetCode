@@ -67,45 +67,40 @@ Day 7: [0, 0, 1, 1, 0, 0, 0, 0]</span>
 
 ## Solution 1.
 
-Simulate the process. Once find cycle, reduce the remaining `k` steps to `k % d` where `d` is the length of cycle.
+Simulate the process. Once find a cycle, we can get the result from within the cycle.
+
+Since there are at most 256 states, we will get the result at at most 256th day. So the time and space complexity is `O(1)`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/prison-cells-after-n-days/
 // Author: github.com/lzl124631x
-// Time: O(2^N) where N is the length of cells.
-// Space: O(2^N)
+// Time: O(1)
+// Space: O(1)
 class Solution {
-private:
-    char getNext(char c) {
-        char next = 0;
-        for (int j = 1; j < 7; ++j) {
-            next |= ((c >> (j - 1) & 1) == (c >> (j + 1) & 1) ? 1 : 0) << j;
-        }
-        return next;
+    char next(char c) {
+        char ans = 0;
+        for (int i = 1; i < 7; ++i)
+            ans |= ((c >> (i - 1) & 1) == (c >> (i + 1) & 1)) << i;
+        return ans;
     }
 public:
-    vector<int> prisonAfterNDays(vector<int>& cells, int N) {
+    vector<int> prisonAfterNDays(vector<int>& A, int N) {
         char c = 0;
-        for (int i = 0; i < 8; ++i) {
-            c |= cells[i] << i;
-        }
-        unordered_map<char, int> m;
-        int dist = -1, from = -1;
+        for (int i = 0; i < 8; ++i) c |= A[i] << i;
+        vector<char> v{c};
+        unordered_map<char, int> m{{c, 0}};
         for (int i = 1; i <= N; ++i) {
-            c = getNext(c);
-            if (m.find(c) != m.end()) {
-                dist = i - m[c];
-                from = i;
+            c = next(c);
+            if (m.count(c)) {
+                int d = i - m[c];
+                c = v[(N - i) % d + m[c]];
                 break;
             }
+            v.push_back(c);
             m[c] = i;
         }
-        if (dist != -1) {
-            int d = (N - from) % dist;
-            for (int i = 0; i < d; ++i) c = getNext(c);
-        }
-        vector<int> ans;
-        for (int i = 0; i < 8; ++i) ans.push_back((c >> i) & 1);
+        vector<int> ans(8);
+        for (int i = 0; i < 8; ++i) ans[i] = (c >> i) & 1;
         return ans;
     }
 };
