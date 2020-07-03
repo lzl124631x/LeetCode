@@ -105,3 +105,39 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/prison-cells-after-n-days/
+// Author: github.com/lzl124631x
+// Time: O(1)
+// Space: O(1)
+class Solution {
+    char next(char c) {
+        char ans = 0;
+        for (int i = 0; i < 8; ++i)
+            ans |= (i > 0 && i < 7 && ((c >> (i - 1)) & 1) == ((c >> (i + 1)) & 1)) << i;
+        return ans;
+    }
+public:
+    vector<int> prisonAfterNDays(vector<int>& A, int N) {
+        char c = 0;
+        for (int i = 0; i < 8; ++i) c |= A[i] << i;
+        unordered_map<char, int> m{{c, 0}};
+        for (int i = 1; i <= N; ++i) {
+            c = next(c);
+            if (m.count(c)) {
+                int d = i - m[c];
+                N = (N - i) % d;
+                while (N--) c = next(c);
+                break;
+            }
+            m[c] = i;
+        }
+        vector<int> ans(8);
+        for (int i = 0; i < 8; ++i) ans[i] = (c >> i) & 1;
+        return ans;
+    }
+};
+```
