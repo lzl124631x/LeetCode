@@ -24,7 +24,7 @@
 * [Maximum Size Subarray Sum Equals k (Medium)](https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/)
 * [Maximum Length of Repeated Subarray (Medium)](https://leetcode.com/problems/maximum-length-of-repeated-subarray/)
 
-## Solution 1. Two Pointers
+## Solution 1. Sliding Window
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-size-subarray-sum/
@@ -42,6 +42,29 @@ public:
             ans = min(ans, j - i + 1);
         }
         return ans == INT_MAX ? 0 : ans;
+    }
+};
+```
+
+## Solution 2. Sliding Window
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-size-subarray-sum/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int minSubArrayLen(int s, vector<int>& A) {
+        int i = 0, N = A.size(), ans = N + 1, sum = 0;
+        for (int j = 0; j < N; ++j) {
+            sum += A[j];
+            while (sum >= s) {
+                ans = min(ans, j - i + 1);
+                sum -= A[i++];
+            }
+        }
+        return ans == N + 1 ? 0 : ans;
     }
 };
 ```
