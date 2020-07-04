@@ -30,6 +30,15 @@ The repeated subarray with maximum length is [3, 2, 1].
 
 ## Solution 1. DP
 
+Let `dp[i + 1][j + 1]` be the lenght of the maximum subarray that appears in both the tail of `A` and `B`.
+
+```
+dp[i + 1][j + 1] = 1 + dp[i][j]     // A[i] == B[j]
+                 = 0                // A[i] != B[j]
+```
+
+Since `dp[i + 1][j + 1]` only depends on `dp[i][j]`, we can use 1D array to store the `dp` array.
+
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-length-of-repeated-subarray/
 // Author: github.com/lzl124631x
@@ -48,6 +57,62 @@ public:
             }
         }
         return ans;
+    }
+};
+```
+
+## Solution 2. Binary Answer + Rolling Hash
+
+Use binary answer to search the maximum length.
+
+For a given length `len`, generate the rolling hash on `A` and `B` and see if there is any hash showing up for both array.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-length-of-repeated-subarray/
+// Author: github.com/lzl124631x
+// Time: O(log(min(M, N)) * (M + N))
+// Space: O(M + N)
+class Solution {
+    vector<int> rolling(vector<int> &A, int len) {
+        vector<int> ans(A.size() - len + 1);
+        long h = A[0], p = 1, mod = 1e9+7, d = 14;
+        for (int i = 1; i < len; ++i) {
+            h = (h * d + A[i]) % mod;
+            p = (p * d) % mod;
+        }
+        ans[0] = h;
+        for (int i = 0; i < A.size() - len; ++i) {
+            h = ((h - A[i] * p) * d + A[i + len]) % mod;
+            if (h < 0) h += mod;
+            ans[i + 1] = h;
+        }
+        return ans;
+    }
+    bool valid(int len, vector<int> &A, vector<int>& B) {
+        if (!len) return true;
+        unordered_map<int, vector<int>> m;
+        int index = 0;
+        for (int h : rolling(A, len)) m[h].push_back(index++);
+        int j = 0;
+        for (int h : rolling(B, len)) {
+            for (int i : m[h]) {
+                bool same = true;
+                for (int k = 0; k < len && same; ++k) same = A[i + k] == B[j + k];
+                if (same) return true;
+            }
+            ++j;
+        }
+        return false;
+    }
+public:
+    int findLength(vector<int>& A, vector<int>& B) {
+        int L = 0, R = min(A.size(), B.size());
+        while (L <= R) {
+            int M = (L + R) / 2;
+            if (valid(M, A, B)) L = M + 1;
+            else R = M - 1;
+        }
+        return R;
     }
 };
 ```
