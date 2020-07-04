@@ -75,7 +75,7 @@ For a given length `len`, generate the rolling hash on `A` and `B` and see if th
 class Solution {
     vector<int> rolling(vector<int> &A, int len) {
         vector<int> ans(A.size() - len + 1);
-        long h = A[0], p = 1, mod = 1e9+7, d = 14;
+        long h = A[0], p = 1, mod = 1e9+7, d = 113;
         for (int i = 1; i < len; ++i) {
             h = (h * d + A[i]) % mod;
             p = (p * d) % mod;
@@ -115,4 +115,23 @@ public:
         return R;
     }
 };
+```
+
+Another implementation of the `rolling` function
+
+```cpp
+vector<int> rolling(vector<int> &A, int len) {
+    vector<int> ans(A.size() - len + 1);
+    long h = 0, p = 1, mod = 1e9+7, d = 113;
+    for (int i = 0; i < A.size(); ++i) {
+        h = (h * d + A[i]) % mod;
+        if (i < len - 1) p = (p * d) % mod;
+        else {
+            ans[i - len + 1] = h;
+            h = (h - A[i - len + 1] * p) % mod;
+            if (h < 0) h += mod;
+        }
+    }
+    return ans;
+}
 ```
