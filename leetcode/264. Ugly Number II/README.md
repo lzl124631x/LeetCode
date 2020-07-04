@@ -40,23 +40,21 @@ Assume we've already computed the first `n` ugly numbers and stored them in vect
 class Solution {
 public:
     int nthUglyNumber(int n) {
-        vector<int> v(n);
-        v[0] = 1;
-        int i2 = 0, i3 = 0, i5 = 0;
-        for (int i = 1; i < n; ++i) {
-            v[i] = min({ v[i2] * 2, v[i3] * 3, v[i5] * 5 });
-            if (v[i] == v[i2] * 2) ++i2;
-            if (v[i] == v[i3] * 3) ++i3;
-            if (v[i] == v[i5] * 5) ++i5;
+        vector<int> num(n);
+        num[0] = 1;
+        int i = 0, j = 0, k = 0;
+        for (int t = 1; t < n; ++t) {
+            num[t] = min({ num[i] * 2, num[j] * 3, num[k] * 5 });
+            if (num[t] == num[i] * 2) ++i;
+            if (num[t] == num[j] * 3) ++j;
+            if (num[t] == num[k] * 5) ++k;
         }
-        return v[n - 1];
+        return num.back();
     }
 };
 ```
 
-## Solution 2. DP
-
-The same idea as Solution 1.
+Another implementation.
 
 ```cpp
 // OJ: https://leetcode.com/problems/ugly-number-ii
@@ -65,16 +63,17 @@ The same idea as Solution 1.
 // Space: O(N)
 class Solution {
 public:
-  int nthUglyNumber(int n) {
-    vector<int> num(n, 1), index(3, 0), val{ 2, 3, 5 };
-    for (int i = 1; i < n; ++i) {
-      int next = INT_MAX;
-      for (int j = 0; j < 3; ++j) next = min(next, num[index[j]] * val[j]);
-      for (int j = 0; j < 3; ++j)
-        if (num[index[j]] * val[j] == next) ++index[j];
-      num[i] = next;
+    int nthUglyNumber(int n) {
+        vector<int> num(n, 1), index(3, 0), val{2, 3, 5};
+        for (int i = 1; i < n; ++i) {
+            int next = INT_MAX;
+            for (int j = 0; j < 3; ++j) next = min(next, num[index[j]] * val[j]);
+            for (int j = 0; j < 3; ++j) {
+                if (num[index[j]] * val[j] == next) ++index[j];
+            }
+            num[i] = next;
+        }
+        return num.back();
     }
-    return num.back();
-  }
 };
 ```
