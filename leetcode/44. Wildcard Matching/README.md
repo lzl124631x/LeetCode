@@ -99,3 +99,44 @@ public:
     }
 };
 ```
+
+## Solution 2. DP Bottom-up
+
+Let `dp[i][j]` be a boolean indicating whether `s[0..(i-1)]` and `p[0..(j-1)]` matches, where `0 <= i <= M`, `1 <= j <= N`.
+
+Trivial case: `dp[0][0] = true`.
+
+If `i > 0 && (p[j - 1] == '?' || s[i - 1] == p[j - 1])`, `dp[i][j] = dp[i - 1][j - 1]`.
+
+If `p[j - 1] == '*'`, `dp[i][j] = dp[i][j - 1] || dp[i-1][j-1] || dp[i-2][j-1] || ... || dp[0][j-1]`. Since `dp[i-1][j] = dp[i-1][j-1] || dp[i-2][j-1] || ... || dp[0][j-1]`, so `dp[i][j] = dp[i][j-1] || (i > 0 && dp[i-1][j])`
+
+Otherwise `dp[i][j] = false`.
+
+In sum:
+```
+dp[i][j] = dp[i][j-1] || (i > 0 && dp[i-1][j])   // If p[j-1] == '*'
+         = dp[i-1][j-1]                          // If i > 0 && (p[j - 1] == '?' || s[i - 1] == p[j - 1])
+         = false                                 // otherwise
+dp[0][0] = true
+```
+
+```cpp
+// OJ: https://leetcode.com/problems/wildcard-matching/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(MN)
+class Solution { public:
+    bool isMatch(string s, string p) {
+        int M = s.size(), N = p.size();
+        vector<vector<bool>> dp(M + 1, vector<bool>(N + 1));
+        dp[0][0] = true;
+        for (int i = 0; i <= M; ++i) {
+            for (int j = 1; j <= N; ++j) {
+                if (i > 0 && (p[j - 1] == '?' || s[i - 1] == p[j - 1])) dp[i][j] = dp[i - 1][j - 1];
+                else if (p[j - 1] == '*') dp[i][j] = dp[i][j - 1] || (i > 0 && dp[i - 1][j]);
+            }
+        }
+        return dp[M][N];
+    }
+};
+```
