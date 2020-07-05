@@ -51,6 +51,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 41 | First Missing Positive | Hard | [Solution](leetcode/41.%20First%20Missing%20Positive)
 42 | Trapping Rain Water | Hard | [Solution](leetcode/42.%20Trapping%20Rain%20Water)
 43 | Multiply Strings | Medium | [Solution](leetcode/43.%20Multiply%20Strings)
+44 | Wildcard Matching | Hard | [Solution](leetcode/44.%20Wildcard%20Matching)
 45 | Jump Game II | Hard | [Solution](leetcode/45.%20Jump%20Game%20II)
 46 | Permutations | Medium | [Solution](leetcode/46.%20Permutations)
 47 | Permutations II | Medium | [Solution](leetcode/47.%20Permutations%20II)
