@@ -140,3 +140,46 @@ class Solution { public:
     }
 };
 ```
+
+## Solution 3.
+
+Once we find a `'*'` in `p`, log the indexes when we met `'*'` into `star` (the index pointing to the `'*'`) and `ss` (`s[ss]` is the first character we match against `p[star + 1]`).
+
+Continue matching the rest. If we can't match the rest, reset the indexes to `j = star + 1` and `i = ++ss`.
+
+What if we the second `'*'` overwrites the indexes we stored in `star` and `ss`? For example `s=ababac, p=a*b*c`.
+
+This still works because when there are multiple matches to the pattern in between two `'*'`, picking either one works. So here we just pick the first match, and let the second `'*'` overwrite the state.
+
+```cpp
+// OJ: https://leetcode.com/problems/wildcard-matching/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/wildcard-matching/discuss/17810/Linear-runtime-and-constant-space-solution
+class Solution { public:
+    bool isMatch(string s, string p) {
+        int M = s.size(), N = p.size(), star = -1, ss = 0, i = 0, j = 0;
+        while (i < M) {
+            if (p[j] == '?' || p[j] == s[i]) {
+                ++i;
+                ++j;
+                continue;
+            }
+            if (p[j] == '*') {
+                star = j++;
+                ss = i;
+                continue;
+            }
+            if (star != -1) {
+                j = star + 1;
+                i = ++ss;
+                continue;
+            }
+            return false;
+        }
+        while (p[j] == '*') ++j;
+        return j == N;
+    }
+};
+```
