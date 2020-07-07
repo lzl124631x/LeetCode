@@ -892,6 +892,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1494 | Parallel Courses II | Hard | [Solution](leetcode/1494.%20Parallel%20Courses%20II)
 1496 | Path Crossing | Easy | [Solution](leetcode/1496.%20Path%20Crossing)
 1497 | Check If Array Pairs Are Divisible by k | Medium | [Solution](leetcode/1497.%20Check%20If%20Array%20Pairs%20Are%20Divisible%20by%20k)
+1502 | Can Make Arithmetic Progression From Sequence | Easy | [Solution](leetcode/1502.%20Can%20Make%20Arithmetic%20Progression%20From%20Sequence)
 
 # License
 
