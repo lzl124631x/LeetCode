@@ -894,6 +894,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1497 | Check If Array Pairs Are Divisible by k | Medium | [Solution](leetcode/1497.%20Check%20If%20Array%20Pairs%20Are%20Divisible%20by%20k)
 1502 | Can Make Arithmetic Progression From Sequence | Easy | [Solution](leetcode/1502.%20Can%20Make%20Arithmetic%20Progression%20From%20Sequence)
 1503 | Last Moment Before All Ants Fall Out of a Plank | Medium | [Solution](leetcode/1503.%20Last%20Moment%20Before%20All%20Ants%20Fall%20Out%20of%20a%20Plank)
+1504 | Count Submatrices With All Ones | Medium | [Solution](leetcode/1504.%20Count%20Submatrices%20With%20All%20Ones)
 
 # License
 
