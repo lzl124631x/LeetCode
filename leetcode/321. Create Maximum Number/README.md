@@ -39,7 +39,15 @@ k = <code>3</code>
 * [Remove K Digits (Medium)](https://leetcode.com/problems/remove-k-digits/)
 * [Maximum Swap (Medium)](https://leetcode.com/problems/maximum-swap/)
 
-## Solution 1.
+## Solution 1. Greedy
+
+Assume we take `i` numbers from `A` and `k - i` numbers from `B`, `max(0, k - N) <= i <= min(k, M)`.
+
+We can greedily get the subsequence of size `i` from `A` using a decreasing monoqueue of size `i`.
+
+For each `i`, we get `a = maxSubarray(A, i), b = maxSubarray(B, k - i)` then greedily merge these two arrays.
+
+The `merge` function is similar to merge-sorting two sorted list.
 
 ```cpp
 // OJ: https://leetcode.com/problems/create-maximum-number/
