@@ -58,3 +58,28 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/island-perimeter/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(1)
+class Solution {
+public:
+    int islandPerimeter(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size(), ans = 0, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (A[i][j] == 0) continue;
+                for (auto &dir : dirs) {
+                    int x = i + dir[0], y = j + dir[1];
+                    ans += x < 0 || x >= M || y < 0 || y >= N || A[x][y] == 0;
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
