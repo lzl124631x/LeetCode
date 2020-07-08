@@ -251,6 +251,9 @@ public:
         for (; i; i -= lowbit(i)) ans += sum[i];
         return ans;
     }
+    int rangeQuery(int i, int j) {
+        return query(j) - query(i - 1);
+    }
 };
 class NumArray {
     BIT tree;
@@ -266,7 +269,7 @@ public:
     }
     
     int sumRange(int i, int j) {
-        return tree.query(j + 1) - tree.query(i);
+        return tree.rangeQuery(i + 1, j + 1);
     }
 };
 ```
