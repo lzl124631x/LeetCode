@@ -35,7 +35,7 @@ No other pairs satisfy the condition, so we return the max of 4 and 1.</pre>
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
 
-## Solution 1.
+## Solution 1. Multiset
 
 For the equation `yi + yj + |xi - xj|`, since `j > i`, so `xj` must be greater than `xi`, so the equation is the same as `yi + yj + xj - xi = xj + yj - xi + yi`. For a given `i`, `-xi + yi` is a constant, so we just need to find the maximum `xj + yj` satisfying the `k` constraint.
 
@@ -57,6 +57,34 @@ public:
             for (; j < N && A[j][0] - A[i][0] <= k; ++j) s.insert(A[j][0] + A[j][1]);
             s.erase(s.find(A[i][0] + A[i][1]));
             if (s.size()) ans = max(ans, A[i][1] - A[i][0] + *s.rbegin());
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2. Monoqueue
+
+Since we only care about the maximum value in a sliding window, we can use a descending monoqueue to keep track of the maximum value.
+
+```cpp
+// OJ: https://leetcode.com/problems/max-value-of-equation/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int findMaxValueOfEquation(vector<vector<int>>& A, int k) {
+        int i = 0, j = 0, N = A.size(), ans = INT_MIN;
+        deque<int> q; // descending monoqueue
+        for (; i < N; ++i) {
+            for (; j < N && A[j][0] - A[i][0] <= k; ++j) {
+                int sum = A[j][0] + A[j][1];
+                while (q.size() && q.back() < sum) q.pop_back();
+                q.push_back(sum);
+            }
+            if (q.size() && q.front() == A[i][0] + A[i][1]) q.pop_front();
+            if (q.size()) ans = max(ans, A[i][1] - A[i][0] + q.front());
         }
         return ans;
     }
