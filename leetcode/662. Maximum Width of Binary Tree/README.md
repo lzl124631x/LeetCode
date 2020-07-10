@@ -71,7 +71,72 @@ Answer will in the range of 32-bit signed integer.
 **Related Topics**:  
 [Tree](https://leetcode.com/tag/tree/)
 
+## Solution 1. Pre-order Traversal
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-width-of-binary-tree/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+    typedef unsigned long long ULL;
+    vector<vector<ULL>> v;
+    ULL ans = 0;
+    void dfs(TreeNode *node, int lv, ULL nodeId) {
+        if (!node) return;
+        if (v.size() <= lv) v.push_back({ULLONG_MAX, 0});
+        v[lv][0] = min(v[lv][0], nodeId);
+        v[lv][1] = max(v[lv][1], nodeId);
+        ans = max(ans, v[lv][1] - v[lv][0] + 1);
+        dfs(node->left, lv + 1, 2 * nodeId);
+        dfs(node->right, lv + 1, 2 * nodeId + 1);
+    }
+public:
+    int widthOfBinaryTree(TreeNode* root) {
+        if (!root) return 0;
+        dfs(root, 0, 0);
+        return ans;
+    }
+};
+```
+
 ## Solution 1. Level-order Traversal
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-width-of-binary-tree/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+    typedef unsigned long long ULL;
+public:
+    int widthOfBinaryTree(TreeNode* root) {
+        if (!root) return 0;
+        queue<pair<TreeNode*, ULL>> q;
+        q.emplace(root, 0);
+        ULL ans = 0;
+        while (q.size()) {
+            ULL cnt = q.size(), minId, maxId; 
+            for (int i = 0; i < cnt; ++i) {
+                auto p = q.front();
+                q.pop();
+                auto node = p.first;
+                ULL nodeId = p.second;
+                if (node->left) q.emplace(node->left, nodeId * 2);
+                if (node->right) q.emplace(node->right, nodeId * 2 + 1);
+                if (i == 0) minId = nodeId;
+                if (i == cnt - 1) maxId = nodeId;
+            }
+            ans = max(ans, maxId - minId + 1);
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3. Level-order Traversal
+
+When there is only one node in this level, reset the `id` to be `0`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-width-of-binary-tree/
@@ -83,20 +148,22 @@ public:
     int widthOfBinaryTree(TreeNode* root) {
         if (!root) return 0;
         queue<pair<TreeNode*, int>> q;
-        q.push(make_pair(root, 0));
-        int ans = INT_MIN;
+        q.emplace(root, 0);
+        int ans = 0;
         while (q.size()) {
-            int cnt = q.size(), left, right;
-            for (int i = 0; i < cnt; ++i) {
-                auto &p = q.front();
+            int cnt = q.size();
+            if (cnt == 1) {
+                q.emplace(q.front().first, 0);
                 q.pop();
-                root = p.first;
-                if (i == 0) left = p.second;
-                if (i == cnt - 1) right = p.second;
-                if (root->left) q.push(make_pair(root->left, p.second * 2));
-                if (root->right) q.push(make_pair(root->right, p.second * 2 + 1));
             }
-            ans = max(ans, right - left + 1);
+            ans = max(ans, q.back().second - q.front().second + 1);
+            while (cnt--) {
+                root = q.front().first;
+                int id = q.front().second;
+                q.pop();
+                if (root->left) q.emplace(root->left, 2 * id);
+                if (root->right) q.emplace(root->right, 2 * id + 1);
+            }
         }
         return ans;
     }
