@@ -12,7 +12,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 \# | Title | Difficulty | Solution
 ---|---|---|---
 1 | Two Sum | Easy | [Solution](leetcode/1.%20Two%20Sum)
-2 | Add Two Numbers |  | [Solution](leetcode/2.%20Add%20Two%20Numbers)
+2 | Add Two Numbers | Medium | [Solution](leetcode/2.%20Add%20Two%20Numbers)
 3 | Longest Substring Without Repeating Characters | Medium | [Solution](leetcode/3.%20Longest%20Substring%20Without%20Repeating%20Characters)
 4 | Median of Two Sorted Arrays | Hard | [Solution](leetcode/4.%20Median%20of%20Two%20Sorted%20Arrays)
 5 | Longest Palindromic Substring | Medium | [Solution](leetcode/5.%20Longest%20Palindromic%20Substring)
