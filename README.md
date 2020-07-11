@@ -896,6 +896,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1502 | Can Make Arithmetic Progression From Sequence | Easy | [Solution](leetcode/1502.%20Can%20Make%20Arithmetic%20Progression%20From%20Sequence)
 1503 | Last Moment Before All Ants Fall Out of a Plank | Medium | [Solution](leetcode/1503.%20Last%20Moment%20Before%20All%20Ants%20Fall%20Out%20of%20a%20Plank)
 1504 | Count Submatrices With All Ones | Medium | [Solution](leetcode/1504.%20Count%20Submatrices%20With%20All%20Ones)
+1505 | Minimum Possible Integer After at Most K Adjacent Swaps On Digits | Hard | [Solution](leetcode/1505.%20Minimum%20Possible%20Integer%20After%20at%20Most%20K%20Adjacent%20Swaps%20On%20Digits)
 
 # License
 
