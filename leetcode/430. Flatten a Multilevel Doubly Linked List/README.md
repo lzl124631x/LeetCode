@@ -84,7 +84,71 @@ After flattening the multilevel linked list it becomes:
 **Similar Questions**:
 * [Flatten Binary Tree to Linked List (Medium)](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)
 
-## Solution 1.
+## Solution 1. Recursive
+
+```cpp
+// OJ: https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+public:
+    Node* flatten(Node* head) {
+        if (!head) return NULL;
+        Node dummy, *tail = &dummy;
+        while (head) {
+            auto node = head;
+            head = head->next;
+            tail->next = node;
+            node->prev = tail;
+            tail = node;
+            if (node->child) {
+                auto next = flatten(node->child);
+                tail->next = next;
+                next->prev = tail;
+                while (tail->next) tail = tail->next;
+            }
+            node->child = NULL;
+        }
+        dummy.next->prev = NULL;
+        return dummy.next;
+    }
+};
+```
+
+## Solution 2. Stack
+
+```cpp
+// OJ: https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+public:
+    Node* flatten(Node* head) {
+        if (!head) return NULL;
+        Node dummy, *tail = &dummy;
+        stack<Node*> s;
+        s.push(head);
+        while (s.size()) {
+            auto node = s.top(), child = node->child;
+            tail->next = node;
+            node->prev = tail;
+            tail = node;
+            node->child = NULL;
+            if (node->next) s.top() = node->next;
+            else s.pop();
+            if (child) s.push(child);
+        }
+        dummy.next->prev = NULL;
+        return dummy.next;
+    }
+};
+```
+
+## Solution 3. Recursive
+
+Return a pair of pointers to first node and last node so that we don't need to traversel the flattened child again during the recursion.
 
 ```cpp
 // OJ: https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/
@@ -92,14 +156,14 @@ After flattening the multilevel linked list it becomes:
 // Time: O(N)
 // Space: O(H) where H is the max depth of the child hierarchy.
 class Solution {
-    pair<Node*, Node*> f(Node* head) {
+    pair<Node*, Node*> dfs(Node* head) {
         if (!head) return {NULL, NULL};
-        pair<Node*, Node*> p = {head, NULL};
+        pair<Node*, Node*> p = {head, NULL}; // first node, last node.
         while (head) {
             auto next = head->next;
             auto last = head;
             if (head->child) {
-                auto q = f(head->child);
+                auto q = dfs(head->child);
                 head->next = q.first;
                 q.first->prev = head;
                 if (next) {
@@ -115,12 +179,12 @@ class Solution {
     }
 public:
     Node* flatten(Node* head) {
-        return f(head).first;
+        return dfs(head).first;
     }
 };
 ```
 
-## Solution 2.
+## Solution 4.
 
 ```cpp
 // OJ: https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/
@@ -132,10 +196,9 @@ public:
     Node* flatten(Node* head) {
         for (auto p = head; p; p = p->next) {
             if (!p->child) continue;
-            auto next = p->next;
-            p->next = p->child;
-            p->child->prev = p;
-            auto q = p->child;
+            auto next = p->next, q = p->child;
+            p->next = q;
+            q->prev = p;
             while (q->next) q = q->next;
             q->next = next;
             if (next) next->prev = q;
