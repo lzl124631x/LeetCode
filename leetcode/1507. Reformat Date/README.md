@@ -49,7 +49,7 @@
 ## Solution 1.
 
 ```cpp
-// OJ: https://leetcode.com/contest/biweekly-contest-30/problems/reformat-date/
+// OJ: https://leetcode.com/problems/reformat-date/
 // Author: github.com/lzl124631x
 // Time: O(1)
 // Space: O(1)
@@ -80,7 +80,7 @@ public:
 ## Solution 2.
 
 ```cpp
-// OJ: https://leetcode.com/contest/biweekly-contest-30/problems/reformat-date/
+// OJ: https://leetcode.com/problems/reformat-date/
 // Author: github.com/lzl124631x
 // Time: O(1)
 // Space: O(1) 
