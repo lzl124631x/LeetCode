@@ -68,3 +68,57 @@ public:
     }
 };
 ```
+
+Or 
+
+```cpp
+// OJ: https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/
+// Author: github.com/lzl124631x
+// Time: O(N^2 * logN)
+// Space: O(N^2)
+class Solution {
+public:
+    int rangeSum(vector<int>& A, int N, int left, int right) {
+        vector<int> sum;
+        long ans = 0, mod = 1e9+7;
+        for (int i = 0; i < N; ++i) {
+            int pre = 0;
+            for (int j = i; j < N; ++j) {
+                pre += A[j];
+                sum.push_back(pre);
+            }
+        }
+        sort(begin(sum), end(sum));
+        for (int i = left; i <= right; ++i) ans = (ans + sum[i - 1]) % mod;
+        return ans;
+    }
+};
+```
+
+## Solution 2. Heap
+
+```cpp
+// OJ: https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/
+// Author: github.com/lzl124631x
+// Time: O(right * jlogN)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/discuss/730511/C%2B%2B-priority_queue-solutionj
+class Solution {
+public:
+    int rangeSum(vector<int>& A, int N, int left, int right) {
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
+        for (int i = 0; i < N; ++i) q.emplace(A[i], i + 1);
+        long ans = 0, mod = 1e9+7;
+        for (int i = 1; i <= right; ++i) {
+            auto p = q.top();
+            q.pop();
+            if (i >= left) ans = (ans + p.first) % mod;
+            if (p.second < N) {
+                p.first += A[p.second++];
+                q.push(p);
+            }
+        }
+        return ans;
+    }
+};
+```
