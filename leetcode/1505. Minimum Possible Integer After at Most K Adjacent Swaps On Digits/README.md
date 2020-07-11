@@ -53,7 +53,7 @@
 **Related Topics**:  
 [Greedy](https://leetcode.com/tag/greedy/)
 
-## Solution 1.
+## Solution 1. Segment Tree
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-possible-integer-after-at-most-k-adjacent-swaps-on-digits/
