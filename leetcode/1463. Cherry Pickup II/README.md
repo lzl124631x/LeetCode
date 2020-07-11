@@ -107,7 +107,159 @@ public:
 };
 ```
 
-## Solution 2. DP
+## Solution 2. DP Bottom-up
+
+Populate from the last row to the first row.
+
+The `r`th row pulls values from the `r + 1`th row.
+
+```cpp
+// OJ: https://leetcode.com/problems/cherry-pickup-ii/
+// Author: github.com/lzl124631x
+// Time: O(M * N^2)
+// Space: O(M * N^2)
+class Solution {
+public:
+    int cherryPickup(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size(), dp[71][70][70] = {0};
+        for (int r = M - 1; r >= 0; --r) {
+            for (int i = 0; i < N; ++i) {
+                for (int j = i + 1; j < N; ++j) {
+                    for (int a = i - 1; a <= i + 1; ++a) {
+                        if (a < 0 || a >= N) continue;
+                        for (int b = j - 1; b <= j + 1; ++b) {
+                            if (b < 0 || b >= N || b <= a) continue;
+                            dp[r][a][b] = max(dp[r][a][b],
+                                                  (a == b ? A[r][a] : (A[r][a] + A[r][b])) + dp[r + 1][i][j]);
+                        }
+                    }
+                }
+            }
+        }
+        return dp[0][0][N - 1];
+    }
+};
+```
+
+## Solution 3. DP Bottom-up
+
+Populate from the last row to the first row.
+
+The `r`th row pushes values to the `r - 1`th row.
+
+```cpp
+// OJ: https://leetcode.com/problems/cherry-pickup-ii/
+// Author: github.com/lzl124631x
+// Time: O(M * N^2)
+// Space: O(M * N^2)
+class Solution {
+public:
+    int cherryPickup(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size(), dp[70][70][70] = {0};
+        for (int r = M - 1; r > 0; --r) {
+            for (int i = 0; i < N; ++i) {
+                for (int j = i + 1; j < N; ++j) {
+                    dp[r][i][j] += i == j ? A[r][i] : A[r][i] + A[r][j];
+                    for (int a = i - 1; a <= i + 1; ++a) {
+                        if (a < 0 || a >= N) continue;
+                        for (int b = j - 1; b <= j + 1; ++b) {
+                            if (b < 0 || b >= N || b <= a) continue;
+                            dp[r - 1][a][b] = max(dp[r - 1][a][b], dp[r][i][j]);
+                        }
+                    }
+                }
+            }
+        }
+        return dp[0][0][N - 1] + A[0][0] + A[0][N - 1];
+    }
+};
+```
+
+## Solution 4. DP Bottom-up
+
+Populate from the first row to the last row.
+
+The `r`th row pulls values from `r - 1`th row.
+
+If the previous state is not reachable `dp[r - 1][i][j] == -1`, we don't need to pull.
+
+```cpp
+// OJ: https://leetcode.com/problems/cherry-pickup-ii/
+// Author: github.com/lzl124631x
+// Time: O(M * N^2)
+// Space: O(M * N^2)
+class Solution {
+public:
+    int cherryPickup(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size(), dp[70][70][70], ans = 0;
+        memset(dp, -1, sizeof(dp));
+        dp[0][0][N - 1] = A[0][0] + A[0][N - 1];
+        for (int r = 1; r < M; ++r) {
+            for (int i = 0; i < N; ++i) {
+                for (int j = i + 1; j < N; ++j) {
+                    if (dp[r - 1][i][j] == -1) continue;
+                    for (int a = i - 1; a <= i + 1; ++a) {
+                        if (a < 0 || a >= N) continue;
+                        for (int b = j - 1; b <= j + 1; ++b) {
+                            if (b < 0 || b >= N || b <= a) continue;
+                            dp[r][a][b] = max(dp[r][a][b],
+                                                  dp[r - 1][i][j] + (a == b ? A[r][a] : A[r][a] + A[r][b]));
+                            if (r == M - 1) ans = max(ans, dp[r][a][b]);
+                        }
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 4. DP Bottom-up
+
+Populate from the first row to the last row.
+
+The `r`th row pushes values to the `r + 1`th row.
+
+If the current state is not reachable `dp[r][i][j] == -1`, we don't need to push.
+
+```cpp
+// OJ: https://leetcode.com/problems/cherry-pickup-ii/
+// Author: github.com/lzl124631x
+// Time: O(M * N^2)
+// Space: O(M * N^2)
+class Solution {
+public:
+    int cherryPickup(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size(), dp[70][70][70], ans = 0;
+        memset(dp, -1, sizeof(dp));
+        dp[0][0][N - 1] = A[0][0] + A[0][N - 1];
+        for (int r = 0; r < M - 1; ++r) {
+            for (int i = 0; i < N; ++i) {
+                for (int j = i + 1; j < N; ++j) {
+                    if (dp[r][i][j] == -1) continue;
+                    for (int a = i - 1; a <= i + 1; ++a) {
+                        if (a < 0 || a >= N) continue;
+                        for (int b = j - 1; b <= j + 1; ++b) {
+                            if (b < 0 || b >= N || b <= a) continue;
+                            dp[r + 1][a][b] = max(dp[r + 1][a][b],
+                                                  dp[r][i][j] + (a == b ? A[r + 1][a] : A[r + 1][a] + A[r + 1][b]));
+                            if (r + 1 == M - 1) ans = max(ans, dp[r + 1][a][b]);
+                        }
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 5. DP Bottom-up
+
+Since we only care about the recent two rows, we can reduce the `dp` array size from `M * N^2` to `N^2` by swapping arrays.
+
+In the following code, we are populating from the first row to the last row, and the `r`th row pulls values from `r - 1`th row.
 
 ```cpp
 // OJ: https://leetcode.com/problems/cherry-pickup-ii/
@@ -127,14 +279,11 @@ public:
             for (int j = 0; j < N; ++j) {
                 for (int k = j + 1; k < N; ++k) {
                     if (d[j][k] < 0) continue;
-                    for (int a = -1; a <= 1; ++a) {
-                        int s = j + a;
-                        if (s < 0 || s >= N) continue;
-                        for (int b = -1; b <= 1; ++b) {
-                            int t = k + b;
-                            if (t < 0 || t >= N) continue;
-                            int val = s == t ? A[i][s] : (A[i][s] + A[i][t]);
-                            e[s][t] = max(e[s][t], d[j][k] + val);
+                    for (int a = j - 1; a <= j + 1; ++a) {
+                        if (a < 0 || a >= N) continue;
+                        for (int b = k - 1; b <= k + 1; ++b) {
+                            if (b < 0 || b >= N) continue;
+                            e[a][b] = max(e[a][b], d[j][k] + (a == b ? A[i][a] : (A[i][a] + A[i][b])));
                         }
                     }
                 }
