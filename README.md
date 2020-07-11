@@ -17,7 +17,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 4 | Median of Two Sorted Arrays | Hard | [Solution](leetcode/4.%20Median%20of%20Two%20Sorted%20Arrays)
 5 | Longest Palindromic Substring | Medium | [Solution](leetcode/5.%20Longest%20Palindromic%20Substring)
 6 | ZigZag Conversion | Medium | [Solution](leetcode/6.%20ZigZag%20Conversion)
-7 | Reverse Integer |  | [Solution](leetcode/7.%20Reverse%20Integer)
+7 | Reverse Integer | Easy | [Solution](leetcode/7.%20Reverse%20Integer)
 8 | String to Integer (atoi) | Medium | [Solution](leetcode/8.%20String%20to%20Integer%20%28atoi%29)
 9 | Palindrome Number | Easy | [Solution](leetcode/9.%20Palindrome%20Number)
 10 | Regular Expression Matching | Hard | [Solution](leetcode/10.%20Regular%20Expression%20Matching)
