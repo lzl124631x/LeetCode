@@ -931,6 +931,10 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1508 | Range Sum of Sorted Subarray Sums | Medium | [Solution](leetcode/1508.%20Range%20Sum%20of%20Sorted%20Subarray%20Sums)
 1509 | Minimum Difference Between Largest and Smallest Value in Three Moves | Medium | [Solution](leetcode/1509.%20Minimum%20Difference%20Between%20Largest%20and%20Smallest%20Value%20in%20Three%20Moves)
 1510 | Stone Game IV | Hard | [Solution](leetcode/1510.%20Stone%20Game%20IV)
+1512 | Number of Good Pairs | Easy | [Solution](leetcode/1512.%20Number%20of%20Good%20Pairs)
+1513 | Number of Substrings With Only 1s | Medium | [Solution](leetcode/1513.%20Number%20of%20Substrings%20With%20Only%201s)
+1514 | Path with Maximum Probability | Medium | [Solution](leetcode/1514.%20Path%20with%20Maximum%20Probability)
+1515 | Best Position for a Service Centre | Hard | [Solution](leetcode/1515.%20Best%20Position%20for%20a%20Service%20Centre)
 5427 | Probability of a Two Boxes Having The Same Number of Distinct Balls |  | [Solution](leetcode/5427.%20Probability%20of%20a%20Two%20Boxes%20Having%20The%20Same%20Number%20of%20Distinct%20Balls)
 
 # License
