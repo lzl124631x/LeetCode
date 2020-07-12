@@ -20,105 +20,111 @@
 ]</pre>
 
 
-## Solution 1.
+## Solution 1. DFS
 
 ```cpp
-// OJ: https://leetcode.com/problems/subsets
+// OJ: https://leetcode.com/problems/subsets/
 // Author: github.com/lzl124631x
-// Time: O(N^2 * 2^N)
+// Time: O(N * 2^N)
 // Space: O(N)
 class Solution {
-private:
     vector<vector<int>> ans;
-    void dfs(vector<int>& nums, int i, vector<int> &v) {
-        if (i == nums.size()) {
-            ans.push_back(v);
+    void dfs(vector<int> &A, int i, vector<int> &s) {
+        if (i == A.size()) {
+            ans.push_back(s);
             return;
         }
-        v.push_back(nums[i]);
-        dfs(nums, i + 1, v);
-        v.pop_back();
-        dfs(nums, i + 1, v);
+        s.push_back(A[i]); // Pick A[i]
+        dfs(A, i + 1, s);
+        s.pop_back(); // Skip A[i]
+        dfs(A, i + 1, s);
     }
 public:
-    vector<vector<int>> subsets(vector<int>& nums) {
-        vector<int> v;
-        dfs(nums, 0, v);
+    vector<vector<int>> subsets(vector<int>& A) {
+        vector<int> s;
+        dfs(A, 0, s);
         return ans;
     }
 };
 ```
 
-## Solution 2.
+## Solution 2. Backtrack
+
 ```cpp
 // OJ: https://leetcode.com/problems/subsets
 // Author: github.com/lzl124631x
-// Time: O(N^2 * 2^N)
+// Time: O(N * 2^N)
 // Space: O(N)
 class Solution {
-private:
-  vector<vector<int>> ans;
-  void dfs(vector<int> &nums, int start, int len, vector<int> &tmp) {
-    if (!len) {
-      ans.push_back(tmp);
-      return;
+    vector<vector<int>> ans;
+    void dfs(vector<int> &A, int start, int len, vector<int> &s) {
+        if (s.size() == len) {
+            ans.push_back(s);
+            return;
+        }
+        for (int i = start; i <= A.size() - len + s.size(); ++i) {
+            s.push_back(A[i]);
+            dfs(A, i + 1, len, s);
+            s.pop_back(); // backtrack
+        }
     }
-    for (int i = start; i <= nums.size() - len; ++i) {
-      tmp.push_back(nums[i]);
-      dfs(nums, i + 1, len - 1, tmp);
-      tmp.pop_back();
-    }
-  }
 public:
-  vector<vector<int>> subsets(vector<int>& nums) {
-    vector<int> tmp;
-    for (int len = 0; len <= nums.size(); ++len) dfs(nums, 0, len, tmp);
-    return ans;
-  }
+    vector<vector<int>> subsets(vector<int>& A) {
+        vector<int> s;
+        for (int len = 0; len <= A.size(); ++len) dfs(A, 0, len, s);
+        return ans;
+    }
 };
 ```
 
-## Solution 3. Bit Manipulation
+## Solution 3. Bit Mask
 
 ```cpp
 // OJ: https://leetcode.com/problems/subsets
 // Author: github.com/lzl124631x
-// Time: O(N^2 * 2^N)
+// Time: O(N * 2^N)
 // Space: O(1)
 // Ref: https://discuss.leetcode.com/topic/2764/my-solution-using-bit-manipulation
 class Solution {
 public:
-  vector<vector<int>> subsets(vector<int>& nums) {
-    int N = 1 << nums.size();
-    vector<vector<int>> ans(N, vector<int>());
-    for (int i = 0; i < nums.size(); ++i) {
-      for (int j = 0; j < N; ++j) {
-        if ((j >> i) & 1) ans[j].push_back(nums[i]);
-      }
+    vector<vector<int>> subsets(vector<int>& A) {
+        int N = 1 << A.size();
+        vector<vector<int>> ans(N);
+        for (int i = 0; i < A.size(); ++i) { // For each numbers in A
+            for (int j = 0; j < N; ++j) { // check if it is in the jth subset in the output
+                if (j >> i & 1) ans[j].push_back(A[i]);
+            }
+        }
+        return ans;
     }
-    return ans;
-  }
 };
 ```
-## Solution 4.
+
+## Solution 4. DP
+
+Let `dp[i]` be the subsets ending with `A[i]`.
+
+```
+dp[i] = [ [k, A[i]] | k is in dp[i-1] ]
+```
 
 ```cpp
 // OJ: https://leetcode.com/problems/subsets
 // Author: github.com/lzl124631x
-// Time: O(N^2 * 2^N)
+// Time: O(N * 2^N)
 // Space: O(1)
 class Solution {
 public:
-  vector<vector<int>> subsets(vector<int>& nums) {
-    vector<vector<int>> ans(1);
-    for (int i = 0; i < nums.size(); ++i) {
-      int len = ans.size();
-      for (int j = 0; j < len; ++j) {
-        ans.push_back(ans[j]);
-        ans.back().push_back(nums[i]);
-      }
+    vector<vector<int>> subsets(vector<int>& A) {
+        vector<vector<int>> ans(1);
+        for (int i = 0; i < A.size(); ++i) {
+            int len = ans.size();
+            for (int j = 0; j < len; ++j) {
+                ans.push_back(ans[j]);
+                ans.back().push_back(A[i]);
+            }
+        }
+        return ans;
     }
-    return ans;
-  }
 };
 ```
