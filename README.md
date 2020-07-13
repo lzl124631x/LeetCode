@@ -169,7 +169,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 181 | Employees Earning More Than Their Managers | Easy | [Solution](leetcode/181.%20Employees%20Earning%20More%20Than%20Their%20Managers)
 182 | Duplicate Emails | Easy | [Solution](leetcode/182.%20Duplicate%20Emails)
 188 | Best Time to Buy and Sell Stock IV | Hard | [Solution](leetcode/188.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV)
-190 | Reverse Bits |  | [Solution](leetcode/190.%20Reverse%20Bits)
+190 | Reverse Bits | Easy | [Solution](leetcode/190.%20Reverse%20Bits)
 195 | Tenth Line | Easy | [Solution](leetcode/195.%20Tenth%20Line)
 198 | House Robber | Easy | [Solution](leetcode/198.%20House%20Robber)
 200 | Number of Islands | Medium | [Solution](leetcode/200.%20Number%20of%20Islands)
