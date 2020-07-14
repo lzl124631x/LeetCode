@@ -43,38 +43,10 @@
 
 Compute the prefix sum array using `pre`. Use `pre` to get the array of all subarray sums -- `sum`. Sort `sum` array then add from `sum[left - 1]` to `sum[right - 1]`.
 
-* Compute `pre` array: `O(N)`.
-* Compute `sum` array: `O(N^2)`.
-* Sort `sum` array: `O(N^2 * log(N^2)) = O(N^2 * logN)`.
-* Sum from `left` to `right`: `O(N^2)`.
-
 ```cpp
 // OJ: https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/
 // Author: github.com/lzl124631x
-// Time: O(N^2 * logN)
-// Space: O(N^2)
-class Solution {
-public:
-    int rangeSum(vector<int>& A, int N, int left, int right) {
-        vector<int> pre(N + 1), sum;
-        long ans = 0, mod = 1e9 + 7;
-        partial_sum(begin(A), end(A), begin(pre) + 1);
-        for (int i = 0; i < N; ++i) {
-            for (int j = i; j < N; ++j) sum.push_back(pre[j + 1] - pre[i]);
-        }
-        sort(begin(sum), end(sum));
-        for (int i = left; i <= right; ++i) ans = (ans + sum[i - 1]) % mod;
-        return ans;
-    }
-};
-```
-
-Or 
-
-```cpp
-// OJ: https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/
-// Author: github.com/lzl124631x
-// Time: O(N^2 * logN)
+// Time: O(N^2 * log(N^2))
 // Space: O(N^2)
 class Solution {
 public:
@@ -100,13 +72,13 @@ public:
 ```cpp
 // OJ: https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/
 // Author: github.com/lzl124631x
-// Time: O(right * jlogN)
+// Time: O(right * logN)
 // Space: O(N)
-// Ref: https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/discuss/730511/C%2B%2B-priority_queue-solutionj
+// Ref: https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/discuss/730511/C++-priority_queue-solution
 class Solution {
 public:
     int rangeSum(vector<int>& A, int N, int left, int right) {
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q; // partial sum, next index
         for (int i = 0; i < N; ++i) q.emplace(A[i], i + 1);
         long ans = 0, mod = 1e9+7;
         for (int i = 1; i <= right; ++i) {
@@ -119,6 +91,56 @@ public:
             }
         }
         return ans;
+    }
+};
+```
+
+## Solution 3. Binary Search + Sliding Window
+
+```cpp
+// OJ: https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/
+// Author: github.com/lzl124631x
+// Time: O(Nlog(sum(A)))
+// Space: O(N)
+// Ref: https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/discuss/733047/Python-Binary-Search-Time-O(NlogSum(A))
+class Solution {
+    vector<int> B, C; // B is partial_sum array of A. C is partial_sum array of B.
+    int N;
+    int countSumUnder(int score) { // Use sliding window to cound the partial sums that are smaller or equal to `score`.
+        int ans = 0, i = 0;
+        for (int j = 0; j < N + 1; ++j) {
+            while (B[j] - B[i] > score) ++i;
+            ans += j - i;
+        }
+        return ans;
+    }
+    int sumKSums(int k) { // Use sliding window to get the sum of the k smallest items in all the subarray sums.
+        int score = kthScore(k), ans = 0, i = 0;
+        for (int j = 0; j < N + 1; ++j) {
+            while (B[j] - B[i] > score) ++i;
+            ans += B[j] * (j - i + 1) - (C[j] - (i ? C[i - 1] : 0));
+        }
+        return ans - (countSumUnder(score) - k) * score;
+    }
+    int kthScore(int k) { // use binary search to find the kth smallest sum in all subarray sums.
+        int L = 0, R = B[N];
+        while (L < R) {
+            int M = (L + R) / 2;
+            if (countSumUnder(M) < k) ++L;
+            else R = M;
+        }
+        return L;
+    }
+public:
+    int rangeSum(vector<int>& A, int n, int left, int right) {
+        N = n;
+        B.assign(N + 1, 0);
+        C.assign(N + 1, 0);
+        for (int i = 0; i < N; ++i) {
+            B[i + 1] = B[i] + A[i];
+            C[i + 1] = C[i] + B[i + 1];
+        }
+        return sumKSums(right) - sumKSums(left - 1);
     }
 };
 ```
