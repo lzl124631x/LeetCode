@@ -66,20 +66,19 @@ public:
 // Space: O(S)
 class Solution {
 public:
-  void reverseWords(string &s) {
-    string ret;
-    int i, j;
-    for (i = s.size() - 1; i >= 0;) {
-      while (i >= 0 && s[i] == ' ') --i;
-      if (i < 0) break;
-      if (!ret.empty()) ret += ' ';
-      j = i;
-      while (j >= 0 && s[j] != ' ') --j;
-      for (int k = j + 1; k <= i; ++k) ret += s[k];
-      i = j;
+    string reverseWords(string s) {
+        string ans;
+        for (int i = s.size() - 1; i >= 0;) {
+            while (i >= 0 && s[i] == ' ') --i;
+            if (i < 0) break;
+            if (ans.size()) ans += ' ';
+            int j = i;
+            while (j >= 0 && s[j] != ' ') --j;
+            for (int k = j + 1; k <= i; ++k) ans += s[k];
+            i = j;
+        }
+        return ans;
     }
-    s = ret;
-  }
 };
 ```
 
@@ -92,17 +91,17 @@ public:
 // Space: O(S)
 class Solution {
 public:
-  void reverseWords(string &s) {
-    stringstream ss(s);
-    string word, ans;
-    while (ss >> word) {
-      reverse(word.begin(), word.end());
-      if (ans.size()) ans += ' ';
-      ans += word;
+    string reverseWords(string s) {
+        istringstream ss(s);
+        string word, ans;
+        while (ss >> word) {
+            reverse(word.begin(), word.end());
+            if (ans.size()) ans += ' '; 
+            ans += word;
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
     }
-    reverse(ans.begin(), ans.end());
-    s = ans;
-  }
 };
 ```
 
@@ -115,14 +114,14 @@ public:
 // Space: O(S)
 class Solution {
 public:
-  void reverseWords(string &s) {
-    stringstream ss(s);
-    string word, ans;
-    while (ss >> word) {
-      if (ans.size()) word += ' ';
-      ans = word + ans;
+    string reverseWords(string s) {
+        istringstream ss(s);
+        string word, ans;
+        while (ss >> word) {
+            if (ans.size()) word += " ";
+            ans = word + ans;
+        }
+        return ans;
     }
-    s = ans;
-  }
 };
 ```
