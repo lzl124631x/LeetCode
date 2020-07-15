@@ -57,36 +57,71 @@ Direct application of Dijkstra algorithm except that usually the cost is the sma
 ```cpp
 // OJ: https://leetcode.com/problems/path-with-maximum-probability/
 // Author: github.com/lzl124631x
-// Time: O(E+VlogV)
+// Time: O(ElogE)
 // Space: O(E)
 class Solution {
-    typedef pair<double, int> P; // possibility, index
 public:
-    double maxProbability(int n, vector<vector<int>>& E, vector<double>& succProb, int start, int end) {
+    double maxProbability(int n, vector<vector<int>>& edges, vector<double>& succProb, int start, int end) {
         vector<vector<pair<int, double>>> G(n);
-        for (int i = 0; i < E.size(); ++i) {
-            auto &e = E[i];
+        for (int i = 0; i < edges.size(); ++i) {
+            auto &e = edges[i];
             G[e[0]].emplace_back(e[1], succProb[i]);
             G[e[1]].emplace_back(e[0], succProb[i]);
         }
-        priority_queue<P, vector<P>, less<P>> q;
-        vector<double> d(n, 0);
+        priority_queue<pair<double, int>> q;// prob, index
         q.emplace(1, start);
-        d[start] = 1;
+        vector<double> prob(n), seen(n);
+        prob[start] = 1;
         while (q.size()) {
             auto p = q.top();
             int u = p.second;
             q.pop();
-            if (p.first < d[u]) continue; // this line is very important, otherwise you might get TLE
+            if (seen[u]) continue;
+            seen[u] = 1;
+            if (u == end) return prob[u];
             for (auto &nei : G[u]) {
                 double v = nei.first, w = nei.second;
-                if (d[v] < d[u] * w) {
-                    d[v] = d[u] * w;
-                    q.emplace(d[v], v);
+                if (!seen[v] && prob[v] < prob[u] * w) {
+                    prob[v] = prob[u] * w;
+                    q.emplace(prob[v], v);
                 }
-            }
+            } 
         }
-        return d[end];
+        return 0;
+    }
+};
+```
+
+Or use `multiset`
+
+
+```cpp
+// OJ: https://leetcode.com/problems/path-with-maximum-probability/
+// Author: github.com/lzl124631x
+// Time: O(ElogE)
+// Space: O(E)
+class Solution {
+public:
+    double maxProbability(int n, vector<vector<int>>& edges, vector<double>& succProb, int start, int end) {
+        vector<vector<pair<int, double>>> G(n);
+        for (int i = 0; i < edges.size(); ++i) {
+            auto &e = edges[i];
+            G[e[0]].emplace_back(e[1], succProb[i]);
+            G[e[1]].emplace_back(e[0], succProb[i]);
+        }
+        multiset<pair<double, int>> s; // prob, index
+        unordered_map<int, double> m;
+        s.emplace(1, start);
+        while (s.size()) {
+            auto p = *s.rbegin();
+            s.erase(prev(s.end()));
+            int u = p.second;
+            if (m.count(u)) continue;
+            m[u] = p.first;
+            if (u == end) return m[u];
+            for (auto &[v, w] : G[u]) s.emplace(w * m[u], v);
+        }
+        return 0;
     }
 };
 ```
