@@ -59,6 +59,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 47 | Permutations II | Medium | [Solution](leetcode/47.%20Permutations%20II)
 48 | Rotate Image |  | [Solution](leetcode/48.%20Rotate%20Image)
 49 | Group Anagrams | Medium | [Solution](leetcode/49.%20Group%20Anagrams)
+50 | Pow(x, n) | Medium | [Solution](leetcode/50.%20Pow%28x%2C%20n%29)
 53 | Maximum Subarray | Easy | [Solution](leetcode/53.%20Maximum%20Subarray)
 54 | Spiral Matrix | Medium | [Solution](leetcode/54.%20Spiral%20Matrix)
 55 | Jump Game | Medium | [Solution](leetcode/55.%20Jump%20Game)
