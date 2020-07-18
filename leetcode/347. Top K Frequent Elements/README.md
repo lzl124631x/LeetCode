@@ -41,26 +41,53 @@
 ```cpp
 // OJ: https://leetcode.com/problems/top-k-frequent-elements/
 // Author: github.com/lzl124631x
-// Time: O(NlogN)
-// Space: O(N)
-class cmp {
-public:
-  bool operator() (const pair<int, int>& lhs, const pair<int, int>&rhs) const {
-      return lhs.second < rhs.second;
-  }
-};
+// Time: O(NlogK)
+// Space: O(N + K)
 class Solution {
 public:
-    vector<int> topKFrequent(vector<int>& nums, int k) {
+    vector<int> topKFrequent(vector<int>& A, int k) {
+        if (A.size() == k) return A;
         unordered_map<int, int> m;
-        for (int n : nums) ++m[n];
-        priority_queue<pair<int, int>, vector<pair<int, int>>, cmp> q(m.begin(), m.end());
-        vector<int> v;
-        while (k--) {
-            v.push_back(q.top().first);
+        for (int n : A) m[n]++;
+        vector<int> ans;
+        if (m.size() == k) {
+            for (auto &p : m) ans.push_back(p.first);
+            return ans;
+        }
+        auto cmp = [&](int a, int b) { return m[a] > m[b]; };
+        priority_queue<int, vector<int>, decltype(cmp)> q(cmp); // keep a min-heap of size at most k
+        for (auto &p : m) {
+            q.push(p.first);
+            if (q.size() > k) q.pop();
+        }
+        while (ans.size() < k) {
+            ans.push_back(q.top());
             q.pop();
         }
-        return v;
+        return ans;
+    }
+};
+```
+
+## Solution 2. Quick Select
+
+```cpp
+// OJ: https://leetcode.com/problems/top-k-frequent-elements/
+// Author: github.com/lzl124631x
+// Time: O(N) on average, O(N^2) in the worst case
+// Space: O(N)
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& A, int k) {
+        if (A.size() == k) return A;
+        unordered_map<int, int> m;
+        for (int n : A) m[n]++;
+        vector<int> ans;
+        for (auto &p : m) ans.push_back(p.first);
+        if (m.size() == k) return ans;
+        nth_element(begin(ans), begin(ans) + k - 1, end(ans), [&](int a, int b) { return m[a] > m[b]; });
+        ans.resize(k);
+        return ans;
     }
 };
 ```
