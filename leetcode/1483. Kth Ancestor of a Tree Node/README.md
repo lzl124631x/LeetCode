@@ -82,29 +82,28 @@ Then we use the id to find the corresponding node, `2`.
 // Space: O(N)
 class TreeAncestor {
     vector<int> nodeToId, idToNode, idToLevel;
-    vector<vector<int>> tree;
-    void preorder(vector<vector<int>> &G, int u, int &i, int level) {
+    vector<vector<int>> tree, G;
+    void preorder(int node, int &id, int level) {
         if (level >= tree.size()) tree.emplace_back();
-        tree[level].push_back(i);
-        nodeToId[u] = i;
-        idToNode[i] = u;
-        idToLevel[i] = level;
-        ++i;
-        for (int v : G[u]) preorder(G, v, i, level + 1);
+        tree[level].push_back(id);
+        nodeToId[node] = id;
+        idToNode[id] = node;
+        idToLevel[id] = level;
+        ++id;
+        for (int child : G[node]) preorder(child, id, level + 1);
     }
 public:
     TreeAncestor(int n, vector<int>& parent) {
         nodeToId.assign(n, 0);
         idToNode.assign(n, 0);
         idToLevel.assign(n, 0);
-        vector<vector<int>> G(n);
+        G.assign(n, {});
         for (int i = 1; i < n; ++i) G[parent[i]].push_back(i);
-        int i = 0;
-        preorder(G, 0, i, 0);
+        int id = 0;
+        preorder(0, id, 0);
     }
     int getKthAncestor(int node, int k) {
-        int id = nodeToId[node];
-        int level = idToLevel[id] - k;
+        int id = nodeToId[node], level = idToLevel[id] - k;
         if (level < 0) return -1;
         return idToNode[*(upper_bound(begin(tree[level]), end(tree[level]), id) - 1)];
     }
@@ -112,3 +111,35 @@ public:
 ```
 
 ## Solution 2. Binary Lifting
+
+```cpp
+// OJ: https://leetcode.com/problems/kth-ancestor-of-a-tree-node/
+// Author: github.com/lzl124631x
+// Time:
+//      TreeAncestor: O(log(max(K)) * N)
+//      getKthAncestor: O(logK)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/kth-ancestor-of-a-tree-node/discuss/686268/Explanation-for-this-question-c%2B%2B-sample-code
+class TreeAncestor {
+    vector<vector<int>> P;
+public:
+    TreeAncestor(int n, vector<int>& parent) {
+        P.assign(20, vector<int>(parent.size(), -1));
+        for (int i = 0; i < parent.size(); ++i) P[0][i] = parent[i];
+        for (int i = 1; i < 20; ++i) {
+            for (int node = 0; node < parent.size(); ++node) {
+                int p = P[i - 1][node];
+                if (p != -1) P[i][node] = P[i - 1][p];
+            }
+        }
+    }
+    int getKthAncestor(int node, int k) {
+        for (int i = 0; i < 20; ++i) {
+            if ((k & (1 << i)) == 0) continue;
+            node = P[i][node];
+            if (node == -1) return -1;
+        }
+        return node;
+    }
+};
+```
