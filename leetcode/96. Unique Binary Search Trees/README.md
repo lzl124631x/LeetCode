@@ -23,7 +23,7 @@
 **Similar Questions**:
 * [Unique Binary Search Trees II (Medium)](https://leetcode.com/problems/unique-binary-search-trees-ii/)
 
-## Solution 1. DP
+## Solution 1. DP Bottom-up
 
 Let `dp[i]` be the answer.
 
@@ -47,7 +47,39 @@ public:
 };
 ```
 
+## Solution 2. DP Top-down
+
+Let `dp[i]` be the number of unique BST's given `i` nodes.
+
+If there are `j` nodes in the left subtree, then there are `n - j - 1` nodes in the right subtree. Both subtrees are BST's as well. So `dp[i] = sum( dp[j] * dp[n - j - 1] | 0 <= j < n )`.
+
+```cpp
+// OJ: https://leetcode.com/problems/unique-binary-search-trees/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N)
+class Solution {
+    vector<int> memo;
+    int dp(int n) {
+        if (memo[n]) return memo[n];
+        int ans = 0;
+        for (int i = 0; i < n; ++i) ans += dp(i) * dp(n - i - 1);
+        return memo[n] = ans;
+    }
+public:
+    int numTrees(int n) {
+        memo.assign(n + 1, 0);
+        memo[0] = 1;
+        return dp(n);
+    }
+};
+```
+
 ## Solution 2. Catalan Number
+
+$$
+C_n = \dfrac{1}{n+1}{2n \choose n} = \dfrac{(2n)!}{(n+1)!n!}=\prod_{k=2}^{n}\dfrac{n+k}{k}\quad \text{for } n \ge 0
+$$
 
 ```cpp
 // OJ: https://leetcode.com/problems/unique-binary-search-trees
