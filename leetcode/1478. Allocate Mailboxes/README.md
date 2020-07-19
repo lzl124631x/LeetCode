@@ -107,7 +107,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. DP
 
 Consider input `[1, 4, 10]`, we should put the mailbox at `4` so that the total distance is `10 - 1`.
 
