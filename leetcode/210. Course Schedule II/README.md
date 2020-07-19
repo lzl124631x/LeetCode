@@ -50,18 +50,17 @@
 // Space: O(V + E)
 class Solution {
 public:
-    vector<int> findOrder(int N, vector<vector<int>>& E) {
-        unordered_map<int, vector<int>> G;
-        vector<int> indegree(N);
+    vector<int> findOrder(int n, vector<vector<int>>& E) {
+        vector<vector<int>> G(n);
+        vector<int> indegree(n), ans;
         for (auto &e : E) {
             G[e[1]].push_back(e[0]);
             indegree[e[0]]++;
         }
         queue<int> q;
-        for (int i = 0; i < N; ++i) {
+        for (int i = 0; i < n; ++i) {
             if (indegree[i] == 0) q.push(i);
         }
-        vector<int> ans;
         while (q.size()) {
             int u = q.front();
             q.pop();
@@ -70,7 +69,7 @@ public:
                 if (--indegree[v] == 0) q.push(v);
             }
         }
-        return ans.size() == N ? ans : vector<int>{};
+        return ans.size() == n ? ans : vector<int>{};
     }
 };
 ```
@@ -83,25 +82,23 @@ public:
 // Time: O(V + E)
 // Space: O(V + E)
 class Solution {
-    vector<int> ans;
-    unordered_map<int, vector<int>> G;
-    vector<int> seen;
+    vector<vector<int>> G;
+    vector<int> ans, state; // -1 unvisited, 0 visiting, 1 visited
     bool dfs(int u) {
-        if (seen[u]) return seen[u] == 1;
-        seen[u] = -1;
+        if (state[u] != -1) return state[u];
+        state[u] = 0;
         for (int v : G[u]) {
             if (!dfs(v)) return false;
         }
-        seen[u] = 1;
         ans.push_back(u);
-        return true;
+        return state[u] = 1;
     }
 public:
-    vector<int> findOrder(int N, vector<vector<int>>& E) {
-        seen.assign(N, 0);
+    vector<int> findOrder(int n, vector<vector<int>>& E) {
+        G.assign(n, {});
+        state.assign(n, -1);
         for (auto &e : E) G[e[1]].push_back(e[0]);
-        for (int i = 0; i < N; ++i) {
-            if (seen[i]) continue;
+        for (int i = 0; i < n; ++i) {
             if (!dfs(i)) return {};
         }
         reverse(begin(ans), end(ans));
