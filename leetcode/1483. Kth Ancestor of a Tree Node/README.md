@@ -112,6 +112,26 @@ public:
 
 ## Solution 2. Binary Lifting
 
+The brute force solution of this problem requires `O(K)` time for querying, which will result in TLE.
+
+If we precompute all the `k`th ancester of `node`, the query will be `O(1)`, but the preparation will take `O(K^2)`.
+
+One solution in between which doesn't require storing that much of data and also can boost the efficiency, is binary lifting.
+
+The idea is that we break down the value based on binary representation.
+
+So instead of storeing all `1, 2, 3, 4, 5, ...` values, we only store `1, 2, 4, 8, ...` values. We can use those `1, 2, 4, 8, ...` values to restore those values in between.
+
+For example, a `6`th (`110` in base 2) parent is the same as the `4`th (`100` in base 2) parent of the `2`nd (`010` in base 2) parent.
+
+Let `P[i][node]` be the `node`'s `2^i`th parent.
+
+```
+P[i][node] = P[i-1][ P[i-1][node] ]
+```
+
+The `6`th parent of `node` can be expressed as `P[2][ P[1][node] ]`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/kth-ancestor-of-a-tree-node/
 // Author: github.com/lzl124631x
@@ -125,17 +145,17 @@ class TreeAncestor {
 public:
     TreeAncestor(int n, vector<int>& parent) {
         P.assign(20, vector<int>(parent.size(), -1));
-        for (int i = 0; i < parent.size(); ++i) P[0][i] = parent[i];
-        for (int i = 1; i < 20; ++i) {
+        for (int i = 0; i < parent.size(); ++i) P[0][i] = parent[i]; // 2^0
+        for (int i = 1; i < 20; ++i) { // 2^i
             for (int node = 0; node < parent.size(); ++node) {
                 int p = P[i - 1][node];
-                if (p != -1) P[i][node] = P[i - 1][p];
+                if (p != -1) P[i][node] = P[i - 1][p]; // P[i][node] = P[i - 1][ P[i - 1][node] ]
             }
         }
     }
     int getKthAncestor(int node, int k) {
         for (int i = 0; i < 20; ++i) {
-            if ((k & (1 << i)) == 0) continue;
+            if ((k & (1 << i)) == 0) continue; // If `k` has `0` at `i`th bit, skip.
             node = P[i][node];
             if (node == -1) return -1;
         }
