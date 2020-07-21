@@ -87,3 +87,46 @@ public:
     }
 };
 ```
+
+## Solution 2. Interval Scheduling Maximization Problem (ISMP)
+
+Lesson learned: During the context I came up with similar idea but I was stuck at generating the smallest covering range of 26 characters. When scaning within `left[i], right[i]` range for `'a' + i`, if we extend the left edge due to another character range, we need to restart the scanning from the newly extended left edge. Even though this is not efficient but it does work. The following solution, instead of generating 26 intervals, just generates representative intervals using the starting character to ensure the uniqueness of the intervals.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/discuss/744420/C%2B%2BJavaPython-Interval-Scheduling-Maximization-(ISMP)
+class Solution {
+public:
+    vector<string> maxNumOfSubstrings(string s) {
+        vector<int> left(26, INT_MAX), right(26, INT_MIN);
+        int N = s.size();
+        for (int i = 0; i < N; ++i) {
+            int c = s[i] - 'a';
+            left[c] = min(left[c], i);
+            right[c] = max(right[c], i);
+        }
+        vector<pair<int, int>> A; // last, first
+        for (int i = 0; i < 26; ++i) {
+            if (left[i] >= N) continue;
+            int first = left[i], last = right[i];
+            for (int j = first; j <= last && first == left[i]; ++j) {
+                first = min(first, left[s[j] - 'a']);
+                last = max(last, right[s[j] - 'a']);
+            }
+            if (first == left[i]) A.emplace_back(last, first);
+        }
+        sort(begin(A), end(A)); // Greedily pick the interval ends first.
+        vector<string> ans;
+        int prev = -1;
+        for (auto &[last, first] : A) {
+            if (first <= prev) continue;
+            ans.push_back(s.substr(first, last - first + 1));
+            prev = last;
+        }
+        return ans;
+    }
+};
+```
