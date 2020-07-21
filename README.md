@@ -176,6 +176,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 200 | Number of Islands | Medium | [Solution](leetcode/200.%20Number%20of%20Islands)
 201 | Bitwise AND of Numbers Range | Medium | [Solution](leetcode/201.%20Bitwise%20AND%20of%20Numbers%20Range)
 202 | Happy Number | Easy | [Solution](leetcode/202.%20Happy%20Number)
+203 | Remove Linked List Elements | Easy | [Solution](leetcode/203.%20Remove%20Linked%20List%20Elements)
 204 | Count Primes |  | [Solution](leetcode/204.%20Count%20Primes)
 206 | Reverse Linked List | Easy | [Solution](leetcode/206.%20Reverse%20Linked%20List)
 207 | Course Schedule | Medium | [Solution](leetcode/207.%20Course%20Schedule)
