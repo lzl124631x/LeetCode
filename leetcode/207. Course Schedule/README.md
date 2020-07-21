@@ -52,36 +52,32 @@
 // Space: O(V + E)
 class Solution {
 public:
-    bool canFinish(int N, vector<vector<int>>& A) {
-        unordered_map<int, vector<int>> G;
+    bool canFinish(int N, vector<vector<int>>& E) {
+        vector<vector<int>> G(N);
         vector<int> indegree(N);
-        for (auto &e : A) {
+        for (auto &e : E) {
             G[e[1]].push_back(e[0]);
-            indegree[e[0]]++;
+            ++indegree[e[0]];
         }
         queue<int> q;
         for (int i = 0; i < N; ++i) {
             if (indegree[i] == 0) q.push(i);
         }
-        int visited = 0;
+        int cnt = 0;
         while (q.size()) {
             int u = q.front();
             q.pop();
-            ++visited;
+            ++cnt;
             for (int v : G[u]) {
                 if (--indegree[v] == 0) q.push(v);
             }
         }
-        return visited == N;
+        return cnt == N;
     }
 };
 ```
 
-## Solution 2. DFS
-
-Within one DFS session, if we see the same node twice, there has a circle in the graph and we should return `false`.
-
-Once an edge has been used, we remove the edge to prevent going through it again.
+## Solution 2. Topological Sort (DFS) 
 
 ```cpp
 // OJ: https://leetcode.com/problems/course-schedule/
@@ -89,56 +85,22 @@ Once an edge has been used, we remove the edge to prevent going through it again
 // Time: O(V + E)
 // Space: O(V + E)
 class Solution {
-    unordered_map<int, vector<int>> next;
-    vector<bool> seen;
-    bool hasCircle(int u) {
-        if (seen[u]) return true;
-        seen[u] = true;
-        auto &n = next[u];
-        for (int i = n.size() - 1; i >= 0; --i) {
-            if (hasCircle(n[i])) return true;
-            n.pop_back();
-        }
-        return seen[u] = false;
-    }
-public:
-    bool canFinish(int N, vector<vector<int>>& E) {
-        for (auto e : E) next[e[1]].push_back(e[0]);
-        seen.assign(N, false);
-        for (int i = 0; i < N; ++i) {
-            if (hasCircle(i)) return false;
-        }
-        return true;
-    }
-};
-```
-
-## Solution 3. Topological Sort (DFS) 
-
-```cpp
-// OJ: https://leetcode.com/problems/course-schedule/
-// Author: github.com/lzl124631x
-// Time: O(E + V)
-// Space: O(E + V)
-class Solution {
-    unordered_map<int, vector<int>> G;
-    vector<int> seen;
-    bool hasCircle(int u) {
-        if (seen[u]) return seen[u] == -1;
-        seen[u] = -1;
+    vector<int> state; // -1 unvisited, 0 visiting, 1 visited
+    bool dfs(vector<vector<int>> &G, int u) {
+        if (state[u] != -1) return state[u];
+        state[u] = 0;
         for (int v : G[u]) {
-            if (hasCircle(v)) return true;
+            if (!dfs(G, v)) return false;
         }
-        seen[u] = 1;
-        return false;
+        return state[u] = 1;
     }
 public:
     bool canFinish(int N, vector<vector<int>>& E) {
-        for (auto e : E) G[e[1]].push_back(e[0]);
-        seen.assign(N, 0);
+        vector<vector<int>> G(N);
+        state.assign(N, -1);
+        for (auto &e : E) G[e[1]].push_back(e[0]);
         for (int i = 0; i < N; ++i) {
-            if (seen[i]) continue;
-            if (hasCircle(i)) return false;
+            if (!dfs(G, i)) return false;
         }
         return true;
     }
