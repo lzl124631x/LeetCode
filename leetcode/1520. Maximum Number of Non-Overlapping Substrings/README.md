@@ -53,7 +53,7 @@ If we choose the first string, we cannot choose anything else and we'd get only 
 // OJ: https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(N)
+// Space: O(1)
 // Ref: https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/discuss/743223/C%2B%2BJava-Greedy-O(n)
 class Solution {
     int checkSubstr(string &s, int i, vector<int> &left, vector<int> &right) { // get the corresponding right edge of `s[i]`
