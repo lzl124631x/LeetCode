@@ -21,7 +21,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 8 | String to Integer (atoi) | Medium | [Solution](leetcode/8.%20String%20to%20Integer%20%28atoi%29)
 9 | Palindrome Number | Easy | [Solution](leetcode/9.%20Palindrome%20Number)
 10 | Regular Expression Matching | Hard | [Solution](leetcode/10.%20Regular%20Expression%20Matching)
-11 | Container With Most Water |  | [Solution](leetcode/11.%20Container%20With%20Most%20Water)
+11 | Container With Most Water | Medium | [Solution](leetcode/11.%20Container%20With%20Most%20Water)
 12 | Integer to Roman |  | [Solution](leetcode/12.%20Integer%20to%20Roman)
 13 | Roman to Integer |  | [Solution](leetcode/13.%20Roman%20to%20Integer)
 14 | Longest Common Prefix |  | [Solution](leetcode/14.%20Longest%20Common%20Prefix)
