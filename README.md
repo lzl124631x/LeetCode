@@ -82,7 +82,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 76 | Minimum Window Substring | Hard | [Solution](leetcode/76.%20Minimum%20Window%20Substring)
 77 | Combinations | Medium | [Solution](leetcode/77.%20Combinations)
 78 | Subsets | Medium | [Solution](leetcode/78.%20Subsets)
-79 | Word Search |  | [Solution](leetcode/79.%20Word%20Search)
+79 | Word Search | Medium | [Solution](leetcode/79.%20Word%20Search)
 80 | Remove Duplicates from Sorted Array II |  | [Solution](leetcode/80.%20Remove%20Duplicates%20from%20Sorted%20Array%20II)
 81 | Search in Rotated Sorted Array II |  | [Solution](leetcode/81.%20Search%20in%20Rotated%20Sorted%20Array%20II)
 82 | Remove Duplicates from Sorted List II |  | [Solution](leetcode/82.%20Remove%20Duplicates%20from%20Sorted%20List%20II)
