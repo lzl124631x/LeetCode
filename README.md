@@ -940,6 +940,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1515 | Best Position for a Service Centre | Hard | [Solution](leetcode/1515.%20Best%20Position%20for%20a%20Service%20Centre)
 1518 | Water Bottles | Easy | [Solution](leetcode/1518.%20Water%20Bottles)
 1519 | Number of Nodes in the Sub-Tree With the Same Label | Medium | [Solution](leetcode/1519.%20Number%20of%20Nodes%20in%20the%20Sub-Tree%20With%20the%20Same%20Label)
+1520 | Maximum Number of Non-Overlapping Substrings | Medium | [Solution](leetcode/1520.%20Maximum%20Number%20of%20Non-Overlapping%20Substrings)
 5427 | Probability of a Two Boxes Having The Same Number of Distinct Balls |  | [Solution](leetcode/5427.%20Probability%20of%20a%20Two%20Boxes%20Having%20The%20Same%20Number%20of%20Distinct%20Balls)
 
 # License
