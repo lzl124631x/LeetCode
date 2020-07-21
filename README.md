@@ -350,7 +350,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 430 | Flatten a Multilevel Doubly Linked List | Medium | [Solution](leetcode/430.%20Flatten%20a%20Multilevel%20Doubly%20Linked%20List)
 432 | All O`one Data Structure |  | [Solution](leetcode/432.%20All%20O%60one%20Data%20Structure)
 434 | Number of Segments in a String |  | [Solution](leetcode/434.%20Number%20of%20Segments%20in%20a%20String)
-435 | Non-overlapping Intervals |  | [Solution](leetcode/435.%20Non-overlapping%20Intervals)
+435 | Non-overlapping Intervals | Medium | [Solution](leetcode/435.%20Non-overlapping%20Intervals)
 436 | Find Right Interval |  | [Solution](leetcode/436.%20Find%20Right%20Interval)
 437 | Path Sum III |  | [Solution](leetcode/437.%20Path%20Sum%20III)
 438 | Find All Anagrams in a String | Medium | [Solution](leetcode/438.%20Find%20All%20Anagrams%20in%20a%20String)
