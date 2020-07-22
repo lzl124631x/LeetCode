@@ -23,7 +23,7 @@
 **Similar Questions**:
 * [Trapping Rain Water (Hard)](https://leetcode.com/problems/trapping-rain-water/)
 
-## Solution 1.
+## Solution 1. Brute Force
 
 ```cpp
 // OJ: https://leetcode.com/problems/container-with-most-water/
@@ -45,23 +45,22 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Two Pointers
 
 ```cpp
 // OJ: https://leetcode.com/problems/container-with-most-water/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
-// Ref: https://discuss.leetcode.com/topic/3462/yet-another-way-to-see-what-happens-in-the-o-n-algorithm
+// Ref: https://leetcode.com/problems/container-with-most-water/discuss/6099/yet-another-way-to-see-what-happens-in-the-on-algorithm
 class Solution {
 public:
     int maxArea(vector<int>& A) {
-        int N = A.size(), ans = 0;
-        for (int i = 0; i < N; ++i) {
-            if (!A[i]) continue;
-            for (int j = i + 1 + ans / A[i]; j < N; ++j) {
-                ans = max(ans, min(A[i], A[j]) * (j - i));
-            }
+        int ans = 0, L = 0, R = A.size() - 1;
+        while (L < R) {
+            ans = max(ans, (R - L) * min(A[L], A[R]));
+            if (A[L] < A[R]) ++L; // Move the smaller edge
+            else --R;
         }
         return ans;
     }
