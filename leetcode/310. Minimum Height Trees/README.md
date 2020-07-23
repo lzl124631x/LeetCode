@@ -51,13 +51,13 @@ The graph contains <code>n</code> nodes which are labeled from <code>0</code> to
 
 ## Solution 1.
 
-Find the leave nodes, trim them from the graph. Repeat this process until the graph only has 1 or 2 nodes left.
+Find the leaf nodes, trim them from the graph. Repeat this process until the graph only has 1 or 2 nodes left.
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-height-trees
 // Author: github.com/lzl124631x
-// Time: O(E)
-// Space: O(E)
+// Time: O(V + E)
+// Space: O(V + E)
 class Solution {
 public:
     vector<int> findMinHeightTrees(int n, vector<vector<int>>& E) {
