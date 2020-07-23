@@ -1,15 +1,15 @@
-# [310. Minimum Height Trees (Medium)](https://leetcode.com/problems/minimum-height-trees/)
+# [310. Minimum Height Trees (Medium)](https://leetcode.com/problems/minimum-height-trees/submissions/)
 
-For a undirected graph with tree characteristics, we can choose any node as the root. The result graph is then a rooted tree. Among all possible rooted trees, those with minimum height are called minimum height trees (MHTs). Given such a graph, write a function to find all the MHTs and return a list of their root labels.
+<p>For an undirected graph with tree characteristics, we can choose any node as the root. The result graph is then a rooted tree. Among all possible rooted trees, those with minimum height are called minimum height trees (MHTs). Given such a graph, write a function to find all the MHTs and return a list of their root labels.</p>
 
-**Format**  
-The graph contains `n` nodes which are labeled from `0` to `n - 1`. You will be given the number `n` and a list of undirected `edges` (each edge is a pair of labels).
+<p><b>Format</b><br>
+The graph contains <code>n</code> nodes which are labeled from <code>0</code> to <code>n - 1</code>. You will be given the number <code>n</code> and a list of undirected <code>edges</code> (each edge is a pair of labels).</p>
 
-You can assume that no duplicate edges will appear in `edges`. Since all edges are undirected, `[0, 1]` is the same as `[1, 0]` and thus will not appear together in `edges`.
+<p>You can assume that no duplicate edges will appear in <code>edges</code>. Since all edges are undirected, <code>[0, 1]</code> is the same as <code>[1, 0]</code> and thus will not appear together in <code>edges</code>.</p>
 
-**Example 1 :**
+<p><b>Example 1 :</b></p>
 
-**Input:** `n = 4`, `edges = [[1, 0], [1, 2], [1, 3]]`
+<pre><strong>Input:</strong> <code>n = 4</code>, <code>edges = [[1, 0], [1, 2], [1, 3]]</code>
 
         0
         |
@@ -17,11 +17,12 @@ You can assume that no duplicate edges will appear in `edges`. Since all edges a
        / \
       2   3 
 
-**Output:** `[1]`
+<strong>Output:</strong> <code>[1]</code>
+</pre>
 
-**Example 2 :**
+<p><b>Example 2 :</b></p>
 
-**Input:** `n = 6`, `edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]`
+<pre><strong>Input:</strong> <code>n = 6</code>, <code>edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]</code>
 
      0  1  2
       \ | /
@@ -31,16 +32,26 @@ You can assume that no duplicate edges will appear in `edges`. Since all edges a
         |
         5 
 
-**Output:** `[3, 4]`
+<strong>Output:</strong> <code>[3, 4]</code></pre>
 
-**Note**:
+<p><b>Note</b>:</p>
 
-*   According to the [definition of tree on Wikipedia](https://en.wikipedia.org/wiki/Tree_(graph_theory)): “a tree is an undirected graph in which any two vertices are connected by _exactly_ one path. In other words, any connected graph without simple cycles is a tree.”
-*   The height of a rooted tree is the number of edges on the longest downward path between the root and a leaf.
+<ul>
+	<li>According to the <a href="https://en.wikipedia.org/wiki/Tree_(graph_theory)" target="_blank">definition of tree on Wikipedia</a>: “a tree is an undirected graph in which any two vertices are connected by <i>exactly</i> one path. In other words, any connected graph without simple cycles is a tree.”</li>
+	<li>The height of a rooted tree is the number of edges on the longest downward path between the root and a leaf.</li>
+</ul>
+
+
+**Related Topics**:  
+[Breadth-first Search](https://leetcode.com/tag/breadth-first-search/), [Graph](https://leetcode.com/tag/graph/)
+
+**Similar Questions**:
+* [Course Schedule (Medium)](https://leetcode.com/problems/course-schedule/)
+* [Course Schedule II (Medium)](https://leetcode.com/problems/course-schedule-ii/)
 
 ## Solution 1.
 
-Find the leave nodes, trim them from the graph. Repeat this process until the graph only has 1 or 2 points left.
+Find the leave nodes, trim them from the graph. Repeat this process until the graph only has 1 or 2 nodes left.
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-height-trees
@@ -49,67 +60,37 @@ Find the leave nodes, trim them from the graph. Repeat this process until the gr
 // Space: O(E)
 class Solution {
 public:
-    vector<int> findMinHeightTrees(int n, vector<pair<int, int>>& edges) {
+    vector<int> findMinHeightTrees(int n, vector<vector<int>>& E) {
         if (n == 1) return { 0 };
-        unordered_map<int, unordered_set<int>> neighbors;
-        for (auto &e : edges) {
-            neighbors[e.first].insert(e.second);
-            neighbors[e.second].insert(e.first);
+        vector<int> indegree(n), ans;
+        vector<vector<int>> G(n);
+        for (auto &e : E) {
+            int u = e[0], v = e[1];
+            indegree[u]++;
+            indegree[v]++;
+            G[u].push_back(v);
+            G[v].push_back(u);
         }
-        vector<int> leaves;
-        for (auto &p : neighbors) {
-            if (p.second.size() == 1) leaves.push_back(p.first);
+        queue<int> q;
+        for (int i = 0; i < n; ++i) {
+            if (indegree[i] == 1) q.push(i);
         }
-        while (neighbors.size() > 2) {
-            vector<int> newLeaves;
-            for (int leaf : leaves) {
-                int neighbor = *neighbors[leaf].begin();
-                neighbors[neighbor].erase(leaf);
-                if (neighbors[neighbor].size() == 1) newLeaves.push_back(neighbor);
-                neighbors.erase(leaf);
+        while (n > 2) {
+            int cnt = q.size();
+            while (cnt--) {
+                int u = q.front();
+                q.pop();
+                --n;
+                for (int v : G[u]) {
+                    if (--indegree[v] == 1) q.push(v);
+                }
             }
-            leaves = newLeaves;
         }
-        vector<int> ans;
-        for (auto &p : neighbors) ans.push_back(p.first);
+        while (q.size()) {
+            ans.push_back(q.front());
+            q.pop();
+        }
         return ans;
     }
-};
-```
-
-## Solution 2.
-
-Same as Solution 1, except that `queue` is used to save computation.
-
-```cpp
-// OJ: https://leetcode.com/problems/minimum-height-trees
-// Author: github.com/lzl124631x
-// Time: O(E)
-// Space: O(E)
-class Solution {
-public:
-  vector<int> findMinHeightTrees(int n, vector<pair<int, int>>& edges) {
-    if (n == 1) return { 0 };
-    unordered_map<int, unordered_set<int>> m;
-    for (auto e : edges) {
-      m[e.first].insert(e.second);
-      m[e.second].insert(e.first);
-    }
-    queue<int> q;
-    for (auto p : m) if (p.second.size() == 1) q.push(p.first);
-    while (m.size() > 2) {
-      int cnt = q.size();
-      while (cnt--) {
-        int leaf = q.front(), neighbor = *m[leaf].begin();
-        q.pop();
-        m[neighbor].erase(leaf);
-        m.erase(leaf);
-        if (m[neighbor].size() == 1) q.push(neighbor);
-      }
-    }
-    vector<int> ans;
-    for (auto p : m) ans.push_back(p.first);
-    return ans;
-  }
 };
 ```
