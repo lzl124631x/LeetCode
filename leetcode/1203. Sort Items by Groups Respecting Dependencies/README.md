@@ -51,6 +51,7 @@
 // Author: github.com/lzl124631x
 // Time: O(M + N + E)
 // Space: O(M + N + E)
+class Solution {
 public:
     vector<int> sortItems(int n, int m, vector<int>& group, vector<vector<int>>& beforeItems) {
         unordered_map<int, vector<int>> itemGraph; // adjacency list of items. Edges between groups are considered in groupGraph so ignored here.
@@ -102,6 +103,77 @@ public:
             }
         }
         if (ans.size() != n) return {}; // has circle between group, return empty list
+        return ans;
+    }
+};
+```
+
+## Solution 2. Topological Sort
+
+```cpp
+// OJ: https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/
+// Author: github.com/lzl124631x
+// Time: O(M + N + E)
+// Space: O(M + N + E)
+class Solution {
+public:
+    vector<int> sortItems(int n, int m, vector<int>& group, vector<vector<int>>& beforeItems) {
+        unordered_map<int, vector<int>> groupGraph, groupItems;
+        unordered_map<int, int> groupIndegree;
+        vector<int> groupOrder, ans;
+        for (int i = 0; i < n; ++i) {
+            int a = group[i] == -1 ? m + i : group[i];// For those items belonging to no group, let the groupId be `m + i`.
+            if (a < m) groupItems[group[i]].push_back(i);
+            if (groupGraph.count(a) == 0) groupGraph[a] = {};
+            for (int j : beforeItems[i]) {
+                int b = group[j] == -1 ? m + j : group[j];
+                if (a == b) continue; // skip intra dependency
+                groupGraph[b].push_back(a);
+                groupIndegree[a]++;
+            }
+        }
+        queue<int> q;
+        for (auto &[g, _] : groupGraph) {
+            if (groupIndegree[g] == 0) q.push(g); 
+        }
+        while (q.size()) {
+            int u = q.front();
+            q.pop();
+            groupOrder.push_back(u);
+            for (int v : groupGraph[u]) {
+                if (--groupIndegree[v] == 0) q.push(v);
+            }
+        }
+        if (groupOrder.size() != groupGraph.size()) return {};
+        for (int g : groupOrder) {
+            if (g >= m) {
+                ans.push_back(g - m);
+                continue;
+            }
+            unordered_map<int, vector<int>> itemGraph;
+            unordered_map<int, int> itemIndegree;
+            for (int u : groupItems[g]) {
+                for (int v : beforeItems[u]) {
+                    if (group[v] != g) continue;
+                    itemGraph[v].push_back(u);
+                    itemIndegree[u]++;
+                }
+            }
+            for (int u : groupItems[g]) {
+                if (itemIndegree[u] == 0) q.push(u);
+            }
+            int cnt = 0;
+            while (q.size()) {
+                int u = q.front();
+                q.pop();
+                ans.push_back(u);
+                ++cnt;
+                for (int v : itemGraph[u]) {
+                    if (--itemIndegree[v] == 0) q.push(v);
+                }
+            }
+            if (cnt != groupItems[g].size()) return {};
+        }
         return ans;
     }
 };
