@@ -75,3 +75,26 @@ public:
     }
 };
 ```
+
+Another implementation that doesn't require the `O(26)` check
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-good-ways-to-split-a-string/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int numSplits(string s) {
+        int right[26] = {}, left[26] = {}, ans = 0, L = 0, R = 0;
+        for (char c : s ) R += right[c - 'a']++ == 0;
+        for (char c : s) {
+            L += left[c - 'a']++ == 0;
+            R -= right[c - 'a']-- == 1;
+            ans += L == R;
+            if (L > R) break;
+        }
+        return ans;
+    }
+};
+```
