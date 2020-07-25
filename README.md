@@ -941,6 +941,10 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1518 | Water Bottles | Easy | [Solution](leetcode/1518.%20Water%20Bottles)
 1519 | Number of Nodes in the Sub-Tree With the Same Label | Medium | [Solution](leetcode/1519.%20Number%20of%20Nodes%20in%20the%20Sub-Tree%20With%20the%20Same%20Label)
 1520 | Maximum Number of Non-Overlapping Substrings | Medium | [Solution](leetcode/1520.%20Maximum%20Number%20of%20Non-Overlapping%20Substrings)
+1523 | Count Odd Numbers in an Interval Range | Easy | [Solution](leetcode/1523.%20Count%20Odd%20Numbers%20in%20an%20Interval%20Range)
+1524 | Number of Sub-arrays With Odd Sum | Medium | [Solution](leetcode/1524.%20Number%20of%20Sub-arrays%20With%20Odd%20Sum)
+1525 | Number of Good Ways to Split a String | Medium | [Solution](leetcode/1525.%20Number%20of%20Good%20Ways%20to%20Split%20a%20String)
+1526 | Minimum Number of Increments on Subarrays to Form a Target Array | Hard | [Solution](leetcode/1526.%20Minimum%20Number%20of%20Increments%20on%20Subarrays%20to%20Form%20a%20Target%20Array)
 5427 | Probability of a Two Boxes Having The Same Number of Distinct Balls |  | [Solution](leetcode/5427.%20Probability%20of%20a%20Two%20Boxes%20Having%20The%20Same%20Number%20of%20Distinct%20Balls)
 
 # License
