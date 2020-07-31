@@ -92,7 +92,7 @@ class Solution {
 public:
     int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {
         map<int, int> times; // start time to max profit
-        unordered_map<int, vector<pair<int, int>>> jobs; // start time to job info
+        unordered_map<int, vector<pair<int, int>>> jobs; // start time to <endTime, profit>
         for (int i = 0; i < startTime.size(); ++i) {
             times[startTime[i]] = 0;
             jobs[startTime[i]].emplace_back(endTime[i], profit[i]);
