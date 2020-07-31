@@ -40,12 +40,12 @@
 ```cpp
 // OJ: https://leetcode.com/problems/reorganize-string/
 // Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
+// Time: O(NA) where A is the size of the alphabet
+// Space: O(A)
 class Solution {
 public:
     string reorganizeString(string S) {
-        int cnts[26] = {0};
+        int cnts[26] = {};
         for (char c : S) cnts[c - 'a']++;
         string ans(S.size(), '\0');
         for (int i = 0; i < S.size(); ++i) {
@@ -58,6 +58,67 @@ public:
             cnts[maxIndex]--;
             ans[i] = maxIndex + 'a';
         }
+        return ans;
+    }
+};
+```
+
+## Solution 2. Interleaving Placement
+
+```cpp
+// OJ: https://leetcode.com/problems/reorganize-string/
+// Author: github.com/lzl124631x
+// Time: O(AlogA + N) where A is the size of the alphabet 
+// Space: O(A)
+// Ref: https://leetcode.com/problems/reorganize-string/solution/
+class Solution {
+public:
+    string reorganizeString(string S) {
+        int N = S.size(), cnt[26] = {}, j = 1;
+        for (char c : S) cnt[c - 'a'] += 100;
+        for (int i = 0; i < 26; ++i) cnt[i] += i;
+        sort(begin(cnt), end(cnt));
+        string ans(N, ' ');
+        for (int n : cnt) {
+            int ct = n / 100, ch = n % 100;
+            if (ct == 0) continue;
+            if (ct > (N + 1) / 2) return "";
+            while (ct--) {
+                ans[j] = ch + 'a';
+                j = (j + 2) % N;
+                if (j == 1) j = 0;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3. Greedy + Heap
+
+```cpp
+// OJ: https://leetcode.com/problems/reorganize-string/
+// Author: github.com/lzl124631x
+// Time: O(A + NlogA) where A is the size of the alphabet
+// Space: O(A)
+class Solution {
+public:
+    string reorganizeString(string S) {
+        int cnt[26] = {}, prev = -1;
+        for (char c : S) cnt[c - 'a']++;
+        auto cmp = [&](int a, int b) { return cnt[a] < cnt[b]; };
+        priority_queue<int, vector<int>, decltype(cmp)> q(cmp);
+        for (int i = 0; i < 26; ++i) if (cnt[i]) q.push(i);
+        string ans;
+        while (q.size()) {
+            int c = q.top();
+            q.pop();
+            ans.push_back('a' + c);
+            if (prev != -1) q.push(prev);
+            if (--cnt[c]) prev = c;
+            else prev = -1;
+        }
+        if (prev != -1) return "";
         return ans;
     }
 };
