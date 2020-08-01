@@ -751,6 +751,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1046 | Last Stone Weight | Easy | [Solution](leetcode/1046.%20Last%20Stone%20Weight)
 1047 | Remove All Adjacent Duplicates In String | Easy | [Solution](leetcode/1047.%20Remove%20All%20Adjacent%20Duplicates%20In%20String)
 1053 | Previous Permutation With One Swap | Medium | [Solution](leetcode/1053.%20Previous%20Permutation%20With%20One%20Swap)
+1054 | Distant Barcodes | Medium | [Solution](leetcode/1054.%20Distant%20Barcodes)
 1071 | Greatest Common Divisor of Strings | Easy | [Solution](leetcode/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
 1072 | Flip Columns For Maximum Number of Equal Rows | Medium | [Solution](leetcode/1072.%20Flip%20Columns%20For%20Maximum%20Number%20of%20Equal%20Rows)
 1073 | Adding Two Negabinary Numbers | Medium | [Solution](leetcode/1073.%20Adding%20Two%20Negabinary%20Numbers)
