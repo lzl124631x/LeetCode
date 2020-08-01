@@ -67,7 +67,7 @@ class Solution {
 public:
     bool detectCapitalUse(string word) {
         int cnt = 0;
-        for (char c : word) if (isupper(c)) ++cnt;
+        for (char c : word) cnt += isupper(c) > 0;
         return !cnt || cnt == word.size() || cnt == 1 && isupper(word[0]);
     }
 };
