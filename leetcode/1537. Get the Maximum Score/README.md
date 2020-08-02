@@ -107,7 +107,7 @@ public:
             prevY = Y;
         }
         while (i < M) X += A[i++];
-        while(j < N) Y += B[j++];
+        while (j < N) Y += B[j++];
         return max(X, Y) % mod;
     }
 };
