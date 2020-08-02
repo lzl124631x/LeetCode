@@ -678,6 +678,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 928 | Minimize Malware Spread II | Hard | [Solution](leetcode/928.%20Minimize%20Malware%20Spread%20II)
 929 | Unique Email Addresses | Easy | [Solution](leetcode/929.%20Unique%20Email%20Addresses)
 931 | Minimum Falling Path Sum | Medium | [Solution](leetcode/931.%20Minimum%20Falling%20Path%20Sum)
+932 | Beautiful Array | Medium | [Solution](leetcode/932.%20Beautiful%20Array)
 933 | Number of Recent Calls | Easy | [Solution](leetcode/933.%20Number%20of%20Recent%20Calls)
 935 | Knight Dialer | Medium | [Solution](leetcode/935.%20Knight%20Dialer)
 936 | Stamping The Sequence | Hard | [Solution](leetcode/936.%20Stamping%20The%20Sequence)
