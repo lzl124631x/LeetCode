@@ -748,6 +748,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1037 | Valid Boomerang | Easy | [Solution](leetcode/1037.%20Valid%20Boomerang)
 1038 | Binary Search Tree to Greater Sum Tree | Medium | [Solution](leetcode/1038.%20Binary%20Search%20Tree%20to%20Greater%20Sum%20Tree)
 1039 | Minimum Score Triangulation of Polygon | Medium | [Solution](leetcode/1039.%20Minimum%20Score%20Triangulation%20of%20Polygon)
+1042 | Flower Planting With No Adjacent | Easy | [Solution](leetcode/1042.%20Flower%20Planting%20With%20No%20Adjacent)
 1043 | Partition Array for Maximum Sum | Medium | [Solution](leetcode/1043.%20Partition%20Array%20for%20Maximum%20Sum)
 1044 | Longest Duplicate Substring | Hard | [Solution](leetcode/1044.%20Longest%20Duplicate%20Substring)
 1046 | Last Stone Weight | Easy | [Solution](leetcode/1046.%20Last%20Stone%20Weight)
