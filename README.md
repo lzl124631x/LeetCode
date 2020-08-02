@@ -951,6 +951,10 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1525 | Number of Good Ways to Split a String | Medium | [Solution](leetcode/1525.%20Number%20of%20Good%20Ways%20to%20Split%20a%20String)
 1526 | Minimum Number of Increments on Subarrays to Form a Target Array | Hard | [Solution](leetcode/1526.%20Minimum%20Number%20of%20Increments%20on%20Subarrays%20to%20Form%20a%20Target%20Array)
 1531 | String Compression II | Hard | [Solution](leetcode/1531.%20String%20Compression%20II)
+1534 | Count Good Triplets | Easy | [Solution](leetcode/1534.%20Count%20Good%20Triplets)
+1535 | Find the Winner of an Array Game | Medium | [Solution](leetcode/1535.%20Find%20the%20Winner%20of%20an%20Array%20Game)
+1536 | Minimum Swaps to Arrange a Binary Grid | Medium | [Solution](leetcode/1536.%20Minimum%20Swaps%20to%20Arrange%20a%20Binary%20Grid)
+1537 | Get the Maximum Score | Hard | [Solution](leetcode/1537.%20Get%20the%20Maximum%20Score)
 5427 | Probability of a Two Boxes Having The Same Number of Distinct Balls |  | [Solution](leetcode/5427.%20Probability%20of%20a%20Two%20Boxes%20Having%20The%20Same%20Number%20of%20Distinct%20Balls)
 
 # License
