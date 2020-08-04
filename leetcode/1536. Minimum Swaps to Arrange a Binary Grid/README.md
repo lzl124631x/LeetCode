@@ -60,24 +60,22 @@ Then we can from the first item to the last item in `v`:
 class Solution {
 public:
     int minSwaps(vector<vector<int>>& G) {
-       vector<int> v; 
-        int N = G.size();
-        for (int i = 0; i < G.size(); ++i) {
-            int len = -1;
-            for (int j = G[i].size() - 1; j >= 0; --j) {
-                if (G[i][j] == 1) {
-                    len = j;
-                    break;
-                }
-            }
-            v.push_back(len);
-        }
-        int ans = 0;
+        int N = G.size(), ans = 0;
+        vector<int> v(N);
         for (int i = 0; i < N; ++i) {
-            if (v[i] <= i) continue;
+            int len = 0;
+            for (int j = N - 1; j >= 0; --j) {
+                if (G[i][j] == 0) continue;
+                len = j + 1;
+                break;
+            }
+            v[i] = len;
+        }
+        for (int i = 0; i < N; ++i) {
+            if (v[i] <= i + 1) continue;
             int j = i + 1;
-            while (j < N && v[j] > i) ++j;
-            if (j == N) return -1;
+            while (j < N && v[j] > i + 1) ++j; 
+            if (j == N) return -1; 
             int tmp = v[j];
             for (int k = j; k > i; --k) v[k] = v[k - 1];
             v[i] = tmp;
