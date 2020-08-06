@@ -54,11 +54,13 @@ So we can see that 4 rounds will be played and 5 is the winner because it wins 2
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/)
 
-## Solution 1. Deque
+## Solution 1. Queue
 
 Just simulate the process. Because once we visit the maximum number in the array, we'll at most visit the entire array one more time, so the time complexity is `O(N)`.
 
 Note that if we found that one number has beaten other `N - 1` numbers already, we don't need to continue the loop and this maximum number must be the result.
+
+Actually just using a `queue` is enough, but `queue` doesn't support initialization using `queue<int> q(begin(A), end(A))`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-the-winner-of-an-array-game/
@@ -84,6 +86,62 @@ public:
             }
         }
         return x;
+    }
+};
+```
+
+## Solution 2. Monostack (Next Greater Element)
+
+
+```cpp
+// OJ: https://leetcode.com/problems/find-the-winner-of-an-array-game/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int getWinner(vector<int>& A, int k) {
+        int N = A.size();
+        if (k >= N - 1) return *max_element(begin(A), end(A));
+        vector<int> next(N, -1);
+        stack<int> s; // decreasing monostack
+        for (int i = 0; i < 2 * N; ++i) {
+            while (s.size() && A[s.top() % N] < A[i % N]) {
+                next[s.top() % N] = i % N;
+                s.pop();
+            }
+            s.push(i);
+        }
+        for (int i = 0; i < N; ++i) {
+            if (next[i] == -1 || next[i] - i - (i == 0) >= k) return A[i];
+        }
+        return -1;
+    }
+};
+```
+
+## Solution 3. One pass
+
+One key observation is that after comparing all the elements first pass, we don't need to compare the current winning element from the beginning of the array again because we must meet the greatest element in the first pass which will definitely win the game.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-the-winner-of-an-array-game/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/find-the-winner-of-an-array-game/discuss/768007/JavaC%2B%2BPython-One-Pass-O(1)-Space
+class Solution {
+public:
+    int getWinner(vector<int>& A, int k) {
+        int cur = A[0], win = 0;
+        for (int i = 1; i < A.size(); ++i) {
+            if (A[i] > cur) {
+                cur = A[i];
+                win = 0;
+            }
+            if (++win == k) break;
+        }
+        return cur;
     }
 };
 ```
