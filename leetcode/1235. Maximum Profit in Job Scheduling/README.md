@@ -51,6 +51,16 @@ Profit obtained 150 = 20 + 70 + 60.
 
 ## Solution 1. DP + Binary Search
 
+Visit the jobs in desending order of `startTime`.
+
+Assume the current job is `job[i]`, let `dp[job[i].startTime]` be the max profit we can get in time range `[job[i].startTime, Infinity)`.
+
+```
+dp[job[i].startTime] = max( dp[job[i].startTime],
+                            dp[job[j].startTime] + profit[i] )
+                            where `j` is the first job whose start time is greater than or equal to `job[i].endTime`.
+```
+
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-profit-in-job-scheduling/
 // Author: github.com/lzl124631x
@@ -80,7 +90,7 @@ public:
 };
 ```
 
-## Solution 2. DP + Binary Search
+Or
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-profit-in-job-scheduling/
@@ -110,8 +120,6 @@ public:
 };
 ```
 
-## Solution 3. DP + Binary Search
-
 Using the ID array `idx` saves space compared to saving `endTime` and `profit` in another `map` as shown in the above solutions.
 
 ```cpp
@@ -138,7 +146,7 @@ public:
 };
 ```
 
-## Solution 4. DP + Binary Search
+## Solution 2. DP + Binary Search
 
 Sort the jobs based on `endTime` also works.
 
