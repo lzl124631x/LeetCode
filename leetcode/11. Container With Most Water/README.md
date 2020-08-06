@@ -49,6 +49,8 @@ public:
 
 Keep two pointers `L = 0, R = N - 1` and move them inwards. They form two edges of the container and the volumn is `(R - L) * min(A[L], A[R])`.
 
+We start from the container with the maximum width. Now we need to decrease the width and try to increase the height if possible (compromising on width and looking forward to greater height).
+
 The strategy of moving the pointers is that we always move the smaller edge inwards.
 
 The reason is that **if we move the greater edge, the volumn of the container won't increase** -- the width of the container decreases by one, and the height of the container limited by the smaller edge won't increase.
