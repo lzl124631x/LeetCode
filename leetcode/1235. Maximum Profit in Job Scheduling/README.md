@@ -66,13 +66,13 @@ public:
             v[i][1] = endTime[i];
             v[i][2] = profit[i];
         }
-        sort(v.begin(), v.end());
+        sort(v.begin(), v.end()); // sort in asending order of start time.
         vector<int> dp(N + 1);
         for (int i = N - 1; i >= 0; --i) {
-            dp[i] = dp[i + 1];
+            dp[i] = dp[i + 1]; // roll the max profit over
             int e = v[i][1];
-            vector<int> c{ e, e, 0 };
-            int j = upper_bound(v.begin(), v.end(), c) - v.begin();
+            vector<int> c{ e, e, 0 }; // find the first job whose startTime is greater than or equal to the end time of the current job
+            int j = lower_bound(v.begin(), v.end(), c) - v.begin(); // `upper_bound` also works because it's impossible to be equal to the job `e, e, 0`.
             dp[i] = max(dp[i], dp[j] + v[i][2]);
         }
         return dp[0];
@@ -80,7 +80,7 @@ public:
 };
 ```
 
-## Solution 2. DP
+## Solution 2. DP + Binary Search
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-profit-in-job-scheduling/
@@ -91,26 +91,28 @@ public:
 class Solution {
 public:
     int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {
-        map<int, int> times; // start time to max profit
+        map<int, int> maxProfit; // start time to max profit
         unordered_map<int, vector<pair<int, int>>> jobs; // start time to <endTime, profit>
         for (int i = 0; i < startTime.size(); ++i) {
-            times[startTime[i]] = 0;
+            maxProfit[startTime[i]] = 0;
             jobs[startTime[i]].emplace_back(endTime[i], profit[i]);
         }
-        int maxProfit = 0;
-        for (auto it = rbegin(times); it != rend(times); ++it) {
+        int ans = 0;
+        for (auto it = rbegin(maxProfit); it != rend(maxProfit); ++it) {
             for (auto &job : jobs[it->first]) {
-                auto j = times.lower_bound(job.first);
-                maxProfit = max(maxProfit, (j == end(times) ? 0 : j->second) + job.second);
+                auto j = maxProfit.lower_bound(job.first); // find the first job whose start time is greater than or equal to the end time of this current job.
+                ans = max(ans, (j == end(maxProfit) ? 0 : j->second) + job.second);
             }
-            it->second = maxProfit;
+            it->second = ans;
         }
-        return maxProfit;
+        return ans;
     }
 };
 ```
 
-## Solution 3. DP
+## Solution 3. DP + Binary Search
+
+Using the ID array `idx` saves space compared to saving `endTime` and `profit` in another `map` as shown in the above solutions.
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-profit-in-job-scheduling/
@@ -123,15 +125,95 @@ public:
     int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {
         vector<int> idx(startTime.size());
         iota(begin(idx), end(idx), 0);
-        sort(begin(idx), end(idx), [&](int i, int j) { return startTime[i] > startTime[j]; });
-        map<int, int> memo; // start time to max profit
-        int maxProfit = 0;
+        sort(begin(idx), end(idx), [&](int i, int j) { return startTime[i] > startTime[j]; }); // sort the job ids in descending order of start time.
+        map<int, int> maxProfit; // start time to max profit
+        int ans = 0;
         for (int i = 0; i < idx.size(); ++i) {
-            auto j = memo.lower_bound(endTime[idx[i]]);
-            maxProfit = max(maxProfit, (j == end(memo) ? 0 : j->second) + profit[idx[i]]);
-            memo[startTime[idx[i]]] = maxProfit;
+            auto j = maxProfit.lower_bound(endTime[idx[i]]); // find the first job whose start time is greater than or equal to the end time of the current job.
+            ans = max(ans, (j == end(maxProfit) ? 0 : j->second) + profit[idx[i]]);
+            maxProfit[startTime[idx[i]]] = ans;
         }
-        return maxProfit;
+        return ans;
+    }
+};
+```
+
+## Solution 4. DP + Binary Search
+
+Sort the jobs based on `endTime` also works.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-profit-in-job-scheduling/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class Solution {
+public:
+  Solution() {ios::sync_with_stdio(false); std::cin.tie(nullptr); std::cout.tie(nullptr);}
+    int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {
+        map<int, vector<pair<int, int>>> m; // endTime -> <startTime, profit>
+        for (int i = 0; i < startTime.size(); ++i) m[endTime[i]].emplace_back(startTime[i], profit[i]);
+        map<int, int> maxProfit{{0, 0}};
+        int ans = 0;
+        for (auto &[end, infos] : m) {
+            maxProfit[end] = ans;
+            for (auto &[start, pro] : infos) {
+                auto it = prev(maxProfit.upper_bound(start)); // find the last job whose end time is smaller than or equal to the start time of the current job.
+                ans = maxProfit[end] = max(maxProfit[end], it->second + pro);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-profit-in-job-scheduling/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class Solution {
+public:
+    int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {
+        vector<int> ids(startTime.size());
+        iota(begin(ids), end(ids), 0);
+        sort(begin(ids), end(ids), [&](int a, int b) { return endTime[a] < endTime[b]; });
+        map<int, int> dp{{0, 0}}; // endTime -> max profit
+        int ans = 0;
+        for (int id : ids) {
+            ans = max(ans, prev(dp.upper_bound(startTime[id]))->second + profit[id]);
+            dp[endTime[id]] = ans;
+        }
+        return ans;
+    }
+};
+```
+
+Or 
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-profit-in-job-scheduling/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/maximum-profit-in-job-scheduling/discuss/409009/JavaC%2B%2BPython-DP-Solution
+class Solution {
+public:
+    int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {
+        int n = startTime.size();
+        vector<vector<int>> jobs;
+        for (int i = 0; i < n; ++i) {
+            jobs.push_back({endTime[i], startTime[i], profit[i]});
+        }
+        sort(jobs.begin(), jobs.end());
+        map<int, int> dp{{0, 0}};
+        for (auto& job : jobs) {
+            int cur = prev(dp.upper_bound(job[1]))->second + job[2];
+            if (cur > dp.rbegin()->second) dp[job[0]] = cur; // Only update the map if we see greater profit. This makes sure the `dp` contains only mono-increasing profits which reduces the size of `dp` and also makes it unnecessary to keep track of the rolling max profit.
+        }
+        return dp.rbegin()->second;
     }
 };
 ```
