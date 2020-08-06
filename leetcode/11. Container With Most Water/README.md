@@ -47,6 +47,14 @@ public:
 
 ## Solution 2. Two Pointers
 
+Keep two pointers `L = 0, R = N - 1` and move them inwards. They form two edges of the container and the volumn is `(R - L) * min(A[L], A[R])`.
+
+The strategy of moving the pointers is that we always move the smaller edge inwards.
+
+The reason is that **if we move the greater edge, the volumn of the container won't increase** -- the width of the container decreases by one, and the height of the container limited by the smaller edge won't increase.
+
+If the height of the two edges are the same, moving either one is fine because the change won't increase the volumn either way. BUT, we shouldn't break here because the volumn might increase later. Example case `[1, 100, 200, 1]`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/container-with-most-water/
 // Author: github.com/lzl124631x
