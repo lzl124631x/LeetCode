@@ -719,6 +719,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 984 | String Without AAA or BBB | Medium | [Solution](leetcode/984.%20String%20Without%20AAA%20or%20BBB)
 985 | Sum of Even Numbers After Queries | Easy | [Solution](leetcode/985.%20Sum%20of%20Even%20Numbers%20After%20Queries)
 986 | Interval List Intersections | Medium | [Solution](leetcode/986.%20Interval%20List%20Intersections)
+987 | Vertical Order Traversal of a Binary Tree | Medium | [Solution](leetcode/987.%20Vertical%20Order%20Traversal%20of%20a%20Binary%20Tree)
 990 | Satisfiability of Equality Equations | Medium | [Solution](leetcode/990.%20Satisfiability%20of%20Equality%20Equations)
 993 | Cousins in Binary Tree | Easy | [Solution](leetcode/993.%20Cousins%20in%20Binary%20Tree)
 997 | Find the Town Judge | Easy | [Solution](leetcode/997.%20Find%20the%20Town%20Judge)
