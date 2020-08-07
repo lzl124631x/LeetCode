@@ -60,9 +60,11 @@ However, in the report "[1,5,6]", the node value of 5 comes first since 5 is sma
 
 ## Solution 1.
 
-Use a `map<int, map<int, set<int>>> m` to store the values -- `m[node->x][node->y].insert(node->val)`. In this way, the values are sorted first in asending order of the `x` values, then in asending order of `y` values, then in asending order of node values.
+Use a `map<int, map<int, multiset<int>>> m` to store the values -- `m[node->x][node->y].insert(node->val)`. (Using `set` instead of `multiset` can also pass this problem. I guess LeetCode uses the node values as IDs and assumes the uniqueness of the values. I used `multiset` here to be safe.)
 
-Note that we shouldn't sort the values with the same X values all together, we should only sort them if they **have the same position**, i.e. when both their `x` and `y` values are equal.
+In this way, the values are sorted first in asending order of the `x` values, then in asending order of `y` values, then in asending order of node values.
+
+Note that we shouldn't sort the values with the same X values all together, we should only sort them if they **have the same position**, i.e. when **both their `x` and `y` values are equal**.
 
 ```cpp
 // OJ: https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/
@@ -70,7 +72,7 @@ Note that we shouldn't sort the values with the same X values all together, we s
 // Time: O(NlogN)
 // Space: O(N)
 class Solution {
-    map<int, map<int, set<int>>> m;
+    map<int, map<int, multiset<int>>> m;
     void dfs(TreeNode *root, int x, int y) {
         if (!root) return;
         m[x][y].insert(root->val);
