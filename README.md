@@ -357,7 +357,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 438 | Find All Anagrams in a String | Medium | [Solution](leetcode/438.%20Find%20All%20Anagrams%20in%20a%20String)
 440 | K-th Smallest in Lexicographical Order |  | [Solution](leetcode/440.%20K-th%20Smallest%20in%20Lexicographical%20Order)
 441 | Arranging Coins | Easy | [Solution](leetcode/441.%20Arranging%20Coins)
-442 | Find All Duplicates in an Array |  | [Solution](leetcode/442.%20Find%20All%20Duplicates%20in%20an%20Array)
+442 | Find All Duplicates in an Array | Medium | [Solution](leetcode/442.%20Find%20All%20Duplicates%20in%20an%20Array)
 443 | String Compression | Easy | [Solution](leetcode/443.%20String%20Compression)
 445 | Add Two Numbers II |  | [Solution](leetcode/445.%20Add%20Two%20Numbers%20II)
 446 | Arithmetic Slices II - Subsequence | Hard | [Solution](leetcode/446.%20Arithmetic%20Slices%20II%20-%20Subsequence)
