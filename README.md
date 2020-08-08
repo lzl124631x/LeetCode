@@ -264,7 +264,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 333 | Largest BST Subtree | Medium | [Solution](leetcode/333.%20Largest%20BST%20Subtree)
 334 | Increasing Triplet Subsequence |  | [Solution](leetcode/334.%20Increasing%20Triplet%20Subsequence)
 335 | Self Crossing |  | [Solution](leetcode/335.%20Self%20Crossing)
-336 | Palindrome Pairs |  | [Solution](leetcode/336.%20Palindrome%20Pairs)
+336 | Palindrome Pairs | Hard | [Solution](leetcode/336.%20Palindrome%20Pairs)
 337 | House Robber III | Medium | [Solution](leetcode/337.%20House%20Robber%20III)
 338 | Counting Bits | Medium | [Solution](leetcode/338.%20Counting%20Bits)
 339 | Nested List Weight Sum | Easy | [Solution](leetcode/339.%20Nested%20List%20Weight%20Sum)
