@@ -114,6 +114,7 @@ one = (one^n)&~two:  0 0 1 0 1 0 0 0 // The bits summing to `3` are cleared from
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
+// Ref: https://leetcode.com/problems/single-number-ii/discuss/43294/Challenge-me-thx
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
