@@ -119,3 +119,35 @@ public:
     }
 };
 ```
+
+Or another more concise version.
+
+Now we want to find the smallest index `i` which satisfies `A[i] > k + i`. Assume `L` is such a number, then the answer is `L + k`.
+
+Example:
+
+```
+A=[1,4,5,8]
+k=3
+The smallest index i which satisfies `A[i] > k + i` is 3, so the answer is 3 + k = 6.
+```
+
+```cpp
+// OJ: https://leetcode.com/problems/kth-missing-positive-number/
+// Author: github.com/lzl124631x
+// Time: O(logN)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/kth-missing-positive-number/discuss/779999/JavaC%2B%2BPython-O(logN)
+class Solution {
+public:
+    int findKthPositive(vector<int>& A, int k) {
+        int L = 0, R = A.size();
+        while (L < R) {
+            int M = (L + R) / 2;
+            if (A[M] <= k + M) L = M + 1;
+            else R = M;
+        }
+        return L + k;
+    }
+};
+```
