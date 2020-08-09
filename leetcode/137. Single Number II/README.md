@@ -91,6 +91,24 @@ public:
 
 ## Solution 4.
 
+`a ^ b` has `1` in the bits where the corresponding bits in `a` and `b` are different, and `0` in the others. `0011 ^ 0101 = 0110`
+
+`a & ~b` has the same bits as in `a` expect that those bits that are `1` in `b` are cleared as `0`. `0011 & ~0101 = 0010`
+
+To get the new `one`:
+* 
+
+```
+                 n:  0 0 0 0 1 1 1 1
+               one:  0 0 1 1 0 0 1 1
+               two:  0 1 0 1 0 1 0 1
+
+             one^n:  0 0 1 1 1 1 0 0 // The bits that are `1`s after adding `one` and `n`.
+one = (one^n)&~two:  0 0 1 0 1 0 0 0 // The bits summing to `3` are cleared from `one^n`. They are the ones that are `1`s both in `one^n` and `two`.
+             two^n:  0 1 0 1 1 0 1 0 // The bits that are `1`s after adding `two` and `n`.
+      (two^n)&~one:  0 1 0 1 0 0 1 0 // The bits summing to `3` are cleared from `two^n`. They are the ones that are `1`s both in `two^n` and `one`.
+```
+
 ```cpp
 // OJ: https://leetcode.com/problems/single-number-ii/
 // Author: github.com/lzl124631x
