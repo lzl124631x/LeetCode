@@ -102,6 +102,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 96 | Unique Binary Search Trees | Medium | [Solution](leetcode/96.%20Unique%20Binary%20Search%20Trees)
 97 | Interleaving String | Hard | [Solution](leetcode/97.%20Interleaving%20String)
 98 | Validate Binary Search Tree | Medium | [Solution](leetcode/98.%20Validate%20Binary%20Search%20Tree)
+99 | Recover Binary Search Tree | Hard | [Solution](leetcode/99.%20Recover%20Binary%20Search%20Tree)
 100 | Same Tree | Easy | [Solution](leetcode/100.%20Same%20Tree)
 101 | Symmetric Tree |  | [Solution](leetcode/101.%20Symmetric%20Tree)
 102 | Binary Tree Level Order Traversal | Medium | [Solution](leetcode/102.%20Binary%20Tree%20Level%20Order%20Traversal)
