@@ -353,7 +353,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 434 | Number of Segments in a String |  | [Solution](leetcode/434.%20Number%20of%20Segments%20in%20a%20String)
 435 | Non-overlapping Intervals | Medium | [Solution](leetcode/435.%20Non-overlapping%20Intervals)
 436 | Find Right Interval |  | [Solution](leetcode/436.%20Find%20Right%20Interval)
-437 | Path Sum III |  | [Solution](leetcode/437.%20Path%20Sum%20III)
+437 | Path Sum III | Medium | [Solution](leetcode/437.%20Path%20Sum%20III)
 438 | Find All Anagrams in a String | Medium | [Solution](leetcode/438.%20Find%20All%20Anagrams%20in%20a%20String)
 440 | K-th Smallest in Lexicographical Order |  | [Solution](leetcode/440.%20K-th%20Smallest%20in%20Lexicographical%20Order)
 441 | Arranging Coins | Easy | [Solution](leetcode/441.%20Arranging%20Coins)
@@ -963,6 +963,10 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1536 | Minimum Swaps to Arrange a Binary Grid | Medium | [Solution](leetcode/1536.%20Minimum%20Swaps%20to%20Arrange%20a%20Binary%20Grid)
 1537 | Get the Maximum Score | Hard | [Solution](leetcode/1537.%20Get%20the%20Maximum%20Score)
 1539 | Kth Missing Positive Number | Easy | [Solution](leetcode/1539.%20Kth%20Missing%20Positive%20Number)
+1544 | Make The String Great | Easy | [Solution](leetcode/1544.%20Make%20The%20String%20Great)
+1545 | Find Kth Bit in Nth Binary String | Medium | [Solution](leetcode/1545.%20Find%20Kth%20Bit%20in%20Nth%20Binary%20String)
+1546 | Maximum Number of Non-Overlapping Subarrays With Sum Equals Target | Medium | [Solution](leetcode/1546.%20Maximum%20Number%20of%20Non-Overlapping%20Subarrays%20With%20Sum%20Equals%20Target)
+1547 | Minimum Cost to Cut a Stick | Hard | [Solution](leetcode/1547.%20Minimum%20Cost%20to%20Cut%20a%20Stick)
 5427 | Probability of a Two Boxes Having The Same Number of Distinct Balls |  | [Solution](leetcode/5427.%20Probability%20of%20a%20Two%20Boxes%20Having%20The%20Same%20Number%20of%20Distinct%20Balls)
 
 # License
