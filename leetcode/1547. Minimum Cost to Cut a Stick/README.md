@@ -54,7 +54,7 @@ Let `dp[i][j]` be the minimum cost if we cut on the stick from `A[i]` to `A[j]`.
 The answer is `dp[0][N-1]`.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-201/problems/minimum-cost-to-cut-a-stick/
+// OJ: https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
 // Author: github.com/lzl124631x
 // Time: O(N^3)
 // Space: O(N^2)

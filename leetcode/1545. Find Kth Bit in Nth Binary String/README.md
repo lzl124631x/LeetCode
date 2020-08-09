@@ -69,7 +69,7 @@ If `k - 1 < len / 2`, this is at the left part of `Sn`, which is the same as `fi
 If `k - 1 > len / 2`, this is the `i = k - 1 - len / 2`-th bit in the right part, which is the invert of `findKthBit(n - 1, len / 2 - i + 1)`.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-201/problems/find-kth-bit-in-nth-binary-string/
+// OJ: https://leetcode.com/problems/find-kth-bit-in-nth-binary-string/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)

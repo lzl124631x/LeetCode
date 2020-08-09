@@ -58,7 +58,7 @@ Now that we've found all the ranges whose sums are `target`. We can apply the so
 We just need to sort the ranges in ascending order of the ending index, and then greedily pick the non-overlapping ranges which end first.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-201/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/
+// OJ: https://leetcode.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target//
 // Author: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(N)
