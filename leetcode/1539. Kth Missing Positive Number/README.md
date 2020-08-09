@@ -82,13 +82,17 @@ i=3
 A[i-1]-i = 5-3 = 2 // There are two missing numbers in [1,4,5]
 ```
 
-We can binary search the maximum `i` which satisfies `A[i-1] - i < k`. Assume it's `L`, then `L + k` is the answer.
+We can binary search the maximum `i` which satisfies `A[i-1] - i < k`. Assume it's `L`, then `L + k` is the answer. It's because adding `L`(the count of existing numbers) to `k` (the index of the target missing number) will get the answer (the value of the target missing number).
+
+Example, 
 
 ```
 A=[1,4,5,8]
-k=3
-i=3 is the maximum number which satisfies `A[i-1]-i = 2 < k = 3`, so the answer is 3 + k = 6
+k=4
+L=3
 ```
+
+so `[1,4,5]` is the range we are looking for -- it has 2 missing numbers and 3 existing numbers. Since we are looking for the 4th missing number, the value should be `3 (count of existing number) + 4 (index of target) = 7 (value of target)`
 
 A special case of `i` is when `i == 0`, then there is `0` missing number in this empty subarray. This is a valid case because for example `A=[2], k=1`, the maximum number of `i` which satisfies `count of missing number < k` is `0`.
 
