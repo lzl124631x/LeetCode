@@ -722,6 +722,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 987 | Vertical Order Traversal of a Binary Tree | Medium | [Solution](leetcode/987.%20Vertical%20Order%20Traversal%20of%20a%20Binary%20Tree)
 990 | Satisfiability of Equality Equations | Medium | [Solution](leetcode/990.%20Satisfiability%20of%20Equality%20Equations)
 993 | Cousins in Binary Tree | Easy | [Solution](leetcode/993.%20Cousins%20in%20Binary%20Tree)
+994 | Rotting Oranges | Medium | [Solution](leetcode/994.%20Rotting%20Oranges)
 997 | Find the Town Judge | Easy | [Solution](leetcode/997.%20Find%20the%20Town%20Judge)
 998 | Maximum Binary Tree II | Medium | [Solution](leetcode/998.%20Maximum%20Binary%20Tree%20II)
 999 | Available Captures for Rook | Easy | [Solution](leetcode/999.%20Available%20Captures%20for%20Rook)
