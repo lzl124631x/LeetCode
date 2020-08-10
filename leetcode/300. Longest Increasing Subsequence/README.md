@@ -55,3 +55,25 @@ public:
     }
 };
 ```
+
+## Solution 2. Binary Search
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-increasing-subsequence/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/longest-increasing-subsequence/solution/
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& A) {
+        vector<int> v;
+        for (int n : A) {
+            auto i = lower_bound(begin(v), end(v), n);
+            if (i == end(v)) v.push_back(n);
+            else *i = n;
+        }
+        return v.size();
+    }
+};
+```
