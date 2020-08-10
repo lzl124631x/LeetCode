@@ -81,11 +81,11 @@ Now we consider the 5 vowels. Each vowel has two different states, **even** and 
 
 For example, if the state of `aeiou` are even, even, odd, odd, even respectively, we can encode the state as `00110`.
 
-Let `m` be a map from state `x` to the index of the first occurrence of state `x`.
+Let `index` be a map from state `x` to the index of the first occurrence of state `x`.
 
-For each index `i`, we get the corresponding `state` of `s[i]` first, then:
-* If we've seen this state, then try to update the answer using `i - m[state]`.
-* Otherwise, `m[state] = i`.
+For each index `i`, we get the corresponding state `h` of `s[i]` first, then:
+* If we've seen this state, then try to update the answer using `i - index[h]`.
+* Otherwise, `m[h] = i`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-the-longest-substring-containing-vowels-in-even-counts/
@@ -95,17 +95,12 @@ For each index `i`, we get the corresponding `state` of `s[i]` first, then:
 class Solution {
 public:
     int findTheLongestSubstring(string s) {
-        string v = "aeiou";
-        int N = s.size(), cnt[26] = {0}, ans = 0;
-        unordered_map<unsigned, int> m{{0, -1}};
-        for (int i = 0; i < N; ++i) {
-            cnt[s[i] - 'a']++;
-            unsigned state = 0;
-            for (int j = 0; j < v.size(); ++j) {
-                if (cnt[v[j] - 'a'] % 2) state |= 1 << j;
-            }
-            if (m.count(state)) ans = max(ans, i - m[state]);
-            else m[state] = i;
+        int h = 0, ans = 0;
+        unordered_map<int, int> m{{'a',0},{'e',1},{'i',2},{'o',3},{'u',4}}, index{{0,-1}};
+        for (int i = 0; i < s.size(); ++i) {
+            if (m.count(s[i])) h ^= 1 << m[s[i]];
+            if (index.count(h)) ans = max(ans, i - index[h]);
+            else index[h] = i;
         }
         return ans;
     }
