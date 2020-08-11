@@ -36,44 +36,40 @@
 ```cpp
 // OJ: https://leetcode.com/problems/longest-duplicate-substring/
 // Author: github.com/lzl124631x
-// Time: O(N^2logN)
+// Time: average O(NlogN), worst O(N^2 * logN)
 // Space: O(N)
 class Solution {
-    typedef long long LL;
-    string getDup(string &S, int len) {
-        unordered_map<LL, vector<int>> m;
-        LL h = S[0], p = 1, d = 128, mod = 1e9 + 7;
-        for (int i = 1; i < len; ++i) {
-            h = (h * d + S[i]) % mod;
-            p = (p * d) % mod;
-        }
-        m[h].push_back(0);
-        for (int i = len; i < S.size(); ++i) {
-            h = ((h - S[i - len] * p) * d + S[i]) % mod;
-            if (h < 0) h += mod;
-            if (m.count(h)) {
-                auto s = S.substr(i - len + 1, len);
-                for (int start : m[h]) {
-                    if (S.substr(start, len) == s) return s;
+    int findDup(string &s, int len) {
+        unordered_map<unsigned, vector<int>> m;
+        unsigned h = 0, p = 1, d = 16777619;
+        for (int i = 0; i < s.size(); ++i) {
+            h = h * d + s[i] - 'a';
+            if (i >= len) h -= (s[i - len] - 'a') * p;
+            else p *= d;
+            if (i >= len - 1) {
+                if (m.count(h)) {
+                    for (int k : m[h]) {
+                        int j = 0;
+                        for (; j < len && s[k + j] == s[i - len + 1 + j]; ++j);
+                        if (j == len) return k;
+                    } 
                 }
+                m[h].push_back(i - len + 1);
             }
-            m[h].push_back(i - len + 1);
         }
-        return "";
+        return -1;
     }
 public:
     string longestDupSubstring(string S) {
-        int L = 0, R = S.size() - 1;
-        string ans;
+        int L = 1, R = S.size(), start = 0;
         while (L <= R) {
-            int M = (L + R) / 2;
-            auto s = getDup(S, M);
-            if (s.size()) {
+            int M = (L + R) / 2, i = findDup(S, M);
+            if (i != -1) {
                 L = M + 1;
-                ans = s;
+                start = i;
             } else R = M - 1;
         }
-        return ans;
+        return S.substr(start, R);
     }
 };
 ```
