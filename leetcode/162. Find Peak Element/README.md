@@ -55,3 +55,24 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-peak-element/
+// Author: github.com/lzl124631x
+// Time: O(logN)
+// Space: O(1)
+class Solution {
+public:
+    int findPeakElement(vector<int>& A) {
+        int L = 0, R = A.size() - 1;
+        while (L < R) {
+            int M = (L + R) / 2;
+            if (A[M] > A[M + 1]) R = M;
+            else L = M + 1;
+        }
+        return L;
+    }
+};
+```
