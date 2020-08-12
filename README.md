@@ -551,6 +551,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 714 | Best Time to Buy and Sell Stock with Transaction Fee | Medium | [Solution](leetcode/714.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee)
 717 | 1-bit and 2-bit Characters | Easy | [Solution](leetcode/717.%201-bit%20and%202-bit%20Characters)
 718 | Maximum Length of Repeated Subarray | Medium | [Solution](leetcode/718.%20Maximum%20Length%20of%20Repeated%20Subarray)
+719 | Find K-th Smallest Pair Distance | Hard | [Solution](leetcode/719.%20Find%20K-th%20Smallest%20Pair%20Distance)
 720 | Longest Word in Dictionary | Easy | [Solution](leetcode/720.%20Longest%20Word%20in%20Dictionary)
 721 | Accounts Merge | Medium | [Solution](leetcode/721.%20Accounts%20Merge)
 723 | Candy Crush | Medium | [Solution](leetcode/723.%20Candy%20Crush)
