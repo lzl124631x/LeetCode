@@ -817,6 +817,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1301 | Number of Paths with Max Score | Hard | [Solution](leetcode/1301.%20Number%20of%20Paths%20with%20Max%20Score)
 1312 | Minimum Insertion Steps to Make a String Palindrome | Hard | [Solution](leetcode/1312.%20Minimum%20Insertion%20Steps%20to%20Make%20a%20String%20Palindrome)
 1313 | Decompress Run-Length Encoded List | Easy | [Solution](leetcode/1313.%20Decompress%20Run-Length%20Encoded%20List)
+1315 | Sum of Nodes with Even-Valued Grandparent | Medium | [Solution](leetcode/1315.%20Sum%20of%20Nodes%20with%20Even-Valued%20Grandparent)
 1316 | Distinct Echo Substrings | Hard | [Solution](leetcode/1316.%20Distinct%20Echo%20Substrings)
 1319 | Number of Operations to Make Network Connected | Medium | [Solution](leetcode/1319.%20Number%20of%20Operations%20to%20Make%20Network%20Connected)
 1320 | Minimum Distance to Type a Word Using Two Fingers | Hard | [Solution](leetcode/1320.%20Minimum%20Distance%20to%20Type%20a%20Word%20Using%20Two%20Fingers)
@@ -922,6 +923,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1462 | Course Schedule IV | Medium | [Solution](leetcode/1462.%20Course%20Schedule%20IV)
 1463 | Cherry Pickup II | Hard | [Solution](leetcode/1463.%20Cherry%20Pickup%20II)
 1464 | Maximum Product of Two Elements in an Array | Easy | [Solution](leetcode/1464.%20Maximum%20Product%20of%20Two%20Elements%20in%20an%20Array)
+1467 | Probability of a Two Boxes Having The Same Number of Distinct Balls | Hard | [Solution](leetcode/1467.%20Probability%20of%20a%20Two%20Boxes%20Having%20The%20Same%20Number%20of%20Distinct%20Balls)
 1470 | Shuffle the Array | Easy | [Solution](leetcode/1470.%20Shuffle%20the%20Array)
 1471 | The k Strongest Values in an Array | Medium | [Solution](leetcode/1471.%20The%20k%20Strongest%20Values%20in%20an%20Array)
 1472 | Design Browser History | Medium | [Solution](leetcode/1472.%20Design%20Browser%20History)
@@ -971,11 +973,11 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1536 | Minimum Swaps to Arrange a Binary Grid | Medium | [Solution](leetcode/1536.%20Minimum%20Swaps%20to%20Arrange%20a%20Binary%20Grid)
 1537 | Get the Maximum Score | Hard | [Solution](leetcode/1537.%20Get%20the%20Maximum%20Score)
 1539 | Kth Missing Positive Number | Easy | [Solution](leetcode/1539.%20Kth%20Missing%20Positive%20Number)
+1542 | Find Longest Awesome Substring | Hard | [Solution](leetcode/1542.%20Find%20Longest%20Awesome%20Substring)
 1544 | Make The String Great | Easy | [Solution](leetcode/1544.%20Make%20The%20String%20Great)
 1545 | Find Kth Bit in Nth Binary String | Medium | [Solution](leetcode/1545.%20Find%20Kth%20Bit%20in%20Nth%20Binary%20String)
 1546 | Maximum Number of Non-Overlapping Subarrays With Sum Equals Target | Medium | [Solution](leetcode/1546.%20Maximum%20Number%20of%20Non-Overlapping%20Subarrays%20With%20Sum%20Equals%20Target)
 1547 | Minimum Cost to Cut a Stick | Hard | [Solution](leetcode/1547.%20Minimum%20Cost%20to%20Cut%20a%20Stick)
-5427 | Probability of a Two Boxes Having The Same Number of Distinct Balls |  | [Solution](leetcode/5427.%20Probability%20of%20a%20Two%20Boxes%20Having%20The%20Same%20Number%20of%20Distinct%20Balls)
 
 # License
 
