@@ -27,15 +27,24 @@
 
 Let `dp[i + 1]` be the length of the longest valid parentheses ending at `s[i]`.
 
-Let `start = i - dp[i] - 1`
-
+When `s[i] == ')'`:
 ```
 dp[i + 1] = dp[i] + 2 + dp[start]   If s[start] == '('
           = 0                       If s[start] != '('
+          where start = i - dp[i] - 1
+```
+
+When `s[i] == '('`:
+```
+dp[i + 1] = 0
+```
+
+Trivial case:
+```
 dp[0] = 0
 ```
 
-The answer is the max `dp[i + 1]`.
+The answer is the max value in `dp` array.
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-valid-parentheses/
@@ -65,10 +74,8 @@ We try to leave invalid parentheses in the stack `st`.
 
 * If `s[i] == '('`, we push it into stack
 * If `s[i] == ')'`:
-  * If `s[st.top()] == '('`, then `st.top()` is a valid left parenthesis, we pop it.
+  * If `s[st.top()] == '('`, then `st.top()` is a valid left parenthesis, we pop it. The length of the parenthesis string we just formed is `i - st.top()`.
   * otherwise, this `s[i]` can't form a valid parenthesis. Push it into stack.
-
-After these operations, the index left at the stack top is the rightmost index which can't form a valid parenthesis with `s[i]`, the length of the longest parenthsis ending at `s[i]` is `i - st.top()`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-valid-parentheses/
@@ -82,9 +89,10 @@ public:
         st.push(-1);
         int ans = 0;
         for (int i = 0; i < s.size(); ++i) {
-            if (s[i] == ')' && st.top() != -1 && s[st.top()] == '(') st.pop();
-            else st.push(i);
-            ans = max(ans, i - st.top());
+            if (s[i] == ')' && st.top() != -1 && s[st.top()] == '(') {
+                st.pop();
+                ans = max(ans, i - st.top());
+            } else st.push(i);
         }
         return ans;
     }
