@@ -41,33 +41,30 @@ iterator.hasNext(); // returns false
 // OJ: https://leetcode.com/problems/iterator-for-combination/
 // Author: github.com/lzl124631x
 // Time:
-//      CombinationIterator: O(C)
+//      CombinationIterator: O(S)
 //      next: O(L)
 //      hasNext: O(1)
-// Space: O(C)
+// Space: O(S)
 class CombinationIterator {
-    string comb;
-    int len;
-    bool end = false;
-    unordered_map<char, char> m;
+    vector<int> index;
+    string s;
 public:
-    CombinationIterator(string chars, int len) : comb(chars.substr(0, len)), len(len) {
-        for (int i = chars.size() - 2; i >= 0; --i) m[chars[i]] = chars[i + 1];
+    CombinationIterator(string s, int len) : s(s), index(len) {
+        iota(begin(index), end(index), 0);
     }
     string next() {
-        string ans = comb;
-        int i = len - 1;
-        for (; i >= 0; --i) {
-            if (!m.count(comb[i]) || (i < len - 1 && m[comb[i]] == comb[i + 1])) continue;
-            comb[i] = m[comb[i]];
-            while (++i < len) comb[i] = m[comb[i - 1]];
+        string ans; 
+        for (int n : index) ans += s[n];
+        for (int i = index.size() - 1; i >= 0; --i) {
+            if (i > 0 && index[i] == s.size() - index.size() + i) continue;
+            ++index[i++];
+            for (; i < index.size(); ++i) index[i] = index[i - 1] + 1;
             break;
         }
-        end = i < 0;
         return ans;
     }
     bool hasNext() {
-        return !end;
+        return index[0] <= s.size() - index.size();
     }
 };
 ```
