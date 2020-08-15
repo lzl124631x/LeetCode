@@ -43,8 +43,8 @@ The answer is `dp[0][1]`.
 ```cpp
 // OJ: https://leetcode.com/problems/stone-game-ii/
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(N^2)
+// Space: O(N^2)
 class Solution {
     pair<int, int> dp[101][101] = {};
     int presum[101] = {};
