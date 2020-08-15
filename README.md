@@ -720,6 +720,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 971 | Flip Binary Tree To Match Preorder Traversal | Medium | [Solution](leetcode/971.%20Flip%20Binary%20Tree%20To%20Match%20Preorder%20Traversal)
 973 | K Closest Points to Origin | Easy | [Solution](leetcode/973.%20K%20Closest%20Points%20to%20Origin)
 977 | Squares of a Sorted Array | Easy | [Solution](leetcode/977.%20Squares%20of%20a%20Sorted%20Array)
+978 | Longest Turbulent Subarray | Medium | [Solution](leetcode/978.%20Longest%20Turbulent%20Subarray)
 979 | Distribute Coins in Binary Tree | Medium | [Solution](leetcode/979.%20Distribute%20Coins%20in%20Binary%20Tree)
 980 | Unique Paths III | Hard | [Solution](leetcode/980.%20Unique%20Paths%20III)
 983 | Minimum Cost For Tickets | Medium | [Solution](leetcode/983.%20Minimum%20Cost%20For%20Tickets)
