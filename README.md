@@ -782,6 +782,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1111 | Maximum Nesting Depth of Two Valid Parentheses Strings | Medium | [Solution](leetcode/1111.%20Maximum%20Nesting%20Depth%20of%20Two%20Valid%20Parentheses%20Strings)
 1125 | Smallest Sufficient Team | Hard | [Solution](leetcode/1125.%20Smallest%20Sufficient%20Team)
 1130 | Minimum Cost Tree From Leaf Values | Medium | [Solution](leetcode/1130.%20Minimum%20Cost%20Tree%20From%20Leaf%20Values)
+1140 | Stone Game II | Medium | [Solution](leetcode/1140.%20Stone%20Game%20II)
 1143 | Longest Common Subsequence | Medium | [Solution](leetcode/1143.%20Longest%20Common%20Subsequence)
 1146 | Snapshot Array | Medium | [Solution](leetcode/1146.%20Snapshot%20Array)
 1154 | Day of the Year | Easy | [Solution](leetcode/1154.%20Day%20of%20the%20Year)
