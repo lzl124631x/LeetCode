@@ -47,27 +47,43 @@ vector<int> toIntVector(vector<string> v) {
 }
 
 template<typename T>
-void printVector(vector<vector<T> > v){
-	for(int i = 0; i < v.size(); ++i){
-		for(int j = 0; j < v[i].size(); ++j){
-			cout << "[" << v[i][j] << "] ";
-		}
-		cout << endl;
-	}
+void printVector(vector<vector<T>> v){
+    cout << "[" << endl;
+    for (int i = 0; i < v.size(); ++i) {
+        auto &row = v[i];
+        cout << "[";
+        for (int j = 0; j < row.size(); ++j) {
+            auto &val = row[j];
+            cout << val;
+            if (j < row.size() - 1) cout << ", ";
+        }
+        cout << "]";
+        if (i < v.size() - 1) cout << ", ";
+        cout << endl;
+    }
+    cout << "]" << endl;
 }
 
-vector<vector<int> > scanVector(int m, int n){
-	vector<vector<int> > v;
-	for(int i = 0; i < m; ++i){
-		vector<int> v1;
-		for(int j = 0; j < n; ++j){
-			int d;
-			cin >> d;
-			v1.push_back(d);
-		}
-		v.push_back(v1);
-	}
-	return v;
+vector<vector<int>> readVector() {
+    vector<vector<int>> ans;
+	int i = 0;
+    cin.get(); // outer [
+    while (cin.peek() != ']') {
+        cin.get(); // inner [
+        if (ans.size() <= i) ans.emplace_back();
+        int k = 0;
+        while (cin.peek() != ']') {
+            int n;
+            cin >> n;
+            ans[i].push_back(n);
+            if (cin.peek() == ',') cin.get();
+        }
+        cin.get(); // inner ]
+        if (cin.peek() == ',') cin.get();
+        ++i;
+    }
+    cin.get(); // outer ]
+    return ans;
 }
 
 #endif
