@@ -984,6 +984,10 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1545 | Find Kth Bit in Nth Binary String | Medium | [Solution](leetcode/1545.%20Find%20Kth%20Bit%20in%20Nth%20Binary%20String)
 1546 | Maximum Number of Non-Overlapping Subarrays With Sum Equals Target | Medium | [Solution](leetcode/1546.%20Maximum%20Number%20of%20Non-Overlapping%20Subarrays%20With%20Sum%20Equals%20Target)
 1547 | Minimum Cost to Cut a Stick | Hard | [Solution](leetcode/1547.%20Minimum%20Cost%20to%20Cut%20a%20Stick)
+1550 | Three Consecutive Odds | Easy | [Solution](leetcode/1550.%20Three%20Consecutive%20Odds)
+1551 | Minimum Operations to Make Array Equal | Medium | [Solution](leetcode/1551.%20Minimum%20Operations%20to%20Make%20Array%20Equal)
+1552 | Magnetic Force Between Two Balls | Medium | [Solution](leetcode/1552.%20Magnetic%20Force%20Between%20Two%20Balls)
+1553 | Minimum Number of Days to Eat N Oranges | Hard | [Solution](leetcode/1553.%20Minimum%20Number%20of%20Days%20to%20Eat%20N%20Oranges)
 
 # License
 
