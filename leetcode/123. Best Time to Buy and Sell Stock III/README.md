@@ -138,7 +138,7 @@ public:
 
 The following change is totally optional which just simplify the code a tiny bit.
 
-In equation `dp[k][i] = prices[i] + max(dp[k-1][j-1] - prices[j] | 0 <= j < i)`, we can also make the case where `j == i`, so that it becomes:
+In equation `dp[k][i] = prices[i] + max(dp[k-1][j-1] - prices[j] | 0 <= j < i)`, we can also add the `j == i` case to the `0 <= j < i`, so that it becomes:
 
 ```
 dp[k][i] = prices[i] + max(dp[k-1][j-1] - prices[j] | 0 <= j <= i)
