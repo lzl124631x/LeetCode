@@ -805,6 +805,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1223 | Dice Roll Simulation | Medium | [Solution](leetcode/1223.%20Dice%20Roll%20Simulation)
 1232 | Check If It Is a Straight Line | Easy | [Solution](leetcode/1232.%20Check%20If%20It%20Is%20a%20Straight%20Line)
 1235 | Maximum Profit in Job Scheduling | Hard | [Solution](leetcode/1235.%20Maximum%20Profit%20in%20Job%20Scheduling)
+1249 | Minimum Remove to Make Valid Parentheses | Medium | [Solution](leetcode/1249.%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses)
 1252 | Cells with Odd Values in a Matrix | Easy | [Solution](leetcode/1252.%20Cells%20with%20Odd%20Values%20in%20a%20Matrix)
 1266 | Minimum Time Visiting All Points | Easy | [Solution](leetcode/1266.%20Minimum%20Time%20Visiting%20All%20Points)
 1267 | Count Servers that Communicate | Medium | [Solution](leetcode/1267.%20Count%20Servers%20that%20Communicate)
