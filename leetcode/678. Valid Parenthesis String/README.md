@@ -132,3 +132,18 @@ public:
     }
 };
 ```
+
+Note:
+
+> Whenever `minDiff` falls below `0`, we should force it to be `0` because we never accept negative `diff` during the process.
+
+`minDiff` means the `diff` we got if we always try to replace `*` with `)`. If `minDiff` become `-1`, it means that this replacement results in more `)` than `(`, so it should be avoided. To avoid it, we simply reset `minDiff` from `-1` to `0` which implies we only replace `*` with `(` or empty string.
+
+Example: `(**)`
+
+* Seeing `(`, the range becomes `[1, 1]`.
+* Seeing `*`, the range becomes `[0, 2]`. `0` correponds to `()`, `1` to `(_`, `2` to `((`.
+* Seeing `*`, the range becomes `[-1,3]`. But `-1` is invalid because it means `())` and should be avoided. So we correct the range to `[0, 3]`.
+* Seeing `)`, the range becomes `[-1, 2]`. Again, we correct the range to `[0, 2]` (because `-1` means `()_)` or `(_))`)
+
+The final `[0, 2]` range means that we can either get a perfect string, or has `1` or `2` more `(` available (which are created by `*`).
