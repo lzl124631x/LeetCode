@@ -826,6 +826,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1288 | Remove Covered Intervals | Medium | [Solution](leetcode/1288.%20Remove%20Covered%20Intervals)
 1289 | Minimum Falling Path Sum II | Hard | [Solution](leetcode/1289.%20Minimum%20Falling%20Path%20Sum%20II)
 1290 | Convert Binary Number in a Linked List to Integer | Easy | [Solution](leetcode/1290.%20Convert%20Binary%20Number%20in%20a%20Linked%20List%20to%20Integer)
+1292 | Maximum Side Length of a Square with Sum Less than or Equal to Threshold | Medium | [Solution](leetcode/1292.%20Maximum%20Side%20Length%20of%20a%20Square%20with%20Sum%20Less%20than%20or%20Equal%20to%20Threshold)
 1293 | Shortest Path in a Grid with Obstacles Elimination | Hard | [Solution](leetcode/1293.%20Shortest%20Path%20in%20a%20Grid%20with%20Obstacles%20Elimination)
 1295 | Find Numbers with Even Number of Digits | Easy | [Solution](leetcode/1295.%20Find%20Numbers%20with%20Even%20Number%20of%20Digits)
 1300 | Sum of Mutated Array Closest to Target | Medium | [Solution](leetcode/1300.%20Sum%20of%20Mutated%20Array%20Closest%20to%20Target)
