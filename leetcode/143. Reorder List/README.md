@@ -31,9 +31,9 @@ reorder it to: <em>L</em><sub>0</sub>→<em>L</em><sub><em>n</em></sub>→<em>L<
 class Solution {
 private:
     ListNode *reverse(ListNode* head) {
-        ListNode dummy(0);
+        ListNode dummy;
         while (head) {
-            ListNode *node = head;
+            auto node = head;
             head = head->next;
             node->next = dummy.next;
             dummy.next = node;
@@ -42,10 +42,7 @@ private:
     }
     int getLength(ListNode *head) {
         int len = 0;
-        while (head) {
-            head = head->next;
-            len++;
-        }
+        for (; head; head = head->next) ++len;
         return len;
     }
 public:
@@ -59,7 +56,7 @@ public:
         q = reverse(q);
         p = head;
         while (q) {
-            ListNode *node = q;
+            auto node = q;
             q = q->next;
             node->next = p->next;
             p->next = node;
@@ -79,9 +76,9 @@ public:
 class Solution {
 private:
     ListNode *reverseList(ListNode *head) {
-        ListNode newHead(0);
+        ListNode newHead;
         while (head) {
-            ListNode *p = head;
+            auto p = head;
             head = head->next;
             p->next = newHead.next;
             newHead.next = p;
@@ -100,7 +97,7 @@ public:
         slow->next = NULL;
         rightHead = reverseList(rightHead);
         while (rightHead) {
-            ListNode *p = rightHead;
+            auto p = rightHead;
             rightHead = rightHead->next;
             p->next = head->next;
             head->next = p;
