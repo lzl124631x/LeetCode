@@ -24,7 +24,24 @@ The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
 </ol>
 </div>
 
-## Solution 1.
+## Solution 1. STL
+
+```cpp
+// OJ: https://leetcode.com/problems/sort-array-by-parity/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& A) {
+        sort(begin(A), end(A), [](int a, int b) { return a % 2 < b % 2; });
+        return A;
+    }
+};
+```
+
+## Solution 2. Two Pointers
+
 ```cpp
 // OJ: https://leetcode.com/problems/sort-array-by-parity/
 // Author: github.com/lzl124631x
