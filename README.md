@@ -408,6 +408,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 494 | Target Sum | Medium | [Solution](leetcode/494.%20Target%20Sum)
 495 | Teemo Attacking |  | [Solution](leetcode/495.%20Teemo%20Attacking)
 496 | Next Greater Element I | Easy | [Solution](leetcode/496.%20Next%20Greater%20Element%20I)
+497 | Random Point in Non-overlapping Rectangles | Medium | [Solution](leetcode/497.%20Random%20Point%20in%20Non-overlapping%20Rectangles)
 498 | Diagonal Traverse |  | [Solution](leetcode/498.%20Diagonal%20Traverse)
 500 | Keyboard Row |  | [Solution](leetcode/500.%20Keyboard%20Row)
 501 | Find Mode in Binary Search Tree |  | [Solution](leetcode/501.%20Find%20Mode%20in%20Binary%20Search%20Tree)
@@ -1000,6 +1001,10 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1551 | Minimum Operations to Make Array Equal | Medium | [Solution](leetcode/1551.%20Minimum%20Operations%20to%20Make%20Array%20Equal)
 1552 | Magnetic Force Between Two Balls | Medium | [Solution](leetcode/1552.%20Magnetic%20Force%20Between%20Two%20Balls)
 1553 | Minimum Number of Days to Eat N Oranges | Hard | [Solution](leetcode/1553.%20Minimum%20Number%20of%20Days%20to%20Eat%20N%20Oranges)
+1556 | Thousand Separator | Easy | [Solution](leetcode/1556.%20Thousand%20Separator)
+1557 | Minimum Number of Vertices to Reach All Nodes | Medium | [Solution](leetcode/1557.%20Minimum%20Number%20of%20Vertices%20to%20Reach%20All%20Nodes)
+1558 | Minimum Numbers of Function Calls to Make Target Array | Medium | [Solution](leetcode/1558.%20Minimum%20Numbers%20of%20Function%20Calls%20to%20Make%20Target%20Array)
+1559 | Detect Cycles in 2D Grid |  | [Solution](leetcode/1559.%20Detect%20Cycles%20in%202D%20Grid)
 
 # License
 
