@@ -822,6 +822,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1277 | Count Square Submatrices with All Ones | Medium | [Solution](leetcode/1277.%20Count%20Square%20Submatrices%20with%20All%20Ones)
 1278 | Palindrome Partitioning III | Hard | [Solution](leetcode/1278.%20Palindrome%20Partitioning%20III)
 1282 | Group the People Given the Group Size They Belong To | Medium | [Solution](leetcode/1282.%20Group%20the%20People%20Given%20the%20Group%20Size%20They%20Belong%20To)
+1283 | Find the Smallest Divisor Given a Threshold | Medium | [Solution](leetcode/1283.%20Find%20the%20Smallest%20Divisor%20Given%20a%20Threshold)
 1286 | Iterator for Combination | Medium | [Solution](leetcode/1286.%20Iterator%20for%20Combination)
 1288 | Remove Covered Intervals | Medium | [Solution](leetcode/1288.%20Remove%20Covered%20Intervals)
 1289 | Minimum Falling Path Sum II | Hard | [Solution](leetcode/1289.%20Minimum%20Falling%20Path%20Sum%20II)
