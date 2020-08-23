@@ -116,7 +116,7 @@ public:
 // Author: github.com/lzl124631x
 // Time: O(Nlog(max(A)))
 // Space: O(1)
-// https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/discuss/686316/JavaC%2B%2BPython-Binary-Search
+// Ref: https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/discuss/686316/JavaC%2B%2BPython-Binary-Search
 class Solution {
 public:
     int minDays(vector<int>& A, int m, int k) {
