@@ -68,7 +68,6 @@ It is obvious that we can make two bouquets in different ways.
 
 ## Solution 1. Binary Answer
 
-My idea during the contest was that:
 * we can detect whether a given day `A[i]` can form the required output in `O(N)` time.
 * we can try out each unique day in ascending order. The first one that satisfies the requirement is the answer.
 
