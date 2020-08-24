@@ -64,19 +64,18 @@ v                                         v
 // Time: O(log(max(A)) * N + NlogN)
 // Space: O(1)
 class Solution {
-    bool valid(vector<int> &A, int M, int m) {
-        int prev = 0;
-        for (int i = 1, j = 1; i < m; ++i) {
-            while (j < A.size() && A[j] < A[prev] + M) ++j;
-            if (j >= A.size()) return false;
-            prev = j;
+    bool valid(vector<int> &A, int d, int m) {
+        int prev = -1;
+        for (int i = 0; i < A.size(); ++i) {
+            if (prev != -1 && A[i] - prev < d) continue;
+            if (--m == 0) return true;
+            prev = A[i];
         }
-        return true;
+        return false;
     }
 public:
     int maxDistance(vector<int>& A, int m) {
         sort(begin(A), end(A));
-        if (m == 2) return A.back() - A[0];
         int L = 1, R = A.back() - A[0];
         while (L <= R) {
             int M = (L + R) / 2;
