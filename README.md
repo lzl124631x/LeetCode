@@ -331,7 +331,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 401 | Binary Watch |  | [Solution](leetcode/401.%20Binary%20Watch)
 402 | Remove K Digits | Medium | [Solution](leetcode/402.%20Remove%20K%20Digits)
 403 | Frog Jump |  | [Solution](leetcode/403.%20Frog%20Jump)
-404 | Sum of Left Leaves |  | [Solution](leetcode/404.%20Sum%20of%20Left%20Leaves)
+404 | Sum of Left Leaves | Easy | [Solution](leetcode/404.%20Sum%20of%20Left%20Leaves)
 405 | Convert a Number to Hexadecimal |  | [Solution](leetcode/405.%20Convert%20a%20Number%20to%20Hexadecimal)
 406 | Queue Reconstruction by Height | Medium | [Solution](leetcode/406.%20Queue%20Reconstruction%20by%20Height)
 407 | Trapping Rain Water II |  | [Solution](leetcode/407.%20Trapping%20Rain%20Water%20II)
