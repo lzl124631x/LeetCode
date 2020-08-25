@@ -109,3 +109,25 @@ public:
     }
 };
 ```
+
+Another version which is from left to right and push the data to the next state.
+
+```cpp
+class Solution {
+public:
+    int mincostTickets(vector<int>& days, vector<int>& costs) {
+        int N = days.size();
+        vector<int> dp(N + 1, INT_MAX);
+        dp[0] = 0;
+        for (int i = 0; i < N; ++i) {
+            dp[i + 1] = min(dp[i + 1], dp[i] + costs[0]);
+            for (int j = 1; j < 3; ++j) {
+                int d = j == 1 ? 7 : 30;
+                int k = lower_bound(begin(days), end(days), days[i] + d) - begin(days);
+                dp[k] = min(dp[k], dp[i] + costs[j]);
+            }
+        }
+        return dp[N];
+    }
+};
+```
