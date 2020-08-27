@@ -1008,6 +1008,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1558 | Minimum Numbers of Function Calls to Make Target Array | Medium | [Solution](leetcode/1558.%20Minimum%20Numbers%20of%20Function%20Calls%20to%20Make%20Target%20Array)
 1559 | Detect Cycles in 2D Grid |  | [Solution](leetcode/1559.%20Detect%20Cycles%20in%202D%20Grid)
 1560 | Most Visited Sector in a Circular Track | Easy | [Solution](leetcode/1560.%20Most%20Visited%20Sector%20in%20a%20Circular%20Track)
+1561 | Maximum Number of Coins You Can Get | Medium | [Solution](leetcode/1561.%20Maximum%20Number%20of%20Coins%20You%20Can%20Get)
 1562 | Find Latest Group of Size M | Medium | [Solution](leetcode/1562.%20Find%20Latest%20Group%20of%20Size%20M)
 1563 | Stone Game V | Hard | [Solution](leetcode/1563.%20Stone%20Game%20V)
 
