@@ -54,7 +54,7 @@ If Alice starts removing 1 stone, Bob will remove 4 stones then Alice only can r
 **Related Topics**:  
 [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
-## Solution 1. DP
+## Solution 1. Bottom-up DP
 
 Let `dp[i]` be whether Alice and win starting with `i` stones.
 
@@ -72,14 +72,54 @@ dp[i] = true    // If any dp[i - j * j] is false
 class Solution {
 public:
     bool winnerSquareGame(int n) {
-        static vector<bool> dp(1);
-        if (dp.size() <= n) dp.resize(n + 1);
+        vector<bool> dp(n + 1);
         for (int i = 1; i <= n; ++i) {
-            for (int j = 1; j * j <= i && !dp[i]; ++j) {
-                dp[i] = !dp[i - j * j];
-            }
+            for (int j = 1; j * j <= i && !dp[i]; ++j) dp[i] = !dp[i - j * j];
         }
         return dp[n];
+    }
+};
+```
+
+Or use `static` variable to save computation
+
+```cpp
+// OJ: https://leetcode.com/contest/biweekly-contest-30/problems/stone-game-iv/
+// Author: github.com/lzl124631x
+// Time: O(N * sqrt(N))
+// Space: O(N)
+class Solution {
+public:
+    bool winnerSquareGame(int n) {
+        static vector<bool> dp(1);
+        for (int i = dp.size(); i <= n; ++i) {
+            dp.push_back(false);
+            for (int j = 1; j * j <= i && !dp[i]; ++j) dp[i] = !dp[i - j * j];
+        }
+        return dp[n];
+    }
+};
+```
+
+## Solution 2. Top-down DP
+
+```cpp
+// OJ: https://leetcode.com/contest/biweekly-contest-30/problems/stone-game-iv/
+// Author: github.com/lzl124631x
+// Time: O(N * sqrt(N))
+// Space: O(N)
+class Solution {
+    vector<int> dp; // -1 unvisited, 0 lose, 1 win
+    bool dfs(int n) {
+        if (n == 0) return false;
+        if (dp[n] != -1) return dp[n];
+        for (int i = 1; i * i <= n && dp[n] != 1; ++i) dp[n] = !dfs(n - i * i);
+        return dp[n];
+    }
+public:
+    bool winnerSquareGame(int n) {
+        dp.assign(n + 1, -1);
+        return dfs(n);
     }
 };
 ```
