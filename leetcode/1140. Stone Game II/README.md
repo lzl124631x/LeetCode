@@ -38,7 +38,7 @@ dp[i][m] = <p.second + A[i] + ... + A[i + x - 1], p.first>
            where p = dp[i + x][max(m, x)], 1 <= x <= 2m
 ```
 
-The answer is `dp[0][1]`.
+The answer is `dp[0][1].first`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/stone-game-ii/
