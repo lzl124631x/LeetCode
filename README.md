@@ -805,6 +805,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1162 | As Far from Land as Possible | Medium | [Solution](leetcode/1162.%20As%20Far%20from%20Land%20as%20Possible)
 1163 | Last Substring in Lexicographical Order | Hard | [Solution](leetcode/1163.%20Last%20Substring%20in%20Lexicographical%20Order)
 1169 | Invalid Transactions | Medium | [Solution](leetcode/1169.%20Invalid%20Transactions)
+1170 | Compare Strings by Frequency of the Smallest Character | Easy | [Solution](leetcode/1170.%20Compare%20Strings%20by%20Frequency%20of%20the%20Smallest%20Character)
 1184 | Distance Between Bus Stops | Easy | [Solution](leetcode/1184.%20Distance%20Between%20Bus%20Stops)
 1185 | Day of the Week | Easy | [Solution](leetcode/1185.%20Day%20of%20the%20Week)
 1186 | Maximum Subarray Sum with One Deletion | Medium | [Solution](leetcode/1186.%20Maximum%20Subarray%20Sum%20with%20One%20Deletion)
