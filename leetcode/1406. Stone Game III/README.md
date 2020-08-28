@@ -84,19 +84,14 @@ So we can compute `dp[i]` from the end of the array. `dp[i] = 0` if `i >= N`.
 // Time: O(N)
 // Space: O(N)
 class Solution {
-    typedef long long LL;
 public:
     string stoneGameIII(vector<int>& A) {
         int N = A.size();
-        vector<LL> dp(N + 1, INT_MIN);
+        vector<int> dp(N + 1, INT_MIN);
         dp[N] = 0;
         for (int i = N - 1; i >= 0; --i) {
             int s = 0;
-            for (int j = 0; j < 3; ++j) {
-                if (i + j >= N) break;
-                s += A[i + j];
-                dp[i] = max(dp[i], s - dp[i + j + 1]);
-            }
+            for (int j = 0; j < 3 && i + j < N; ++j) dp[i] = max(dp[i], -dp[i + j + 1] + (s += A[i + j]));
         }
         return dp[0] > 0 ? "Alice" : (dp[0] < 0 ? "Bob" : "Tie");
     }
@@ -113,20 +108,13 @@ Since `dp[i]` is only dependent to the next 3 `dp` values. We can reduce the `dp
 // Time: O(N)
 // Space: O(1)
 class Solution {
-    typedef long long LL;
 public:
     string stoneGameIII(vector<int>& A) {
-        int N = A.size();
-        vector<LL> dp(4, INT_MIN);
-        dp[N % 4] = 0;
+        int N = A.size(), dp[4] = {};
         for (int i = N - 1; i >= 0; --i) {
             int s = 0;
             dp[i % 4] = INT_MIN;
-            for (int j = 0; j < 3; ++j) {
-                if (i + j >= N) break;
-                s += A[i + j];
-                dp[i % 4] = max(dp[i % 4], s - dp[(i + j + 1) % 4]);
-            }
+            for (int j = 0; j < 3 && i + j < N; ++j) dp[i % 4] = max(dp[i % 4], -dp[(i + j + 1) % 4] + (s += A[i + j]));
         }
         return dp[0] > 0 ? "Alice" : (dp[0] < 0 ? "Bob" : "Tie");
     }
