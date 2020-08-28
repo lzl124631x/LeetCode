@@ -385,6 +385,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 466 | Count The Repetitions | Hard | [Solution](leetcode/466.%20Count%20The%20Repetitions)
 467 | Unique Substrings in Wraparound String |  | [Solution](leetcode/467.%20Unique%20Substrings%20in%20Wraparound%20String)
 468 | Validate IP Address | Medium | [Solution](leetcode/468.%20Validate%20IP%20Address)
+470 | Implement Rand10() Using Rand7() | Medium | [Solution](leetcode/470.%20Implement%20Rand10%28%29%20Using%20Rand7%28%29)
 471 | Encode String with Shortest Length | Hard | [Solution](leetcode/471.%20Encode%20String%20with%20Shortest%20Length)
 472 | Concatenated Words | Hard | [Solution](leetcode/472.%20Concatenated%20Words)
 473 | Matchsticks to Square |  | [Solution](leetcode/473.%20Matchsticks%20to%20Square)
