@@ -753,6 +753,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1020 | Number of Enclaves | Medium | [Solution](leetcode/1020.%20Number%20of%20Enclaves)
 1021 | Remove Outermost Parentheses | Easy | [Solution](leetcode/1021.%20Remove%20Outermost%20Parentheses)
 1022 | Sum of Root To Leaf Binary Numbers | Easy | [Solution](leetcode/1022.%20Sum%20of%20Root%20To%20Leaf%20Binary%20Numbers)
+1023 | Camelcase Matching | Medium | [Solution](leetcode/1023.%20Camelcase%20Matching)
 1025 | Divisor Game | Easy | [Solution](leetcode/1025.%20Divisor%20Game)
 1026 | Maximum Difference Between Node and Ancestor | Medium | [Solution](leetcode/1026.%20Maximum%20Difference%20Between%20Node%20and%20Ancestor)
 1027 | Longest Arithmetic Sequence | Medium | [Solution](leetcode/1027.%20Longest%20Arithmetic%20Sequence)
