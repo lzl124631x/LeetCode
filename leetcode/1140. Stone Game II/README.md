@@ -65,3 +65,26 @@ public:
     }
 };
 ```
+
+## Solution 2. DP
+
+```cpp
+// OJ: https://leetcode.com/problems/stone-game-ii/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N^2)
+class Solution {
+    int dp[101][101] = {}, sum[101] = {};
+    int dfs(vector<int> &A, int i, int M) {
+        if (i == A.size()) return 0;
+        if (dp[i][M]) return dp[i][M];
+        for (int X = 1; X <= 2 * M && i + X <= A.size(); ++X) dp[i][M] = max(dp[i][M], sum[A.size()] - sum[i] - dfs(A, i + X, max(M, X)));
+        return dp[i][M];
+    }
+public:
+    int stoneGameII(vector<int>& A) {
+        partial_sum(begin(A), end(A), sum + 1);
+        return dfs(A, 0, 1);
+    }
+};
+```
