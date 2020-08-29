@@ -682,6 +682,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 917 | Reverse Only Letters | Easy | [Solution](leetcode/917.%20Reverse%20Only%20Letters)
 918 | Maximum Sum Circular Subarray | Medium | [Solution](leetcode/918.%20Maximum%20Sum%20Circular%20Subarray)
 919 | Complete Binary Tree Inserter | Medium | [Solution](leetcode/919.%20Complete%20Binary%20Tree%20Inserter)
+920 | Number of Music Playlists | Hard | [Solution](leetcode/920.%20Number%20of%20Music%20Playlists)
 921 | Minimum Add to Make Parentheses Valid | Medium | [Solution](leetcode/921.%20Minimum%20Add%20to%20Make%20Parentheses%20Valid)
 922 | Sort Array By Parity II | Easy | [Solution](leetcode/922.%20Sort%20Array%20By%20Parity%20II)
 923 | 3Sum With Multiplicity | Medium | [Solution](leetcode/923.%203Sum%20With%20Multiplicity)
