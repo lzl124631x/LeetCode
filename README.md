@@ -520,6 +520,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 662 | Maximum Width of Binary Tree | Medium | [Solution](leetcode/662.%20Maximum%20Width%20of%20Binary%20Tree)
 663 | Equal Tree Partition | Medium | [Solution](leetcode/663.%20Equal%20Tree%20Partition)
 664 | Strange Printer | Hard | [Solution](leetcode/664.%20Strange%20Printer)
+665 | Non-decreasing Array | Easy | [Solution](leetcode/665.%20Non-decreasing%20Array)
 666 | Path Sum IV | Medium | [Solution](leetcode/666.%20Path%20Sum%20IV)
 668 | Kth Smallest Number in Multiplication Table | Hard | [Solution](leetcode/668.%20Kth%20Smallest%20Number%20in%20Multiplication%20Table)
 669 | Trim a Binary Search Tree | Easy | [Solution](leetcode/669.%20Trim%20a%20Binary%20Search%20Tree)
