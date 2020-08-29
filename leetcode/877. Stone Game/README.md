@@ -40,46 +40,55 @@ This demonstrated that taking the first 5 was a winning move for Alex, so we ret
 **Related Topics**:  
 [Math](https://leetcode.com/tag/math/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
-## Solution 1. DP
+## Solution 1. Bottom-up DP
 
-Denote `F(A[0]..A[n-1])` as a pair of number representing the greatest stone difference the player moves first can get.
+Let `dp[i][j]` be the maximum difference of stone values, that is, the stones the first player can get minus the stones the second player can get.
 
-For example, `F(1,3) = (3, 1)`, `F(1,10,1,3) = (13, 2)`.
-
-To get `F(A[0]..A[n-1])`, we simply use the result of `S = F(A[0]..A[n-2])` and `T = F(A[1]..A[n-1])`.
-
-The result is either `(piles[0] + T[1], T[0])` or `(piles[n-1] + S[1], S[0])` whichever has greater difference.
-
-For example, to compute `F(1, 10, 1, 3)`, we:
-* first compute `F(1, 10, 1) = (2, 10)` and `F(10, 1, 3) = (11, 3)`
-* compare `(1 + 3, 11) = (4, 11)` and `(3 + 10, 2) = (13, 2)`, pick the one with greater difference, i.e. `(13, 2)`.
-
-So we can iteratively compute `F` from small scale to large scale.
+```
+dp[i][i] = A[i]
+dp[i][j] = max(A[i] - dp[i + 1][j], A[j] - dp[i][j - 1])
+```
 
 ```cpp
 // OJ: https://leetcode.com/problems/stone-game/
 // Author: github.com/lzl124631x
 // Time: O(N^2)
-// Space: O(N)
+// Space: O(N^2)
 class Solution {
 public:
-    bool stoneGame(vector<int>& piles) {
-        int N = piles.size();
-        vector<vector<int>> memo(N);
-        for (int i = 0; i < N; ++i) memo[i] = vector<int>{ piles[i], 0 };
-        for (int len = 2; len <= N; ++len) {
-            for (int i = 0; i <= N - len; ++i) {
-                auto a = vector<int>{ memo[i + 1][1] + piles[i], memo[i + 1][0] };
-                auto b = vector<int>{ memo[i][1] + piles[i + len - 1], memo[i][0] };
-                memo[i] = a[0] - a[1] > b[0] - b[1] ? a : b;
-            }
+    bool stoneGame(vector<int>& A) {
+        int dp[500][500] = {}, N = A.size();
+        for (int i = 0; i < N; ++i) dp[i][i] = A[i];
+        for (int i = N - 2; i >= 0; --i) {
+            for (int j = i + 1; j < N; ++j) dp[i][j] = max(A[i] - dp[i + 1][j], A[j] - dp[i][j - 1]);
         }
-        return memo[0][0] > memo[0][1];
+        return dp[0][N - 1] > 0;
     }
 };
 ```
 
-## Solution 2.
+## Solution 2. Top-down DP
+
+```cpp
+// OJ: https://leetcode.com/problems/stone-game/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N^2)
+class Solution {
+    int dp[500][500] = {};
+    int dfs(vector<int> &A, int i, int j) {
+        if (i == j) return A[i];
+        if (dp[i][j]) return dp[i][j];
+        return dp[i][j] = max(A[i] - dfs(A, i + 1, j), A[j] - dfs(A, i, j - 1));
+    }
+public:
+    bool stoneGame(vector<int>& A) {
+        return dfs(A, 0, A.size() - 1) > 0;
+    }
+};
+```
+
+## Solution 3.
 
 Notice that the length of `piles` is even. So Alex can always pick piles with either even indices (`piles[0], piles[2], ..., piles[n-2]`) or odd indices (`piles[1], piles[3], ..., piles[n-1]`). Since the total number of stones is odd, so Alex can simply pick the group with more stones.
 
