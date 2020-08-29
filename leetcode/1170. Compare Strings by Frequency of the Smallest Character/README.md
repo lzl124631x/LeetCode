@@ -64,3 +64,32 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/compare-strings-by-frequency-of-the-smallest-character/
+// Author: github.com/lzl124631x
+// Time: O(W + Q)
+// Space: O(1)
+class Solution {
+    int frequency(string &s) {
+        int ch = 'z', cnt = 0;
+        for (char c : s) {
+            if (c < ch) {
+                cnt = 1;
+                ch = c;
+            } else if (c == ch) ++cnt;
+        }
+        return cnt;
+    }
+public:
+    vector<int> numSmallerByFrequency(vector<string>& Q, vector<string>& W) {
+        vector<int> F(11), ans;
+        for (int i = 0; i < W.size(); ++i) F[frequency(W[i])]++;
+        for (int i = 1; i < 11; ++i) F[i] += F[i - 1];
+        for (auto &s : Q) ans.push_back(W.size() - F[frequency(s)]);
+        return ans;
+    }
+};
+```
