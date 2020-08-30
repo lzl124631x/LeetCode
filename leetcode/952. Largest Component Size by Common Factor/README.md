@@ -52,75 +52,6 @@
 **Related Topics**:  
 [Math](https://leetcode.com/tag/math/), [Union Find](https://leetcode.com/tag/union-find/)
 
-## TLE Solution
-
-The idea is to use union find. But I compared every pair in the vector `A`, which resulted in `O(N^2)` time complexity and get TLE.
-
-```cpp
-// OJ: https://leetcode.com/problems/largest-component-size-by-common-factor/
-// Author: github.com/lzl124631x
-// Time: O(N^2)
-// Space: O(N)
-class UnionFind {
-private:
-  vector<int> id, rank, size;
-public:
-  UnionFind(int cnt) {
-    id = vector<int>(cnt);
-    rank = vector<int>(cnt, 0);
-      size=vector<int>(cnt, 1);
-    for (int i = 0; i < cnt; ++i) id[i] = i;
-  }
-  int find(int p) {
-      if (id[p] == p) return p;
-      return id[p] = find(id[p]);
-  }
-  bool connected(int p, int q) { return find(p) == find(q); }
-  void connect(int p, int q) {
-    int i = find(p), j = find(q);
-    if (i == j) return;
-    if (rank[i] < rank[j]) {
-        id[i] = j;
-        size[j] += size[i];
-    }
-    else {
-      id[j] = i;
-        size[i] += size[j];
-      if (rank[i] == rank[j]) rank[j]++;
-    }
-  }
-  int maxSize() {
-      int ans = 1;
-      for (int r : size) ans = max(ans, r);
-      return ans;
-  }
-};
-class Solution {
-private:
-    bool shareCommonFactor(int a, int b) {
-        if (b > a) swap(a, b);
-        while (b) {
-            int r = a % b;
-            a = b;
-            b = r;
-        }
-        return a != 1;
-    }
-public:
-    int largestComponentSize(vector<int>& A) {
-        int N = A.size();
-        UnionFind uf(N);
-        for (int i = 0; i < N; ++i) {
-            for (int j = i + 1; j < N; ++j) {
-                if (uf.connected(i, j)) continue;
-                if (shareCommonFactor(A[i], A[j])) uf.connect(i, j);
-            }
-        }
-        return uf.maxSize();
-    }
-};
-```
-
 ## Solution 1. Union Find + Factor
 
 The number of elements is big. Can we reduce the scale? Consider all the primes that are factors of numbers in `A`.
@@ -133,65 +64,50 @@ For each number `A[i]`, we union all the factors of `A[i]`. In this way, `A[i]`s
 // Time: O(N * sqrt(W)) where N is length of A, W is max(A[i])
 // Space: O(N)
 class UnionFind {
-private:
-  vector<int> id, rank, size;
+    vector<int> id;
 public:
-  UnionFind(int cnt) {
-    id = vector<int>(cnt);
-    rank = vector<int>(cnt, 0);
-    for (int i = 0; i < cnt; ++i) id[i] = i;
-  }
-  int find(int p) {
-      if (id[p] == p) return p;
-      return id[p] = find(id[p]);
-  }
-  bool connected(int p, int q) { return find(p) == find(q); }
-  void connect(int p, int q) {
-    int i = find(p), j = find(q);
-    if (i == j) return;
-    if (rank[i] < rank[j]) {
-        id[i] = j;
+    UnionFind(int N) : id(N) {
+        iota(begin(id), end(id), 0);
+    }    
+    int find(int a) {
+        return id[a] == a ? a : (id[a] = find(id[a]));
     }
-    else {
-      id[j] = i;
-      if (rank[i] == rank[j]) rank[j]++;
+    void connect(int a, int b) {
+        int p = find(a), q = find(b);
+        if (p == q) return;
+        id[p] = q;
     }
-  }
 };
 class Solution {
-private:
-    vector<int> getFactors(int N) {
-        int d = 2;
-        vector<int> factors;
-        for (int d = 2; d * d <= N; ++d) {
-            if (N % d) continue;
-            while (N % d == 0) N /= d;
-            factors.push_back(d);
+    vector<int> factors(int n) {
+        vector<int> ans;
+        for (int i = 2; i * i <= n; ++i) {
+            if (n % i) continue;
+            ans.push_back(i);
+            while (n % i == 0) n /= i;
         }
-        if (N > 1 || factors.empty()) factors.push_back(N);
-        return factors;
+        if (n > 1 || ans.empty()) ans.push_back(n);
+        return ans;
     }
 public:
     int largestComponentSize(vector<int>& A) {
-        int N = A.size();
-        vector<vector<int>> factors(N);
-        for (int i = 0; i < N; ++i) {
-            factors[i] = getFactors(A[i]);
+        vector<vector<int>> F;
+        unordered_map<int, int> m;
+        int i = 0, ans = 0;
+        for (int n : A) {
+            auto f = factors(n);
+            F.push_back(f);
+            for (int x : f) {
+                if (!m.count(x)) m[x] = i++;
+            }
         }
-        unordered_set<int> primeSet;
-        for (auto &fs : factors) {
-            for (int f : fs) primeSet.insert(f);
+        UnionFind uf(m.size());
+        for (auto &f : F) {
+            for (int x : f) uf.connect(m[f[0]], m[x]);
         }
-        vector<int> primes(primeSet.begin(), primeSet.end());
-        unordered_map<int, int> primeToIndex;
-        for (int i = 0; i < primes.size(); ++i) primeToIndex[primes[i]] = i;
-        UnionFind uf(primes.size());
-        for (auto &fs : factors) {
-            for (int f : fs) uf.connect(primeToIndex[fs.front()], primeToIndex[f]);
-        }
-        vector<int> count(primes.size(), 0);
-        for (auto &fs : factors) count[uf.find(primeToIndex[fs[0]])]++;
-        return *max_element(count.begin(), count.end());
+        vector<int> cnt(m.size());
+        for (auto &f : F) ans = max(ans, ++cnt[uf.find(m[f[0]])]);
+        return ans;
     }
 };
 ```
