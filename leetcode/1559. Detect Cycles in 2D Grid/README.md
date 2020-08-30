@@ -19,24 +19,24 @@ Once we find a `<a, b>` pair satisfying `seen[a][b] && seen[x][y] - seen[a][b] >
 // Time: O(MN)
 // Space: O(MN)
 class Solution {
-    int M, N, seen[500][500] = {}, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
-    bool dfs(vector<vector<char>>&A, int x, int y, int len) {
-        seen[x][y] = len;
-        for (auto &dir : dirs) {
-            int a = x + dir[0], b = y + dir[1];
-            if (a < 0 || b < 0 || a >= M || b >= N || A[a][b] != A[x][y] || (seen[a][b] && seen[x][y] - seen[a][b] < 3)) continue;
-            if (seen[a][b] && seen[x][y] - seen[a][b] >= 3) return true;
-            if (dfs(A, a, b, len + 1)) return true;
+    int seen[501][501] = {}, M, N, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+    bool dfs(vector<vector<char>> &G, int i, int j, int len = 1) {
+        seen[i][j] = len;
+        for (auto &[dx, dy] : dirs) {
+            int x = i + dx, y = j + dy;
+            if (x < 0 || x >= M || y < 0 || y >= N || G[x][y] != G[i][j] || (seen[x][y] && seen[i][j] - seen[x][y] < 3)) continue;
+            if (seen[x][y] && seen[i][j] - seen[x][y] >= 3) return true;
+            if (dfs(G, x, y, len + 1)) return true;
         }
         return false;
     }
 public:
-    bool containsCycle(vector<vector<char>>& A) {
-        M = A.size(), N = A[0].size();
+    bool containsCycle(vector<vector<char>>& G) {
+        M = G.size(), N = G[0].size();
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
                 if (seen[i][j]) continue;
-                if (dfs(A, i, j, 1)) return true;
+                if (dfs(G, i, j)) return true;
             }
         }
         return false;
