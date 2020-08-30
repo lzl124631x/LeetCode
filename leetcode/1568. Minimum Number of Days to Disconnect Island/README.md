@@ -97,7 +97,7 @@ class Solution {
                 dfs(G, i, j, seen);
             }
         }
-        return false;
+        return cnt == 0;
     }
 public:
     int minDays(vector<vector<int>>& G) {
