@@ -43,3 +43,36 @@ public:
     }
 };
 ```
+
+## Solution 2. DFS
+
+```cpp
+// OJ: https://leetcode.com/problems/detect-cycles-in-2d-grid/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(MN)
+class Solution {
+    int seen[501][501] = {}, M, N, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+    bool dfs(vector<vector<char>> &G, int i, int j, int prevX, int prevY) {
+        if (seen[i][j]) return true;
+        seen[i][j] = 1;
+        for (auto &[dx, dy] : dirs) {
+            int x = i + dx, y = j + dy;
+            if (x < 0 || x >= M || y < 0 || y >= N || G[x][y] != G[i][j] || (prevX == x && prevY == y)) continue;
+            if (dfs(G, x, y, i, j)) return true;
+        }
+        return false;
+    }
+public:
+    bool containsCycle(vector<vector<char>>& G) {
+        M = G.size(), N = G[0].size();
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (seen[i][j]) continue;
+                if (dfs(G, i, j, -1, -1)) return true;
+            }
+        }
+        return false;
+    }
+};
+```
