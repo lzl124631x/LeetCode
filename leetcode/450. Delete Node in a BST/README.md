@@ -58,19 +58,17 @@ class Solution {
 public:
     TreeNode* deleteNode(TreeNode* root, int key) {
         if (!root) return NULL;
-        if (root->val > key) {
-            root->left = deleteNode(root->left, key);
-        } else if (root->val < key) {
-            root->right = deleteNode(root->right, key);
-        } else if (root->left) {
-            auto node = root->left;
-            while (node->right) node = node->right;
-            root->val = node->val;
+        if (root->val > key) root->left = deleteNode(root->left, key);
+        else if (root->val < key) root->right = deleteNode(root->right, key);
+        else if (root->left) {
+            auto p = root->left;
+            while (p->right) p = p->right;
+            root->val = p->val;
             root->left = deleteNode(root->left, root->val);
         } else if (root->right) {
-            auto node = root->right;
-            while (node->left) node = node->left;
-            root->val = node->val;
+            auto p = root->right;
+            while (p->left) p = p->left;
+            root->val = p->val;
             root->right = deleteNode(root->right, root->val);
         } else {
             delete root;
@@ -92,11 +90,9 @@ class Solution {
 public:
     TreeNode* deleteNode(TreeNode* root, int key) {
         if (!root) return NULL;
-        if (key < root->val) {
-            root->left = deleteNode(root->left, key);
-        } else if (key > root->val) {
-            root->right = deleteNode(root->right, key);
-        } else if (!root->left) {
+        if (root->val > key) root->left = deleteNode(root->left, key);
+        else if (root->val < key) root->right = deleteNode(root->right, key);
+        else if (!root->left) {
             auto right = root->right;
             delete root;
             return right;
