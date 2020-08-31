@@ -1016,6 +1016,10 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1561 | Maximum Number of Coins You Can Get | Medium | [Solution](leetcode/1561.%20Maximum%20Number%20of%20Coins%20You%20Can%20Get)
 1562 | Find Latest Group of Size M | Medium | [Solution](leetcode/1562.%20Find%20Latest%20Group%20of%20Size%20M)
 1563 | Stone Game V | Hard | [Solution](leetcode/1563.%20Stone%20Game%20V)
+1566 | Detect Pattern of Length M Repeated K or More Times | Easy | [Solution](leetcode/1566.%20Detect%20Pattern%20of%20Length%20M%20Repeated%20K%20or%20More%20Times)
+1567 | Maximum Length of Subarray With Positive Product | Medium | [Solution](leetcode/1567.%20Maximum%20Length%20of%20Subarray%20With%20Positive%20Product)
+1568 | Minimum Number of Days to Disconnect Island | Medium | [Solution](leetcode/1568.%20Minimum%20Number%20of%20Days%20to%20Disconnect%20Island)
+1569 | Number of Ways to Reorder Array to Get Same BST | Hard | [Solution](leetcode/1569.%20Number%20of%20Ways%20to%20Reorder%20Array%20to%20Get%20Same%20BST)
 
 # License
 
