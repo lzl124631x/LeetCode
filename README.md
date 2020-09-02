@@ -193,6 +193,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 215 | Kth Largest Element in an Array | Medium | [Solution](leetcode/215.%20Kth%20Largest%20Element%20in%20an%20Array)
 216 | Combination Sum III | Medium | [Solution](leetcode/216.%20Combination%20Sum%20III)
 218 | The Skyline Problem | Hard | [Solution](leetcode/218.%20The%20Skyline%20Problem)
+219 | Contains Duplicate II | Easy | [Solution](leetcode/219.%20Contains%20Duplicate%20II)
 220 | Contains Duplicate III | Medium | [Solution](leetcode/220.%20Contains%20Duplicate%20III)
 221 | Maximal Square | Medium | [Solution](leetcode/221.%20Maximal%20Square)
 222 | Count Complete Tree Nodes | Medium | [Solution](leetcode/222.%20Count%20Complete%20Tree%20Nodes)
