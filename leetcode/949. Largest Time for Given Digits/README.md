@@ -66,7 +66,7 @@ public:
         for (int i : A) s.push_back('0' + i);
         permute(s, 0);
         if (ans.size()) ans.insert(2, ":");
-        return ans.size() ? ans : "";
+        return ans;
     }
 };
 ```
