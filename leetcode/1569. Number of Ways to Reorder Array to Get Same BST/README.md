@@ -77,6 +77,7 @@
 // Time: O(N^3)
 // Space: O(N^2)
 class Solution {
+    int mod = 1e9 + 7;
     int combination(int k, int n, int mod) {
         if (k > n - k) k = n - k;
         vector<int> dp(k + 1);
@@ -88,7 +89,7 @@ class Solution {
     }
     int dfs(vector<int> &A)  {
         if (A.size() <= 1) return 1;
-        int root = A[0], mod = 1e9+7;
+        int root = A[0];
         vector<int> left, right;
         for (int i = 1; i < A.size(); ++i) {
             if (A[i] < root) left.push_back(A[i]);
@@ -98,7 +99,7 @@ class Solution {
     }
 public:
     int numOfWays(vector<int>& A) {
-        return dfs(A) - 1;
+        return (dfs(A) - 1 + mod) % mod;
     }
 };
 ```
