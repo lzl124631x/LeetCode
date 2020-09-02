@@ -54,3 +54,27 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/contains-duplicate-iii/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(K)
+// Ref: https://leetcode.com/problems/contains-duplicate-iii/discuss/61645/AC-O(N)-solution-in-Java-using-buckets-with-explanation
+class Solution {
+public:
+    bool containsNearbyAlmostDuplicate(vector<int>& A, int k, int t) {
+        if (A.size() < 2 || k < 1 || t < 0) return false;
+        unordered_map<long, long> m;
+        for (int i = 0; i < A.size(); ++i) {
+            if (i > k) m.erase(((long)A[i - k - 1] - INT_MIN) / ((long)t + 1));
+            long n = (long)A[i] - INT_MIN, id = n / ((long)t + 1);
+            if (m.count(id) || (m.count(id - 1) && A[i] - m[id - 1] <= t) || (m.count(id + 1) && m[id + 1] - A[i] <= t)) return true; 
+            m[id] = A[i];
+        }
+        return false;
+    }
+};
+```
