@@ -748,6 +748,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1000 | Minimum Cost to Merge Stones | Hard | [Solution](leetcode/1000.%20Minimum%20Cost%20to%20Merge%20Stones)
 1002 | Find Common Characters | Easy | [Solution](leetcode/1002.%20Find%20Common%20Characters)
 1004 | Max Consecutive Ones III | Medium | [Solution](leetcode/1004.%20Max%20Consecutive%20Ones%20III)
+1005 | Maximize Sum Of Array After K Negations | Easy | [Solution](leetcode/1005.%20Maximize%20Sum%20Of%20Array%20After%20K%20Negations)
 1008 | Construct Binary Search Tree from Preorder Traversal | Medium | [Solution](leetcode/1008.%20Construct%20Binary%20Search%20Tree%20from%20Preorder%20Traversal)
 1011 | Capacity To Ship Packages Within D Days | Medium | [Solution](leetcode/1011.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
 1012 | Complement of Base 10 Integer | Easy | [Solution](leetcode/1012.%20Complement%20of%20Base%2010%20Integer)
