@@ -160,3 +160,67 @@ public:
     }
 };
 ```
+
+## Solution 3.
+
+Reference: https://www.geeksforgeeks.org/convert-number-negative-base-representation/
+
+When we get negative `r`, we add `2` to `r` and increment `N`. This works because
+
+```
+r = -1, N = 0
+the number is -1
+
+r = 1, N = 1
+the number is -2 * 1 - 1 = -1
+```
+
+Example,
+
+```
+N = 3
+
+// first round
+r = 3 % -2 = 3 - (3 / -2) * -2 = 3 - (-1 * -2) = 1
+N = 3 / -2 = -1
+
+// second round
+r = -1 % -2 = -1 - (-1 / -2) * -2 = -1 - (0 * -2) = -1
+N = -1 / -2 = 0
+
+// now r is negative, we turn it to be positive
+r = -1 + 2 = 1
+N = 0 + 1 = 1
+
+// last round
+r = 1 % -2 = 1 - (1 / -2) * -2 = 1
+N = 1 / -2 = 0
+
+So the result is 111.
+```
+
+```cpp
+// OJ: https://leetcode.com/problems/convert-to-base-2/
+// Author: github.com/lzl124631x
+// Time: O(logN)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/convert-to-base-2/discuss/265544/C%2B%2B-Geeks4Geeks
+class Solution {
+public:
+    string baseNeg2(int N) {
+        if (N == 0) return "0";
+        string ans;
+        while (N) {
+            int r = N % -2;
+            N /= -2;
+            if (r < 0) {
+                r += 2;
+                N++;
+            }
+            ans += '0' + r;
+        }
+        reverse(begin(ans), end(ans));
+        return ans;
+    }
+};
+```
