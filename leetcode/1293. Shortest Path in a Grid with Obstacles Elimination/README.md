@@ -124,6 +124,36 @@ public:
 };
 ```
 
+## Solution 3. BFS
+
+```cpp
+// OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
+// Author: github.com/lzl124631x
+// Time: O(MN * min(K, M + N))
+// Space: O(MNK)
+class Solution {
+    int M, N, dp[40][40][80] = {}, dirs[4][2] = {{0,1}, {0,-1},{1,0},{-1,0}}, ans = INT_MAX;
+    void dfs(vector<vector<int>> &G, int x, int y, int k, int step) {
+        dp[x][y][k] = step;
+        if (x == M - 1 && y == N - 1) ans = min(ans, step);
+        for (auto [dx, dy] : dirs) {
+            int a = x + dx, b = y + dy;
+            if (a < 0 || a >= M || b < 0 || b >= N) continue;
+            if (k - G[x][y] >= 0 && dp[a][b][k - G[x][y]] > step + 1) dfs(G, a, b, k - G[x][y], step + 1);
+        }
+    }
+public:
+    int shortestPath(vector<vector<int>>& G, int k) {
+        M = G.size(), N = G[0].size();
+        if (k >= M + N - 3) return M + N - 2;
+        memset(dp, 0x3f, sizeof(dp));
+        for (int i = 0; i < k; ++i) dp[0][0][k] = 0;
+        dfs(G, 0, 0, k, 0);
+        return ans == INT_MAX ? -1 : ans;
+    }
+};
+```
+
 ## Note
 
 * For shortest path problem, BFS should be the first choice.
