@@ -38,7 +38,7 @@ A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits 
 class Solution {
 public:
     vector<int> partitionLabels(string S) {
-        int cnt[26] = {0};
+        int cnt[26] = {};
         for (char c : S) cnt[c - 'a']++;
         vector<int> ans;
         for (int i = 0, prev = 0; i < S.size();) {
@@ -50,6 +50,33 @@ public:
             } while (m.size());
             ans.push_back(i - prev);
             prev = i;
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/partition-labels/
+// Author: github.com/lzl124631x
+// Time: O(S)
+// Space: O(1)
+class Solution {
+public:
+    vector<int> partitionLabels(string S) {
+        int N = S.size();
+        vector<int> right(26), ans;
+        for (int i = 0; i < N; ++i) right[S[i] - 'a'] = i;
+        int L = 0, R = 0, i = 0;
+        while (i < N) {
+            L = i, R = right[S[i] - 'a'];
+            while (i <= R) {
+                R = max(R, right[S[i] - 'a']);
+                ++i;
+            }
+            ans.push_back(R - L + 1);
         }
         return ans;
     }
