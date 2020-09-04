@@ -55,7 +55,7 @@ The nodes that are reachable in the final graph after M = 6 moves are indicated 
 **Related Topics**:  
 [Heap](https://leetcode.com/tag/heap/)
 
-## Solution 1.
+## Solution 1. Dijkstra
 
 ```cpp
 // OJ: https://leetcode.com/problems/reachable-nodes-in-subdivided-graph/
