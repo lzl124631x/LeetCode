@@ -75,10 +75,9 @@ In the end, if `a.getSize() == 1 && b.size() == 1` meaning that the graph is all
 class UnionFind{
     vector<int> id;
     int size;
-    public:
-    UnionFind(int N ): id(N) {
+public:
+    UnionFind(int N ): id(N), size(N) {
         iota(begin(id), end(id), 0);
-        size = N;
     }
     int find(int a) {
         return id[a] == a ? a : (id[a] = find(id[a]));
