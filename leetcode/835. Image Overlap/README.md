@@ -1,32 +1,34 @@
 # [835. Image Overlap (Medium)](https://leetcode.com/problems/image-overlap/)
 
-Two images `A` and `B` are given, represented as binary, square matrices of the same size.  (A binary matrix has only 0s and 1s as values.)
+<p>Two images <code>A</code> and <code>B</code> are given, represented as&nbsp;binary, square matrices of the same size.&nbsp; (A binary matrix has only 0s and 1s as values.)</p>
 
-We translate one image however we choose (sliding it left, right, up, or down any number of units), and place it on top of the other image.  After, the _overlap_ of this translation is the number of positions that have a 1 in both images.
+<p>We translate one image however we choose (sliding it left, right, up, or down any number of units), and place it on top of the other image.&nbsp; After, the <em>overlap</em> of this translation is the number of positions that have a 1 in both images.</p>
 
-(Note also that a translation does **not** include any kind of rotation.)
+<p>(Note also that a translation does <strong>not</strong> include any kind of rotation.)</p>
 
-What is the largest possible overlap?
+<p>What is the largest possible overlap?</p>
 
-**Example 1:**
+<p><strong>Example 1:</strong></p>
 
-**Input:**
-```
-A = [[1,1,0],
-     [0,1,0],
-     [0,1,0]]
-B = [[0,0,0],
-     [0,1,1],
-     [0,0,1]]
-```
+<pre><strong>Input: </strong>A = [[1,1,0],
+            [0,1,0],
+&nbsp;           [0,1,0]]
+&nbsp;      B = [[0,0,0],
+&nbsp;           [0,1,1],
+&nbsp;           [0,0,1]]
+<strong>Output: </strong>3
+<strong>Explanation:</strong> We slide A to right by 1 unit and down by 1 unit.</pre>
 
-**Output:** 3  
-**Explanation:** We slide A to right by 1 unit and down by 1 unit.
+<p><strong>Notes:</strong>&nbsp;</p>
 
-**Notes:** 
+<ol>
+	<li><code>1 &lt;= A.length = A[0].length = B.length = B[0].length &lt;= 30</code></li>
+	<li><code>0 &lt;=&nbsp;A[i][j], B[i][j] &lt;= 1</code></li>
+</ol>
 
-1.  `1 <= A.length = A[0].length = B.length = B[0].length <= 30`
-2.  `0 <= A[i][j], B[i][j] <= 1`
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/)
 
 ## Solution 1. Brute Force
 
@@ -36,26 +38,21 @@ B = [[0,0,0],
 // Time: O(N^4)
 // Space: O(1)
 class Solution {
-private:
-    int N;
-    int overlap(vector<vector<int>>& A, vector<vector<int>>& B, int x, int y) {
-        int cnt = 0;
-        for (int i = 0; i < N; ++i) {
-            if ((i + x) < 0 || (i + x) >= N) continue;
-            for (int j = 0; j < N; ++j) {
-                if ((j + y) >= 0 && (j + y) < N
-                    && A[i + x][j + y] && B[i][j]) ++cnt;
+    int overlap(vector<vector<int>> &A, vector<vector<int>> &B, int dx, int dy) {
+        int N = A.size(), ans = 0;
+        for (int i = 0; i + dx < N; ++i) {
+            for (int j = 0; j + dy < N; ++j) {
+                ans += B[i][j] == 1 && A[i + dx][j + dy] == B[i][j];
             }
         }
-        return cnt;
+        return ans;
     }
 public:
     int largestOverlap(vector<vector<int>>& A, vector<vector<int>>& B) {
-        N = A.size();
-        int ans = 0;
-        for (int x = -N + 1; x < N; ++x) {
-            for (int y = -N + 1; y < N; ++y) {
-                ans = max(ans, overlap(A, B, x, y));
+        int N = A.size(), ans = 0;
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                ans = max({ ans, overlap(A, B, i, j), overlap(B, A, i, j) });
             }
         }
         return ans;
@@ -63,13 +60,38 @@ public:
 };
 ```
 
-## Solution 2. Most Common Index Distance.
+## Solution 2. Most Common Index Distance
 
 If the image is sparse matrix, we can save computation in the following way.
 
-To make the problem simpler, think of two 1d arrays, we want to compute the `largestOverlap` of them. We can store the indexes of 1s into `va` and `vb`, and compute the most common distance between `va[i]` and `vb[j]`.
+To make the problem simpler, think of two 1d arrays, we want to compute the `largestOverlap` of them. We can store the indexes of 1s into two `vector<int>` `va` and `vb`, and compute the most common distance between `va[i]` and `vb[j]`.
 
-For the 2d arrays, the distance becomes 2d as well. Instead of using pairs, we encode `x, y` into `100 * x + y`, and the distance becomes `100 * delta_x + delta_y`. The most common distance is the answer.
+Example:
+
+```
+A = [1, 1, 1, 0]
+B = [0, 1, 0, 1]
+va = [0, 1, 2]
+vb = [1, 3]
+// we compute the difference between each pair of the indexes
+diff = [-1, 0, 1,
+        -3, -2, -1]
+frequency = {
+    {-3, 1},
+    {-2, 1},
+    {-1, 2}, // -1 appeared twice
+    {0, 1},
+    {1, 1}
+}
+// Since -1 is the most frequent difference and its frequency is 2
+// The best answer is to shift `B` by `-1` and we get `2` overlaps.
+```
+
+For a 2d array, the distance becomes 2d as well. Instead of using pairs, we encode `x, y` as `100 * x + y` thus the 2d array is flattened to 1d array, and the distance becomes `100 * delta_x + delta_y`. The most common distance is the answer.
+
+Why using `100` instead of `30`? Since the `delta_y` has range `-29 = -(N - 1)`  to `29 = (N - 1)`. So using `30` will cause ambiguous intrepretation of the distance. For example, distance `15` can be interpreted as `0 * 30 + 15` and `1 * 30 - 15`.
+
+The minimum value of the multiplier is the size of range of `delta_y` which is `(N - 1) - -(N - 1) + 1 = 2 * N - 1`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/image-overlap/
