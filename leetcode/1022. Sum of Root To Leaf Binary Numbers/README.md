@@ -42,18 +42,43 @@
 // Time: O(N)
 // Space: O(H)
 class Solution {
-private:
-    int sum = 0, num = 0;
+    int ans = 0;
+    void preorder(TreeNode *root, int path) {
+        if (!root) return;
+        path = (path << 1) + root->val;
+        if (!root->left && !root->right) {
+            ans += path;
+            return;
+        }
+        preorder(root->left, path);
+        preorder(root->right, path);
+    }
 public:
     int sumRootToLeaf(TreeNode* root) {
+        preorder(root, 0);
+        return ans;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+    int sum = 0;
+public:
+    int sumRootToLeaf(TreeNode* root, int path = 0) {
         if (!root) return 0;
-        num = num * 2 + root->val;
-        if (!root->left && !root->right) sum += num;
+        path = (path << 1) + root->val;
+        if (!root->left && !root->right) sum += path;
         else {
-            sumRootToLeaf(root->left);
-            sumRootToLeaf(root->right);
+            sumRootToLeaf(root->left, path);
+            sumRootToLeaf(root->right, path);
         }
-        num /= 2;
         return sum;
     }
 };
