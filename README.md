@@ -424,7 +424,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 507 | Perfect Number | Easy | [Solution](leetcode/507.%20Perfect%20Number)
 508 | Most Frequent Subtree Sum |  | [Solution](leetcode/508.%20Most%20Frequent%20Subtree%20Sum)
 509 | Fibonacci Number | Easy | [Solution](leetcode/509.%20Fibonacci%20Number)
-513 | Find Bottom Left Tree Value |  | [Solution](leetcode/513.%20Find%20Bottom%20Left%20Tree%20Value)
+513 | Find Bottom Left Tree Value | Medium | [Solution](leetcode/513.%20Find%20Bottom%20Left%20Tree%20Value)
 514 | Freedom Trail | Hard | [Solution](leetcode/514.%20Freedom%20Trail)
 515 | Find Largest Value in Each Tree Row |  | [Solution](leetcode/515.%20Find%20Largest%20Value%20in%20Each%20Tree%20Row)
 516 | Longest Palindromic Subsequence | Medium | [Solution](leetcode/516.%20Longest%20Palindromic%20Subsequence)
