@@ -56,12 +56,12 @@ Type 2: (3,0,1).  nums2[3]^2 = nums1[0] * nums1[1].
 
 Type 1 and Type 2 are symmetrical so we can define a function `count(A, B)` which returns the count of the Type 1 triples. The answer is `count(A, B) + count(B, A)`.
 
-For `count(A, B)`, we can use a `map<int, int> m` to store the frequency of the numbers in `B`. Then for each number `a` in `A`, the `target` value is `a * a`. We traverse the map `m` to count the triplets.
+For `count(A, B)`, we can use a `unordered_map<int, int> m` to store the frequency of the numbers in `B`. Then for each number `a` in `A`, the `target` value is `a * a`. We traverse the map `m` to count the triplets.
 
 For each entry `(b, cnt)` in `m`:
 * If `target` is not divisible by `b` or `target / b` is not in `m`, there is no triplets, skip.
-* If `target / b == b`, we need to pick 2 out of `m[b]` numbers so we can add `m[b] * (m[b] - 1)` triplets to the answer.
-* Otherwise, we can add `m[b] * m[target / b]` triplets to the answer.
+* If `target / b == b`, we need to pick 2 out of `cnt` numbers so we can add `cnt * (cnt - 1)` triplets to the answer.
+* Otherwise, we can add `cnt * m[target / b]` triplets to the answer.
 
 Since we count the the pairs in `B` twice, we need to divide the answer by 2 before returning.
 
@@ -73,14 +73,14 @@ Since we count the the pairs in `B` twice, we need to divide the answer by 2 bef
 class Solution {
     int count(vector<int> &A, vector<int> &B) {
         int ans = 0;
-        map<int, int> m;
+        unordered_map<int, int> m;
         for (int n : B) m[n]++;
         for (int a : A) {
             long target = (long)a * a;
             for (auto &[b, cnt] : m) {
                 if (target % b || m.count(target / b) == 0) continue;
-                if (target / b == b) ans += m[b] * (m[b] - 1);
-                else ans += m[b] * m[target / b];
+                if (target / b == b) ans += cnt * (cnt - 1);
+                else ans += cnt * m[target / b];
             }
         }
         return ans / 2;
