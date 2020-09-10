@@ -247,7 +247,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 295 | Find Median from Data Stream | Hard | [Solution](leetcode/295.%20Find%20Median%20from%20Data%20Stream)
 297 | Serialize and Deserialize Binary Tree | Hard | [Solution](leetcode/297.%20Serialize%20and%20Deserialize%20Binary%20Tree)
 298 | Binary Tree Longest Consecutive Sequence | Medium | [Solution](leetcode/298.%20Binary%20Tree%20Longest%20Consecutive%20Sequence)
-299 | Bulls and Cows |  | [Solution](leetcode/299.%20Bulls%20and%20Cows)
+299 | Bulls and Cows | Easy | [Solution](leetcode/299.%20Bulls%20and%20Cows)
 300 | Longest Increasing Subsequence | Medium | [Solution](leetcode/300.%20Longest%20Increasing%20Subsequence)
 301 | Remove Invalid Parentheses | Hard | [Solution](leetcode/301.%20Remove%20Invalid%20Parentheses)
 303 | Range Sum Query - Immutable |  | [Solution](leetcode/303.%20Range%20Sum%20Query%20-%20Immutable)
