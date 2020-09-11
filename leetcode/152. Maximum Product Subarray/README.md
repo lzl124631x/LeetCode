@@ -29,6 +29,58 @@
 * [Maximum Product of Three Numbers (Easy)](https://leetcode.com/problems/maximum-product-of-three-numbers/)
 * [Subarray Product Less Than K (Medium)](https://leetcode.com/problems/subarray-product-less-than-k/)
 
+## Solution 1.
+
+For each segments surrounded by `0`, we calculate the product of the segment. 
+
+If the product is positive, we update the answer using the product of the entire segment.
+
+If the product is negative, we can update the answer using:
+* the product from the first element to the last element before the last negative number.
+* the product from the first element after the first negative element to the last element.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-product-subarray/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int maxProduct(vector<int>& A) {
+        int N = A.size(), i = 0, ans = A[0];
+        while (i < N) {
+            if (A[i] == 0) {
+                ans = max(ans, 0);
+                ++i;
+                continue;
+            }
+            int j = i, first = -1, last = -1, prod = 1;
+            for (; i < N && A[i] != 0; ++i) {
+                if (A[i] < 0) {
+                    if (first == -1) first = i;
+                    last = i;
+                }
+                prod *= A[i];
+                ans = max(ans, prod);
+            }
+            if (prod < 0) {
+                if (j < last) {
+                    prod = 1;
+                    for (int k = j; k < last; ++k) prod *= A[k];
+                    ans = max(ans, prod);
+                }
+                if (first + 1 < i) {
+                    prod = 1;   
+                    for (int k = first + 1; k < i; ++k) prod *= A[k];
+                    ans = max(ans, prod);
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
 ## Solution 1. Two Pointers
 
 In fact, we don't care the number, we care the sign. The problem is the same as finding the longest subarray with even number negative numbers without 0.
@@ -48,8 +100,7 @@ public:
     int maxProduct(vector<int>& A) {
         int ans = A[0], N = A.size(), j = 0;
         while (j < N) {
-            int prod = 1;
-            int i = j;
+            int i = j, prod = 1;
             while (j < N && A[j] != 0) {
                 prod *= A[j++];
                 ans = max(ans, prod);
