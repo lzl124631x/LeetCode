@@ -112,3 +112,83 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+`left[i][f]`: the count of routes whose last move is leftwards to location `i` with `f` fuel
+
+`right[i][f]`: the count of routes whose last move is rightwards to location `i` with `f` fuel
+
+```
+left[j][f] = left[j+1][f-d(j, j+1)] + right[j+1][f-d(j, j+1)] // go to j + 1 first then j
+            + left[j+2][f-d(j, j+2)] + right[j+2][f-d(j, j+2)] // go to j + 2 first then j
+            + ...
+            + left[j+k][f-d(j, j+k)] + right[j+k][f-d(j, j+2)] // go to j + k first then j
+```
+
+We can apply this equation recursively so that all the `left` are replaced with `right` in the right side of the equation.
+
+```
+left[j][f] = right[j+1][f-d(j, j+1)]
+            + 2 * right[j+2][f-d(j, j+2)]
+            + ...
+            + 2^(k-1) * right[j+k][f-d(j, j+k)]
+```
+
+In the righthand-side, the 2nd to last terms can be expressed as `2 * left[j+1][f-d(j, j+1)]` because
+
+```
+left[j+1][f] = right[j+2][f-d(j+1, j+2)]
+              + 2 * right[j+3][f-d(j+1, j+3)]
+              + ...
+              + 2^(k-2) * right[j+1+k-1][f-d(j+1, j+1+k-1)]
+
+left[j+1][f-d(j, j+1)] = right[j+2][f-d(j, j+2)]
+                        + 2 * right[j+3][f-d(j, j+3)]
+                        + ...
+                        + 2^(k-2) * right[j+k][f-d(j, j+k)]
+```
+
+So we have this equation
+```
+left[j][f] = right[j+1][f-d(j, j+1)] + 2 * left[j+1][f-d(j, j+1)]
+```
+
+Symmetrically, we have
+
+```
+right[j][f] = left[j-1][f-d(j, j-1)] + 2 * right[j-1][f-d(j, j-1)]
+```
+
+```cpp
+// OJ: https://leetcode.com/problems/count-all-possible-routes/
+// Author: github.com/lzl124631x
+// Time: O(NlogN + NF)
+// Space: O(NF)
+class Solution {
+public:
+    int countRoutes(vector<int>& A, int start, int finish, int fuel) {
+        int mod = 1e9+7, s = A[start], f = A[finish];
+        sort(begin(A), end(A));
+        start = lower_bound(begin(A), end(A), s) - begin(A);
+        finish = lower_bound(begin(A), end(A), f) - begin(A);
+        vector<vector<int>> left(A.size(), vector<int>(fuel + 1));
+        vector<vector<int>> right(A.size(), vector<int>(fuel + 1));
+        for (int f = 1; f <= fuel; ++f) {
+            for (int j = 0; j < A.size() - 1; ++j) {
+                int d = A[j + 1] - A[j];
+                if (f > d) left[j][f] = (right[j + 1][f - d] + 2 * left[j + 1][f - d] % mod) % mod;
+                else if (f == d) left[j][f] = j + 1 == start;
+            }
+            for (int j = 1; j < A.size(); ++j) {
+                int d = A[j] - A[j - 1];
+                if (f > d) right[j][f] = (left[j - 1][f - d] + 2 * right[j - 1][f - d] % mod) % mod;
+                else if (f == d) right[j][f] = j - 1 == start;
+            }
+        }
+        int ans = start == finish;
+        for (int f = 1; f <= fuel; ++f) ans = ((ans + left[finish][f]) % mod + right[finish][f]) % mod;
+        return ans;
+    }
+};
+```
