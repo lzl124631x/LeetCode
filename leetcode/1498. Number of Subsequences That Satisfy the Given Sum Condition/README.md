@@ -58,7 +58,7 @@ Consider input `nums = [3,5,6,7], target = 9`.
 
 For `3`, we can find the maximum number we can use which is `6`. So we get a subarray `[3,5,6]`. Then how many subsequences starting with this `3` we can form using this subarray? It should be `2^(len - 1) = 2^2 = 4` because out of `[5, 6]`, we just can choose to pick zero, one or two of them.
 
-Then we consider the next element `5`, and the right bound should be only decreasing so that we can still sum up to `9`. So we can use two pointers, `i` scanning elements from left to right, and `j` starting from `N - 1` and scanning leftwards to find the maximum right boundary.
+Then we consider the next element `5`, and the right bound should only decrease so that we can still sum up to `9`. So we can use two pointers, `i` scanning elements from left to right, and `j` starting from `N - 1` and scanning leftwards to find the maximum right boundary.
 
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/
@@ -69,15 +69,13 @@ class Solution {
 public:
     int numSubseq(vector<int>& A, int target) {
         sort(begin(A), end(A));
-        int N = A.size(), i = 0, j = N - 1, ans = 0, mod = 1e9 + 7;
+        int N = A.size(), ans = 0, mod = 1e9 + 7;
         vector<int> p(N, 1);
         for (int i = 1; i < N; ++i) p[i] = p[i - 1] * 2 % mod;
-        while (i <= j) {
-            int a = A[i];
-            while (i <= j && A[j] + a > target) --j;
+        for (int i = 0, j = N - 1; i <= j; ++i) {
+            while (i <= j && A[i] + A[j] > target) --j;
             if (i > j) break;
-            ++i;
-            ans = (ans + p[j - i + 1]) % mod;
+            ans = (ans + p[j - i]) % mod;
         }
         return ans;
     }
@@ -93,11 +91,9 @@ Or use fast pow.
 // Space: O(1)
 int modpow(int base, int exp, int mod) {
     base %= mod;
-    long ans = 1;
-    while (exp > 0) {
-        if (exp & 1) ans = (ans * base) % mod;
-        base = ((long)base * base) % mod;
-        exp >>= 1;
+    int ans = 1;
+    for (; exp > 0; exp >>= 1, base = (long)base * base % mod) {
+        if (exp & 1) ans = ((long)ans * base) % mod;
     }
     return ans;
 }
@@ -105,13 +101,11 @@ class Solution {
 public:
     int numSubseq(vector<int>& A, int target) {
         sort(begin(A), end(A));
-        int N = A.size(), i = 0, j = N - 1, ans = 0, mod = 1e9 + 7;
-        while (i <= j) {
-            int a = A[i];
-            while (i <= j && A[j] + a > target) --j;
+        int N = A.size(), ans = 0, mod = 1e9 + 7;
+        for (int i = 0, j = N - 1; i <= j; ++i) {
+            while (i <= j && A[i] + A[j] > target) --j;
             if (i > j) break;
-            ++i;
-            ans = (ans + modpow(2, j - i + 1, mod)) % mod;
+            ans = (ans + modpow(2, j - i, mod)) % mod;
         }
         return ans;
     }
