@@ -67,6 +67,8 @@ Friends 0 and 2 are happy.
 
 ## Solution 1.
 
+Note that given the definition, if `x` is unhappy due to `(x, y)` and `(u, v)`, then `u` is unhappy too.
+
 ```cpp
 // OJ: https://leetcode.com/problems/count-unhappy-friends/
 // Author: github.com/lzl124631x
