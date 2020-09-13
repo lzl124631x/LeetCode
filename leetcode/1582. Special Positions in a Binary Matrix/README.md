@@ -60,7 +60,7 @@
 
 ```cpp
 // OJ: https://leetcode.com/problems/special-positions-in-a-binary-matrix/
-// Author: Please set your name in options page
+// Author: github.com/lzl124631x
 // Time: O(MN * (M + N))
 // Space: O(1)
 class Solution {
@@ -86,7 +86,7 @@ public:
 
 ```cpp
 // OJ: https://leetcode.com/problems/special-positions-in-a-binary-matrix/
-// Author: Please set your name in options page
+// Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(M + N)
 class Solution {
