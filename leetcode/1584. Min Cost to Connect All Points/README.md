@@ -60,7 +60,7 @@ Notice that there is a unique path between every pair of points.
 
 The run time is too restrict. If you sort the edges then use Kruskal you will get TLE. The time complexity is `O(N^2 * log(N^2))`.
 
-We have to use min heap instead so that the time complexity is `O(K * log(N^2))` where `K` is the number of edges we need to pull to complete the tree. It's much smaller than `N^2` on average.
+We have to use min heap instead so that the time complexity is `O(K * log(N^2))` where `K` is the number of edges we need to scan to complete the tree. It's much smaller than `N^2` on average.
 
 ```cpp
 // OJ: https://leetcode.com/problems/min-cost-to-connect-all-points/
