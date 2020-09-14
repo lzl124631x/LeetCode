@@ -63,6 +63,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 53 | Maximum Subarray | Easy | [Solution](leetcode/53.%20Maximum%20Subarray)
 54 | Spiral Matrix | Medium | [Solution](leetcode/54.%20Spiral%20Matrix)
 55 | Jump Game | Medium | [Solution](leetcode/55.%20Jump%20Game)
+57 | Insert Interval | Hard | [Solution](leetcode/57.%20Insert%20Interval)
 58 | Length of Last Word |  | [Solution](leetcode/58.%20Length%20of%20Last%20Word)
 59 | Spiral Matrix II |  | [Solution](leetcode/59.%20Spiral%20Matrix%20II)
 60 | Permutation Sequence | Medium | [Solution](leetcode/60.%20Permutation%20Sequence)
@@ -829,6 +830,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1220 | Count Vowels Permutation | Hard | [Solution](leetcode/1220.%20Count%20Vowels%20Permutation)
 1223 | Dice Roll Simulation | Medium | [Solution](leetcode/1223.%20Dice%20Roll%20Simulation)
 1232 | Check If It Is a Straight Line | Easy | [Solution](leetcode/1232.%20Check%20If%20It%20Is%20a%20Straight%20Line)
+1234 | Replace the Substring for Balanced String | Medium | [Solution](leetcode/1234.%20Replace%20the%20Substring%20for%20Balanced%20String)
 1235 | Maximum Profit in Job Scheduling | Hard | [Solution](leetcode/1235.%20Maximum%20Profit%20in%20Job%20Scheduling)
 1249 | Minimum Remove to Make Valid Parentheses | Medium | [Solution](leetcode/1249.%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses)
 1252 | Cells with Odd Values in a Matrix | Easy | [Solution](leetcode/1252.%20Cells%20with%20Odd%20Values%20in%20a%20Matrix)
@@ -1042,6 +1044,9 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1577 | Number of Ways Where Square of Number Is Equal to Product of Two Numbers | Medium | [Solution](leetcode/1577.%20Number%20of%20Ways%20Where%20Square%20of%20Number%20Is%20Equal%20to%20Product%20of%20Two%20Numbers)
 1578 | Minimum Deletion Cost to Avoid Repeating Letters | Medium | [Solution](leetcode/1578.%20Minimum%20Deletion%20Cost%20to%20Avoid%20Repeating%20Letters)
 1579 | Remove Max Number of Edges to Keep Graph Fully Traversable | Hard | [Solution](leetcode/1579.%20Remove%20Max%20Number%20of%20Edges%20to%20Keep%20Graph%20Fully%20Traversable)
+1582 | Special Positions in a Binary Matrix | Easy | [Solution](leetcode/1582.%20Special%20Positions%20in%20a%20Binary%20Matrix)
+1583 | Count Unhappy Friends | Medium | [Solution](leetcode/1583.%20Count%20Unhappy%20Friends)
+1584 | Min Cost to Connect All Points | Medium | [Solution](leetcode/1584.%20Min%20Cost%20to%20Connect%20All%20Points)
 
 # License
 
