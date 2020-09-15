@@ -107,7 +107,7 @@ public:
 
 ## Solution 2.
 
-Note that using `set` is more performant than `unordered_set` here. It's because `unordered_set` initialization has greater cost.
+Note that using `set` is more performant than `unordered_set` here. It's because `unordered_set` initialization has greater overhead.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-a-value-of-a-mysterious-function-closest-to-target/
@@ -123,12 +123,40 @@ public:
         for (int n : A) {
             set<int> next{n};
             for (int m : s) {
-                if (m & n < target) continue;
+                if ((m & n) < target) continue;
                 next.insert(m & n);
             }
             for (int val : next) ans = min(ans, abs(val - target));
             if (ans == 0) return 0;
             swap(s, next);
+        }
+        return ans;
+    }
+};
+```
+
+Since there are only `log(M)` elements in the set, we can even use `vector<int>` to store the values.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-a-value-of-a-mysterious-function-closest-to-target/
+// Author: github.com/lzl124631x
+// Time: O(N * logM * loglogM)
+// Space: O(logM)
+class Solution {
+public:
+    int closestToTarget(vector<int>& A, int target) {
+        vector<int> s;
+        int ans = INT_MAX;
+        for (int n : A) {
+            vector<int> next{ n };
+            for (int m : s) {
+                if ((m & n) < target) continue;
+                next.push_back(m & n);
+            }
+            sort(begin(next), end(next));
+            next.resize(unique(begin(next), end(next)) - begin(next));
+            swap(s, next);
+            ans = min(ans, abs(s.front() - target));
         }
         return ans;
     }
