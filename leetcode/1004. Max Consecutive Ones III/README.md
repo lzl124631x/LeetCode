@@ -38,7 +38,7 @@ Bolded numbers were flipped from 0 to 1.  The longest subarray is underlined.
 </div>
 
 
-## Solution 1. Two Pointers
+## Solution 1. Sliding Window
 
 ```cpp
 // OJ: https://leetcode.com/problems/max-consecutive-ones-iii/
@@ -48,16 +48,11 @@ Bolded numbers were flipped from 0 to 1.  The longest subarray is underlined.
 class Solution {
 public:
     int longestOnes(vector<int>& A, int K) {
-        int i = 0, j = 0, ans = 0, k = 0;
-        while (true) {
-            for (; j < A.size() && k <= K; ++j) {
-                if (A[j] == 0) ++k;
-            }
-            ans = max(ans, j - i - (k > K ? 1 : 0));
-            if (j >= A.size()) break;
-            for (; k > K; ++i) {
-                if (A[i] == 0) --k;
-            }
+        int ans = 0, zero = 0, i = 0, j = 0, N = A.size();
+        while (j < N) {
+            zero += A[j++] == 0;
+            if (zero <= K) ans = max(ans, j - i);
+            while (zero > K) zero -= A[i++] == 0;
         }
         return ans;
     }
