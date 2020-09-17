@@ -351,7 +351,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 417 | Pacific Atlantic Water Flow |  | [Solution](leetcode/417.%20Pacific%20Atlantic%20Water%20Flow)
 419 | Battleships in a Board |  | [Solution](leetcode/419.%20Battleships%20in%20a%20Board)
 420 | Strong Password Checker |  | [Solution](leetcode/420.%20Strong%20Password%20Checker)
-421 | Maximum XOR of Two Numbers in an Array |  | [Solution](leetcode/421.%20Maximum%20XOR%20of%20Two%20Numbers%20in%20an%20Array)
+421 | Maximum XOR of Two Numbers in an Array | Medium | [Solution](leetcode/421.%20Maximum%20XOR%20of%20Two%20Numbers%20in%20an%20Array)
 422 | Valid Word Square | Easy | [Solution](leetcode/422.%20Valid%20Word%20Square)
 423 | Reconstruct Original Digits from English |  | [Solution](leetcode/423.%20Reconstruct%20Original%20Digits%20from%20English)
 424 | Longest Repeating Character Replacement |  | [Solution](leetcode/424.%20Longest%20Repeating%20Character%20Replacement)
@@ -1048,6 +1048,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1582 | Special Positions in a Binary Matrix | Easy | [Solution](leetcode/1582.%20Special%20Positions%20in%20a%20Binary%20Matrix)
 1583 | Count Unhappy Friends | Medium | [Solution](leetcode/1583.%20Count%20Unhappy%20Friends)
 1584 | Min Cost to Connect All Points | Medium | [Solution](leetcode/1584.%20Min%20Cost%20to%20Connect%20All%20Points)
+1585 | Check If String Is Transformable With Substring Sort Operations | Hard | [Solution](leetcode/1585.%20Check%20If%20String%20Is%20Transformable%20With%20Substring%20Sort%20Operations)
 
 # License
 
