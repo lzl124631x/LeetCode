@@ -786,6 +786,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1044 | Longest Duplicate Substring | Hard | [Solution](leetcode/1044.%20Longest%20Duplicate%20Substring)
 1046 | Last Stone Weight | Easy | [Solution](leetcode/1046.%20Last%20Stone%20Weight)
 1047 | Remove All Adjacent Duplicates In String | Easy | [Solution](leetcode/1047.%20Remove%20All%20Adjacent%20Duplicates%20In%20String)
+1052 | Grumpy Bookstore Owner | Medium | [Solution](leetcode/1052.%20Grumpy%20Bookstore%20Owner)
 1053 | Previous Permutation With One Swap | Medium | [Solution](leetcode/1053.%20Previous%20Permutation%20With%20One%20Swap)
 1054 | Distant Barcodes | Medium | [Solution](leetcode/1054.%20Distant%20Barcodes)
 1071 | Greatest Common Divisor of Strings | Easy | [Solution](leetcode/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
