@@ -745,6 +745,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 986 | Interval List Intersections | Medium | [Solution](leetcode/986.%20Interval%20List%20Intersections)
 987 | Vertical Order Traversal of a Binary Tree | Medium | [Solution](leetcode/987.%20Vertical%20Order%20Traversal%20of%20a%20Binary%20Tree)
 990 | Satisfiability of Equality Equations | Medium | [Solution](leetcode/990.%20Satisfiability%20of%20Equality%20Equations)
+992 | Subarrays with K Different Integers | Hard | [Solution](leetcode/992.%20Subarrays%20with%20K%20Different%20Integers)
 993 | Cousins in Binary Tree | Easy | [Solution](leetcode/993.%20Cousins%20in%20Binary%20Tree)
 994 | Rotting Oranges | Medium | [Solution](leetcode/994.%20Rotting%20Oranges)
 997 | Find the Town Judge | Easy | [Solution](leetcode/997.%20Find%20the%20Town%20Judge)
