@@ -9,6 +9,11 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 😩 Hate manually copy & pasting the example testcases when solving LeetCode problems?  
 👉 Try my [LeetCode Testcase Extractor](https://liuzhenglai.com/post/5e6f2551e9a0d01760b274d8)
 
+Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.google.com/webstore/detail/gkmoalkjclphfhgnhdlilebaolpdkgpf) -- to facilitate my having fun on LeetCode. Features including but not limited to:
+* showing stats
+* copying problem, answer and **testcases**
+* randomly picking a problem.
+
 \# | Title | Difficulty | Solution
 ---|---|---|---
 1 | Two Sum | Easy | [Solution](leetcode/1.%20Two%20Sum)
@@ -557,6 +562,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 707 | Design Linked List | Easy | [Solution](leetcode/707.%20Design%20Linked%20List)
 709 | To Lower Case | Easy | [Solution](leetcode/709.%20To%20Lower%20Case)
 712 | Minimum ASCII Delete Sum for Two Strings | Medium | [Solution](leetcode/712.%20Minimum%20ASCII%20Delete%20Sum%20for%20Two%20Strings)
+713 | Subarray Product Less Than K | Medium | [Solution](leetcode/713.%20Subarray%20Product%20Less%20Than%20K)
 714 | Best Time to Buy and Sell Stock with Transaction Fee | Medium | [Solution](leetcode/714.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee)
 717 | 1-bit and 2-bit Characters | Easy | [Solution](leetcode/717.%201-bit%20and%202-bit%20Characters)
 718 | Maximum Length of Repeated Subarray | Medium | [Solution](leetcode/718.%20Maximum%20Length%20of%20Repeated%20Subarray)
@@ -799,6 +805,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1080 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/1080.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
 1081 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/1081.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
 1092 | Shortest Common Supersequence | Hard | [Solution](leetcode/1092.%20Shortest%20Common%20Supersequence)
+1094 | Car Pooling | Medium | [Solution](leetcode/1094.%20Car%20Pooling)
 1096 | Brace Expansion II | Hard | [Solution](leetcode/1096.%20Brace%20Expansion%20II)
 1103 | Distribute Candies to People | Easy | [Solution](leetcode/1103.%20Distribute%20Candies%20to%20People)
 1104 | Path In Zigzag Labelled Binary Tree | Medium | [Solution](leetcode/1104.%20Path%20In%20Zigzag%20Labelled%20Binary%20Tree)
@@ -850,6 +857,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1288 | Remove Covered Intervals | Medium | [Solution](leetcode/1288.%20Remove%20Covered%20Intervals)
 1289 | Minimum Falling Path Sum II | Hard | [Solution](leetcode/1289.%20Minimum%20Falling%20Path%20Sum%20II)
 1290 | Convert Binary Number in a Linked List to Integer | Easy | [Solution](leetcode/1290.%20Convert%20Binary%20Number%20in%20a%20Linked%20List%20to%20Integer)
+1291 | Sequential Digits | Medium | [Solution](leetcode/1291.%20Sequential%20Digits)
 1292 | Maximum Side Length of a Square with Sum Less than or Equal to Threshold | Medium | [Solution](leetcode/1292.%20Maximum%20Side%20Length%20of%20a%20Square%20with%20Sum%20Less%20than%20or%20Equal%20to%20Threshold)
 1293 | Shortest Path in a Grid with Obstacles Elimination | Hard | [Solution](leetcode/1293.%20Shortest%20Path%20in%20a%20Grid%20with%20Obstacles%20Elimination)
 1295 | Find Numbers with Even Number of Digits | Easy | [Solution](leetcode/1295.%20Find%20Numbers%20with%20Even%20Number%20of%20Digits)
@@ -1052,6 +1060,7 @@ Please give this repo a :star: if it inspires you. Thanks. :blush:
 1583 | Count Unhappy Friends | Medium | [Solution](leetcode/1583.%20Count%20Unhappy%20Friends)
 1584 | Min Cost to Connect All Points | Medium | [Solution](leetcode/1584.%20Min%20Cost%20to%20Connect%20All%20Points)
 1585 | Check If String Is Transformable With Substring Sort Operations | Hard | [Solution](leetcode/1585.%20Check%20If%20String%20Is%20Transformable%20With%20Substring%20Sort%20Operations)
+1591 | Strange Printer II | Hard | [Solution](leetcode/1591.%20Strange%20Printer%20II)
 
 # License
 

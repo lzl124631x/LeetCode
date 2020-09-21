@@ -8,5 +8,5 @@ cd leetcode/
 folder=$1
 mkdir "$folder"
 cd "$folder"
-cat "../../quiz.js" > README.md
+touch README.md
 echo "DONE: "$folder
