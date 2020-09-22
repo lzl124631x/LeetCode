@@ -62,55 +62,95 @@
 ```cpp
 // OJ: https://leetcode.com/problems/strange-printer-ii/
 // Author: github.com/lzl124631x
-// Time: O((MN)^3)
+// Time: O(C^2 * MN)
 // Space: O(MN)
 class Solution {
-    unordered_map<int, int> mnx, mxx, mny, mxy;
-    bool valid(vector<vector<int>>& A, int c) {
-        for (int i = mnx[c]; i <= mxx[c]; ++i) {
-            for (int j = mny[c]; j <= mxy[c]; ++j) {
-                if (A[i][j] != c && A[i][j] != 0) return false;
+    bool removable(vector<vector<int>> &G, vector<vector<int>> &pos, int c) {
+        for (int i = pos[c][0]; i <= pos[c][2]; ++i) {
+            for (int j = pos[c][1]; j <= pos[c][3]; ++j) {
+                if (G[i][j] != c && G[i][j] != 0) return false;
             }
         }
-        for (int i = mnx[c]; i <= mxx[c]; ++i) {
-            for (int j = mny[c]; j <= mxy[c]; ++j) {
-                A[i][j] = 0;
-            }
+        for (int i = pos[c][0]; i <= pos[c][2]; ++i) {
+            for (int j = pos[c][1]; j <= pos[c][3]; ++j) G[i][j] = 0;
         }
         return true;
     }
 public:
-    bool isPrintable(vector<vector<int>>& A) {
-        int M = A.size(), N = A[0].size();
-        unordered_set<int> color;
+    bool isPrintable(vector<vector<int>>& G) {
+        int M = G.size(), N = G[0].size();
+        vector<vector<int>> pos(61, {M, N, 0, 0});
+        unordered_set<int> colors, remove;
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                int n = A[i][j];
-                if (color.count(n)) {
-                    mnx[n] = min(mnx[n], i);
-                    mxx[n] = max(mxx[n], i);
-                    mny[n] = min(mny[n], j);
-                    mxy[n] = max(mxy[n], j);
-                } else {
-                    mnx[n] = mxx[n] = i;
-                    mny[n] = mxy[n] = j;
-                    color.insert(n);
+                int c = G[i][j];
+                colors.insert(c);
+                pos[c][0] = min(pos[c][0], i);
+                pos[c][1] = min(pos[c][1], j);
+                pos[c][2] = max(pos[c][2], i);
+                pos[c][3] = max(pos[c][3], j);
+            }
+        }
+        while (colors.size()) {
+            for (int c : colors) {
+                if (removable(G, pos, c)) remove.insert(c);
+            }
+            if (remove.empty()) return false;
+            for (int c : remove) colors.erase(c);
+            remove.clear();
+        }
+        return true;
+    }
+};
+```
+
+## Solution 2. Topological Sort
+
+```cpp
+// OJ: https://leetcode.com/problems/strange-printer-ii/
+// Author: github.com/lzl124631x
+// Time: O(CMN + C^2)
+// Space: O(C^2)
+class Solution {
+    bool hasCircle(int c, unordered_map<int, unordered_set<int>> &dep, vector<int> &state) {
+        if (state[c] != -1) return !state[c];
+        state[c] = 0;
+        for (int d : dep[c]) {
+            if (state[d] == 1) continue;
+            if (state[d] == 0) return true;
+            if (hasCircle(d, dep, state)) return true;
+        }
+        state[c] = 1;
+        return false;
+    }
+public:
+    bool isPrintable(vector<vector<int>>& G) {
+        int M = G.size(), N = G[0].size();
+        unordered_set<int> colors;
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) colors.insert(G[i][j]);
+        }
+        unordered_map<int, unordered_set<int>> dep(61); // dependency graph: If dep[i] contains j, then color j covers color i.
+        for (int i : colors) {
+            int minx = M, miny = N, maxx = -1, maxy = -1;
+            for (int x = 0; x < M; ++x) {
+                for (int y = 0; y < N; ++y) {
+                    if (G[x][y] != i) continue;
+                    minx = min(minx, x);
+                    miny = min(miny, y);
+                    maxx = max(maxx, x);
+                    maxy = max(maxy, y);
+                }
+            }
+            for (int x = minx; x <= maxx; ++x) {
+                for (int y = miny; y <= maxy; ++y) {
+                    if (G[x][y] != i) dep[i].insert(G[x][y]);
                 }
             }
         }
-        unordered_set<int> rm;
-        while (true) {
-            rm.clear();
-            for (int c : color) {
-                if (valid(A, c)) rm.insert(c);
-            }
-            if (rm.size() == 0) return false;
-            for (int n : rm) color.erase(n);
-            int done = true;
-            for (int i = 0; i < M && done; ++i) {
-                for (int j = 0; j < N && done; ++j) done = A[i][j] == 0; 
-            }
-            if (done) break;
+        vector<int> state(61, -1); // -1 unvisited, 0 visiting, 1 visited
+        for (int i : colors) {
+            if (hasCircle(i, dep, state)) return false;
         }
         return true;
     }
