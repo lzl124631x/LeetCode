@@ -658,6 +658,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 861 | Score After Flipping Matrix | Medium | [Solution](leetcode/861.%20Score%20After%20Flipping%20Matrix)
 862 | Shortest Subarray with Sum at Least K | Hard | [Solution](leetcode/862.%20Shortest%20Subarray%20with%20Sum%20at%20Least%20K)
 863 | All Nodes Distance K in Binary Tree | Medium | [Solution](leetcode/863.%20All%20Nodes%20Distance%20K%20in%20Binary%20Tree)
+866 | Prime Palindrome | Medium | [Solution](leetcode/866.%20Prime%20Palindrome)
 867 | Transpose Matrix | Easy | [Solution](leetcode/867.%20Transpose%20Matrix)
 868 | Binary Gap | Easy | [Solution](leetcode/868.%20Binary%20Gap)
 869 | Reordered Power of 2 | Medium | [Solution](leetcode/869.%20Reordered%20Power%20of%202)
@@ -1060,7 +1061,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1583 | Count Unhappy Friends | Medium | [Solution](leetcode/1583.%20Count%20Unhappy%20Friends)
 1584 | Min Cost to Connect All Points | Medium | [Solution](leetcode/1584.%20Min%20Cost%20to%20Connect%20All%20Points)
 1585 | Check If String Is Transformable With Substring Sort Operations | Hard | [Solution](leetcode/1585.%20Check%20If%20String%20Is%20Transformable%20With%20Substring%20Sort%20Operations)
+1589 | Maximum Sum Obtained of Any Permutation | Medium | [Solution](leetcode/1589.%20Maximum%20Sum%20Obtained%20of%20Any%20Permutation)
 1591 | Strange Printer II | Hard | [Solution](leetcode/1591.%20Strange%20Printer%20II)
+1595 | Minimum Cost to Connect Two Groups of Points | Hard | [Solution](leetcode/1595.%20Minimum%20Cost%20to%20Connect%20Two%20Groups%20of%20Points)
 
 # License
 
