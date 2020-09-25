@@ -326,7 +326,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 386 | Lexicographical Numbers | Medium | [Solution](leetcode/386.%20Lexicographical%20Numbers)
 387 | First Unique Character in a String | Easy | [Solution](leetcode/387.%20First%20Unique%20Character%20in%20a%20String)
 388 | Longest Absolute File Path | Medium | [Solution](leetcode/388.%20Longest%20Absolute%20File%20Path)
-389 | Find the Difference |  | [Solution](leetcode/389.%20Find%20the%20Difference)
+389 | Find the Difference | Easy | [Solution](leetcode/389.%20Find%20the%20Difference)
 390 | Elimination Game |  | [Solution](leetcode/390.%20Elimination%20Game)
 391 | Perfect Rectangle |  | [Solution](leetcode/391.%20Perfect%20Rectangle)
 392 | Is Subsequence | Easy | [Solution](leetcode/392.%20Is%20Subsequence)
