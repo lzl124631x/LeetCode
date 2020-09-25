@@ -1063,6 +1063,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1585 | Check If String Is Transformable With Substring Sort Operations | Hard | [Solution](leetcode/1585.%20Check%20If%20String%20Is%20Transformable%20With%20Substring%20Sort%20Operations)
 1589 | Maximum Sum Obtained of Any Permutation | Medium | [Solution](leetcode/1589.%20Maximum%20Sum%20Obtained%20of%20Any%20Permutation)
 1591 | Strange Printer II | Hard | [Solution](leetcode/1591.%20Strange%20Printer%20II)
+1594 | Maximum Non Negative Product in a Matrix | Medium | [Solution](leetcode/1594.%20Maximum%20Non%20Negative%20Product%20in%20a%20Matrix)
 1595 | Minimum Cost to Connect Two Groups of Points | Hard | [Solution](leetcode/1595.%20Minimum%20Cost%20to%20Connect%20Two%20Groups%20of%20Points)
 
 # License
