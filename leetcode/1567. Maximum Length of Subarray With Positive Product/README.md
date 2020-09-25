@@ -87,3 +87,7 @@ public:
     }
 };
 ```
+
+## Note
+
+Similar problem: [152. Maximum Product Subarray (Medium)](https://leetcode.com/problems/maximum-product-subarray/)
