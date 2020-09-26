@@ -83,30 +83,46 @@ public:
 
 ## Solution 2. 
 
+There is a pattern in the reversed string. For each pair of parenthesis, when we see `'('` or `')'`, we jump to the corresponding `')'` or `'('` and toggle the direction we scan.
+
+Example:
+
+```
+   1   2    3   4
+   v   v    v   v
+a  ( b ( cd ) e ) f
+```
+
+* We scan rightwards initially. `ans = a`
+* When we meet the parenthesis `1` from left to right, we jump to its corresponding parenthesis `4` and toggle the direction to be leftwards. `ans = ae`
+* When we meet the parenthesis `3` from right to left, we jump to its corresponding parenthesis `2` and toggle direction to be rightwards. `ans = aecd`
+* When we meet the parenthesis `3` from left to right, we jump to `2` and toggle direction to be leftwards. `ans = aecdb`.
+* When we meet the parenthesis `1` from right to left, we jump to `4` and toggle direction to be rightwards. `ans = aecdbf`.
+* We've reached the end. The answer is `aecdbf`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(N)
+// Space: O(P) where P is the number of pairs of parenthesis in `s`.
 // Ref: https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/discuss/383670/JavaC%2B%2BPython-Why-not-O(N)
 class Solution {
 public:
     string reverseParentheses(string s) {
-        int N = s.size();
-        vector<int> open, pair(N);
-        for (int i = 0; i < N; ++i) {
-            if (s[i] == '(') open.push_back(i);
+        stack<int> st;
+        unordered_map<int, int> m;
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == '(') st.push(i);
             else if (s[i] == ')') {
-                int j = open.back();
-                open.pop_back();
-                pair[i] = j;
-                pair[j] = i;
+                m[i] = st.top();
+                m[st.top()] = i;
+                st.pop();
             }
         }
         string ans;
-        for (int i = 0, d = 1; i < N; i += d) {
+        for (int i = 0, d = 1; i < s.size(); i += d) {
             if (s[i] == '(' || s[i] == ')') {
-                i = pair[i];
+                i = m[i];
                 d = -d;
             } else ans += s[i];
         }
