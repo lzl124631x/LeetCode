@@ -604,6 +604,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 771 | Jewels and Stones | Easy | [Solution](leetcode/771.%20Jewels%20and%20Stones)
 775 | Global and Local Inversions | Medium | [Solution](leetcode/775.%20Global%20and%20Local%20Inversions)
 777 | Swap Adjacent in LR String | Medium | [Solution](leetcode/777.%20Swap%20Adjacent%20in%20LR%20String)
+780 | Reaching Points | Hard | [Solution](leetcode/780.%20Reaching%20Points)
 783 | Minimum Distance Between BST Nodes | Medium | [Solution](leetcode/783.%20Minimum%20Distance%20Between%20BST%20Nodes)
 784 | Letter Case Permutation | Easy | [Solution](leetcode/784.%20Letter%20Case%20Permutation)
 785 | Is Graph Bipartite? | Medium | [Solution](leetcode/785.%20Is%20Graph%20Bipartite%3F)
