@@ -417,7 +417,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 491 | Increasing Subsequences | Medium | [Solution](leetcode/491.%20Increasing%20Subsequences)
 492 | Construct the Rectangle |  | [Solution](leetcode/492.%20Construct%20the%20Rectangle)
 494 | Target Sum | Medium | [Solution](leetcode/494.%20Target%20Sum)
-495 | Teemo Attacking |  | [Solution](leetcode/495.%20Teemo%20Attacking)
+495 | Teemo Attacking | Medium | [Solution](leetcode/495.%20Teemo%20Attacking)
 496 | Next Greater Element I | Easy | [Solution](leetcode/496.%20Next%20Greater%20Element%20I)
 497 | Random Point in Non-overlapping Rectangles | Medium | [Solution](leetcode/497.%20Random%20Point%20in%20Non-overlapping%20Rectangles)
 498 | Diagonal Traverse |  | [Solution](leetcode/498.%20Diagonal%20Traverse)
