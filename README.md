@@ -1067,6 +1067,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1591 | Strange Printer II | Hard | [Solution](leetcode/1591.%20Strange%20Printer%20II)
 1594 | Maximum Non Negative Product in a Matrix | Medium | [Solution](leetcode/1594.%20Maximum%20Non%20Negative%20Product%20in%20a%20Matrix)
 1595 | Minimum Cost to Connect Two Groups of Points | Hard | [Solution](leetcode/1595.%20Minimum%20Cost%20to%20Connect%20Two%20Groups%20of%20Points)
+1598 | Crawler Log Folder | Easy | [Solution](leetcode/1598.%20Crawler%20Log%20Folder)
+1599 | Maximum Profit of Operating a Centennial Wheel | Medium | [Solution](leetcode/1599.%20Maximum%20Profit%20of%20Operating%20a%20Centennial%20Wheel)
+1600 | Throne Inheritance | Medium | [Solution](leetcode/1600.%20Throne%20Inheritance)
+1601 | Maximum Number of Achievable Transfer Requests | Hard | [Solution](leetcode/1601.%20Maximum%20Number%20of%20Achievable%20Transfer%20Requests)
 
 # License
 
