@@ -90,3 +90,38 @@ public:
     }
 };
 ```
+
+## Solution 2. DFS
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-number-of-achievable-transfer-requests/
+// Author: github.com/lzl124631x
+// Time: O(2^M * N)
+// Space: O(N)
+class Solution {
+    int ans = 0;
+    vector<int> g;
+    void dfs(vector<vector<int>> &R, int i, int cnt) {
+        if (i == R.size()) {
+            for (int n : g) {
+                if (n) return;
+            }
+            ans = max(ans, cnt);
+            return;
+        }
+        int u = R[i][0], v = R[i][1];
+        g[u]++;
+        g[v]--;
+        dfs(R, i + 1, cnt + 1);
+        g[u]--;
+        g[v]++;
+        dfs(R, i + 1, cnt);
+    }
+public:
+    int maximumRequests(int n, vector<vector<int>>& R) {
+        g.assign(n, 0);
+        dfs(R, 0, 0);
+        return ans;
+    }
+};
+```
