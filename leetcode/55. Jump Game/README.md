@@ -31,34 +31,7 @@
 **Similar Questions**:
 * [Jump Game II (Hard)](https://leetcode.com/problems/jump-game-ii/)
 
-## Solution 1. DFS
-
-```cpp
-// OJ: https://leetcode.com/problems/jump-game/
-// Author: github.com/lzl124631x
-// Time: O(N^2)
-// Space: O(N)
-class Solution {
-private:
-    vector<bool> visited;
-    bool dfs(vector<int> &nums, int start) {
-        if (visited[start]) return false;
-        visited[start] = true;
-        if (start + nums[start] >= nums.size() - 1) return true;
-        for (int i = nums[start]; i >= 0; --i) {
-            if (dfs(nums, start + i)) return true;
-        }
-        return false;
-    }
-public:
-    bool canJump(vector<int>& nums) {
-        visited = vector<bool>(nums.size());
-        return dfs(nums, 0);
-    }
-};
-```
-
-## Solution 2. Greedy
+## Solution 1. Greedy
 
 ```cpp
 // OJ: https://leetcode.com/problems/jump-game/
@@ -74,6 +47,26 @@ public:
             last = max(last, i + nums[i]);
         }
         return true;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/jump-game/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    bool canJump(vector<int>& A) {
+        int last = 0;
+        for (int i = 0; i <= last; ++i) {
+            last = max(last, i + A[i]);
+            if (last >= A.size() - 1) return true;
+        }
+        return false;
     }
 };
 ```
