@@ -97,3 +97,26 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/jump-game-ii/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int jump(vector<int>& A) {
+        int last = 0, next = 0, step = 0;
+        for (int i = 0; i < A.size() && last < A.size() - 1; ++i) {
+            if (i > last) {
+                ++step;
+                last = next;
+            }
+            next = max(next, i + A[i]);
+        }
+        return step;
+    }
+};
+```
