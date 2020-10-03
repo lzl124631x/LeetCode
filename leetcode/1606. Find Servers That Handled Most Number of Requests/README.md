@@ -72,48 +72,42 @@ Server 0 handled two requests, while servers 1 and 2 handled one request each. H
 
 ## Solution 1. Set + Heap
 
-When we meet circular array, one idea that should come into our mind is concatenating the array to the end of itself so that we can easily wrap around.
+`set<int> free` contains the index of available servers. `busy` is a min-heap each item of which is a pair of `{ endTime, serverIndex }`.
 
-In this solution, `set<int> free` contains the index of available servers. We also insert `index + k` into `free` so that we can wrap around to find a server whose index is smaller than the current server.
+When we find an available server, we erase it from `free`, and put `{ endTime, serverIndex }` into a min-heap `busy`.
 
-When we find an available server, we erase it (and `index + k`) from `free`, and put `{ endTime, serverIndex }` into a min-heap `pq`.
-
-For each `arrival[i]`, we first free all those servers from `pq` whose `endTime` is smaller than or equal to `arrival[i]`, then find the smallest index available in `free` and use it.
-
+For each `arrival[i]`, we first free all those servers from `busy` whose `endTime` is smaller than or equal to `arrival[i]`, then find the first available server in `free` whose index is greater than `i % k` in circular order.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/
 // Author: github.com/lzl124631x
-// Time: O(KlogK + N * (logK)^2)
+// Time: O(NK * logK)
 // Space: O(K)
-// Ref: https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/discuss/876804/C%2B%2B-or-Circular-Aay-or-Ordered-Set-or-Priority-Queue-or-O(N-(log-K-%2B-log-N)-or-O(K)
+// Ref: https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/discuss/876793/Java-O(nlogn)-use-both-TreeSet-and-PriorityQueue
 class Solution {
 public:
     vector<int> busiestServers(int k, vector<int>& A, vector<int>& L) {
-        set<int> free; // servers in free are available to use
-        int N = A.size();
-        for (int i = 0; i < 2 * k - 1; i ++) free.insert(i); // add i + k into the free pool so that we can easily find an available space in circular array.
         vector<int> cnt(k);
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq; // <end, server>. Servers in pq are occupied. We don't insert `server + k` into pq.
-        for (int i = 0; i < N; ++i) {
-            int start = A[i], len = L[i];
-            while (pq.size() && pq.top().first <= start) { // free those freeable servers.
-                auto [end, server] = pq.top();
-                pq.pop();
+        set<int> free;
+        for (int i = 0; i < k; ++i) free.insert(i);
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> busy; // endTime, serverIndex
+        for (int i = 0; i < A.size(); ++i) {
+            int start = A[i], end = start + L[i];
+            while (busy.size() && busy.top().first <= start) {
+                int server = busy.top().second;
+                busy.pop();
                 free.insert(server);
-                free.insert(server + k);
             }
-            if (free.size()) {
-                int server = *free.lower_bound(i % k) % k;
-                free.erase(server);
-                free.erase(server + k);
-                cnt[server]++;
-                pq.push({ start + len, server });
-            }
+            if (free.empty()) continue;
+            auto it = free.lower_bound(i % k);
+            if (it == free.end()) it = free.begin();
+            cnt[*it]++;
+            busy.emplace(end, *it);
+            free.erase(*it);
         }
-        int mx = *max_element(begin(cnt), end(cnt));
         vector<int> ans;
-        for (int i = 0; i < k; i ++) {
+        int mx = *max_element(begin(cnt), end(cnt));
+        for (int i = 0; i < k; ++i) {
             if (cnt[i] == mx) ans.push_back(i);
         }
         return ans;
