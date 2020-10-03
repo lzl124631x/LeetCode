@@ -127,7 +127,7 @@ public:
 
 We round-robin visit the servers. For the `i`-th request, we put it into the request pool `m` as `m[arrival[i]] = load[i]`. Its corresponding `i % k`-th server is free at `free[i % k]`, so we scan (binary search) in the `m` to find requests that this `i % k`-th server can handle.
 
-Note that all the requests in `m` thus far are the leftover requests that can't be handled by previous servers. So this `i % k`-th server can just take whatever it can handle. Every time it handles a request, update its free time to be the end time of the request, increment `cnt[i % k]`, remove the request from `m`, and keep find the next request that it can handle.
+Note that all the requests in `m` thus far are the leftover requests that can't be handled by previous servers. So this `i % k`-th server can just take whatever it can handle. Every time it handles a request, update its free time to be the end time of the request, increment `cnt[i % k]`, remove the request from `m`, and keep finding the next request that it can handle.
 
 Every time a server successfully handles a request, we mark this round `i` as the last successful round. If we've scanned `k` servers since the last successful round but still haven't handled any leftover requests, then no server could handle those leftover requests, we should break now.
 
