@@ -47,7 +47,7 @@ parkingSystem.addCar(1); // return false because there is no available slot for 
 // Time: O(1)
 // Space: O(1)
 class ParkingSystem {
-    vector<int> space;
+    array<int, 3> space;
 public:
     ParkingSystem(int big, int medium, int small) {
         space = { big, medium, small };
