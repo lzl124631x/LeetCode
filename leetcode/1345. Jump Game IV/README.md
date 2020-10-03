@@ -59,7 +59,9 @@
 **Related Topics**:  
 [Breadth-first Search](https://leetcode.com/tag/breadth-first-search/)
 
-## Solution 1.
+## Solution 1. BFS
+
+Since we are looking for the shortest distance, BFS should be our first option.
 
 ```cpp
 // OJ: https://leetcode.com/problems/jump-game-iv/
@@ -67,36 +69,41 @@
 // Time: O(N)
 // Space: O(N)
 class Solution {
-    inline bool push(vector<int> &v, queue<int>& q, int i, int step) {
-        if (v[i] == INT_MAX) {
-            v[i] = step;
-            q.push(i);
-        }
-        return !i;
-    }
 public:
-    int minJumps(vector<int>& arr) {
+    int minJumps(vector<int>& A) {
         unordered_map<int, vector<int>> m;
-        int N = arr.size(), step = 1;
-        for (int i = 0; i < N; ++i) m[arr[i]].push_back(i);
-        vector<int> v(N, INT_MAX);
+        int N = A.size(), d = 0;
+        for (int i = 0; i < N; ++i) m[A[i]].push_back(i);
         queue<int> q;
-        q.push(N - 1);
-        v[N - 1] = 0;
+        vector<int> dist(N, N);
+        q.emplace(0);
         while (q.size()) {
             int cnt = q.size();
             while (cnt--) {
                 int i = q.front();
                 q.pop();
-                for (auto n : m[arr[i]]) {
-                    if (push(v, q, n, step)) break;
+                if (i - 1 >= 0 && dist[i - 1] == N) {
+                    q.push(i - 1);
+                    dist[i - 1] = d + 1;
                 }
-                if (i + 1 < N && push(v, q, i + 1, step)) break;
-                if (i - 1 >= 0 && push(v, q, i - 1, step)) break;
+                if (i + 1 < N && dist[i + 1] == N) {
+                    if (i + 1 == N - 1) return d + 1;
+                    q.push(i + 1);
+                    dist[i + 1] = d + 1;
+                }
+                if (m.count(A[i])) {
+                    for (int j : m[A[i]]) {
+                        if (i == j || dist[j] != N) continue;
+                        if (j == N - 1) return d + 1;
+                        q.push(j);
+                        dist[j] = d + 1;
+                    }
+                    m.erase(A[i]);
+                }
             }
-            ++step;
+            ++d;
         }
-        return v[0];
+        return 0;
     }
 };
 ```
