@@ -118,3 +118,47 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+`free[t]` is the available time of server `t`. Initially `free[t] = 0` for all `0 <= t < k`. When a server `t` takes request `i`, `free[t] = arrival[i] + load[i]`, i.e. it's free at the end time of the request.
+
+`map<int, int> m` is a map from the start time of a request to its load/length. It stores the requests that are not yet handled.
+
+We round-robin visit the servers. For the `i`-th request, we put it into the request pool `m` as `m[arrival[i]] = load[i]`. Its corresponding `i % k`-th server is free at `free[i % k]`, so we scan (binary search) in the `m` to find requests that this `i % k`-th server can handle.
+
+Note that all the requests in `m` thus far are the leftover requests that can't be handled by previous servers. So this `i % k`-th server can just take whatever it can handle. Every time it handles a request, update its free time to be the end time of the request, increment `cnt[i % k]`, remove the request from `m`, and keep find the next request that it can handle.
+
+Every time a server successfully handles a request, we mark this round `i` as the last successful round. If we've scanned `k` servers since the last successful round but still haven't handled any leftover requests, then no server could handle those leftover requests, we should break now.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/discuss/876998/C%2B%2B-Map
+class Solution {
+public:
+    vector<int> busiestServers(int k, vector<int>& A, vector<int>& L) {
+        vector<int> cnt(k), free(k), ans;
+        map<int, int> m;
+        for (int i = 0, last = 0;; ++i) {
+            if (i < A.size()) m[A[i]] = L[i];
+            else if (i - last > k) break; // If we've scanned `k` servers since the last time we handle a request, but still haven't handled any leftover requests, then no server could handle those leftover requests, break.
+            auto it = m.lower_bound(free[i % k]);
+            while (it != end(m)) { // when there are requests whose start times are greater than or equal to the free time of server `i % k`
+                last = i; // update the last successfully handled request.
+                ++cnt[i % k]; // let this `i % k`-th server handle this request.
+                free[i % k] = it->first + it->second;
+                m.erase(it); // remove this request
+                it = m.lower_bound(free[i % k]);
+            } // all the leftover requests in `m` are passed over to the next server to handle
+        }
+        int mx = *max_element(begin(cnt), end(cnt));
+        for (int i = 0; i < k; ++i) {
+            if (cnt[i] == mx) ans.push_back(i);
+        }
+        return ans;
+    }
+};
+```
