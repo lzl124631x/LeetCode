@@ -78,10 +78,14 @@ When we find an available server, we erase it from `free`, and put `{ endTime, s
 
 For each `arrival[i]`, we first free all those servers from `busy` whose `endTime` is smaller than or equal to `arrival[i]`, then find the first available server in `free` whose index is greater than `i % k` in circular order.
 
+About time complexity, iterating the `N` elements in `A` and `L` takes `O(N)`, within each iteration, the amortized time complexity is `O(logK)`. It's because the sizes of the `free` and `busy` are at most `K`, so each push and pop operation takes `O(logK)` time.
+
+Note that for the loop popping `busy`, since at most we can pop `busy` `K` times and each pop takes `O(logK)` time, it looks like it's `O(KlogK)` and the `busy`'s popping operation takes `O(NKlogK)` overall. But since we at most pop `busy` `N - K` times through out the entire function, so the `busy`'s popping operation takes at most `(N - k)logK` time. Thus the funtion's overall time complexity is still `O(NlogK)`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/
 // Author: github.com/lzl124631x
-// Time: O(NK * logK)
+// Time: O(N * logK)
 // Space: O(K)
 // Ref: https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/discuss/876793/Java-O(nlogn)-use-both-TreeSet-and-PriorityQueue
 class Solution {
