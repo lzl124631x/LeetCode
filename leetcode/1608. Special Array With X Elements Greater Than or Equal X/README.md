@@ -73,12 +73,12 @@ public:
 
 ## Solution 2.
 
-This solution is fast when `max(A) << N`.
+We store the count of numbers in a `cnt` array. And we just need to iterate from `max(A)` towards `0` to find the valid value, because for any `k > max(A)`, there are 0 elements `>= k` and thus must be invalid. So when `max(A) << N`, this solution should be faster.
 
 ```cpp
 // OJ: https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/
 // Author: github.com/lzl124631x
-// Time: O(max(A))
+// Time: O(N + max(A))
 // Space: O(max(A))
 class Solution {
 public:
