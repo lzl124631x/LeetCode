@@ -1,4 +1,4 @@
-# [1092. Shortest Common Supersequence  (Hard)](https://leetcode.com/problems/shortest-common-supersequence/submissions/)
+# [1092. Shortest Common Supersequence  (Hard)](https://leetcode.com/problems/shortest-common-supersequence/)
 
 <p>Given two strings <code>str1</code> and <code>str2</code>,&nbsp;return the shortest string that has both <code>str1</code>&nbsp;and <code>str2</code>&nbsp;as subsequences.&nbsp;&nbsp;If multiple answers exist, you may return any of them.</p>
 

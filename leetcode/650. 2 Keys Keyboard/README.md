@@ -1,4 +1,4 @@
-# [650. 2 Keys Keyboard (Medium)](https://leetcode.com/problems/2-keys-keyboard/submissions/)
+# [650. 2 Keys Keyboard (Medium)](https://leetcode.com/problems/2-keys-keyboard/)
 
 <p>Initially on a notepad only one character 'A' is present. You can perform two operations on this notepad for each step:</p>
 

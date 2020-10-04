@@ -1,4 +1,4 @@
-# [237. Delete Node in a Linked List (Easy)](https://leetcode.com/problems/delete-node-in-a-linked-list/submissions/)
+# [237. Delete Node in a Linked List (Easy)](https://leetcode.com/problems/delete-node-in-a-linked-list/)
 
 <p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
 

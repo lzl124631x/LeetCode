@@ -1,4 +1,4 @@
-# [1054. Distant Barcodes (Medium)](https://leetcode.com/problems/distant-barcodes/submissions/)
+# [1054. Distant Barcodes (Medium)](https://leetcode.com/problems/distant-barcodes/)
 
 <p>In a warehouse, there is a row of barcodes, where the <code>i</code>-th barcode is&nbsp;<code>barcodes[i]</code>.</p>
 

@@ -1,4 +1,4 @@
-# [664. Strange Printer (Hard)](https://leetcode.com/problems/strange-printer/submissions/)
+# [664. Strange Printer (Hard)](https://leetcode.com/problems/strange-printer/)
 
 <p>
 There is a strange printer with the following two special requirements:

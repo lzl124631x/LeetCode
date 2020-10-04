@@ -1,4 +1,4 @@
-# [846. Hand of Straights (Medium)](https://leetcode.com/problems/hand-of-straights/submissions/)
+# [846. Hand of Straights (Medium)](https://leetcode.com/problems/hand-of-straights/)
 
 <p>Alice has a <code>hand</code> of cards, given as an array of integers.</p>
 

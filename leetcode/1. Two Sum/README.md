@@ -1,4 +1,4 @@
-# [1. Two Sum (Easy)](https://leetcode.com/problems/two-sum/submissions/)
+# [1. Two Sum (Easy)](https://leetcode.com/problems/two-sum/)
 
 <p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
 

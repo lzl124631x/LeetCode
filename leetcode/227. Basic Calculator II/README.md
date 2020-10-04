@@ -1,4 +1,4 @@
-# [227. Basic Calculator II (Medium)](https://leetcode.com/problems/basic-calculator-ii/submissions/)
+# [227. Basic Calculator II (Medium)](https://leetcode.com/problems/basic-calculator-ii/)
 
 <p>Implement a basic calculator to evaluate a simple expression string.</p>
 

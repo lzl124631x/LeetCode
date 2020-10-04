@@ -1,4 +1,4 @@
-# [813. Largest Sum of Averages (Medium)](https://leetcode.com/problems/largest-sum-of-averages/submissions/)
+# [813. Largest Sum of Averages (Medium)](https://leetcode.com/problems/largest-sum-of-averages/)
 
 <p>We partition a row of numbers <code>A</code>&nbsp;into at most <code>K</code> adjacent (non-empty) groups, then our score is the sum of the average of each group. What is the largest score we can achieve?</p>
 

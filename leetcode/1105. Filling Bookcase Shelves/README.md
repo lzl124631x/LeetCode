@@ -1,4 +1,4 @@
-# [1105. Filling Bookcase Shelves (Medium)](https://leetcode.com/problems/filling-bookcase-shelves/submissions/)
+# [1105. Filling Bookcase Shelves (Medium)](https://leetcode.com/problems/filling-bookcase-shelves/)
 
 <p>We have a sequence of <code>books</code>: the <code>i</code>-th book has thickness <code>books[i][0]</code> and height <code>books[i][1]</code>.</p>
 

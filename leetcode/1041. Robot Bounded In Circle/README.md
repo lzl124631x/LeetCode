@@ -1,4 +1,4 @@
-# [1041. Robot Bounded In Circle (Medium)](https://leetcode.com/problems/robot-bounded-in-circle/submissions/)
+# [1041. Robot Bounded In Circle (Medium)](https://leetcode.com/problems/robot-bounded-in-circle/)
 
 <p>On an infinite plane, a&nbsp;robot initially stands at <code>(0, 0)</code> and faces north.&nbsp;&nbsp;The robot can receive one of three instructions:</p>
 

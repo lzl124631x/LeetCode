@@ -1,4 +1,4 @@
-# [7. Reverse Integer (Easy)](https://leetcode.com/problems/reverse-integer/submissions/)
+# [7. Reverse Integer (Easy)](https://leetcode.com/problems/reverse-integer/)
 
 <p>Given a 32-bit signed integer, reverse digits of an integer.</p>
 

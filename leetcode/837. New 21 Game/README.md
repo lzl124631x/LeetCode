@@ -1,4 +1,4 @@
-# [837. New 21 Game (Medium)](https://leetcode.com/problems/new-21-game/submissions/)
+# [837. New 21 Game (Medium)](https://leetcode.com/problems/new-21-game/)
 
 <p>Alice plays the following game, loosely based on the card game "21".</p>
 

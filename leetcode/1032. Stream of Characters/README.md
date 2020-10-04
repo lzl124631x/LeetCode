@@ -1,4 +1,4 @@
-# [1032. Stream of Characters (Hard)](https://leetcode.com/problems/stream-of-characters/submissions/)
+# [1032. Stream of Characters (Hard)](https://leetcode.com/problems/stream-of-characters/)
 
 <p>Implement the <code>StreamChecker</code> class as follows:</p>
 

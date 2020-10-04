@@ -1,4 +1,4 @@
-# [6. ZigZag Conversion (Medium)](https://leetcode.com/problems/zigzag-conversion/submissions/)
+# [6. ZigZag Conversion (Medium)](https://leetcode.com/problems/zigzag-conversion/)
 
 <p>The string <code>"PAYPALISHIRING"</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
 

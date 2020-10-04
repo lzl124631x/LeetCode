@@ -1,4 +1,4 @@
-# [1020. Number of Enclaves (Medium)](https://leetcode.com/problems/number-of-enclaves/submissions/)
+# [1020. Number of Enclaves (Medium)](https://leetcode.com/problems/number-of-enclaves/)
 
 <p>Given a 2D array <code>A</code>, each cell is 0 (representing sea) or 1 (representing land)</p>
 
