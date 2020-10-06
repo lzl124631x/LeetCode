@@ -143,13 +143,13 @@ public:
         vector<int> cnt(k), free(k), ans;
         map<int, int> m;
         for (int i = 0, last = 0;; ++i) {
-            if (i < A.size()) m[A[i]] = L[i];
+            if (i < A.size()) m[A[i]] = A[i] + L[i];
             else if (i - last > k) break; // If we've scanned `k` servers since the last time we handle a request, but still haven't handled any leftover requests, then no server could handle those leftover requests, break.
             auto it = m.lower_bound(free[i % k]);
             while (it != end(m)) { // when there are requests whose start times are greater than or equal to the free time of server `i % k`
                 last = i; // update the last successfully handled request.
                 ++cnt[i % k]; // let this `i % k`-th server handle this request.
-                free[i % k] = it->first + it->second;
+                free[i % k] = it->second;
                 m.erase(it); // remove this request
                 it = m.lower_bound(free[i % k]);
             } // all the leftover requests in `m` are passed over to the next server to handle
