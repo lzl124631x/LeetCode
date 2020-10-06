@@ -75,12 +75,11 @@ Another possible matrix is: [[1,2],
 class Solution {
 public:
     vector<vector<int>> restoreMatrix(vector<int>& R, vector<int>& C) {
-        int M = R.size(), N = C.size();
+        int M = R.size(), N = C.size(), d;
         vector<vector<int>> ans(M, vector<int>(N));
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                int d = min(R[i], C[j]);
-                ans[i][j] = d;
+                d = ans[i][j] = min(R[i], C[j]);
                 R[i] -= d;
                 C[j] -= d;
             }
@@ -103,11 +102,10 @@ We just need to go from the top-left to the bottom-right. Once `R[i]` or `C[j]` 
 class Solution {
 public:
     vector<vector<int>> restoreMatrix(vector<int>& R, vector<int>& C) {
-        int M = R.size(), N = C.size(), i = 0, j = 0;
+        int M = R.size(), N = C.size(), i = 0, j = 0, d;
         vector<vector<int>> ans(M, vector<int>(N));
         while (i < M && j < N) {
-            int d = min(R[i], C[j]);
-            ans[i][j] = d;
+            d = ans[i][j] = min(R[i], C[j]);
             if ((R[i] -= d) == 0) ++i;
             if ((C[j] -= d) == 0) ++j;
         }
