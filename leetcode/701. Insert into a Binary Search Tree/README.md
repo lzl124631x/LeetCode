@@ -41,8 +41,8 @@ And the value to insert: 5
 ```cpp
 // OJ: https://leetcode.com/problems/insert-into-a-binary-search-tree/
 // Author: github.com/lzl124631x
-// Time: O(logN)
-// Space: O(logN)
+// Time: O(H)
+// Space: O(H)
 class Solution {
 public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {
