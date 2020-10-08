@@ -153,7 +153,7 @@ How many steps are required to get from `10xxx...xxx` to `11000...000`?
 
 (When we ignore the leading 1) It's the same as the steps required from `0xxx...xxx` to `1000...000`, or the other way around from `1000...000` to `0xxx...xxx`.
 
-Since we know `f(1000...000)`, and once we know `f(0xxx...xxx)`, we can get the steps required from `10xxx...xxx` to `11000...000` is `f(1000...000) - f(0xxx...xxx)`.
+Since we know `f(1000...000)`, and once we know `f(0xxx...xxx)`, we can get the steps required from `10xxx...xxx` to `11000...000`, which is `f(1000...000) - f(0xxx...xxx)`.
 
 Again, this is a recursive problem.
 
@@ -204,7 +204,7 @@ public:
 
 `n` is actually the `f(n)`-th Gray Code. We can use the following code to convert the gray code `n` to its corresponding binary number `f(n)`.
 
-See more [here](https://en.wikipedia.org/wiki/Gray_code)
+See more about Gray Code [here](https://en.wikipedia.org/wiki/Gray_code)
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/
