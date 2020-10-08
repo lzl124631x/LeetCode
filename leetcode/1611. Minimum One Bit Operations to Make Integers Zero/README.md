@@ -187,23 +187,24 @@ $$f(n) = 2^{k+1}-1 - f(2^{k-2} \cdot x_{k-2} + ... + 2^0 \cdot x_0)$$
 // Time: O(logN)
 // Space: O(logN)
 class Solution {
+    inline unsigned lowbit(unsigned x) { return x & -x; }
 public:
     int minimumOneBitOperations(int n) {
-        if (n == 0) return 0;
-        if (n == 1) return 1;
+        if (n <= 1) return n;
         unsigned first = ~0;
         while (first & n) first <<= 1;
-        first >>= 1;
-        first = first & -first;
-        unsigned second = (first >> 1) & n;
-        int rest = n & ~(first | second);
-        if (second) return first + minimumOneBitOperations(rest);
-        return (first << 1) - 1 - minimumOneBitOperations(rest);
+        first = lowbit(first >> 1);
+        unsigned second = (first >> 1) & n, rest = minimumOneBitOperations(n & ~first & ~second);
+        return second ? first + rest : (first << 1) - 1 - rest;
     }
 };
 ```
 
-## Solution 2.
+## Solution 2. Gray Code
+
+`n` is actually the `f(n)`-th Gray Code. We can use the following code to convert the gray code `n` to its corresponding binary number `f(n)`.
+
+See more [here](https://en.wikipedia.org/wiki/Gray_code)
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/
@@ -219,6 +220,26 @@ public:
             n >>= 1;
         }
         return ans;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/
+// Author: github.com/lzl124631x
+// Time: O(logN)
+// Space: O(1)
+class Solution {
+public:
+    int minimumOneBitOperations(int n) {
+        n ^= n >> 16;
+        n ^= n >> 8;
+        n ^= n >> 4;
+        n ^= n >> 2;
+        n ^= n >> 1;
+        return n;
     }
 };
 ```
