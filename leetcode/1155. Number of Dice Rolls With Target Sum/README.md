@@ -96,7 +96,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. DP Top-down with Optimization
 
 ```
 dp[i][t] = sum( dp[i-1][t-j] | 1 <= j <= f )
@@ -130,6 +130,8 @@ public:
 };
 ```
 
+Using array is always more time efficient.
+
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/
 // Author: github.com/lzl124631x
@@ -149,6 +151,53 @@ public:
         memset(m, -1, sizeof(m));
         this->f = f;
         return dfs(d, target);
+    }
+};
+```
+
+## Solution 3. DP Bottom-up
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/
+// Author: github.com/lzl124631x
+// Time: O(DTF)
+// Space: O(DT)
+class Solution {
+public:
+    int numRollsToTarget(int d, int f, int target) {
+        long dp[31][1001] = {}, mod = 1e9+7;
+        for (int j = 1; j <= f; ++j) dp[1][j] = 1;
+        for (int i = 2; i <= d; ++i) {
+            for (int t = i; t <= target && t <= i * f; ++t) {
+                for (int j = 1; j <= f && j < t; ++j) {
+                    dp[i][t] = (dp[i][t] + dp[i - 1][t - j]) % mod;
+                }
+            }
+        }
+        return dp[d][target];
+    }
+};
+```
+
+## Solution 4. DP Bottom-up with Optimization
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/
+// Author: github.com/lzl124631x
+// Time: O(DT)
+// Space: O(DT)
+class Solution {
+public:
+    int numRollsToTarget(int d, int f, int target) {
+        long dp[31][1001] = {}, mod = 1e9+7;
+        for (int j = 1; j <= f; ++j) dp[1][j] = 1;
+        for (int i = 2; i <= d; ++i) {
+            for (int t = i; t <= target && t <= i * f; ++t) {
+                dp[i][t] = (dp[i][t - 1] + dp[i - 1][t - 1]) % mod;
+                if (t - f - 1 > 0) dp[i][t] = (dp[i][t] - dp[i - 1][t - f - 1] + mod) % mod;
+            }
+        }
+        return dp[d][target];
     }
 };
 ```

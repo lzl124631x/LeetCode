@@ -825,6 +825,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1143 | Longest Common Subsequence | Medium | [Solution](leetcode/1143.%20Longest%20Common%20Subsequence)
 1146 | Snapshot Array | Medium | [Solution](leetcode/1146.%20Snapshot%20Array)
 1154 | Day of the Year | Easy | [Solution](leetcode/1154.%20Day%20of%20the%20Year)
+1155 | Number of Dice Rolls With Target Sum | Medium | [Solution](leetcode/1155.%20Number%20of%20Dice%20Rolls%20With%20Target%20Sum)
 1160 | Find Words That Can Be Formed by Characters | Easy | [Solution](leetcode/1160.%20Find%20Words%20That%20Can%20Be%20Formed%20by%20Characters)
 1161 | Maximum Level Sum of a Binary Tree | Medium | [Solution](leetcode/1161.%20Maximum%20Level%20Sum%20of%20a%20Binary%20Tree)
 1162 | As Far from Land as Possible | Medium | [Solution](leetcode/1162.%20As%20Far%20from%20Land%20as%20Possible)
