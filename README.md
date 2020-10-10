@@ -841,6 +841,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1203 | Sort Items by Groups Respecting Dependencies | Hard | [Solution](leetcode/1203.%20Sort%20Items%20by%20Groups%20Respecting%20Dependencies)
 1207 | Unique Number of Occurrences | Easy | [Solution](leetcode/1207.%20Unique%20Number%20of%20Occurrences)
 1209 | Remove All Adjacent Duplicates in String II | Medium | [Solution](leetcode/1209.%20Remove%20All%20Adjacent%20Duplicates%20in%20String%20II)
+1210 | Minimum Moves to Reach Target with Rotations | Hard | [Solution](leetcode/1210.%20Minimum%20Moves%20to%20Reach%20Target%20with%20Rotations)
 1219 | Path with Maximum Gold | Medium | [Solution](leetcode/1219.%20Path%20with%20Maximum%20Gold)
 1220 | Count Vowels Permutation | Hard | [Solution](leetcode/1220.%20Count%20Vowels%20Permutation)
 1223 | Dice Roll Simulation | Medium | [Solution](leetcode/1223.%20Dice%20Roll%20Simulation)
