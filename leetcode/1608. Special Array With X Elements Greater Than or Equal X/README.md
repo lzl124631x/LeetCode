@@ -73,7 +73,7 @@ public:
 
 ## Solution 2.
 
-We store the count of numbers in a `cnt` array. And we just need to iterate from `max(A)` towards `0` to find the valid value, because for any `k > max(A)`, there are 0 elements `>= k` and thus must be invalid. So when `max(A) << N`, this solution should be faster.
+We store the count of numbers in a `cnt` array. And we just need to iterate from `max(A)` towards `0` to find the valid value, because for any `k > max(A)`, there are 0 elements `>= k` and thus must be invalid.
 
 ```cpp
 // OJ: https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/
@@ -88,6 +88,32 @@ public:
         for (int i = 999; i >= 0; --i) {
             cnt[i] += cnt[i + 1];
             if (cnt[i] == i) return i;
+        }
+        return -1;
+    }
+};
+```
+
+## Solution 3. Binary Search
+
+The sorting part takes `O(NlogN)`. But the rest just takes `O(logN)`.
+
+```cpp
+// OJ: https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int specialArray(vector<int>& A) {
+        sort(begin(A), end(A));
+        int N = A.size(), L = 0, R = N;
+        while (L <= R) {
+            int M = (L + R) / 2;
+            bool cur = M == 0 || A[N - M] >= M, prev = M == N || A[N - M - 1] < M;
+            if (cur && prev) return M;
+            if (!cur) R = M - 1;
+            else L = M + 1;
         }
         return -1;
     }
