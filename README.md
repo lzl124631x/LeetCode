@@ -913,6 +913,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1359 | Count All Valid Pickup and Delivery Options | Hard | [Solution](leetcode/1359.%20Count%20All%20Valid%20Pickup%20and%20Delivery%20Options)
 1360 | Number of Days Between Two Dates | Easy | [Solution](leetcode/1360.%20Number%20of%20Days%20Between%20Two%20Dates)
 1361 | Validate Binary Tree Nodes | Medium | [Solution](leetcode/1361.%20Validate%20Binary%20Tree%20Nodes)
+1363 | Largest Multiple of Three | Hard | [Solution](leetcode/1363.%20Largest%20Multiple%20of%20Three)
 1367 | Linked List in Binary Tree | Medium | [Solution](leetcode/1367.%20Linked%20List%20in%20Binary%20Tree)
 1368 | Minimum Cost to Make at Least One Valid Path in a Grid | Hard | [Solution](leetcode/1368.%20Minimum%20Cost%20to%20Make%20at%20Least%20One%20Valid%20Path%20in%20a%20Grid)
 1370 | Increasing Decreasing String | Easy | [Solution](leetcode/1370.%20Increasing%20Decreasing%20String)
@@ -1087,6 +1088,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1609 | Even Odd Tree | Medium | [Solution](leetcode/1609.%20Even%20Odd%20Tree)
 1610 | Maximum Number of Visible Points | Medium | [Solution](leetcode/1610.%20Maximum%20Number%20of%20Visible%20Points)
 1611 | Minimum One Bit Operations to Make Integers Zero | Hard | [Solution](leetcode/1611.%20Minimum%20One%20Bit%20Operations%20to%20Make%20Integers%20Zero)
+1614 | Maximum Nesting Depth of the Parentheses | Easy | [Solution](leetcode/1614.%20Maximum%20Nesting%20Depth%20of%20the%20Parentheses)
+1615 | Maximal Network Rank | Medium | [Solution](leetcode/1615.%20Maximal%20Network%20Rank)
+1616 | Split Two Strings to Make Palindrome | Medium | [Solution](leetcode/1616.%20Split%20Two%20Strings%20to%20Make%20Palindrome)
+1617 | Count Subtrees With Max Distance Between Cities | Hard | [Solution](leetcode/1617.%20Count%20Subtrees%20With%20Max%20Distance%20Between%20Cities)
 
 # License
 
