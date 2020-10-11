@@ -61,10 +61,10 @@ We need to:
 * get the maximum distance of the subtree. We can use Floyd algorithm to precompute the (minimal) distance between every node pairs. And in the subtree, just find the maximum distance by traversing every node pairs.
 
 Time complexity:
-* O(N^3) for Floyd
-* O(2^N) for bitmask subset traversal
-  * O(N) for `memset`, filling `incl`, and `dfs`.
-  * O(N^2) for getting the maximum distance
+* `O(N^3)` for Floyd
+* `O(2^N)` for bitmask subset traversal
+  * `O(N)` for `memset`, filling `incl`, and `dfs`.
+  * `O(N^2)` for getting the maximum distance
 
 So overall the time complexity is `O(2^N * N^2)`.
 
