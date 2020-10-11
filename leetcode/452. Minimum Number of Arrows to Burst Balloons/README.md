@@ -78,3 +78,24 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+  int findMinArrowShots(vector<vector<int>>& A) {
+      sort(begin(A), end(A));
+      int ans = 0, N = A.size();
+      for (int i = 0; i < N; ++ans) {
+          int arrow = INT_MAX;
+          for (; i < N && A[i][0] <= arrow; ++i) arrow = min(arrow, A[i][1]);
+      }
+      return ans;
+  }
+}; 
+```
