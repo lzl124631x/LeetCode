@@ -74,3 +74,31 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+Same idea as Solution 1, but not creating substring.
+
+```cpp
+// OJ: https://leetcode.com/problems/split-two-strings-to-make-palindrome/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+    bool check(string &a, string &b, int i) {
+        for (int N = a.size(), j = 0; j < i; ++j) {
+            if (a[j] != b[N - j - 1]) return false;
+        }
+        return true;
+    }
+    bool check(string &a, string &b) {
+        int N = a.size(), i = N / 2;
+        while (i - 1 >= 0 && a[i - 1] == a[N - i]) --i;
+        return check(a, b, i) || check(b, a, i);
+    }
+public:
+    bool checkPalindromeFormation(string a, string b) {
+        return check(a, b) || check(b, a);
+    }
+};
+```
