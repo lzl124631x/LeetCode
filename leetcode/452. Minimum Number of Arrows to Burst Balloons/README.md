@@ -64,12 +64,15 @@
 class Solution {
 public:
     int findMinArrowShots(vector<vector<int>>& A) {
-        int ans = 0, arrow = -1;
+        if (A.empty()) return 0;
         sort(begin(A), end(A));
+        int ans = 1, arrow = A[0][1];
         for (auto &b : A) {
-            if (b[0] <= arrow) continue;
-            arrow = b[1];
-            ++ans;
+            if (b[0] <= arrow) arrow = min(arrow, b[1]);
+            else {
+                arrow = b[1];
+                ++ans;
+            }
         }
         return ans;
     }
