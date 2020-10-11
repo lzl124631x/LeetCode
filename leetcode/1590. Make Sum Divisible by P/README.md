@@ -73,8 +73,7 @@ public:
         unordered_map<int, int> m{{0,-1}};
         for (int i = 0; i < N; ++i) {
             sum = (sum + A[i]) % p;
-            int r = (total - sum + p) % p;
-            r = (p - r) % p;
+            int r = (sum - total + p) % p;
             if (m.count(r)) ans = min(ans, (long)i - m[r]);
             m[sum] = i;
         }
