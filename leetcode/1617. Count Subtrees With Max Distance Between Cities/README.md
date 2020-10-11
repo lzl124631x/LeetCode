@@ -75,7 +75,7 @@ So overall the time complexity is `O(2^N * N^2)`.
 // Space: O(N^2)
 class Solution {
     int seen[16] = {}, incl[16] = {}; // incl[i] == 1 if node `i` is included in mask
-    vector<int> g[16]; // If there is an edge <u, v>, then `v` is in g[u]
+    vector<int> g[16];
     void dfs(int u, int &cnt) {
         if (!incl[u] || seen[u]) return;
         ++cnt;
@@ -123,6 +123,60 @@ public:
                 }
             }
             ++ans[mx - 1];
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2.
+
+We can use two DFS to get the tree's diameter and by the way we can know if the subtree is connected by counting the `dist`.
+
+```cpp
+// OJ: https://leetcode.com/problems/count-subtrees-with-max-distance-between-cities/
+// Author: github.com/lzl124631x
+// Time: O(2^N * N)
+// Space: O(N + E)
+class Solution {
+    int incl[16] = {}, dist[16] = {}; // incl[i] == 1 if node `i` is included in mask
+    vector<int> g[16];
+    void dfs(int u, int &far) {
+        for (int v : g[u]) {
+            if (!incl[v] || dist[v]) continue;
+            dist[v] = dist[u] + 1;
+            if (dist[v] > dist[far]) far = v;
+            dfs(v, far);
+        }
+    }
+public:
+    vector<int> countSubgraphsForEachDiameter(int n, vector<vector<int>>& E) {
+        memset(dist, 0x3f, sizeof(dist));
+        for (auto &e : E) {
+            int u = e[0] - 1, v = e[1] - 1;
+            g[u].push_back(v);
+            g[v].push_back(u);
+        }
+        vector<int> ans(n - 1);
+        for (int mask = 1; mask < (1 << n); ++mask) {
+            int cnt = __builtin_popcount(mask), node, c = 0;
+            if (cnt < 2) continue;
+            memset(incl, 0, sizeof(incl));
+            for (int i = 0; i < n; ++i) {
+                if (mask & (1 << i)) {
+                    incl[i] = 1;
+                    node = i;
+                }
+            }
+            memset(dist, 0, sizeof(dist));
+            dist[node] = 1;
+            dfs(node, node);
+            for (int i = 0; i < n; ++i) c += incl[i] && dist[i];
+            if (c != cnt) continue;
+            memset(dist, 0, sizeof(dist));
+            dist[node] = 1;
+            dfs(node, node);
+            ++ans[dist[node] - 2];
         }
         return ans;
     }
