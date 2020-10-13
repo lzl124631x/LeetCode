@@ -40,7 +40,44 @@ Explanation: The array cannot be partitioned into equal sum subsets.
 **Similar Questions**:
 * [Partition to K Equal Sum Subsets (Medium)](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/)
 
-## Solution 1. 0-1 Knapsack
+## Solution 1.
+
+```cpp
+// OJ: https://leetcode.com/problems/partition-equal-subset-sum/
+// Author: github.com/lzl124631x
+// Time: O(2^N)
+// Space: O(2^N)
+class Solution {
+public:
+    bool canPartition(vector<int>& A) { 
+        int total = accumulate(begin(A), end(A), 0);
+        if (total % 2) return false;
+        unordered_set<int> s, next;
+        for (int n : A) {
+            next = s;
+            for (int m : s) next.insert(m + n);
+            next.insert(n);
+            if (next.count(total / 2)) return true;
+            swap(s, next);
+        }
+        return false;
+    }
+};
+```
+
+## Solution 2. 0-1 Knapsack
+
+Let `dp[i+1][j]` be whether we can sum to `j` using numbers in `A[0]` to `A[i]`.
+
+We have two options for `dp[i+1][j]`:
+* We skip `A[i]`. Then `dp[i+1][j] = dp[i][j]`.
+* We pick `A[i]`. Then `dp[i+1][j] = dp[i][j-A[i]]`.
+
+```
+dp[i+1][j] = dp[i][j] || (j >= A[i] && dp[i][j - A[i]])
+
+dp[i][0] = true where 0 <= i <= N
+```
 
 ```cpp
 // OJ: https://leetcode.com/problems/partition-equal-subset-sum/
@@ -50,11 +87,10 @@ Explanation: The array cannot be partitioned into equal sum subsets.
 class Solution {
 public:
     bool canPartition(vector<int>& A) {
-        int sum = accumulate(begin(A), end(A), 0);
+        int sum = accumulate(begin(A), end(A), 0), N = A.size();
         if (sum % 2) return false;
-        int N = A.size();
         sum /= 2;
-        vector<vector<bool>> dp(N + 1, vector<bool>(sum + 1, false));
+        vector<vector<bool>> dp(N + 1, vector<bool>(sum + 1));
         for (int i = 0; i <= N; ++i) dp[i][0] = true;
         for (int i = 0; i < N; ++i) {
             for (int j = 1; j <= sum; ++j) {
@@ -66,7 +102,7 @@ public:
 };
 ```
 
-## Solution 2. 0-1 Knapsack
+## Solution 3. 0-1 Knapsack with Space Optimization
 
 Since `dp[i + 1][j]` is only dependent on values in the previous row, we can reduce the size of the `dp` array from `N * S` to `1 * S`.
 
@@ -78,9 +114,8 @@ Since `dp[i + 1][j]` is only dependent on values in the previous row, we can red
 class Solution {
 public:
     bool canPartition(vector<int>& A) {
-        int sum = accumulate(begin(A), end(A), 0);
+        int sum = accumulate(begin(A), end(A), 0), N = A.size();
         if (sum % 2) return false;
-        int N = A.size();
         sum /= 2;
         vector<bool> dp(sum + 1);
         dp[0] = true;
@@ -118,7 +153,7 @@ public:
 };
 ```
 
-## Solution 3. DP
+## Solution 4. DP
 
 Create a bitmask `bits` of size `MAX_NUM * MAX_ARRAY_SIZE / 2 + 1`. If we can sum to `i`, then `bits[i] = 1`; otherwise `bits[i] = 0`.
 
@@ -136,13 +171,13 @@ We merge the result using `bits |= bits << n`.
 // Ref: https://discuss.leetcode.com/topic/62334/simple-c-4-line-solution-using-a-bitset
 class Solution {
 public:
-  bool canPartition(vector<int>& nums) {
-    const int MAX_NUM = 100;
-    const int MAX_ARRAY_SIZE = 200;
-    bitset<MAX_NUM * MAX_ARRAY_SIZE / 2 + 1> bits(1);
-    int sum = accumulate(nums.begin(), nums.end(), 0);
-    for (auto n : nums) bits |= bits << n;
-    return !(sum & 1) && bits[sum >> 1];
-  }
+    bool canPartition(vector<int>& A) {
+        const int MAX_NUM = 100, MAX_ARRAY_SIZE = 200;
+        bitset<MAX_NUM * MAX_ARRAY_SIZE / 2 + 1> bits(1);
+        int sum = accumulate(begin(A), end(A), 0);
+        if (sum % 2) return false;
+        for (int n : A) bits |= bits << n;
+        return bits[sum / 2];
+    }
 };
 ```
