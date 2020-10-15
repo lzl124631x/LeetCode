@@ -85,16 +85,14 @@ Same idea as Solution 1, but not creating substring.
 // Time: O(N)
 // Space: O(1)
 class Solution {
-    bool check(string &a, string &b, int i) {
-        for (int N = a.size(), j = 0; j < i; ++j) {
-            if (a[j] != b[N - j - 1]) return false;
-        }
-        return true;
+    bool equal(string &a, string &b, int i) {
+        while (i - 1 >= 0 && a[i - 1] == b[a.size() - i]) --i;
+        return i == 0;
     }
     bool check(string &a, string &b) {
         int N = a.size(), i = N / 2;
         while (i - 1 >= 0 && a[i - 1] == a[N - i]) --i;
-        return check(a, b, i) || check(b, a, i);
+        return equal(a, b, i) || equal(b, a, i);
     }
 public:
     bool checkPalindromeFormation(string a, string b) {
