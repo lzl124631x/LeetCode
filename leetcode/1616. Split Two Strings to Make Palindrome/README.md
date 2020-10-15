@@ -75,9 +75,7 @@ public:
 };
 ```
 
-## Solution 2.
-
-Same idea as Solution 1, but not creating substring.
+Or don't create substring.
 
 ```cpp
 // OJ: https://leetcode.com/problems/split-two-strings-to-make-palindrome/
