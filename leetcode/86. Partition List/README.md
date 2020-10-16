@@ -11,9 +11,6 @@
 </pre>
 
 
-**Companies**:  
-[Amazon](https://leetcode.com/company/amazon)
-
 **Related Topics**:  
 [Linked List](https://leetcode.com/tag/linked-list/), [Two Pointers](https://leetcode.com/tag/two-pointers/)
 
@@ -27,16 +24,16 @@
 class Solution {
 public:
     ListNode* partition(ListNode* head, int x) {
-        ListNode ltHead(0), *ltTail = &ltHead, geHead(0), *geTail = &geHead;
+        ListNode ltHead, geHead, *ltTail = &ltHead, *geTail = &geHead;
         while (head) {
-            auto node = head;
+            auto p = head;
             head = head->next;
-            if (node->val < x) {
-                ltTail->next = node;
-                ltTail = node;
+            if (p->val < x) {
+                ltTail->next = p;
+                ltTail = p;
             } else {
-                geTail->next = node;
-                geTail = node;
+                geTail->next = p;
+                geTail = p;
             }
         }
         ltTail->next = geHead.next;
