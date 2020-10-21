@@ -50,7 +50,7 @@ The image above shows the 5 different ways {(0,2),(2,3)}, {(0,1),(1,3)}, {(0,1),
 **Related Topics**:  
 [Recursion](https://leetcode.com/tag/recursion/)
 
-## Solution 1.
+## Solution 1. DP Bottom-up
 
 Let `dp[i][j]` be the number of ways we can draw `j` segments using the first `i` points (`0`th to `i-1`th).
 
@@ -172,7 +172,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. DP Bottom-up
 
 Instead of using prefix sum, we can update the formula.
  
@@ -205,4 +205,36 @@ public:
 };
 ```
 
+## Solution 3. Math
 
+This problem is equivalent to "given `n + k - 1` points, get `k` segments that don't share endpoints.
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-sets-of-k-non-overlapping-line-segments/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O()
+// Ref: https://leetcode.com/problems/number-of-sets-of-k-non-overlapping-line-segments/discuss/898727/C%2B%2B-O(n)-solution-explained-in-detail-using-Stars-and-Bars
+const int mod = 1e9 + 7, mx = 2e3 + 10;
+int fact[mx], inv[mx], invfact[mx];
+int mult(int a, int b) { return (1LL * a * b) % mod; }
+int comb(int n, int r) {
+    if (r > n) return 0;
+    return (1LL * fact[n] * invfact[n - r] % mod) * invfact[r] % mod;
+}
+class Solution {
+    void initInv() {
+        fact[0] = invfact[0] = fact[1] = invfact[1] = inv[1] = 1;
+        for (int i = 2; i < mx; ++i) {
+            fact[i] = mult(fact[i - 1], i);
+            inv[i] = mult(inv[mod % i], mod - mod / i);
+            invfact[i] = mult(invfact[i - 1], inv[i]);
+        }
+    }
+public:
+    int numberOfSets(int n, int k) {
+        initInv();
+        return comb(n + k - 1, 2 * k);
+    }
+};
+```
