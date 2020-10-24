@@ -44,6 +44,18 @@
 
 ## Solution 1. DP
 
+First, sort the players such that they are sorted in ascending order of age, then in ascending order of score.
+
+Let `dp[i]` be the maximum score we can get if we choose from `0`th to `i`th player and must pick `i`th player.
+
+For `dp[i]`, we can check each player `j` (`0 <= j < i`) whose age must be the same or less than player `i`, and if their ages are the same, player `j`'s score must be smaller.
+
+So as long as player `j`'s score is smaller or equal to player `i`'s score, we can extend the team with player `i` based on the optimal solution of `dp[j]`.
+
+```
+dp[i] = max( dp[j] | 0 <= j < i && scores[j] <= scores[i] ) + scores[i]
+```
+
 ```cpp
 // OJ: https://leetcode.com/problems/best-team-with-no-conflicts/
 // Author: github.com/lzl124631x
@@ -52,19 +64,18 @@
 // Ref: https://leetcode.com/problems/best-team-with-no-conflicts/discuss/899475/Fairly-easy-DP
 class Solution {
 public:
-    int bestTeamScore(vector<int>& S, vector<int>& A) {
-        int N = S.size(), ans = 0;
-        vector<pair<int, int>> v;
-        for (int i = 0; i < N; ++i) v.emplace_back(A[i], S[i]);
-        sort(begin(v), end(v), greater<>());
+    int bestTeamScore(vector<int>& scores, vector<int>& ages) {
+        vector<pair<int, int>> A;
+        int N = scores.size(), ans = 0;
         vector<int> dp(N);
+        for (int i = 0; i < N; ++i) A.emplace_back(ages[i], scores[i]);
+        sort(begin(A), end(A));
         for (int i = 0; i < N; ++i) {
-            int score = v[i].second;
-            dp[i] = score;
+            auto [age, score] = A[i];
             for (int j = 0; j < i; ++j) {
-                if (v[j].second >= score) dp[i] = max(dp[i], dp[j] + score);
+                if (A[j].second <= score) dp[i] = max(dp[i], dp[j]);
             }
-            ans = max(ans, dp[i]);
+            ans = max(ans, dp[i] += score);
         }
         return ans;
     }
