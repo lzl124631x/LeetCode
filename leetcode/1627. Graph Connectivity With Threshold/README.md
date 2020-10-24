@@ -65,6 +65,19 @@ Please notice that there can be multiple queries for the same pair of nodes [x, 
 
 ## Solution 1. Union Find
 
+Intuition:
+
+1. If two numbers share the same factor, use union find to connect them.
+1. For each query, use union find to check if they are connected.
+
+For #1, the brute force way is to check all combination pairs of cities which is `O(N^2)` time complexity and will get TLE.
+
+A more efficient way is to use similar idea as in [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes). 
+
+For each number `i` in `[1 + threshold, n]`, we connect `i` with multiples of `i` (i.e. `2 * i, 3 * i, 4 * i, ...`).
+
+In the worst case where `threshold = 0`, iterating all the city pairs cost `N + N / 2 + N / 3 + ... + 1 = N * (1 + 1 / 2 + 1 / 3 + ... + 1 / N)`. `1 + 1 / 2 + 1 / 3 + ... + 1 / N` is a [harmonic series](https://en.wikipedia.org/wiki/Harmonic_series_(mathematics)) and bounded by `logN`. So the iteration takes `O(NlogN)`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/graph-connectivity-with-threshold/
 // Author: github.com/lzl124631x
@@ -94,9 +107,9 @@ public:
     vector<bool> areConnected(int n, int threshold, vector<vector<int>>& Q) {
         unordered_map<int, int> m;
         UnionFind uf(n);
-        for (int i = 1; i <= n; ++i) {
+        for (int i = 1 + threshold; i <= n; ++i) {
             for (int j = 2 * i; j <= n; j += i) {
-                if (i > threshold) uf.connect(i - 1, j - 1);
+                uf.connect(i - 1, j - 1);
             }
         }
         vector<bool> ans;
