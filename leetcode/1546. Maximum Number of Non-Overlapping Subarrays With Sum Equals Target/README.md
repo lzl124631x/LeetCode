@@ -44,7 +44,7 @@
 **Related Topics**:  
 [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
-## Solution 1. Hash Map + ISMP
+## Solution 1. Prefix State Map + ISMP
 
 1. Get all the ranges whose sums are `target`.
 2. The problem becomes a *Interval Scheduling Maximization Problem (ISMP)* -- find the maximum size of non-overlapping ranges given a set of ranges.
@@ -85,9 +85,43 @@ public:
 };
 ```
 
-## Solution 2. Greedy
+## Solution 2. Prefix State Map + DP
 
-In fact, in Solution 1, when a range has sum as `target`, as long as it doesn't overlap with previously selected range, we can select this range.
+Let `dp[i+1]` be the answer to the subproblem on subarray `A[0..i]`. Again we use prefix state map to store the last-seen index of the prefix sum.
+
+For `dp[i+1]`, we have two options:
+1. skip `A[i]`. So `dp[i+1]=dp[i]`
+2. If we've seen prefix sum `sum - target`, then `{m[sum - target] + 1, i}` is a valid range. `dp[i+1] = 1 + dp[m[sum - target] + 1]`.
+
+`dp[N]` is the answer.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int maxNonOverlapping(vector<int>& A, int target) {
+        unordered_map<int, int> m{{0, -1}};
+        int N = A.size(), sum = 0;
+        vector<int> dp(N + 1);
+        for (int i = 0; i < N; ++i) {
+            sum += A[i];
+            dp[i + 1] = dp[i];
+            if (m.count(sum - target)) dp[i + 1] = max(dp[i + 1], 1 + dp[m[sum - target] + 1]);
+            m[sum] = i;
+        }
+        return dp[N];
+    }
+};
+```
+
+## Solution 3. Prefix State Map + Greedy
+
+In fact, with the prefix state map, when we find a range having sum as `target`, we can greedily select this range as long as it doesn't overlap with previously selected range.
+
+This greedy solution works because in the greedy solution to the ISMP, we need to sort the intervals in ascending order of the end time; here we naturally visit the end time in asending order.
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/
@@ -107,6 +141,31 @@ public:
                 last = i;
             }
             m[sum] = i;
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 4. Prefix State Map + Greedy
+
+Now the prefix state map `m` stores the mapping from a prefix sum to the maximum count of compliant subarrays we've seen thus far.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/discuss/780887/Java-Detailed-Explanation-DPMapPrefix-O(N)
+class Solution {
+public:
+    int maxNonOverlapping(vector<int>& A, int target) {
+        unordered_map<int, int> m{{0, 0}};
+        int N = A.size(), sum = 0, ans = 0;
+        for (int i = 0; i < N; ++i) {
+            sum += A[i];
+            if (m.count(sum - target)) ans = max(ans, m[sum - target] + 1);
+            m[sum] = ans;
         }
         return ans;
     }
