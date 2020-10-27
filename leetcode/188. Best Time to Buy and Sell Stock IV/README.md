@@ -219,3 +219,35 @@ public:
     }
 };
 ```
+
+## Solution 3. Alien Trick
+
+```cpp
+// OJ: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
+// Author: github.com/lzl124631x
+// Time: O(Nlog(max(P)))
+// Space: O(1)
+// Ref: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/463598/Python-short-O(NlogW)-solution-with-alien-trick
+class Solution {
+    vector<int> maxProfitWithFee(vector<int> &A, int fee) {  // maxProfit, corresponding number of transactions
+        vector<int> best{-A[0], 0}, current{0, 0};
+        for (int i = 1; i < A.size(); ++i) {
+            if (A[i] + best[0] - fee > current[0]) current = {A[i] + best[0] - fee, 1 + best[1]};
+            if (current[0] - A[i] > best[0]) best = {current[0] - A[i], current[1]};
+        }
+        return current;
+    }
+public:
+    int maxProfit(int k, vector<int>& A) {
+        if (A.empty()) return 0;
+        int L = 0, R = *max_element(begin(A), end(A));
+        return calc(l)[0] + l * k 
+        while (L <= R) {
+            int M = (L + R) / 2;
+            if (maxProfitWithFee(A, M)[1] > k) L = M + 1;
+            else R = M - 1;
+        }
+        return maxProfitWithFee(A, L)[0] + L * k;
+    }
+};
+```
