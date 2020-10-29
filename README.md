@@ -212,6 +212,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 225 | Implement Stack using Queues | Easy | [Solution](leetcode/225.%20Implement%20Stack%20using%20Queues)
 226 | Invert Binary Tree | Easy | [Solution](leetcode/226.%20Invert%20Binary%20Tree)
 227 | Basic Calculator II | Medium | [Solution](leetcode/227.%20Basic%20Calculator%20II)
+228 | Summary Ranges | Easy | [Solution](leetcode/228.%20Summary%20Ranges)
 229 | Majority Element II |  | [Solution](leetcode/229.%20Majority%20Element%20II)
 230 | Kth Smallest Element in a BST | Medium | [Solution](leetcode/230.%20Kth%20Smallest%20Element%20in%20a%20BST)
 231 | Power of Two | Easy | [Solution](leetcode/231.%20Power%20of%20Two)
@@ -621,6 +622,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 796 | Rotate String | Easy | [Solution](leetcode/796.%20Rotate%20String)
 797 | All Paths From Source to Target | Medium | [Solution](leetcode/797.%20All%20Paths%20From%20Source%20to%20Target)
 798 | Smallest Rotation with Highest Score |  | [Solution](leetcode/798.%20Smallest%20Rotation%20with%20Highest%20Score)
+799 | Champagne Tower | Medium | [Solution](leetcode/799.%20Champagne%20Tower)
 800 | Similar RGB Color | Easy | [Solution](leetcode/800.%20Similar%20RGB%20Color)
 801 | Minimum Swaps To Make Sequences Increasing | Medium | [Solution](leetcode/801.%20Minimum%20Swaps%20To%20Make%20Sequences%20Increasing)
 802 | Find Eventual Safe States | Medium | [Solution](leetcode/802.%20Find%20Eventual%20Safe%20States)
@@ -1105,6 +1107,8 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1625 | Lexicographically Smallest String After Applying Operations | Medium | [Solution](leetcode/1625.%20Lexicographically%20Smallest%20String%20After%20Applying%20Operations)
 1626 | Best Team With No Conflicts | Medium | [Solution](leetcode/1626.%20Best%20Team%20With%20No%20Conflicts)
 1627 | Graph Connectivity With Threshold | Hard | [Solution](leetcode/1627.%20Graph%20Connectivity%20With%20Threshold)
+1631 | Path With Minimum Effort | Medium | [Solution](leetcode/1631.%20Path%20With%20Minimum%20Effort)
+1632 | Rank Transform of a Matrix | Hard | [Solution](leetcode/1632.%20Rank%20Transform%20of%20a%20Matrix)
 
 # License
 
