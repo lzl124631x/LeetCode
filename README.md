@@ -656,6 +656,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 843 | Guess the Word | Hard | [Solution](leetcode/843.%20Guess%20the%20Word)
 844 | Backspace String Compare | Easy | [Solution](leetcode/844.%20Backspace%20String%20Compare)
 846 | Hand of Straights | Medium | [Solution](leetcode/846.%20Hand%20of%20Straights)
+849 | Maximize Distance to Closest Person | Medium | [Solution](leetcode/849.%20Maximize%20Distance%20to%20Closest%20Person)
 852 | Peak Index in a Mountain Array | Easy | [Solution](leetcode/852.%20Peak%20Index%20in%20a%20Mountain%20Array)
 856 | Score of Parentheses | Medium | [Solution](leetcode/856.%20Score%20of%20Parentheses)
 857 | Minimum Cost to Hire K Workers | Hard | [Solution](leetcode/857.%20Minimum%20Cost%20to%20Hire%20K%20Workers)
