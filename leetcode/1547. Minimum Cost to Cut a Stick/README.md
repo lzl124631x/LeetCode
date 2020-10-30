@@ -79,3 +79,43 @@ public:
     }
 };
 ```
+
+## Solution 2. Knuth's Optimization
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N^2)
+// Ref: https://leetcode.com/problems/minimum-cost-to-cut-a-stick/discuss/804270/O(N2)-DP-(Knuth's-Optimization)
+class Solution {
+public:
+    int minCost(int n, vector<int>& A) {
+        A.push_back(0);
+        A.push_back(n);
+        sort(begin(A), end(A));
+        int N = A.size();
+        vector<vector<int>> dp(N, vector<int>(N)), mid(N, vector<int>(N));
+        for (int len = 0; len < N; ++len) {
+            for (int i = 0; i + len < N; ++i) {
+                int j = i + len;
+                if (len < 2) {
+                    mid[i][j] = i;
+                    continue;
+                }
+                dp[i][j] = A[j] - A[i];
+                int val = INT_MAX;
+                for (int k = mid[i][j - 1]; k <= mid[i + 1][j]; ++k) {
+                    int next = dp[i][k] + dp[k][j];
+                    if (next < val) {
+                        val = next;
+                        mid[i][j] = k;
+                    }
+                }
+                dp[i][j] += val;
+            }
+        }
+        return dp[0][N - 1];
+    }
+};
+```
