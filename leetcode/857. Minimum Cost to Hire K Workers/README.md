@@ -49,7 +49,11 @@
 **Related Topics**:  
 [Heap](https://leetcode.com/tag/heap/)
 
-## Solution 1. Greedy
+## TLE version. Greedy
+
+Try `person[i]` as the baseline. Use her `W[i] / Q[i]` as the factor to get others' wages. Drop those who can't meet their min wages.
+
+For the rest, sum the smallest `K` wages.
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-cost-to-hire-k-workers/
@@ -57,6 +61,7 @@
 // Time: O(N^2 * logN)
 // Space: O(N)
 // Ref: https://leetcode.com/problems/minimum-cost-to-hire-k-workers/solution/
+// NOTE: this solution will get TLE
 class Solution {
 public:
     double mincostToHireWorkers(vector<int>& Q, vector<int>& W, int K) {
@@ -72,8 +77,57 @@ public:
             }
             if (costs.size() < K) continue;
             sort(costs.begin(), costs.end());
-            double sum = accumulate(costs.begin(), costs.begin() + K, 0);
+            double sum = accumulate(costs.begin(), costs.begin() + K, 0.0);
             ans = min(ans, sum);
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 1. Max Heap
+
+If we select `person[i]` as the benchmark, `W[i]/Q[i]` will be used as the `rate`. All other people get `Q[j] * rate`.
+
+If `Q[j] * rate[i]` is smaller than `W[j]`, i.e. `Q[j] * rate[i] < W[j]`, or `rate[i] < rate[j]`, `person[j]` can't work.
+
+So `rate[i]` can only make the people with equal or smaller rates to be able to work.
+
+* The greatest rate can make all people work, but results in greater total wage.
+* The smaller rate can make less people work, but results in smaller total wage.
+
+Hence we can iterate people in ascending order of rate.
+
+We use a max heap `pq` to keep the qualities of people, and `sum` to track the sum of qualities of people in the `pq`.
+
+For `person[i]`, we add her quality into the `pq`. And pop if the `pq` has more than `K` people. We update the `sum` accordingly.
+
+If there are `K` people in the `pq`, then `sum * rate[i]` is the total wage. We just need to find the minimal total wage.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-cost-to-hire-k-workers/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class Solution {
+public:
+    double mincostToHireWorkers(vector<int>& Q, vector<int>& W, int K) {
+        int N = Q.size(), sum = 0;
+        double ans = DBL_MAX; 
+        vector<int> id(N);
+        vector<double> rate(N);
+        for (int i = 0; i < N; ++i) rate[i] = (double)W[i] / Q[i];
+        iota(begin(id), end(id), 0);
+        sort(begin(id), end(id), [&](int a, int b) { return rate[a] < rate[b]; });
+        priority_queue<int> pq;
+        for (int i = 0; i < N; ++i) {
+            sum += Q[id[i]];
+            pq.push(Q[id[i]]);
+            if (pq.size() > K) {
+                sum -= pq.top();
+                pq.pop();
+            }
+            if (pq.size() == K) ans = min(ans, rate[id[i]] * sum);
         }
         return ans;
     }
