@@ -69,7 +69,7 @@ public:
 
 Assume the sequence is `a, b, c` (`a < c < b`).
 
-We scan from the right to the left. Keep a monotonically decreasing stack `s` and keep track of the best candidate of `c` in a variable`right`.
+We scan from the right to the left. Keep a monotonically decreasing stack `s` and keep track of the best candidate of `c` in a variable `right`.
 
 The best candidate of `c` must be monotonically increasing because the moment we find that the current element is `< c`, we've found a valid sequence.
 
