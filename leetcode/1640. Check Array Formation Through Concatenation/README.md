@@ -53,18 +53,17 @@
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Sort](https://leetcode.com/tag/sort/)
 
-## Solution 1.
+## Solution 1. Brute Force
 
 ```cpp
 // OJ: https://leetcode.com/problems/check-array-formation-through-concatenation/
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(AP)
+// Space: O(1)
 class Solution {
 public:
     bool canFormArray(vector<int>& A, vector<vector<int>>& P) {
-        int i = 0;
-        for (; i < A.size(); ) {
+        for (int i = 0 ; i < A.size(); ) {
             int j = 0;
             for (; j < P.size(); ++j) {
                 if (P[j][0] == A[i]) break;
