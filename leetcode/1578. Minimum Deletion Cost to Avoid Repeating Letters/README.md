@@ -64,3 +64,24 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-deletion-cost-to-avoid-repeating-letters/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int minCost(string s, vector<int>& cost) {
+        int N = s.size(), ans = 0;
+        for (int i = 0; i + 1 < N; ++i) {
+            if (s[i] != s[i + 1]) continue;
+            if (cost[i] > cost[i + 1]) swap(cost[i], cost[i + 1]);
+            ans += cost[i];
+        }
+        return ans;
+    }
+};
+```
