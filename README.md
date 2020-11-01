@@ -1115,6 +1115,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1637 | Widest Vertical Area Between Two Points Containing No Points | Medium | [Solution](leetcode/1637.%20Widest%20Vertical%20Area%20Between%20Two%20Points%20Containing%20No%20Points)
 1638 | Count Substrings That Differ by One Character | Medium | [Solution](leetcode/1638.%20Count%20Substrings%20That%20Differ%20by%20One%20Character)
 1639 | Number of Ways to Form a Target String Given a Dictionary | Hard | [Solution](leetcode/1639.%20Number%20of%20Ways%20to%20Form%20a%20Target%20String%20Given%20a%20Dictionary)
+1640 | Check Array Formation Through Concatenation | Easy | [Solution](leetcode/1640.%20Check%20Array%20Formation%20Through%20Concatenation)
+1641 | Count Sorted Vowel Strings | Medium | [Solution](leetcode/1641.%20Count%20Sorted%20Vowel%20Strings)
+1642 | Furthest Building You Can Reach | Medium | [Solution](leetcode/1642.%20Furthest%20Building%20You%20Can%20Reach)
+1643 | Kth Smallest Instructions | Hard | [Solution](leetcode/1643.%20Kth%20Smallest%20Instructions)
 
 # License
 
