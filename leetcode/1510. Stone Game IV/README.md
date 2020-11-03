@@ -65,7 +65,7 @@ dp[i] = true    // If any dp[i - j * j] is false
 ```
 
 ```cpp
-// OJ: https://leetcode.com/contest/biweekly-contest-30/problems/stone-game-iv/
+// OJ: https://leetcode.com/problems/stone-game-iv/
 // Author: github.com/lzl124631x
 // Time: O(N * sqrt(N))
 // Space: O(N)
@@ -84,7 +84,7 @@ public:
 Or use `static` variable to save computation
 
 ```cpp
-// OJ: https://leetcode.com/contest/biweekly-contest-30/problems/stone-game-iv/
+// OJ: https://leetcode.com/problems/stone-game-iv/
 // Author: github.com/lzl124631x
 // Time: O(N * sqrt(N))
 // Space: O(N)
@@ -104,7 +104,7 @@ public:
 ## Solution 2. Top-down DP
 
 ```cpp
-// OJ: https://leetcode.com/contest/biweekly-contest-30/problems/stone-game-iv/
+// OJ: https://leetcode.com/problems/stone-game-iv/
 // Author: github.com/lzl124631x
 // Time: O(N * sqrt(N))
 // Space: O(N)

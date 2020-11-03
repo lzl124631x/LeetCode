@@ -93,7 +93,7 @@ For invalid states, like `cnt > T` or `i == M && cnt != T`, we mark the correspo
 The answer is `dp[0][0][0]`.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-192/problems/paint-house-iii/
+// OJ: https://leetcode.com/problems/paint-house-iii/
 // Author: github.com/lzl124631x
 // Time: O(N^2 * MT)
 // Space: O(MNT)

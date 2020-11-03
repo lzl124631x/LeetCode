@@ -39,7 +39,7 @@
 Sort the points in ascending order of `x` values, then traverse to find the maximum distance of `x` values between adjacent points.
 
 ```cpp
-// OJ: https://leetcode.com/contest/biweekly-contest-38/problems/widest-vertical-area-between-two-points-containing-no-points/
+// OJ: https://leetcode.com/problems/widest-vertical-area-between-two-points-containing-no-points/
 // Author: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(1)

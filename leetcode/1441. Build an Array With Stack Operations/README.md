@@ -12,7 +12,7 @@ For each `i`:
 We should break the loop once `j` reaches the end of `A`.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-188/problems/build-an-array-with-stack-operations/
+// OJ: https://leetcode.com/problems/build-an-array-with-stack-operations/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)

@@ -56,7 +56,7 @@ So `f(2) = 3 + 2 + 1 = 6` or `f(2) = (1 + N) * N / 2 * f(1)` where `N = 3 = 2 * 
 By induction, we have `f(n) = f(n - 1) * (1 + N) * N / 2` where `N = 2n - 1`
 
 ```cpp
-// OJ: https://leetcode.com/contest/biweekly-contest-20/problems/count-all-valid-pickup-and-delivery-options/
+// OJ: https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)

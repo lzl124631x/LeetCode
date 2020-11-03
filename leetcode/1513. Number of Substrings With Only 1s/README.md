@@ -54,7 +54,7 @@ Find all the strings formed with all ones. For a substring of length `len`, ther
 Since the length of `s` is at most `1e5`, so `len * (len + 1)` is at most around `1e10` which is greater than what can be hold in a 32bit integer (`INT_MAX` is  `2,147,483,647 ~= 2e9`), so we use `long long` here.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-197/problems/number-of-substrings-with-only-1s/
+// OJ: https://leetcode.com/problems/number-of-substrings-with-only-1s/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)

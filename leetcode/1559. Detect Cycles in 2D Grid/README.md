@@ -14,7 +14,7 @@ We shouldn't visit `a, b` if either of these is true:
 Once we find a `<a, b>` pair satisfying `seen[a][b] && seen[x][y] - seen[a][b] >= 3`, we've found a valid circle from `A[a][b]` to `A[x][y]` with length more than or equal to 4, and we can return `true`.
 
 ```cpp
-// OJ: https://leetcode.com/contest/biweekly-contest-33/problems/detect-cycles-in-2d-grid/
+// OJ: https://leetcode.com/problems/detect-cycles-in-2d-grid/
 // Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(MN)

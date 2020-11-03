@@ -30,7 +30,7 @@
 There are `high - low + 1` numbers in the range, so there are at least `(high - low + 1) / 2` odd numbers. If `low` is odd, then there will be `(high - low + 1 + (low % 2)) / 2` odd numbers.
 
 ```cpp
-// OJ: https://leetcode.com/contest/biweekly-contest-31/problems/count-odd-numbers-in-an-interval-range/
+// OJ: https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/
 // Author: github.com/lzl124631x
 // Time: O(1)
 // Space: O(1)

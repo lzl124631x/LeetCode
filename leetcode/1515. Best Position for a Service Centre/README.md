@@ -72,7 +72,7 @@ See more:
 * https://en.wikipedia.org/wiki/Geometric_median
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-197/problems/best-position-for-a-service-centre/
+// OJ: https://leetcode.com/problems/best-position-for-a-service-centre/
 // Author: github.com/lzl124631x
 // Time: O(N * S) where S is the steps taken to reach the center
 // Space: O(1)

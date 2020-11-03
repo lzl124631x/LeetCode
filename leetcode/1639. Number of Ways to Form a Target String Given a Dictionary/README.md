@@ -100,7 +100,7 @@ dp[i + 1][j + 1] = 0 if i < j
 The answer is `dp[L][N]`.
 
 ```cpp
-// OJ: https://leetcode.com/contest/biweekly-contest-38/problems/number-of-ways-to-form-a-target-string-given-a-dictionary/
+// OJ: https://leetcode.com/problems/number-of-ways-to-form-a-target-string-given-a-dictionary/
 // Author: github.com/lzl124631x
 // Time: O(LM + LN)
 // Space: O(LN)

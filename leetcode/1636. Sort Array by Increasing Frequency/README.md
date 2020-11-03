@@ -42,7 +42,7 @@
 ## Solution 1. Sort
 
 ```cpp
-// OJ: https://leetcode.com/contest/biweekly-contest-38/problems/sort-array-by-increasing-frequency/
+// OJ: https://leetcode.com/problems/sort-array-by-increasing-frequency/
 // Author: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(N)

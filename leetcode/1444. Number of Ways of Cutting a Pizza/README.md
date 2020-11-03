@@ -72,7 +72,7 @@ dp[i][j][1] = cnt[i][j] ? 1 : 0
 ```
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-188/problems/number-of-ways-of-cutting-a-pizza/
+// OJ: https://leetcode.com/problems/number-of-ways-of-cutting-a-pizza/
 // Author: github.com/lzl124631x
 // Time: O(MNK * max(M, N))
 // Space: O(MNK)
