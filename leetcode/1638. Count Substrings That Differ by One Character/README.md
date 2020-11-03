@@ -70,9 +70,9 @@ t = ybbbc
 For `i = 2` and `j = 2`, we have `s[i] = a` and `t[j] = b` that doesn't match. Now look leftwards, we can extend left-side by 1 time due to `b`, and extend right-side by 2 times due to `bc`. So for this specific center `{ i = 2, j = 2 }`, we have `2 * 3 = 6` options.
 
 ```cpp
-// OJ: https://leetcode.com/contest/biweekly-contest-38/problems/count-substrings-that-differ-by-one-character/
+// OJ: https://leetcode.com/problems/count-substrings-that-differ-by-one-character/
 // Author: github.com/lzl124631x
-// Time: O(N^3)
+// Time: O(MN * min(M, N))
 // Space: O(1)
 class Solution {
 public:
@@ -87,6 +87,104 @@ public:
                 ans += left * right;
             }
         }
+        return ans;
+    }
+};
+```
+
+## Solution 2.
+
+We can precompute the `left` and `right` values to save time.
+
+```cpp
+// OJ: https://leetcode.com/problems/count-substrings-that-differ-by-one-character/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(MN)
+class Solution {
+public:
+    int countSubstrings(string s, string t) {
+        int M = s.size(), N = t.size(), ans = 0, left[101][101] = {}, right[101][101] = {};
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                left[i + 1][j + 1] = s[i] == t[j] ? left[i][j] + 1 : 0;
+            }
+        }
+        for (int i = M - 1; i >= 0; --i) {
+            for (int j = N - 1; j >= 0; --j) {
+                right[i][j] = s[i] == t[j] ? right[i + 1][j + 1] + 1 : 0;
+            }
+        }
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (s[i] != t[j]) ans += (1 + left[i][j]) * (1 + right[i + 1][j + 1]);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3.
+
+Consider the following `s` and `t` and we are using `x` and `y` as the differing characters.
+
+```
+s=ab[x]c
+t=ab[y]c
+```
+
+When we start from `i = 0, j = 0`, and reaches `i = 2, j = 2`, since `s[i] != t[j]`, `pre` is updated as `cur = 3`, and `cur` is reset to `0`. We add `3` to the answer which covers
+
+```
+ab[x]
+ab[y]
+
+b[x]
+b[y]
+
+[x]
+[y]
+```
+
+When we reach `i = 3, j = 3`, we add `pre = 3` to answer again, which covers
+
+```
+ab[x]c
+ab[y]c
+
+b[x]c
+b[y]c
+
+[x]c
+[y]c
+```
+
+So the `pre` is the same as the `left` value in previous solutions. The `right` value is achieved through adding the `pre` value repetitively for repeating right-side characters.
+
+The `i` and `j` of `helper` function are the starting indexes of our scanning. Note that `0, 0` should be only included once so `j` starts from `1` in the second loop.
+
+```cpp
+// OJ: https://leetcode.com/problems/count-substrings-that-differ-by-one-character/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/count-substrings-that-differ-by-one-character/discuss/917985/JavaC%2B%2BPython-Time-O(nm)-Space-O(1)
+class Solution {
+    int helper(string s, string t, int i, int j) {
+        int ans = 0, pre = 0, cur = 0;
+        for (int n = s.size(), m = t.size(); i < n && j < m; ++i, ++j) {
+            cur++;
+            if (s[i] != t[j]) pre = cur, cur = 0;
+            ans += pre;
+        }
+        return ans;
+    }
+public:
+    int countSubstrings(string s, string t) {
+        int ans = 0 ;
+        for (int i = 0; i < s.size(); ++i) ans += helper(s, t, i, 0);
+        for (int j = 1; j < t.size(); ++j) ans += helper(s, t, 0, j);
         return ans;
     }
 };
