@@ -70,3 +70,23 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/consecutive-characters/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int maxPower(string s) {
+        int start = 0, ans = 0;
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == s[start]) ans = max(ans, i - start + 1);
+            else start = i;
+        }
+        return ans;
+    }
+};
+```
