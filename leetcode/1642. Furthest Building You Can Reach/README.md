@@ -52,39 +52,50 @@ It is impossible to go beyond building 4 because you do not have any more bricks
 **Related Topics**:  
 [Binary Search](https://leetcode.com/tag/binary-search/), [Heap](https://leetcode.com/tag/heap/)
 
-## Solution 1. DFS
+## Solution 1. Min heap
 
-Brute force DFS.
+Here we only consider positive diffs, and ignore non-positive ones.
 
-For each position where we need to climb, we try using brick and ladder, and log the maximum index we can reach.
+We use brick for small diff, and ladder for large diff.
+
+Scan from left to right, maintain a data structure that can efficiently:
+1. sort the diffs
+2. sum the smallest `count - L` diffs, where `count` is the count of (positive) diffs we've scanned.
+
+Imagine that we already have the diffs sorted.
+
+```
+[small -----------------------------> large ]
+// we can split them in this way.
+[ sum of count - L items ][ largest L items ]
+```
+
+So we can use a min heap to keep track of the largest `L` items.
+
+We keep pushing diff into the heap. When it has more than `L` items, we push the top element to keep heap of size `L` and add the popped element to `sum`. The `sum` is the count of bricks that we need.
+
+When `sum` is greater than `B`, we should stop there.
 
 ```cpp
 // OJ: https://leetcode.com/problems/furthest-building-you-can-reach/
 // Author: github.com/lzl124631x
-// Time: O(2^N)
-// Space: O(N)
+// Time: O(NlogL)
+// Space: O(L)
 class Solution {
-    int ans = 0;
-    void dfs(vector<int> &H, int B, int L, int start) {
-        if (ans == H.size() - 1) return;
-        if (start == H.size() - 1) {
-            ans = H.size() - 1;
-            return;
-        }
-        for (int i = start; i < H.size(); ++i) {
-            ans = max(ans, i);
-            if (H[i] == 0) continue;
-            if (B >= H[i]) dfs(H, B - H[i], L, i + 1);
-            if (L) dfs(H, B, L - 1, i + 1);
-            break;
-        }
-    }
 public:
     int furthestBuilding(vector<int>& H, int B, int L) {
-        for (int i = 0; i + 1 < H.size(); ++i) H[i] = max(0, H[i + 1] - H[i]);
-        H.back() = 0;
-        dfs(H, B, L, 0);
-        return ans;
+        int N = H.size(), sum = 0;
+        priority_queue<int, vector<int>, greater<>> pq; // min-heap, keep track of the L largest diffs
+        for (int i = 1; i < N; ++i) {
+            int diff = H[i] - H[i - 1];
+            if (diff <= 0) continue;
+            pq.push(diff);
+            if (pq.size() <= L) continue;
+            sum += pq.top();
+            pq.pop();
+            if (sum > B) return i - 1;
+        }
+        return N - 1;
     }
-}; 
+};
 ```
