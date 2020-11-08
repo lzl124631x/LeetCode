@@ -76,19 +76,20 @@ So only the common numbers shared between these two arrays changes the algorithm
 
 Considering the subproblem with `A[0..i)]` and `B[0..j)]`: 
 
-Let `X` be the best score we can get if we pick `A[i]` in the end.
+Let `sa` be the best score we can get if we pick `A[i]` **as the last element**.
 
-Let `Y` be the best score we can get if we pick `B[j]` in the end.
+Let `sb` be the best score we can get if we pick `B[j]` **as the last element**.
 
-If `A[i] < B[j]`, we can extend the `X` by adding `A[i]` to it.
+If `A[i] < B[j]`, we can only extend the `sa` by adding `A[i]` to it.
 
-If `A[i] > B[j]`, we can extend the `Y` by adding `B[j]` to it.
+If `A[i] > B[j]`, we can only extend the `sb` by adding `B[j]` to it.
 
-If `A[i] == B[j]`, we can extend in the following two ways:
-1. Use the previous value of `X`, and add `A[i]` to it.
-2. Use the previous value of `Y`, and add `B[j]` to it.
+If `A[i] == B[j]`, we pick the greatest out of the following two options and set it back to `sa` and `sb`.
 
-Why using the **previous value**? It's because we need to avoid adding the same number twice.
+* extend `sa` by adding `A[i]`
+* extend `sb` by adding `B[j]`
+
+In the end, `max(sa, sb)` is the answer
 
 ```cpp
 // OJ: https://leetcode.com/problems/get-the-maximum-score/
@@ -98,17 +99,15 @@ Why using the **previous value**? It's because we need to avoid adding the same 
 class Solution {
 public:
     int maxSum(vector<int>& A, vector<int>& B) {
-        long long M = A.size(), N = B.size(), X = 0, Y = 0, prevX = 0, prevY = 0, mod = 1e9+7, i = 0, j = 0;
+        long M = A.size(), N = B.size(), sa = 0, sb = 0, mod = 1e9+7, i = 0, j = 0;
         while (i < M && j < N) {
-            if (A[i] < B[j]) X += A[i++];
-            else if (A[i] > B[j]) Y += B[j++];
-            else X = Y = max(prevX + A[i++], prevY + B[j++]);
-            prevX = X;
-            prevY = Y;
+            if (A[i] < B[j]) sa += A[i++];
+            else if (A[i] > B[j]) sb += B[j++];
+            else sa = sb = max(sa + A[i++], sb + B[j++]);
         }
-        while (i < M) X += A[i++];
-        while (j < N) Y += B[j++];
-        return max(X, Y) % mod;
+        while (i < M) sa += A[i++];
+        while (j < N) sb += B[j++];
+        return max(sa, sb) % mod;
     }
 };
 ```
