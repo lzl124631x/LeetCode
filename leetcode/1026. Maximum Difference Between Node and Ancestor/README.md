@@ -34,33 +34,38 @@ Among all possible differences, the maximum value of 7 is obtained by |8 - 1| = 
 **Related Topics**:  
 [Tree](https://leetcode.com/tag/tree/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/)
 
-## Solution 1.
+## Solution 1. Post-order traversal
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/
 // Author: github.com/lzl124631x
-// Time: O(NlogN)
+// Time: O(N)
 // Space: O(H)
 class Solution {
-    multiset<int> s;
     int ans = 0;
-    void preorder(TreeNode *root) {
-        if (!root) return;
-        if (s.size()) ans = max({ ans, abs(*s.begin() - root->val), abs(*s.rbegin() - root->val) });
-        s.insert(root->val);
-        preorder(root->left);
-        preorder(root->right);
-        s.erase(s.find(root->val));
+    pair<int, int> dfs(TreeNode *root) {
+        if (!root) return { INT_MAX, INT_MIN };
+        auto [lmin, lmax] = dfs(root->left);
+        auto [rmin, rmax] = dfs(root->right);
+        int mn = min({ root->val, lmin, rmin }), mx = max({ root->val, lmax, rmax });
+        ans = max({ ans, abs(root->val - mn), abs(mx - root->val) });
+        return { mn, mx };
     }
 public:
     int maxAncestorDiff(TreeNode* root) {
-        preorder(root);
+        dfs(root);
         return ans;
     }
 };
 ```
 
 ## Solution 2.
+
+When traversing down, we update the min and max values we've seen from the root to the current node.
+
+At the null pointers of the leave nodes, we calculate the difference between the max and min values we've seen since the root.
+
+When traversing up, we return the maximum of the results for the left subtree and the right subtree.
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/
