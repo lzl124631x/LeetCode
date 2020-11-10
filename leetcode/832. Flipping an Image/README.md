@@ -37,13 +37,38 @@ public:
     vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) {
         if (A.empty() || A[0].empty()) return {};
         int M = A.size(), N = A[0].size();
-        vector<vector<int>> v(M, vector<int>(N));
+        vector<vector<int>> ans(M, vector<int>(N));
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                v[i][N - j - 1] = 1 - A[i][j];
+                ans[i][N - j - 1] = 1 - A[i][j];
             }
         }
-        return v;
+        return ans;
+    }
+};
+```
+
+Or do it in-place
+
+```cpp
+// OJ: https://leetcode.com/problems/flipping-an-image/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(1)
+class Solution {
+public:
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size();
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0, k = N - 1; j <= k; ++j, --k) {
+                A[i][j] = 1 - A[i][j];
+                if (j != k) {
+                    A[i][k] = 1 - A[i][k];
+                    swap(A[i][j], A[i][k]);
+                }
+            }
+        }
+        return A;
     }
 };
 ```
