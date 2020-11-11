@@ -83,7 +83,7 @@ public:
                 if (s[i] == t[j]) continue;
                 int left = 1, right = 1;
                 while (i - left >= 0 && j - left >= 0 && s[i - left] == t[j - left]) ++left;
-                while (i + right < N && j + right < N && s[i + right] == t[j + right]) ++right;
+                while (i + right < M && j + right < N && s[i + right] == t[j + right]) ++right;
                 ans += left * right;
             }
         }
