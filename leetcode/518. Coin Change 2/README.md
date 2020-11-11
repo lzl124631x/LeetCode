@@ -73,70 +73,102 @@ public:
 };
 ```
 
-## Solution 2. DP
+## Solution 2. DP (Unbounded knapsack problem), Naive version
+
+This is a typical unbounded knapsack problem where you can pick item unlimited times (unbounded).
+
+Let `dp[i+1][T]` be the ways to form `T` value using `A[0]` ... `A[i]`.
+
+```
+dp[i+1][T]      = dp[i][T] + dp[i][T-A[i]] + dp[i][T-2*A[i]] ...
+
+dp[i][0] = 1
+```
+
+We can directly apply this formula.
+
+This is the naive solution, and in the next solution we find way to optimize it.
 
 ```cpp
 // OJ: https://leetcode.com/problems/coin-change-2/
 // Author: github.com/lzl124631x
-// Time: O(A^2 * C)
-// Space: O(AC)
+// Time: O(N^2 * T)
+// Space: O(NT)
 class Solution {
 public:
-    int change(int amount, vector<int>& coins) {
-        vector<vector<int>> dp(amount + 1, vector<int>(coins.size() + 1));
-        for (int i = 0; i <= coins.size(); ++i) dp[0][i] = 1;
-        for (int i = 1; i <= amount; ++i) {
-            for (int j = 1; j <= coins.size(); ++j) {
-                for (int k = 0; i - coins[j - 1] * k >= 0; ++k) {
-                    dp[i][j] += dp[i - coins[j - 1] * k][j - 1];
+    int change(int T, vector<int>& A) {
+        int N = A.size();
+        vector<vector<int>> dp(N + 1, vector<int>(T + 1));
+        for (int i = 0; i <= N; ++i) dp[i][0] = 1;
+        for (int i = 0; i < N; ++i) {
+            for (int t = 1; t <= T; ++t) {
+                for (int k = 0; t - k * A[i] >= 0; ++k) {
+                    dp[i + 1][t] += dp[i][t - k * A[i]];
                 }
             }
         }
-        return dp[amount][coins.size()];
+        return dp[N][T];
     }
 };
 ```
 
-## Solution 3. DP
+## Solution 3. DP (Unbounded knapsack problem)
+
+Let `dp[i+1][T]` be the ways to form `T` value using `A[0]` ... `A[i]`.
+
+```
+dp[i+1][T]      = dp[i][T] + dp[i][T-A[i]] + dp[i][T-2*A[i]] ...
+
+dp[i+1][T-A[i]] =            dp[i][T-A[i]] + dp[i][T-2*A[i]] ...
+
+// so
+dp[i+1][T] = dp[i+1][T-A[i]] + dp[i][T]
+
+dp[i][0] = 1
+```
 
 ```cpp
 // OJ: https://leetcode.com/problems/coin-change-2/
 // Author: github.com/lzl124631x
-// Time: O(AC)
-// Space: O(AC)
+// Time: O(NT)
+// Space: O(NT)
 class Solution {
 public:
-    int change(int amount, vector<int>& coins) {
-        vector<vector<int>> dp(amount + 1, vector<int>(coins.size() + 1));
-        for (int i = 0; i <= coins.size(); ++i) dp[0][i] = 1;
-        for (int i = 1; i <= amount; ++i) {
-            for (int j = 1; j <= coins.size(); ++j) {
-                dp[i][j] = dp[i][j - 1] + (i - coins[j - 1] >= 0 ? dp[i - coins[j - 1]][j] : 0);
+    int change(int T, vector<int>& A) {
+        int N = A.size();
+        vector<vector<int>> dp(N + 1, vector<int>(T + 1));
+        for (int i = 0; i <= N; ++i) dp[i][0] = 1;
+        for (int i = 0; i < N; ++i) {
+            for (int t = 1; t <= T; ++t) {
+                dp[i + 1][t] = (t - A[i] >= 0 ? dp[i + 1][t - A[i]] : 0) + dp[i][t];
             }
         }
-        return dp[amount][coins.size()];
+        return dp[N][T];
     }
 };
 ```
 
-## Solution 4. DP
+## Solution 4. DP (Unbounded knapsack problem) with Space Optimization
+
+Since `dp[i+1][T]` only depends on `dp[i+1][T-A[i]]` and `dp[i][T]`, we can reduce the `dp` array from `N * T` to `1 * T`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/coin-change-2/
 // Author: github.com/lzl124631x
-// Time: O(AC)
-// Space: O(A)
+// Time: O(NT)
+// Space: O(T)
 class Solution {
 public:
-    int change(int amount, vector<int>& coins) {
-        vector<int> dp(amount + 1);
+    int change(int T, vector<int>& A) {
+        int N = A.size();
+        vector<int> dp(T + 1);
         dp[0] = 1;
-        for (int j = 1; j <= coins.size(); ++j) {
-            for (int i = 1; i <= amount; ++i) {
-                if (i - coins[j - 1] >= 0) dp[i] += dp[i - coins[j - 1]];
+        for (int i = 0; i < N; ++i) {
+            for (int t = 1; t <= T; ++t) {
+                if (t - A[i] >= 0) dp[t] += dp[t - A[i]];
             }
         }
-        return dp[amount];
+        return dp[T];
     }
 };
 ```
