@@ -84,3 +84,29 @@ public:
     }
 };
 ```
+
+## Solution 3.
+
+Assume `b` and `c` are two adjacent nodes to `a` and `ad` forms a diagonal line, then we can return `true` if the following two are true.
+
+* `ab = ac = bd = cd`
+* `(by-ay)/(bx-ax) = -1 / ((cy-ay)/(cx-ax)) = (cx-ax)/(cy-ay)`, so `(by-ay)*(cy-ay) = -(bx-ax)*(cx-ax)`
+
+We need to enumerate 3 cases where `ad`, `ac`, `ab` are diagonal lines respectively.
+
+```cpp
+class Solution {
+    double dist(vector<int> &a, vector<int> &b) {
+        return sqrt(pow((double)a[0] - b[0], 2) + pow((double)a[1] - b[1], 2));
+    }
+    bool valid(vector<int>& a, vector<int>& b, vector<int>& c, vector<int>& d) {
+        if (a == b) return false;
+        double ab = dist(a, b), ac = dist(a, c), bd = dist(b, d), cd = dist(c, d);
+        return ab == ac && ab == bd && ab == cd && (b[1] - a[1]) * (c[1] - a[1]) == -1 * (c[0] - a[0]) * (b[0] - a[0]);
+    }
+public:
+    bool validSquare(vector<int>& a, vector<int>& b, vector<int>& c, vector<int>& d) {
+        return valid(a, b, c, d) || valid(a, c, b, d) || valid(a, b, d, c) || valid(a, c, d, b);
+    }
+};
+```
