@@ -475,7 +475,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 560 | Subarray Sum Equals K | Medium | [Solution](leetcode/560.%20Subarray%20Sum%20Equals%20K)
 561 | Array Partition I |  | [Solution](leetcode/561.%20Array%20Partition%20I)
 562 | Longest Line of Consecutive One in Matrix |  | [Solution](leetcode/562.%20Longest%20Line%20of%20Consecutive%20One%20in%20Matrix)
-563 | Binary Tree Tilt |  | [Solution](leetcode/563.%20Binary%20Tree%20Tilt)
+563 | Binary Tree Tilt | Easy | [Solution](leetcode/563.%20Binary%20Tree%20Tilt)
 566 | Reshape the Matrix | Easy | [Solution](leetcode/566.%20Reshape%20the%20Matrix)
 567 | Permutation in String | Medium | [Solution](leetcode/567.%20Permutation%20in%20String)
 570 | Managers with at Least 5 Direct Reports | Medium | [Solution](leetcode/570.%20Managers%20with%20at%20Least%205%20Direct%20Reports)
@@ -646,6 +646,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 828 | Unique Letter String | Hard | [Solution](leetcode/828.%20Unique%20Letter%20String)
 829 | Consecutive Numbers Sum | Hard | [Solution](leetcode/829.%20Consecutive%20Numbers%20Sum)
 830 | Positions of Large Groups | Easy | [Solution](leetcode/830.%20Positions%20of%20Large%20Groups)
+831 | Masking Personal Information | Medium | [Solution](leetcode/831.%20Masking%20Personal%20Information)
 832 | Flipping an Image | Easy | [Solution](leetcode/832.%20Flipping%20an%20Image)
 835 | Image Overlap | Medium | [Solution](leetcode/835.%20Image%20Overlap)
 836 | Rectangle Overlap | Easy | [Solution](leetcode/836.%20Rectangle%20Overlap)
@@ -1120,6 +1121,8 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1641 | Count Sorted Vowel Strings | Medium | [Solution](leetcode/1641.%20Count%20Sorted%20Vowel%20Strings)
 1642 | Furthest Building You Can Reach | Medium | [Solution](leetcode/1642.%20Furthest%20Building%20You%20Can%20Reach)
 1643 | Kth Smallest Instructions | Hard | [Solution](leetcode/1643.%20Kth%20Smallest%20Instructions)
+1648 | Sell Diminishing-Valued Colored Balls | Medium | [Solution](leetcode/1648.%20Sell%20Diminishing-Valued%20Colored%20Balls)
+1649 | Create Sorted Array through Instructions | Hard | [Solution](leetcode/1649.%20Create%20Sorted%20Array%20through%20Instructions)
 
 # License
 
