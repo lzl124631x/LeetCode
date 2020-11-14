@@ -48,7 +48,7 @@
 * [Populating Next Right Pointers in Each Node II (Medium)](https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/)
 * [Binary Tree Right Side View (Medium)](https://leetcode.com/problems/binary-tree-right-side-view/)
 
-## Solution 1. DFS
+## Solution 1.
 
 The tree is a **perfect binary tree**. We can connect the nodes layer by layer.
 
