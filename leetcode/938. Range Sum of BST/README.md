@@ -1,23 +1,32 @@
-# [938. Range Sum of BST (Easy)](https://leetcode.com/problems/transpose-matrix/)
+# [938. Range Sum of BST (Easy)](https://leetcode.com/problems/range-sum-of-bst/)
 
-Given the `root` node of a binary search tree, return the sum of values of all nodes with value between `L` and `R` (inclusive).
+<p>Given the <code>root</code> node of a binary search tree, return <em>the sum of values of all nodes with a value in the range <code>[low, high]</code></em>.</p>
 
-The binary search tree is guaranteed to have unique values.
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/11/05/bst1.jpg" style="width: 400px; height: 222px;">
+<pre><strong>Input:</strong> root = [10,5,15,3,7,null,18], low = 7, high = 15
+<strong>Output:</strong> 32
+</pre>
 
-**Example 1:**
+<p><strong>Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/11/05/bst2.jpg" style="width: 400px; height: 335px;">
+<pre><strong>Input:</strong> root = [10,5,15,3,7,13,18,1,null,6], low = 6, high = 10
+<strong>Output:</strong> 23
+</pre>
 
-**Input:** root = \[10,5,15,3,7,null,18\], L = 7, R = 15  
-**Output:** 32
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-**Example 2:**
+<ul>
+	<li>The number of nodes in the tree is in the range <code>[1, 2 * 10<sup>4</sup>]</code>.</li>
+	<li><code>1 &lt;= Node.val &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= low &lt;= high &lt;= 10<sup>5</sup></code></li>
+	<li>All <code>Node.val</code> are <strong>unique</strong>.</li>
+</ul>
 
-**Input:** root = \[10,5,15,3,7,13,18,1,null,6\], L = 6, R = 10  
-**Output:** 23
-
-**Note:**
-
-1.  The number of nodes in the tree is at most `10000`.
-2.  The final answer is guaranteed to be less than `2^31`.
+**Related Topics**:  
+[Tree](https://leetcode.com/tag/tree/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Recursion](https://leetcode.com/tag/recursion/)
 
 ## Solution 1.
 
@@ -25,12 +34,32 @@ The binary search tree is guaranteed to have unique values.
 // OJ: https://leetcode.com/problems/transpose-matrix/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(logN)
+// Space: O(H)
 class Solution {
 public:
     int rangeSumBST(TreeNode* root, int L, int R) {
         if (!root) return 0;
         return (root->val >= L && root->val <= R ? root->val : 0) + rangeSumBST(root->left, L, R) + rangeSumBST(root->right, L, R);
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/range-sum-of-bst/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+public:
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        if (!root) return 0;
+        int sum = 0;
+        if (root->val < high) sum += rangeSumBST(root->right, low, high);
+        if (root->val > low) sum += rangeSumBST(root->left, low, high);
+        if (root->val >= low && root->val <= high) sum += root->val;
+        return sum;
     }
 };
 ```
