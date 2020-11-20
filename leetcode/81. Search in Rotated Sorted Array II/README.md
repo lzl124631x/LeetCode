@@ -33,40 +33,55 @@
 
 ## Solution 1.
 
+* A[L] < A[R] => L
+* A[L] == A[R]
+  - A[M] > A[R] => L = M + 1
+  - A[M] < A[R] => R = M
+  - A[M] == A[R] => Special
+* A[L] > A[R]
+  - A[M] > A[R] => L = M + 1
+  - A[M] < A[R] => R = M
+  - A[M] == A[R] => R = M
+
+Special part: `A[L] == A[M] == A[R]`
+
+Find the first `L < k < R` that `A[k] != A[L]`:
+
+* No such `k`, return `L`
+* `A[k] < A[L]`, return `k`
+* `A[k] > A[L]`, let `L = k + 1` and continue.
+
 ```cpp
 // OJ: https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 // Author: github.com/lzl124631x
 // Time: average O(logN), worst O(N)
 // Space: O(1)
 class Solution {
-private:
-    int findPivot (vector<int> &nums) {
-        int L = 0, R = nums.size() - 1;
-        while (L < R) {
+    int findStart(vector<int> &A) {
+        int L = 0, R = A.size() - 1;
+        while (L + 1 < R) {
+            if (A[L] < A[R]) return L;
             int M = (L + R) / 2;
-            if (nums[M] > nums[R]) L = M + 1;
-            else if (nums[M] < nums[R]) R = M;
-            else if (nums[M] > nums[L]) break;
-            else if (nums[M] < nums[L]) R = M;
+            if (A[M] > A[R]) L = M + 1;
+            else if (A[M] < A[R] || (A[M] == A[R] && A[L] > A[R])) R = M;
             else {
-                int LL = L;
-                while (L < R && nums[L] == nums[R]) ++L;
-                if (L == R) L = LL;
-                if (nums[L] > nums[R]) continue;
-                break;
+                int k = L;
+                while (k < R && A[L] == A[k]) ++k;
+                if (k == R) return L;
+                if (A[k] < A[L]) return k;
+                L = k + 1;
             }
         }
-        return L;
+        return A[L] < A[R] ? L : R;
     }
 public:
-    bool search(vector<int>& nums, int target) {
-        int pivot = findPivot(nums);
-        int N = nums.size(), L = 0, R = N - 1;
+    bool search(vector<int>& A, int T) {
+        if (A.empty()) return false;
+        int start = findStart(A), N = A.size(), L = 0, R = N - 1;
         while (L <= R) {
-            int M = L + (R - L) / 2;
-            int MM = (M + pivot) % N;
-            if (target == nums[MM]) return true;
-            if (target > nums[MM]) L = M + 1;
+            int M = (L + R) / 2, mid = (start + M) % N;
+            if (A[mid] == T) return true;
+            if (A[mid] < T) L = M + 1;
             else R = M - 1;
         }
         return false;
