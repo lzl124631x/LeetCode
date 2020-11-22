@@ -73,3 +73,27 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+Starts with all `'a'`, fill the `k` value from the end of the array backwards.
+
+```cpp
+// OJ: https://leetcode.com/problems/smallest-string-with-a-given-numeric-value/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    string getSmallestString(int n, int k) {
+        string s(n, 'a');
+        k -= n;
+        for (int i = n - 1; k > 0; --i) {
+            int d = min(k, 25);
+            s[i] += d;
+            k -= d;
+        }
+        return s;
+    }
+};
+```
