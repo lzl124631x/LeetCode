@@ -81,7 +81,7 @@ Some corner cases:
 ```cpp
 // OJ: https://leetcode.com/problems/construct-target-array-with-multiple-sums/
 // Author: github.com/lzl124631x
-// Time: O(TlogN) where T is the steps to get to targets, N is the length of targets
+// Time: O(NlogN)
 // Space: O(N)
 class Solution {
 public:
@@ -100,6 +100,32 @@ public:
             pq.push(next);
         }
         return true;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/construct-target-array-with-multiple-sums/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class Solution {
+public:
+    bool isPossible(vector<int>& A) {
+        long sum = accumulate(begin(A), end(A), 0L);
+        priority_queue<int> pq(begin(A), end(A));
+        while (true) {
+            long n = pq.top();
+            pq.pop();
+            sum -= n;
+            if (n == 1 || sum == 1) return true;
+            if (n < sum || sum == 0 || n % sum == 0) return false;
+            n %= sum;
+            sum += n;
+            pq.push(n);
+        }
     }
 };
 ```
