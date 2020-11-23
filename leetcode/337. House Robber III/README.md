@@ -32,7 +32,7 @@
 </pre>
 
 **Related Topics**:  
-[Tree](https://leetcode.com/tag/tree/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/)
+[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Tree](https://leetcode.com/tag/tree/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/)
 
 **Similar Questions**:
 * [House Robber (Easy)](https://leetcode.com/problems/house-robber/)
@@ -68,6 +68,10 @@ public:
 ```
 
 ## Solution 2. DP
+
+When doing post-order traversal, return a pair of numbers indicating:
+1. the maximum value we can get at the current node, including both rob and skip.
+2. the maximum value we can get if we skip the current node.
 
 ```cpp
 // OJ: https://leetcode.com/problems/house-robber-iii/
