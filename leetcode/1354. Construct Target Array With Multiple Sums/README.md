@@ -52,12 +52,6 @@
 
 From the target, try to reach all `1`s.
 
-Repeat the following steps:
-1. Assume the largest number be `m`. If `m == 1`, then return `true`.
-2. otherwise, let `n = m - sum({ other numbers })`.
-    * if `n < 1`, return `false`.
-    * otherwise, replace `m` with `n`.
-
 Case 1: `[3, 5, 9]`
 * `[3,5,9]`, `9 - (3 + 5) = 1`, so we can get `[1, 3, 5]`.
 * `[1,3,5]`, `5 - (1 + 3) = 1`, so we can get `[1, 1, 3]`.
@@ -72,27 +66,39 @@ Case 3: `[8,5]`
 * `[2,3]`, `3 - 2 = 1`, so we can get `[1,2]`
 * `[1,2]`, `2 - 1 = 1`, so we can get `[1,1]`.
 
+Let `sum` be the sum of all numbers.
+
+Repeat the following steps:
+* Get the largest number `n`. Update `n` to be `next = n % {sum of all other numbers}`, i.e. `next = n % (sum - n)`.
+* Decrease `sum` by `n - next`.
+* Repeat until the sum of all numbers become `A.size()`.
+
+Some corner cases:
+1. If `sum - n == 1`, return `true`.
+2. If `n < sum - n`, return `false`.
+3. If `n % (sum - n) == 0`, return `false`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/construct-target-array-with-multiple-sums/
 // Author: github.com/lzl124631x
 // Time: O(TlogN) where T is the steps to get to targets, N is the length of targets
 // Space: O(N)
-typedef long long LL;
 class Solution {
 public:
     bool isPossible(vector<int>& A) {
-        LL sum = accumulate(A.begin(), A.end(), 0LL);
-        priority_queue<LL> pq(A.begin(), A.end());
-        while (pq.top() != 1) {
-            LL n = pq.top();
+        if (A.size() == 1) return A[0] == 1;
+        long sum = accumulate(begin(A), end(A), 0L), N = A.size();
+        priority_queue<int> pq(begin(A), end(A));
+        while (sum > N) {
+            long n = pq.top();
             pq.pop();
-            LL rest = sum - n;
-            if (n - rest < 1) return false;
-            pq.push(n - rest);
-            sum -= rest;
+            if (sum - n == 1) return true; 
+            if (n < sum - n) return false;
+            long next = n % (sum - n);
+            if (next == 0) return false;
+            sum -= n - next;
+            pq.push(next);
         }
-  
         return true;
     }
 };
