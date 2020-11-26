@@ -70,3 +70,23 @@ public:
     }
 };
 ```
+
+## Solution 2. DP with Space Optimization
+
+```cpp
+// OJ: https://leetcode.com/problems/greatest-sum-divisible-by-three/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int maxSumDivThree(vector<int>& A) {
+        array<int, 3> dp = { 0, INT_MIN, INT_MIN }, tmp;
+        for (int n : A) {
+            tmp = dp;
+            for (int j = 0; j < 3; ++j) dp[j] = max(tmp[j], n + tmp[(j + 3 - n % 3) % 3]);
+        }
+        return dp[0];
+    }
+};
+```
