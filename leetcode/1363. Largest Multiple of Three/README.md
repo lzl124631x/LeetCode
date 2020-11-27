@@ -124,14 +124,13 @@ Or
 class Solution {
 public:
     string largestMultipleOfThree(vector<int>& A) {
-        int cnt[10] = {}, s = 0;
+        int cnt[10] = {}, s = 0, nums[6] = {1,4,7,2,5,8};
         for (int n : A) cnt[n]++, s += n;
         if (s % 3 == 2 && cnt[2]) cnt[2]--, s -= 2;
         if (s % 3 == 2 && cnt[5]) cnt[5]--, s -= 5;
         if (s % 3 == 2 && cnt[8]) cnt[8]--, s -= 8;
-        int nums[6] = {1,4,7,2,5,8};
-        for (int i : nums) {
-            while (s % 3 > 0 && cnt[i]) cnt[i]--, s -= i;
+        for (int n : nums) {
+            while (s % 3 && cnt[n]) cnt[n]--, s -= n;
         }
         if (s == 0) return cnt[0] ? "0" : "";
         string ans;
