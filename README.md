@@ -819,6 +819,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1079 | Letter Tile Possibilities | Medium | [Solution](leetcode/1079.%20Letter%20Tile%20Possibilities)
 1080 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/1080.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
 1081 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/1081.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
+1090 | Largest Values From Labels | Medium | [Solution](leetcode/1090.%20Largest%20Values%20From%20Labels)
 1092 | Shortest Common Supersequence | Hard | [Solution](leetcode/1092.%20Shortest%20Common%20Supersequence)
 1094 | Car Pooling | Medium | [Solution](leetcode/1094.%20Car%20Pooling)
 1096 | Brace Expansion II | Hard | [Solution](leetcode/1096.%20Brace%20Expansion%20II)
@@ -868,6 +869,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1249 | Minimum Remove to Make Valid Parentheses | Medium | [Solution](leetcode/1249.%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses)
 1252 | Cells with Odd Values in a Matrix | Easy | [Solution](leetcode/1252.%20Cells%20with%20Odd%20Values%20in%20a%20Matrix)
 1253 | Reconstruct a 2-Row Binary Matrix | Medium | [Solution](leetcode/1253.%20Reconstruct%20a%202-Row%20Binary%20Matrix)
+1262 | Greatest Sum Divisible by Three | Medium | [Solution](leetcode/1262.%20Greatest%20Sum%20Divisible%20by%20Three)
 1263 | Minimum Moves to Move a Box to Their Target Location | Hard | [Solution](leetcode/1263.%20Minimum%20Moves%20to%20Move%20a%20Box%20to%20Their%20Target%20Location)
 1266 | Minimum Time Visiting All Points | Easy | [Solution](leetcode/1266.%20Minimum%20Time%20Visiting%20All%20Points)
 1267 | Count Servers that Communicate | Medium | [Solution](leetcode/1267.%20Count%20Servers%20that%20Communicate)
@@ -1140,6 +1142,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1663 | Smallest String With A Given Numeric Value | Medium | [Solution](leetcode/1663.%20Smallest%20String%20With%20A%20Given%20Numeric%20Value)
 1664 | Ways to Make a Fair Array | Medium | [Solution](leetcode/1664.%20Ways%20to%20Make%20a%20Fair%20Array)
 1665 | Minimum Initial Energy to Finish Tasks | Hard | [Solution](leetcode/1665.%20Minimum%20Initial%20Energy%20to%20Finish%20Tasks)
+1668 | Maximum Repeating Substring | Easy | [Solution](leetcode/1668.%20Maximum%20Repeating%20Substring)
+1669 | Merge In Between Linked Lists | Medium | [Solution](leetcode/1669.%20Merge%20In%20Between%20Linked%20Lists)
+1670 | Design Front Middle Back Queue | Medium | [Solution](leetcode/1670.%20Design%20Front%20Middle%20Back%20Queue)
+1671 | Minimum Number of Removals to Make Mountain Array | Hard | [Solution](leetcode/1671.%20Minimum%20Number%20of%20Removals%20to%20Make%20Mountain%20Array)
 
 # License
 
