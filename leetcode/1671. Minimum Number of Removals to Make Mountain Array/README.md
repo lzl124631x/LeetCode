@@ -69,7 +69,7 @@ Assume we pick `A[i]` as the peak of the mountain, then we are looking for the l
 
 We can reuse the `O(NlogN)` time **binary search** solution to [300. Longest Increasing Subsequence (Medium)](https://leetcode.com/problems/longest-increasing-subsequence/).
 
-For the binary search solution to problem 300, please checkout [my explanation](https://github.com/lzl124631x/LeetCode/tree/master/leetcode/300.%20Longest%20Increasing%20Subsequence).
+For the binary search solution to problem 300, please checkout [my explanation](../300.%20Longest%20Increasing%20Subsequence).
 
 ### Algorithm
 
