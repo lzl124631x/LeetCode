@@ -58,6 +58,14 @@ public:
 
 ## Solution 2. Binary Search
 
+We use a `vector<int> v` to store the LIS. `v` is always sorted.
+
+For each `n` in `A`, we first find the first `v[i]` that is `>= n`. 
+
+If such `v[i]` exists, we replace `v[i]` with `n`. Such operation won't break the LIS but make this LIS easier to extend.
+
+Otherwise, `n` is greater than all values in `v`, we can simply append `n` into `v`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/longest-increasing-subsequence/
 // Author: github.com/lzl124631x
