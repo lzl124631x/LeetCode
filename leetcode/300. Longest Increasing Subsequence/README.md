@@ -1,21 +1,44 @@
 # [300. Longest Increasing Subsequence (Medium)](https://leetcode.com/problems/longest-increasing-subsequence/)
 
-<p>Given an unsorted array of integers, find the length of longest increasing subsequence.</p>
+<p>Given an integer array <code>nums</code>, return the length of the longest strictly increasing subsequence.</p>
 
-<p><b>Example:</b></p>
+<p>A <strong>subsequence</strong> is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements. For example, <code>[3,6,2,7]</code> is a subsequence of the array <code>[0,3,1,6,2,2,7]</code>.</p>
 
-<pre><b>Input:</b> <code>[10,9,2,5,3,7,101,18]
-</code><b>Output: </b>4 
-<strong>Explanation: </strong>The longest increasing subsequence is <code>[2,3,7,101]</code>, therefore the length is <code>4</code>. </pre>
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-<p><strong>Note: </strong></p>
+<pre><strong>Input:</strong> nums = [10,9,2,5,3,7,101,18]
+<strong>Output:</strong> 4
+<strong>Explanation:</strong> The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums = [0,1,0,3,2,3]
+<strong>Output:</strong> 4
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> nums = [7,7,7,7,7,7,7]
+<strong>Output:</strong> 1
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
 <ul>
-	<li>There may be more than one LIS combination, it is only necessary for you to return the length.</li>
-	<li>Your algorithm should run in O(<i>n<sup>2</sup></i>) complexity.</li>
+	<li><code>1 &lt;= nums.length &lt;= 2500</code></li>
+	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
-<p><b>Follow up:</b> Could you improve it to O(<i>n</i> log <i>n</i>) time complexity?</p>
+<p>&nbsp;</p>
+<p><b>Follow up:</b></p>
+
+<ul>
+	<li>Could you come up with the <code>O(n<sup>2</sup>)</code> solution?</li>
+	<li>Could you improve it to <code>O(n log(n))</code> time complexity?</li>
+</ul>
 
 
 **Related Topics**:  
@@ -27,6 +50,7 @@
 * [Maximum Length of Pair Chain (Medium)](https://leetcode.com/problems/maximum-length-of-pair-chain/)
 * [Number of Longest Increasing Subsequence (Medium)](https://leetcode.com/problems/number-of-longest-increasing-subsequence/)
 * [Minimum ASCII Delete Sum for Two Strings (Medium)](https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/)
+* [Minimum Number of Removals to Make Mountain Array (Hard)](https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/)
 
 ## Solution 1. DP
 
@@ -85,3 +109,7 @@ public:
     }
 };
 ```
+
+## Note
+
+[1671. Minimum Number of Removals to Make Mountain Array (Hard)](https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/) is a great bidirectional extension of this problem.
