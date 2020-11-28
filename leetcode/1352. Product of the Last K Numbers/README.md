@@ -54,33 +54,7 @@ productOfNumbers.getProduct(2); // return 32. The product of the last 2 numbers 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Design](https://leetcode.com/tag/design/)
 
-## Solution 1. Brute Force
-
-```cpp
-// OJ: https://leetcode.com/problems/product-of-the-last-k-numbers/
-// Author: github.com/lzl124631x
-// Time:
-//      ProductOfNumbers, add: O(1)
-//      getProduct: O(k)
-// Space: O(N)
-class ProductOfNumbers {
-    vector<int> v;
-public:
-    ProductOfNumbers() {}
-    void add(int num) {
-        v.push_back(num);
-    }
-    int getProduct(int k) {
-        int ans = 1;
-        for (int i = v.size() - 1; k-- && ans; --i) {
-            ans *= v[i];
-        }
-        return ans;
-    }
-};
-```
-
-## Solution 2. Prefix Product
+## Solution 1. Prefix Product
 
 ```cpp
 // OJ: https://leetcode.com/problems/product-of-the-last-k-numbers/
