@@ -44,10 +44,12 @@
 
 ## Solution 1. Brute force
 
+Note that `find` takes `O(N^2)` instead of `O(N)`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-repeating-substring/
 // Author: github.com/lzl124631x
-// Time: O(N^2)
+// Time: O(N^3)
 // Space: O(N)
 class Solution {
 public:
