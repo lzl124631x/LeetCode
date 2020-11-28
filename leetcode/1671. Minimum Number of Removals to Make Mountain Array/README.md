@@ -91,16 +91,16 @@ public:
         vector<int> a(N), b(N), v;
         for (int i = 0 ; i < N; ++i) {
             int x = A[i];
-            a[i] = lower_bound(begin(v), end(v), x) - begin(v);
             auto it = lower_bound(begin(v), end(v), x);
+            a[i] = it - begin(v);
             if (it != end(v)) *it = x;
             else v.push_back(x);
         }
         v.clear();
         for (int i = N - 1; i >= 0; --i) {
             int x = A[i];
-            b[i] = lower_bound(begin(v), end(v), x) - begin(v); 
             auto it = lower_bound(begin(v), end(v), x) ;
+            b[i] = it - begin(v); 
             if (it != end(v)) *it = x;
             else v.push_back(x);
         }
