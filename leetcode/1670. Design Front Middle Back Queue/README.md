@@ -59,7 +59,7 @@ q.popFront();     // return -1 -&gt; [] (The queue is empty)
 * [Design Circular Deque (Medium)](https://leetcode.com/problems/design-circular-deque/)
 * [Design Circular Queue (Medium)](https://leetcode.com/problems/design-circular-queue/)
 
-## Solution 1. Two Deque
+## Solution 1. Two Deques
 
 Use two `deque<int> a, b` where `a` and `b` represent the first and second half of the numbers in queue, respectively.
 
