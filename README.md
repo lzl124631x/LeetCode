@@ -879,6 +879,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1278 | Palindrome Partitioning III | Hard | [Solution](leetcode/1278.%20Palindrome%20Partitioning%20III)
 1282 | Group the People Given the Group Size They Belong To | Medium | [Solution](leetcode/1282.%20Group%20the%20People%20Given%20the%20Group%20Size%20They%20Belong%20To)
 1283 | Find the Smallest Divisor Given a Threshold | Medium | [Solution](leetcode/1283.%20Find%20the%20Smallest%20Divisor%20Given%20a%20Threshold)
+1284 | Minimum Number of Flips to Convert Binary Matrix to Zero Matrix | Hard | [Solution](leetcode/1284.%20Minimum%20Number%20of%20Flips%20to%20Convert%20Binary%20Matrix%20to%20Zero%20Matrix)
 1286 | Iterator for Combination | Medium | [Solution](leetcode/1286.%20Iterator%20for%20Combination)
 1288 | Remove Covered Intervals | Medium | [Solution](leetcode/1288.%20Remove%20Covered%20Intervals)
 1289 | Minimum Falling Path Sum II | Hard | [Solution](leetcode/1289.%20Minimum%20Falling%20Path%20Sum%20II)
@@ -1146,6 +1147,8 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1669 | Merge In Between Linked Lists | Medium | [Solution](leetcode/1669.%20Merge%20In%20Between%20Linked%20Lists)
 1670 | Design Front Middle Back Queue | Medium | [Solution](leetcode/1670.%20Design%20Front%20Middle%20Back%20Queue)
 1671 | Minimum Number of Removals to Make Mountain Array | Hard | [Solution](leetcode/1671.%20Minimum%20Number%20of%20Removals%20to%20Make%20Mountain%20Array)
+1672 | Richest Customer Wealth | Easy | [Solution](leetcode/1672.%20Richest%20Customer%20Wealth)
+1673 | Find the Most Competitive Subsequence | Medium | [Solution](leetcode/1673.%20Find%20the%20Most%20Competitive%20Subsequence)
 
 # License
 
