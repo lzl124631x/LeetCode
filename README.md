@@ -514,6 +514,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 627 | Swap Salary | Easy | [Solution](leetcode/627.%20Swap%20Salary)
 628 | Maximum Product of Three Numbers | Easy | [Solution](leetcode/628.%20Maximum%20Product%20of%20Three%20Numbers)
 629 | K Inverse Pairs Array | Hard | [Solution](leetcode/629.%20K%20Inverse%20Pairs%20Array)
+632 | Smallest Range Covering Elements from K Lists | Hard | [Solution](leetcode/632.%20Smallest%20Range%20Covering%20Elements%20from%20K%20Lists)
 636 | Exclusive Time of Functions | Medium | [Solution](leetcode/636.%20Exclusive%20Time%20of%20Functions)
 637 | Average of Levels in Binary Tree | Easy | [Solution](leetcode/637.%20Average%20of%20Levels%20in%20Binary%20Tree)
 638 | Shopping Offers | Medium | [Solution](leetcode/638.%20Shopping%20Offers)
@@ -1149,6 +1150,8 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1671 | Minimum Number of Removals to Make Mountain Array | Hard | [Solution](leetcode/1671.%20Minimum%20Number%20of%20Removals%20to%20Make%20Mountain%20Array)
 1672 | Richest Customer Wealth | Easy | [Solution](leetcode/1672.%20Richest%20Customer%20Wealth)
 1673 | Find the Most Competitive Subsequence | Medium | [Solution](leetcode/1673.%20Find%20the%20Most%20Competitive%20Subsequence)
+1674 | Minimum Moves to Make Array Complementary | Medium | [Solution](leetcode/1674.%20Minimum%20Moves%20to%20Make%20Array%20Complementary)
+1675 | Minimize Deviation in Array | Hard | [Solution](leetcode/1675.%20Minimize%20Deviation%20in%20Array)
 
 # License
 
