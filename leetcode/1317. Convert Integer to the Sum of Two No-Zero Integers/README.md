@@ -58,8 +58,8 @@
 ```cpp
 // OJ: https://leetcode.com/problems/convert-integer-to-the-sum-of-two-no-zero-integers/
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(NlogN)
+// Space: O(1)
 class Solution {
     bool hasZero(int n) {
         for (; n; n /= 10) {
