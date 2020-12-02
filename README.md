@@ -323,7 +323,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 379 | Design Phone Directory | Medium | [Solution](leetcode/379.%20Design%20Phone%20Directory)
 380 | Insert Delete GetRandom O(1) | Medium | [Solution](leetcode/380.%20Insert%20Delete%20GetRandom%20O%281%29)
 381 | Insert Delete GetRandom O(1) - Duplicates allowed | Hard | [Solution](leetcode/381.%20Insert%20Delete%20GetRandom%20O%281%29%20-%20Duplicates%20allowed)
-382 | Linked List Random Node |  | [Solution](leetcode/382.%20Linked%20List%20Random%20Node)
+382 | Linked List Random Node | Medium | [Solution](leetcode/382.%20Linked%20List%20Random%20Node)
 383 | Ransom Note | Easy | [Solution](leetcode/383.%20Ransom%20Note)
 384 | Shuffle an Array |  | [Solution](leetcode/384.%20Shuffle%20an%20Array)
 385 | Mini Parser | Medium | [Solution](leetcode/385.%20Mini%20Parser)
