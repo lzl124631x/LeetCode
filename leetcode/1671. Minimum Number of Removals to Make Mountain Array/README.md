@@ -61,7 +61,7 @@
 * [Valid Mountain Array (Easy)](https://leetcode.com/problems/valid-mountain-array/)
 * [Find in Mountain Array (Hard)](https://leetcode.com/problems/find-in-mountain-array/)
 
-## Solution 1. Three passes O(NlogN)
+## Solution 1. Three passes
 
 ### Intuition
 
