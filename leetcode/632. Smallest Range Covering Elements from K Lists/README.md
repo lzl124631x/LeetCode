@@ -82,7 +82,7 @@ We can use two pointers. One pointer scans the max value, and the other pointer 
 
 In the worst case, the pointers needs to scan through all the elements. Assume the maximum length of `A[i]` is `N`, then there are `O(NK)` elements.
 
-For each pair of `{ min, max }`, we need to run the `valid` function to check if this range is valid, which takes `O(KlogN)` time.
+For each pair of `{ min, max }` pointed by the two pointers, we need to run the `valid` function to check if this range is valid, which takes `O(KlogN)` time.
 
 So overall the time complexity is `O(K^2 * NlogN)`.
 
@@ -149,8 +149,7 @@ class Solution {
 public:
     vector<int> smallestRange(vector<vector<int>>& A) {
         int N = A.size(), mx = INT_MIN;
-        vector<int> ans = { 0, INT_MAX };
-        vector<int> next(N);
+        vector<int> ans = { 0, 200001 }, next(N);
         auto cmp = [&](int a, int b) { return A[a][next[a]] > A[b][next[b]]; };
         priority_queue<int, vector<int>, decltype(cmp)> pq(cmp);
         for (int i = 0; i < N; ++i) {
@@ -158,9 +157,9 @@ public:
             mx = max(mx, A[i][0]);
         }
         while (true) {
-            int i = pq.top();
+            int i = pq.top(), mn = A[i][next[i]];
             pq.pop();
-            if (ans[1] - ans[0] > mx - A[i][next[i]]) ans = { A[i][next[i]], mx };
+            if (ans[1] - ans[0] > mx - mn || (ans[1] - ans[0] == mx - mn && mn < ans[0])) ans = { A[i][next[i]], mx };
             if (++next[i] == A[i].size()) break;
             pq.push(i);
             mx = max(mx, A[i][next[i]]);
