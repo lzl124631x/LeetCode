@@ -889,6 +889,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1283 | Find the Smallest Divisor Given a Threshold | Medium | [Solution](leetcode/1283.%20Find%20the%20Smallest%20Divisor%20Given%20a%20Threshold)
 1284 | Minimum Number of Flips to Convert Binary Matrix to Zero Matrix | Hard | [Solution](leetcode/1284.%20Minimum%20Number%20of%20Flips%20to%20Convert%20Binary%20Matrix%20to%20Zero%20Matrix)
 1286 | Iterator for Combination | Medium | [Solution](leetcode/1286.%20Iterator%20for%20Combination)
+1287 | Element Appearing More Than 25% In Sorted Array | Easy | [Solution](leetcode/1287.%20Element%20Appearing%20More%20Than%2025%25%20In%20Sorted%20Array)
 1288 | Remove Covered Intervals | Medium | [Solution](leetcode/1288.%20Remove%20Covered%20Intervals)
 1289 | Minimum Falling Path Sum II | Hard | [Solution](leetcode/1289.%20Minimum%20Falling%20Path%20Sum%20II)
 1290 | Convert Binary Number in a Linked List to Integer | Easy | [Solution](leetcode/1290.%20Convert%20Binary%20Number%20in%20a%20Linked%20List%20to%20Integer)
