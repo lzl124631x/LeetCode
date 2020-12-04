@@ -811,6 +811,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1046 | Last Stone Weight | Easy | [Solution](leetcode/1046.%20Last%20Stone%20Weight)
 1047 | Remove All Adjacent Duplicates In String | Easy | [Solution](leetcode/1047.%20Remove%20All%20Adjacent%20Duplicates%20In%20String)
 1048 | Longest String Chain | Medium | [Solution](leetcode/1048.%20Longest%20String%20Chain)
+1051 | Height Checker | Easy | [Solution](leetcode/1051.%20Height%20Checker)
 1052 | Grumpy Bookstore Owner | Medium | [Solution](leetcode/1052.%20Grumpy%20Bookstore%20Owner)
 1053 | Previous Permutation With One Swap | Medium | [Solution](leetcode/1053.%20Previous%20Permutation%20With%20One%20Swap)
 1054 | Distant Barcodes | Medium | [Solution](leetcode/1054.%20Distant%20Barcodes)
