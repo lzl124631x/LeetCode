@@ -882,6 +882,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1267 | Count Servers that Communicate | Medium | [Solution](leetcode/1267.%20Count%20Servers%20that%20Communicate)
 1268 | Search Suggestions System | Medium | [Solution](leetcode/1268.%20Search%20Suggestions%20System)
 1269 | Number of Ways to Stay in the Same Place After Some Steps | Hard | [Solution](leetcode/1269.%20Number%20of%20Ways%20to%20Stay%20in%20the%20Same%20Place%20After%20Some%20Steps)
+1275 | Find Winner on a Tic Tac Toe Game | Easy | [Solution](leetcode/1275.%20Find%20Winner%20on%20a%20Tic%20Tac%20Toe%20Game)
 1277 | Count Square Submatrices with All Ones | Medium | [Solution](leetcode/1277.%20Count%20Square%20Submatrices%20with%20All%20Ones)
 1278 | Palindrome Partitioning III | Hard | [Solution](leetcode/1278.%20Palindrome%20Partitioning%20III)
 1281 | Subtract the Product and Sum of Digits of an Integer | Easy | [Solution](leetcode/1281.%20Subtract%20the%20Product%20and%20Sum%20of%20Digits%20of%20an%20Integer)
