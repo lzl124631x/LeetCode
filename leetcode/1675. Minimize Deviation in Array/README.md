@@ -183,3 +183,36 @@ public:
     }
 };
 ```
+
+## Solution 3. 
+
+Solution 2 is increasing the number. But if we turn odd numbers `n` to `2n` and decrease the numbers, we don't need to care about the lower bound because the lower bound is always met when the number becomes odd.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimize-deviation-in-array/
+// Author: github.com/lzl124631x
+// Time: O(NlogN * logC)
+// Space: O(N)
+class Solution {
+public:
+    int minimumDeviation(vector<int>& A) {
+        int N = A.size(), ans = INT_MAX, mn = INT_MAX;
+        priority_queue<int> pq;
+        for (int n : A) {
+            int m = n % 2 ? 2 * n : n;
+            pq.push(m);
+            mn = min(mn, m);
+        }
+        while (true) {
+            int mx = pq.top();
+            pq.pop();
+            ans = min(ans, mx - mn);
+            if (mx % 2) break;
+            mx /= 2;
+            mn = min(mn, mx);
+            pq.push(mx);
+        }
+        return ans;
+    }
+};
+```
