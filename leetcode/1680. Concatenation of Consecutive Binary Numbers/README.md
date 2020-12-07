@@ -49,6 +49,8 @@ So we have
 ```plaintext
 f(n)   = (1 << sum_len(2, n))   + (2 << sum_len(3, n))   + ... + ((n - 1) << sum_len(n, n)) + (n << 0)
 
+// Example: f(4) = 11011100 = (1 << (2+2+3)) + (2 << (2+3)) + (3 << 3) +(4 << 0)
+
 f(n-1) = (1 << sum_len(2, n-1)) + (2 << sum_len(3, n-1)) + ... + ((n - 1) << 0)
 
 f(n) = (f(n-1) << len(n)) + n
@@ -67,7 +69,7 @@ f(3) = 11011 = (f(2) << 2) + 3  // len(3) = 2
 ```cpp
 // OJ: https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/
 // Author: github.com/lzl124631x
-// Time: O(N)
+// Time: O(NlogN)
 // Space: O(1)
 class Solution {
 public:
@@ -83,7 +85,9 @@ public:
 };
 ```
 
-Or with the help of `__builtin_clz` which returns the number of leading zeros for a number (`len = 32 - __builtin_clz(i))`).
+## Solution 2.
+
+We spent `O(logN)` time for calculating the `len`. We can reduce it to `O(1)` with the help of `__builtin_clz` which returns the number of leading zeros for a number, so `len = 32 - __builtin_clz(i)`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/
@@ -95,6 +99,26 @@ public:
     int concatenatedBinary(int n) {
         long ans = 0, mod = 1e9+7;
         for (int i = 1; i <= n; ++i) ans = ((ans << (32 - __builtin_clz(i))) % mod + i) % mod;
+        return ans;
+    }
+};
+```
+
+Or, with the observation that the `len` only increment when the `i` is a power of `2`, we can increment `len` only when `i` has a single bit `1`. We can check this via `(i & (i - 1)) == 0`.
+
+```cpp
+// OJ: https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int concatenatedBinary(int n) {
+        long ans = 0, mod = 1e9+7, len = 0;
+        for (int i = 1; i <= n; ++i) {
+            if ((i & (i - 1)) == 0) ++len;
+            ans = ((ans << len) % mod + i) % mod;
+        }
         return ans;
     }
 };
