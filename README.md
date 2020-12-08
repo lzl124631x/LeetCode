@@ -70,7 +70,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 55 | Jump Game | Medium | [Solution](leetcode/55.%20Jump%20Game)
 57 | Insert Interval | Hard | [Solution](leetcode/57.%20Insert%20Interval)
 58 | Length of Last Word | Easy | [Solution](leetcode/58.%20Length%20of%20Last%20Word)
-59 | Spiral Matrix II |  | [Solution](leetcode/59.%20Spiral%20Matrix%20II)
+59 | Spiral Matrix II | Medium | [Solution](leetcode/59.%20Spiral%20Matrix%20II)
 60 | Permutation Sequence | Medium | [Solution](leetcode/60.%20Permutation%20Sequence)
 61 | Rotate List | Medium | [Solution](leetcode/61.%20Rotate%20List)
 62 | Unique Paths | Medium | [Solution](leetcode/62.%20Unique%20Paths)
@@ -780,9 +780,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1004 | Max Consecutive Ones III | Medium | [Solution](leetcode/1004.%20Max%20Consecutive%20Ones%20III)
 1005 | Maximize Sum Of Array After K Negations | Easy | [Solution](leetcode/1005.%20Maximize%20Sum%20Of%20Array%20After%20K%20Negations)
 1008 | Construct Binary Search Tree from Preorder Traversal | Medium | [Solution](leetcode/1008.%20Construct%20Binary%20Search%20Tree%20from%20Preorder%20Traversal)
+1010 | Pairs of Songs With Total Durations Divisible by 60 | Medium | [Solution](leetcode/1010.%20Pairs%20of%20Songs%20With%20Total%20Durations%20Divisible%20by%2060)
 1011 | Capacity To Ship Packages Within D Days | Medium | [Solution](leetcode/1011.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
 1012 | Complement of Base 10 Integer | Easy | [Solution](leetcode/1012.%20Complement%20of%20Base%2010%20Integer)
-1013 | Pairs of Songs With Total Durations Divisible by 60 | Easy | [Solution](leetcode/1013.%20Pairs%20of%20Songs%20With%20Total%20Durations%20Divisible%20by%2060)
 1014 | Best Sightseeing Pair | Medium | [Solution](leetcode/1014.%20Best%20Sightseeing%20Pair)
 1016 | Binary String With Substrings Representing 1 To N | Medium | [Solution](leetcode/1016.%20Binary%20String%20With%20Substrings%20Representing%201%20To%20N)
 1017 | Convert to Base -2 | Medium | [Solution](leetcode/1017.%20Convert%20to%20Base%20-2)
@@ -1169,7 +1169,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1678 | Goal Parser Interpretation | Easy | [Solution](leetcode/1678.%20Goal%20Parser%20Interpretation)
 1679 | Max Number of K-Sum Pairs | Medium | [Solution](leetcode/1679.%20Max%20Number%20of%20K-Sum%20Pairs)
 1680 | Concatenation of Consecutive Binary Numbers | Medium | [Solution](leetcode/1680.%20Concatenation%20of%20Consecutive%20Binary%20Numbers)
-5619 | Minimum Incompatibility |  | [Solution](leetcode/5619.%20Minimum%20Incompatibility)
+1681 | Minimum Incompatibility | Hard | [Solution](leetcode/1681.%20Minimum%20Incompatibility)
 
 # License
 
