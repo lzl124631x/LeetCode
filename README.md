@@ -560,6 +560,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 693 | Binary Number with Alternating Bits | Easy | [Solution](leetcode/693.%20Binary%20Number%20with%20Alternating%20Bits)
 694 | Number of Distinct Islands | Medium | [Solution](leetcode/694.%20Number%20of%20Distinct%20Islands)
 695 | Max Area of Island | Medium | [Solution](leetcode/695.%20Max%20Area%20of%20Island)
+696 | Count Binary Substrings | Easy | [Solution](leetcode/696.%20Count%20Binary%20Substrings)
 697 | Degree of an Array | Easy | [Solution](leetcode/697.%20Degree%20of%20an%20Array)
 699 | Falling Squares | Hard | [Solution](leetcode/699.%20Falling%20Squares)
 700 | Search in a Binary Search Tree | Easy | [Solution](leetcode/700.%20Search%20in%20a%20Binary%20Search%20Tree)
