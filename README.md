@@ -844,6 +844,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1111 | Maximum Nesting Depth of Two Valid Parentheses Strings | Medium | [Solution](leetcode/1111.%20Maximum%20Nesting%20Depth%20of%20Two%20Valid%20Parentheses%20Strings)
 1122 | Relative Sort Array | Easy | [Solution](leetcode/1122.%20Relative%20Sort%20Array)
 1125 | Smallest Sufficient Team | Hard | [Solution](leetcode/1125.%20Smallest%20Sufficient%20Team)
+1128 | Number of Equivalent Domino Pairs | Easy | [Solution](leetcode/1128.%20Number%20of%20Equivalent%20Domino%20Pairs)
 1130 | Minimum Cost Tree From Leaf Values | Medium | [Solution](leetcode/1130.%20Minimum%20Cost%20Tree%20From%20Leaf%20Values)
 1137 | N-th Tribonacci Number | Easy | [Solution](leetcode/1137.%20N-th%20Tribonacci%20Number)
 1139 | Largest 1-Bordered Square | Medium | [Solution](leetcode/1139.%20Largest%201-Bordered%20Square)
