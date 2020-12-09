@@ -768,6 +768,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 985 | Sum of Even Numbers After Queries | Easy | [Solution](leetcode/985.%20Sum%20of%20Even%20Numbers%20After%20Queries)
 986 | Interval List Intersections | Medium | [Solution](leetcode/986.%20Interval%20List%20Intersections)
 987 | Vertical Order Traversal of a Binary Tree | Medium | [Solution](leetcode/987.%20Vertical%20Order%20Traversal%20of%20a%20Binary%20Tree)
+989 | Add to Array-Form of Integer | Easy | [Solution](leetcode/989.%20Add%20to%20Array-Form%20of%20Integer)
 990 | Satisfiability of Equality Equations | Medium | [Solution](leetcode/990.%20Satisfiability%20of%20Equality%20Equations)
 992 | Subarrays with K Different Integers | Hard | [Solution](leetcode/992.%20Subarrays%20with%20K%20Different%20Integers)
 993 | Cousins in Binary Tree | Easy | [Solution](leetcode/993.%20Cousins%20in%20Binary%20Tree)
