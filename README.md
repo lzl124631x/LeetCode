@@ -720,6 +720,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 922 | Sort Array By Parity II | Easy | [Solution](leetcode/922.%20Sort%20Array%20By%20Parity%20II)
 923 | 3Sum With Multiplicity | Medium | [Solution](leetcode/923.%203Sum%20With%20Multiplicity)
 924 | Minimize Malware Spread | Hard | [Solution](leetcode/924.%20Minimize%20Malware%20Spread)
+925 | Long Pressed Name | Easy | [Solution](leetcode/925.%20Long%20Pressed%20Name)
 926 | Flip String to Monotone Increasing | Medium | [Solution](leetcode/926.%20Flip%20String%20to%20Monotone%20Increasing)
 928 | Minimize Malware Spread II | Hard | [Solution](leetcode/928.%20Minimize%20Malware%20Spread%20II)
 929 | Unique Email Addresses | Easy | [Solution](leetcode/929.%20Unique%20Email%20Addresses)
