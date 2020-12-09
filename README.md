@@ -804,6 +804,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1030 | Matrix Cells in Distance Order | Easy | [Solution](leetcode/1030.%20Matrix%20Cells%20in%20Distance%20Order)
 1031 | Maximum Sum of Two Non-Overlapping Subarrays | Medium | [Solution](leetcode/1031.%20Maximum%20Sum%20of%20Two%20Non-Overlapping%20Subarrays)
 1032 | Stream of Characters | Hard | [Solution](leetcode/1032.%20Stream%20of%20Characters)
+1033 | Moving Stones Until Consecutive | Easy | [Solution](leetcode/1033.%20Moving%20Stones%20Until%20Consecutive)
 1034 | Coloring A Border | Medium | [Solution](leetcode/1034.%20Coloring%20A%20Border)
 1035 | Uncrossed Lines | Medium | [Solution](leetcode/1035.%20Uncrossed%20Lines)
 1037 | Valid Boomerang | Easy | [Solution](leetcode/1037.%20Valid%20Boomerang)
