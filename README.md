@@ -878,6 +878,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1220 | Count Vowels Permutation | Hard | [Solution](leetcode/1220.%20Count%20Vowels%20Permutation)
 1221 | Split a String in Balanced Strings | Easy | [Solution](leetcode/1221.%20Split%20a%20String%20in%20Balanced%20Strings)
 1223 | Dice Roll Simulation | Medium | [Solution](leetcode/1223.%20Dice%20Roll%20Simulation)
+1226 | The Dining Philosophers | Medium | [Solution](leetcode/1226.%20The%20Dining%20Philosophers)
 1232 | Check If It Is a Straight Line | Easy | [Solution](leetcode/1232.%20Check%20If%20It%20Is%20a%20Straight%20Line)
 1234 | Replace the Substring for Balanced String | Medium | [Solution](leetcode/1234.%20Replace%20the%20Substring%20for%20Balanced%20String)
 1235 | Maximum Profit in Job Scheduling | Hard | [Solution](leetcode/1235.%20Maximum%20Profit%20in%20Job%20Scheduling)
