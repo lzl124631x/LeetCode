@@ -915,6 +915,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1305 | All Elements in Two Binary Search Trees | Medium | [Solution](leetcode/1305.%20All%20Elements%20in%20Two%20Binary%20Search%20Trees)
 1306 | Jump Game III | Medium | [Solution](leetcode/1306.%20Jump%20Game%20III)
 1309 | Decrypt String from Alphabet to Integer Mapping | Easy | [Solution](leetcode/1309.%20Decrypt%20String%20from%20Alphabet%20to%20Integer%20Mapping)
+1310 | XOR Queries of a Subarray | Medium | [Solution](leetcode/1310.%20XOR%20Queries%20of%20a%20Subarray)
 1311 | Get Watched Videos by Your Friends | Medium | [Solution](leetcode/1311.%20Get%20Watched%20Videos%20by%20Your%20Friends)
 1312 | Minimum Insertion Steps to Make a String Palindrome | Hard | [Solution](leetcode/1312.%20Minimum%20Insertion%20Steps%20to%20Make%20a%20String%20Palindrome)
 1313 | Decompress Run-Length Encoded List | Easy | [Solution](leetcode/1313.%20Decompress%20Run-Length%20Encoded%20List)
