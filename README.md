@@ -712,6 +712,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 911 | Online Election | Medium | [Solution](leetcode/911.%20Online%20Election)
 912 | Sort an Array | Medium | [Solution](leetcode/912.%20Sort%20an%20Array)
 914 | X of a Kind in a Deck of Cards | Easy | [Solution](leetcode/914.%20X%20of%20a%20Kind%20in%20a%20Deck%20of%20Cards)
+916 | Word Subsets | Medium | [Solution](leetcode/916.%20Word%20Subsets)
 917 | Reverse Only Letters | Easy | [Solution](leetcode/917.%20Reverse%20Only%20Letters)
 918 | Maximum Sum Circular Subarray | Medium | [Solution](leetcode/918.%20Maximum%20Sum%20Circular%20Subarray)
 919 | Complete Binary Tree Inserter | Medium | [Solution](leetcode/919.%20Complete%20Binary%20Tree%20Inserter)
