@@ -969,6 +969,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1375 | Bulb Switcher III | Medium | [Solution](leetcode/1375.%20Bulb%20Switcher%20III)
 1376 | Time Needed to Inform All Employees | Medium | [Solution](leetcode/1376.%20Time%20Needed%20to%20Inform%20All%20Employees)
 1377 | Frog Position After T Seconds | Hard | [Solution](leetcode/1377.%20Frog%20Position%20After%20T%20Seconds)
+1379 | Find a Corresponding Node of a Binary Tree in a Clone of That Tree | Medium | [Solution](leetcode/1379.%20Find%20a%20Corresponding%20Node%20of%20a%20Binary%20Tree%20in%20a%20Clone%20of%20That%20Tree)
 1380 | Lucky Numbers in a Matrix | Easy | [Solution](leetcode/1380.%20Lucky%20Numbers%20in%20a%20Matrix)
 1381 | Design a Stack With Increment Operation | Medium | [Solution](leetcode/1381.%20Design%20a%20Stack%20With%20Increment%20Operation)
 1382 | Balance a Binary Search Tree | Medium | [Solution](leetcode/1382.%20Balance%20a%20Binary%20Search%20Tree)
