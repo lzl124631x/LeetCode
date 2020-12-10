@@ -912,6 +912,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1299 | Replace Elements with Greatest Element on Right Side | Easy | [Solution](leetcode/1299.%20Replace%20Elements%20with%20Greatest%20Element%20on%20Right%20Side)
 1300 | Sum of Mutated Array Closest to Target | Medium | [Solution](leetcode/1300.%20Sum%20of%20Mutated%20Array%20Closest%20to%20Target)
 1301 | Number of Paths with Max Score | Hard | [Solution](leetcode/1301.%20Number%20of%20Paths%20with%20Max%20Score)
+1302 | Deepest Leaves Sum | Medium | [Solution](leetcode/1302.%20Deepest%20Leaves%20Sum)
 1304 | Find N Unique Integers Sum up to Zero | Easy | [Solution](leetcode/1304.%20Find%20N%20Unique%20Integers%20Sum%20up%20to%20Zero)
 1305 | All Elements in Two Binary Search Trees | Medium | [Solution](leetcode/1305.%20All%20Elements%20in%20Two%20Binary%20Search%20Trees)
 1306 | Jump Game III | Medium | [Solution](leetcode/1306.%20Jump%20Game%20III)
