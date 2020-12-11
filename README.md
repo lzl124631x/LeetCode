@@ -920,6 +920,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1304 | Find N Unique Integers Sum up to Zero | Easy | [Solution](leetcode/1304.%20Find%20N%20Unique%20Integers%20Sum%20up%20to%20Zero)
 1305 | All Elements in Two Binary Search Trees | Medium | [Solution](leetcode/1305.%20All%20Elements%20in%20Two%20Binary%20Search%20Trees)
 1306 | Jump Game III | Medium | [Solution](leetcode/1306.%20Jump%20Game%20III)
+1307 | Verbal Arithmetic Puzzle | Hard | [Solution](leetcode/1307.%20Verbal%20Arithmetic%20Puzzle)
 1309 | Decrypt String from Alphabet to Integer Mapping | Easy | [Solution](leetcode/1309.%20Decrypt%20String%20from%20Alphabet%20to%20Integer%20Mapping)
 1310 | XOR Queries of a Subarray | Medium | [Solution](leetcode/1310.%20XOR%20Queries%20of%20a%20Subarray)
 1311 | Get Watched Videos by Your Friends | Medium | [Solution](leetcode/1311.%20Get%20Watched%20Videos%20by%20Your%20Friends)
