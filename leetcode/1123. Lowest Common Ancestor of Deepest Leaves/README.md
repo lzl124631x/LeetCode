@@ -86,3 +86,28 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+The lowest ancester is the highest node whose left and right subtrees have the same height.
+
+```cpp
+// OJ: https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+    pair<TreeNode*, int> dfs(TreeNode *root, int d = 0) { // latest node which has equal depth in left and right sub-trees; the corresponding height
+        if (!root) return {NULL, 0};
+        const auto &[left, ld] = dfs(root->left, d + 1);
+        const auto &[right, rd] = dfs(root->right, d + 1);
+        if (ld > rd) return {left, ld + 1};
+        else if (ld < rd) return{right, rd + 1};
+        return {root, ld + 1};
+    }
+public:
+    TreeNode* lcaDeepestLeaves(TreeNode* root) {
+        return dfs(root).first;
+    }
+};
+```
