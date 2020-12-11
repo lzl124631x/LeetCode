@@ -675,6 +675,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 861 | Score After Flipping Matrix | Medium | [Solution](leetcode/861.%20Score%20After%20Flipping%20Matrix)
 862 | Shortest Subarray with Sum at Least K | Hard | [Solution](leetcode/862.%20Shortest%20Subarray%20with%20Sum%20at%20Least%20K)
 863 | All Nodes Distance K in Binary Tree | Medium | [Solution](leetcode/863.%20All%20Nodes%20Distance%20K%20in%20Binary%20Tree)
+865 | Smallest Subtree with all the Deepest Nodes | Medium | [Solution](leetcode/865.%20Smallest%20Subtree%20with%20all%20the%20Deepest%20Nodes)
 866 | Prime Palindrome | Medium | [Solution](leetcode/866.%20Prime%20Palindrome)
 867 | Transpose Matrix | Easy | [Solution](leetcode/867.%20Transpose%20Matrix)
 868 | Binary Gap | Easy | [Solution](leetcode/868.%20Binary%20Gap)
