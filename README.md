@@ -89,7 +89,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 77 | Combinations | Medium | [Solution](leetcode/77.%20Combinations)
 78 | Subsets | Medium | [Solution](leetcode/78.%20Subsets)
 79 | Word Search | Medium | [Solution](leetcode/79.%20Word%20Search)
-80 | Remove Duplicates from Sorted Array II |  | [Solution](leetcode/80.%20Remove%20Duplicates%20from%20Sorted%20Array%20II)
+80 | Remove Duplicates from Sorted Array II | Medium | [Solution](leetcode/80.%20Remove%20Duplicates%20from%20Sorted%20Array%20II)
 81 | Search in Rotated Sorted Array II | Medium | [Solution](leetcode/81.%20Search%20in%20Rotated%20Sorted%20Array%20II)
 82 | Remove Duplicates from Sorted List II |  | [Solution](leetcode/82.%20Remove%20Duplicates%20from%20Sorted%20List%20II)
 83 | Remove Duplicates from Sorted List |  | [Solution](leetcode/83.%20Remove%20Duplicates%20from%20Sorted%20List)
