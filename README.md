@@ -877,6 +877,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1219 | Path with Maximum Gold | Medium | [Solution](leetcode/1219.%20Path%20with%20Maximum%20Gold)
 1220 | Count Vowels Permutation | Hard | [Solution](leetcode/1220.%20Count%20Vowels%20Permutation)
 1221 | Split a String in Balanced Strings | Easy | [Solution](leetcode/1221.%20Split%20a%20String%20in%20Balanced%20Strings)
+1222 | Queens That Can Attack the King | Medium | [Solution](leetcode/1222.%20Queens%20That%20Can%20Attack%20the%20King)
 1223 | Dice Roll Simulation | Medium | [Solution](leetcode/1223.%20Dice%20Roll%20Simulation)
 1226 | The Dining Philosophers | Medium | [Solution](leetcode/1226.%20The%20Dining%20Philosophers)
 1232 | Check If It Is a Straight Line | Easy | [Solution](leetcode/1232.%20Check%20If%20It%20Is%20a%20Straight%20Line)
