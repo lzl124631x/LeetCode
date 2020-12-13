@@ -891,6 +891,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1249 | Minimum Remove to Make Valid Parentheses | Medium | [Solution](leetcode/1249.%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses)
 1252 | Cells with Odd Values in a Matrix | Easy | [Solution](leetcode/1252.%20Cells%20with%20Odd%20Values%20in%20a%20Matrix)
 1253 | Reconstruct a 2-Row Binary Matrix | Medium | [Solution](leetcode/1253.%20Reconstruct%20a%202-Row%20Binary%20Matrix)
+1254 | Number of Closed Islands | Medium | [Solution](leetcode/1254.%20Number%20of%20Closed%20Islands)
 1260 | Shift 2D Grid | Easy | [Solution](leetcode/1260.%20Shift%202D%20Grid)
 1261 | Find Elements in a Contaminated Binary Tree | Medium | [Solution](leetcode/1261.%20Find%20Elements%20in%20a%20Contaminated%20Binary%20Tree)
 1262 | Greatest Sum Divisible by Three | Medium | [Solution](leetcode/1262.%20Greatest%20Sum%20Divisible%20by%20Three)
