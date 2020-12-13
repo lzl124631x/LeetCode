@@ -777,6 +777,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 992 | Subarrays with K Different Integers | Hard | [Solution](leetcode/992.%20Subarrays%20with%20K%20Different%20Integers)
 993 | Cousins in Binary Tree | Easy | [Solution](leetcode/993.%20Cousins%20in%20Binary%20Tree)
 994 | Rotting Oranges | Medium | [Solution](leetcode/994.%20Rotting%20Oranges)
+996 | Number of Squareful Arrays | Hard | [Solution](leetcode/996.%20Number%20of%20Squareful%20Arrays)
 997 | Find the Town Judge | Easy | [Solution](leetcode/997.%20Find%20the%20Town%20Judge)
 998 | Maximum Binary Tree II | Medium | [Solution](leetcode/998.%20Maximum%20Binary%20Tree%20II)
 999 | Available Captures for Rook | Easy | [Solution](leetcode/999.%20Available%20Captures%20for%20Rook)
@@ -886,6 +887,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1234 | Replace the Substring for Balanced String | Medium | [Solution](leetcode/1234.%20Replace%20the%20Substring%20for%20Balanced%20String)
 1235 | Maximum Profit in Job Scheduling | Hard | [Solution](leetcode/1235.%20Maximum%20Profit%20in%20Job%20Scheduling)
 1237 | Find Positive Integer Solution for a Given Equation | Easy | [Solution](leetcode/1237.%20Find%20Positive%20Integer%20Solution%20for%20a%20Given%20Equation)
+1238 | Circular Permutation in Binary Representation | Medium | [Solution](leetcode/1238.%20Circular%20Permutation%20in%20Binary%20Representation)
 1249 | Minimum Remove to Make Valid Parentheses | Medium | [Solution](leetcode/1249.%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses)
 1252 | Cells with Odd Values in a Matrix | Easy | [Solution](leetcode/1252.%20Cells%20with%20Odd%20Values%20in%20a%20Matrix)
 1253 | Reconstruct a 2-Row Binary Matrix | Medium | [Solution](leetcode/1253.%20Reconstruct%20a%202-Row%20Binary%20Matrix)
@@ -1189,6 +1191,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1679 | Max Number of K-Sum Pairs | Medium | [Solution](leetcode/1679.%20Max%20Number%20of%20K-Sum%20Pairs)
 1680 | Concatenation of Consecutive Binary Numbers | Medium | [Solution](leetcode/1680.%20Concatenation%20of%20Consecutive%20Binary%20Numbers)
 1681 | Minimum Incompatibility | Hard | [Solution](leetcode/1681.%20Minimum%20Incompatibility)
+1687 | Delivering Boxes from Storage to Ports | Hard | [Solution](leetcode/1687.%20Delivering%20Boxes%20from%20Storage%20to%20Ports)
 
 # License
 
