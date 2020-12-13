@@ -1193,6 +1193,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1680 | Concatenation of Consecutive Binary Numbers | Medium | [Solution](leetcode/1680.%20Concatenation%20of%20Consecutive%20Binary%20Numbers)
 1681 | Minimum Incompatibility | Hard | [Solution](leetcode/1681.%20Minimum%20Incompatibility)
 1687 | Delivering Boxes from Storage to Ports | Hard | [Solution](leetcode/1687.%20Delivering%20Boxes%20from%20Storage%20to%20Ports)
+1690 | Stone Game VII | Medium | [Solution](leetcode/1690.%20Stone%20Game%20VII)
+5245 | Maximum Height by Stacking Cuboids |  | [Solution](leetcode/5245.%20Maximum%20Height%20by%20Stacking%20Cuboids)
+5625 | Count of Matches in Tournament |  | [Solution](leetcode/5625.%20Count%20of%20Matches%20in%20Tournament)
+5626 | Partitioning Into Minimum Number Of Deci-Binary Numbers |  | [Solution](leetcode/5626.%20Partitioning%20Into%20Minimum%20Number%20Of%20Deci-Binary%20Numbers)
 
 # License
 

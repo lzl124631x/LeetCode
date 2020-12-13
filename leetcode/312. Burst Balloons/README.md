@@ -40,8 +40,10 @@ For `A[i..j]`, pick one that we burst lastly.
 Assume we pick some `i <= k <= j`, and the array is separated into `A[i][k-1]` and `A[k+1][j]`. And for these two subproblems we can safely use `dp[i][k-1]` and `dp[k+1][j]`, because `A[i-1]`, `A[k]` and `A[j+1]` are guaranteed to be bursted after balloons in those two subarrays.
 
 ```
-dp[i][j] = max( dp[i][k-1] + A[i-1]*A[k]*A[j+1] + dp[k+1][j] )
+dp[i][j] = max( dp[i][k-1] + A[i-1]*A[k]*A[j+1] + dp[k+1][j] | i <= k <= j )
 ```
+
+The answer is `dp[0][N - 1]`
 
 ```cpp
 // OJ: https://leetcode.com/problems/burst-balloons/
@@ -76,7 +78,7 @@ Same idea as Solution 1, expect that we add `1` to both sides of `A`.
 
 Then we can define `dp[i][j]` be the answer of the subproblem in range `A[(i+1)..(j-1)]`, i.e. not bursting `A[i]` and `A[j]`.
 
-In this way we can simplify the code
+In this way we can simplify the code.
 
 ```cpp
 // OJ: https://leetcode.com/problems/burst-balloons/
@@ -86,7 +88,6 @@ In this way we can simplify the code
 class Solution {
 public:
     int maxCoins(vector<int>& A) {
-        if (A.empty()) return 0;
         A.insert(A.begin(), 1);
         A.push_back(1);
         int N = A.size();
@@ -102,3 +103,28 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/burst-balloons/
+// Author: github.com/lzl124631x
+// Time: O(N^3)
+// Space: O(N^2)
+class Solution {
+public:
+    int maxCoins(vector<int>& A) {
+        A.insert(begin(A), 1);
+        A.push_back(1);
+        int N = A.size();
+        vector<vector<int>> dp(N, vector<int>(N));
+        for (int len = 1; len <= N; ++len) {
+            for (int i = 1; i < N - len; ++i) {
+                int j = i + len - 1;
+                for (int k = i; k <= j; ++k) dp[i][j] = max(dp[i][j], A[i - 1] * A[k] * A[j + 1] + dp[i][k - 1] + dp[k + 1][j]);
+            }
+        }
+        return dp[1][N - 2];
+    }
+};
+``
