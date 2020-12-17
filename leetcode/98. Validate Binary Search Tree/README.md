@@ -43,13 +43,13 @@
 * [Binary Tree Inorder Traversal (Medium)](https://leetcode.com/problems/binary-tree-inorder-traversal/)
 * [Find Mode in Binary Search Tree (Easy)](https://leetcode.com/problems/find-mode-in-binary-search-tree/)
 
-## Solution 1.
+## Solution 1. Pre-order Traversal
 
 ```cpp
 // OJ: https://leetcode.com/problems/validate-binary-search-tree
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(logN)
+// Space: O(H)
 class Solution {
 private:
   bool isValidBST(TreeNode *root, TreeNode *lb, TreeNode *rb) {
@@ -64,7 +64,23 @@ public:
 };
 ```
 
-## Solution 2.
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/validate-binary-search-tree
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+public:
+    bool isValidBST(TreeNode* root, TreeNode *left = NULL, TreeNode *right = NULL) {
+        if (!root) return true;
+        return (!left || root->val > left->val) && (!right || root->val < right->val) && isValidBST(root->left, left, root) && isValidBST(root->right, root, right);
+    }
+};
+```
+
+## Solution 2. In-order traversal
 
 ```cpp
 // OJ: https://leetcode.com/problems/validate-binary-search-tree
