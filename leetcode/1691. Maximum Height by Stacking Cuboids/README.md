@@ -105,3 +105,9 @@ public:
     }
 };
 ```
+
+---
+
+Is it possible that in the optimal solution, one cuboid is not placed with its longest edge as height? No, we can prove that this is impossible
+
+Proof: assume in the optimal solution one cuboid `x` is not placed with its longest edge as height. For the cuboid `y` below `x`, all edges of `y` must be greater than `x`. So we can flip both `x` and `y` and all cuboids below such that their longest edges are placed as their height. The same for the cuboids above `x`.
