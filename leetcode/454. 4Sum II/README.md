@@ -1,34 +1,52 @@
-# [454. 4Sum II (Medium)](https://leetcode.com/problems/4sum-ii)
+# [454. 4Sum II (Medium)](https://leetcode.com/problems/4sum-ii/)
 
-Given four lists A, B, C, D of integer values, compute how many tuples `(i, j, k, l)` there are such that `A[i] + B[j] + C[k] + D[l]` is zero.
+<p>Given four lists A, B, C, D of integer values, compute how many tuples <code>(i, j, k, l)</code> there are such that <code>A[i] + B[j] + C[k] + D[l]</code> is zero.</p>
 
-To make problem a bit easier, all A, B, C, D have same length of N where 0 ≤ N ≤ 500. All integers are in the range of -228 to 228 - 1 and the result is guaranteed to be at most 231 - 1.
+<p>To make problem a bit easier, all A, B, C, D have same length of N where 0 ≤ N ≤ 500. All integers are in the range of -2<sup>28</sup> to 2<sup>28</sup> - 1 and the result is guaranteed to be at most 2<sup>31</sup> - 1.</p>
 
-**Example:**
+<p><b>Example:</b></p>
 
-**Input:**  
-A = \[ 1, 2\]  
-B = \[-2,-1\]  
-C = \[-1, 2\]  
-D = \[ 0, 2\]  
+<pre><b>Input:</b>
+A = [ 1, 2]
+B = [-2,-1]
+C = [-1, 2]
+D = [ 0, 2]
 
-**Output:**  
+<b>Output:</b>
 2
 
-**Explanation:**  
-The two tuples are:  
-1. (0, 0, 0, 1) -> A\[0\] + B\[0\] + C\[0\] + D\[1\] = 1 + (-2) + (-1) + 2 = 0  
-2. (1, 1, 0, 0) -> A\[1\] + B\[1\] + C\[0\] + D\[0\] = 2 + (-1) + (-1) + 0 = 0  
+<b>Explanation:</b>
+The two tuples are:
+1. (0, 0, 0, 1) -&gt; A[0] + B[0] + C[0] + D[1] = 1 + (-2) + (-1) + 2 = 0
+2. (1, 1, 0, 0) -&gt; A[1] + B[1] + C[0] + D[0] = 2 + (-1) + (-1) + 0 = 0
+</pre>
+
+<p>&nbsp;</p>
+
+
+**Related Topics**:  
+[Hash Table](https://leetcode.com/tag/hash-table/), [Binary Search](https://leetcode.com/tag/binary-search/)
+
+**Similar Questions**:
+* [4Sum (Medium)](https://leetcode.com/problems/4sum/)
 
 ## Solution 1. Map + Bi-directional Search
 
 Use map to store the counts of different sums in `AB` and `CD`. Use two pointers one from smallest in `AB` going to greater values, and the other one from greatest in `CD` to smaller values. Whenever found a pair summing to 0, add `count1 * count2` to the result.
 
+### Time complexity
+
+The `sum` function iterates through `O(N^2)` pairs and accessing the `map` at most take `O(log(N^2))=O(logN)` time. So the `sum` takes `O(N^2 * logN)` time.
+
+Each `map` has `O(N^2)` data in the worst case and the bi-directional search only traverse each map once at most, so the searching takes `O(N^2)` time.
+
+So, overall it takes `O(N^2 * logN)` time.
+
 ```cpp
 // OJ: https://leetcode.com/problems/4sum-ii
 // Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(N)
+// Time: O(N^2 * logN)
+// Space: O(N^2)
 class Solution {
 private:
     void sum(vector<int> &A, vector<int> &B, map<int, int> &m) {
@@ -62,6 +80,10 @@ public:
 Similar to Solution 1, but use `unordered_map` instead. Loop through one of it, and find if the counterpart exists.
 
 ```cpp
+// OJ: https://leetcode.com/problems/4sum-ii
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N^2)
 class Solution {
 public:
     int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
@@ -88,7 +110,7 @@ public:
 // OJ: https://leetcode.com/problems/4sum-ii
 // Author: github.com/lzl124631x
 // Time: O(N^2)
-// Space: O(N)
+// Space: O(N^2)
 class Solution {
 public:
     int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
