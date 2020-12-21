@@ -29,12 +29,14 @@
 
 Sort the array in ascending order.
 
-Let `dp[i]` be the size of the largest divisible subset within `A[0..i]` and must contain `A[i]`.
+Let `dp[i]` be the size of the largest divisible subset that is within `A[0..i]` and contain `A[i]`.
 
 ```
 dp[i] = max(dp[j] + 1 | 0 <= j < i && A[i] % A[j] == 0)
 dp[0] = 1
 ```
+
+In order to recover the subset, we make `dp[i]` as a pair, where the second element is the size mentioned aboved, and the first element is the index to the previous element.
 
 ```cpp
 // OJ: https://leetcode.com/problems/largest-divisible-subset/
@@ -45,27 +47,19 @@ class Solution {
 public:
     vector<int> largestDivisibleSubset(vector<int>& A) {
         if (A.empty()) return {};
-        sort(A.begin(), A.end());
-        int N = A.size(), maxLen = 1, best = 0;
-        vector<int> cnt(N, 1);
+        sort(begin(A), end(A));
+        int N = A.size(), best = 0;
+        vector<pair<int, int>> dp(N, {-1, 1});
         for (int i = 1; i < N; ++i) {
             for (int j = 0; j < i; ++j) {
-                if (A[i] % A[j] == 0) cnt[i] = max(cnt[i], cnt[j] + 1);
+                if (A[i] % A[j] == 0 && dp[i].second < dp[j].second + 1) dp[i] = {j, dp[j].second + 1};
             }
-            if (cnt[i] > maxLen) {
-                maxLen = cnt[i];
-                best = i;
-            }
+            if (dp[i].second > dp[best].second) best = i;
         }
-        vector<int> ans{A[best]};
-        while (cnt[best] != 1) {
-            for (int i = best - 1; i >= 0; --i) {
-                if (cnt[i] == cnt[best] - 1) {
-                    best = i;
-                    break;
-                }
-            }
+        vector<int> ans;
+        while (best >= 0) {
             ans.push_back(A[best]);
+            best = dp[best].first;
         }
         return ans;
     }
