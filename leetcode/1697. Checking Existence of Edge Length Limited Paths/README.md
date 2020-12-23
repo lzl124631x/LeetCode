@@ -51,7 +51,7 @@ Traverse the queries from small limit to large limit. Given a limit, we union th
 In this way, we just need to traverse the edges that are smaller than the limit. Since we are visiting the queries with increasing limit, we just need to visit the edges once from small distance to large distance.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-220/problems/checking-existence-of-edge-length-limited-paths/
+// OJ: https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths/
 // Author: github.com/lzl124631x
 // Time: O(ElogE + QlogQ)
 // Space: O(N)
