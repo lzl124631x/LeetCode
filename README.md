@@ -1201,6 +1201,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1691 | Maximum Height by Stacking Cuboids | Hard | [Solution](leetcode/1691.%20Maximum%20Height%20by%20Stacking%20Cuboids)
 1694 | Reformat Phone Number | Easy | [Solution](leetcode/1694.%20Reformat%20Phone%20Number)
 1695 | Maximum Erasure Value | Medium | [Solution](leetcode/1695.%20Maximum%20Erasure%20Value)
+1696 | Jump Game VI | Medium | [Solution](leetcode/1696.%20Jump%20Game%20VI)
 1697 | Checking Existence of Edge Length Limited Paths | Hard | [Solution](leetcode/1697.%20Checking%20Existence%20of%20Edge%20Length%20Limited%20Paths)
 
 # License
