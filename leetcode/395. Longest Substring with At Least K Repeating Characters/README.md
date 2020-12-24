@@ -78,13 +78,13 @@ public:
 class Solution {
 private:
     int longestSubstring(string &s, int k, int begin, int end) {
-        unordered_map<char, int> cnt;
-        for (int i = begin; i < end; ++i) cnt[s[i]]++;
+        int cnt[26] = {};
+        for (int i = begin; i < end; ++i) cnt[s[i] - 'a']++;
         int i = begin, ans = 0;
         while (i < end) {
-            while (i < end && cnt[s[i]] < k) ++i;
+            while (i < end && cnt[s[i] - 'a'] < k) ++i;
             int j = i;
-            while (j < end && cnt[s[j]] >= k) ++j;
+            while (j < end && cnt[s[j] - 'a'] >= k) ++j;
             if (i == begin && j == end) return end - begin;
             ans = max(ans, longestSubstring(s, k, i, j));
             i = j;
