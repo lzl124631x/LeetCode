@@ -39,7 +39,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 21 | Merge Two Sorted Lists | Easy | [Solution](leetcode/21.%20Merge%20Two%20Sorted%20Lists)
 22 | Generate Parentheses | Medium | [Solution](leetcode/22.%20Generate%20Parentheses)
 23 | Merge k Sorted Lists | Hard | [Solution](leetcode/23.%20Merge%20k%20Sorted%20Lists)
-24 | Swap Nodes in Pairs |  | [Solution](leetcode/24.%20Swap%20Nodes%20in%20Pairs)
+24 | Swap Nodes in Pairs | Medium | [Solution](leetcode/24.%20Swap%20Nodes%20in%20Pairs)
 25 | Reverse Nodes in k-Group |  | [Solution](leetcode/25.%20Reverse%20Nodes%20in%20k-Group)
 26 | Remove Duplicates from Sorted Array | Easy | [Solution](leetcode/26.%20Remove%20Duplicates%20from%20Sorted%20Array)
 27 | Remove Element |  | [Solution](leetcode/27.%20Remove%20Element)
@@ -336,7 +336,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 392 | Is Subsequence | Easy | [Solution](leetcode/392.%20Is%20Subsequence)
 393 | UTF-8 Validation |  | [Solution](leetcode/393.%20UTF-8%20Validation)
 394 | Decode String |  | [Solution](leetcode/394.%20Decode%20String)
-395 | Longest Substring with At Least K Repeating Characters |  | [Solution](leetcode/395.%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters)
+395 | Longest Substring with At Least K Repeating Characters | Medium | [Solution](leetcode/395.%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters)
 396 | Rotate Function | Medium | [Solution](leetcode/396.%20Rotate%20Function)
 397 | Integer Replacement |  | [Solution](leetcode/397.%20Integer%20Replacement)
 398 | Random Pick Index |  | [Solution](leetcode/398.%20Random%20Pick%20Index)
@@ -1203,6 +1203,12 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1695 | Maximum Erasure Value | Medium | [Solution](leetcode/1695.%20Maximum%20Erasure%20Value)
 1696 | Jump Game VI | Medium | [Solution](leetcode/1696.%20Jump%20Game%20VI)
 1697 | Checking Existence of Edge Length Limited Paths | Hard | [Solution](leetcode/1697.%20Checking%20Existence%20of%20Edge%20Length%20Limited%20Paths)
+1700 | Number of Students Unable to Eat Lunch | Easy | [Solution](leetcode/1700.%20Number%20of%20Students%20Unable%20to%20Eat%20Lunch)
+1701 | Average Waiting Time | Medium | [Solution](leetcode/1701.%20Average%20Waiting%20Time)
+1702 | Maximum Binary String After Change | Medium | [Solution](leetcode/1702.%20Maximum%20Binary%20String%20After%20Change)
+1704 | Determine if String Halves Are Alike | Easy | [Solution](leetcode/1704.%20Determine%20if%20String%20Halves%20Are%20Alike)
+1705 | Maximum Number of Eaten Apples | Medium | [Solution](leetcode/1705.%20Maximum%20Number%20of%20Eaten%20Apples)
+1706 | Where Will the Ball Fall | Medium | [Solution](leetcode/1706.%20Where%20Will%20the%20Ball%20Fall)
 
 # License
 
