@@ -35,11 +35,11 @@
 class Solution {
 public:
     int removeCoveredIntervals(vector<vector<int>>& A) {
-        sort(begin(A), end(A), [](vector<int> &a, vector<int> &b) { return a[0] == b[0] ? a[1] > b[1] : a[0] < b[0]; });
-        int ans = A.size(), end = INT_MIN;
+        sort(begin(A), end(A), [](auto &a, auto &b) { return a[0] != b[0] ? a[0] < b[0] : a[1] > b[1]; });
+        int ans = A.size(), e = INT_MIN;
         for (auto &r : A) {
-            if (r[1] <= end) --ans;
-            else end = r[1];
+            if (r[1] <= e) --ans;
+            else e = r[1];
         }
         return ans;
     }
