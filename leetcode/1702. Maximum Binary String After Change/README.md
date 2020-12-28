@@ -50,7 +50,7 @@
 **Related Topics**:  
 [Greedy](https://leetcode.com/tag/greedy/)
 
-## Solution 1. Two pointers
+## Solution 1. Greedy
 
 For leading `00`, we always replace it with `10`.
 
