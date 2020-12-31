@@ -74,7 +74,7 @@ public:
         for (int n : A) addNode(&root, n);
         int ans = 0;
         for (int n : A) {
-             auto node = &root;
+            auto node = &root;
             int val = 0;
             for (int i = 31; i >= 0; --i) {
                 int bit = (n >> i) & 1;
