@@ -41,11 +41,23 @@ Their respective sums are 4, 8, 8, and 16, all of which are powers of 2.
 
 ## Solution 1.
 
+Use an `unordered_map<int, int> m` to store the frequency of each number in array `A` (i.e. `m[a]` is the frequency of `a`).
+
+Since `A[i]` is in range `[0, 2^20]`, the sum of two numbers is in range `[0, 2^21]`. 
+
+For each pair `a, cnt` in `m`, we try to find if `b = sum - a` is in `m` as well, where `sum` is power of `2`.
+
+To avoid repetitive computation, we skip a `b` value if `b < a`.
+
+If `a == b`, add `cnt * (cnt - 1) / 2` to answer.
+
+Otherwise, add `cnt * m[b]` to answer.
+
 ```cpp
 // OJ: https://leetcode.com/problems/count-good-meals/
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(N)
+// Space: O(N)
 class Solution {
 public:
     int countPairs(vector<int>& A) {
