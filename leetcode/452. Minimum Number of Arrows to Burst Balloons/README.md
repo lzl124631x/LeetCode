@@ -99,3 +99,24 @@ public:
   }
 }; 
 ```
+
+## Solution 2. Interval Scheduling Maximization (ISM)
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int findMinArrowShots(vector<vector<int>>& A) {
+        sort(begin(A), end(A), [](auto &a, auto &b) { return a[1] < b[1]; });
+        long ans = A.size(), e = LONG_MIN;
+        for (auto &v : A) {
+            if (v[0] <= e) --ans; // this interval overlaps with another interval. We don't need a separate arrow for it.
+            else e = v[1];
+        }
+        return ans;
+    }
+};
+```
