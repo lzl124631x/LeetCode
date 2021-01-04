@@ -1,126 +1,76 @@
-# [526. Beautiful Arrangement (Medium)](https://leetcode.com/problems/beautiful-arrangement)
+# [526. Beautiful Arrangement (Medium)](https://leetcode.com/problems/beautiful-arrangement/)
 
-Suppose you have `N` integers from `1` to `N`. We define a beautiful arrangement as an array that is constructed by these `N` numbers successfully if one of the following is true for the `ith` position `(1 ≤ i ≤ N)`` in this array:
+<p>Suppose you have <code>n</code> integers labeled <code>1</code> through <code>n</code>. A permutation of those <code>n</code> integers <code>perm</code> (<strong>1-indexed</strong>) is considered a <strong>beautiful arrangement</strong> if for every <code>i</code> (<code>1 &lt;= i &lt;= n</code>), <strong>either</strong> of the following is true:</p>
 
-The number at the `ith` position is divisible by `i`.
-`i` is divisible by the number at the `ith` position.
-Now given `N`, how many beautiful arrangements can you construct?
+<ul>
+	<li><code>perm[i]</code> is divisible by <code>i</code>.</li>
+	<li><code>i</code> is divisible by <code>perm[i]</code>.</li>
+</ul>
 
-**Example 1:**
-```
-Input: 2
-Output: 2
-Explanation: 
+<p>Given an integer <code>n</code>, return <em>the <strong>number</strong> of the <strong>beautiful arrangements</strong> that you can construct</em>.</p>
 
-The first beautiful arrangement is [1, 2]:
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-Number at the 1st position (i=1) is 1, and 1 is divisible by i (i=1).
+<pre><strong>Input:</strong> n = 2
+<strong>Output:</strong> 2
+<b>Explanation:</b> 
+The first beautiful arrangement is [1,2]:
+    - perm[1] = 1 is divisible by i = 1
+    - perm[2] = 2 is divisible by i = 2
+The second beautiful arrangement is [2,1]:
+    - perm[1] = 2 is divisible by i = 1
+    - i = 2 is divisible by perm[2] = 1
+</pre>
 
-Number at the 2nd position (i=2) is 2, and 2 is divisible by i (i=2).
+<p><strong>Example 2:</strong></p>
 
-The second beautiful arrangement is [2, 1]:
+<pre><strong>Input:</strong> n = 1
+<strong>Output:</strong> 1
+</pre>
 
-Number at the 1st position (i=1) is 2, and 2 is divisible by i (i=1).
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-Number at the 2nd position (i=2) is 1, and i (i=2) is divisible by 1.
-```
+<ul>
+	<li><code>1 &lt;= n &lt;= 15</code></li>
+</ul>
 
-**Note:**
-`N` is a positive integer and will not exceed 15.
 
-## Solution 1. Backtracking using `vector`
+**Related Topics**:  
+[Backtracking](https://leetcode.com/tag/backtracking/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/)
 
-Use an `vector<int> nums` to hold all the numbers. For each position `pos (0 <= pos < N)`, iterate through all the numbers, if a number satisfy the condition, mark it as used by setting it to `0`. Once `pos` reaches `N`, increment the count.
+**Similar Questions**:
+* [Beautiful Arrangement II (Medium)](https://leetcode.com/problems/beautiful-arrangement-ii/)
 
-```cpp
-// OJ: https://leetcode.com/problems/beautiful-arrangement
-// Author: github.com/lzl124631x
-// Time: O(N^2)
-// Space: O(N)
-class Solution {
-private:
-  int dfs(vector<int> &nums, int pos) {
-    if (pos == nums.size()) return 1;
-    int cnt = 0;
-    for (int i = 0; i < nums.size(); ++i) {
-      if (!nums[i] || (nums[i] % (pos + 1) && (pos + 1) % nums[i])) continue;
-      int val = nums[i];
-      nums[i] = 0;
-      cnt += dfs(nums, pos + 1);
-      nums[i] = val;
-    }
-    return cnt;
-  }
-public:
-  int countArrangement(int N) {
-    vector<int> nums(N);
-    for (int i = 0; i < N; ++i) nums[i] = i + 1;
-    return dfs(nums, 0);
-  }
-};
-```
+## Solution 1. Next Permutation + Backtracking
 
-## Solution 2. Backtracking using `set`
-To my intuition, solution 1 is slow because in each `dfs` it needs to iterate through all the numbers. I tried to use `set` to reduce the scale of numbers to visit.
+The brute force way is to generate all the permutations and check each permutation's validity. This will take `O(N!)` time and get TLE.
 
-But actually it doesn't reduce the overall complexity. While the number of `dfs` call still remains `O(N^2)`, the insertion and deletion of elements in `set` consume `O(logN)`. So the overall complexity grows to `O(N^2 * logN)`. Yikes.
+We can improve it by backtracking once we see invalid prefix.
 
 ```cpp
-// OJ: https://leetcode.com/problems/beautiful-arrangement
+// OJ: https://leetcode.com/problems/beautiful-arrangement/
 // Author: github.com/lzl124631x
-// Time: O(N^2 * logN)
+// Time: O(K) where K is the number of valid permuataions
 // Space: O(N)
 class Solution {
-private:
-  int dfs(set<int> &s, int pos, int N) {
-    if (pos == N) return 1;
-    int cnt = 0;
-    for (auto it = s.begin(); it != s.end(); ++it) {
-      int n = *it;
-      if (n % (pos + 1) && (pos + 1) % n) continue;
-      s.erase(n);
-      cnt += dfs(s, pos + 1, N);
-      s.insert(n);
+    int dfs(vector<int> &v, int start) {
+        if (start == v.size()) return 1;
+        int ans = 0;
+        for (int i = start; i < v.size(); ++i) {
+            if (v[i] % (start + 1) && (start + 1) % v[i]) continue;
+            swap(v[i], v[start]);
+            ans += dfs(v, start + 1);
+            swap(v[i], v[start]);
+        }
+        return ans;
     }
-    return cnt;
-  }
 public:
-  int countArrangement(int N) {
-    set<int> s;
-    for (int i = 1; i <= N; ++i) s.insert(i);
-    return dfs(s, 0, N);
-  }
-};
-```
-
-## Solution 3. Backtracking, `vector + swap`
-
-Compared to solution 1, rather than marking the current number as `0`, we `swap` it to the `pos`. So all the used numbers go to `nums[0..pos]`. This saves computation.
-
-```cpp
-// OJ: https://leetcode.com/problems/beautiful-arrangement
-// Author: github.com/lzl124631x
-// Time: O(N^2)
-// Space: O(N)
-// Ref: https://discuss.leetcode.com/topic/79921/my-c-elegant-solution-with-back-tracking
-class Solution {
-private:
-  int dfs(vector<int> &nums, int pos) {
-    if (pos == nums.size()) return 1;
-    int cnt = 0;
-    for (int i = pos; i < nums.size(); ++i) {
-      if (nums[i] % (pos + 1) && (pos + 1) % nums[i]) continue;
-      swap(nums[i], nums[pos]);
-      cnt += dfs(nums, pos + 1);
-      swap(nums[i], nums[pos]);
+    int countArrangement(int n) {
+        vector<int> v(n);
+        iota(begin(v), end(v), 1);
+        return dfs(v, 0);
     }
-    return cnt;
-  }
-public:
-  int countArrangement(int N) {
-    vector<int> nums(N);
-    for (int i = 0; i < N; ++i) nums[i] = i + 1;
-      return dfs(nums, 0);
-  }
 };
 ```
