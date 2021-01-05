@@ -91,7 +91,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 79 | Word Search | Medium | [Solution](leetcode/79.%20Word%20Search)
 80 | Remove Duplicates from Sorted Array II | Medium | [Solution](leetcode/80.%20Remove%20Duplicates%20from%20Sorted%20Array%20II)
 81 | Search in Rotated Sorted Array II | Medium | [Solution](leetcode/81.%20Search%20in%20Rotated%20Sorted%20Array%20II)
-82 | Remove Duplicates from Sorted List II |  | [Solution](leetcode/82.%20Remove%20Duplicates%20from%20Sorted%20List%20II)
+82 | Remove Duplicates from Sorted List II | Medium | [Solution](leetcode/82.%20Remove%20Duplicates%20from%20Sorted%20List%20II)
 83 | Remove Duplicates from Sorted List |  | [Solution](leetcode/83.%20Remove%20Duplicates%20from%20Sorted%20List)
 84 | Largest Rectangle in Histogram | Hard | [Solution](leetcode/84.%20Largest%20Rectangle%20in%20Histogram)
 85 | Maximal Rectangle | Hard | [Solution](leetcode/85.%20Maximal%20Rectangle)
