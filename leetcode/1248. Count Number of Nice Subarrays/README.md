@@ -120,4 +120,31 @@ public:
         return ans;
     }
 };
-``
+```
+
+## Solution 3. At Most
+
+Exactly `k` times = At Most `k` times - At Most `k - 1` times.
+
+```cpp
+// OJ: https://leetcode.com/problems/count-number-of-nice-subarrays/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/count-number-of-nice-subarrays/discuss/419378/JavaC%2B%2BPython-Sliding-Window-O(1)-Space
+class Solution {
+    int atMost(vector<int> &A, int k) {
+        int N = A.size(), i = 0, ans = 0;
+        for (int j = 0; j < N; ++j) {
+            k -= A[j] % 2;
+            while (k < 0) k += A[i++] % 2;
+            ans += j - i;
+        }
+        return ans;
+    }
+public:
+    int numberOfSubarrays(vector<int>& A, int k) {
+        return atMost(A, k) - atMost(A, k - 1);
+    }
+};
+```
