@@ -98,8 +98,8 @@ public:
         for (int i = 0; i < N; ++i) {
             long left = A[i], other = A.back() - left;
             int j = lower_bound(begin(A) + i + 1, end(A), 2 * left) - begin(A);
-            int k = upper_bound(begin(A) + i + 1, end(A) - 1, left + other / 2) - begin(A);
-            if (k > j) ans = (ans + k - j) % mod;
+            int k = upper_bound(begin(A) + j, end(A) - 1, left + other / 2) - begin(A);
+            ans = (ans + k - j) % mod;
         }
         return ans;
     }
