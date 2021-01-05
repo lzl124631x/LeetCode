@@ -82,3 +82,26 @@ public:
     }
 };
 ```
+
+## Solution 2. Binary Search
+
+```cpp
+// OJ: https://leetcode.com/problems/ways-to-split-array-into-three-subarrays/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int waysToSplit(vector<int>& A) {
+        long mod = 1e9 + 7, ans = 0, N = A.size();
+        for (int i = 1; i < N; ++i) A[i] += A[i - 1];
+        for (int i = 0; i < N; ++i) {
+            long left = A[i], other = A.back() - left;
+            int j = lower_bound(begin(A) + i + 1, end(A), 2 * left) - begin(A);
+            int k = upper_bound(begin(A) + i + 1, end(A) - 1, left + other / 2) - begin(A);
+            if (k > j) ans = (ans + k - j) % mod;
+        }
+        return ans;
+    }
+};
+```
