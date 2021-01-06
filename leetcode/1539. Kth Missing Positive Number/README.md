@@ -32,7 +32,7 @@
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/)
 
-## Solution 1.
+## Solution 1. Brute Force
 
 ```cpp
 // OJ: https://leetcode.com/problems/kth-missing-positive-number/
@@ -70,93 +70,34 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Binary Search
 
-For the first `i` numbers in `A`, the count of missing numbers in these `i` numbers is `A[i-1] - i`.
+For the first `i + 1` numbers in `A`, the count of missing numbers in these `i + 1` numbers is `miss(i) = A[i] - i - 1`.
 
 Example:
 
 ```
 A=[1,4,5,8]
-i=3
-A[i-1]-i = 5-3 = 2 // There are two missing numbers in [1,4,5]
+i=2
+miss(2) = A[2] - 2 - 1 = 2 // There are two missing numbers in [1,4,5].
 ```
 
-We can binary search the maximum `i` which satisfies `A[i-1] - i < k`. Assume it's `L`, then `L + k` is the answer. It's because adding `L`(the count of existing numbers) to `k` (the index of the target missing number) will get the answer (the value of the target missing number).
+We can binary search the greatest index `i` which satisfies `miss(i) < k`. Assume it's `x`, then `x + k + 1` is the answer. It's because adding `x + 1`(the count of existing numbers) to `k` (the index of the target missing number) will get the answer (the value of the target missing number).
 
 Example, 
 
 ```
 A=[1,4,5,8]
 k=4
-L=3
+For i = 2, miss(2) = 2 < k
+For i = 3, miss(3) = 4 >= k
+So x = 2
+The answer is x + k + 1 = 7 
 ```
 
-so `[1,4,5]` is the range we are looking for -- it has 2 missing numbers and 3 existing numbers. Since we are looking for the 4th missing number, the value should be `3 (count of existing number) + 4 (index of target) = 7 (value of target)`
+The range of the index to search is `[0, N - 1]`. When `miss(M) < k`, `L = M + 1`; otherwise, `R = M - 1`.
 
-A special case of `i` is when `i == 0`, then there is `0` missing number in this empty subarray. This is a valid case because for example `A=[2], k=1`, the maximum number of `i` which satisfies `count of missing number < k` is `0`.
-
-So the range of the binary search should be `[0, N]`.
-
-So initially let `L = 0, R = N`, and `M` be the middle value. To avoid infinite loop, let `M = (L + R + 1) / 2`.
-
-When count of missing number is less then `k`, `M` might be too small or exactly the index we are looing for, we let `L = M`.
-
-Otherwise, `M` is too large, let `R = M - 1`.
-
-```cpp
-// OJ: https://leetcode.com/problems/kth-missing-positive-number/
-// Author: github.com/lzl124631x
-// Time: O(logN)
-// Space: O(1)
-// Ref: https://leetcode.com/problems/kth-missing-positive-number/discuss/779999/JavaC%2B%2BPython-O(logN)
-class Solution {
-public:
-    int findKthPositive(vector<int>& A, int k) {
-        int L = 0, R = A.size();
-        while (L < R) {
-            int M = (L + R + 1) / 2;
-            if (M == 0 || A[M - 1] - M < k) L = M;
-            else R = M - 1;
-        }
-        return L + K;
-    }
-};
-```
-
-Or another more concise version.
-
-Now we want to find the smallest index `i` which satisfies `A[i] > k + i`. Assume `L` is such a number, then the answer is `L + k`.
-
-Example:
-
-```
-A=[1,4,5,8]
-k=3
-The smallest index i which satisfies `A[i] > k + i` is 3, so the answer is 3 + k = 6.
-```
-
-```cpp
-// OJ: https://leetcode.com/problems/kth-missing-positive-number/
-// Author: github.com/lzl124631x
-// Time: O(logN)
-// Space: O(1)
-// Ref: https://leetcode.com/problems/kth-missing-positive-number/discuss/779999/JavaC%2B%2BPython-O(logN)
-class Solution {
-public:
-    int findKthPositive(vector<int>& A, int k) {
-        int L = 0, R = A.size();
-        while (L < R) {
-            int M = (L + R) / 2;
-            if (A[M] <= k + M) L = M + 1;
-            else R = M;
-        }
-        return L + k;
-    }
-};
-```
-
-Or 
+Then in the end, `R` will be the `x`, i.e. the greatest index that `miss(R) < k`. So the answer is `R + k + 1`, or `L + k`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/kth-missing-positive-number/
