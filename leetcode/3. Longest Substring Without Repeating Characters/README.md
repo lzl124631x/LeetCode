@@ -42,45 +42,21 @@
 * [Longest Substring with At Most K Distinct Characters (Hard)](https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/)
 * [Subarrays with K Different Integers (Hard)](https://leetcode.com/problems/subarrays-with-k-different-integers/)
 
-## Solution 1.
+## Solution 1. Hash Map
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-substring-without-repeating-characters/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(1)
-class Solution {
-public:
-    int lengthOfLongestSubstring(string s) {
-        int ans = 0, i = 0, j = 0;
-        unordered_set<char> st;
-        while (j < s.size()) {
-            while (j < s.size() && !st.count(s[j])) st.insert(s[j++]);
-            ans = max(ans, j - i);
-            while (i < j && s[i] != s[j]) st.erase(s[i++]);
-            ++i;
-            ++j;
-        }
-        return ans;
-    }
-};
-```
-
-## Solution 2.
-
-```cpp
-// OJ: https://leetcode.com/problems/longest-substring-without-repeating-characters/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
+// Space: O(C) where C is the range of character set
 // Ref: https://discuss.leetcode.com/topic/24739/c-code-in-9-lines
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int ans = 0, start = -1;
-        vector<int> m(256, -1);
+        vector<int> m(128, -1);
         for (int i = 0; i < s.size(); ++i) {
-            if (m[s[i]] > start) start = m[s[i]];
+            start = max(start, m[s[i]]);
             m[s[i]] = i;
             ans = max(ans, i - start);
         }
@@ -89,31 +65,7 @@ public:
 };
 ```
 
-## Solution 3.
-
-```cpp
-// OJ: https://leetcode.com/problems/longest-substring-without-repeating-characters/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
-class Solution {
-public:
-    int lengthOfLongestSubstring(string s) {
-        vector<int> m(128, 0);
-        int i = 0, j = 0, cnt = 0, ans = 0;
-        while (j < s.size()) {
-            if (m[s[j++]]++ == 1) cnt++;
-            while (cnt) {
-                if (m[s[i++]]-- == 2) cnt--;
-            }
-            ans = max(ans, j - i);
-        }
-        return ans;
-    }
-};
-```
-
-## Solution 4. Sliding Window
+## Solution 2. Sliding Window
 
 Sliding window `[i, j]` without repeating characters.
 
@@ -142,9 +94,9 @@ public:
 };
 ```
 
-## Solution 5. Sliding Window
+## Solution 3. Sliding Window
 
-Sliding window `[i, j]` that is without repeating characters and never shrinks.
+In this solution the sliding window `[i, j]` never shrinks.
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-substring-without-repeating-characters/
