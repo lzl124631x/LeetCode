@@ -74,7 +74,7 @@ public:
             if (++a >= A[i].size()) ++i, a = 0;
             if (++b >= B[j].size()) ++j, b = 0;
         }
-        return i == A.size() && a == 0 && j == B.size() && b == 0;
+        return i == A.size() && j == B.size();
     }
 };
 ```
