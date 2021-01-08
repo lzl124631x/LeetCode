@@ -73,63 +73,31 @@ We have to delete every column.
 **Related Topics**:  
 [Greedy](https://leetcode.com/tag/greedy/)
 
-## Solution 1.
+## Solution 1. Greedy
 
 ```cpp
 // OJ: https://leetcode.com/problems/delete-columns-to-make-sorted-ii/
 // Author: github.com/lzl124631x
-// Time: O(N^2 * M)
+// Time: O(MN)
 // Space: O(MN)
 class Solution {
 public:
     int minDeletionSize(vector<string>& A) {
-        int M = A.size();
-        vector<string> v(M, "");
-        for (int i = 0; i < A[0].size(); ++i) {
-            int j = 1;
-            while (j < M) {
-                if (v[j] == v[j - 1] && A[j][i] < A[j - 1][i]) break;
-                ++j;
+        int M = A.size(), N = A[0].size(), ans = 0;
+        vector<bool> done(M, false);
+        for (int j = 0, i; j < N; ++j) {
+            for (i = 1; i < M; ++i) {
+                if (!done[i] && A[i][j] < A[i - 1][j]) break;
             }
-            if (j < M) continue;
-            for (int k = 0; k < M; ++k) {
-                v[k].push_back(A[k][i]);
-            }
+            if (i == M) {
+                int cnt = 0;
+                for (i = 1; i < M; ++i) {
+                    cnt += (done[i] = done[i] || A[i][j] > A[i - 1][j]);
+                }
+                if (cnt == M - 1) break;
+            } else ++ans;
         }
-        return A[0].size() - v[0].size();
-    }
-};
-```
-
-## Solution 2.
-
-Same idea as Solution 1, but use an array of boolean instead of array of string. 
-
-```cpp
-// OJ: https://leetcode.com/problems/delete-columns-to-make-sorted-ii
-// Author: github.com/lzl124631x
-// Time: O(MN) where M is size of A, N is length of strings in A.
-// Space: O(M)
-class Solution {
-public:
-    int minDeletionSize(vector<string>& A) {
-        int M = A.size(), cnt = 0;
-        vector<bool> equalPrev(M, true);
-        for (int i = 0; i < A[0].size(); ++i) {
-            int j = 1;
-            while (j < M) {
-                if (equalPrev[j] && A[j][i] < A[j - 1][i]) break;
-                ++j;
-            }
-            if (j < M) {
-                ++cnt;
-                continue;
-            }
-            for (j = 1; j < M; ++j) {
-                equalPrev[j] = equalPrev[j] && (A[j][i] == A[j - 1][i]);
-            }
-        }
-        return cnt;
+        return ans;
     }
 };
 ```
