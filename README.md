@@ -1225,6 +1225,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1712 | Ways to Split Array Into Three Subarrays | Medium | [Solution](leetcode/1712.%20Ways%20to%20Split%20Array%20Into%20Three%20Subarrays)
 1713 | Minimum Operations to Make a Subsequence | Hard | [Solution](leetcode/1713.%20Minimum%20Operations%20to%20Make%20a%20Subsequence)
 1716 | Calculate Money in Leetcode Bank | Easy | [Solution](leetcode/1716.%20Calculate%20Money%20in%20Leetcode%20Bank)
+1717 | Maximum Score From Removing Substrings | Medium | [Solution](leetcode/1717.%20Maximum%20Score%20From%20Removing%20Substrings)
 
 # License
 
