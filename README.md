@@ -759,6 +759,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 957 | Prison Cells After N Days | Medium | [Solution](leetcode/957.%20Prison%20Cells%20After%20N%20Days)
 958 | Check Completeness of a Binary Tree | Medium | [Solution](leetcode/958.%20Check%20Completeness%20of%20a%20Binary%20Tree)
 959 | Regions Cut By Slashes | Medium | [Solution](leetcode/959.%20Regions%20Cut%20By%20Slashes)
+960 | Delete Columns to Make Sorted III | Hard | [Solution](leetcode/960.%20Delete%20Columns%20to%20Make%20Sorted%20III)
 961 | N-Repeated Element in Size 2N Array | Easy | [Solution](leetcode/961.%20N-Repeated%20Element%20in%20Size%202N%20Array)
 962 | Maximum Width Ramp | Medium | [Solution](leetcode/962.%20Maximum%20Width%20Ramp)
 967 | Numbers With Same Consecutive Differences | Medium | [Solution](leetcode/967.%20Numbers%20With%20Same%20Consecutive%20Differences)
