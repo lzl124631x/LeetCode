@@ -525,6 +525,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 641 | Design Circular Deque | Medium | [Solution](leetcode/641.%20Design%20Circular%20Deque)
 643 | Maximum Average Subarray I | Easy | [Solution](leetcode/643.%20Maximum%20Average%20Subarray%20I)
 645 | Set Mismatch | Easy | [Solution](leetcode/645.%20Set%20Mismatch)
+646 | Maximum Length of Pair Chain | Medium | [Solution](leetcode/646.%20Maximum%20Length%20of%20Pair%20Chain)
 647 | Palindromic Substrings | Medium | [Solution](leetcode/647.%20Palindromic%20Substrings)
 648 | Replace Words | Medium | [Solution](leetcode/648.%20Replace%20Words)
 650 | 2 Keys Keyboard | Medium | [Solution](leetcode/650.%202%20Keys%20Keyboard)
