@@ -1227,6 +1227,8 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1716 | Calculate Money in Leetcode Bank | Easy | [Solution](leetcode/1716.%20Calculate%20Money%20in%20Leetcode%20Bank)
 1717 | Maximum Score From Removing Substrings | Medium | [Solution](leetcode/1717.%20Maximum%20Score%20From%20Removing%20Substrings)
 1718 | Construct the Lexicographically Largest Valid Sequence | Medium | [Solution](leetcode/1718.%20Construct%20the%20Lexicographically%20Largest%20Valid%20Sequence)
+1719 | Number Of Ways To Reconstruct A Tree | Hard | [Solution](leetcode/1719.%20Number%20Of%20Ways%20To%20Reconstruct%20A%20Tree)
+1720 | Decode XORed Array | Easy | [Solution](leetcode/1720.%20Decode%20XORed%20Array)
 
 # License
 
