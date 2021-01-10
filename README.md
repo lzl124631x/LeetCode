@@ -1229,6 +1229,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1718 | Construct the Lexicographically Largest Valid Sequence | Medium | [Solution](leetcode/1718.%20Construct%20the%20Lexicographically%20Largest%20Valid%20Sequence)
 1719 | Number Of Ways To Reconstruct A Tree | Hard | [Solution](leetcode/1719.%20Number%20Of%20Ways%20To%20Reconstruct%20A%20Tree)
 1720 | Decode XORed Array | Easy | [Solution](leetcode/1720.%20Decode%20XORed%20Array)
+1721 | Swapping Nodes in a Linked List | Medium | [Solution](leetcode/1721.%20Swapping%20Nodes%20in%20a%20Linked%20List)
 
 # License
 
