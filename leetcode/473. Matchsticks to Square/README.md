@@ -61,7 +61,7 @@ public:
 };
 ```
 
-## Solution 2. DFS
+## Solution 2. DFS to Fill Buckets
 
 Let `target = sum(A) / 4`, which is the target length of each edge.
 
