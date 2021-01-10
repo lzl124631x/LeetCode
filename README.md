@@ -1231,6 +1231,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1720 | Decode XORed Array | Easy | [Solution](leetcode/1720.%20Decode%20XORed%20Array)
 1721 | Swapping Nodes in a Linked List | Medium | [Solution](leetcode/1721.%20Swapping%20Nodes%20in%20a%20Linked%20List)
 1722 | Minimize Hamming Distance After Swap Operations | Medium | [Solution](leetcode/1722.%20Minimize%20Hamming%20Distance%20After%20Swap%20Operations)
+1723 | Find Minimum Time to Finish All Jobs | Hard | [Solution](leetcode/1723.%20Find%20Minimum%20Time%20to%20Finish%20All%20Jobs)
 
 # License
 
