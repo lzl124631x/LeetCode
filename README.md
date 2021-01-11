@@ -97,7 +97,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 85 | Maximal Rectangle | Hard | [Solution](leetcode/85.%20Maximal%20Rectangle)
 86 | Partition List | Medium | [Solution](leetcode/86.%20Partition%20List)
 87 | Scramble String | Hard | [Solution](leetcode/87.%20Scramble%20String)
-88 | Merge Sorted Array |  | [Solution](leetcode/88.%20Merge%20Sorted%20Array)
+88 | Merge Sorted Array | Easy | [Solution](leetcode/88.%20Merge%20Sorted%20Array)
 89 | Gray Code | Medium | [Solution](leetcode/89.%20Gray%20Code)
 90 | Subsets II | Medium | [Solution](leetcode/90.%20Subsets%20II)
 91 | Decode Ways | Medium | [Solution](leetcode/91.%20Decode%20Ways)
