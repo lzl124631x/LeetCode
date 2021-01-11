@@ -542,6 +542,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 664 | Strange Printer | Hard | [Solution](leetcode/664.%20Strange%20Printer)
 665 | Non-decreasing Array | Easy | [Solution](leetcode/665.%20Non-decreasing%20Array)
 666 | Path Sum IV | Medium | [Solution](leetcode/666.%20Path%20Sum%20IV)
+667 | Beautiful Arrangement II | Medium | [Solution](leetcode/667.%20Beautiful%20Arrangement%20II)
 668 | Kth Smallest Number in Multiplication Table | Hard | [Solution](leetcode/668.%20Kth%20Smallest%20Number%20in%20Multiplication%20Table)
 669 | Trim a Binary Search Tree | Easy | [Solution](leetcode/669.%20Trim%20a%20Binary%20Search%20Tree)
 670 | Maximum Swap | Medium | [Solution](leetcode/670.%20Maximum%20Swap)
