@@ -377,7 +377,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 441 | Arranging Coins | Easy | [Solution](leetcode/441.%20Arranging%20Coins)
 442 | Find All Duplicates in an Array | Medium | [Solution](leetcode/442.%20Find%20All%20Duplicates%20in%20an%20Array)
 443 | String Compression | Easy | [Solution](leetcode/443.%20String%20Compression)
-445 | Add Two Numbers II |  | [Solution](leetcode/445.%20Add%20Two%20Numbers%20II)
+445 | Add Two Numbers II | Medium | [Solution](leetcode/445.%20Add%20Two%20Numbers%20II)
 446 | Arithmetic Slices II - Subsequence | Hard | [Solution](leetcode/446.%20Arithmetic%20Slices%20II%20-%20Subsequence)
 447 | Number of Boomerangs |  | [Solution](leetcode/447.%20Number%20of%20Boomerangs)
 448 | Find All Numbers Disappeared in an Array |  | [Solution](leetcode/448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array)

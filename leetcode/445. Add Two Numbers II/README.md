@@ -1,62 +1,48 @@
-# [2. Add Two Numbers (Medium)](https://leetcode.com/problems/add-two-numbers/)
+# [445. Add Two Numbers II (Medium)](https://leetcode.com/problems/add-two-numbers-ii/)
 
-<p>You are given two <b>non-empty</b> linked lists representing two non-negative integers. The digits are stored in <b>reverse order</b>, and each of their nodes contains a single digit. Add the two numbers and return the sum&nbsp;as a linked list.</p>
+<p>You are given two <b>non-empty</b> linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
 
 <p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
 
-<p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/10/02/addtwonumber1.jpg" style="width: 483px; height: 342px;">
-<pre><strong>Input:</strong> l1 = [2,4,3], l2 = [5,6,4]
-<strong>Output:</strong> [7,0,8]
-<strong>Explanation:</strong> 342 + 465 = 807.
+<p><b>Follow up:</b><br>
+What if you cannot modify the input lists? In other words, reversing the lists is not allowed.
+</p>
+
+<p>
+<b>Example:</b>
+</p><pre><b>Input:</b> (7 -&gt; 2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
+<b>Output:</b> 7 -&gt; 8 -&gt; 0 -&gt; 7
 </pre>
-
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input:</strong> l1 = [0], l2 = [0]
-<strong>Output:</strong> [0]
-</pre>
-
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input:</strong> l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
-<strong>Output:</strong> [8,9,9,9,0,0,0,1]
-</pre>
-
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
-
-<ul>
-	<li>The number of nodes in each linked list is in the range <code>[1, 100]</code>.</li>
-	<li><code>0 &lt;= Node.val &lt;= 9</code></li>
-	<li>It is guaranteed that the list represents a number that does not have leading zeros.</li>
-</ul>
+<p></p>
 
 **Related Topics**:  
-[Linked List](https://leetcode.com/tag/linked-list/), [Math](https://leetcode.com/tag/math/), [Recursion](https://leetcode.com/tag/recursion/)
+[Linked List](https://leetcode.com/tag/linked-list/)
 
 **Similar Questions**:
-* [Multiply Strings (Medium)](https://leetcode.com/problems/multiply-strings/)
-* [Add Binary (Easy)](https://leetcode.com/problems/add-binary/)
-* [Sum of Two Integers (Medium)](https://leetcode.com/problems/sum-of-two-integers/)
-* [Add Strings (Easy)](https://leetcode.com/problems/add-strings/)
-* [Add Two Numbers II (Medium)](https://leetcode.com/problems/add-two-numbers-ii/)
-* [Add to Array-Form of Integer (Easy)](https://leetcode.com/problems/add-to-array-form-of-integer/)
+* [Add Two Numbers (Medium)](https://leetcode.com/problems/add-two-numbers/)
 * [Add Two Polynomials Represented as Linked Lists (Medium)](https://leetcode.com/problems/add-two-polynomials-represented-as-linked-lists/)
 
-## Solution 1.
+## Solution 1. Reverse + Add + Reverse
 
 ```cpp
-// OJ: https://leetcode.com/problems/add-two-numbers/
+// OJ: https://leetcode.com/problems/add-two-numbers-ii/
 // Author: github.com/lzl124631x
-// Time: O(A + B)
+// Time: O(N)
 // Space: O(1)
 class Solution {
-public:
-    ListNode* addTwoNumbers(ListNode* a, ListNode* b) {
-        ListNode head, *tail = &head;
+    ListNode *reverse(ListNode *h) {
+        ListNode dummy;
+        while (h) {
+            auto p = h;
+            h = h->next;
+            p->next = dummy.next;
+            dummy.next = p;
+        }
+        return dummy.next;
+    }
+    ListNode* add(ListNode* a, ListNode* b) {
         int carry = 0;
+        ListNode dummy, *tail = &dummy;
         while (a || b || carry) {
             if (a) {
                 carry += a->val;
@@ -70,7 +56,67 @@ public:
             tail = tail->next;
             carry /= 10;
         }
-        return head.next;
+        return dummy.next;
+    }
+public:
+    ListNode* addTwoNumbers(ListNode* a, ListNode* b) {
+        a = reverse(a);
+        b = reverse(b);
+        return reverse(add(a, b));
+    }
+};
+```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/add-two-numbers-ii/
+// Author: github.com/lzl124631x
+// Time: O(A + B)
+// Space: O(1)
+class Solution {
+    int getLength(ListNode *head) {
+        int ans = 0;
+        for (; head; head = head->next) ++ans;
+        return ans;
+    }
+    ListNode *reverseList(ListNode *head) {
+        ListNode dummy;
+        while (head) {
+            auto node = head;
+            head = head->next;
+            node->next = dummy.next;
+            dummy.next = node;
+        }
+        return dummy.next;
+    }
+public:
+    ListNode* addTwoNumbers(ListNode* a, ListNode* b) {
+        int la = getLength(a), lb = getLength(b);
+        if (la < lb) swap(a, b), swap(la, lb);
+        int diff = la - lb;
+        ListNode head;
+        while (a) {
+            int carry = a->val;
+            a = a->next;
+            if (diff) --diff;
+            else {
+                carry += b->val;
+                b = b->next;
+            }
+            auto node = new ListNode(carry % 10);
+            node->next = head.next;
+            head.next = node;
+            carry /= 10;
+            while (carry && node->next) {
+                carry += node->next->val;
+                node->next->val = carry % 10;
+                carry /= 10;
+                node = node->next;
+            }
+            if (carry) node->next = new ListNode(carry);
+        }
+        return reverseList(head.next);
     }
 };
 ```
