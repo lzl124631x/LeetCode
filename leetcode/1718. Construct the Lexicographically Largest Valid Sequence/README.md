@@ -55,7 +55,7 @@ class Solution {
     bool dfs(vector<int> &ans, int i) {
         if (i == ans.size()) return true; // filled all the numbers, found the answer
         if (ans[i]) return dfs(ans, i + 1); // this index is already filled, continue to fill the next index.
-        for (int j = used.size() - 1; j > 0; --j) { // try each number in decending order from n -1 to 1.
+        for (int j = used.size() - 1; j > 0; --j) { // try each number in decending order from n - 1 to 1.
             if (used[j]) continue; // j is already used, skip
             if (j != 1 && (i + j >= ans.size() || ans[i + j])) continue; // we can't fill `ans[i + j]` either because `i + j` is out of bound or `ans[i + j]` is already filled. Skip.
             used[j] = 1; // mark number `j` as used.
@@ -73,6 +73,37 @@ public:
         vector<int> ans(2 * n - 1);
         used.assign(n + 1, 0); // numbers 1 ~ n are unused initially
         dfs(ans, 0); // try filling numbers from index 0.
+        return ans;
+    }
+};
+```
+
+Or use lambda function for DFS.
+
+```cpp
+// OJ: https://leetcode.com/problems/construct-the-lexicographically-largest-valid-sequence/
+// Author: github.com/lzl124631x
+// Time: O(N!)
+// Space: O(N)
+class Solution {
+public:
+    vector<int> constructDistancedSequence(int n) {
+        vector<int> ans(2 * n - 1), used(n + 1, 0);
+        function<bool(int i)> dfs = [&](int i) -> bool {
+            if (i == ans.size()) return true;
+            if (ans[i]) return dfs(i + 1);
+            for (int j = n; j >= 1; --j) {
+                if (used[j] || (j != 1 && (i + j >= ans.size() || ans[i + j]))) continue;
+                used[j] = 1;
+                ans[i] = j;
+                if (j != 1) ans[i + j] = j;
+                if (dfs(i + 1)) return true;
+                ans[i] = used[j] = 0;
+                if (j != 1) ans[i + j] = 0;
+            }
+            return false;
+        };
+        dfs(0);
         return ans;
     }
 };
