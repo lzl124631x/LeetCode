@@ -77,3 +77,29 @@ public:
     }
 };
 ```
+
+## Solution 2. Greedy + Two Pointers
+
+For the lightest person `a`, if `a` can pair with the heaviest person `b`, let `a` do so.
+
+If not, then the heaviest person `b` can't pair with any one, let `b` go alone.
+
+```cpp
+// OJ: https://leetcode.com/problems/boats-to-save-people/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int numRescueBoats(vector<int>& A, int limit) {
+        sort(begin(A), end(A));
+        int i = 0, j = A.size() - 1, ans = 0;
+        while (i <= j) {
+            ++ans;
+            if (A[i] + A[j] <= limit) ++i;
+            --j;
+        }
+        return ans;
+    }
+};
+```
