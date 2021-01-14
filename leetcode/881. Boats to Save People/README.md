@@ -68,8 +68,7 @@ public:
                 auto it = m.lower_bound(w);
                 if (it == m.end()) break;
                 w -= it->first;
-                it->second--;
-                if (!it->second) m.erase(it->first);
+                if (--it->second == 0) m.erase(it->first);
                 ++cnt;
             }
             ++ans;
