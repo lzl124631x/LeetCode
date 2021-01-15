@@ -52,19 +52,16 @@
 class Solution {
 public:
     int minOperations(vector<int>& A, int x) {
-        int left = 0, right = 0, N = A.size(), i = 0, j = N - 1, ans = INT_MAX;
-        for (; i < A.size(); ++i) {
-            left += A[i];
-            if (left >= x || i == N - 1) break;
-        }
+        int N = A.size(), i = 0, j = N - 1, left = 0, right = 0, ans = N + 1;
+        for (; i < N && left < x; ++i) left += A[i];
         if (left < x) return -1;
-        if (left == x) ans = i + 1;
-        for (; j >= 0 && right <= x; --j) {
-            right += A[j];
-            while (i >= 0 && left + right > x) left -= A[i--];
-            if (left + right == x) ans = min(ans, i + 1 + N - j);
+        if (left == x) ans = i;
+        while (i > 0) {
+            left -= A[--i];
+            while (left + right < x) right += A[j--];
+            if (left + right == x) ans = min(ans, i + N - 1 - j);
         }
-        return ans == INT_MAX ? -1 : ans;
+        return ans == N + 1 ? -1 : ans;
     }
 };
 ```
