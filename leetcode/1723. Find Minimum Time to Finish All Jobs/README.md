@@ -136,7 +136,7 @@ public:
             dp[mask] = 1e9;
             sum[mask] = 0;
             for (int i = 0; i < N; ++i) {
-                if (mask & (1 << i)) sum[mask] += A[i];
+                if (mask & (1 << i)) sum[mask] += A[i]; // if this subset contains the ith job, add `A[i]` to the corresponding sum
             }
         }
         dp[0] = 0;
