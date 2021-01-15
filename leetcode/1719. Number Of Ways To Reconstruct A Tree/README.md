@@ -124,3 +124,57 @@ public:
     }
 };
 ```
+
+## Solution 2. DFS
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-ways-to-reconstruct-a-tree/
+// Author: github.com/lzl124631x
+class Solution {
+public:
+    int checkWays(vector<vector<int>>& A) {
+        unordered_map<int, unordered_set<int>> G;
+        for (auto &p : A) {
+            int u = p[0], v = p[1];
+            G[u].insert(v);
+            G[v].insert(u);
+        }
+        function<int(vector<int>&)> solve = [&](vector<int> &nodes) {
+            vector<pair<int, int>> pairs; // degree, node
+            for (int n : nodes) pairs.emplace_back(G[n].size(), n);
+            sort(begin(pairs), end(pairs), greater<>());
+            int rootDegree = nodes.size() - 1;
+            if (pairs[0].first != rootDegree) return 0; // can't find root
+            unordered_map<int, vector<int>> comp;
+            unordered_set<int> seen;
+            int id = 0, rootCnt = 0;
+            function<void(int)> dfs = [&](int u) {
+                seen.insert(u);
+                comp[id].push_back(u);
+                for (int v : G[u]) {
+                    if (seen.count(v) == 0) dfs(v);
+                }
+            };
+            for (auto &[deg, u] : pairs) {
+                if (deg == rootDegree) {
+                    ++rootCnt;
+                    for (int v : G[u]) G[v].erase(u);
+                } else if (seen.count(u) == 0) {
+                    dfs(u); // non-root nodes are split into different components. Each component is a subtree and solved independently.
+                    ++id;
+                }
+            }
+            int ans = 1;
+            for (auto &[i, ns] : comp) {
+                int cnt = solve(ns);
+                if (cnt == 0) return 0;
+                if (cnt == 2) ans = 2;
+            }
+            return rootCnt > 1 ? 2 : ans;
+        };
+        vector<int> nodes;
+        for (auto &[u, _] : G) nodes.push_back(u);
+        return solve(nodes);
+    }
+};
+```
