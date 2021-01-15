@@ -119,3 +119,35 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
+// Author: github.com/lzl124631x
+// Time: O(K * 2^(N + 1))
+// Space: O(2^N)
+int dp[1 << 12], sum[1 << 12];
+class Solution {
+public:
+    int minimumTimeRequired(vector<int>& A, int k) {
+        int N = A.size();
+        for (int mask = 0; mask < (1 << N); ++mask) {
+            dp[mask] = 1e9;
+            sum[mask] = 0;
+            for (int i = 0; i < N; ++i) {
+                if (mask & (1 << i)) sum[mask] += A[i];
+            }
+        }
+        dp[0] = 0;
+        while (k--) {
+            for (int mask = (1 << N) - 1; mask >= 0; --mask) {
+                for (int sub = mask; sub; sub = (sub - 1) & mask) {
+                    dp[mask] = min(dp[mask], max(dp[mask ^ sub], sum[sub]));
+                }
+            }
+        }
+        return dp[(1 << N) - 1];
+    }
+};
+```
