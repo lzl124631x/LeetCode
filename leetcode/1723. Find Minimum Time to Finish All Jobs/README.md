@@ -233,7 +233,7 @@ Since `dp[i][mask]` only depends on `dp[i - 1][mask ^ sub]` and `mask ^ sub <= m
 ```cpp
 // OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 // Author: github.com/lzl124631x
-// Time: O(K * 2^(N + 1))
+// Time: O(K * 2^(2N))
 // Space: O(2^N)
 int dp[1 << 12], sum[1 << 12];
 class Solution {
