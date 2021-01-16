@@ -188,20 +188,20 @@ Quick select with elements sorted in ascending order.
 // Time: O(N) on averge, O(N^2) in the worst case
 // Space: O(1)
 class Solution {
-    int quickSelect(vector<int> &A, int L, int R, int M) {
-        int pivot = A[M], i = L, j = R;
-        swap(A[L], A[M]);
+    int quickSelect(vector<int> &A, int L, int R, int r) {
+        int pivot = A[r], i = L, j = R;
+        swap(A[r], A[R]);
         while (i < j) {
-            while (i < j && A[j] >= pivot) --j;
             while (i < j && A[i] <= pivot) ++i;
+            while (i < j && A[j] >= pivot) --j;
             if (i < j) swap(A[i], A[j]);
         }
-        swap(A[L], A[i]);
+        swap(A[i], A[R]);
         return i;
     }
 public:
     int findKthLargest(vector<int>& A, int k) {
-        int L = 0, R = A.size() - 1, M = -1;
+        int L = 0, R = A.size() - 1;
         k = A.size() - k;
         srand(NULL);
         while (true) {
@@ -222,16 +222,16 @@ Quick select with elements sorted in descending order.
 // Time: O(N) on averge, O(N^2) in the worst case
 // Space: O(1)
 class Solution {
-    int quickSelect(vector<int> &A, int L, int R, int M) {
-        int pivot = A[M], i = L, j = R;
-        swap(A[L], A[M]);
+    int quickSelect(vector<int> &A, int L, int R, int r) {
+        int pivot = A[r], i = L, j = R;
+        swap(A[r], A[R]);
         while (i < j) {
+            while (i < j && A[i] >= pivot) ++i; // for descending order, the only two changes we need to make are the comparison signs with the pivot
             while (i < j && A[j] <= pivot) --j;
-            while (i < j && A[i] >= pivot) ++i;
             if (i < j) swap(A[i], A[j]);
         }
-        swap(A[L], A[j]);
-        return j;
+        swap(A[i], A[R]);
+        return i;
     }
 public:
     int findKthLargest(vector<int>& A, int k) {
