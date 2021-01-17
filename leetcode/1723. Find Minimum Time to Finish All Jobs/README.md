@@ -119,10 +119,12 @@ public:
 
 Another type of optimization is preventing assign a work `A[i]` to totally free workers twice because assigning to either totally free worker will get the same result.
 
+The time complexity of brute force DFS is `O(K^N)`. If a DFS invocation sees `x` zeros, this optimization will skip `x - 1` zeros and thus reduce the time complexity to the `1/x` of the brute force one. In the first layer of DFS, there are `K` zeros. In the second layer, there are at least `K - 1` zeros. In the third layer, there are at least `K - 2` zeros, and so on. So the time complexity will be `1/K * 1/(K - 1) * 1/(K - 2) * ... * 1/1 = 1/K!` of the brute force one, i.e. `O(K^N / K!)`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 // Author: github.com/lzl124631x
-// Time: O(K^N) ~16ms as of 1/17/2021
+// Time: O(K^N / K!) ~16ms as of 1/17/2021
 // Space: O(N)
 // Ref: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/discuss/1010057/Python-Binary-search-24ms
 class Solution {
