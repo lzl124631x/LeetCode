@@ -222,14 +222,14 @@ dp[i][mask] = min( dp[i - 1][mask ^ sub] + sum[sub] | `sub` is a subset of `mask
 
 Initialization takes `O(K + 2^N * N)` time.
 
-DP part takes `O(K * 2^N * 2^N)` time.
+DP part takes `O(K * 3^N)` time.
 
-So overall it's `O(K * 2^(2N))`.
+So overall it's `O(K * 3^N)`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 // Author: github.com/lzl124631x
-// Time: O(K * 2^(2N))
+// Time: O(K * 3^N)
 // Space: O(K * 2^N)
 int dp[13][1 << 12], sum[1 << 12];
 class Solution {
@@ -261,7 +261,7 @@ Since `dp[i][mask]` only depends on `dp[i - 1][mask ^ sub]` and `mask ^ sub <= m
 ```cpp
 // OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 // Author: github.com/lzl124631x
-// Time: O(K * 2^(2N))
+// Time: O(K * 3^N)
 // Space: O(2^N)
 int dp[1 << 12], sum[1 << 12];
 class Solution {
