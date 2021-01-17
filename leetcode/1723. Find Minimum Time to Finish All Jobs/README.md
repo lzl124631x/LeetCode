@@ -168,7 +168,7 @@ So overall it's `O(log(sum(A)) * K^N)`.
 ```cpp
 // OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 // Author: github.com/lzl124631x
-// Time: O(K^N)
+// Time: O(log(sum(A)) * K^N) ~4ms as of 1/17/2021
 // Space: O(K + N)
 // Ref: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/discuss/1010057/Python-Binary-search-24ms
 class Solution {
@@ -199,7 +199,7 @@ public:
 };
 ```
 
-## Solution 2. DP on Subsets
+## Solution 3. DP on Subsets
 
 Let `dp[i+1][mask]` be the minimum maximum working time with `i+1` workers on job subset `mask`.
 
@@ -222,7 +222,7 @@ So overall it's `O(K * 3^N)`.
 ```cpp
 // OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 // Author: github.com/lzl124631x
-// Time: O(K * 3^N)
+// Time: O(K * 3^N) ~400ms as of 1/21/2021
 // Space: O(K * 2^N)
 int dp[13][1 << 12], sum[1 << 12];
 class Solution {
@@ -254,7 +254,7 @@ Since `dp[i][mask]` only depends on `dp[i - 1][mask ^ sub]` and `mask ^ sub <= m
 ```cpp
 // OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 // Author: github.com/lzl124631x
-// Time: O(K * 3^N)
+// Time: O(K * 3^N) ~400ms as of 1/17/2021
 // Space: O(2^N)
 int dp[1 << 12], sum[1 << 12];
 class Solution {
@@ -281,7 +281,7 @@ public:
 };
 ```
 
-## Solution 3. Binary Search + DP
+## Solution 4. Binary Search + DP
 
 The range of the answer is `[max(A), sum(A)]`. We can binary search in this range.
 
@@ -299,12 +299,12 @@ The binary seach `while` loop runs `O(log(sum(A)))` times.
 
 Each `valid` invocation takes `O(3^N)`.
 
-So overall it's `O(log(sum(A)) * O(3^N))`.
+So overall it's `O(log(sum(A)) * 3^N)`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 // Author: github.com/lzl124631x
-// Time: O(log(sum(A)) * O(3^N))
+// Time: O(log(sum(A)) * 3^N) ~400ms as of 1/17/2021
 // Space: O(2^N)
 int dp[1 << 12], sum[1 << 12];
 class Solution {
