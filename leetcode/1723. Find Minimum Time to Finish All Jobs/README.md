@@ -48,7 +48,7 @@ One difference is that, here we should sort the `A` in ascending order because i
 ```cpp
 // OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 // Author: github.com/lzl124631x
-// Time: O(K^N)
+// Time: O(K^N) ~150ms as of 1/17/2020
 // Space: O(NK)
 // Ref: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/discuss/1009817/One-branch-cutting-trick-to-solve-three-LeetCode-questions
 class Solution {
@@ -85,7 +85,7 @@ Note that with this trick, it's better sorting the `A` in descending order so th
 ```cpp
 // OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 // Author: github.com/lzl124631x
-// Time: O(K^N)
+// Time: O(K^N) ~24ms as of 1/17/2020
 // Space: O(NK)
 // Ref: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/discuss/1009817/One-branch-cutting-trick-to-solve-three-LeetCode-questions/814428
 class Solution {
@@ -113,6 +113,88 @@ public:
         sort(begin(A), end(A), greater<>());
         dfs(A, 0);
         return ans;
+    }
+};
+```
+
+Another type of optimization is preventing assign a work `A[i]` to totally free workers twice because assigning to either totally free worker will get the same result.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
+// Author: github.com/lzl124631x
+// Time: O(K^N) ~16ms as of 1/17/2021
+// Space: O(N)
+// Ref: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/discuss/1010057/Python-Binary-search-24ms
+class Solution {
+    int ans = INT_MAX;
+    vector<int> v;
+    void dfs(vector<int> &A, int i) {
+        if (i == A.size()) {
+            ans = min(ans, *max_element(begin(v), end(v)));
+            return;
+        }
+        for (int j = 0; j < v.size(); ++j) {
+            if (v[j] + A[i] > ans) continue;
+            v[j] += A[i];
+            dfs(A, i + 1);
+            v[j] -= A[i];
+            if (v[j] == 0) break; // prevent assigning `A[i]` to other totally free workers `v[j + 1]`, `v[j + 2]`, ...
+        }
+    }
+public:
+    int minimumTimeRequired(vector<int>& A, int k) {
+        v.assign(k, 0);
+        sort(begin(A), end(A));
+        dfs(A, 0);
+        return ans;
+    }
+};
+```
+
+## Solution 2. Binary Search + DFS
+
+The range of the answer is `[max(A), sum(A)]`. We can binary search in this range.
+
+Let `dfs(limit)` be whether we can fit the jobs with less than or equal to `k` workers given the maximum working time `limit`.
+
+### Time Complexity
+
+The binary search loop runs `O(log(sum(A)))` times.
+
+Each `dfs` check at most takes `O(K^N)` (a very loose upper bound).
+
+So overall it's `O(log(sum(A)) * K^N)`.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
+// Author: github.com/lzl124631x
+// Time: O(K^N)
+// Space: O(K + N)
+// Ref: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/discuss/1010057/Python-Binary-search-24ms
+class Solution {
+public:
+    int minimumTimeRequired(vector<int>& A, int k) {
+        sort(begin(A), end(A), greater<>());
+        int N = A.size(), L = *max_element(begin(A), end(A)), R = accumulate(begin(A), end(A), 0);
+        vector<int> v;
+        function<bool(int, int)> dfs = [&](int i, int limit) {
+            if (i == N) return true;
+            for (int j = 0; j < k; ++j) {
+                if (v[j] + A[i] > limit) continue;
+                v[j] += A[i];
+                if (dfs(i + 1, limit)) return true;
+                v[j] -= A[i];
+                if (v[j] == 0) break;
+            }
+            return false;
+        };
+        while (L <= R) {
+            int M = (L + R) / 2;
+            v.assign(k, 0);
+            if (dfs(0, M)) R = M - 1;
+            else L = M + 1;
+        }
+        return L;
     }
 };
 ```
