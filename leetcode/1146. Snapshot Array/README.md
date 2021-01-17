@@ -37,7 +37,7 @@ snapshotArr.get(0,0);  // Get the value of array[0] with snap_id = 0, return 5</
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/)
 
-## Solution 1.
+## Solution 1. Brute Force
 
 ```cpp
 // OJ: https://leetcode.com/problems/snapshot-array/
@@ -70,7 +70,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Brute Force
 
 ```cpp
 // OJ: https://leetcode.com/problems/snapshot-array/
@@ -81,8 +81,8 @@ public:
 //      snap: O(N)
 //      get: O(logS) where S is the number of snapshots taken
 class SnapshotArray {
-    vector<vector<int>> snapIds;
-    vector<unordered_map<int, int>> snapshot;
+    vector<vector<int>> snapIds; // snapIds[i] is a list of snapshot IDs related to the `i`-th element in array.
+    vector<unordered_map<int, int>> snapshot; // snapshot[i] contains all the values changed between snapshot `i-1` and `i`
 public:
     SnapshotArray(int N) : snapshot(1), snapIds(N) {}
     
@@ -105,7 +105,11 @@ public:
 };
 ```
 
-## Solution 3.
+## Solution 3. Binary Search
+
+The brute force solutions log all the snapshots in a single list.
+
+To improve it, we make each `A[i]` have its own lists tracking all the snapshots related to it and the corresponding values.
 
 ```cpp
 // OJ: https://leetcode.com/problems/snapshot-array/
@@ -117,22 +121,21 @@ public:
 //      get: O(logS)
 // Space: O(NS)
 class SnapshotArray {
-    vector<vector<int>> ids, vals;
+    vector<vector<int>> ids, vals; // If `A[i]` changed in between snapshot `j-1` and `j`, we append `j` to `ids[i]`, and append the changed value to `vals[i]`.
     int id = 0;
 public:
     SnapshotArray(int N) : ids(N, {-1}), vals(N, {0}) {}
-    void set(int index, int val) {
-        if (ids[index].back() != id) {
-            ids[index].push_back(id);
-            vals[index].push_back(val);
-        } else vals[index].back() = val;
+    void set(int i, int val) {
+        if (ids[i].back() != id) {
+            ids[i].push_back(id);
+            vals[i].push_back(val);
+        } else vals[i].back() = val;
     }
     int snap() {
         return id++;
     }
-    int get(int index, int snap_id) {
-        int i = prev(upper_bound(begin(ids[index]), end(ids[index]), snap_id)) - begin(ids[index]);
-        return vals[index][i];
+    int get(int i, int snap_id) {
+        return vals[i][upper_bound(begin(ids[i]), end(ids[i]), snap_id) - begin(ids[i]) - 1];
     }
 };
 ```
