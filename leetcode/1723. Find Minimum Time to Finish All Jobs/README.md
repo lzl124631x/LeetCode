@@ -198,3 +198,55 @@ public:
     }
 };
 ```
+
+## Solution 3. Binary Search + DP
+
+The range of the answer is `[max(A), sum(A)]`. We can binary search in this range.
+
+Let `valid(limit)` be whether we can fit the jobs with less than or equal to `k` workers given the maximum working time `limit`.
+
+Let `dp[mask]` be the minimum workers needed to handle those jobs given `limit`.
+
+```
+dp[mask] = min( 1 + dp[mask ^ sub] | `sub` is a subset of `mask` && sum[sub] <= limit )
+```
+
+### Time Complexity
+
+The binary seach `while` loop runs `O(log(sum(A)))` times.
+
+Each `valid` invocation takes `O(3^N)`.
+
+So overall it's `O(log(sum(A)) * O(3^N))`.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
+// Author: github.com/lzl124631x
+// Time: O(log(sum(A)) * O(3^N))
+// Space: O(2^N)
+int dp[1 << 12], sum[1 << 12];
+class Solution {
+    inline int lowbit(int x) { return x & -x; };
+public:
+    int minimumTimeRequired(vector<int>& A, int k) {
+        int N = A.size(), L = *max_element(begin(A), end(A)), R = accumulate(begin(A), end(A), 0);
+        for (int mask = 1; mask < (1 << N); ++mask) sum[mask] = sum[mask - lowbit(mask)] + A[__builtin_ctz(lowbit(mask))];
+        auto valid = [&](int limit) {
+            memset(dp, 0x3f, sizeof(dp));
+            dp[0] = 0;
+            for (int mask = 1; mask < (1 << N); ++mask) {
+                for (int sub = mask; sub; sub = (sub - 1) & mask) {
+                    if (sum[sub] <= limit) dp[mask] = min(dp[mask], 1 + dp[mask ^ sub]);
+                }
+            }
+            return dp[(1 << N) - 1] <= k;
+        };
+        while (L <= R) {
+            int M = (L + R) / 2;
+            if (valid(M)) R = M - 1;
+            else L = M + 1;
+        }
+        return L;
+    }
+};
+```
