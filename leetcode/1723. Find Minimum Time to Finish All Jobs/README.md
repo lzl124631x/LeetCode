@@ -72,7 +72,7 @@ Traverse all the subsets: `for (int mask = 0; mask < (1 << N); ++mask)`
 
 Check if `A[i]` is included in the current subset: `mask & (1 << i)`
 
-Traverse subsets of a set `mask` in descending order of subset size: 
+Traverse subsets of a set `mask` in **descending** order of subset size: 
 
 ```cpp
 for (int sub = mask; sub; sub = (sub - 1) & mask) {
@@ -80,11 +80,11 @@ for (int sub = mask; sub; sub = (sub - 1) & mask) {
 }
 ```
 
-Traverse subsets of a set `mask` in ascending order of subset size:
+Traverse subsets of a set `mask` in **ascending** order of subset size:
 
 ```cpp
-for (int sub = 0; sub <= mask; ++sub) {
-    if ((sub & mask) != sub) continue;
+for (int other = mask; other; other = (other - 1) & mask) {
+    int sub = other ^ mask;
     // visit subset `sub`
 }
 ```
@@ -100,6 +100,34 @@ while (sub < (1 << N)) {
     sub = (((r ^ sub) >> 2) / c) | r;
 }
 ```
+
+Traverse all the subsets of `N` elements, and for each subset `mask`, traverse its sub-subset `sub`:
+
+```cpp
+// Time: O(3^N)
+for (int mask = 0; mask < (1 << N); ++mask) {
+    for (int sub = mask; sub; sub = (sub - 1) & mask) {
+        // visit `sub` ans `mask`
+    }
+}
+```
+
+Note that the time complexity is `O(3^N)` instead of `O(2^N * 2^N)`.
+
+**Math proof:**
+
+For a subset `mask` with `K` bits of `1`s, there are `2^K` subsets of it.
+
+For `N` elements, there are `C(N, K)` subsets with `K` bits of `1`s.
+
+So the total number is `SUM( C(N, K) * 2^K | 0 <= K <= N )`.
+
+Since `(1 + x)^N = C(N, 0) * x^0 + C(N, 1) * x^1 + ... + C(N, N) * x^N`, let `x = 2`, we have `3^N = SUM( C(N, K) * 2^K | 0 <= K <= N )`.
+
+**Intuitive proof:**
+
+For each bit index `i` (`0 <= i < N`), the `i`-th bits of `mask` and `bit` must be one of `11, 10, 00`, and can't be `01`. So each bit has `3` possibilities, the total complexity is `O(3^N)`.
+
 ## Solution 1. DFS to Fill Buckets
 
 Using similar solution to [698. Partition to K Equal Sum Subsets (Medium)](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/).
