@@ -45,11 +45,11 @@ snapshotArr.get(0,0);  // Get the value of array[0] with snap_id = 0, return 5</
 // Time:
 //      SnapshotArray, set, snap: O(1)
 //      get: O(S) where S is the number of snapshots taken.
-// Space: O(length * S)
+// Space: O(NS)
 class SnapshotArray {
     vector<unordered_map<int, int>> snapshot;
 public:
-    SnapshotArray(int length) : snapshot(1) {}
+    SnapshotArray(int N) : snapshot(1) {}
     
     void set(int index, int val) {
         snapshot.back()[index] = val;
@@ -73,16 +73,18 @@ public:
 ## Solution 2.
 
 ```cpp
+// OJ: https://leetcode.com/problems/snapshot-array/
+// Author: github.com/lzl124631x
 // Time:
-//      SnapshotArray: O(length)
+//      SnapshotArray: O(N)
 //      set: O(1)
-//      snap: O(length)
+//      snap: O(N)
 //      get: O(logS) where S is the number of snapshots taken
 class SnapshotArray {
     vector<vector<int>> snapIds;
     vector<unordered_map<int, int>> snapshot;
 public:
-    SnapshotArray(int length) : snapshot(1), snapIds(length) {}
+    SnapshotArray(int N) : snapshot(1), snapIds(N) {}
     
     void set(int index, int val) {
         snapshot.back()[index] = val;
@@ -99,6 +101,38 @@ public:
         auto &snaps = snapIds[index];
         int i = upper_bound(begin(snaps), end(snaps), snap_id) - begin(snaps) - 1;
         return i == -1 ? 0 : snapshot[snaps[i]][index];
+    }
+};
+```
+
+## Solution 3.
+
+```cpp
+// OJ: https://leetcode.com/problems/snapshot-array/
+// Author: github.com/lzl124631x
+// Time:
+//      SnapshotArray: O(N)
+//      set: O(1)
+//      snap: O(1)
+//      get: O(logS)
+// Space: O(NS)
+class SnapshotArray {
+    vector<vector<int>> ids, vals;
+    int id = 0;
+public:
+    SnapshotArray(int N) : ids(N, {-1}), vals(N, {0}) {}
+    void set(int index, int val) {
+        if (ids[index].back() != id) {
+            ids[index].push_back(id);
+            vals[index].push_back(val);
+        } else vals[index].back() = val;
+    }
+    int snap() {
+        return id++;
+    }
+    int get(int index, int snap_id) {
+        int i = prev(upper_bound(begin(ids[index]), end(ids[index]), snap_id)) - begin(ids[index]);
+        return vals[index][i];
     }
 };
 ```
