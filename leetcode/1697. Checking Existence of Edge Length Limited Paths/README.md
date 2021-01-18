@@ -79,16 +79,11 @@ public:
         sort(begin(Q), end(Q), [&](auto &a, auto &b) { return a[2] < b[2]; });
         sort(begin(E), end(E), [&](auto &a, auto &b) { return a[2] < b[2]; });
         UnionFind uf(n);
-        int j = 0;
+        int i = 0;
         for (auto &q : Q) { // traverse the queries from small limit to large limit
-            int u = q[0], v = q[1], limit = q[2];
-            for (; j < E.size(); ++j){ // visit the edges that are smaller than the limit
-                auto &e = E[j];
-                int x = e[0], y = e[1], z = e[2];
-                if (z >= limit) break;
-                uf.connect(x, y);
-            }
-            ans[q[3]] = uf.connected(u, v);
+            int u = q[0], v = q[1], limit = q[2], qid = q[3];
+            for (; i < E.size() && E[i][2] < limit; ++i) uf.connect(E[i][0], E[i][1]); // visit the edges that are smaller than the limit
+            ans[qid] = uf.connected(u, v);
         }
         return ans;
     }
