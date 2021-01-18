@@ -72,3 +72,26 @@ public:
     }
 };
 ```
+
+## Solution 2. Two Pointers
+
+```cpp
+// OJ: https://leetcode.com/problems/max-number-of-k-sum-pairs/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int maxOperations(vector<int>& A, int k) {
+        sort(begin(A), end(A));
+        int i = 0, j = A.size() - 1, ans = 0;
+        while (i < j) {
+            int sum = A[i] + A[j];
+            if (sum == k) ++ans;
+            if (sum >= k) --j;
+            if (sum <= k) ++i;
+        }
+        return ans;
+    }
+};
+```
