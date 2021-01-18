@@ -55,26 +55,44 @@ Hence all students are able to eat.
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/
 // Author: github.com/lzl124631x
-// Time: O(N^2)
+// Time: O(N)
 // Space: O(N)
 class Solution {
 public:
     int countStudents(vector<int>& A, vector<int>& B) {
-        int i = 0, j = 0, cnt = 0;
+        int j = 0, ans = 0;
         queue<int> q;
         for (int n : A) q.push(n);
-        while (q.size() && q.size() != cnt) {
+        while (q.size() && q.size() != ans) {
             int n = q.front();
             q.pop();
             if (n == B[j]) {
                 ++j;
-                cnt = 0;
+                ans = 0;
             } else {
                 q.push(n);
-                ++cnt;
+                ++ans;
             }
         }
-        return cnt;
+        return ans;
+    }
+};
+```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int countStudents(vector<int>& A, vector<int>& B) {
+        int cnt[2] = {}, i = 0;
+        for (int n : A) cnt[n]++;
+        for (; i < B.size() && cnt[B[i]]; ++i) --cnt[B[i]];
+        return B.size() - i;
     }
 };
 ```
