@@ -618,6 +618,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 769 | Max Chunks To Make Sorted | Medium | [Solution](leetcode/769.%20Max%20Chunks%20To%20Make%20Sorted)
 770 | Basic Calculator IV | Hard | [Solution](leetcode/770.%20Basic%20Calculator%20IV)
 771 | Jewels and Stones | Easy | [Solution](leetcode/771.%20Jewels%20and%20Stones)
+773 | Sliding Puzzle | Hard | [Solution](leetcode/773.%20Sliding%20Puzzle)
 775 | Global and Local Inversions | Medium | [Solution](leetcode/775.%20Global%20and%20Local%20Inversions)
 777 | Swap Adjacent in LR String | Medium | [Solution](leetcode/777.%20Swap%20Adjacent%20in%20LR%20String)
 780 | Reaching Points | Hard | [Solution](leetcode/780.%20Reaching%20Points)
@@ -1233,6 +1234,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1721 | Swapping Nodes in a Linked List | Medium | [Solution](leetcode/1721.%20Swapping%20Nodes%20in%20a%20Linked%20List)
 1722 | Minimize Hamming Distance After Swap Operations | Medium | [Solution](leetcode/1722.%20Minimize%20Hamming%20Distance%20After%20Swap%20Operations)
 1723 | Find Minimum Time to Finish All Jobs | Hard | [Solution](leetcode/1723.%20Find%20Minimum%20Time%20to%20Finish%20All%20Jobs)
+1727 | Largest Submatrix With Rearrangements | Medium | [Solution](leetcode/1727.%20Largest%20Submatrix%20With%20Rearrangements)
 
 # License
 
