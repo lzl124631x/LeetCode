@@ -73,6 +73,9 @@ Apply Operation 2: "<u>baa</u>ccc" -&gt; "<u>abb</u>ccc"
 
 ## Solution 1.
 
+1. Both strings should have the same set of characters.
+2. Both strings have the same frequence of characters.
+
 ```cpp
 // OJ: https://leetcode.com/problems/determine-if-two-strings-are-close/
 // Author: github.com/lzl124631x
