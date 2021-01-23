@@ -107,3 +107,27 @@ public:
     }
 };
 ```
+
+Actually since `n` is odd, we can get the `1 ^ 2 ^ 3 ^ ... ^ n` in `O(1)` time.
+
+Since `2 ^ 3 = 1`, `4 ^ 5 = 1`, `6 ^ 7 = 1` ..., so `XOR(1) = 1`, `XOR(3) = 0`, `XOR(5) = 1`, `XOR(7) = 0` ... where `XOR(n) = 1 ^ 2 ^ ... ^ n`.
+
+So `XOR(n) = 1 - n / 2 % 2`.
+
+```cpp
+// OJ: https://leetcode.com/problems/decode-xored-permutation/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/decode-xored-permutation/discuss/1031107/JavaC%2B%2BPython-Straight-Forward-Solution
+class Solution {
+public:
+    vector<int> decode(vector<int>& A) {
+        int N = A.size() + 1, first = 1 - N / 2 % 2;
+        for (int i = 1; i < A.size(); i += 2) first ^= A[i];
+        vector<int> ans = {first};
+        for (int n : A) ans.push_back(n ^ ans.back());
+        return ans;
+    }
+};
+```
