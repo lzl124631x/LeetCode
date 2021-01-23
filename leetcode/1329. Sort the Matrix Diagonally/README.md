@@ -1,6 +1,8 @@
-# [1329. Sort the Matrix Diagonally (Medium)](https://leetcode.com/problems/sort-the-matrix-diagonally/)
+# [1329. Sort the Matrix Diagonally (Medium)](https://leetcode.com/problems/sort-the-matrix-diagonally/submissions/)
 
-<p>Given a <code>m * n</code> matrix <code>mat</code>&nbsp;of integers, sort it diagonally in ascending order from the top-left to the bottom-right then return the sorted array.</p>
+<p>A <strong>matrix diagonal</strong> is a diagonal line of cells starting from some cell in either the topmost row or leftmost column and going in the bottom-right direction until reaching the matrix's end. For example, the <strong>matrix diagonal</strong> starting from <code>mat[2][0]</code>, where <code>mat</code> is a <code>6 x 3</code> matrix, includes cells <code>mat[2][0]</code>, <code>mat[3][1]</code>, and <code>mat[4][2]</code>.</p>
+
+<p>Given an <code>m x n</code> matrix <code>mat</code> of integers, sort each <strong>matrix diagonal</strong> in ascending order and return <em>the resulting matrix</em>.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -19,10 +21,39 @@
 	<li><code>1 &lt;= mat[i][j] &lt;= 100</code></li>
 </ul>
 
+
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Sort](https://leetcode.com/tag/sort/)
 
 ## Solution 1.
+
+```cpp
+// OJ: https://leetcode.com/problems/sort-the-matrix-diagonally/
+// Author: github.com/lzl124631x
+// Time: O((M + N) * XlogX) where X is min(M, N) 
+// Space: O(X)
+class Solution {
+public:
+    vector<vector<int>> diagonalSort(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size();
+        for (int i = 0; i < M; ++i) {
+            vector<int> v;
+            for (int x = i, y = 0; x < M && y < N; ++x, ++y) v.push_back(A[x][y]);
+            sort(begin(v), end(v));
+            for (int x = i, y = 0; x < M && y < N; ++x, ++y) A[x][y] = v[y];
+        }
+        for (int j = 1; j < N; ++j) {
+            vector<int> v;
+            for (int x = 0, y = j; x < M && y < N; ++x, ++y) v.push_back(A[x][y]);
+            sort(begin(v), end(v));
+            for (int x = 0, y = j; x < M && y < N; ++x, ++y) A[x][y] = v[x];
+        }
+        return A;
+    }
+};
+```
+
+## Solution 2.
 
 ```cpp
 // OJ: https://leetcode.com/problems/sort-the-matrix-diagonally/
