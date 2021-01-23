@@ -43,6 +43,8 @@ If the counts match, we choose `0`. Otherwise we choose `1`.
 
 Since `N` is at most `1e5`, so just need to compare `0`-th to `floor(log2(1e5)) = 16`-th bits.
 
+Is it possible that choosing `0` or `1` results in the same count? No, because choosing `0` or `1` will yield two exactly opposite sequence. Since `n` is odd, these two sequence won't have the same number of `1`s.
+
 ```cpp
 // OJ: https://leetcode.com/problems/decode-xored-permutation/
 // Author: github.com/lzl124631x
@@ -66,6 +68,41 @@ public:
                 ans[j] |= b << i;
             }
         }
+        return ans;
+    }
+};
+```
+
+## Solution 2.
+
+If we can find the correct first number, we can deduce all other numbers in `O(N)` time.
+
+To find the first number, we can use the fact that `n` is odd. So:
+
+```
+a2 ^ a3 = A[1]
+a4 ^ a5 = A[3]
+...
+```
+
+So `a2 ^ a3 ^ a4 ^ ... ^ an = A[1] ^ A[3] ^ ...`
+
+Since `a1 ^ a2 ^ a3 ^ ... ^ an = 1 ^ 2 ^ 3 ^ ... ^ n`, `a1 = 1 ^ 2 ^ 3 ^ ... ^ n ^ A[1] ^ A[3] ^ ...`.
+
+```cpp
+// OJ: https://leetcode.com/problems/decode-xored-permutation/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/decode-xored-permutation/discuss/1031107/JavaC%2B%2BPython-Straight-Forward-Solution
+class Solution {
+public:
+    vector<int> decode(vector<int>& A) {
+        int first = 0;
+        for (int i = 1; i < A.size(); i += 2) first ^= A[i];
+        for (int i = 1; i <= A.size() + 1; ++i) first ^= i;
+        vector<int> ans = {first};
+        for (int n : A) ans.push_back(n ^ ans.back());
         return ans;
     }
 };
