@@ -1236,6 +1236,8 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1722 | Minimize Hamming Distance After Swap Operations | Medium | [Solution](leetcode/1722.%20Minimize%20Hamming%20Distance%20After%20Swap%20Operations)
 1723 | Find Minimum Time to Finish All Jobs | Hard | [Solution](leetcode/1723.%20Find%20Minimum%20Time%20to%20Finish%20All%20Jobs)
 1727 | Largest Submatrix With Rearrangements | Medium | [Solution](leetcode/1727.%20Largest%20Submatrix%20With%20Rearrangements)
+1732 | Find the Highest Altitude | Easy | [Solution](leetcode/1732.%20Find%20the%20Highest%20Altitude)
+1733 | Minimum Number of People to Teach | Medium | [Solution](leetcode/1733.%20Minimum%20Number%20of%20People%20to%20Teach)
 1734 | Decode XORed Permutation | Medium | [Solution](leetcode/1734.%20Decode%20XORed%20Permutation)
 
 # License
