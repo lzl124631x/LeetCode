@@ -26,7 +26,7 @@ Your algorithm should run in linear runtime complexity. Could you implement it u
 * [Find the Duplicate Number (Medium)](https://leetcode.com/problems/find-the-duplicate-number/)
 * [Couples Holding Hands (Hard)](https://leetcode.com/problems/couples-holding-hands/)
 
-## Solution 1.
+## Solution 1. Sum of Arithmetic Sequence
 
 ```cpp
 // OJ: https://leetcode.com/problems/missing-number/
@@ -35,36 +35,13 @@ Your algorithm should run in linear runtime complexity. Could you implement it u
 // Space: O(1)
 class Solution {
 public:
-    int missingNumber(vector<int>& nums) {
-        int n = nums.size(), sum = 0;
-        for (int i = 0; i < n; ++i) sum += nums[i];
-        return n * (n + 1) / 2 - sum;
+    int missingNumber(vector<int>& A) {
+        return (1 + A.size()) * A.size() / 2 - accumulate(begin(A), end(A), 0);
     }
 };
 ```
 
-## Solution 2.
-
-```cpp
-// OJ: https://leetcode.com/problems/missing-number/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
-class Solution {
-public:
-    int missingNumber(vector<int>& nums) {
-        int n = nums.size(), xorVal = 0, expectedXor = 0;
-        for (int i = 0; i < n; ++i) {
-            xorVal ^= nums[i];
-            expectedXor ^= i;
-        }
-        expectedXor ^= n;
-        return expectedXor ^ xorVal;
-    }
-};
-```
-
-## Solution 3.
+## Solution 3. XOR
 
 ```cpp
 // OJ: https://leetcode.com/problems/missing-number/
