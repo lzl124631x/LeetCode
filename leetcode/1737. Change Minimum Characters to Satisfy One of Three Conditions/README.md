@@ -101,7 +101,7 @@ So `op3[i] = SUM(ca) + SUM(cb) - ca[i] - cb[i]`
 ```cpp
 // OJ: https://leetcode.com/problems/change-minimum-characters-to-satisfy-one-of-three-conditions/
 // Author: github.com/lzl124631x
-// Time: O(N)
+// Time: O(A + B)
 // Space: O(1)
 class Solution {
 public:
@@ -109,12 +109,12 @@ public:
         array<int, 26> ca = {}, cb = {};
         for (char c : a) ca[c - 'a']++;
         for (char c : b) cb[c - 'a']++;
-        int sa = accumulate(begin(ca), end(ca), 0), sb = accumulate(begin(cb), end(cb), 0), op1 = sa, op2 = sb, ans = INT_MAX;
+        int M = a.size(), N = b.size(), op1 = M, op2 = N, ans = INT_MAX;
         for (int i = 0; i < 26; ++i) {
             op1 += cb[i] - ca[i];
             op2 += ca[i] - cb[i];
             if (i < 25) ans = min({ ans, op1, op2 });
-            ans = min(ans, sa - ca[i] + sb - cb[i]);
+            ans = min(ans, M + N - ca[i] - cb[i]);
         }
         return ans;
     }
