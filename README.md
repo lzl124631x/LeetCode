@@ -1239,6 +1239,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1732 | Find the Highest Altitude | Easy | [Solution](leetcode/1732.%20Find%20the%20Highest%20Altitude)
 1733 | Minimum Number of People to Teach | Medium | [Solution](leetcode/1733.%20Minimum%20Number%20of%20People%20to%20Teach)
 1734 | Decode XORed Permutation | Medium | [Solution](leetcode/1734.%20Decode%20XORed%20Permutation)
+1735 | Count Ways to Make Array With Product | Hard | [Solution](leetcode/1735.%20Count%20Ways%20to%20Make%20Array%20With%20Product)
+1736 | Latest Time by Replacing Hidden Digits | Easy | [Solution](leetcode/1736.%20Latest%20Time%20by%20Replacing%20Hidden%20Digits)
+1737 | Change Minimum Characters to Satisfy One of Three Conditions | Medium | [Solution](leetcode/1737.%20Change%20Minimum%20Characters%20to%20Satisfy%20One%20of%20Three%20Conditions)
+1738 | Find Kth Largest XOR Coordinate Value | Medium | [Solution](leetcode/1738.%20Find%20Kth%20Largest%20XOR%20Coordinate%20Value)
 
 # License
 
