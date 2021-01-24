@@ -41,7 +41,7 @@ public:
 };
 ```
 
-## Solution 3. XOR
+## Solution 2. XOR
 
 ```cpp
 // OJ: https://leetcode.com/problems/missing-number/
