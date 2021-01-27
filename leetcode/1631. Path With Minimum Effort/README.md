@@ -66,9 +66,8 @@ public:
         dist[0][0] = 0;
         pq.push({ 0, 0, 0 });
         while (pq.size()) {
-            auto p = pq.top();
+            auto [w, x, y] = pq.top();
             pq.pop();
-            int w = p[0], x = p[1], y = p[2];
             if (x == M - 1 && y == N - 1) return dist[x][y];
             if (w > dist[x][y]) continue;
             for (auto &[dx, dy] : dirs) {
