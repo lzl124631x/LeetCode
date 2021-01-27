@@ -87,11 +87,11 @@ public:
         }
         s.resize(j);
         string ans;
-        for (int i = 0, r = s.size(); i < s.size(); ) {
-            for (int d = r == 2 || r == 4 ? 2 : 3; d > 0; --d, --r) {
+        for (int i = 0, r = s.size(); i < s.size(); ) { // `r` is the # of remaining digits.
+            for (int d = r == 2 || r == 4 ? 2 : 3; d > 0; --d, --r) { // when `r` is 2 or 4, we output 2 digits; otherwise, 3 digits.
                 ans += s[i++];
             }
-            if (r) ans += '-';
+            if (r) ans += '-'; // if there are still remaining digits, append '-'.
         }
         return ans;
     }
