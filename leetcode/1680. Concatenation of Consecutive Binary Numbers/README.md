@@ -104,7 +104,7 @@ public:
 };
 ```
 
-Or, with the observation that the `len` only increment when the `i` is a power of `2`, we can increment `len` only when `i` has a single bit `1`. We can check this via `(i & (i - 1)) == 0`.
+Or, with the observation that the `len` only increment when the `i` is a power of `2`, we can increment `len` only when `i` has a single bit `1`. We can check this via `(i & (i - 1)) == 0` or `__builtin_popcount(i) == 1`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/
