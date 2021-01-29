@@ -65,10 +65,10 @@ public:
 class Solution {
 public:
     int findDuplicate(vector<int>& A) {
-        int N = A.size(), slow = A[N - 1], fast = A[slow - 1];
-        for (; slow != fast; slow = A[slow - 1], fast = A[A[fast - 1] - 1]);
-        for (slow = N; slow != fast; slow = A[slow - 1], fast = A[fast - 1]);
-        return slow;
+        int p = A[0], q = A[p];
+        for (; p != q; p = A[p], q = A[A[q]]);
+        for (p = 0; p != q; p = A[p], q = A[q]);
+        return p;
     }
 };
 ```
