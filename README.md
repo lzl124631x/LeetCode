@@ -146,7 +146,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 138 | Copy List with Random Pointer |  | [Solution](leetcode/138.%20Copy%20List%20with%20Random%20Pointer)
 139 | Word Break | Medium | [Solution](leetcode/139.%20Word%20Break)
 140 | Word Break II | Hard | [Solution](leetcode/140.%20Word%20Break%20II)
-141 | Linked List Cycle |  | [Solution](leetcode/141.%20Linked%20List%20Cycle)
+141 | Linked List Cycle | Easy | [Solution](leetcode/141.%20Linked%20List%20Cycle)
 142 | Linked List Cycle II | Medium | [Solution](leetcode/142.%20Linked%20List%20Cycle%20II)
 143 | Reorder List | Medium | [Solution](leetcode/143.%20Reorder%20List)
 144 | Binary Tree Preorder Traversal | Medium | [Solution](leetcode/144.%20Binary%20Tree%20Preorder%20Traversal)
@@ -184,6 +184,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 188 | Best Time to Buy and Sell Stock IV | Hard | [Solution](leetcode/188.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV)
 189 | Rotate Array | Medium | [Solution](leetcode/189.%20Rotate%20Array)
 190 | Reverse Bits | Easy | [Solution](leetcode/190.%20Reverse%20Bits)
+191 | Number of 1 Bits | Easy | [Solution](leetcode/191.%20Number%20of%201%20Bits)
 195 | Tenth Line | Easy | [Solution](leetcode/195.%20Tenth%20Line)
 198 | House Robber | Easy | [Solution](leetcode/198.%20House%20Robber)
 200 | Number of Islands | Medium | [Solution](leetcode/200.%20Number%20of%20Islands)
@@ -380,7 +381,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 445 | Add Two Numbers II | Medium | [Solution](leetcode/445.%20Add%20Two%20Numbers%20II)
 446 | Arithmetic Slices II - Subsequence | Hard | [Solution](leetcode/446.%20Arithmetic%20Slices%20II%20-%20Subsequence)
 447 | Number of Boomerangs |  | [Solution](leetcode/447.%20Number%20of%20Boomerangs)
-448 | Find All Numbers Disappeared in an Array |  | [Solution](leetcode/448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array)
+448 | Find All Numbers Disappeared in an Array | Easy | [Solution](leetcode/448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array)
 449 | Serialize and Deserialize BST |  | [Solution](leetcode/449.%20Serialize%20and%20Deserialize%20BST)
 450 | Delete Node in a BST | Medium | [Solution](leetcode/450.%20Delete%20Node%20in%20a%20BST)
 451 | Sort Characters By Frequency | Medium | [Solution](leetcode/451.%20Sort%20Characters%20By%20Frequency)
@@ -544,7 +545,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 666 | Path Sum IV | Medium | [Solution](leetcode/666.%20Path%20Sum%20IV)
 667 | Beautiful Arrangement II | Medium | [Solution](leetcode/667.%20Beautiful%20Arrangement%20II)
 668 | Kth Smallest Number in Multiplication Table | Hard | [Solution](leetcode/668.%20Kth%20Smallest%20Number%20in%20Multiplication%20Table)
-669 | Trim a Binary Search Tree | Easy | [Solution](leetcode/669.%20Trim%20a%20Binary%20Search%20Tree)
+669 | Trim a Binary Search Tree | Medium | [Solution](leetcode/669.%20Trim%20a%20Binary%20Search%20Tree)
 670 | Maximum Swap | Medium | [Solution](leetcode/670.%20Maximum%20Swap)
 671 | Second Minimum Node In a Binary Tree | Easy | [Solution](leetcode/671.%20Second%20Minimum%20Node%20In%20a%20Binary%20Tree)
 673 | Number of Longest Increasing Subsequence | Medium | [Solution](leetcode/673.%20Number%20of%20Longest%20Increasing%20Subsequence)
@@ -1243,6 +1244,8 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1736 | Latest Time by Replacing Hidden Digits | Easy | [Solution](leetcode/1736.%20Latest%20Time%20by%20Replacing%20Hidden%20Digits)
 1737 | Change Minimum Characters to Satisfy One of Three Conditions | Medium | [Solution](leetcode/1737.%20Change%20Minimum%20Characters%20to%20Satisfy%20One%20of%20Three%20Conditions)
 1738 | Find Kth Largest XOR Coordinate Value | Medium | [Solution](leetcode/1738.%20Find%20Kth%20Largest%20XOR%20Coordinate%20Value)
+1739 | Building Boxes | Hard | [Solution](leetcode/1739.%20Building%20Boxes)
+1744 | Can You Eat Your Favorite Candy on Your Favorite Day? | Medium | [Solution](leetcode/1744.%20Can%20You%20Eat%20Your%20Favorite%20Candy%20on%20Your%20Favorite%20Day%3F)
 
 # License
 
