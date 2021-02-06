@@ -32,7 +32,7 @@
 * [Implement strStr() (Easy)](https://leetcode.com/problems/implement-strstr/)
 * [Repeated String Match (Medium)](https://leetcode.com/problems/repeated-string-match/)
 
-## Solution 1.
+## Solution 1. Brute force
 
 ```cpp
 // OJ: https://leetcode.com/problems/repeated-substring-pattern/
@@ -40,26 +40,23 @@
 // Time: O(N^2)
 // Space: O(1)
 class Solution {
-    bool match(string &s, int start, int len) {
-        for (int i = 0; i < len; ++i) {
-            if (s[i] != s[start + i]) return false;
-        }
-        return true;
-    }
 public:
     bool repeatedSubstringPattern(string s) {
-        for (int len = s.size() / 2; len >= 1; --len) {
-            if (s.size() % len) continue;
+        int N = s.size();
+        for (int len = 1; len <= N / 2; ++len) {
+            if (N % len) continue;
             int i = len;
-            for (; i <= s.size() - len && match(s, i, len); i += len);
-            if (i >= s.size()) return true;
+            for (; i < N; ++i) {
+                if (s[i] != s[i % len]) break;
+            }
+            if (i == N) return true;
         }
         return false;
     }
 };
 ```
 
-## Solution 2.
+## Solution 2. Brute force with string_view
 
 ```cpp
 // OJ: https://leetcode.com/problems/repeated-substring-pattern/
@@ -82,7 +79,7 @@ public:
 };
 ```
 
-## Solution 3.
+## Solution 3. KMP
 
 ```cpp
 // OJ: https://leetcode.com/problems/repeated-substring-pattern/
