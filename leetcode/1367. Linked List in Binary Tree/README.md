@@ -51,16 +51,18 @@
 // Time: O(N * min(L, H))
 // Space: O(H)
 class Solution {
-    bool dfs(ListNode *head, TreeNode *root) {
+    bool match(ListNode *head, TreeNode *root) {
         if (!head) return true;
         if (!root) return false;
-        return head->val == root->val && (dfs(head->next, root->left) || dfs(head->next, root->right));
+        if (head->val != root->val) return false;
+        return match(head->next, root->left) || match(head->next, root->right);
     }
 public:
     bool isSubPath(ListNode* head, TreeNode* root) {
         if (!head) return true;
         if (!root) return false;
-        return dfs(head, root) || isSubPath(head, root->left) || isSubPath(head, root->right);
+        if (match(head, root)) return true;
+        return isSubPath(head, root->left) || isSubPath(head, root->right);
     }
 };
 ```
