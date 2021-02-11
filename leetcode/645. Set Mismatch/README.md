@@ -1,18 +1,33 @@
-# [645. Set Mismatch (Easy)](https://leetcode.com/problems/set-mismatch)
+# [645. Set Mismatch (Easy)](https://leetcode.com/problems/set-mismatch/)
 
-The set `S` originally contains numbers from 1 to `n`. But unfortunately, due to the data error, one of the numbers in the set got duplicated to **another** number in the set, which results in repetition of one number and loss of another number.
+<p>You have a set of integers <code>s</code>, which originally contains all the numbers from <code>1</code> to <code>n</code>. Unfortunately, due to some error, one of the numbers in <code>s</code> got duplicated to another number in the set, which results in <strong>repetition of one</strong> number and <strong>loss of another</strong> number.</p>
 
-Given an array `nums` representing the data status of this set after the error. Your task is to firstly find the number occurs twice and then find the number that is missing. Return them in the form of an array.
+<p>You are given an integer array <code>nums</code> representing the data status of this set after the error.</p>
 
-**Example 1:**  
+<p>Find the number that occurs twice and the number that is missing and return <em>them in the form of an array</em>.</p>
 
-**Input:** nums = \[1,2,2,4\]  
-**Output:** \[2,3\]
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<pre><strong>Input:</strong> nums = [1,2,2,4]
+<strong>Output:</strong> [2,3]
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [1,1]
+<strong>Output:</strong> [1,2]
+</pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-**Note:**  
+<ul>
+	<li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>
+	<li><code>1 &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
+</ul>
 
-1.  The given array size will in the range \[2, 10000\].
-2.  The given array's numbers won't have any order.
+
+**Related Topics**:  
+[Hash Table](https://leetcode.com/tag/hash-table/), [Math](https://leetcode.com/tag/math/)
+
+**Similar Questions**:
+* [Find the Duplicate Number (Medium)](https://leetcode.com/problems/find-the-duplicate-number/)
 
 ## Solution 1. unordered_map
 
@@ -23,12 +38,12 @@ Given an array `nums` representing the data status of this set after the error. 
 // Space: O(N)
 class Solution {
 public:
-    vector<int> findErrorNums(vector<int>& nums) {
+    vector<int> findErrorNums(vector<int>& A) {
         unordered_map<int, int> m;
-        for (auto n : nums) m[n]++;
+        for (auto n : A) m[n]++;
         int missing, dup;
-        for (int i = 1; i <= nums.size(); ++i) {
-            if (!m[i]) missing = i;
+        for (int i = 1; i <= A.size(); ++i) {
+            if (!m.count(i)) missing = i;
             if (m[i] == 2) dup = i;
         }
         return { dup, missing };
@@ -45,43 +60,18 @@ public:
 // Space: O(1)
 class Solution {
 public:
-    vector<int> findErrorNums(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
+    vector<int> findErrorNums(vector<int>& A) {
+        sort(begin(A), end(A));
         int dup, missing = 1;
-        for (int i = 1; i < nums.size(); ++i) {
-            if (nums[i] == nums[i - 1]) dup = nums[i];
-            else if (nums[i] > nums[i - 1] + 1) missing = nums[i - 1] + 1;
+        for (int i = 1; i < A.size(); ++i) {
+            if (A[i] == A[i - 1]) dup = A[i];
+            else if (A[i] > A[i - 1] + 1) missing = A[i - 1] + 1;
         }
-        return { dup, nums.back() != nums.size() ? nums.size() : missing };
+        return { dup, A.back() != A.size() ? (int)A.size() : missing };
     }
 };
 ```
-
-## Solution 3. Extra Counts Array
-
-Same idea as Solution 1, but Solution 1 actually requires `2N` space, while this approach requires `N` space.
-
-```cpp
-// OJ: https://leetcode.com/problems/set-mismatch/solution/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(N)
-class Solution {
-public:
-    vector<int> findErrorNums(vector<int>& nums) {
-        vector<int> cnts(nums.size(), 0);
-        int dup, missing;
-        for (int n : nums) cnts[n - 1]++;
-        for (int i = 0; i < cnts.size(); ++i) {
-            if (cnts[i] == 0) missing = i + 1;
-            else if (cnts[i] == 2) dup = i + 1;
-        }
-        return { dup, missing };
-    }
-};
-```
-
-## Solution 4. Using Constant Space
+## Solution 3. Flip Sign
 
 If we can encode the Counts Array into `nums`, we can save space.
 
@@ -104,6 +94,32 @@ public:
         }
         for (int i = 0; i < nums.size(); ++i) {
             if (nums[i] > 0) missing = i + 1;
+        }
+        return { dup, missing };
+    }
+};
+```
+
+## Solution 3. Swap
+
+```cpp
+// OJ: https://leetcode.com/problems/set-mismatch/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& A) {
+        int N = A.size(), dup, missing;
+        for (int i = 0; i < N; ++i) {
+            while (i + 1 != A[i] && A[A[i] - 1] != A[i]) swap(A[i], A[A[i] - 1]);
+            if (i + 1 != A[i] && A[A[i] - 1] == A[i]) dup = A[i];
+        }
+        for (int i = 0; i < N; ++i) {
+            if (i + 1 != A[i]) {
+                missing = i + 1;
+                break;
+            }
         }
         return { dup, missing };
     }
