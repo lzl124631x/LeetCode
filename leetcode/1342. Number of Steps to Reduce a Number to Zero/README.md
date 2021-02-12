@@ -57,8 +57,8 @@ public:
         int cnt = 0;
         while (num) {
             cnt++;
-            if (num % 2 == 0) num /= 2;
-            else num--;
+            if (num & 1) --num;
+            else num >>= 1;
         }
         return cnt;
     }
