@@ -39,37 +39,33 @@
 // Time: O(E + VlogV)
 // Space: O(E)
 class Solution {
-    typedef unordered_map<int, unordered_map<int, int>> Graph;
     typedef pair<int, int> iPair;
-    vector<int> dijkstra(Graph graph, int N, int source) {
-        priority_queue<iPair, vector<iPair>, greater<iPair>> pq;
-        vector<int> dists(N, INT_MAX);
+    typedef unordered_map<int, vector<iPair>> Graph;
+    vector<int> dijkstra(Graph &graph, int N, int source) {
+        priority_queue<iPair, vector<iPair>, greater<>> pq;
+        vector<int> dist(N, INT_MAX);
         pq.emplace(0, source);
-        dists[source] = 0;
+        dist[source] = 0;
         while (pq.size()) {
-            int u = pq.top().second;
+            auto [w, u] = pq.top();
             pq.pop();
-            for (auto neighbor : graph[u]) {
-                int v = neighbor.first, weight = neighbor.second;
-                if (dists[v] > dists[u] + weight) {
-                    dists[v] = dists[u] + weight;
-                    pq.emplace(dists[v], v);
+            if (w > dist[u]) continue;
+            for (auto &[v, c] : graph[u]) {
+                if (dist[v] > w + c) {
+                    dist[v] = w + c;
+                    pq.emplace(dist[v], v);
                 }
             }
         }
-        return dists;
+        return dist;
     }
 public:
     int networkDelayTime(vector<vector<int>>& times, int N, int K) {
         Graph graph;
-        for (auto e : times) graph[e[0] - 1][e[1] - 1] = e[2];
-        auto dists = dijkstra(graph, N, K - 1);
-        int ans = 0;
-        for (int d : dists) {
-            if (d == INT_MAX) return -1;
-            ans = max(ans, d);
-        }
-        return ans;
+        for (auto e : times) graph[e[0] - 1].emplace_back(e[1] - 1, e[2]);
+        auto dist = dijkstra(graph, N, K - 1);
+        int mx = *max_element(begin(dist), end(dist)); 
+        return mx == INT_MAX ? -1 : mx;
     }
 };
 ```
