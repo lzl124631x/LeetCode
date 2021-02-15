@@ -59,7 +59,7 @@ public:
         vector<int> dist(n, 1e8);
         dist[src] = 0;
         for (int i = 0; i <= K; ++i) {
-            vector<int> tmp = dist;
+            auto tmp = dist;
             for (auto &e : A) {
                 int u = e[0], v = e[1], w = e[2];
                 dist[v] = min(dist[v], tmp[u] + w);
