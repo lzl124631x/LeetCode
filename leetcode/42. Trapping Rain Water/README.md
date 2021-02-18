@@ -1,18 +1,33 @@
 # [42. Trapping Rain Water (Hard)](https://leetcode.com/problems/trapping-rain-water/)
 
-<p>Given <em>n</em> non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.</p>
+<p>Given <code>n</code> non-negative integers representing an elevation map where the width of each bar is <code>1</code>, compute how much water it can trap after raining.</p>
 
-<p><img src="https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png" style="width: 412px; height: 161px;"><br>
-<small>The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped. <strong>Thanks Marcos</strong> for contributing this image!</small></p>
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img src="https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png" style="width: 412px; height: 161px;">
+<pre><strong>Input:</strong> height = [0,1,0,2,1,0,1,3,2,1,2,1]
+<strong>Output:</strong> 6
+<strong>Explanation:</strong> The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+</pre>
 
-<p><strong>Example:</strong></p>
+<p><strong>Example 2:</strong></p>
 
-<pre><strong>Input:</strong> [0,1,0,2,1,0,1,3,2,1,2,1]
-<strong>Output:</strong> 6</pre>
+<pre><strong>Input:</strong> height = [4,2,0,3,2,5]
+<strong>Output:</strong> 9
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>n == height.length</code></li>
+	<li><code>0 &lt;= n &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>0 &lt;= height[i] &lt;= 10<sup>5</sup></code></li>
+</ul>
 
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Stack](https://leetcode.com/tag/stack/)
+[Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Stack](https://leetcode.com/tag/stack/)
 
 **Similar Questions**:
 * [Container With Most Water (Medium)](https://leetcode.com/problems/container-with-most-water/)
@@ -64,7 +79,7 @@ public:
 };
 ```
 
-## Solution 2. 
+Or use stack.
 
 ```cpp
 // OJ: https://leetcode.com/problems/trapping-rain-water/
@@ -74,27 +89,23 @@ public:
 class Solution {
 public:
     int trap(vector<int>& A) {
-        stack<int> s;
-        int N = A.size(), ans = 0;
+        stack<int> right;
+        int N = A.size(), ans = 0, left = 0;
         for (int i = N - 1; i >= 0; --i) {
-            if (s.empty() || A[i] > A[s.top()]) s.push(i);
+            if (right.empty() || A[i] > A[right.top()]) right.push(i);
         }
-        for (int i = 0; i < N - 1;) {
-            int h = A[i];
-            if (i == s.top()) {
-                s.pop();
-                h = A[s.top()];
-            }
-            int j = i + 1;
-            while (j < N && A[j] < h) ans += h - A[j++];
-            i = j;
+        for (int i = 0; i < N; ++i) {
+            if (right.top() == i) right.pop();
+            int h = min(left, right.size() ? A[right.top()] : 0);
+            ans += max(h - A[i], 0);
+            left = max(left, A[i]);
         }
         return ans;
     }
 };
 ```
 
-## Solution 3. Two Pointers
+## Solution 2. Two Pointers
 
 ```cpp
 // OJ: https://leetcode.com/problems/trapping-rain-water/
