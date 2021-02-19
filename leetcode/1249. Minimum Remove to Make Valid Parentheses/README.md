@@ -79,6 +79,36 @@ public:
 };
 ```
 
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    string minRemoveToMakeValid(string s) {
+        int left = 0, N = s.size();
+        for (int i = 0; i < N; ++i) {
+            if (isalpha(s[i])) continue;
+            if (s[i] == '(') ++left;
+            else if (left) --left;
+            else s[i] = ' ';
+        }
+        left = 0;
+        for (int i = N - 1; i >= 0; --i) {
+            if (isalpha(s[i]) || s[i] == ' ') continue;
+            if (s[i] == ')') ++left;
+            else if (left) --left;
+            else s[i] = ' ';
+        }
+        s.erase(remove(begin(s), end(s), ' '), end(s));
+        return s;
+    }
+};
+```
+
 ## Solution 2. Stack
 
 ```cpp
@@ -93,15 +123,15 @@ public:
         for (int i = 0; i < s.size(); ++i) {
             if (s[i] == '(') st.push(i);
             else if (s[i] == ')') {
-                if (st.empty()) s[i] = '*';
+                if (st.empty()) s[i] = ' ';
                 else st.pop();
             }
         }
         while (st.size()) {
-            s[st.top()] = '*';
+            s[st.top()] = ' ';
             st.pop();
         }
-        s.erase(remove(begin(s), end(s), '*'), end(s));
+        s.erase(remove(begin(s), end(s), ' '), end(s));
         return s;
     }
 };
