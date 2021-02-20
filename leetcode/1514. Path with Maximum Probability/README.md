@@ -61,33 +61,28 @@ Direct application of Dijkstra algorithm except that usually the cost is the sma
 // Space: O(E)
 class Solution {
 public:
-    double maxProbability(int n, vector<vector<int>>& edges, vector<double>& succProb, int start, int end) {
+    double maxProbability(int n, vector<vector<int>>& E, vector<double>& P, int start, int end) {
         vector<vector<pair<int, double>>> G(n);
-        for (int i = 0; i < edges.size(); ++i) {
-            auto &e = edges[i];
-            G[e[0]].emplace_back(e[1], succProb[i]);
-            G[e[1]].emplace_back(e[0], succProb[i]);
+        for (int i = 0; i < E.size(); ++i) {
+            int u = E[i][0], v = E[i][1];
+            G[u].emplace_back(v, P[i]);
+            G[v].emplace_back(u, P[i]);
         }
-        priority_queue<pair<double, int>> q;// prob, index
-        q.emplace(1, start);
-        vector<double> prob(n), seen(n);
-        prob[start] = 1;
-        while (q.size()) {
-            auto p = q.top();
-            int u = p.second;
-            q.pop();
-            if (seen[u]) continue;
-            seen[u] = 1;
-            if (u == end) return prob[u];
-            for (auto &nei : G[u]) {
-                double v = nei.first, w = nei.second;
-                if (!seen[v] && prob[v] < prob[u] * w) {
-                    prob[v] = prob[u] * w;
-                    q.emplace(prob[v], v);
-                }
-            } 
+        priority_queue<pair<double, int>> pq;
+        pq.emplace(1, start);
+        vector<double> dist(n, 0);
+        dist[start] = 1;
+        while (pq.size()) {
+            auto [p, u] = pq.top();
+            pq.pop();
+            if (p < dist[u]) continue;
+            for (auto &[v, w] : G[u]) {
+                if (dist[v] >= dist[u] * w) continue;
+                dist[v] = dist[u] * w;
+                pq.emplace(dist[v], v);
+            }
         }
-        return 0;
+        return dist[end];
     }
 };
 ```
