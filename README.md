@@ -352,7 +352,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 404 | Sum of Left Leaves | Easy | [Solution](leetcode/404.%20Sum%20of%20Left%20Leaves)
 405 | Convert a Number to Hexadecimal |  | [Solution](leetcode/405.%20Convert%20a%20Number%20to%20Hexadecimal)
 406 | Queue Reconstruction by Height | Medium | [Solution](leetcode/406.%20Queue%20Reconstruction%20by%20Height)
-407 | Trapping Rain Water II |  | [Solution](leetcode/407.%20Trapping%20Rain%20Water%20II)
+407 | Trapping Rain Water II | Hard | [Solution](leetcode/407.%20Trapping%20Rain%20Water%20II)
 408 | Valid Word Abbreviation | Easy | [Solution](leetcode/408.%20Valid%20Word%20Abbreviation)
 409 | Longest Palindrome | Easy | [Solution](leetcode/409.%20Longest%20Palindrome)
 410 | Split Array Largest Sum | Hard | [Solution](leetcode/410.%20Split%20Array%20Largest%20Sum)
@@ -849,6 +849,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1081 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/1081.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
 1089 | Duplicate Zeros | Easy | [Solution](leetcode/1089.%20Duplicate%20Zeros)
 1090 | Largest Values From Labels | Medium | [Solution](leetcode/1090.%20Largest%20Values%20From%20Labels)
+1091 | Shortest Path in Binary Matrix | Medium | [Solution](leetcode/1091.%20Shortest%20Path%20in%20Binary%20Matrix)
 1092 | Shortest Common Supersequence | Hard | [Solution](leetcode/1092.%20Shortest%20Common%20Supersequence)
 1094 | Car Pooling | Medium | [Solution](leetcode/1094.%20Car%20Pooling)
 1096 | Brace Expansion II | Hard | [Solution](leetcode/1096.%20Brace%20Expansion%20II)
@@ -1252,6 +1253,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1744 | Can You Eat Your Favorite Candy on Your Favorite Day? | Medium | [Solution](leetcode/1744.%20Can%20You%20Eat%20Your%20Favorite%20Candy%20on%20Your%20Favorite%20Day%3F)
 1745 | Palindrome Partitioning IV | Hard | [Solution](leetcode/1745.%20Palindrome%20Partitioning%20IV)
 1749 | Maximum Absolute Sum of Any Subarray | Medium | [Solution](leetcode/1749.%20Maximum%20Absolute%20Sum%20of%20Any%20Subarray)
+1754 | Largest Merge Of Two Strings | Medium | [Solution](leetcode/1754.%20Largest%20Merge%20Of%20Two%20Strings)
 
 # License
 
