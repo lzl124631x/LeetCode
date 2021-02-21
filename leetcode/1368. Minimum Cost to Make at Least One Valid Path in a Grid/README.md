@@ -96,3 +96,39 @@ public:
     }
 };
 ```
+
+## Solution 2. Dijkstra
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/
+// Author: github.com/lzl124631x
+// Time: O(MNlogMN)
+// Space: O(MN)
+class Solution {
+public:
+    int minCost(vector<vector<int>>& G) {
+        int M = G.size(), N = G[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        vector<vector<int>> dist(M, vector<int>(N, INT_MAX));
+        dist[0][0] = 0;
+        priority_queue<array<int, 3>, vector<array<int, 3>>, greater<>> pq;
+        pq.push({ 0, 0, 0 });
+        while (pq.size()) {
+            auto [d, x, y] = pq.top();
+            pq.pop();
+            if (x == M - 1 && y == N - 1) return dist[M - 1][N - 1];
+            if (d > dist[x][y]) continue;
+            for (int i = 0; i < 4; ++i) {
+                auto [dx, dy] = dirs[i];
+                int a = x + dx, b = y + dy;
+                if (a < 0 || a >= M || b < 0 || b >= N) continue;
+                int cost = d + (G[x][y] - 1 != i);
+                if (cost < dist[a][b]) {
+                    dist[a][b] = cost;
+                    pq.push({ cost, a, b });
+                }
+            }
+        }
+        return 0;
+    }
+};
+```
