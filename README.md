@@ -1257,6 +1257,11 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1763 | Longest Nice Substring | Easy | [Solution](leetcode/1763.%20Longest%20Nice%20Substring)
 1764 | Form Array by Concatenating Subarrays of Another Array | Medium | [Solution](leetcode/1764.%20Form%20Array%20by%20Concatenating%20Subarrays%20of%20Another%20Array)
 1765 | Map of Highest Peak | Medium | [Solution](leetcode/1765.%20Map%20of%20Highest%20Peak)
+1766 | Tree of Coprimes |  | [Solution](leetcode/1766.%20Tree%20of%20Coprimes)
+1768 | Merge Strings Alternately | Easy | [Solution](leetcode/1768.%20Merge%20Strings%20Alternately)
+1769 | Minimum Number of Operations to Move All Balls to Each Box | Medium | [Solution](leetcode/1769.%20Minimum%20Number%20of%20Operations%20to%20Move%20All%20Balls%20to%20Each%20Box)
+1770 | Maximum Score from Performing Multiplication Operations | Medium | [Solution](leetcode/1770.%20Maximum%20Score%20from%20Performing%20Multiplication%20Operations)
+1771 | Maximize Palindrome Length From Subsequences | Hard | [Solution](leetcode/1771.%20Maximize%20Palindrome%20Length%20From%20Subsequences)
 
 # License
 
