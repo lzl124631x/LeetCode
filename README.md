@@ -1256,6 +1256,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1754 | Largest Merge Of Two Strings | Medium | [Solution](leetcode/1754.%20Largest%20Merge%20Of%20Two%20Strings)
 1763 | Longest Nice Substring | Easy | [Solution](leetcode/1763.%20Longest%20Nice%20Substring)
 1764 | Form Array by Concatenating Subarrays of Another Array | Medium | [Solution](leetcode/1764.%20Form%20Array%20by%20Concatenating%20Subarrays%20of%20Another%20Array)
+1765 | Map of Highest Peak | Medium | [Solution](leetcode/1765.%20Map%20of%20Highest%20Peak)
 
 # License
 
