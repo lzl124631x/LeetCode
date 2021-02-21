@@ -28,7 +28,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 10 | Regular Expression Matching | Hard | [Solution](leetcode/10.%20Regular%20Expression%20Matching)
 11 | Container With Most Water | Medium | [Solution](leetcode/11.%20Container%20With%20Most%20Water)
 12 | Integer to Roman |  | [Solution](leetcode/12.%20Integer%20to%20Roman)
-13 | Roman to Integer |  | [Solution](leetcode/13.%20Roman%20to%20Integer)
+13 | Roman to Integer | Easy | [Solution](leetcode/13.%20Roman%20to%20Integer)
 14 | Longest Common Prefix |  | [Solution](leetcode/14.%20Longest%20Common%20Prefix)
 15 | 3Sum | Medium | [Solution](leetcode/15.%203Sum)
 16 | 3Sum Closest | Medium | [Solution](leetcode/16.%203Sum%20Closest)
