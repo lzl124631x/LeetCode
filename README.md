@@ -1254,6 +1254,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1745 | Palindrome Partitioning IV | Hard | [Solution](leetcode/1745.%20Palindrome%20Partitioning%20IV)
 1749 | Maximum Absolute Sum of Any Subarray | Medium | [Solution](leetcode/1749.%20Maximum%20Absolute%20Sum%20of%20Any%20Subarray)
 1754 | Largest Merge Of Two Strings | Medium | [Solution](leetcode/1754.%20Largest%20Merge%20Of%20Two%20Strings)
+1763 | Longest Nice Substring | Easy | [Solution](leetcode/1763.%20Longest%20Nice%20Substring)
 
 # License
 
