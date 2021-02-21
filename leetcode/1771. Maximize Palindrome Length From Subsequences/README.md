@@ -47,7 +47,7 @@
 **Similar Questions**:
 * [Longest Palindromic Subsequence (Medium)](https://leetcode.com/problems/longest-palindromic-subsequence/)
 
-## Solution 1.
+## Solution 1. DP
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximize-palindrome-length-from-subsequences/
@@ -76,13 +76,51 @@ public:
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
                 if (A[i] == B[j]) {
-                    dp[i + 1][j + 1] = 2 + max({dp[i][j], i > 0 ? X[0][i - 1] : 0 , j > 0 ? Y[0][j - 1] : 0 });
+                    dp[i + 1][j + 1] = 2 + max({dp[i][j], i > 0 ? X[0][i - 1] : 0, j > 0 ? Y[0][j - 1] : 0 });
                 } else {
                     dp[i + 1][j + 1] = max(dp[i][j + 1], dp[i + 1][j]);
                 }
             }
         }
         return dp[M][N];
+    }
+};
+```
+
+## Solution 2. DP
+
+
+```cpp
+// OJ: https://leetcode.com/problems/maximize-palindrome-length-from-subsequences/
+// Author: github.com/lzl124631x
+// Time: O((M + N)^2)
+// Space: O((M + N)^2)
+// Ref: https://leetcode.com/problems/maximize-palindrome-length-from-subsequences/discuss/1075453/C%2B%2B-Longest-Palindromic-Subsequence
+class Solution {
+    void longestPalindromeSubseq(string s, vector<vector<int>> &dp) {
+        for (int len = 1; len <= s.size(); ++len) {
+            for (int i = 0; i <= s.size() - len; ++i) {
+                int j = i + len - 1;
+                if (i == j) dp[i][j] = 1;
+                else if (s[i] == s[j]) dp[i][j] = 2 + dp[i + 1][j - 1];
+                else dp[i][j] = max(dp[i + 1][j], dp[i][j - 1]);
+            }
+        }
+    }
+public:
+    int longestPalindrome(string a, string b) {
+        int M = a.size(), N = b.size(), ans = 0;
+        vector<vector<int>> dp(M + N, vector<int>(M + N));
+        longestPalindromeSubseq(a + b, dp);
+        for (int i = 0; i < M; ++i) {
+            for (int j = N - 1; j >= 0; --j) {
+                if (a[i] == b[j]) {
+                    ans = max(ans, dp[i][M + j]);
+                    break;
+                }
+            }
+        }
+        return ans;
     }
 };
 ```
