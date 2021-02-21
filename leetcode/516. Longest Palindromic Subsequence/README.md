@@ -1,28 +1,49 @@
-# [516. Longest Palindromic Subsequence (Medium)](https://leetcode.com/problems/longest-palindromic-subsequence/)
+# [516. Longest Palindromic Subsequence (Medium)](https://leetcode.com/problems/longest-palindromic-subsequence/submissions/)
 
-<p>
-Given a string s, find the longest palindromic subsequence's length in s. You may assume that the maximum length of s is 1000.
-</p>
+<p>Given a string s, find the longest palindromic subsequence's length in s. You may assume that the maximum length of s is 1000.</p>
 
 <p><b>Example 1:</b><br>
-Input: 
-</p><pre>"bbbab"
+Input:</p>
+
+<pre>"bbbab"
 </pre>
-Output: 
+Output:
+
 <pre>4
 </pre>
 One possible longest palindromic subsequence is "bbbb".
-<p></p>
+
+<p>&nbsp;</p>
 
 <p><b>Example 2:</b><br>
-Input:
-</p><pre>"cbbd"
+Input:</p>
+
+<pre>"cbbd"
 </pre>
 Output:
+
 <pre>2
 </pre>
 One possible longest palindromic subsequence is "bb".
-<p></p>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= s.length &lt;= 1000</code></li>
+	<li><code>s</code> consists only of lowercase English letters.</li>
+</ul>
+
+
+**Related Topics**:  
+[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+
+**Similar Questions**:
+* [Longest Palindromic Substring (Medium)](https://leetcode.com/problems/longest-palindromic-substring/)
+* [Palindromic Substrings (Medium)](https://leetcode.com/problems/palindromic-substrings/)
+* [Count Different Palindromic Subsequences (Hard)](https://leetcode.com/problems/count-different-palindromic-subsequences/)
+* [Longest Common Subsequence (Medium)](https://leetcode.com/problems/longest-common-subsequence/)
+* [Longest Palindromic Subsequence II (Medium)](https://leetcode.com/problems/longest-palindromic-subsequence-ii/)
+* [Maximize Palindrome Length From Subsequences (Hard)](https://leetcode.com/problems/maximize-palindrome-length-from-subsequences/)
 
 **Companies**:  
 [Amazon](https://leetcode.com/company/amazon), [LinkedIn](https://leetcode.com/company/linkedin), [Microsoft](https://leetcode.com/company/microsoft), [Facebook](https://leetcode.com/company/facebook)
