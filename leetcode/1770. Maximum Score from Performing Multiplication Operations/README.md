@@ -68,7 +68,9 @@ dp[j][i] = max(
 where r = A.size() - j + i - 1
 ```
 
-Note that for simplicity, we used `0` as unvisited number here. But since `0` is a valid score, when the `memo[j][i]` is indeed `0`, we will recompute the value and thus waste time. We can initialize `memo[j][i]` to `INT_MIN` instead.
+Note:
+1. The range of `i` is `[0, M.size() - 1]` so we just need `M` instead of `N` for the second dimension of `dp`.
+1. that for simplicity, we used `0` as unvisited number here. But since `0` is a valid score, when the `memo[j][i]` is indeed `0`, we will recompute the value and thus waste time. We can initialize `memo[j][i]` to `INT_MIN` instead.
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/
