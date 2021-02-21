@@ -79,3 +79,29 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+Solution 1 has unnecessary comparisons. When there are multiple subarrays in `A` matches `G[i]`, we always want to use the leftmost one. So once a `G[i]` is matched, we don't need to rematch `G[0]` when we found a mismatch for `G[i + 1]`.
+
+```cpp
+// OJ: https://leetcode.com/problems/form-array-by-concatenating-subarrays-of-another-array/
+// Author: github.com/lzl124631x
+// Time: O(MLN) where M is the length of G, L is the max length of arrays in G, and N is the length of A
+// Space: O(M)
+class Solution {
+public:
+    bool canChoose(vector<vector<int>>& G, vector<int>& A) {
+        int i = 0, j = 0, M = G.size(), N = A.size();
+        while (i < M && j < N) {
+            int k = 0;
+            while (k < G[i].size() && j < N && G[i][k] == A[j + k]) ++k;
+            if (k == G[i].size()) {
+                ++i;
+                j += k;
+            } else ++j;
+        }
+        return i == M;
+    }
+};
+```
