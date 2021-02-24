@@ -92,10 +92,10 @@ Solution 1 has unnecessary comparisons. When there are multiple subarrays in `A`
 class Solution {
 public:
     bool canChoose(vector<vector<int>>& G, vector<int>& A) {
-        int i = 0, j = 0, M = G.size(), N = A.size();
+        int M = G.size(), N = A.size(), i = 0, j = 0;
         while (i < M && j < N) {
             int k = 0;
-            while (k < G[i].size() && j < N && G[i][k] == A[j + k]) ++k;
+            while (k < G[i].size() && j + k < N && G[i][k] == A[j + k]) ++k;
             if (k == G[i].size()) {
                 ++i;
                 j += k;
@@ -105,3 +105,7 @@ public:
     }
 };
 ```
+
+## TODO
+
+KMP: https://leetcode.com/problems/form-array-by-concatenating-subarrays-of-another-array/discuss/1074946/C%2B%2B-Simple-Search-%2B-KMP
