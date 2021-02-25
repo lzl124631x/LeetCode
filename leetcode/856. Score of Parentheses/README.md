@@ -190,7 +190,7 @@ public:
 ## Solution 5.
 
 ```cpp
-// OJ: https://leetcode.com/problems/score-of-parentheses/solution/
+// OJ: https://leetcode.com/problems/score-of-parentheses/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
