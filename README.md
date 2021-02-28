@@ -1263,6 +1263,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1769 | Minimum Number of Operations to Move All Balls to Each Box | Medium | [Solution](leetcode/1769.%20Minimum%20Number%20of%20Operations%20to%20Move%20All%20Balls%20to%20Each%20Box)
 1770 | Maximum Score from Performing Multiplication Operations | Medium | [Solution](leetcode/1770.%20Maximum%20Score%20from%20Performing%20Multiplication%20Operations)
 1771 | Maximize Palindrome Length From Subsequences | Hard | [Solution](leetcode/1771.%20Maximize%20Palindrome%20Length%20From%20Subsequences)
+1773 | Count Items Matching a Rule | Easy | [Solution](leetcode/1773.%20Count%20Items%20Matching%20a%20Rule)
+1774 | Closest Dessert Cost | Medium | [Solution](leetcode/1774.%20Closest%20Dessert%20Cost)
+1775 | Equal Sum Arrays With Minimum Number of Operations | Medium | [Solution](leetcode/1775.%20Equal%20Sum%20Arrays%20With%20Minimum%20Number%20of%20Operations)
 
 # License
 
