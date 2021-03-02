@@ -73,15 +73,15 @@ For the binary search solution to problem 300, please checkout [my explanation](
 
 ### Algorithm
 
-Let `a[i]` be the length of the longest increasing subsequence in `A[0..(i-1)]` that can has `A[i]` appended to it, and `b[i]` be the length of the longest decreasing subsequence in `A[(i+1)..(N-1)]` that can has `A[i]` prepended to it.
+Let `left[i]` be the length of the longest increasing subsequence in `A[0..(i-1)]` that can has `A[i]` appended to it, and `right[i]` be the length of the longest decreasing subsequence in `A[(i+1)..(N-1)]` that can has `A[i]` prepended to it.
 
-We can scan from left to right to set the `a[i]` values, and scan from right to left to set the `b[i]` values.
+We can scan from left to right to set the `left[i]` values, and scan from right to left to set the `right[i]` values.
 
-For `1 <= i <= N - 2`, the longest mountain size is `a[i] + b[i] + 1`.
+For `1 <= i <= N - 2`, the longest mountain size is `left[i] + right[i] + 1`.
 
-So the answer is the minimum `N - (a[i] + b[i] + 1)`.
+So the answer is the minimum `N - (left[i] + right[i] + 1)`.
 
-Note that we need to skip cases where either `a[i]` or `b[i]` is zero because it's invalid.
+Note that we need to skip cases where either `left[i]` or `right[i]` is zero because it's invalid.
 
 Test cases that should be added:
 * `[1,2,1,2,3,4]` and `[4,3,2,1,2,1]`. Correct answer is `3`.
@@ -95,25 +95,51 @@ Test cases that should be added:
 class Solution {
 public:
     int minimumMountainRemovals(vector<int>& A) {
-        int N = A.size(), ans = N;
-        vector<int> a(N), b(N), v;
-        for (int i = 0 ; i < N; ++i) {
-            int x = A[i];
-            auto it = lower_bound(begin(v), end(v), x);
-            a[i] = it - begin(v);
-            if (it != end(v)) *it = x;
-            else v.push_back(x);
+        int N = A.size(), maxLen = 0;
+        vector<int> left(N), right(N), tmp;
+        for (int i = 0; i < N; ++i) {
+            int j = lower_bound(begin(tmp), end(tmp), A[i]) - begin(tmp);
+            if (j == tmp.size()) tmp.emplace_back();
+            tmp[j] = A[i];
+            left[i] = j;
         }
-        v.clear();
+        tmp.clear();
         for (int i = N - 1; i >= 0; --i) {
-            int x = A[i];
-            auto it = lower_bound(begin(v), end(v), x) ;
-            b[i] = it - begin(v); 
-            if (it != end(v)) *it = x;
-            else v.push_back(x);
+            int j = lower_bound(begin(tmp), end(tmp), A[i]) - begin(tmp);
+            if (j == tmp.size()) tmp.emplace_back();
+            tmp[j] = A[i];
+            right[i] = j;
         }
-        for (int i = 1; i < N; ++i) {
-            if (a[i] && b[i]) ans = min(ans, N - (a[i] + b[i] + 1));
+        for (int i = 1; i < N - 1; ++i) maxLen = max(maxLen, left[i] && right[i] ? left[i] + right[i] + 1 : 0);
+        return N - maxLen;
+    }
+};
+```
+
+We don't have to store `right` array. Instead, we can update the answer when we compute the `right` values.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class Solution {
+public:
+    int minimumMountainRemovals(vector<int>& A) {
+        int N = A.size(), ans = N;
+        vector<int> left(N), tmp;
+        for (int i = 0; i < N; ++i) {
+            int j = lower_bound(begin(tmp), end(tmp), A[i]) - begin(tmp);
+            if (j == tmp.size()) tmp.emplace_back();
+            tmp[j] = A[i];
+            left[i] = j;
+        }
+        tmp.clear();
+        for (int i = N - 1; i >= 0; --i) {
+            int j = lower_bound(begin(tmp), end(tmp), A[i]) - begin(tmp);
+            if (j == tmp.size()) tmp.emplace_back();
+            tmp[j] = A[i];
+            if (left[i] && j) ans = min(ans, N - (left[i] + j + 1));
         }
         return ans;
     }
