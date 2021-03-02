@@ -110,18 +110,14 @@ public:
 class Solution {
 public:
     vector<int> findErrorNums(vector<int>& A) {
-        int N = A.size(), dup, missing;
-        for (int i = 0; i < N; ++i) {
-            while (i + 1 != A[i] && A[A[i] - 1] != A[i]) swap(A[i], A[A[i] - 1]);
-            if (i + 1 != A[i] && A[A[i] - 1] == A[i]) dup = A[i];
+        int N = A.size();
+        for (int i = 0; i < A.size(); ++i) {
+            while (A[i] != i + 1 && A[A[i] - 1] != A[i]) swap(A[i], A[A[i] - 1]);
         }
-        for (int i = 0; i < N; ++i) {
-            if (i + 1 != A[i]) {
-                missing = i + 1;
-                break;
-            }
+        for (int i = 0; i < A.size(); ++i) {
+            if (A[i] != i + 1) return {A[i], i + 1};
         }
-        return { dup, missing };
+        return {};
     }
 };
 ```
