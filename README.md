@@ -517,6 +517,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 620 | Not Boring Movies | Easy | [Solution](leetcode/620.%20Not%20Boring%20Movies)
 621 | Task Scheduler | Medium | [Solution](leetcode/621.%20Task%20Scheduler)
 622 | Design Circular Queue | Medium | [Solution](leetcode/622.%20Design%20Circular%20Queue)
+623 | Add One Row to Tree | Medium | [Solution](leetcode/623.%20Add%20One%20Row%20to%20Tree)
 627 | Swap Salary | Easy | [Solution](leetcode/627.%20Swap%20Salary)
 628 | Maximum Product of Three Numbers | Easy | [Solution](leetcode/628.%20Maximum%20Product%20of%20Three%20Numbers)
 629 | K Inverse Pairs Array | Hard | [Solution](leetcode/629.%20K%20Inverse%20Pairs%20Array)
@@ -654,6 +655,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 814 | Binary Tree Pruning | Medium | [Solution](leetcode/814.%20Binary%20Tree%20Pruning)
 817 | Linked List Components | Medium | [Solution](leetcode/817.%20Linked%20List%20Components)
 819 | Most Common Word | Easy | [Solution](leetcode/819.%20Most%20Common%20Word)
+820 | Short Encoding of Words | Medium | [Solution](leetcode/820.%20Short%20Encoding%20of%20Words)
 821 | Shortest Distance to a Character | Easy | [Solution](leetcode/821.%20Shortest%20Distance%20to%20a%20Character)
 823 | Binary Trees With Factors | Medium | [Solution](leetcode/823.%20Binary%20Trees%20With%20Factors)
 824 | Goat Latin | Easy | [Solution](leetcode/824.%20Goat%20Latin)
@@ -1266,6 +1268,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1773 | Count Items Matching a Rule | Easy | [Solution](leetcode/1773.%20Count%20Items%20Matching%20a%20Rule)
 1774 | Closest Dessert Cost | Medium | [Solution](leetcode/1774.%20Closest%20Dessert%20Cost)
 1775 | Equal Sum Arrays With Minimum Number of Operations | Medium | [Solution](leetcode/1775.%20Equal%20Sum%20Arrays%20With%20Minimum%20Number%20of%20Operations)
+1784 | Check if Binary String Has at Most One Segment of Ones | Easy | [Solution](leetcode/1784.%20Check%20if%20Binary%20String%20Has%20at%20Most%20One%20Segment%20of%20Ones)
+1785 | Minimum Elements to Add to Form a Given Sum | Medium | [Solution](leetcode/1785.%20Minimum%20Elements%20to%20Add%20to%20Form%20a%20Given%20Sum)
+1786 | Number of Restricted Paths From First to Last Node | Medium | [Solution](leetcode/1786.%20Number%20of%20Restricted%20Paths%20From%20First%20to%20Last%20Node)
+1787 | Make the XOR of All Segments Equal to Zero | Hard | [Solution](leetcode/1787.%20Make%20the%20XOR%20of%20All%20Segments%20Equal%20to%20Zero)
 
 # License
 
