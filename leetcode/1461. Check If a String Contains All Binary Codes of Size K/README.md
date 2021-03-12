@@ -76,6 +76,30 @@ public:
 };
 ```
 
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/
+// Author: github.com/lzl124631x
+// Time: O(min(N, 2^K))
+// Space: O(2^K)
+class Solution {
+public:
+    bool hasAllCodes(string s, int k) {
+        vector<bool> v(1 << k);
+        int mask = (1 << k) - 1, cnt = 1 << k, n = 0;
+        for (int i = 0; i < s.size() && cnt; ++i) {
+            n = n << 1 & mask | (s[i] - '0');
+            if (i >= k - 1) {
+                if (!v[n]) --cnt;
+                v[n] = true;
+            }
+        }
+        return cnt == 0;
+    }
+};
+```
+
 ## Solution 2. Sliding window
 
 Same idea as Solution 1, but using `unordered_set` to store the visited info and we just need to check the size of the set in the end.
