@@ -1272,6 +1272,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1785 | Minimum Elements to Add to Form a Given Sum | Medium | [Solution](leetcode/1785.%20Minimum%20Elements%20to%20Add%20to%20Form%20a%20Given%20Sum)
 1786 | Number of Restricted Paths From First to Last Node | Medium | [Solution](leetcode/1786.%20Number%20of%20Restricted%20Paths%20From%20First%20to%20Last%20Node)
 1787 | Make the XOR of All Segments Equal to Zero | Hard | [Solution](leetcode/1787.%20Make%20the%20XOR%20of%20All%20Segments%20Equal%20to%20Zero)
+1790 | Check if One String Swap Can Make Strings Equal | Easy | [Solution](leetcode/1790.%20Check%20if%20One%20String%20Swap%20Can%20Make%20Strings%20Equal)
+1791 | Find Center of Star Graph | Medium | [Solution](leetcode/1791.%20Find%20Center%20of%20Star%20Graph)
+1792 | Maximum Average Pass Ratio | Medium | [Solution](leetcode/1792.%20Maximum%20Average%20Pass%20Ratio)
+1793 | Maximum Score of a Good Subarray | Hard | [Solution](leetcode/1793.%20Maximum%20Score%20of%20a%20Good%20Subarray)
 
 # License
 
