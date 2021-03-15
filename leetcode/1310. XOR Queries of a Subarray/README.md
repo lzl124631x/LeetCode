@@ -52,9 +52,8 @@ public:
         for (int i = 1; i < A.size(); ++i) A[i] ^= A[i - 1];
         vector<int> ans;
         for (auto &q : Q) {
-            int prev = q[0] - 1;
-            prev = prev == -1 ? 0 : A[prev];
-            ans.push_back(A[q[1]] ^ prev);
+            int from = q[0], to = q[1];
+            ans.push_back(A[to] ^ (from ? A[from - 1] : 0));
         }
         return ans;
     }
