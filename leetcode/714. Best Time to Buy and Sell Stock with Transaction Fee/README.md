@@ -1,22 +1,38 @@
 # [714. Best Time to Buy and Sell Stock with Transaction Fee (Medium)](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/)
 
-<p>Your are given an array of integers <code>prices</code>, for which the <code>i</code>-th element is the price of a given stock on day <code>i</code>; and a non-negative integer <code>fee</code> representing a transaction fee.</p>
-<p>You may complete as many transactions as you like, but you need to pay the transaction fee for each transaction.  You may not buy more than 1 share of a stock at a time (ie. you must sell the stock share before you buy again.)</p>
-<p>Return the maximum profit you can make.</p>
+<p>You are given an array <code>prices</code> where <code>prices[i]</code> is the price of a given stock on the <code>i<sup>th</sup></code> day, and an integer <code>fee</code> representing a transaction fee.</p>
 
-<p><b>Example 1:</b><br>
-</p><pre><b>Input:</b> prices = [1, 3, 2, 8, 4, 9], fee = 2
-<b>Output:</b> 8
-<b>Explanation:</b> The maximum profit can be achieved by:
-<li>Buying at prices[0] = 1</li><li>Selling at prices[3] = 8</li><li>Buying at prices[4] = 4</li><li>Selling at prices[5] = 9</li>The total profit is ((8 - 1) - 2) + ((9 - 4) - 2) = 8.
+<p>Find the maximum profit you can achieve. You may complete as many transactions as you like, but you need to pay the transaction fee for each transaction.</p>
+
+<p><strong>Note:</strong> You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> prices = [1,3,2,8,4,9], fee = 2
+<strong>Output:</strong> 8
+<strong>Explanation:</strong> The maximum profit can be achieved by:
+- Buying at prices[0] = 1
+- Selling at prices[3] = 8
+- Buying at prices[4] = 4
+- Selling at prices[5] = 9
+The total profit is ((8 - 1) - 2) + ((9 - 4) - 2) = 8.
 </pre>
-<p></p>
 
-<p><b>Note:</b>
-</p><li><code>0 &lt; prices.length &lt;= 50000</code>.</li>
-<li><code>0 &lt; prices[i] &lt; 50000</code>.</li>
-<li><code>0 &lt;= fee &lt; 50000</code>.</li>
-<p></p>
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> prices = [1,3,7,5,10,3], fee = 3
+<strong>Output:</strong> 6
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt; prices.length &lt;= 5 * 10<sup>4</sup></code></li>
+	<li><code>0 &lt; prices[i], fee &lt; 5 * 10<sup>4</sup></code></li>
+</ul>
+
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Greedy](https://leetcode.com/tag/greedy/)
@@ -93,12 +109,50 @@ class Solution {
 public:
     int maxProfit(vector<int>& A, int fee) {
         if (A.empty()) return 0;
-        int N = A.size(), buy = INT_MIN, sell = 0;
-        for (int i = 0; i < N; ++i) {
-            buy = max(buy, sell - A[i]);
-            sell = max(sell, A[i] - fee + buy);
+        int buy = INT_MIN, sell = 0;
+        for (int n : A) {
+            buy = max(buy, sell - n);
+            sell = max(sell, n - fee + buy);
         }
         return sell;
     }
 };
 ```
+
+## Solution 3. DP
+
+Another easier way of thinking about this problem:
+
+On day `i`, we have two options: buy or sell.
+
+If we buy, we must buy based on the maximum possible sell result we can get within `[0, i)` days. So `buy[i] = max( sell[j] | 0 <= j < i ) - prices[i]`.
+
+If we sell, we must sell based on the maximum possible buy result we can get within `[0, i)` days. So `sell[i] = max( buy[j] | 0 <= j < i ) + prices[i] - fee`.
+
+We can memoize the maximum of `buy` and `sell` values within day `[0, i)`, and use them to generate the new `buy` and `sell` values on day `i`.
+
+Since `buy` could result in a negative balance, we should use `-INF` as the initial value for `buy`.
+
+Since we won't ever want a negative balance from sell, we should use `0` as the initial value for `sell`.
+
+```cpp
+// OJ: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int maxProfit(vector<int>& A, int fee) {
+        long buy = INT_MIN, sell = 0;
+        for (int n : A) {
+            long buy2 = max(buy, sell - n);
+            long sell2 = max(sell, buy + n - fee);
+            buy = buy2;
+            sell = sell2;
+        }
+        return sell;
+    }
+};
+```
+
+According to Solution 2, we can merge `buy2` and `sell2` with `buy` and `sell` respectively with no issue. This is because buying and selling on the same day is the same as not trading on day `i`, whose result should be captured already in `buy` and `sell`.
