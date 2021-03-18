@@ -39,7 +39,6 @@
 
 ## Solution 1. Greedy + Two Pointers
 
-
 Use a window `[i + 1, j - 1]` starting from `[k, k]` and extend it to the length of `A`.
 
 The length of the window will mono-increase with the same amount = 1 in either direction, so we just always pick the direction which has a greater min value.
@@ -62,6 +61,36 @@ public:
             else ++j;
             mn = max(lmin, rmin);
             ans = max(ans, mn * len);
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2. Greedy + Two Pointers
+
+Similar to Solution 1, but we just look at the `A[i]` and `A[j]` themselves. We always pick the greater one.
+
+This works because the min value in the window can only decrease but not increase, so picking the smaller one must yield a result that is no better than picking the greater one.
+
+```cpp
+// OJ: https://leetcode.com/contest/weekly-contest-232/problems/maximum-score-of-a-good-subarray/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int maximumScore(vector<int>& A, int k) {
+        int i = k - 1, j = k + 1, N = A.size(), ans = A[k], mn = A[k];
+        while (i >= 0 || j < N) {
+            if (i < 0 || (j < N && A[j] > A[i])) {
+                mn = min(mn, A[j]);
+                ++j;
+            } else {
+                mn = min(mn, A[i]);
+                --i;
+            }
+            ans = max(ans, mn * (j - i - 1));
         }
         return ans;
     }
