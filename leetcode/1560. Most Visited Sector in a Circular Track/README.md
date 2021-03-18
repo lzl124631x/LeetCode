@@ -53,20 +53,17 @@ class Solution {
 public:
     vector<int> mostVisited(int n, vector<int>& A) {
         vector<int> cnt(n + 1);
-        int from = A[0];
-        cnt[from]++;
-        for (int i = 1; i < A.size(); ++i) {
-            int to = A[i];
-            while (from != to) {
-                ++from;
-                if (from > n) from = 1;
-                cnt[from]++;
+        int i = A[0], mx = 1;
+        cnt[i] = 1;
+        for (int j = 1; j < A.size(); ++j) {
+            while (i != A[j]) {
+                if (++i == n + 1) i = 1;
+                mx = max(mx, ++cnt[i]);
             }
         }
         vector<int> ans;
-        int mx = *max_element(begin(cnt), end(cnt));
-        for (int i = 1; i <= n; ++i) {
-            if (mx == cnt[i]) ans.push_back(i);
+        for (int j = 1; j <= n; ++j) {
+            if (cnt[j] == mx) ans.push_back(j);
         }
         return ans;
     }
