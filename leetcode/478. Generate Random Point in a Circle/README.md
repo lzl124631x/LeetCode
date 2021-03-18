@@ -46,7 +46,9 @@
 
 ## Solution 1. Rejection Sampling
 
-See explanations [here](https://leetcode.com/problems/generate-random-point-in-a-circle/solution/)
+Keep generating `{x,y}` values within ranges `[x_center - radius, x_center + radius]` and `[y_center - radius, y_center + radius]`.
+
+If the result is outside of the circle, i.e. `(x - x_center)^2 + (y - y_center)^2 > radius^2`, ignore this result and keep generating new random pairs until we find a valid one.
 
 ```cpp
 // OJ: https://leetcode.com/problems/generate-random-point-in-a-circle/
@@ -56,7 +58,7 @@ See explanations [here](https://leetcode.com/problems/generate-random-point-in-a
 // Ref: https://leetcode.com/problems/generate-random-point-in-a-circle/solution/
 class Solution {
 private:
-    double radius, x_center, y_center, area;
+    double radius, x_center, y_center;
     mt19937 rng{random_device{}()};
     uniform_real_distribution<double> uni{0, 1};
 public:
@@ -76,7 +78,41 @@ public:
 };
 ```
 
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/generate-random-point-in-a-circle/
+// Author: github.com/lzl124631x
+// Time: O(1)
+// Space: O(1)
+class Solution {
+    double r, x, y;
+    double drand(double mn, double mx) {
+        double d = (double)rand() / RAND_MAX;
+        return mn + d * (mx - mn);
+    }
+public:
+    Solution(double radius, double x_center, double y_center) : r(radius), x(x_center), y(y_center) {
+        srand(0);
+    }
+    
+    vector<double> randPoint() {
+        double rx, ry;
+        while (true) {
+            double rx = drand(x - r, x + r), ry = drand(y - r, y + r);
+            if (pow(rx - x, 2) + pow(ry - y, 2) <= pow(r, 2)) return {rx, ry};
+        }
+    }
+};
+```
+
 ## Solution 2. Inverse Transform Sampling (Math)
+
+A point in a circle can be expressed using `d` and `theta` where `d` is the distance between this point and the center, and `theta` is the degree of the line connecting the point and the circle.
+
+`d` is in range of `[0, radius]` and `theta` is in range of `[0, 2 * PI]`.
+
+We can randomly generate `d` and `theta` then derive the point as `{ x_center + d * cost(theta), y_center + d * sin(theta) }`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/generate-random-point-in-a-circle/
