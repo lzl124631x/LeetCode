@@ -72,3 +72,30 @@ public:
     }
 };
 ```
+
+Or use Heap
+
+```cpp
+// OJ: https://leetcode.com/problems/find-kth-largest-xor-coordinate-value/
+// Author: github.com/lzl124631x
+// Time: O(MNlog(K))
+// Space: O(K)
+class Solution {
+public:
+    int kthLargestValue(vector<vector<int>>& A, int k) {
+        priority_queue<int, vector<int>, greater<>> pq;
+        int M= A.size(), N = A[0].size();
+        for (int i = 0; i < M; ++i) {
+            int val = 0;
+            for (int j = 0; j < N; ++j) {
+                val ^= A[i][j];
+                A[i][j] = val;
+                if (i - 1 >= 0)  A[i][j] ^= A[i - 1][j];
+                if (pq.size() < k || A[i][j] > pq.top()) pq.push(A[i][j]);
+                if (pq.size() > k) pq.pop();
+            }
+        }
+        return pq.top();
+    }
+};
+```
