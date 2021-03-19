@@ -84,7 +84,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Greedy
 
 If `A[i] == A[i - 1]`, we skip it.
 
