@@ -55,23 +55,20 @@ We then go to room 3.  Since we were able to go to every room, we return true.
 // Space: O(N) where N is the count of rooms
 class Solution {
 public:
-    bool canVisitAllRooms(vector<vector<int>>& rooms) {
-        int N = rooms.size(), cnt = 1;
-        vector<bool> seen(N, false);
+    bool canVisitAllRooms(vector<vector<int>>& A) {
+        int N = A.size(), cnt = 0;
+        vector<bool> seen(N);
         seen[0] = true;
         queue<int> q;
         q.push(0);
         while (q.size()) {
-                q.push(k);
-            auto key = q.front();
+            int i = q.front();
             q.pop();
-            auto r = rooms[key];
-            for (int k : r) {
-                if (!seen[k]) {
-                    cnt++;
-                    q.push(k);
-                    seen[k] = true;
-                }
+            ++cnt;
+            for (int j : A[i]) {
+                if (seen[j]) continue;
+                seen[j] = true;
+                q.push(j);
             }
         }
         return cnt == N;
