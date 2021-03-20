@@ -1050,6 +1050,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1438 | Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit | Medium | [Solution](leetcode/1438.%20Longest%20Continuous%20Subarray%20With%20Absolute%20Diff%20Less%20Than%20or%20Equal%20to%20Limit)
 1439 | Find the Kth Smallest Sum of a Matrix With Sorted Rows | Hard | [Solution](leetcode/1439.%20Find%20the%20Kth%20Smallest%20Sum%20of%20a%20Matrix%20With%20Sorted%20Rows)
 1441 | Build an Array With Stack Operations |  | [Solution](leetcode/1441.%20Build%20an%20Array%20With%20Stack%20Operations)
+1442 | Count Triplets That Can Form Two Arrays of Equal XOR | Medium | [Solution](leetcode/1442.%20Count%20Triplets%20That%20Can%20Form%20Two%20Arrays%20of%20Equal%20XOR)
 1443 | Minimum Time to Collect All Apples in a Tree | Medium | [Solution](leetcode/1443.%20Minimum%20Time%20to%20Collect%20All%20Apples%20in%20a%20Tree)
 1444 | Number of Ways of Cutting a Pizza | Hard | [Solution](leetcode/1444.%20Number%20of%20Ways%20of%20Cutting%20a%20Pizza)
 1446 | Consecutive Characters | Easy | [Solution](leetcode/1446.%20Consecutive%20Characters)
@@ -1276,6 +1277,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1791 | Find Center of Star Graph | Medium | [Solution](leetcode/1791.%20Find%20Center%20of%20Star%20Graph)
 1792 | Maximum Average Pass Ratio | Medium | [Solution](leetcode/1792.%20Maximum%20Average%20Pass%20Ratio)
 1793 | Maximum Score of a Good Subarray | Hard | [Solution](leetcode/1793.%20Maximum%20Score%20of%20a%20Good%20Subarray)
+1796 | Second Largest Digit in a String | Easy | [Solution](leetcode/1796.%20Second%20Largest%20Digit%20in%20a%20String)
+1797 | Design Authentication Manager | Medium | [Solution](leetcode/1797.%20Design%20Authentication%20Manager)
+1798 | Maximum Number of Consecutive Values You Can Make | Medium | [Solution](leetcode/1798.%20Maximum%20Number%20of%20Consecutive%20Values%20You%20Can%20Make)
+1799 | Maximize Score After N Operations | Hard | [Solution](leetcode/1799.%20Maximize%20Score%20After%20N%20Operations)
 
 # License
 
