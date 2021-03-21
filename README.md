@@ -649,6 +649,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 806 | Number of Lines To Write String | Easy | [Solution](leetcode/806.%20Number%20of%20Lines%20To%20Write%20String)
 807 | Max Increase to Keep City Skyline | Medium | [Solution](leetcode/807.%20Max%20Increase%20to%20Keep%20City%20Skyline)
 809 | Expressive Words | Medium | [Solution](leetcode/809.%20Expressive%20Words)
+810 | Chalkboard XOR Game | Hard | [Solution](leetcode/810.%20Chalkboard%20XOR%20Game)
 811 | Subdomain Visit Count | Easy | [Solution](leetcode/811.%20Subdomain%20Visit%20Count)
 812 | Largest Triangle Area | Easy | [Solution](leetcode/812.%20Largest%20Triangle%20Area)
 813 | Largest Sum of Averages | Medium | [Solution](leetcode/813.%20Largest%20Sum%20of%20Averages)
@@ -1281,6 +1282,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1797 | Design Authentication Manager | Medium | [Solution](leetcode/1797.%20Design%20Authentication%20Manager)
 1798 | Maximum Number of Consecutive Values You Can Make | Medium | [Solution](leetcode/1798.%20Maximum%20Number%20of%20Consecutive%20Values%20You%20Can%20Make)
 1799 | Maximize Score After N Operations | Hard | [Solution](leetcode/1799.%20Maximize%20Score%20After%20N%20Operations)
+1800 | Maximum Ascending Subarray Sum | Easy | [Solution](leetcode/1800.%20Maximum%20Ascending%20Subarray%20Sum)
+1801 | Number of Orders in the Backlog | Medium | [Solution](leetcode/1801.%20Number%20of%20Orders%20in%20the%20Backlog)
+1802 | Maximum Value at a Given Index in a Bounded Array | Medium | [Solution](leetcode/1802.%20Maximum%20Value%20at%20a%20Given%20Index%20in%20a%20Bounded%20Array)
+1803 | Count Pairs With XOR in a Range | Hard | [Solution](leetcode/1803.%20Count%20Pairs%20With%20XOR%20in%20a%20Range)
 
 # License
 
