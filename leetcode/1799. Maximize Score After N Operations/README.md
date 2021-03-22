@@ -64,10 +64,20 @@ dp[m] = max( cnt / 2 * gcd(A[i], A[j]) + dp[next]  )
 
 where `i `and `j` are two different indexes of bit 1s in `m`, and `next = m & ~(1 << i) & ~(1 << j)` represents the subset `m` excluding `A[i]` and `A[j]`.
 
+### Complexity Analysis
+
+We traverse the binary masks from `2` to `2^N - 1` so the outer `for` loop will run `O(2^N)` time.
+
+In each round of `for` loop, we take `O(N^2)` time to traverse all the pairs of elements in the subset `m`.
+
+Thus, overall it takes `O(2^N * N^2)` time.
+
+And the space complexity is apparently `O(2^N)` as well because of the `dp` array.
+
 ```cpp
 // OJ: https://leetcode.com/problems/maximize-score-after-n-operations/
 // Author: github.com/lzl124631x
-// Time: O(2^N)
+// Time: O(2^N * N^2)
 // Space: O(2^N)
 class Solution {
 public:
