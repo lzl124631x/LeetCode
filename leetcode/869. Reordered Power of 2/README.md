@@ -40,19 +40,12 @@ Traverse all the permutations of N, and examine each of them whether it is power
 ```cpp
 // OJ: https://leetcode.com/problems/reordered-power-of-2/
 // Author: github.com/lzl124631x
-// Time: O(lg(N)! * log(N)),
-//     where lg(N) is number of digits in N base-10,
-//     and log(N) is number of digits in N base-2.
-//     O(lg(N)!) is because of permutation, log(N) is because of testing `isPow2`.
+// Time: O(lg(N)!)
 // Space: O(lg(N))
 class Solution {
 private:
     bool isPow2(long long N) {
-        while (N != 1) {
-            if (N % 2) return false;
-            N /= 2;
-        }
-        return true;
+        return (N & (N - 1)) == 0;
     }
     string num;
     bool dfs(int start) {
@@ -80,7 +73,7 @@ public:
 
 ## Solution 2. Counting
 
-There are only 32 possible powers of 2. Count the digits of N and compare the counts with those of a power of 2.
+There are only 32 possible powers of 2. Count the digits of `N` and compare the counts with those of a power of 2.
 
 ```cpp
 // OJ: https://leetcode.com/problems/reordered-power-of-2/
@@ -91,8 +84,8 @@ There are only 32 possible powers of 2. Count the digits of N and compare the co
 // Space: O(lg(N))
 class Solution {
 private:
-    vector<int> count(int N) {
-        vector<int> cnt(10, 0);
+    array<int, 10> count(int N) {
+        array<int, 10> cnt = {};
         while (N) {
             cnt[N % 10]++;
             N /= 10;
@@ -104,7 +97,7 @@ public:
         auto cnt = count(N);
         for (int i = 0; i < 31; ++i) {
             auto c = count(1 << i);
-            if (equal(cnt.begin(), cnt.end(), c.begin())) return true;
+            if (cnt == c) return true;
         }
         return false;
     }
