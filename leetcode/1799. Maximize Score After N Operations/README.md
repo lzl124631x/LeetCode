@@ -88,8 +88,8 @@ public:
             int cnt = __builtin_popcount(m);
             if (cnt % 2) continue; // if there are even number of elements in this subset, skip
             vector<int> b; // indexes of elements in this subset
-            for (int i = 0; i < 20; ++i) {
-                if (m >> i & 1) b.push_back(i); // `m` is bit 1 at position `i`, which means that `A[i]` is in the current subset
+            for (int tmp = m, i = 0; tmp; ++i, tmp >>= 1) {
+                if (tmp & 1) b.push_back(i); // `m` has bit 1 at position `i`, which means that `A[i]` is in the current subset
             }
             for (int i = 0; i < b.size() ; ++i) {
                 for (int j = i + 1; j < b.size(); ++j) { // use different pairs as the last operation on this subset
