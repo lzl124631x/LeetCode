@@ -64,29 +64,31 @@ struct TrieNode {
     TrieNode *next[2] = {};
     int cnt = 0;
 };
+const int BIT = 15;
 class Solution {
-    void add(TrieNode *node, int n) {
-        for (int i = 15; i >= 0; --i) {
+    void addNode(TrieNode *node, int n) {
+        for (int i = BIT; i >= 0; --i) {
             int b = n >> i & 1;
-            if (node->next[b] == NULL) node->next[b] = new TrieNode();
+            if (!node->next[b]) node->next[b] = new TrieNode();
             node = node->next[b];
             node->cnt++;
         }
     }
-    int count(TrieNode *node, int i, int n, int rl, int rh, int low, int high) {
-        if (rl >= low && rh <= high) return node->cnt;
-        if (rh < low || rl > high) return 0;
-        int b = n >> i & 1, r = b ^ 1, mask = ~(1 << i);
-        return (node->next[0] ? count(node->next[0], i - 1, n, rl & mask | (b << i), rh & mask | (b << i), low, high) : 0)
-            + (node->next[1] ? count(node->next[1], i - 1, n, rl & mask | (r << i), rh & mask | (r << i), low, high) : 0);
+    int count(TrieNode *node, int n, int low, int high, int i = BIT, int rangeMin = 0, int rangeMax = (1 << (BIT + 1)) - 1) {
+        if (rangeMin >= low && rangeMax <= high) return node->cnt;
+        if (rangeMax < low || rangeMin > high) return 0;
+        int ans = 0, b = n >> i & 1, r = 1 - b, mask = 1 << i;
+        if (node->next[b]) ans += count(node->next[b], n, low, high, i - 1, rangeMin & ~mask, rangeMax & ~mask);
+        if (node->next[r]) ans += count(node->next[r], n, low, high, i - 1, rangeMin | mask, rangeMax | mask);
+        return ans;
     }
 public:
     int countPairs(vector<int>& A, int low, int high) {
         TrieNode root;
         int ans = 0;
         for (int n : A) {
-            ans += count(&root, 15, n, 0, (1 << 16) - 1, low, high);
-            add(&root, n);
+            ans += count(&root, n, low, high);
+            addNode(&root, n);
         }
         return ans;
     }
