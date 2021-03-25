@@ -33,6 +33,9 @@
 </div>
 
 
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Greedy](https://leetcode.com/tag/greedy/)
+
 ## Solution 1.
 
 ```cpp
@@ -43,24 +46,22 @@
 class Solution {
 public:
     vector<int> advantageCount(vector<int>& A, vector<int>& B) {
-        sort(A.begin(), A.end());
-        vector<int> copy(B.begin(), B.end());
-        sort(B.begin(), B.end());
-        unordered_map<int, queue<int>> m;
-        queue<int> leftover;
-        int i = 0;
-        for (int a : A) {
-            if (a > B[i]) m[B[i++]].push(a);
-            else leftover.push(a);
+        int N = A.size(), i = 0;
+        vector<int> ia(N), ib(N), ans(N, -1);
+        iota(begin(ia), end(ia), 0);
+        iota(begin(ib), end(ib), 0);
+        sort(begin(ia), end(ia), [&](int a, int b) { return A[a] > A[b]; });
+        sort(begin(ib), end(ib), [&](int a, int b) { return B[a] > B[b]; });
+        for (int j = 0; i < N && j < N; ++i) {
+            while (j < N && B[ib[j]] >= A[ia[i]]) ++j;
+            if (j < N) {
+                ans[ib[j++]] = A[ia[i]];
+            } else break;
         }
-        vector<int> ans;
-        for (int b : copy) {
-            if (m[b].size()) {
-                ans.push_back(m[b].front());
-                m[b].pop();
-            } else {
-                ans.push_back(leftover.front());
-                leftover.pop();
+        for (int j = 0; i < N && j < N; ++i) {
+            while (j < N && ans[j] != -1) ++j;
+            if (j < N) {
+                ans[j++] = A[ia[i]];
             }
         }
         return ans;
