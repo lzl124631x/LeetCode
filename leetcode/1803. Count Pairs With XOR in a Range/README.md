@@ -94,3 +94,53 @@ public:
     }
 };
 ```
+
+## Solution 2. Trie
+
+```cpp
+// OJ: https://leetcode.com/problems/count-pairs-with-xor-in-a-range/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+struct TrieNode {
+    TrieNode *next[2] = {};
+    int cnt = 0;
+};
+const int BIT = 15;
+class Solution {
+    void addNode(TrieNode *node, int n) {
+        for (int i = BIT; i >= 0; --i) {
+            int b = n >> i & 1;
+            if (!node->next[b]) node->next[b] = new TrieNode();
+            node = node->next[b];
+            node->cnt++;
+        }
+    }
+    int countLessThan(TrieNode *node, int n, int limit) {
+        int ans = 0;
+        for (int i = BIT; i >= 0 && node; --i) {
+            int b = n >> i & 1, r = 1 - b, lb = limit >> i & 1;
+            if (lb == 1) {
+                if (node->next[b]) ans += node->next[b]->cnt;
+                node = node->next[r];
+            } else {
+                node = node->next[b];
+            }
+        }
+        return ans;
+    }
+    int count(TrieNode *node, int n, int low, int high) {
+        return countLessThan(node, n, high + 1) - countLessThan(node, n, low);
+    }
+public:
+    int countPairs(vector<int>& A, int low, int high) {
+        TrieNode root;
+        int ans = 0;
+        for (int n : A) {
+            ans += count(&root, n, low, high);
+            addNode(&root, n);
+        }
+        return ans;
+    }
+};
+```
