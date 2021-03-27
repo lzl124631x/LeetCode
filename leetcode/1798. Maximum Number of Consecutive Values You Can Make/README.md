@@ -62,13 +62,13 @@ You can make 8 consecutive integer values starting from 0.</pre>
 class Solution {
 public:
     int getMaximumConsecutive(vector<int>& A) {
-        int mx = 1;
+        int cnt = 1;
         sort(begin(A), end(A));
         for (int n : A) {
-            if (n > mx) break;
-            mx += n;
+            if (n > cnt) break;
+            cnt += n;
         }
-        return mx;
+        return cnt;
     }
 };
 ```
@@ -106,6 +106,6 @@ If we represent the numbers using binary mask, then `1, 2, 3` is `111`, and `1, 
 
 Since we only care about the first number that we can't form, we only need to keep track of the maximum number we can form.
 
-Assume we can form `[0, mx]` numbers and now we get a new number `k`, then we can form `[k, mx + k]` numbers. As long as `k <= mx + 1`, we can extend the range to `[0, mx + k]`.
+Assume we can form `[0, cnt)` numbers and now we get a new number `k`, then we can form `[k, cnt + k)` numbers. As long as `k <= cnt`, we can extend the range to `[0, cnt + k)`.
 
-When `k > mx + 1`, we get a gap at `mx + 1`, and thus we can only get `mx + 1` consecutive numbers
+When `k > cnt`, we can't form value `cnt`, and thus we can only get `cnt` consecutive numbers
