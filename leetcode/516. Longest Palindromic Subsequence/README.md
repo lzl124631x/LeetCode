@@ -60,6 +60,18 @@ dp[i][i] = 1
 
 The answer is `dp[0][N-1]`.
 
+Note: when `s[i] == s[j]`, when don't we need to consider `dp[i + 1][j]` and `dp[i][j - 1]`? Because `2 + dp[i + 1][j - 1]` must be greater than or equal to them.
+
+```cpp
+// i ~ j
+s[i] (s[i+1] ... s[j-1]) s[j]
+// i ~ j - 1
+s[i] (s[i+1] ... s[j-1])
+```
+
+We can see that `dp[i][j-1]` is at most `2 + dp[i+1][j-1]`. Similarly, `dp[i+1][j] <= 2 + dp[i+1][j-1]`.
+
+
 ```cpp
 // OJ: https://leetcode.com/problems/longest-palindromic-subsequence
 // Author: github.com/lzl124631x
