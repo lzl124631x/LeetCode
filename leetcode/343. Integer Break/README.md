@@ -172,3 +172,21 @@ public:
     }
 };
 ```
+
+## Solution 5.
+
+```cpp
+// OJ: https://leetcode.com/problems/integer-break/
+// Author: github.com/lzl124631x
+// Time: O(logN)
+// Space: O(1)
+class Solution {
+public:
+    int integerBreak(int n) {
+        if (n <= 3) return n - 1;
+        if (n % 3 == 0) return pow(3, n / 3);
+        if (n % 3 == 1) return pow(3, n / 3 - 1) * 2 * 2;
+        return pow(3, n / 3) * 2;
+    }
+};
+```
