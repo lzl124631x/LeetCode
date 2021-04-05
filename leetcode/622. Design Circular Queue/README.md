@@ -56,7 +56,7 @@ circularQueue.Rear(); &nbsp;// return 4
 ```cpp
 // OJ: https://leetcode.com/problems/design-circular-queue/
 // Author: github.com/lzl124631x
-// Time: O(1)
+// Time: O(1) for all
 // Space: O(K)
 class MyCircularQueue {
 private:
