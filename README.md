@@ -671,6 +671,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 835 | Image Overlap | Medium | [Solution](leetcode/835.%20Image%20Overlap)
 836 | Rectangle Overlap | Easy | [Solution](leetcode/836.%20Rectangle%20Overlap)
 837 | New 21 Game | Medium | [Solution](leetcode/837.%20New%2021%20Game)
+838 | Push Dominoes | Medium | [Solution](leetcode/838.%20Push%20Dominoes)
 839 | Similar String Groups | Hard | [Solution](leetcode/839.%20Similar%20String%20Groups)
 840 | Magic Squares In Grid | Easy | [Solution](leetcode/840.%20Magic%20Squares%20In%20Grid)
 841 | Keys and Rooms | Medium | [Solution](leetcode/841.%20Keys%20and%20Rooms)
@@ -1287,6 +1288,16 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1801 | Number of Orders in the Backlog | Medium | [Solution](leetcode/1801.%20Number%20of%20Orders%20in%20the%20Backlog)
 1802 | Maximum Value at a Given Index in a Bounded Array | Medium | [Solution](leetcode/1802.%20Maximum%20Value%20at%20a%20Given%20Index%20in%20a%20Bounded%20Array)
 1803 | Count Pairs With XOR in a Range | Hard | [Solution](leetcode/1803.%20Count%20Pairs%20With%20XOR%20in%20a%20Range)
+1806 | Minimum Number of Operations to Reinitialize a Permutation | Medium | [Solution](leetcode/1806.%20Minimum%20Number%20of%20Operations%20to%20Reinitialize%20a%20Permutation)
+1807 | Evaluate the Bracket Pairs of a String | Medium | [Solution](leetcode/1807.%20Evaluate%20the%20Bracket%20Pairs%20of%20a%20String)
+1808 | Maximize Number of Nice Divisors | Hard | [Solution](leetcode/1808.%20Maximize%20Number%20of%20Nice%20Divisors)
+1812 | Determine Color of a Chessboard Square | Easy | [Solution](leetcode/1812.%20Determine%20Color%20of%20a%20Chessboard%20Square)
+1813 | Sentence Similarity III | Medium | [Solution](leetcode/1813.%20Sentence%20Similarity%20III)
+1814 | Count Nice Pairs in an Array | Medium | [Solution](leetcode/1814.%20Count%20Nice%20Pairs%20in%20an%20Array)
+1815 | Maximum Number of Groups Getting Fresh Donuts | Hard | [Solution](leetcode/1815.%20Maximum%20Number%20of%20Groups%20Getting%20Fresh%20Donuts)
+1816 | Truncate Sentence | Easy | [Solution](leetcode/1816.%20Truncate%20Sentence)
+1817 | Finding the Users Active Minutes | Medium | [Solution](leetcode/1817.%20Finding%20the%20Users%20Active%20Minutes)
+1818 | Minimum Absolute Sum Difference | Medium | [Solution](leetcode/1818.%20Minimum%20Absolute%20Sum%20Difference)
 
 # License
 
