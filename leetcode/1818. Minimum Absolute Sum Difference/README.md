@@ -66,21 +66,18 @@ This yields an absolute sum difference of <code>|10-9| + |10-3| + |4-5| + |4-1| 
 class Solution {
 public:
     int minAbsoluteSumDiff(vector<int>& A, vector<int>& B) {
-        long mod = 1e9+7, N = A.size(), sum = 0;
-        for (int i = 0; i < N; ++i) {
-            sum += abs((long)A[i] - B[i]);
-        }
+        long sum = 0, mod = 1e9 + 7, N = A.size();
         set<int> s(begin(A), end(A));
+        for (int i = 0; i < N; ++i) sum += abs((long)A[i] - B[i]);
         long ans = sum;
         for (int i = 0; i < N; ++i) {
+            int diff = abs((long)A[i] - B[i]);
             auto it = s.lower_bound(B[i]);
-            long diff = abs((long) A[i] - B[i]);
             if (it != s.end()) {
-                ans = min(ans, sum - diff + abs((long)*it - B[i]));
+                ans = min(ans, sum - diff + abs((long)B[i] - *it));
             }
             if (it != s.begin()) {
-                it = prev(it);
-                ans = min(ans, sum - diff + abs((long)*it - B[i]));
+                ans = min(ans, sum - diff + abs((long)B[i] - *prev(it)));
             }
         }
         return ans % mod;
