@@ -51,18 +51,18 @@ The different GCDs are 6, 10, 3, 2, and 1.
 // Time: O(NlogN)
 // Space: O(N)
 class Solution {
-    const static int N = 2e5 + 5;
-    bool seen[N] = {};
-    int t[N];
-    int ans = 0;
 public:
     int countDifferentSubsequenceGCDs(vector<int>& A) {
+        const int N = 2e5;
+        int ans = 0;
+        bool seen[N + 1] = {};
         for (int n : A) seen[n] = true;
-        for (int i = 1; i < N; ++i) {
-            for (int j = i; j < N; j += i) {
-                if (seen[j]) t[i] = gcd(t[i], j);
+        for (int i = 1; i <= N; ++i) {
+            int div = 0;
+            for (int j = i; j <= N; j += i) {
+                if (seen[j]) div = gcd(div, j);
             }
-            if (t[i] == i) ++ans;
+            if (div == i) ++ans;
         }
         return ans;
     }
