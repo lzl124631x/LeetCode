@@ -65,6 +65,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 48 | Rotate Image |  | [Solution](leetcode/48.%20Rotate%20Image)
 49 | Group Anagrams | Medium | [Solution](leetcode/49.%20Group%20Anagrams)
 50 | Pow(x, n) | Medium | [Solution](leetcode/50.%20Pow%28x%2C%20n%29)
+51 | N-Queens | Hard | [Solution](leetcode/51.%20N-Queens)
 53 | Maximum Subarray | Easy | [Solution](leetcode/53.%20Maximum%20Subarray)
 54 | Spiral Matrix | Medium | [Solution](leetcode/54.%20Spiral%20Matrix)
 55 | Jump Game | Medium | [Solution](leetcode/55.%20Jump%20Game)
