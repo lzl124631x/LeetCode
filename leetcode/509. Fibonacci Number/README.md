@@ -56,8 +56,7 @@ F(N) = F(N - 1) + F(N - 2), for N &gt; 1.
 class Solution {
 public:
     int fib(int N) {
-        if (!N) return 0;
-        if (N == 1) return 1;
+        if (N <= 1) return N;
         int prev = 0, cur = 1;
         while (--N > 0) {
             int tmp = prev + cur;
