@@ -35,7 +35,7 @@
 * [N-Queens II (Hard)](https://leetcode.com/problems/n-queens-ii/)
 * [Grid Illumination (Hard)](https://leetcode.com/problems/grid-illumination/)
 
-## Solution 1.
+## Solution 1. Backtracking
 
 ```cpp
 // OJ: https://leetcode.com/problems/n-queens/
@@ -46,7 +46,7 @@ class Solution {
     vector<vector<string>> ans;
     vector<string> B;
     vector<bool> col, hill, dale;
-    int n, dirs[2][2] = {{-1, -1},{-1,1}};
+    int n;
     void dfs(int i) {
         if (i == n) {
             ans.push_back(B);
