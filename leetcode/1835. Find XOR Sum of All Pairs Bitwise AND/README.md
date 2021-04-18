@@ -77,7 +77,7 @@ public:
         int cnt[31] = {};
         for (int b : B) {
             for (int i = 0; i < 31; ++i) {
-                cnt [i] += (b >> i & 1);
+                cnt[i] += (b >> i & 1);
             }
         }
         int ans = 0;
@@ -96,9 +96,63 @@ public:
 
 ## Solution 2.
 
-Similar to `(a + b) * (c + d) == a * c + a * d + b * c + b * d`
+Let `AND(i, j) = A[i] AND B[j]`. The answer is `XOR( AND(i, j) | 0 <= i < M, 0 <= j < N )`.
+
+`AND(i, j)`'s `k`th bit is `1` if and only if `A[i]` and `B[j]` must be both `1` at the `k`th bit. Otherwise, `AND(i, j) = 0`.
+
+Consider the `k`th bit of the answer, it's the XOR result of the `k`th bits of all `AND(i, j)`. So the `k`th bit of the answer is `1` if and only if there are odd number of `1`s of all `AND(i, j)` at `k`th bit.
+
+Let `cnt1[k]` and `cnt2[k]` be the number of bit `1`s at `k`th bit in `A` and `B` respectively. Then `cnt1[k] * cnt2[k]` is the number of `1`s of all `AND(i, j)` at `k`th bit.
+
+So, the `k`th bit of the answer is `1` if and only if `cnt1[k] * cnt2[k]` is an odd number, or `cnt1[k]` and `cnt2[k]` are both odd numbers.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-xor-sum-of-all-pairs-bitwise-and/
+// Author: github.com/lzl124631x
+// Time: O(A + B)
+// Space: O(1)
+class Solution {
+public:
+    int getXORSum(vector<int>& A, vector<int>& B) {
+        int ans = 0;
+        for  (int i = 0; i < 31; ++i) {
+            int ca = 0, cb = 0;
+            for (int n : A) ca += (n >> i & 1);
+            for (int n : B) cb += (n >> i & 1);
+            if (ca % 2 && cb % 2) ans |= 1 << i;
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3.
+
+Similar to `(a + b) * (c + d) == a * c + a * d + b * c + b * d`, the following is also true:
 
 `(a1 ^ a2) & (b1 ^ b2) == (a1 & b1) ^ (a1 & b2) ^ (a2 & b1) ^ (a2 & b2)`
+
+We can prove this by the following reasoning:
+
+* The answer's `k`th bit is `1`
+
+If and only if
+
+* `cnt1[k]` and `cnt2[k]` are both odd numbers
+
+If and only if
+
+* The XOR of all the `k`th bits in `A` is `1`. The same for `B`.
+
+If and only if
+
+* "The XOR of all the `k`th bits in `A`" AND "the XOR of all the `k`th bits in `B`" is `1`.
+
+Hence, the proof is done.
+
+Let `a` and `b` be the XOR of all the numbers in `A` and `B` respectively, the answer is `a & b`.
+
+
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-xor-sum-of-all-pairs-bitwise-and/
