@@ -34,7 +34,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 16 | 3Sum Closest | Medium | [Solution](leetcode/16.%203Sum%20Closest)
 17 | Letter Combinations of a Phone Number | Medium | [Solution](leetcode/17.%20Letter%20Combinations%20of%20a%20Phone%20Number)
 18 | 4Sum | Medium | [Solution](leetcode/18.%204Sum)
-19 | Remove Nth Node From End of List |  | [Solution](leetcode/19.%20Remove%20Nth%20Node%20From%20End%20of%20List)
+19 | Remove Nth Node From End of List | Medium | [Solution](leetcode/19.%20Remove%20Nth%20Node%20From%20End%20of%20List)
 20 | Valid Parentheses | Easy | [Solution](leetcode/20.%20Valid%20Parentheses)
 21 | Merge Two Sorted Lists | Easy | [Solution](leetcode/21.%20Merge%20Two%20Sorted%20Lists)
 22 | Generate Parentheses | Medium | [Solution](leetcode/22.%20Generate%20Parentheses)
