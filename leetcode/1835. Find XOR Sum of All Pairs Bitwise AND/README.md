@@ -159,7 +159,7 @@ Let `a` and `b` be the XOR of all the numbers in `A` and `B` respectively, the a
 // Author: github.com/lzl124631x
 // Time: O(A + B)
 // Space: O(1)
-// Ref: https://leetcode.com/problems/find-xor-sum-of-all-pairs-bitwise-and/discuss/1163992/JavaC%2B%2BPython-Easy-and-Concise-O(1)-Space
+// Ref: https://leetcode-cn.com/problems/find-xor-sum-of-all-pairs-bitwise-and/solution/find-xor-sum-of-all-pairs-bitwise-and-by-sok6/
 class Solution {
 public:
     int getXORSum(vector<int>& A, vector<int>& B) {
