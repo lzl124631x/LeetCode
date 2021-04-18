@@ -75,3 +75,33 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-submatrices-that-sum-to-target/
+// Author: github.com/lzl124631x
+// Time: O(M^2 * N)
+// Space: O(N)
+class Solution {
+public:
+    int numSubmatrixSumTarget(vector<vector<int>>& A, int T) {
+        int M = A.size(), N = A[0].size(), ans = 0;
+        for (int i = 0; i < M; ++i) {
+            vector<int> sum(N);
+            for (int j = i; j < M; ++j) {
+                unordered_map<int, int> cnt;
+                cnt[0] = 1;
+                int total = 0;
+                for (int k = 0; k < N; ++k) {
+                    sum[k] += A[j][k];
+                    total += sum[k];
+                    ans += cnt[total - T];
+                    cnt[total]++;
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
