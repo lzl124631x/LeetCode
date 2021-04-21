@@ -31,14 +31,16 @@
 // Space: O(1)
 class Solution {
 public:
-  void nextPermutation(vector<int>& nums) {
-    int i = nums.size() - 2, j = nums.size() - 1;
-    while (i >= 0 && nums[i] >= nums[i + 1]) --i;
-    if (i >= 0) {
-      while (j > i && nums[j] <= nums[i]) --j;
-      swap(nums[i], nums[j]);
+    void nextPermutation(vector<int>& A) {
+        int N = A.size(), i = N - 2;
+        for (; i >= 0 && A[i] >= A[i + 1]; --i);
+        if (i < 0) {
+            reverse(begin(A), end(A));
+            return;
+        }
+        reverse(begin(A) + i + 1, end(A));
+        int j = upper_bound(begin(A) + i + 1, end(A), A[i]) - begin(A);
+        swap(A[i], A[j]);
     }
-    reverse(nums.begin() + i + 1, nums.end());
-  }
 };
 ```
