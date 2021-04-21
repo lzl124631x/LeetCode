@@ -38,18 +38,18 @@ class Solution {
 public:
     int threeSumClosest(vector<int>& A, int target) {
         sort(begin(A), end(A));
-        int diff = INT_MAX;
-        for (int i = 0, N = A.size(); i < N; ++i) {
+        int N = A.size(), ans = A[0] + A[1] + A[2];
+        for (int i = 0; i < N - 2; ++i) {
             int L = i + 1, R = N - 1;
             while (L < R) {
-                int sum = A[L] + A[R] + A[i];
+                long sum = A[L] + A[R] + A[i];
+                if (abs(sum - target) < abs(ans - target)) ans = sum;
                 if (sum == target) return target;
-                if (abs(target - sum) < abs(diff)) diff = target - sum;
                 if (sum > target) --R;
                 else ++L;
             }
         }
-        return target - diff;
+        return ans;
     }
 };
 ```
