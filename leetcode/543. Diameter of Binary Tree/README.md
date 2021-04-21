@@ -30,8 +30,8 @@ The length of path between two nodes is represented by the number of edges betwe
 ```cpp
 // OJ: https://leetcode.com/problems/diameter-of-binary-tree/
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(N)
+// Space: O(H)
 class Solution {
     int ans = 0;
     int postorder(TreeNode *root) {
