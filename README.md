@@ -73,7 +73,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 57 | Insert Interval | Hard | [Solution](leetcode/57.%20Insert%20Interval)
 58 | Length of Last Word | Easy | [Solution](leetcode/58.%20Length%20of%20Last%20Word)
 59 | Spiral Matrix II | Medium | [Solution](leetcode/59.%20Spiral%20Matrix%20II)
-60 | Permutation Sequence | Medium | [Solution](leetcode/60.%20Permutation%20Sequence)
+60 | Permutation Sequence | Hard | [Solution](leetcode/60.%20Permutation%20Sequence)
 61 | Rotate List | Medium | [Solution](leetcode/61.%20Rotate%20List)
 62 | Unique Paths | Medium | [Solution](leetcode/62.%20Unique%20Paths)
 63 | Unique Paths II | Medium | [Solution](leetcode/63.%20Unique%20Paths%20II)
