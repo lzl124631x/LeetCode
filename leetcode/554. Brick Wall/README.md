@@ -41,7 +41,7 @@
 **Related Topics**:  
 [Hash Table](https://leetcode.com/tag/hash-table/)
 
-## Solution 1.
+## Solution 1. Greedy
 
 ```cpp
 // OJ: https://leetcode.com/problems/brick-wall
@@ -50,13 +50,15 @@
 // Space: O(W) where W is the width of wall
 class Solution {
 public:
-  int leastBricks(vector<vector<int>>& wall) {
-    int maxCnt = 0;
-    unordered_map<int, int> cnt;
-    for (auto row : wall)
-      for (int i = 0, w = 0; i < row.size() - 1; ++i)
-        maxCnt = max(maxCnt, ++cnt[w += row[i]]);
-    return wall.size() - maxCnt;
-  }
+    int leastBricks(vector<vector<int>>& A) {
+        int mx = 0;
+        unordered_map<int, int> m;
+        for (auto &v : A) {
+            for (int i = 0, x = 0; i < v.size() - 1; ++i) {
+                mx = max(mx, ++m[x += v[i]]);
+            }
+        }
+        return A.size() - mx;
+    }
 };
 ```
