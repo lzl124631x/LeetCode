@@ -60,17 +60,25 @@
 class Solution {
 public:
     string minRemoveToMakeValid(string s) {
-        int left = 0, i, j;
-        for (i = 0, j = 0; i < s.size(); ++i) {
-            if (isalpha(s[i]) || (s[i] == '(' && ++left) || (s[i] == ')' && --left >= 0)) s[j++] = s[i];
-            left = max(left, 0);
+        int j = 0, left = 0;
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == '(') ++left;
+            else if (s[i] == ')') {
+                if (left == 0) continue;
+                --left;
+            }
+            s[j++] = s[i];
         }
         s.resize(j);
         reverse(begin(s), end(s));
-        left = 0;
-        for (i = 0, j = 0; i < s.size(); ++i) {
-            if (isalpha(s[i]) || (s[i] == ')' && ++left) || (s[i] == '(' && --left >= 0)) s[j++] = s[i];
-            left = max(left, 0);
+        j = 0, left = 0;
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == ')') ++left;
+            else if (s[i] == '(') {
+                if (left == 0) continue;
+                --left;
+            }
+            s[j++] = s[i];
         }
         s.resize(j);
         reverse(begin(s), end(s));
