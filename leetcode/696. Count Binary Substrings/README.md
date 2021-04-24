@@ -41,12 +41,13 @@
 class Solution {
 public:
     int countBinarySubstrings(string s) {
-        int start = 0, ans = 0, prev = 0;
-        for (int i = 0, N = s.size(); i < N; ) {
-            while (i < N && s[i] == s[start]) ++i;
-            ans += min(i - start, prev);
-            prev = i - start;
-            start = i;
+        int prev = 0, N = s.size(), ans = 0;
+        for (int i = 0; i < N; ) {
+            int j = i++;
+            while (i < N && s[i] == s[i - 1]) ++i;
+            int cnt = i - j;
+            ans += min(cnt, prev);
+            prev = cnt;
         }
         return ans;
     }
