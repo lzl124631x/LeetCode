@@ -104,7 +104,7 @@ Consider the `k`th bit of the answer, it's the XOR result of the `k`th bits of a
 
 Let `cnt1[k]` and `cnt2[k]` be the number of bit `1`s at `k`th bit in `A` and `B` respectively. Then `cnt1[k] * cnt2[k]` is the number of `1`s of all `AND(i, j)` at `k`th bit.
 
-So, the `k`th bit of the answer is `1` if and only if `cnt1[k] * cnt2[k]` is an odd number, or `cnt1[k]` and `cnt2[k]` are both odd numbers.
+So, the `k`th bit of the answer is `1` if and only if `cnt1[k] * cnt2[k]` is an odd number, or in other words, `cnt1[k]` and `cnt2[k]` are both odd numbers.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-xor-sum-of-all-pairs-bitwise-and/
