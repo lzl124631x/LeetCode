@@ -597,6 +597,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 725 | Split Linked List in Parts | Medium | [Solution](leetcode/725.%20Split%20Linked%20List%20in%20Parts)
 726 | Number of Atoms | Hard | [Solution](leetcode/726.%20Number%20of%20Atoms)
 728 | Self Dividing Numbers | Easy | [Solution](leetcode/728.%20Self%20Dividing%20Numbers)
+729 | My Calendar I | Medium | [Solution](leetcode/729.%20My%20Calendar%20I)
 730 | Count Different Palindromic Subsequences | Hard | [Solution](leetcode/730.%20Count%20Different%20Palindromic%20Subsequences)
 733 | Flood Fill | Easy | [Solution](leetcode/733.%20Flood%20Fill)
 735 | Asteroid Collision | Medium | [Solution](leetcode/735.%20Asteroid%20Collision)
