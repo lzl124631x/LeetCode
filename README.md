@@ -662,6 +662,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 819 | Most Common Word | Easy | [Solution](leetcode/819.%20Most%20Common%20Word)
 820 | Short Encoding of Words | Medium | [Solution](leetcode/820.%20Short%20Encoding%20of%20Words)
 821 | Shortest Distance to a Character | Easy | [Solution](leetcode/821.%20Shortest%20Distance%20to%20a%20Character)
+822 | Card Flipping Game | Medium | [Solution](leetcode/822.%20Card%20Flipping%20Game)
 823 | Binary Trees With Factors | Medium | [Solution](leetcode/823.%20Binary%20Trees%20With%20Factors)
 824 | Goat Latin | Easy | [Solution](leetcode/824.%20Goat%20Latin)
 825 | Friends Of Appropriate Ages | Medium | [Solution](leetcode/825.%20Friends%20Of%20Appropriate%20Ages)
