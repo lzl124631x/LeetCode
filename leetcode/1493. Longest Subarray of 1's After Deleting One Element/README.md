@@ -84,70 +84,12 @@ public:
 
 ## Solution 2. Sliding Window
 
-Sliding window `[i, j)` with at most `2` zeros.
-
-1. Keep extending the right edge until the window becomes invalid, i.e. more than one zero, or can't be extended any more.
-1. Now `cnt` can be either `0`, `1` or `2`. The corresponding size after deleting one element is `j - i - max(cnt, 1)`.
-1. Then we shrink the left edge until `cnt` becomes valid, i.e. `cnt <= 1`.
-1. Back to step 1 until the window reaches the end.
-
-```cpp
-// OJ: https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
-class Solution {
-public:
-    int longestSubarray(vector<int>& A) {
-        int i = 0, j = 0, N = A.size(), cnt = 0, ans = 0;
-        while (j < N) {
-            while (j < N && cnt <= 1) cnt += A[j++] == 0;
-            ans = max(ans, j - i - max(cnt, 1));
-            while (cnt > 1) cnt -= A[i++] == 0;
-        }
-        return ans;
-    }
-};
-```
-
-## Solution 3. Sliding Window
-
-Sliding window `[i, j)` with at most `1` zero.
-
-1. Keep extending the right edge until it reaches the end or one more extension will include 2 zeros.
-2. `j - i - 1` is the corresponding answer for this window.
-3. Shrink the left edge until `cnt == 0`.
-4. Back to step 1 until the window reaches the end.
-
-```cpp
-// OJ: https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
-class Solution {
-public:
-    int longestSubarray(vector<int>& A) {
-        int i = 0, j = 0, N = A.size(), cnt = 0, ans = 0;
-        while (j < N) {
-            while (j < N && cnt + (A[j] == 0) <= 1) cnt += A[j++] == 0;
-            ans = max(ans, j - i - 1);
-            while (cnt == 1) cnt -= A[i++] == 0;
-        }
-        return ans;
-    }
-};
-```
-
-## Solution 4. Sliding Window
-
 Sliding window `[i, j]` with at most `1` zero.
 
 1. Keep extending the right edge.
 2. Once the `cnt > 1`, shrink the left edge.
 3. The size for this window with one deletion is `j - i`.
 4. Back to step 1 until it reaches the end.
-
-This solution is simpler than the previous one because we don't need to think about when to stop the extension of the right edge.
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
@@ -168,30 +110,9 @@ public:
 };
 ```
 
-## Solution 5. Sliding Window
+## Solution 3. Sliding Window
 
-Sliding window `[i - ans + 1, i]` with at most `1` zero that never shrinks.
-
-```cpp
-// OJ: https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
-class Solution {
-public:
-    int longestSubarray(vector<int>& A) {
-        int N = A.size(), cnt = 0, ans = 0;
-        for (int i = 0; i < N; ++i) {
-            cnt += A[i] == 0;
-            if (cnt > 1) cnt -= A[i - ans] == 0;
-            else ++ans;
-        }
-        return ans - 1;
-    }
-};
-```
-
-Sliding window `[i, j]` with at most `1` zero taht never shrinks.
+Sliding window `[i, j]` with at most `1` zero that never shrinks.
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
