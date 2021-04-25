@@ -45,36 +45,11 @@ Explanation:</strong> Increment the first element three times and the second ele
 
 ## Solution 1. Sliding window
 
-Let two pointers `i, j` form a window `[i, j]`. The window is valid if `(j - i + 1) * A[j] - sum <= k`.
+Let two pointers `i, j` form a window `[i, j]`. The window is valid if `(j - i + 1) * A[j] - sum <= k` where `sum` is the sum of the numbers in window `[i, j]`.
 
-We keep increasing `j` to expand the window as much as possible. When the window becomes invalid, we increment `i`.
+We increment `j` and update `sum`, then shrink the window by incrementing `i` until the window become valid again.
 
-```cpp
-// OJ: https://leetcode.com/problems/frequency-of-the-most-frequent-element/
-// Author: github.com/lzl124631x
-// Time: O(NlogN)
-// Space: O(1)
-class Solution {
-public:
-    int maxFrequency(vector<int>& A, int k) {
-        sort(begin(A), end(A));
-        long i = 0, j = 0, N = A.size(), ans = 1, sum = A[0];
-        for (; i < N; ++i) {
-            while (j < N && (j - i + 1) * A[j] - sum <= k) {
-                ans = max(ans, j - i + 1);
-                ++j;
-                if (j < N) sum += A[j];
-            }
-            sum -= A[i];
-        }
-        return ans;
-    }
-};
-```
-
-The above solution extend the left edge step by step but extend the right edge until the window become invalid. In this way we need to keep updating the answer in the `while` loop, sometimes prematurely.
-
-A simpler template of sliding window is that we extend the right edge step by step, and in each step, we increase the left edge to keep the window valid. At the end of the `for` loop, the window is valid maximum window.
+Then the window `[i, j]` with length `j - i + 1` is the maximum window we've seen so far.
 
 ```cpp
 // OJ: https://leetcode.com/problems/frequency-of-the-most-frequent-element/
@@ -92,6 +67,27 @@ public:
             ans = max(ans, j - i + 1);
         }
         return ans;
+    }
+};
+```
+
+## Solution 2. Sliding window
+
+```cpp
+// OJ: https://leetcode.com/problems/frequency-of-the-most-frequent-element/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int maxFrequency(vector<int>& A, int k) {
+        sort(begin(A), end(A));
+        long i = 0, j = 0, N = A.size(), sum = 0;
+        for (; j < N; ++j) {
+            sum += A[j];
+            if ((j - i + 1) * A[j] - sum > k) sum -= A[i++];
+        }
+        return j - i;
     }
 };
 ```
