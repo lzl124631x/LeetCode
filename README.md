@@ -738,6 +738,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 912 | Sort an Array | Medium | [Solution](leetcode/912.%20Sort%20an%20Array)
 913 | Cat and Mouse | Hard | [Solution](leetcode/913.%20Cat%20and%20Mouse)
 914 | X of a Kind in a Deck of Cards | Easy | [Solution](leetcode/914.%20X%20of%20a%20Kind%20in%20a%20Deck%20of%20Cards)
+915 | Partition Array into Disjoint Intervals | Medium | [Solution](leetcode/915.%20Partition%20Array%20into%20Disjoint%20Intervals)
 916 | Word Subsets | Medium | [Solution](leetcode/916.%20Word%20Subsets)
 917 | Reverse Only Letters | Easy | [Solution](leetcode/917.%20Reverse%20Only%20Letters)
 918 | Maximum Sum Circular Subarray | Medium | [Solution](leetcode/918.%20Maximum%20Sum%20Circular%20Subarray)
@@ -1318,6 +1319,8 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1833 | Maximum Ice Cream Bars | Medium | [Solution](leetcode/1833.%20Maximum%20Ice%20Cream%20Bars)
 1834 | Single-Threaded CPU | Medium | [Solution](leetcode/1834.%20Single-Threaded%20CPU)
 1835 | Find XOR Sum of All Pairs Bitwise AND | Hard | [Solution](leetcode/1835.%20Find%20XOR%20Sum%20of%20All%20Pairs%20Bitwise%20AND)
+1838 | Frequency of the Most Frequent Element | Medium | [Solution](leetcode/1838.%20Frequency%20of%20the%20Most%20Frequent%20Element)
+5741 | Maximum Building Height |  | [Solution](leetcode/5741.%20Maximum%20Building%20Height)
 
 # License
 
