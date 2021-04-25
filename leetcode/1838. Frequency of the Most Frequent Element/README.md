@@ -43,7 +43,7 @@ Explanation:</strong> Increment the first element three times and the second ele
 **Related Topics**:  
 [Greedy](https://leetcode.com/tag/greedy/)
 
-## Solution 1. Sliding window
+## Solution 1. Sliding window (Shrinkable)
 
 Let two pointers `i, j` form a window `[i, j]`. The window is valid if `(j - i + 1) * A[j] - sum <= k` where `sum` is the sum of the numbers in window `[i, j]`.
 
@@ -71,7 +71,7 @@ public:
 };
 ```
 
-## Solution 2. Sliding window
+## Solution 2. Sliding window (Non-shrinkable)
 
 ```cpp
 // OJ: https://leetcode.com/problems/frequency-of-the-most-frequent-element/
