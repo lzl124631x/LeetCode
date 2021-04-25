@@ -65,7 +65,7 @@ public:
 };
 ```
 
-## Solution 2. Sliding Window
+## Solution 2. Sliding Window (Shrinkable)
 
 Sliding window `[i, j]` without repeating characters.
 
@@ -93,7 +93,7 @@ public:
 };
 ```
 
-## Solution 3. Sliding Window
+## Solution 3. Sliding Window (Non-shrinkable)
 
 In this solution the sliding window `[i, j]` never shrinks.
 
