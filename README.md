@@ -536,6 +536,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 646 | Maximum Length of Pair Chain | Medium | [Solution](leetcode/646.%20Maximum%20Length%20of%20Pair%20Chain)
 647 | Palindromic Substrings | Medium | [Solution](leetcode/647.%20Palindromic%20Substrings)
 648 | Replace Words | Medium | [Solution](leetcode/648.%20Replace%20Words)
+649 | Dota2 Senate | Medium | [Solution](leetcode/649.%20Dota2%20Senate)
 650 | 2 Keys Keyboard | Medium | [Solution](leetcode/650.%202%20Keys%20Keyboard)
 651 | 4 Keys Keyboard | Medium | [Solution](leetcode/651.%204%20Keys%20Keyboard)
 652 | Find Duplicate Subtrees | Medium | [Solution](leetcode/652.%20Find%20Duplicate%20Subtrees)
