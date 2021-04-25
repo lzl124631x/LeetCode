@@ -82,9 +82,8 @@ Sliding window `[i, j]` without repeating characters.
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        vector<int> cnt(128);
-        int i = 0, j = 0, ans = 0;
-        for (; j < s.size(); ++j) {
+        int i = 0, j = 0, N = s.size(), ans = 0, cnt[128] = {};
+        for (; j < N; ++j) {
             cnt[s[j]]++;
             while (cnt[s[j]] > 1) cnt[s[i++]]--;
             ans = max(ans, j - i + 1);
@@ -106,11 +105,10 @@ In this solution the sliding window `[i, j]` never shrinks.
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        vector<int> cnt(128);
-        int i = 0, j = 0, k = 0;
-        for (; j < s.size(); ++j) {
-            if (++cnt[s[j]] == 2) ++k;
-            if (k >= 1) k -= --cnt[s[i++]] == 1;
+        int i = 0, j = 0, N = s.size(), cnt[128] = {}, dup = 0;
+        for (; j < N; ++j) {
+            dup += ++cnt[s[j]] == 2;
+            if (dup) dup -= --cnt[s[i++]] == 1;
         }
         return j - i;
     }
