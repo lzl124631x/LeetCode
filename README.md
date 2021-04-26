@@ -894,6 +894,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1169 | Invalid Transactions | Medium | [Solution](leetcode/1169.%20Invalid%20Transactions)
 1170 | Compare Strings by Frequency of the Smallest Character | Easy | [Solution](leetcode/1170.%20Compare%20Strings%20by%20Frequency%20of%20the%20Smallest%20Character)
 1175 | Prime Arrangements | Easy | [Solution](leetcode/1175.%20Prime%20Arrangements)
+1177 | Can Make Palindrome from Substring | Medium | [Solution](leetcode/1177.%20Can%20Make%20Palindrome%20from%20Substring)
 1184 | Distance Between Bus Stops | Easy | [Solution](leetcode/1184.%20Distance%20Between%20Bus%20Stops)
 1185 | Day of the Week | Easy | [Solution](leetcode/1185.%20Day%20of%20the%20Week)
 1186 | Maximum Subarray Sum with One Deletion | Medium | [Solution](leetcode/1186.%20Maximum%20Subarray%20Sum%20with%20One%20Deletion)
