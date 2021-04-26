@@ -1,2 +1,12 @@
-"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+"catsanddog"
+["cat","cats","and","sand","dog"]
+"pineapplepenapple"
+["apple","pen","applepen","pine","pineapple"]
+"catsandog"
+["cats","dog","sand","and","cat"]
+"aaaaa"
 ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]
+"aaaaaaaaaaaaaaaaaaab"
+["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]
+"kkabcd"
+["k", "kk","ab","cd", "abc"]

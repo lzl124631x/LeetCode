@@ -54,39 +54,79 @@ wordDict = ["cats", "dog", "sand", "and", "cat"]
 * [Word Break (Medium)](https://leetcode.com/problems/word-break/)
 * [Concatenated Words (Hard)](https://leetcode.com/problems/concatenated-words/)
 
-## Solution 1. Backtracking
-
-The DFS idea is not hard to come up with. One optimization we should think about is that if we already know we can't reach the end from `S[i]`, then when later we come to `S[i]` we should backtrack directly instead of wasting computation.
+## Solution 1.
 
 ```cpp
-// OJ: https://leetcode.com/problems/word-break-ii
+// OJ: https://leetcode.com/problems/word-break-ii/
 // Author: github.com/lzl124631x
-// Time: O(2^M) where M is the max length of string in wordDict.
-// Space: O(C) where C is the length sum of wordDict
+// Time: O(N!)
+// Space: O(N + D)
 class Solution {
-    int maxLen = 0;
-    unordered_set<string> ws;
-    vector<int> m;
-    vector<string> ans;
-    bool dfs(string &s, int i, string tmp) {
+    vector<string> ans, tmp;
+    unordered_set<string> st;
+    void dfs(string &s, int i) {
         if (i == s.size()) {
-            ans.push_back(tmp);
-            return true; 
+            string n;
+            for (auto &t : tmp) {
+                n += (n.size() ? " " : "") + t;
+            }
+            ans.push_back(n);
         }
-        if (m[i] == 0) return m[i];
-        m[i] = 0;
-        for (int j = min((int)s.size(), i + maxLen); j > i; --j) {
+        for (int j = i + 1; j <= s.size(); ++j) {
             auto sub = s.substr(i, j - i);
-            if (ws.count(sub) && dfs(s, j, tmp.size() ? tmp + " " + sub : sub)) m[i] = 1;
+            if (st.count(sub) == 0) continue;
+            tmp.push_back(sub);
+            dfs(s, j);
+            tmp.pop_back();
         }
-        return m[i];
     }
 public:
     vector<string> wordBreak(string s, vector<string>& dict) {
-        ws = { dict.begin(), dict.end() };
-        for (auto &w : dict) maxLen = max(maxLen, (int)w.size());
-        m.assign(s.size(), -1); // -1 = unvisited, 0 = can not reach end, 1 = can reach end.
-        dfs(s, 0, "");
+        st = unordered_set<string>(begin(dict), end(dict));
+        dfs(s, 0);
+        return ans;
+    }
+};
+```
+
+## Solution 2. Backtracking
+
+One optimization is that we can store `dp[i]` meaning if we can reach the end from index `i`. If we know that we can't from `i`, we can skip it.
+
+```cpp
+// OJ: https://leetcode.com/problems/word-break-ii/
+// Author: github.com/lzl124631x
+// Time: O(N!)
+// Space: O(N + D)
+class Solution {
+    vector<string> ans, tmp;
+    unordered_set<string> st;
+    vector<int> dp; // -1 unvisited, 0 can't reach end, 1 can reach end
+    bool dfs(string &s, int i) {
+        if (i == s.size()) {
+            string n;
+            for (auto &t : tmp) {
+                n += (n.size() ? " " : "") + t;
+            }
+            ans.push_back(n);
+            return true;
+        }
+        for (int j = i + 1; j <= s.size(); ++j) {
+            if (dp[j] == 0) continue;
+            auto sub = s.substr(i, j - i);
+            if (st.count(sub) == 0) continue;
+            tmp.push_back(sub);
+            if (dfs(s, j)) dp[i] = 1;
+            tmp.pop_back();
+        }
+        return dp[i];
+    }
+public:
+    vector<string> wordBreak(string s, vector<string>& dict) {
+        st = unordered_set<string>(begin(dict), end(dict));
+        dp.assign(s.size() + 1, -1);
+        dp[s.size()] = 1;
+        dfs(s, 0);
         return ans;
     }
 };
