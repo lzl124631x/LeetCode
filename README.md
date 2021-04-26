@@ -900,6 +900,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1187 | Make Array Strictly Increasing | Hard | [Solution](leetcode/1187.%20Make%20Array%20Strictly%20Increasing)
 1189 | Maximum Number of Balloons | Easy | [Solution](leetcode/1189.%20Maximum%20Number%20of%20Balloons)
 1190 | Reverse Substrings Between Each Pair of Parentheses | Medium | [Solution](leetcode/1190.%20Reverse%20Substrings%20Between%20Each%20Pair%20of%20Parentheses)
+1192 | Critical Connections in a Network | Hard | [Solution](leetcode/1192.%20Critical%20Connections%20in%20a%20Network)
 1200 | Minimum Absolute Difference | Easy | [Solution](leetcode/1200.%20Minimum%20Absolute%20Difference)
 1202 | Smallest String With Swaps | Medium | [Solution](leetcode/1202.%20Smallest%20String%20With%20Swaps)
 1203 | Sort Items by Groups Respecting Dependencies | Hard | [Solution](leetcode/1203.%20Sort%20Items%20by%20Groups%20Respecting%20Dependencies)
