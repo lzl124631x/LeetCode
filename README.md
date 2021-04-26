@@ -62,7 +62,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 45 | Jump Game II | Hard | [Solution](leetcode/45.%20Jump%20Game%20II)
 46 | Permutations | Medium | [Solution](leetcode/46.%20Permutations)
 47 | Permutations II | Medium | [Solution](leetcode/47.%20Permutations%20II)
-48 | Rotate Image |  | [Solution](leetcode/48.%20Rotate%20Image)
+48 | Rotate Image | Medium | [Solution](leetcode/48.%20Rotate%20Image)
 49 | Group Anagrams | Medium | [Solution](leetcode/49.%20Group%20Anagrams)
 50 | Pow(x, n) | Medium | [Solution](leetcode/50.%20Pow%28x%2C%20n%29)
 51 | N-Queens | Hard | [Solution](leetcode/51.%20N-Queens)
