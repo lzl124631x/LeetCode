@@ -1322,6 +1322,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1833 | Maximum Ice Cream Bars | Medium | [Solution](leetcode/1833.%20Maximum%20Ice%20Cream%20Bars)
 1834 | Single-Threaded CPU | Medium | [Solution](leetcode/1834.%20Single-Threaded%20CPU)
 1835 | Find XOR Sum of All Pairs Bitwise AND | Hard | [Solution](leetcode/1835.%20Find%20XOR%20Sum%20of%20All%20Pairs%20Bitwise%20AND)
+1837 | Sum of Digits in Base K | Easy | [Solution](leetcode/1837.%20Sum%20of%20Digits%20in%20Base%20K)
 1838 | Frequency of the Most Frequent Element | Medium | [Solution](leetcode/1838.%20Frequency%20of%20the%20Most%20Frequent%20Element)
 5741 | Maximum Building Height |  | [Solution](leetcode/5741.%20Maximum%20Building%20Height)
 
