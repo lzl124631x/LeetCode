@@ -544,6 +544,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 654 | Maximum Binary Tree | Medium | [Solution](leetcode/654.%20Maximum%20Binary%20Tree)
 655 | Print Binary Tree | Medium | [Solution](leetcode/655.%20Print%20Binary%20Tree)
 657 | Robot Return to Origin | Easy | [Solution](leetcode/657.%20Robot%20Return%20to%20Origin)
+658 | Find K Closest Elements | Medium | [Solution](leetcode/658.%20Find%20K%20Closest%20Elements)
 659 | Split Array into Consecutive Subsequences | Medium | [Solution](leetcode/659.%20Split%20Array%20into%20Consecutive%20Subsequences)
 661 | Image Smoother | Easy | [Solution](leetcode/661.%20Image%20Smoother)
 662 | Maximum Width of Binary Tree | Medium | [Solution](leetcode/662.%20Maximum%20Width%20of%20Binary%20Tree)
