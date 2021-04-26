@@ -1324,6 +1324,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1835 | Find XOR Sum of All Pairs Bitwise AND | Hard | [Solution](leetcode/1835.%20Find%20XOR%20Sum%20of%20All%20Pairs%20Bitwise%20AND)
 1837 | Sum of Digits in Base K | Easy | [Solution](leetcode/1837.%20Sum%20of%20Digits%20in%20Base%20K)
 1838 | Frequency of the Most Frequent Element | Medium | [Solution](leetcode/1838.%20Frequency%20of%20the%20Most%20Frequent%20Element)
+1839 | Longest Substring Of All Vowels in Order | Medium | [Solution](leetcode/1839.%20Longest%20Substring%20Of%20All%20Vowels%20in%20Order)
 5741 | Maximum Building Height |  | [Solution](leetcode/5741.%20Maximum%20Building%20Height)
 
 # License
