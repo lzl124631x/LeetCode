@@ -54,27 +54,52 @@ It is impossible to go beyond building 4 because you do not have any more bricks
 
 ## Solution 1. Min heap
 
-Here we only consider positive diffs, and ignore non-positive ones.
+Firstly we only consider positive diffs, and ignore non-positive ones. 
 
-We use brick for small diff, and ladder for large diff.
+Secondly, we use brick for small diffs, and ladder for large diffs.
 
-Scan from left to right, maintain a data structure that can efficiently:
-1. sort the diffs
-2. sum the smallest `count - L` diffs, where `count` is the count of (positive) diffs we've scanned.
+We can turn the original array into the diffs.
 
-Imagine that we already have the diffs sorted.
-
-```
-[small -----------------------------> large ]
-// we can split them in this way.
-[ sum of count - L items ][ largest L items ]
+```cpp
+// original array
+[4,2,7,6,9,14,12] 
+// diff array
+[0,5,0,3,5,0,x]
 ```
 
-So we can use a min heap to keep track of the largest `L` items.
+Now the problem becomes "find the maximum index `i` that `sum( A[0]...A[i] ) - sum( top L elements ) <= B`.
 
-We keep pushing diff into the heap. When it has more than `L` items, we push the top element to keep heap of size `L` and add the popped element to `sum`. The `sum` is the count of bricks that we need.
+We can use a min heap to keep track of the top `L` items.
 
-When `sum` is greater than `B`, we should stop there.
+```cpp
+// OJ: https://leetcode.com/problems/furthest-building-you-can-reach/
+// Author: github.com/lzl124631x
+// Time: O(NlogL)
+// Space: O(L)
+class Solution {
+public:
+    int furthestBuilding(vector<int>& A, int B, int L) {
+        long N = A.size(), sum = 0, sumTop = 0;
+        for (int i = 0; i < N - 1; ++i) { // convert to diff array
+            A[i] = max(0, A[i + 1] - A[i]);
+        }
+        priority_queue<int, vector<int>, greater<>> pq; // min-heap storing the top L diffs
+        for (int i = 0; i < N; ++i) {
+            sum += A[i];
+            sumTop += A[i];
+            pq.push(A[i]);
+            if (pq.size() > L) {
+                sumTop -= pq.top();
+                pq.pop();
+            }
+            if (sum - sumTop > B) return i;
+        }
+        return N - 1;
+    }
+};
+```
+
+Or
 
 ```cpp
 // OJ: https://leetcode.com/problems/furthest-building-you-can-reach/
@@ -84,13 +109,13 @@ When `sum` is greater than `B`, we should stop there.
 class Solution {
 public:
     int furthestBuilding(vector<int>& H, int B, int L) {
-        int N = H.size(), sum = 0;
+        int N = H.size(), sum = 0; // sum is the sum of the diffs that we want to use bricks to handle
         priority_queue<int, vector<int>, greater<>> pq; // min-heap, keep track of the L largest diffs
         for (int i = 1; i < N; ++i) {
-            int diff = H[i] - H[i - 1];
-            if (diff <= 0) continue;
+            int diff = H[i] - H[i - 1]; // compute diff on the fly
+            if (diff <= 0) continue; // ignore negative diffs
             pq.push(diff);
-            if (pq.size() <= L) continue;
+            if (pq.size() <= L) continue; // doesn't need any brick, continue
             sum += pq.top();
             pq.pop();
             if (sum > B) return i - 1;
