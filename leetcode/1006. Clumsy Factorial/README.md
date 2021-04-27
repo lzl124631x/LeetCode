@@ -67,3 +67,7 @@ public:
     }
 };
 ```
+
+## TODO
+
+Implement the O(1) solution
