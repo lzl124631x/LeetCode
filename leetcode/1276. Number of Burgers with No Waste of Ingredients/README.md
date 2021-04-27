@@ -56,6 +56,20 @@
 
 ## Solution 1.
 
+Assume we need `x` Jumbo burger and `y` Small burger. Then we need `4x + 2y` tomato slice and `x + y` cheese slice.
+
+So
+
+```
+4x + 2y = T
+x + y = C
+// we have
+y = C - x
+// substitute it into the first equation
+4x + 2(C - x) = T
+x = (T - 2C) / 2
+```
+
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-burgers-with-no-waste-of-ingredients/
 // Author: github.com/lzl124631x
