@@ -815,6 +815,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1003 | Check If Word Is Valid After Substitutions | Medium | [Solution](leetcode/1003.%20Check%20If%20Word%20Is%20Valid%20After%20Substitutions)
 1004 | Max Consecutive Ones III | Medium | [Solution](leetcode/1004.%20Max%20Consecutive%20Ones%20III)
 1005 | Maximize Sum Of Array After K Negations | Easy | [Solution](leetcode/1005.%20Maximize%20Sum%20Of%20Array%20After%20K%20Negations)
+1006 | Clumsy Factorial | Medium | [Solution](leetcode/1006.%20Clumsy%20Factorial)
 1008 | Construct Binary Search Tree from Preorder Traversal | Medium | [Solution](leetcode/1008.%20Construct%20Binary%20Search%20Tree%20from%20Preorder%20Traversal)
 1010 | Pairs of Songs With Total Durations Divisible by 60 | Medium | [Solution](leetcode/1010.%20Pairs%20of%20Songs%20With%20Total%20Durations%20Divisible%20by%2060)
 1011 | Capacity To Ship Packages Within D Days | Medium | [Solution](leetcode/1011.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
