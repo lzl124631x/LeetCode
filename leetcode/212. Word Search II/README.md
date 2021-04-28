@@ -37,54 +37,13 @@
 * [Word Search (Medium)](https://leetcode.com/problems/word-search/)
 * [Unique Paths III (Hard)](https://leetcode.com/problems/unique-paths-iii/)
 
-## Solution 1. Brute Force
+## Solution 1. Trie
 
-```cpp
-// OJ: https://leetcode.com/problems/word-search-ii/
-// Author: github.com/lzl124631x
-// Time: O(WMNL) where M, N is the size of board, W is the size of words and L is the average length of the word
-// Space: O(L)
-class Solution {
-    int M, N, dirs[4][2] = {{0,1}, {0,-1}, {1,0}, {-1,0}};
-    bool dfs(vector<vector<char>> &A, string &w, int i, int x, int y) {
-        if (w[i] != A[x][y]) return false;
-        if (i == w.size() - 1) return true;
-        bool found = false;
-        char c = A[x][y];
-        A[x][y] = 0;
-        for (auto &dir : dirs) {
-            int a = x + dir[0], b = y + dir[1];
-            if (a >= M || a < 0 || b >= N || b < 0) continue;
-            if (dfs(A, w, i + 1, a, b)) {
-                found = true;
-                break;
-            }
-        }
-        A[x][y] = c;
-        return found;
-    }
-    bool valid(vector<vector<char>> &A, string &w) {
-        for (int i = 0; i < M; ++i) {
-            for (int j = 0; j < N; ++j) {
-                if (dfs(A, w, 0, i, j)) return true;
-            }
-        }
-        return false;
-    }
-public:
-    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
-        if (board.empty() || board[0].empty()) return {};
-        M = board.size(), N = board[0].size();
-        vector<string> ans;
-        for (auto &w : words) {
-            if (valid(board, w)) ans.push_back(w);
-        }
-        return ans;
-    }
-};
-```
+### Complexity Analysis
 
-## Solution 2. Trie
+Building the Trie takes `O(WL)` time and `O(WL)` space, where `W` is the size of array `words` and `L` is the maximum length of a word.
+
+The DFS part will take each point on the board as a starting point. There are `O(MN)` starting points. For each starting point, we DFS in 4 directions with the maximum depth being `L`. So the DFS part takes `O(MN * 4^L)` time.
 
 ```cpp
 // OJ: https://leetcode.com/problems/word-search-ii/
@@ -114,7 +73,7 @@ class Solution {
         A[x][y] = 0;
         if (node->word) {
             ans.push_back(path);
-            node->word = false;
+            node->word = false; // prevent adding the same word again.
         }
         for (auto &dir : dirs) {
             int a = x + dir[0], b = y + dir[1];
