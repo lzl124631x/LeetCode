@@ -32,9 +32,7 @@ Given a list of words (<b>without duplicates</b>), please write a program that r
 
 ## Solution 1. DP
 
-Use `dp[i]` to denote whether `word[0..i]` is a concatenated word.
-
-`dp[i] = true`, if there is a `j` &isin; `[0,i]` such that `word[0..j]` and `word[j..i]` are all words in `words` array.
+Use `dp[i]` to denote whether we can get `word[0..i]` by concatenating one or more words in the word list.
 
 ```cpp
 // OJ: https://leetcode.com/problems/concatenated-words/
@@ -49,9 +47,9 @@ private:
         int W = word.size();
         vector<bool> dp(W, false);
         for (int i = 0; i < W - 1; ++i) {
-            if (s.count(word.substr(0, i + 1))) dp[i] = true;
-            if (!dp[i]) continue;
-            for (int j = i + 1; j < W; ++j) {
+            if (s.count(word.substr(0, i + 1))) dp[i] = true; // If `s[0..i]` is in the word list, we mark `i` as reachable.
+            if (!dp[i]) continue; // If `i` is not reachable, skip
+            for (int j = i + 1; j < W; ++j) { // Given that we can reach `i`, we see if we can reach `j` via string `s[(i+1)..(j)]`.
                 if (s.count(word.substr(i + 1, j - i))) dp[j] = true;
             }
             if (dp[W - 1]) return true;
