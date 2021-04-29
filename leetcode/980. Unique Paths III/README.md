@@ -71,38 +71,33 @@ Note that the starting and ending square can be anywhere in the grid.
 // OJ: https://leetcode.com/problems/unique-paths-iii/
 // Author: github.com/lzl124631x
 // Time: O(4^(MN))
-// Space: O(MN)
+// Space: O(1)
 class Solution {
 private:
-    int ans = 0, target = 0, visited = 0, M, N;
-    int dirs[4][2] = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+    int ans = 0, target = 0, M, N, dirs[4][2] = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
     void dfs(vector<vector<int>>& grid, int x, int y) {
         if (grid[x][y] == 2) {
-            if (visited == target) ++ans;
+            ans += target == 1;
             return;
         }
-        ++visited;
         grid[x][y] = -1;
-        for (auto dir : dirs) {
-            int i = x + dir[0], j = y + dir[1];
+        --target;
+        for (auto &[dx, dy] : dirs) {
+            int i = x + dx, j = y + dy;
             if (i < 0 || i >= M || j < 0 || j >= N || grid[i][j] == -1) continue;
             dfs(grid, i, j);
         }
+        ++target;
         grid[x][y] = 0;
-        --visited;
     }
 public:
     int uniquePathsIII(vector<vector<int>>& grid) {
-        M = grid.size();
-        N = grid[0].size();
+        M = grid.size(), N = grid[0].size();
         int x, y;
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                if (grid[i][j] == 1) {
-                    x = i;
-                    y = j;
-                    ++target;
-                } else if (!grid[i][j]) ++target;
+                target += grid[i][j] != -1;
+                if (grid[i][j] == 1) x = i, y = j;
             }
         }
         dfs(grid, x, y);
