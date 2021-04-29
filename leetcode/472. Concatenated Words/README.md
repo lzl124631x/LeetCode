@@ -30,132 +30,11 @@ Given a list of words (<b>without duplicates</b>), please write a program that r
 **Similar Questions**:
 * [Word Break II (Hard)](https://leetcode.com/problems/word-break-ii/)
 
-## Solution 1. Trie + C++ Static Pool
-Use Trie to store the words.
-
-Use DFS to check whether a word is a concatenated word: traverse from the first letter in word, whenever we meet an word ending, start a new DFS call and re-search from the trie root. If the word is exhausted by matching at least two words, return true; otherwise return false.
-
-```cpp
-// OJ: https://leetcode.com/problems/concatenated-words/
-// Author: github.com/lzl124631x
-// Time: O(N*2^W) where N is length of words array, W is max word length. 
-//       2^W is because for each letter we may start or not start a new check there.
-// Space: O(C) where C is the length sum of words.
-// Ref: https://discuss.leetcode.com/topic/72754/trie-dfs-method-using-static-trie-node-to-avoid-getting-mle-runtime-about-300ms
-// NOTE: Use statically allocated memory to avoid MLE in C++.
-class TrieNode {
-public:
-    bool end = false;
-    TrieNode *next[26];
-};
-
-TrieNode pool[60000];
-
-class Solution {
-private:
-    TrieNode *root = pool;
-    int cnt = 1;
-    void insert(string &word) {
-        TrieNode *node = root;
-        for (char c : word) {
-            if (!node->next[c - 'a']) node->next[c - 'a'] = &pool[cnt++];
-            node = node->next[c - 'a'];
-        }
-        node->end = true;
-    }
-    
-    bool check(string &word, int start) {
-        if (start == word.size()) return true;
-        TrieNode *node = root;
-        for (int i = start; i < word.size(); ++i) {
-            node = node->next[word[i] - 'a'];
-            if (!node) return false;
-            if (i != word.size() - 1 && node->end && check(word, i + 1)) return true;
-        }
-        return node->end && start;
-    }
-public:
-    vector<string> findAllConcatenatedWordsInADict(vector<string>& words) {
-        memset(pool, 0, sizeof(pool)); // reset pool.
-        for (string s : words) insert(s);
-        vector<string> ans;
-        for (string s : words) {
-            if (s.empty()) continue;
-            if (check(s, 0)) ans.push_back(s);
-        }
-        return ans;
-    }
-};
-```
-
-## Solution 2: Trie + unordered_map
-
-Same idea as Solution 1, instead of using statically allocated `pool`, use `unordered_map` to store `children` mapping in `TrieNode`.
-
-```cpp
-// OJ: https://leetcode.com/problems/concatenated-words/
-// Author: github.com/lzl124631x
-// Time: O(N*2^W) where N is length of words array, W is max word length. 
-//       2^W is because for each letter we may start or not start a new check there.
-// Space: O(C) where C is the length sum of words.
-// NOTE: use `unordered_map` instead of `TrieNode*[26]` to save space.
-class TrieNode {
-public:
-    unordered_map<char, TrieNode*> children;
-    bool isWord = false;
-};
-
-class Trie {
-private:
-    TrieNode root;
-    bool dfs(string &word, int start, int cnt) {
-        if (start == word.size()) return cnt > 1;
-        TrieNode *node = &root;
-        for (int i = start; i < word.size(); ++i) {
-            if (node->children.find(word[i]) == node->children.end()) return false;
-            TrieNode *next = node->children[word[i]];
-            if (next->isWord && dfs(word, i + 1, cnt + 1)) return true;
-            node = next;
-        }
-        return false;
-    }
-public:
-    void insert(string &word) {
-        TrieNode *node = &root;
-        for (char c : word) {
-            if (!node->children[c]) {
-                node->children[c] = new TrieNode();
-            }
-            node = node->children[c];
-        }
-        node->isWord = true;
-    }
-    
-    bool isConcatednatedWord(string &word) {
-        return dfs(word, 0, 0);
-    }
-};
-class Solution {
-public:
-    vector<string> findAllConcatenatedWordsInADict(vector<string>& words) {
-        Trie trie;
-        for (auto word : words) trie.insert(word);
-        vector<string> ans;
-        for (auto word : words) {
-            if (trie.isConcatednatedWord(word)) ans.push_back(word);
-        }
-        return ans;
-    }
-};
-```
-
-## Solution 3. DP
+## Solution 1. DP
 
 Use `dp[i]` to denote whether `word[0..i]` is a concatenated word.
 
 `dp[i] = true`, if there is a `j` &isin; `[0,i]` such that `word[0..j]` and `word[j..i]` are all words in `words` array.
-
-In my opinion, this is just doing DFS in another way.
 
 ```cpp
 // OJ: https://leetcode.com/problems/concatenated-words/
@@ -185,6 +64,65 @@ public:
         vector<string> ans;
         for (string &word : words) {
             if (isConcatenatedWord(word)) ans.push_back(word);
+        }
+        return ans;
+    }
+};
+```
+
+
+## Solution 2. Trie + DP
+
+### Complexity Analysis
+
+Building the Trie will take `O(NW)` time and `O(NW)` space where `N` is the length of `A` and `W` is the maximum word length.
+
+Checking if a word is a concatenated word will take `O(W^2)` time and `O(W)` space. So checking the `N` words will take `O(N * W^2)` time.
+
+So overall, this solution takes `O(N * W^2)` time and `O(NW)` space.
+
+```cpp
+// OJ: https://leetcode.com/problems/concatenated-words/
+// Author: github.com/lzl124631x
+// Time: O(N * W^2)
+// Space: O(NW)
+struct TrieNode {
+    TrieNode *next[26] = {};
+    bool end = false;
+};
+class Solution {
+    TrieNode root;
+    void addWord(TrieNode *node, string &s) {
+        for (char c : s) {
+            if (!node->next[c - 'a']) node->next[c - 'a'] = new TrieNode();
+            node = node->next[c - 'a'];
+        }
+        node->end = true;
+    }
+    bool valid(string &s) {
+        int N = s.size();
+        vector<bool> dp(N + 1);
+        dp[0] = true;
+        for (int i = 0; i < N && !dp[N]; ++i) {
+            if (!dp[i]) continue;
+            auto node = &root;
+            for (int j = i; j < N - (i == 0); ++j) {
+                node = node->next[s[j] - 'a'];
+                if (!node) break;
+                if (node->end) dp[j + 1] = true;
+            }
+        }
+        return dp[N];
+    }
+public:
+    vector<string> findAllConcatenatedWordsInADict(vector<string>& A) {
+        for (auto &s : A) {
+            if (s.empty()) continue;
+            addWord(&root, s);
+        }
+        vector<string> ans;
+        for (auto &s : A) {
+            if (s.size() && valid(s)) ans.push_back(s);
         }
         return ans;
     }
