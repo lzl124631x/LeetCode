@@ -49,7 +49,7 @@
 
 ```cpp
 // OJ: https://leetcode.com/problems/replace-all-digits-with-characters/
-// Author: Please set your name in options page
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
 class Solution {

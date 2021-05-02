@@ -48,7 +48,7 @@
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/
-// Author: Please set your name in options page
+// Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
 class Solution {
