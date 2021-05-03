@@ -1,23 +1,48 @@
 # [745. Prefix and Suffix Search (Hard)](https://leetcode.com/problems/prefix-and-suffix-search/)
 
-Given many `words`, `words[i]` has weight `i`.
+<p>Design a special dictionary which has some words and allows you to search the words in it by a prefix and a suffix.</p>
 
-Design a class `WordFilter` that supports one function, `WordFilter.f(String prefix, String suffix)`. It will return the word with given `prefix` and `suffix` with maximum weight. If no word exists, return -1.
+<p>Implement the <code>WordFilter</code> class:</p>
 
-**Examples:**  
+<ul>
+	<li><code>WordFilter(string[] words)</code> Initializes the object with the <code>words</code> in the dictionary.</li>
+	<li><code>f(string prefix, string suffix)</code> Returns <em>the index of the word in the dictionary</em> which has the prefix <code>prefix</code> and the suffix <code>suffix</code>. If there is&nbsp;more than one valid index, return <strong>the largest</strong> of them. If there is no such word in the dictionary, return <code>-1</code>.</li>
+</ul>
 
-**Input:**  
-WordFilter(\["apple"\])  
-WordFilter.f("a", "e") // returns 0  
-WordFilter.f("b", "") // returns -1
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-**Note:**  
+<pre><strong>Input</strong>
+["WordFilter", "f"]
+[[["apple"]], ["a", "e"]]
+<strong>Output</strong>
+[null, 0]
 
-1.  `words` has length in range `[1, 15000]`.
-2.  For each test case, up to `words.length` queries `WordFilter.f` may be made.
-3.  `words[i]` has length in range `[1, 10]`.
-4.  `prefix, suffix` have lengths in range `[0, 10]`.
-5.  `words[i]` and `prefix, suffix` queries consist of lowercase letters only.
+<strong>Explanation</strong>
+WordFilter wordFilter = new WordFilter(["apple"]);
+wordFilter.f("a", "e"); // return 0, because the word at index 0 has prefix = "a" and suffix = 'e".
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= words.length &lt;= 15000</code></li>
+	<li><code>1 &lt;= words[i].length &lt;= 10</code></li>
+	<li><code>1 &lt;= prefix.length, suffix.length&nbsp;&lt;= 10</code></li>
+	<li><code>words[i]</code>, <code>prefix</code> and <code>suffix</code> consist of lower-case English letters only.</li>
+	<li>At most <code>15000</code> calls will be made to the function <code>f</code>.</li>
+</ul>
+
+
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook)
+
+**Related Topics**:  
+[Trie](https://leetcode.com/tag/trie/)
+
+**Similar Questions**:
+* [Design Add and Search Words Data Structure (Medium)](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
 
 ## Solution 1.
 
@@ -28,59 +53,45 @@ WordFilter.f("b", "") // returns -1
 //   * WordFilter: O(WL)
 //   * f: O(L + W)
 // Space: O(WL) where W is `words` length and L is max word length.
-class TrieNode {
-public:
-    TrieNode *next[26];
-    vector<int> indexes;
-    TrieNode () {
-        memset(next, 0, sizeof(TrieNode*) * 26);
-    }
+struct TrieNode {
+    TrieNode *next[26] = {};
+    vector<int> index;
 };
-
 class WordFilter {
-private:
-    TrieNode *pTrie = new TrieNode();
-    TrieNode *sTrie = new TrieNode();
-    void addWordToTrie(string &word, int i, TrieNode *node) {
-        node->indexes.push_back(i);
-        for (char c : word) {
-            int index = c - 'a';
-            if (!node->next[index]) node->next[index] = new TrieNode();
-            node = node->next[index];
-            node->indexes.push_back(i);
+    TrieNode prefixRoot, suffixRoot;
+    void addWord(TrieNode *node, string &w, int i) {
+        for (char c : w) {
+            if (!node->next[c - 'a']) node->next[c - 'a'] = new TrieNode();
+            node = node->next[c - 'a'];
+            node->index.push_back(i);
         }
     }
-    
-    void addWord(string &word, int i) {
-        addWordToTrie(word, i, pTrie);
-        reverse(word.begin(), word.end());
-        addWordToTrie(word, i, sTrie);
-    }
-    
-    vector<int> search(TrieNode *node, string &prefix) {
-        for (char c : prefix) {
-            int index = c - 'a';
-            node = node->next[index];
+    vector<int> getIndexes(TrieNode *node, string &w) {
+        for (char c : w) {
+            node = node->next[c - 'a'];
             if (!node) return {};
         }
-        return node->indexes;
+        return node->index;
     }
 public:
-    WordFilter(vector<string> words) {
-        for (int i = 0; i < words.size(); ++i) addWord(words[i], i);
+    WordFilter(vector<string>& words) {
+        for (int i = 0; i < words.size(); ++i) {
+            auto &w = words[i];
+            addWord(&prefixRoot, w, i);
+            reverse(begin(w), end(w));
+            addWord(&suffixRoot, w, i);
+        }
     }
     
     int f(string prefix, string suffix) {
-        auto p = search(pTrie, prefix);
-        reverse(suffix.begin(), suffix.end());
-        auto s = search(sTrie, suffix);
-        int i = p.size() - 1;
-        int j = s.size() - 1;
-        while (i >= 0 && j >= 0 && p[i] != s[j]) {
-            if (p[i] > s[j]) --i;
-            else --j;
+        reverse(begin(suffix), end(suffix));
+        auto p = getIndexes(&prefixRoot, prefix), s = getIndexes(&suffixRoot, suffix);
+        for (int i = p.size() - 1, j = s.size() - 1; i >= 0 && j >= 0; ) {
+            if (p[i] == s[j]) return p[i];
+            if (p[i] < s[j]) --j;
+            else --i;
         }
-        return (i < 0 || j < 0) ? -1 : p[i];
+        return -1;
     }
 };
 ```
