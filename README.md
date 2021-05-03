@@ -279,6 +279,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 320 | Generalized Abbreviation | Medium | [Solution](leetcode/320.%20Generalized%20Abbreviation)
 321 | Create Maximum Number | Hard | [Solution](leetcode/321.%20Create%20Maximum%20Number)
 322 | Coin Change |  | [Solution](leetcode/322.%20Coin%20Change)
+323 | Number of Connected Components in an Undirected Graph | Medium | [Solution](leetcode/323.%20Number%20of%20Connected%20Components%20in%20an%20Undirected%20Graph)
 324 | Wiggle Sort II |  | [Solution](leetcode/324.%20Wiggle%20Sort%20II)
 326 | Power of Three | Easy | [Solution](leetcode/326.%20Power%20of%20Three)
 327 | Count of Range Sum | Hard | [Solution](leetcode/327.%20Count%20of%20Range%20Sum)

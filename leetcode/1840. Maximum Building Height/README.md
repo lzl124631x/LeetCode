@@ -119,3 +119,34 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-building-height/
+// Author: github.com/lzl124631x
+// Time: O(RlogR)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/maximum-building-height/discuss/1175047/PythonC%2B%2B-greedy-solution-with-visual-explanation-O(MlogM)
+class Solution {
+public:
+    int maxBuilding(int n, vector<vector<int>>& A) {
+        A.push_back({1, 0});
+        sort(begin(A), end(A));
+        int N = A.size(), ans = 0;
+        for (int i = 1; i < N; ++i) {
+            int x1 = A[i - 1][0], h1 = A[i - 1][1];
+            int x2 = A[i][0], &h2 = A[i][1];
+            h2 = min(h2, h1 + x2 - x1);
+        }
+        for (int i = N - 2; i >= 0; --i) {
+            int x1 = A[i][0], &h1 = A[i][1];
+            int x2 = A[i + 1][0], h2 = A[i + 1][1];
+            h1 = min(h1, h2 + x2 - x1);
+            int mid = (h2 - h1 + x1 + x2) / 2;
+            ans = max(ans, h1 + mid - x1);
+        }
+        return max(ans, A.back()[1] + n - A.back()[0]);
+    }
+};
+```
