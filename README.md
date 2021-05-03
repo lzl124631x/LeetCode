@@ -525,6 +525,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 627 | Swap Salary | Easy | [Solution](leetcode/627.%20Swap%20Salary)
 628 | Maximum Product of Three Numbers | Easy | [Solution](leetcode/628.%20Maximum%20Product%20of%20Three%20Numbers)
 629 | K Inverse Pairs Array | Hard | [Solution](leetcode/629.%20K%20Inverse%20Pairs%20Array)
+630 | Course Schedule III | Hard | [Solution](leetcode/630.%20Course%20Schedule%20III)
 632 | Smallest Range Covering Elements from K Lists | Hard | [Solution](leetcode/632.%20Smallest%20Range%20Covering%20Elements%20from%20K%20Lists)
 636 | Exclusive Time of Functions | Medium | [Solution](leetcode/636.%20Exclusive%20Time%20of%20Functions)
 637 | Average of Levels in Binary Tree | Easy | [Solution](leetcode/637.%20Average%20of%20Levels%20in%20Binary%20Tree)
@@ -789,6 +790,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 960 | Delete Columns to Make Sorted III | Hard | [Solution](leetcode/960.%20Delete%20Columns%20to%20Make%20Sorted%20III)
 961 | N-Repeated Element in Size 2N Array | Easy | [Solution](leetcode/961.%20N-Repeated%20Element%20in%20Size%202N%20Array)
 962 | Maximum Width Ramp | Medium | [Solution](leetcode/962.%20Maximum%20Width%20Ramp)
+963 | Minimum Area Rectangle II | Medium | [Solution](leetcode/963.%20Minimum%20Area%20Rectangle%20II)
 967 | Numbers With Same Consecutive Differences | Medium | [Solution](leetcode/967.%20Numbers%20With%20Same%20Consecutive%20Differences)
 968 | Binary Tree Cameras | Hard | [Solution](leetcode/968.%20Binary%20Tree%20Cameras)
 969 | Pancake Sorting | Medium | [Solution](leetcode/969.%20Pancake%20Sorting)
@@ -1291,6 +1293,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1773 | Count Items Matching a Rule | Easy | [Solution](leetcode/1773.%20Count%20Items%20Matching%20a%20Rule)
 1774 | Closest Dessert Cost | Medium | [Solution](leetcode/1774.%20Closest%20Dessert%20Cost)
 1775 | Equal Sum Arrays With Minimum Number of Operations | Medium | [Solution](leetcode/1775.%20Equal%20Sum%20Arrays%20With%20Minimum%20Number%20of%20Operations)
+1779 | Find Nearest Point That Has the Same X or Y Coordinate | Easy | [Solution](leetcode/1779.%20Find%20Nearest%20Point%20That%20Has%20the%20Same%20X%20or%20Y%20Coordinate)
 1784 | Check if Binary String Has at Most One Segment of Ones | Easy | [Solution](leetcode/1784.%20Check%20if%20Binary%20String%20Has%20at%20Most%20One%20Segment%20of%20Ones)
 1785 | Minimum Elements to Add to Form a Given Sum | Medium | [Solution](leetcode/1785.%20Minimum%20Elements%20to%20Add%20to%20Form%20a%20Given%20Sum)
 1786 | Number of Restricted Paths From First to Last Node | Medium | [Solution](leetcode/1786.%20Number%20of%20Restricted%20Paths%20From%20First%20to%20Last%20Node)
@@ -1334,6 +1337,12 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1838 | Frequency of the Most Frequent Element | Medium | [Solution](leetcode/1838.%20Frequency%20of%20the%20Most%20Frequent%20Element)
 1839 | Longest Substring Of All Vowels in Order | Medium | [Solution](leetcode/1839.%20Longest%20Substring%20Of%20All%20Vowels%20in%20Order)
 1840 | Maximum Building Height | Hard | [Solution](leetcode/1840.%20Maximum%20Building%20Height)
+1844 | Replace All Digits with Characters | Easy | [Solution](leetcode/1844.%20Replace%20All%20Digits%20with%20Characters)
+1845 | Seat Reservation Manager | Medium | [Solution](leetcode/1845.%20Seat%20Reservation%20Manager)
+1846 | Maximum Element After Decreasing and Rearranging |  | [Solution](leetcode/1846.%20Maximum%20Element%20After%20Decreasing%20and%20Rearranging)
+1848 | Minimum Distance to the Target Element | Easy | [Solution](leetcode/1848.%20Minimum%20Distance%20to%20the%20Target%20Element)
+1849 | Splitting a String Into Descending Consecutive Values | Medium | [Solution](leetcode/1849.%20Splitting%20a%20String%20Into%20Descending%20Consecutive%20Values)
+5748 | Minimum Interval to Include Each Query |  | [Solution](leetcode/5748.%20Minimum%20Interval%20to%20Include%20Each%20Query)
 
 # License
 
