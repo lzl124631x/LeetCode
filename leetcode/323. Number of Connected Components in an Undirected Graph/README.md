@@ -41,13 +41,13 @@
 * [Graph Valid Tree (Medium)](https://leetcode.com/problems/graph-valid-tree/)
 * [Number of Provinces (Medium)](https://leetcode.com/problems/number-of-provinces/)
 
-## Solution 1.
+## Solution 1. Union Find
 
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(E + N)
+// Space: O(N)
 class UnionFind {
     vector<int> id;
     int cnt;
