@@ -904,6 +904,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1163 | Last Substring in Lexicographical Order | Hard | [Solution](leetcode/1163.%20Last%20Substring%20in%20Lexicographical%20Order)
 1169 | Invalid Transactions | Medium | [Solution](leetcode/1169.%20Invalid%20Transactions)
 1170 | Compare Strings by Frequency of the Smallest Character | Easy | [Solution](leetcode/1170.%20Compare%20Strings%20by%20Frequency%20of%20the%20Smallest%20Character)
+1171 | Remove Zero Sum Consecutive Nodes from Linked List | Medium | [Solution](leetcode/1171.%20Remove%20Zero%20Sum%20Consecutive%20Nodes%20from%20Linked%20List)
 1175 | Prime Arrangements | Easy | [Solution](leetcode/1175.%20Prime%20Arrangements)
 1177 | Can Make Palindrome from Substring | Medium | [Solution](leetcode/1177.%20Can%20Make%20Palindrome%20from%20Substring)
 1184 | Distance Between Bus Stops | Easy | [Solution](leetcode/1184.%20Distance%20Between%20Bus%20Stops)
