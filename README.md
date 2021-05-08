@@ -627,6 +627,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 760 | Find Anagram Mappings | Easy | [Solution](leetcode/760.%20Find%20Anagram%20Mappings)
 762 | Prime Number of Set Bits in Binary Representation | Easy | [Solution](leetcode/762.%20Prime%20Number%20of%20Set%20Bits%20in%20Binary%20Representation)
 763 | Partition Labels | Medium | [Solution](leetcode/763.%20Partition%20Labels)
+764 | Largest Plus Sign | Medium | [Solution](leetcode/764.%20Largest%20Plus%20Sign)
 765 | Couples Holding Hands | Hard | [Solution](leetcode/765.%20Couples%20Holding%20Hands)
 766 | Toeplitz Matrix | Easy | [Solution](leetcode/766.%20Toeplitz%20Matrix)
 767 | Reorganize String | Medium | [Solution](leetcode/767.%20Reorganize%20String)
