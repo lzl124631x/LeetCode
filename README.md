@@ -1347,6 +1347,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1846 | Maximum Element After Decreasing and Rearranging | Medium | [Solution](leetcode/1846.%20Maximum%20Element%20After%20Decreasing%20and%20Rearranging)
 1848 | Minimum Distance to the Target Element | Easy | [Solution](leetcode/1848.%20Minimum%20Distance%20to%20the%20Target%20Element)
 1849 | Splitting a String Into Descending Consecutive Values | Medium | [Solution](leetcode/1849.%20Splitting%20a%20String%20Into%20Descending%20Consecutive%20Values)
+1850 | Minimum Adjacent Swaps to Reach the Kth Smallest Number | Medium | [Solution](leetcode/1850.%20Minimum%20Adjacent%20Swaps%20to%20Reach%20the%20Kth%20Smallest%20Number)
 1851 | Minimum Interval to Include Each Query | Hard | [Solution](leetcode/1851.%20Minimum%20Interval%20to%20Include%20Each%20Query)
 1854 | Maximum Population Year | Easy | [Solution](leetcode/1854.%20Maximum%20Population%20Year)
 1855 | Maximum Distance Between a Pair of Values | Medium | [Solution](leetcode/1855.%20Maximum%20Distance%20Between%20a%20Pair%20of%20Values)
