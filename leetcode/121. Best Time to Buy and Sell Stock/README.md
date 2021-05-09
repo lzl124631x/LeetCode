@@ -48,6 +48,21 @@ public:
 };
 ```
 
+```js
+// OJ: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+var maxProfit = function(A) {
+    let min = Infinity, ans = 0;
+    for (let i = 0; i < A.length; ++i) {
+        min = Math.min(min, A[i]);
+        ans = Math.max(ans, A[i] - min);
+    }
+    return ans;
+};
+```
+
 ## Solution 2.
 
 ```cpp
