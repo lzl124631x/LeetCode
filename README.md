@@ -1347,11 +1347,11 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1846 | Maximum Element After Decreasing and Rearranging | Medium | [Solution](leetcode/1846.%20Maximum%20Element%20After%20Decreasing%20and%20Rearranging)
 1848 | Minimum Distance to the Target Element | Easy | [Solution](leetcode/1848.%20Minimum%20Distance%20to%20the%20Target%20Element)
 1849 | Splitting a String Into Descending Consecutive Values | Medium | [Solution](leetcode/1849.%20Splitting%20a%20String%20Into%20Descending%20Consecutive%20Values)
+1851 | Minimum Interval to Include Each Query | Hard | [Solution](leetcode/1851.%20Minimum%20Interval%20to%20Include%20Each%20Query)
 1854 | Maximum Population Year | Easy | [Solution](leetcode/1854.%20Maximum%20Population%20Year)
 1855 | Maximum Distance Between a Pair of Values | Medium | [Solution](leetcode/1855.%20Maximum%20Distance%20Between%20a%20Pair%20of%20Values)
 1856 | Maximum Subarray Min-Product | Medium | [Solution](leetcode/1856.%20Maximum%20Subarray%20Min-Product)
 1857 | Largest Color Value in a Directed Graph |  | [Solution](leetcode/1857.%20Largest%20Color%20Value%20in%20a%20Directed%20Graph)
-5748 | Minimum Interval to Include Each Query |  | [Solution](leetcode/5748.%20Minimum%20Interval%20to%20Include%20Each%20Query)
 
 # License
 
