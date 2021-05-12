@@ -800,6 +800,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 970 | Powerful Integers | Easy | [Solution](leetcode/970.%20Powerful%20Integers)
 971 | Flip Binary Tree To Match Preorder Traversal | Medium | [Solution](leetcode/971.%20Flip%20Binary%20Tree%20To%20Match%20Preorder%20Traversal)
 973 | K Closest Points to Origin | Easy | [Solution](leetcode/973.%20K%20Closest%20Points%20to%20Origin)
+975 | Odd Even Jump | Hard | [Solution](leetcode/975.%20Odd%20Even%20Jump)
 977 | Squares of a Sorted Array | Easy | [Solution](leetcode/977.%20Squares%20of%20a%20Sorted%20Array)
 978 | Longest Turbulent Subarray | Medium | [Solution](leetcode/978.%20Longest%20Turbulent%20Subarray)
 979 | Distribute Coins in Binary Tree | Medium | [Solution](leetcode/979.%20Distribute%20Coins%20in%20Binary%20Tree)
@@ -1353,7 +1354,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1854 | Maximum Population Year | Easy | [Solution](leetcode/1854.%20Maximum%20Population%20Year)
 1855 | Maximum Distance Between a Pair of Values | Medium | [Solution](leetcode/1855.%20Maximum%20Distance%20Between%20a%20Pair%20of%20Values)
 1856 | Maximum Subarray Min-Product | Medium | [Solution](leetcode/1856.%20Maximum%20Subarray%20Min-Product)
-1857 | Largest Color Value in a Directed Graph |  | [Solution](leetcode/1857.%20Largest%20Color%20Value%20in%20a%20Directed%20Graph)
+1857 | Largest Color Value in a Directed Graph | Hard | [Solution](leetcode/1857.%20Largest%20Color%20Value%20in%20a%20Directed%20Graph)
 
 # License
 
