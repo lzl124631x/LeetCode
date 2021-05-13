@@ -73,7 +73,7 @@ Other valid solutions are to put the green box in room 2 or to put the orange bo
 ```cpp
 // OJ: https://leetcode.com/problems/put-boxes-into-the-warehouse-i/
 // Author: github.com/lzl124631x
-// Time: O(W + BlogB)
+// Time: O(W + BlogB + WlogB)
 // Space: O(W)
 class Solution {
 public:
@@ -89,6 +89,51 @@ public:
             int h = W[s[i]], cnt = s[i - 1] - s[i];
             int num = upper_bound(begin(B), end(B), h) - begin(B) - ans;
             ans += min(cnt, num);
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2. Mono-stack + Two Pointers
+
+```cpp
+// OJ: https://leetcode.com/problems/put-boxes-into-the-warehouse-i/
+// Author: github.com/lzl124631x
+// Time: O(BlogB + W)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/put-boxes-into-the-warehouse-i/discuss/821966/C%2B%2B-Two-Approaches
+class Solution {
+public:
+    int maxBoxesInWarehouse(vector<int>& B, vector<int>& W) {
+        sort(begin(B), end(B));
+        for (int i = 1; i < W.size(); ++i) {
+            W[i] = min(W[i], W[i - 1]);
+        }
+        int ans = 0;
+        for (int i = W.size() - 1; i >= 0; --i) {
+            ans += ans < B.size() && B[ans] <= W[i];
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3. Greedy + Two Pointers
+
+```cpp
+// OJ: https://leetcode.com/problems/put-boxes-into-the-warehouse-i/
+// Author: github.com/lzl124631x
+// Time: O(BlogB)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/put-boxes-into-the-warehouse-i/discuss/821966/C%2B%2B-Two-Approaches
+class Solution {
+public:
+    int maxBoxesInWarehouse(vector<int>& B, vector<int>& W) {
+        sort(begin(B), end(B), greater());
+        int ans = 0;
+        for (int b : B) {
+            ans += ans < W.size() && b <= W[ans];
         }
         return ans;
     }
