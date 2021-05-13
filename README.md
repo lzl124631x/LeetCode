@@ -1169,6 +1169,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1561 | Maximum Number of Coins You Can Get | Medium | [Solution](leetcode/1561.%20Maximum%20Number%20of%20Coins%20You%20Can%20Get)
 1562 | Find Latest Group of Size M | Medium | [Solution](leetcode/1562.%20Find%20Latest%20Group%20of%20Size%20M)
 1563 | Stone Game V | Hard | [Solution](leetcode/1563.%20Stone%20Game%20V)
+1564 | Put Boxes Into the Warehouse I | Medium | [Solution](leetcode/1564.%20Put%20Boxes%20Into%20the%20Warehouse%20I)
 1566 | Detect Pattern of Length M Repeated K or More Times | Easy | [Solution](leetcode/1566.%20Detect%20Pattern%20of%20Length%20M%20Repeated%20K%20or%20More%20Times)
 1567 | Maximum Length of Subarray With Positive Product | Medium | [Solution](leetcode/1567.%20Maximum%20Length%20of%20Subarray%20With%20Positive%20Product)
 1568 | Minimum Number of Days to Disconnect Island | Medium | [Solution](leetcode/1568.%20Minimum%20Number%20of%20Days%20to%20Disconnect%20Island)
