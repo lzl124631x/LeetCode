@@ -123,7 +123,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 110 | Balanced Binary Tree |  | [Solution](leetcode/110.%20Balanced%20Binary%20Tree)
 111 | Minimum Depth of Binary Tree | Easy | [Solution](leetcode/111.%20Minimum%20Depth%20of%20Binary%20Tree)
 112 | Path Sum | Easy | [Solution](leetcode/112.%20Path%20Sum)
-113 | Path Sum II |  | [Solution](leetcode/113.%20Path%20Sum%20II)
+113 | Path Sum II | Medium | [Solution](leetcode/113.%20Path%20Sum%20II)
 114 | Flatten Binary Tree to Linked List | Medium | [Solution](leetcode/114.%20Flatten%20Binary%20Tree%20to%20Linked%20List)
 115 | Distinct Subsequences | Hard | [Solution](leetcode/115.%20Distinct%20Subsequences)
 116 | Populating Next Right Pointers in Each Node | Medium | [Solution](leetcode/116.%20Populating%20Next%20Right%20Pointers%20in%20Each%20Node)
