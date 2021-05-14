@@ -55,7 +55,7 @@ circularDeque.getFront();			// return 4
 // OJ: https://leetcode.com/problems/design-circular-deque/
 // Author: github.com/lzl124631x
 // Time: O(1) for all
-// Space: O(k)
+// Space: O(K)
 class MyCircularDeque {
     vector<int> q;
     int begin = 0, end = 0, k, cnt = 0;
@@ -88,9 +88,11 @@ public:
         return true;
     }
     int getFront() {
+        if (cnt == 0) return -1;
         return q[begin];
     }
     int getRear() {
+        if (cnt == 0) return -1;
         return q[(end - 1 + k) % k];
     }
     bool isEmpty() {
