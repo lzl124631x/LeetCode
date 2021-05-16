@@ -70,29 +70,25 @@ We can first build a directed graph given the `prerequisite`. Then for each quer
 ```cpp
 // OJ: https://leetcode.com/problems/course-schedule-iv/
 // Author: github.com/lzl124631x
-// Time: O(V + E)
-// Space: O(V^2)
+// Time: O(min(N^2, Q))
+// Space: O(N^2)
 class Solution {
     vector<vector<int>> G, m;
     bool dfs(int from, int to) {
         if (m[from][to] != -1) return m[from][to];
-        bool ans = false;
         for (int v : G[from]) {
-            if (dfs(v, to)) {
-                ans = true;
-                break;
-            }
+            if (dfs(v, to)) return m[from][to] = 1;
         }
-        return m[from][to] = ans;
+        return m[from][to] = 0;
     }
 public:
-    vector<bool> checkIfPrerequisite(int n, vector<vector<int>>& A, vector<vector<int>>& Q) {
-        G.assign(n, {});
-        m.assign(n, vector<int>(n, -1));
-        for (int i = 0; i < n; ++i) m[i][i] = 1;
-        for (auto &e : A) G[e[0]].push_back(e[1]);
+    vector<bool> checkIfPrerequisite(int N, vector<vector<int>>& E, vector<vector<int>>& Q) {
+        G.assign(N, {});
+        m.assign(N, vector<int>(N, -1));
+        for (int i = 0; i < N; ++i) m[i][i] = 1;
+        for (auto &e : E) G[e[0]].push_back(e[1]);
         vector<bool> ans;
-        for (auto &e : Q) ans.push_back(dfs(e[0], e[1]));
+        for (auto &q : Q) ans.push_back(dfs(q[0], q[1]));
         return ans;
     }
 };
@@ -105,22 +101,66 @@ We can use the Floyd-Warshall algorithm to fine all the shortest paths of any no
 ```cpp
 // OJ: https://leetcode.com/problems/course-schedule-iv/
 // Author: github.com/lzl124631x
-// Time: O(V^3)
-// Space: O(V^2)
+// Time: O(N^3 + Q)
+// Space: O(N^2)
 class Solution {
 public:
-    vector<bool> checkIfPrerequisite(int n, vector<vector<int>>& A, vector<vector<int>>& Q) {
-        vector<vector<bool>> m(n, vector<bool>(n));
-        for (auto &e : A) m[e[0]][e[1]] = true;
-        for (int i = 0; i < n; ++i) {
-            for (int u = 0; u < n; ++u) {
-                for (int v = 0; v < n; ++v) {
+    vector<bool> checkIfPrerequisite(int N, vector<vector<int>>& E, vector<vector<int>>& Q) {
+        vector<vector<bool>> m(N, vector<bool>(N));
+        for (auto &e : E) m[e[0]][e[1]] = true;
+        for (int i = 0; i < N; ++i) {
+            for (int u = 0; u < N; ++u) {
+                for (int v = 0; v < N; ++v) {
                     m[u][v] = m[u][v] || (m[u][i] && m[i][v]);
                 }
             }
         }
         vector<bool> ans;
         for (auto &q : Q) ans.push_back(m[q[0]][q[1]]);
+        return ans;
+    }
+};
+```
+
+## Solution 3. Topological Sort
+
+```cpp
+// OJ: https://leetcode.com/problems/course-schedule-iv/
+// Author: github.com/lzl124631x
+// Time: O(N^2 + Q)
+// Space: O(N^2)
+class Solution {
+public:
+    vector<bool> checkIfPrerequisite(int N, vector<vector<int>>& P, vector<vector<int>>& Q) {
+        vector<vector<int>> G(N);
+        vector<int> indegree(N), seen(N);
+        vector<unordered_set<int>> pre(N);
+        for (auto &p : P) {
+            int u = p[0], v = p[1];
+            G[u].push_back(v);
+            indegree[v]++;
+        }
+        queue<int> q;
+        for (int i = 0; i < N; ++i) {
+            if (indegree[i] == 0) q.push(i);
+        }
+        while (q.size()) {
+            int u = q.front();
+            q.pop();
+            for (int v : G[u]) {
+                for (int p : pre[u]) {
+                    pre[v].insert(p);
+                }
+                pre[v].insert(u);
+                if (--indegree[v] == 0) {
+                    q.push(v);
+                }
+            }
+        }
+        vector<bool> ans;
+        for (auto q : Q) {
+            ans.push_back(pre[q[1]].count(q[0]));
+        }
         return ans;
     }
 };
