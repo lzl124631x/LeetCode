@@ -1375,6 +1375,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1860 | Incremental Memory Leak | Medium | [Solution](leetcode/1860.%20Incremental%20Memory%20Leak)
 1861 | Rotating the Box | Medium | [Solution](leetcode/1861.%20Rotating%20the%20Box)
 1862 | Sum of Floored Pairs | Hard | [Solution](leetcode/1862.%20Sum%20of%20Floored%20Pairs)
+1863 | Sum of All Subset XOR Totals | Easy | [Solution](leetcode/1863.%20Sum%20of%20All%20Subset%20XOR%20Totals)
+1864 | Minimum Number of Swaps to Make the Binary String Alternating | Medium | [Solution](leetcode/1864.%20Minimum%20Number%20of%20Swaps%20to%20Make%20the%20Binary%20String%20Alternating)
+1865 | Finding Pairs With a Certain Sum | Medium | [Solution](leetcode/1865.%20Finding%20Pairs%20With%20a%20Certain%20Sum)
+1866 | Number of Ways to Rearrange Sticks With K Sticks Visible | Hard | [Solution](leetcode/1866.%20Number%20of%20Ways%20to%20Rearrange%20Sticks%20With%20K%20Sticks%20Visible)
 
 # License
 
