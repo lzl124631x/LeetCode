@@ -34,64 +34,61 @@
 **Related Topics**:  
 [Hash Table](https://leetcode.com/tag/hash-table/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
-## Solution 1.
+## Solution 1. Top-down DP
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-string-chain/
 // Author: github.com/lzl124631x
-// Time: O(N^2)
-// Space: O(N)
+// Time: O(N * S^2)
+// Space: O(NS)
 class Solution {
+    unordered_map<string, int> m; 
+    int dp(const string &s) {
+        if (m[s]) return m[s];
+        if (s.size() == 1) return 1;
+        int ans = 1;
+        for (int i = 0; i < s.size(); ++i) {
+            auto copy = s;
+            copy.erase(begin(copy) + i);
+            if (m.count(copy)) {
+                ans = max(ans, 1 + dp(copy));
+            }
+        }
+        return m[s] = ans;
+    }
 public:
     int longestStrChain(vector<string>& A) {
-        int N = A.size(), ans = 1;
-        vector<int> id(N), len(N, 1);
-        iota(begin(id), end(id), 0);
-        sort(begin(id), end(id), [&](int a, int b) { return A[a].size() < A[b].size(); });
-        vector<array<int, 26>> cnts(N);
-        map<int, vector<int>> m;
-        for (int i = 0; i < N; ++i) {
-            for (char c : A[i]) cnts[i][c - 'a']++;
-            m[A[i].size()].push_back(i);
-        }
-        for (auto &[cnt, ids] : m) {
-            if (m.count(cnt - 1) == 0) continue;
-            for (int i : ids) {
-                for (int j : m[cnt - 1]) {
-                    int diff = 0;
-                    for (int k = 0; k < 26; ++k) {
-                        diff += abs(cnts[i][k] - cnts[j][k]);
-                        if (diff > 1) break;
-                    }
-                    if (diff == 1) len[i] = max(len[i], len[j] + 1);
-                }
-                ans = max(ans, len[i]);
-            }
+        for (auto &s : A) m[s] = 0;
+        int ans = 0;
+        for (const auto &[s, len] : m) {
+            ans = max(ans, dp(s));
         }
         return ans;
     }
 };
 ```
 
-## Solution 2.
+## Solution 2. Bottom-up DP
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-string-chain/
 // Author: github.com/lzl124631x
-// Time: O(NSS)
+// Time: O(N * S^2)
 // Space: O(NS)
-// Ref: https://leetcode.com/problems/longest-string-chain/discuss/294890/C%2B%2BJavaPython-DP-Solution
 class Solution {
 public:
     int longestStrChain(vector<string>& A) {
-        auto cmp = [](string &a, string &b) { return a.size() < b.size(); };
-        sort(begin(A), end(A), cmp);
+        sort(begin(A), end(A), [](auto &a, auto &b) { return a.size() < b.size(); });
         unordered_map<string, int> dp;
         int ans = 1;
         for (auto &s : A) {
+            dp[s] = 1;
             for (int i = 0; i < s.size(); ++i) {
-                dp[s] = max(dp[s], dp[s.substr(0, i) + s.substr(i + 1)] + 1);
-                ans = max(ans, dp[s]);
+                auto next = s.substr(0, i) + s.substr(i + 1);
+                if (dp.count(next)) {
+                    dp[s] = max(dp[s], dp[next] + 1);
+                    ans = max(ans, dp[s]);
+                }
             }
         }
         return ans;
