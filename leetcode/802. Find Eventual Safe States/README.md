@@ -31,8 +31,6 @@ Here is a diagram of the above graph.
 
 ## Solution 1. Topological Sort (DFS)
 
-Similar to the DFS version of Topological Sort.
-
 ```cpp
 // OJ: https://leetcode.com/problems/find-eventual-safe-states/
 // Author: github.com/lzl124631x
@@ -73,24 +71,22 @@ class Solution {
 public:
     vector<int> eventualSafeNodes(vector<vector<int>>& G) {
         int N = G.size();
-        vector<vector<int>> R(N); // reversed graph
-        vector<int> indegree(N), safe(N), ans;
-        for (int i = 0; i < N; ++i) {
-            for (int j : G[i]) {
-                R[j].push_back(i);
-                indegree[i]++;
-            }
-        }
+        vector<vector<int>> R(N);
+        vector<int> outdegree(N), safe(N), ans;
         queue<int> q;
         for (int i = 0; i < N; ++i) {
-            if (indegree[i] == 0) q.push(i);
+            for (int v : G[i]) {
+                R[v].push_back(i);
+            }
+            outdegree[i] = G[i].size();
+            if (outdegree[i] == 0) q.push(i);
         }
         while (q.size()) {
             int u = q.front();
             q.pop();
             safe[u] = 1;
             for (int v : R[u]) {
-                if (--indegree[v] == 0) q.push(v);
+                if (--outdegree[v] == 0) q.push(v);
             }
         }
         for (int i = 0; i < N; ++i) {
