@@ -34,8 +34,8 @@ Here is a diagram of the above graph.
 ```cpp
 // OJ: https://leetcode.com/problems/find-eventual-safe-states/
 // Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(N)
+// Time: O(V + E)
+// Space: O(V)
 class Solution {
     vector<int> state; // -1 unvisited, 0 visiting, 1 safe, 2 unsafe
     int dfs(vector<vector<int>> &G, int u) {
@@ -52,8 +52,7 @@ public:
         state.assign(G.size(), -1);
         vector<int> ans;
         for (int i = 0; i < G.size(); ++i) {
-            dfs(G, i);
-            if (state[i] == 1) ans.push_back(i);
+            if (dfs(G, i) == 1) ans.push_back(i);
         }
         return ans;
     }
