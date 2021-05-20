@@ -699,6 +699,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 848 | Shifting Letters | Medium | [Solution](leetcode/848.%20Shifting%20Letters)
 849 | Maximize Distance to Closest Person | Medium | [Solution](leetcode/849.%20Maximize%20Distance%20to%20Closest%20Person)
 852 | Peak Index in a Mountain Array | Easy | [Solution](leetcode/852.%20Peak%20Index%20in%20a%20Mountain%20Array)
+853 | Car Fleet | Medium | [Solution](leetcode/853.%20Car%20Fleet)
 855 | Exam Room | Medium | [Solution](leetcode/855.%20Exam%20Room)
 856 | Score of Parentheses | Medium | [Solution](leetcode/856.%20Score%20of%20Parentheses)
 857 | Minimum Cost to Hire K Workers | Hard | [Solution](leetcode/857.%20Minimum%20Cost%20to%20Hire%20K%20Workers)
