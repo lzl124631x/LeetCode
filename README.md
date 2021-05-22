@@ -247,6 +247,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 264 | Ugly Number II | Medium | [Solution](leetcode/264.%20Ugly%20Number%20II)
 266 | Palindrome Permutation | Easy | [Solution](leetcode/266.%20Palindrome%20Permutation)
 268 | Missing Number | Easy | [Solution](leetcode/268.%20Missing%20Number)
+269 | Alien Dictionary | Hard | [Solution](leetcode/269.%20Alien%20Dictionary)
 270 | Closest Binary Search Tree Value | Easy | [Solution](leetcode/270.%20Closest%20Binary%20Search%20Tree%20Value)
 271 | Encode and Decode Strings | Medium | [Solution](leetcode/271.%20Encode%20and%20Decode%20Strings)
 274 | H-Index | Medium | [Solution](leetcode/274.%20H-Index)
