@@ -53,7 +53,7 @@
 // OJ: https://leetcode.com/problems/alien-dictionary/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(N)
+// Space: O(1)
 class Solution {
 public:
     string alienOrder(vector<string>& A) {
