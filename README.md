@@ -902,6 +902,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1111 | Maximum Nesting Depth of Two Valid Parentheses Strings | Medium | [Solution](leetcode/1111.%20Maximum%20Nesting%20Depth%20of%20Two%20Valid%20Parentheses%20Strings)
 1122 | Relative Sort Array | Easy | [Solution](leetcode/1122.%20Relative%20Sort%20Array)
 1123 | Lowest Common Ancestor of Deepest Leaves | Medium | [Solution](leetcode/1123.%20Lowest%20Common%20Ancestor%20of%20Deepest%20Leaves)
+1124 | Longest Well-Performing Interval | Medium | [Solution](leetcode/1124.%20Longest%20Well-Performing%20Interval)
 1125 | Smallest Sufficient Team | Hard | [Solution](leetcode/1125.%20Smallest%20Sufficient%20Team)
 1128 | Number of Equivalent Domino Pairs | Easy | [Solution](leetcode/1128.%20Number%20of%20Equivalent%20Domino%20Pairs)
 1129 | Shortest Path with Alternating Colors | Medium | [Solution](leetcode/1129.%20Shortest%20Path%20with%20Alternating%20Colors)
@@ -1389,6 +1390,8 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1864 | Minimum Number of Swaps to Make the Binary String Alternating | Medium | [Solution](leetcode/1864.%20Minimum%20Number%20of%20Swaps%20to%20Make%20the%20Binary%20String%20Alternating)
 1865 | Finding Pairs With a Certain Sum | Medium | [Solution](leetcode/1865.%20Finding%20Pairs%20With%20a%20Certain%20Sum)
 1866 | Number of Ways to Rearrange Sticks With K Sticks Visible | Hard | [Solution](leetcode/1866.%20Number%20of%20Ways%20to%20Rearrange%20Sticks%20With%20K%20Sticks%20Visible)
+1871 | Jump Game VII |  | [Solution](leetcode/1871.%20Jump%20Game%20VII)
+1872 | Stone Game VIII | Hard | [Solution](leetcode/1872.%20Stone%20Game%20VIII)
 
 # License
 
