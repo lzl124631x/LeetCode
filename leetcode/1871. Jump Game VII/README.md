@@ -80,3 +80,87 @@ public:
     }
 };
 ```
+
+## Solution 2. Two Pointers
+
+Mark reacheable position using `'2'`. For each `s[i] == '2'`, we traverse `i + minJump <= j <= i + maxJump` and turn `s[j]` to `2` if `s[j] == '0'`.
+
+Pointer `j` can be monotonically increasing so that both pointer `i` and `j` at most traverse the array once.
+
+```cpp
+// OJ: https://leetcode.com/problems/jump-game-vii/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    bool canReach(string s, int minJump, int maxJump) {
+        if (s.back() == '1') return false;
+        s[0] = '2'; // mark s[0] as reacheable
+        int j = 0;
+        for (int i = 0; i < s.size() && s.back() != '2'; ++i) {
+            if (s[i] != '2') continue; // only extend reacheable points
+            j = max(j, i + minJump); // `j` is at least `i + minJump`
+            while (j < s.size() && j - i <= maxJump) { // try to extend until `j > i + maxJump`
+                if (s[j] == '0') s[j] = '2'; // mark `s[j]` as reacheable if `s[j] == '0'`
+                ++j;
+            }
+        }
+        return s.back() == '2';
+    }
+};
+```
+
+## Solution 3. DP + Sliding Window
+
+`dp[i] = true` if we can reach `s[i]`.
+
+`active` is the number of previous positions that we can jump from.
+
+For each `i`, the `[i - maxJump, i + minJump]` forms a sliding window, and we only update the `active` when `'0'` goes in/out of the window.
+
+```cpp
+// OJ: https://leetcode.com/problems/jump-game-vii/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/jump-game-vii/discuss/1224804/JavaC%2B%2BPython-One-Pass-DP
+class Solution {
+public:
+    bool canReach(string s, int minJump, int maxJump) {
+        if (s.back() == '1') return false;
+        int N = s.size(), active = 0;
+        vector<int> dp(N);
+        dp[0] = true;
+        for (int i = 1; i < N; ++i) {
+            if (i - minJump >= 0 && dp[i - minJump]) ++active;
+            if (i - maxJump - 1 >= 0 && dp[i - maxJump - 1]) --active;
+            dp[i] = s[i] == '0' && active;
+        }
+        return dp.back();
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/jump-game-vii/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    bool canReach(string s, int minJump, int maxJump) {
+        if (s.back() == '1') return false;
+        int N = s.size(), active = 0;
+        s[0] = '2';
+        for (int i = 1; i < N && s.back() != '2'; ++i) {
+            if (i - minJump >= 0 && s[i - minJump] == '2') ++active;
+            if (i - maxJump - 1 >= 0 && s[i - maxJump - 1] == '2') --active;
+            if (s[i] == '0' && active) s[i] = '2';
+        }
+        return s.back() == '2';
+    }
+};
+```
