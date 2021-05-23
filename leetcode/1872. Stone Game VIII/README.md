@@ -79,15 +79,15 @@ The difference between their scores is (-22) - 0 = -22.
 
 Let prefix sum `prefix[i] = A[0] + ... + A[i]`. 
 
-Let `dp[i]` be the maximum score difference the first player can get when the game starts at `i`, i.e. stones `0 ~ i` are already merged as a new stone `i` whose value is `prefix[i]`.
+Let `dp[i]` be the maximum score difference the current player can get when the game starts at `i`, i.e. stones `0 ~ i` are already merged as a new stone `i` whose value is `prefix[i]`.
 
-Assume the first player merges stones `0 ~ j` (`i < j < N`), according to the `dp` definition, the maximum score difference the next player can get using the remaining stones is `dp[j]`. And the score difference the first player gets is `prefix[j] - dp[j]`.
+Consider `dp[i]`: assume the current player chooses to merge stones `0 ~ j` (`i < j < N`), according to the `dp` definition, the maximum score difference the next player can get using the remaining stones is `dp[j]`. So the score difference the current player gets is `prefix[j] - dp[j]`.
 
-The first player will need to try all `i < j < N` and use the maximum `prefix[j] - dp[j]` as `dp[i]`. Thus, we have:
+The current player will need to try all `i < j < N` and use the maximum `prefix[j] - dp[j]` as `dp[i]`. Thus, we have:
 
 ```
 dp[i] = max( prefix[j] - dp[j] | i < j <= N - 2 )
-dp[N - 2] = prefix[N - 1] // when there are only two stones left, Alice must take them all
+dp[N - 2] = prefix[N - 1] // when there are only two stones left, the current player must take them all
 ```
 
 The anser is `dp[0]`.
