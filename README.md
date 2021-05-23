@@ -1390,7 +1390,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1864 | Minimum Number of Swaps to Make the Binary String Alternating | Medium | [Solution](leetcode/1864.%20Minimum%20Number%20of%20Swaps%20to%20Make%20the%20Binary%20String%20Alternating)
 1865 | Finding Pairs With a Certain Sum | Medium | [Solution](leetcode/1865.%20Finding%20Pairs%20With%20a%20Certain%20Sum)
 1866 | Number of Ways to Rearrange Sticks With K Sticks Visible | Hard | [Solution](leetcode/1866.%20Number%20of%20Ways%20to%20Rearrange%20Sticks%20With%20K%20Sticks%20Visible)
-1871 | Jump Game VII |  | [Solution](leetcode/1871.%20Jump%20Game%20VII)
+1871 | Jump Game VII | Medium | [Solution](leetcode/1871.%20Jump%20Game%20VII)
 1872 | Stone Game VIII | Hard | [Solution](leetcode/1872.%20Stone%20Game%20VIII)
 
 # License
