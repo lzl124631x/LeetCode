@@ -111,3 +111,57 @@ public:
     }
 };
 ```
+
+## Solution 2. Bottom-up DP
+
+```
+dp[i][j] = dp[i-1][j-1]  // if we pick 1 as the first number
+            + dp[i-1][j] * (i-1) // if we don't pick 1 as the first number
+            where i >= j
+dp[0][0] = 1
+dp[i][j] = 0 if i < j
+```
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible/
+// Author: github.com/lzl124631x
+// Time: O(NK)
+// Space: O(NK)
+class Solution {
+public:
+    int rearrangeSticks(int n, int k) {
+        long mod = 1e9 + 7;
+        vector<vector<long>> dp(n + 1, vector<long>(k + 1));
+        dp[0][0] = 1;
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 1; j <= min(i, k); ++j) {
+                dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j] * (i - 1) % mod) % mod;
+            }
+        }
+        return dp[n][k];
+    }
+};
+```
+
+Since `dp[i][j]` is only dependent on `dp[i-1][j-1]` and `dp[i-1][j]`, we can reduce the space complexity from `O(NK)` to `O(K)`.
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible/
+// Author: github.com/lzl124631x
+// Time: O(NK)
+// Space: O(K)
+class Solution {
+public:
+    int rearrangeSticks(int n, int k) {
+        long mod = 1e9 + 7;
+        vector<long> dp(k + 1);
+        for (int i = 1; i <= n; ++i) {
+            dp[0] = i == 1; // Note that dp[i][0] = 1 only if i == 0; otherwise dp[i][0] = 0.
+            for (int j = min(i, k); j >= 1; --j) {
+                dp[j] = (dp[j - 1] + dp[j] * (i - 1) % mod) % mod;
+            }
+        }
+        return dp[k];
+    }
+};
+```
