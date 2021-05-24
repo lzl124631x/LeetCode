@@ -81,3 +81,30 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/longer-contiguous-segments-of-ones-than-zeros/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    bool checkZeroOnes(string s) {
+        int one = 0, zero = 0, maxOne = 0, maxZero = 0;
+        for (char c : s) {
+            if (c == '0') {
+                one = 0;
+                ++zero;
+                maxZero = max(maxZero, zero);
+            } else {
+                zero = 0;
+                ++one;
+                maxOne = max(maxOne, one);
+            }
+        }
+        return maxOne > maxZero;
+    }
+};
+```
