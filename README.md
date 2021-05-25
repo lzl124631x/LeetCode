@@ -653,6 +653,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 788 | Rotated Digits | Easy | [Solution](leetcode/788.%20Rotated%20Digits)
 789 | Escape The Ghosts | Medium | [Solution](leetcode/789.%20Escape%20The%20Ghosts)
 791 | Custom Sort String | Medium | [Solution](leetcode/791.%20Custom%20Sort%20String)
+792 | Number of Matching Subsequences | Medium | [Solution](leetcode/792.%20Number%20of%20Matching%20Subsequences)
 793 | Preimage Size of Factorial Zeroes Function | Hard | [Solution](leetcode/793.%20Preimage%20Size%20of%20Factorial%20Zeroes%20Function)
 794 | Valid Tic-Tac-Toe State | Medium | [Solution](leetcode/794.%20Valid%20Tic-Tac-Toe%20State)
 795 | Number of Subarrays with Bounded Maximum | Medium | [Solution](leetcode/795.%20Number%20of%20Subarrays%20with%20Bounded%20Maximum)
