@@ -46,14 +46,14 @@
 class Solution {
 public:
     int maximumUniqueSubarray(vector<int>& A) {
-        int i = -1, ans = 0, N = A.size();
+        int i = 0, ans = 0, N = A.size();
         unordered_map<int, int> m;
         vector<int> sum(N + 1);
-        for (int k = 0; k < N; ++k) sum[k + 1] = sum[k] + A[k];
+        partial_sum(begin(A), end(A), begin(sum) + 1);
         for (int j = 0; j < N; ++j) {
-            if (m.count(A[j])) i = max(i, m[A[j]]);
+            if (m.count(A[j])) i = max(i, m[A[j]] + 1);
             m[A[j]] = j;
-            ans = max(ans, sum[j + 1] - sum[i + 1]);
+            ans = max(ans, sum[j + 1] - sum[i]);
         }
         return ans;
     }
