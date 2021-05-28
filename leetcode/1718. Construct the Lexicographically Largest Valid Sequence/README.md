@@ -55,7 +55,7 @@ class Solution {
     bool dfs(vector<int> &ans, int i) {
         if (i == ans.size()) return true; // filled all the numbers, found the answer
         if (ans[i]) return dfs(ans, i + 1); // this index is already filled, continue to fill the next index.
-        for (int j = used.size() - 1; j > 0; --j) { // try each number in decending order from n - 1 to 1.
+        for (int j = used.size() - 1; j > 0; --j) { // try each number in decending order from n to 1.
             if (used[j]) continue; // j is already used, skip
             if (j != 1 && (i + j >= ans.size() || ans[i + j])) continue; // we can't fill `ans[i + j]` either because `i + j` is out of bound or `ans[i + j]` is already filled. Skip.
             used[j] = 1; // mark number `j` as used.
