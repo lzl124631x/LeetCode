@@ -388,7 +388,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 440 | K-th Smallest in Lexicographical Order |  | [Solution](leetcode/440.%20K-th%20Smallest%20in%20Lexicographical%20Order)
 441 | Arranging Coins | Easy | [Solution](leetcode/441.%20Arranging%20Coins)
 442 | Find All Duplicates in an Array | Medium | [Solution](leetcode/442.%20Find%20All%20Duplicates%20in%20an%20Array)
-443 | String Compression | Easy | [Solution](leetcode/443.%20String%20Compression)
+443 | String Compression | Medium | [Solution](leetcode/443.%20String%20Compression)
 445 | Add Two Numbers II | Medium | [Solution](leetcode/445.%20Add%20Two%20Numbers%20II)
 446 | Arithmetic Slices II - Subsequence | Hard | [Solution](leetcode/446.%20Arithmetic%20Slices%20II%20-%20Subsequence)
 447 | Number of Boomerangs |  | [Solution](leetcode/447.%20Number%20of%20Boomerangs)
@@ -1400,6 +1400,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1870 | Minimum Speed to Arrive on Time | Medium | [Solution](leetcode/1870.%20Minimum%20Speed%20to%20Arrive%20on%20Time)
 1871 | Jump Game VII | Medium | [Solution](leetcode/1871.%20Jump%20Game%20VII)
 1872 | Stone Game VIII | Hard | [Solution](leetcode/1872.%20Stone%20Game%20VIII)
+1876 | Substrings of Size Three with Distinct Characters | Easy | [Solution](leetcode/1876.%20Substrings%20of%20Size%20Three%20with%20Distinct%20Characters)
+1877 | Minimize Maximum Pair Sum in Array | Medium | [Solution](leetcode/1877.%20Minimize%20Maximum%20Pair%20Sum%20in%20Array)
+1878 | Get Biggest Three Rhombus Sums in a Grid | Medium | [Solution](leetcode/1878.%20Get%20Biggest%20Three%20Rhombus%20Sums%20in%20a%20Grid)
 
 # License
 
