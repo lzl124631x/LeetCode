@@ -58,7 +58,7 @@
 ```cpp
 // OJ: https://leetcode.com/problems/get-biggest-three-rhombus-sums-in-a-grid/
 // Author: github.com/lzl124631x
-// Time: O(MN * min(M, N) * log(MN))
+// Time: O(MN * min(M, N))
 // Space: O(1)
 class Solution {
 public:
