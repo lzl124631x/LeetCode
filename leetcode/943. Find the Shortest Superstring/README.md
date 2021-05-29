@@ -38,7 +38,79 @@
 **Related Topics**:  
 [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
-## Solution 1. DP
+## Solution 1. Subset DP
+
+The idea is similar to Traveling Salesperson Problem (TSP) -- instead of enumerating all the permutations, enumerate all the subsets and memoize the result.
+
+Note that this solution doesn't use the assumption that no string in `A` is a substring of another string in `A`.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-the-shortest-superstring/
+// Author: github.com/lzl124631x
+// Time: O(2^N * N * W)
+// Space: O(2^N * N * W)
+class Solution {
+public:
+    string shortestSuperstring(vector<string>& A) {
+        string dp[1 << 12] = {};
+        int N = A.size();
+        for (int mask = 0; mask < (1 << N); ++mask) { // try to extend from the current subset to the next subset
+            for (int i = 0; i < N; ++i) { // try extending using A[i]
+                if (mask >> i & 1) continue; // If A[i] already used, we can't extend with it
+                int next = (mask | (1 << i)), len = min(A[i].size(), dp[mask].size()); // `next` represents the next subset. Try to get the overlap length between `dp[mask]` and `A[i]`
+                while (len >= 1 && dp[mask].substr(dp[mask].size() - len) != A[i].substr(0, len)) --len;
+                auto s = dp[mask] + A[i].substr(len);
+                if (dp[next].empty() || s.size() < dp[next].size()) { // Try updating the optimal solution of the next subset -- `dp[next]`.
+                    dp[next] = s;
+                }
+            }
+        }
+        return dp[(1 << N) - 1];
+    }
+};
+```
+
+## Solution 2. Subset DP
+
+Considering the assumption that no string in `A` is a substring of another string in `A`. We don't need to consider the case that a single string overlaps more than one previously used strings, so we can precompute the overlaps between two strings.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-the-shortest-superstring/
+// Author: github.com/lzl124631x
+// Time: O(2^N * N * W)
+// Space: O(2^N * N * W)
+class Solution {
+public:
+    string shortestSuperstring(vector<string>& A) {
+        string dp[1 << 12] = {};
+        int overlap[12][12] = {}, last[1 << 12] = {}, N = A.size();
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (i == j) continue;
+                int len = min(A[i].size(), A[j].size()) - 1;
+                while (len >= 1 && A[i].substr(A[i].size() - len) != A[j].substr(0, len)) --len;
+                overlap[i][j] = len;
+            }
+        }
+        for (int mask = 0; mask < (1 << N); ++mask) {
+            for (int i = 0; i < N; ++i) {
+                if (mask >> i & 1) continue;
+                int next = (mask | (1 << i)), len = mask ? overlap[last[mask]][i] : 0;
+                auto s = dp[mask] + A[i].substr(len);
+                if (dp[next].empty() || s.size() < dp[next].size()) {
+                    dp[next] = s;
+                    last[next] = i;
+                }
+            }
+        }
+        return dp[(1 << N) - 1];
+    }
+};
+```
+
+## Solution 3. Subset DP
+
+Instead of storing all the string DP values, for a subset `mask`, we only store the index of the last string (as `last[mask]`) and the length (as `len[mask]`) of the optimal solution. We can use `last[mask]` to rebuild the optimal solution.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-the-shortest-superstring/
@@ -49,57 +121,30 @@
 class Solution {
 public:
     string shortestSuperstring(vector<string>& A) {
-        int N = A.size();
-        vector<vector<int>> overlaps(N, vector<int>(N));
-        for (int i = 0; i < N ; ++i) {
+        int overlap[12][12] = {}, last[1 << 12] = {}, len[1 << 12] = {}, N = A.size();
+        for (int i = 0; i < N; ++i) {
             for (int j = 0; j < N; ++j) {
                 if (i == j) continue;
-                int len = min(A[i].size(), A[j].size());
-                for (int k = len; k >= 0; --k) {
-                    if (A[i].substr(A[i].size() - k) != (A[j].substr(0, k))) continue;
-                    overlaps[i][j] = k;
-                    break;
-                }
+                int len = min(A[i].size(), A[j].size()) - 1;
+                while (len >= 1 && A[i].substr(A[i].size() - len) != A[j].substr(0, len)) --len;
+                overlap[i][j] = len;
             }
         }
-        vector<vector<int>> dp(1 << N, vector<int>(N));
-        vector<vector<int>> parent(1 << N, vector<int>(N, -1));
         for (int mask = 0; mask < (1 << N); ++mask) {
-            for (int bit = 0; bit < N; ++bit) {
-                if (((mask >> bit) & 1) == 0) continue;
-                int pmask = mask ^ (1 << bit);
-                if (pmask == 0) continue;
-                for (int i = 0; i < N; ++i) {
-                    if (((pmask >> i) & 1) == 0) continue;
-                    int val = dp[pmask][i] + overlaps[i][bit];
-                    if (val > dp[mask][bit]) {
-                        dp[mask][bit] = val;
-                        parent[mask][bit] = i;
-                    }
+            for (int i = 0; i < N; ++i) {
+                if (mask >> i & 1) continue;
+                int next = (mask | (1 << i)), update = len[mask] + A[i].size() - (mask ? overlap[last[mask]][i] : 0);
+                if (len[next] == 0 || update < len[next]) {
+                    last[next] = i;
+                    len[next] = update;
                 }
             }
         }
-        vector<int> perm(N);
-        vector<bool> seen(N);
-        int t = 0, mask = (1 << N) - 1, p = 0;
-        for (int j = 0; j < N; ++j) {
-            if (dp[(1 << N) - 1][j] > dp[(1 << N) - 1][p]) p = j;
-        }
-        while (p != -1) {
-            perm[t++] = p;
-            seen[p] = true;
-            int p2 = parent[mask][p];
-            mask ^= 1 << p;
-            p = p2;
-        }
-        reverse(perm.begin(), perm.begin() + t);
-        for (int i = 0; i < N; ++i) {
-            if (!seen[i]) perm[t++] = i;
-        }
-        string ans = A[perm[0]];
-        for (int i = 1; i < N; ++i) {
-            int overlap = overlaps[perm[i - 1]][perm[i]];
-            ans += A[perm[i]].substr(overlap);
+        string ans;
+        for (int mask = (1 << N) - 1; mask > 0; ) {
+            int j = last[mask], prev = (mask & ~(1 << j)), i = last[prev];
+            ans = A[j].substr(prev ? overlap[i][j] : 0) + ans;
+            mask = prev;
         }
         return ans;
     }
