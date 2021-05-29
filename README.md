@@ -1403,6 +1403,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1876 | Substrings of Size Three with Distinct Characters | Easy | [Solution](leetcode/1876.%20Substrings%20of%20Size%20Three%20with%20Distinct%20Characters)
 1877 | Minimize Maximum Pair Sum in Array | Medium | [Solution](leetcode/1877.%20Minimize%20Maximum%20Pair%20Sum%20in%20Array)
 1878 | Get Biggest Three Rhombus Sums in a Grid | Medium | [Solution](leetcode/1878.%20Get%20Biggest%20Three%20Rhombus%20Sums%20in%20a%20Grid)
+1879 | Minimum XOR Sum of Two Arrays | Hard | [Solution](leetcode/1879.%20Minimum%20XOR%20Sum%20of%20Two%20Arrays)
 
 # License
 
