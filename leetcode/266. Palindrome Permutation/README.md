@@ -40,14 +40,11 @@
 class Solution {
 public:
     bool canPermutePalindrome(string s) {
-        unordered_map<char, int> cnts;
-        for (char c : s) cnts[c]++;
-        bool foundSingle = false;
-        for (auto &p : cnts) {
-            if (p.second % 2) {
-                if (foundSingle) return false;
-                foundSingle = true;
-            }
+        int cnt[26] = {}, single = 0;
+        for (char c : s) cnt[c - 'a']++;
+        for (int n : cnt) {
+            single += n % 2;
+            if (single > 1) return false;
         }
         return true;
     }
