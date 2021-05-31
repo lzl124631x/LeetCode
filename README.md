@@ -66,6 +66,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 49 | Group Anagrams | Medium | [Solution](leetcode/49.%20Group%20Anagrams)
 50 | Pow(x, n) | Medium | [Solution](leetcode/50.%20Pow%28x%2C%20n%29)
 51 | N-Queens | Hard | [Solution](leetcode/51.%20N-Queens)
+52 | N-Queens II | Hard | [Solution](leetcode/52.%20N-Queens%20II)
 53 | Maximum Subarray | Easy | [Solution](leetcode/53.%20Maximum%20Subarray)
 54 | Spiral Matrix | Medium | [Solution](leetcode/54.%20Spiral%20Matrix)
 55 | Jump Game | Medium | [Solution](leetcode/55.%20Jump%20Game)
@@ -170,7 +171,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 159 | Longest Substring with At Most Two Distinct Characters | Hard | [Solution](leetcode/159.%20Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters)
 161 | One Edit Distance | Medium | [Solution](leetcode/161.%20One%20Edit%20Distance)
 162 | Find Peak Element | Medium | [Solution](leetcode/162.%20Find%20Peak%20Element)
-164 | Maximum Gap |  | [Solution](leetcode/164.%20Maximum%20Gap)
+164 | Maximum Gap | Hard | [Solution](leetcode/164.%20Maximum%20Gap)
 165 | Compare Version Numbers | Medium | [Solution](leetcode/165.%20Compare%20Version%20Numbers)
 166 | Fraction to Recurring Decimal |  | [Solution](leetcode/166.%20Fraction%20to%20Recurring%20Decimal)
 167 | Two Sum II - Input array is sorted |  | [Solution](leetcode/167.%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted)
@@ -928,6 +929,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1161 | Maximum Level Sum of a Binary Tree | Medium | [Solution](leetcode/1161.%20Maximum%20Level%20Sum%20of%20a%20Binary%20Tree)
 1162 | As Far from Land as Possible | Medium | [Solution](leetcode/1162.%20As%20Far%20from%20Land%20as%20Possible)
 1163 | Last Substring in Lexicographical Order | Hard | [Solution](leetcode/1163.%20Last%20Substring%20in%20Lexicographical%20Order)
+1167 | Minimum Cost to Connect Sticks | Medium | [Solution](leetcode/1167.%20Minimum%20Cost%20to%20Connect%20Sticks)
 1169 | Invalid Transactions | Medium | [Solution](leetcode/1169.%20Invalid%20Transactions)
 1170 | Compare Strings by Frequency of the Smallest Character | Easy | [Solution](leetcode/1170.%20Compare%20Strings%20by%20Frequency%20of%20the%20Smallest%20Character)
 1171 | Remove Zero Sum Consecutive Nodes from Linked List | Medium | [Solution](leetcode/1171.%20Remove%20Zero%20Sum%20Consecutive%20Nodes%20from%20Linked%20List)
@@ -1404,6 +1406,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1877 | Minimize Maximum Pair Sum in Array | Medium | [Solution](leetcode/1877.%20Minimize%20Maximum%20Pair%20Sum%20in%20Array)
 1878 | Get Biggest Three Rhombus Sums in a Grid | Medium | [Solution](leetcode/1878.%20Get%20Biggest%20Three%20Rhombus%20Sums%20in%20a%20Grid)
 1879 | Minimum XOR Sum of Two Arrays | Hard | [Solution](leetcode/1879.%20Minimum%20XOR%20Sum%20of%20Two%20Arrays)
+1880 | Check if Word Equals Summation of Two Words | Easy | [Solution](leetcode/1880.%20Check%20if%20Word%20Equals%20Summation%20of%20Two%20Words)
+1881 | Maximum Value after Insertion | Medium | [Solution](leetcode/1881.%20Maximum%20Value%20after%20Insertion)
+1882 | Process Tasks Using Servers | Medium | [Solution](leetcode/1882.%20Process%20Tasks%20Using%20Servers)
+1883 | Minimum Skips to Arrive at Meeting On Time | Hard | [Solution](leetcode/1883.%20Minimum%20Skips%20to%20Arrive%20at%20Meeting%20On%20Time)
 
 # License
 
