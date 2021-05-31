@@ -96,3 +96,39 @@ public:
     }
 };
 ```
+
+## Solution 2. Trie
+
+```cpp
+// OJ: https://leetcode.com/problems/search-suggestions-system/
+// Author: github.com/lzl124631x
+// Time: O(DS) where D is the size of all the content in the `products`, S is the length of `searchWord`.
+// Space: O(D)
+struct TrieNode {
+    TrieNode *next[26] = {};
+    vector<int> index;
+};
+class Solution {
+    void addWord(TrieNode *node, string &w, int i) {
+        for (char c : w) {
+            if (!node->next[c - 'a']) node->next[c - 'a'] = new TrieNode();
+            node = node->next[c - 'a'];
+            node->index.push_back(i);
+        }
+    }
+public:
+    vector<vector<string>> suggestedProducts(vector<string>& A, string s) {
+        sort(begin(A), end(A));
+        TrieNode root, *node = &root;
+        for (int i = 0; i < A.size(); ++i) addWord(&root, A[i], i);
+        vector<vector<string>> ans(s.size());
+        for (int i = 0; i < s.size(); ++i) {
+            if (!node->next[s[i] - 'a']) break;
+            node = node->next[s[i] - 'a'];
+            if (node->index.empty()) break;
+            for (int j = 0; j < 3 && j < node->index.size(); ++j) ans[i].push_back(A[node->index[j]]);
+        }
+        return ans;
+    }
+};
+```
