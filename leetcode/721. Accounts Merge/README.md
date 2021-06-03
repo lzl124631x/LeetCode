@@ -1,0 +1,110 @@
+# [721. Accounts Merge (Medium)](https://leetcode.com/problems/accounts-merge/)
+
+<p>Given a list of <code>accounts</code> where each element <code>accounts[i]</code> is a list of strings, where the first element <code>accounts[i][0]</code> is a name, and the rest of the elements are <strong>emails</strong> representing emails of the account.</p>
+
+<p>Now, we would like to merge these accounts. Two accounts definitely belong to the same person if there is some common email to both accounts. Note that even if two accounts have the same name, they may belong to different people as people could have the same name. A person can have any number of accounts initially, but all of their accounts definitely have the same name.</p>
+
+<p>After merging the accounts, return the accounts in the following format: the first element of each account is the name, and the rest of the elements are emails <strong>in sorted order</strong>. The accounts themselves can be returned in <strong>any order</strong>.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> accounts = [["John","johnsmith@mail.com","john_newyork@mail.com"],["John","johnsmith@mail.com","john00@mail.com"],["Mary","mary@mail.com"],["John","johnnybravo@mail.com"]]
+<strong>Output:</strong> [["John","john00@mail.com","john_newyork@mail.com","johnsmith@mail.com"],["Mary","mary@mail.com"],["John","johnnybravo@mail.com"]]
+<strong>Explanation:</strong>
+The first and third John's are the same person as they have the common email "johnsmith@mail.com".
+The second John and Mary are different people as none of their email addresses are used by other accounts.
+We could return these lists in any order, for example the answer [['Mary', 'mary@mail.com'], ['John', 'johnnybravo@mail.com'], 
+['John', 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com']] would still be accepted.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> accounts = [["Gabe","Gabe0@m.co","Gabe3@m.co","Gabe1@m.co"],["Kevin","Kevin3@m.co","Kevin5@m.co","Kevin0@m.co"],["Ethan","Ethan5@m.co","Ethan4@m.co","Ethan0@m.co"],["Hanzo","Hanzo3@m.co","Hanzo1@m.co","Hanzo0@m.co"],["Fern","Fern5@m.co","Fern1@m.co","Fern0@m.co"]]
+<strong>Output:</strong> [["Ethan","Ethan0@m.co","Ethan4@m.co","Ethan5@m.co"],["Gabe","Gabe0@m.co","Gabe1@m.co","Gabe3@m.co"],["Hanzo","Hanzo0@m.co","Hanzo1@m.co","Hanzo3@m.co"],["Kevin","Kevin0@m.co","Kevin3@m.co","Kevin5@m.co"],["Fern","Fern0@m.co","Fern1@m.co","Fern5@m.co"]]
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= accounts.length &lt;= 1000</code></li>
+	<li><code>2 &lt;= accounts[i].length &lt;= 10</code></li>
+	<li><code>1 &lt;= accounts[i][j] &lt;= 30</code></li>
+	<li><code>accounts[i][0]</code> consists of English letters.</li>
+	<li><code>accounts[i][j] (for j &gt; 0)</code> is a valid email.</li>
+</ul>
+
+
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon), [LinkedIn](https://leetcode.com/company/linkedin), [Uber](https://leetcode.com/company/uber), [Apple](https://leetcode.com/company/apple), [Rubrik](https://leetcode.com/company/rubrik)
+
+**Related Topics**:  
+[Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Union Find](https://leetcode.com/tag/union-find/)
+
+**Similar Questions**:
+* [Redundant Connection (Medium)](https://leetcode.com/problems/redundant-connection/)
+* [Sentence Similarity (Easy)](https://leetcode.com/problems/sentence-similarity/)
+* [Sentence Similarity II (Medium)](https://leetcode.com/problems/sentence-similarity-ii/)
+
+## Solution 1. Union Find
+
+### Complexity Analysis
+
+Let `N` be the length of `A`, `M` be the maximum length of `A[i]`, `W` is the maximum email string length.
+
+Filling `emailToIndex` takes `O(NMW)` time and `O(NMW)` space.
+
+The `UnionFind` takes `O(N)` space.
+
+Connecting nodes in the `UnionFind` takes `O(NMW)` time.
+
+Filling the `idToEmail` takes `O(NMWlog(NM))` time and `O(NMW)` space.
+
+Gathering the answer takes `O(NMW)` time.
+
+So, overall it takes `O(NMWlog(NM))` time and `O(NMW)` space.
+
+```cpp
+// OJ: https://leetcode.com/problems/accounts-merge/
+// Author: github.com/lzl124631x
+// Time: O(NMWlog(NM))
+// Space: O(NMW)
+class UnionFind {
+    vector<int> id;
+public:
+    UnionFind(int n) : id(n) {
+        iota(begin(id), end(id), 0);
+    }
+    int find(int x) {
+        return id[x] == x ? x : (id[x] = find(id[x]));
+    }
+    void connect(int a, int b) {
+        id[find(a)] = find(b);
+    }
+};
+class Solution {
+public:
+    vector<vector<string>> accountsMerge(vector<vector<string>>& A) {
+        unordered_map<string, int> emailToIndex;
+        for (int i = 0; i < A.size(); ++i) {
+            for (int j = 1; j < A[i].size(); ++j) emailToIndex[A[i][j]] = i;
+        }
+        UnionFind uf(A.size());
+        for (int i = 0; i < A.size(); ++i) {
+            for (int j = 1; j < A[i].size(); ++j) uf.connect(i, emailToIndex[A[i][j]]);
+        }
+        unordered_map<int, set<string>> idToEmail;
+        for (int i = 0; i < A.size(); ++i) {
+            auto &st = idToEmail[uf.find(i)];
+            for (int j = 1; j < A[i].size(); ++j) st.insert(A[i][j]);
+        }
+        vector<vector<string>> ans;
+        for (auto &[id, emails] : idToEmail) {
+            ans.push_back({A[id][0]});
+            for (auto &email : emails) ans.back().push_back(email);
+        }
+        return ans;
+    }
+};
+```
