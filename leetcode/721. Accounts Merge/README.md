@@ -108,3 +108,55 @@ public:
     }
 };
 ```
+
+## Solution 2. DFS
+
+We first build a graph where the nodes are the emails. If two emails belongs to the same person, we will add an edge between them.
+
+Then we traverse the `A`, and `dfs` to visit all the nodes in the same graph component. When visting, we append the emails to the person's email list.
+
+### Complexity Analysis
+
+Building the graph takes `O(NMW)` time and `O(NMW)` space.
+
+Visiting all the components will take `O(NMW)` time and `O(NMW)` space for the `seen`.
+
+Sorting the emails in the components takes `O(NMWlog(NM))` time overall.
+
+So the time complexity is `O(NMWlog(NM))` and space complexity is `O(NMW)`.
+
+```cpp
+// OJ: https://leetcode.com/problems/accounts-merge/
+// Author: github.com/lzl124631x
+// Time: O(NMWlog(NM))
+// Space: O(NMW)
+class Solution {
+    unordered_map<string, unordered_set<string>> G;
+    unordered_set<string> seen;
+    vector<vector<string>> ans;
+    void dfs(const string &s) {
+        if (seen.count(s)) return;
+        seen.insert(s);
+        ans.back().push_back(s);
+        for (const auto &nei : G[s]) {
+            dfs(nei);
+        }
+    }
+public:
+    vector<vector<string>> accountsMerge(vector<vector<string>>& A) {
+        for (auto &v : A) {
+            for (int i = 1; i < v.size(); ++i) {
+                G[v[1]].insert(v[i]);
+                G[v[i]].insert(v[1]);
+            }
+        }
+        for (int i = 0; i < A.size(); ++i) {
+            if (seen.count(A[i][1])) continue;
+            ans.push_back({A[i][0]});
+            dfs(A[i][1]);
+            sort(begin(ans.back()) + 1, end(ans.back()));
+        }
+        return ans;
+    }
+};
+```

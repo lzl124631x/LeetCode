@@ -907,6 +907,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1109 | Corporate Flight Bookings | Medium | [Solution](leetcode/1109.%20Corporate%20Flight%20Bookings)
 1110 | Delete Nodes And Return Forest | Medium | [Solution](leetcode/1110.%20Delete%20Nodes%20And%20Return%20Forest)
 1111 | Maximum Nesting Depth of Two Valid Parentheses Strings | Medium | [Solution](leetcode/1111.%20Maximum%20Nesting%20Depth%20of%20Two%20Valid%20Parentheses%20Strings)
+1120 | Maximum Average Subtree | Medium | [Solution](leetcode/1120.%20Maximum%20Average%20Subtree)
 1122 | Relative Sort Array | Easy | [Solution](leetcode/1122.%20Relative%20Sort%20Array)
 1123 | Lowest Common Ancestor of Deepest Leaves | Medium | [Solution](leetcode/1123.%20Lowest%20Common%20Ancestor%20of%20Deepest%20Leaves)
 1124 | Longest Well-Performing Interval | Medium | [Solution](leetcode/1124.%20Longest%20Well-Performing%20Interval)
