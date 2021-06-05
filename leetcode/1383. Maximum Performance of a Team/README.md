@@ -42,7 +42,7 @@ We have the maximum performance of the team by selecting engineer 2 (with speed=
 **Related Topics**:  
 [Greedy](https://leetcode.com/tag/greedy/), [Sort](https://leetcode.com/tag/sort/)
 
-## Solution 1. Greedy
+## Solution 1. Sort by one dimension, Greedy on the other dimension
 
 ### Intuition
 
@@ -71,7 +71,7 @@ public:
         vector<pair<int, int>> ps(N);
         for (int i = 0; i < N; ++i) ps[i] = {E[i], S[i]};
         sort(ps.begin(), ps.end());
-        long sum = 0, ans = 0;
+        long sum = 0, ans = 0, mod = 1e9 + 7;
         priority_queue<int, vector<int>, greater<int>> pq;
         for (int i = N - 1; i >= 0; --i) {
             pq.push(ps[i].second);
@@ -82,7 +82,7 @@ public:
             }
             ans = max(ans, sum * ps[i].first);
         }
-        return ans % (int)(1e9+7);
+        return ans % mod; 
     }
 };
 ```
