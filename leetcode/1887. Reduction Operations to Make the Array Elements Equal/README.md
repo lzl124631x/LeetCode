@@ -75,3 +75,24 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/reduction-operations-to-make-the-array-elements-equal/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int reductionOperations(vector<int>& A) {
+        sort(begin(A), end(A));
+        int N = A.size(), step = 0, ans = 0;
+        for (int i = 1; i < N; ++i) {
+            if (A[i] != A[i - 1]) ++step;
+            ans += step;
+        }
+        return ans;
+    }
+};
+```
