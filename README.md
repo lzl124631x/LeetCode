@@ -1411,6 +1411,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1881 | Maximum Value after Insertion | Medium | [Solution](leetcode/1881.%20Maximum%20Value%20after%20Insertion)
 1882 | Process Tasks Using Servers | Medium | [Solution](leetcode/1882.%20Process%20Tasks%20Using%20Servers)
 1883 | Minimum Skips to Arrive at Meeting On Time | Hard | [Solution](leetcode/1883.%20Minimum%20Skips%20to%20Arrive%20at%20Meeting%20On%20Time)
+1886 | Determine Whether Matrix Can Be Obtained By Rotation | Easy | [Solution](leetcode/1886.%20Determine%20Whether%20Matrix%20Can%20Be%20Obtained%20By%20Rotation)
+1887 | Reduction Operations to Make the Array Elements Equal | Medium | [Solution](leetcode/1887.%20Reduction%20Operations%20to%20Make%20the%20Array%20Elements%20Equal)
+1888 | Minimum Number of Flips to Make the Binary String Alternating | Medium | [Solution](leetcode/1888.%20Minimum%20Number%20of%20Flips%20to%20Make%20the%20Binary%20String%20Alternating)
+1889 | Minimum Space Wasted From Packaging | Hard | [Solution](leetcode/1889.%20Minimum%20Space%20Wasted%20From%20Packaging)
 
 # License
 
