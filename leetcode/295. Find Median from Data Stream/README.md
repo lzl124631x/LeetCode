@@ -52,29 +52,27 @@ findMedian() -&gt; 2
 //      findMedian: O(1)
 // Space: O(N)
 class MedianFinder {
-    priority_queue<int> small;
-    priority_queue<int, vector<int>, greater<int>> great;
+    priority_queue<int> sm;
+    priority_queue<int, vector<int>, greater<>> gt;
 public:
     MedianFinder() {}
-    
     void addNum(int num) {
-        if (great.size() && num >= great.top()) {
-            great.push(num);
-            if (great.size() > small.size() + 1) {
-                small.push(great.top());
-                great.pop();
+        if (gt.size() && num > gt.top()) {
+            gt.push(num);
+            if (gt.size() > sm.size()) {
+                sm.push(gt.top());
+                gt.pop();
             }
         } else {
-            small.push(num);
-            if (small.size() > great.size() + 1) {
-                great.push(small.top());
-                small.pop();
+            sm.push(num);
+            if (sm.size() > gt.size() + 1) {
+                gt.push(sm.top());
+                sm.pop();
             }
         }
     }
-    
     double findMedian() {
-        return small.size() == great.size() ? (small.top() + great.top()) / 2. : (small.size() > great.size() ? small.top() : great.top());
+        return sm.size() > gt.size() ? sm.top() : ((double)sm.top() + gt.top()) / 2;
     }
 };
 ```
@@ -90,21 +88,21 @@ Or
 //      findMedian: O(1)
 // Space: O(N)
 class MedianFinder {
-    priority_queue<int> small;
-    priority_queue<int, vector<int>, greater<int>> great;
+    priority_queue<int> sm;
+    priority_queue<int, vector<int>, greater<>> gt;
 public:
     MedianFinder() {}
     void addNum(int num) {
-        great.push(num);
-        small.push(great.top());
-        great.pop();
-        if (small.size() > great.size()) {
-            great.push(small.top());
-            small.pop();
+        sm.push(num);
+        gt.push(sm.top());
+        sm.pop();
+        if (gt.size() > sm.size()) {
+            sm.push(gt.top());
+            gt.pop();
         }
     }
     double findMedian() {
-        return small.size() == great.size() ? (small.top() + great.top()) / 2. : (small.size() > great.size() ? small.top() : great.top());
+        return sm.size() > gt.size() ? sm.top() : ((double)sm.top() + gt.top()) / 2;
     }
 };
 ```
