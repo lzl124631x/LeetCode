@@ -123,3 +123,31 @@ public:
     }
 };
 ```
+
+The prefix sum array is actually not necessary.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-space-wasted-from-packaging/
+// Author: github.com/lzl124631x
+// Time: O(PlogP + BlogB + BlogP)
+// Space: O(1)
+class Solution {
+public:
+    int minWastedSpace(vector<int>& P, vector<vector<int>>& B) {
+        long mod = 1e9 + 7, ans = LONG_MAX, N = P.size(), sum = accumulate(begin(P), end(P), 0L);
+        sort(begin(P), end(P));
+        for (auto &b : B) {
+            sort(begin(b), end(b));
+            if (b.back() < P.back()) continue;
+            long tmp = 0, prev = 0;
+            for (int i = 0; i < b.size(); ++i) {
+                int cur = upper_bound(begin(P) + prev, end(P), b[i]) - begin(P);
+                tmp += (cur - prev) * b[i];
+                prev = cur;
+            }
+            ans = min(ans, tmp - sum);
+        }
+        return ans == LONG_MAX ? -1 : ans % mod;
+    }
+};
+```
