@@ -79,14 +79,43 @@ public:
                 ++j;
             }
         }
-        for (auto &b : B) sort(begin(b), end(b));
-        sort(begin(B), end(B), [&](auto &a, auto &b) { return a[0] < b[0]; });
         for (auto &b : B) {
+            sort(begin(b), end(b));
             if (b.back() < P.back()) continue;
             long tmp = 0, prev = 0;
             for (int i = 0; i < b.size(); ++i) {
                 tmp += (cnt[b[i]] - cnt[prev]) * b[i] - (sum[b[i]] - sum[prev]);
                 prev = b[i];
+            }
+            ans = min(ans, tmp);
+        }
+        return ans == LONG_MAX ? -1 : ans % mod;
+    }
+};
+```
+
+## Solution 2. Binary Search
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-space-wasted-from-packaging/
+// Author: github.com/lzl124631x
+// Time: O(PlogP + BlogB + BlogP)
+// Space: O(P)
+class Solution {
+public:
+    int minWastedSpace(vector<int>& P, vector<vector<int>>& B) {
+        long mod = 1e9 + 7, ans = LONG_MAX, N = P.size();
+        sort(begin(P), end(P));
+        vector<long> sum(N + 1);
+        for (int i = 0; i < N; ++i) sum[i + 1] = sum[i] + P[i];
+        for (auto &b : B) {
+            sort(begin(b), end(b));
+            if (b.back() < P.back()) continue;
+            long tmp = 0, prev = 0;
+            for (int i = 0; i < b.size(); ++i) {
+                int cur = upper_bound(begin(P) + prev, end(P), b[i]) - begin(P);
+                tmp += (cur - prev) * b[i] - (sum[cur] - sum[prev]);
+                prev = cur;
             }
             ans = min(ans, tmp);
         }
