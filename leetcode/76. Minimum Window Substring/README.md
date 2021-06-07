@@ -62,7 +62,7 @@ Since the largest window of s only has one 'a', return empty string.
 // OJ: https://leetcode.com/problems/minimum-window-substring/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(N)
+// Space: O(C) where C is the range of characters
 class Solution {
 public:
     string minWindow(string s, string t) {
@@ -93,7 +93,7 @@ public:
 // OJ: https://leetcode.com/problems/minimum-window-substring/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(N)
+// Space: O(C) where C is the range of characters
 // Ref: https://discuss.leetcode.com/topic/30941/here-is-a-10-line-template-that-can-solve-most-substring-problems
 class Solution {
 public:
