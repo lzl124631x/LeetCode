@@ -34,14 +34,14 @@
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        ListNode dummy(0);
+        ListNode h(0);
         while (head) {
-            ListNode *node = head;
+            auto p = head;
             head = head->next;
-            node->next = dummy.next;
-            dummy.next = node;
+            p->next = h.next;
+            h.next = p;
         }
-        return dummy.next;
+        return h.next;
     }
 };
 ```
