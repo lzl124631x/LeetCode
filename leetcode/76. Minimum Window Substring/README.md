@@ -1,36 +1,62 @@
 # [76. Minimum Window Substring (Hard)](https://leetcode.com/problems/minimum-window-substring/)
 
-<p>Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).</p>
+<p>Given two strings <code>s</code> and <code>t</code> of lengths <code>m</code> and <code>n</code> respectively, return <em>the <strong>minimum window substring</strong> of </em><code>s</code><em> such that every character in </em><code>t</code><em> (<strong>including duplicates</strong>) is included in the window. If there is no such substring</em><em>, return the empty string </em><code>""</code><em>.</em></p>
 
-<p><strong>Example:</strong></p>
+<p>The testcases will be generated such that the answer is <strong>unique</strong>.</p>
 
-<pre><strong>Input: S</strong> = "ADOBECODEBANC", <strong>T</strong> = "ABC"
+<p>A <strong>substring</strong> is a contiguous sequence of characters within the string.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> s = "ADOBECODEBANC", t = "ABC"
 <strong>Output:</strong> "BANC"
+<strong>Explanation:</strong> The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
 </pre>
 
-<p><strong>Note:</strong></p>
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> s = "a", t = "a"
+<strong>Output:</strong> "a"
+<strong>Explanation:</strong> The entire string s is the minimum window.
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> s = "a", t = "aa"
+<strong>Output:</strong> ""
+<strong>Explanation:</strong> Both 'a's from t must be included in the window.
+Since the largest window of s only has one 'a', return empty string.
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
 <ul>
-	<li>If there is no such window in S that covers all characters in T, return the empty string <code>""</code>.</li>
-	<li>If there is such window, you are guaranteed that there will always be only one unique minimum window in S.</li>
+	<li><code>m == s.length</code></li>
+	<li><code>n == t.length</code></li>
+	<li><code>1 &lt;= m, n&nbsp;&lt;= 10<sup>5</sup></code></li>
+	<li><code>s</code> and <code>t</code> consist of uppercase and lowercase English letters.</li>
 </ul>
 
+<p>&nbsp;</p>
+<strong>Follow up:</strong> Could you find an algorithm that runs in <code>O(m + n)</code> time?
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Amazon](https://leetcode.com/company/amazon), [LinkedIn](https://leetcode.com/company/linkedin), [Microsoft](https://leetcode.com/company/microsoft), [Apple](https://leetcode.com/company/apple), [Uber](https://leetcode.com/company/uber), [Bloomberg](https://leetcode.com/company/bloomberg), [Airbnb](https://leetcode.com/company/airbnb), [Walmart Labs](https://leetcode.com/company/walmart-labs)
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Google](https://leetcode.com/company/google), [Apple](https://leetcode.com/company/apple), [LinkedIn](https://leetcode.com/company/linkedin), [Uber](https://leetcode.com/company/uber), [Adobe](https://leetcode.com/company/adobe), [ByteDance](https://leetcode.com/company/bytedance), [VMware](https://leetcode.com/company/vmware), [Lyft](https://leetcode.com/company/lyft)
 
 **Related Topics**:  
-[Hash Table](https://leetcode.com/tag/hash-table/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [String](https://leetcode.com/tag/string/)
+[Hash Table](https://leetcode.com/tag/hash-table/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [String](https://leetcode.com/tag/string/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
 
 **Similar Questions**:
 * [Substring with Concatenation of All Words (Hard)](https://leetcode.com/problems/substring-with-concatenation-of-all-words/)
 * [Minimum Size Subarray Sum (Medium)](https://leetcode.com/problems/minimum-size-subarray-sum/)
 * [Sliding Window Maximum (Hard)](https://leetcode.com/problems/sliding-window-maximum/)
 * [Permutation in String (Medium)](https://leetcode.com/problems/permutation-in-string/)
-* [Smallest Range (Hard)](https://leetcode.com/problems/smallest-range/)
+* [Smallest Range Covering Elements from K Lists (Hard)](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/)
 * [Minimum Window Subsequence (Hard)](https://leetcode.com/problems/minimum-window-subsequence/)
 
-## Solution 1. Two Pointers
+## Solution 1. Minimum Sliding Window
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-window-substring/
@@ -40,22 +66,20 @@
 class Solution {
 public:
     string minWindow(string s, string t) {
-        int cnt = 0, i = 0, j = 0, S = s.size(), T = t.size();
-        int minLen = INT_MAX, begin = -1;
-        unordered_map<char, int> m, seen;
-        for (char c : t) m[c]++;
-        while (j < S) {
-            for (; j < S && cnt != T; ++j) {
-                if (m.find(s[j]) == m.end()) continue;
-                if (++seen[s[j]] <= m[s[j]]) ++cnt;
-            }
-            for (; cnt == T; ++i) {
-                if (m.find(s[i]) == m.end()) continue;
-                if (j - i < minLen) {
-                    minLen = j - i;
+        unordered_map<char, int> target, cur;
+        for (char c : t) target[c]++;
+        int S = s.size(), T = target.size(), cnt = 0, i = 0, begin = -1, minLen = INT_MAX;
+        for (int j = 0; j < S; ++j) {
+            ++cur[s[j]];
+            if (target.count(s[j]) && target[s[j]] == cur[s[j]]) ++cnt;
+            while (cnt == T) {
+                if (target.count(s[i]) && cur[s[i]] == target[s[i]]) --cnt;
+                --cur[s[i]];
+                if (cnt < T && (begin == -1 || minLen > j - i + 1)) {
                     begin = i;
-                }
-                if (--seen[s[i]] < m[s[i]]) --cnt;
+                    minLen = j - i + 1;
+                } 
+                ++i;
             }
         }
         return begin == -1 ? "" : s.substr(begin, minLen);
