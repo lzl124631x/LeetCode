@@ -138,6 +138,14 @@ dp[t][i + 1] = min(dp[t][i], 1 + dp[t - A[i]][i])   where 0 <= i < N
 dp[0][i] = 0 where 0 <= i <= N
 ```
 
+Let `dp[t]` be the minimum coins needed to get a total amount of money `t` with all coins.
+
+```
+dp[t] = dp[t - C] + 1 where C is the last coin's denomination
+dp[t] = min( dp[t - A[i]] + 1 | 0 <= i < N && t - A[i] >= 0 )
+dp[0] = 0
+```
+
 ```cpp
 // OJ: https://leetcode.com/problems/coin-change/
 // Author: github.com/lzl124631x
@@ -149,8 +157,8 @@ public:
         int N = A.size(), INF = 0x3f3f3f3f, dp[10001] = {};
         memset(dp, 0x3f, sizeof(dp));
         dp[0] = 0;
-        for (int i = 0; i < N; ++i) {
-            for (int t = 1; t <= T; ++t) {
+        for (int t = 1; t <= T; ++t) {
+            for (int i = 0; i < N; ++i) {
                 dp[t] = min(dp[t], t - A[i] >= 0 ? 1 + dp[t - A[i]] : INF);
             }
         }
