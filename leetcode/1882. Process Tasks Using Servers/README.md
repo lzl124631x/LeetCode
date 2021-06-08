@@ -65,23 +65,23 @@ public:
     vector<int> assignTasks(vector<int>& S, vector<int>& T) {
         vector<int> avail(S.size()), ans(T.size()); // `avail[i]` is the next available time of server i
         auto idleCmp = [&](int a, int b) { return S[a] != S[b] ? S[a] > S[b] : a > b; }; // the idle server with smallest weight and index is at the top
-        auto workingCmp = [&](int a, int b) { return avail[a] > avail[b]; }; // The working server with the smallest available time is at the top
+        auto busyCmp = [&](int a, int b) { return avail[a] > avail[b]; }; // The busy server with the smallest available time is at the top
         priority_queue<int, vector<int>, decltype(idleCmp)> idle(idleCmp);
-        priority_queue<int, vector<int>, decltype(workingCmp)> working(workingCmp);
+        priority_queue<int, vector<int>, decltype(busyCmp)> busy(busyCmp);
         for (int i = 0; i < S.size(); ++i) idle.push(i);
         int time = 0;
         for (int i = 0; i < T.size(); ++i) {
             time = max(i, time); // the current time is at least `i`
-            if (idle.empty()) time = avail[working.top()]; // no idle servers, jump to the next available time
-            while (working.size() && avail[working.top()] <= time) { // collect all the idle servers
-                idle.push(working.top());
-                working.pop();
+            if (idle.empty()) time = avail[busy.top()]; // no idle servers, jump to the next available time
+            while (busy.size() && avail[busy.top()] <= time) { // collect all the idle servers
+                idle.push(busy.top());
+                busy.pop();
             }
             int s = idle.top();
             idle.pop();
             ans[i] = s; // use server `s` for task `i`
             avail[s] = time + T[i]; // update available time of server `s` as current time + T[i]
-            working.push(s);
+            busy.push(s);
         }
         return ans;
     }
