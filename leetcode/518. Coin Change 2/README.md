@@ -164,8 +164,8 @@ public:
         vector<int> dp(T + 1);
         dp[0] = 1;
         for (int i = 0; i < N; ++i) {
-            for (int t = 1; t <= T; ++t) {
-                if (t - A[i] >= 0) dp[t] += dp[t - A[i]];
+            for (int t = A[i]; t <= T; ++t) {
+                dp[t] += dp[t - A[i]];
             }
         }
         return dp[T];
