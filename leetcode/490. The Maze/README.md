@@ -77,7 +77,6 @@
 // Space: O(MN)
 class Solution {
 private:
-    int dirs[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     int hash(vector<int> &p) { return p[0] * 1000 + p[1]; }
     vector<int> go(vector<vector<int>>& maze, int x, int y, int d[2]) {
         int M = maze.size(), N = maze[0].size();
@@ -91,7 +90,7 @@ public:
     bool hasPath(vector<vector<int>>& maze, vector<int>& start, vector<int>& destination) {
         queue<int> q;
         unordered_set<int> seen;
-        int s = hash(start);
+        int s = hash(start), dirs[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         q.push(s);
         seen.insert(s);
         while (q.size()) {
@@ -101,7 +100,7 @@ public:
             for (auto &dir : dirs) {
                 auto to = go(maze, x, y, dir);
                 int h = hash(to);
-                if (seen.find(h) != seen.end()) continue;
+                if (seen.count(h)) continue;
                 seen.insert(h);
                 q.push(h);
             }
