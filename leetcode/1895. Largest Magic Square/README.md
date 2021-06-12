@@ -47,7 +47,7 @@ Every row sum, column sum, and diagonal sum of this magic square is equal to 12.
 ```cpp
 // OJ: https://leetcode.com/problems/largest-magic-square/
 // Author: github.com/lzl124631x
-// Time: O(MN)
+// Time: O(MN * min(M, N)^3)
 // Space: O(1)
 class Solution {
     int M, N;
