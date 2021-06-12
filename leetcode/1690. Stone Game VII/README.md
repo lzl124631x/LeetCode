@@ -54,8 +54,8 @@ Let `dp[i][j]` be the maximum difference the first player can get if the players
 
 ```
 dp[i][j] = max(
-                sum(i + 1, j) - dp[i + 1][j],   // if the first player choose `A[i]`
-                sum(i, j - 1) - dp[i][j - 1]    // if the first player choose `A[j]`
+                sum(i + 1, j) - dp[i + 1][j],   // if the first player chooses `A[i]`
+                sum(i, j - 1) - dp[i][j - 1]    // if the first player chooses `A[j]`
               )
 ```
 where `sum(i, j)` is `A[i] + ... + A[j]`. We can get `sum(i, j)` using prefix sum array.
@@ -73,7 +73,7 @@ So each round on `A[i..j]`, no matter who plays first, the first player always h
 And the first player simply pick the option more advantageous to him/her.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-219/problems/stone-game-vii/
+// OJ: https://leetcode.com/problems/stone-game-vii/
 // Author: github.com/lzl124631x
 // Time: O(N^2)
 // Space: O(N^2)
