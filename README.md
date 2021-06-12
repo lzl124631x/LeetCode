@@ -443,6 +443,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 502 | IPO |  | [Solution](leetcode/502.%20IPO)
 503 | Next Greater Element II | Medium | [Solution](leetcode/503.%20Next%20Greater%20Element%20II)
 504 | Base 7 |  | [Solution](leetcode/504.%20Base%207)
+505 | The Maze II | Medium | [Solution](leetcode/505.%20The%20Maze%20II)
 506 | Relative Ranks |  | [Solution](leetcode/506.%20Relative%20Ranks)
 507 | Perfect Number | Easy | [Solution](leetcode/507.%20Perfect%20Number)
 508 | Most Frequent Subtree Sum |  | [Solution](leetcode/508.%20Most%20Frequent%20Subtree%20Sum)
@@ -1415,6 +1416,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1887 | Reduction Operations to Make the Array Elements Equal | Medium | [Solution](leetcode/1887.%20Reduction%20Operations%20to%20Make%20the%20Array%20Elements%20Equal)
 1888 | Minimum Number of Flips to Make the Binary String Alternating | Medium | [Solution](leetcode/1888.%20Minimum%20Number%20of%20Flips%20to%20Make%20the%20Binary%20String%20Alternating)
 1889 | Minimum Space Wasted From Packaging | Hard | [Solution](leetcode/1889.%20Minimum%20Space%20Wasted%20From%20Packaging)
+1893 | Check if All the Integers in a Range Are Covered | Easy | [Solution](leetcode/1893.%20Check%20if%20All%20the%20Integers%20in%20a%20Range%20Are%20Covered)
+1894 | Find the Student that Will Replace the Chalk | Medium | [Solution](leetcode/1894.%20Find%20the%20Student%20that%20Will%20Replace%20the%20Chalk)
+1895 | Largest Magic Square | Medium | [Solution](leetcode/1895.%20Largest%20Magic%20Square)
+1896 | Minimum Cost to Change the Final Value of Expression | Hard | [Solution](leetcode/1896.%20Minimum%20Cost%20to%20Change%20the%20Final%20Value%20of%20Expression)
 
 # License
 
