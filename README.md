@@ -440,7 +440,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 498 | Diagonal Traverse |  | [Solution](leetcode/498.%20Diagonal%20Traverse)
 500 | Keyboard Row |  | [Solution](leetcode/500.%20Keyboard%20Row)
 501 | Find Mode in Binary Search Tree |  | [Solution](leetcode/501.%20Find%20Mode%20in%20Binary%20Search%20Tree)
-502 | IPO |  | [Solution](leetcode/502.%20IPO)
+502 | IPO | Hard | [Solution](leetcode/502.%20IPO)
 503 | Next Greater Element II | Medium | [Solution](leetcode/503.%20Next%20Greater%20Element%20II)
 504 | Base 7 |  | [Solution](leetcode/504.%20Base%207)
 505 | The Maze II | Medium | [Solution](leetcode/505.%20The%20Maze%20II)
@@ -726,6 +726,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 868 | Binary Gap | Easy | [Solution](leetcode/868.%20Binary%20Gap)
 869 | Reordered Power of 2 | Medium | [Solution](leetcode/869.%20Reordered%20Power%20of%202)
 870 | Advantage Shuffle | Medium | [Solution](leetcode/870.%20Advantage%20Shuffle)
+871 | Minimum Number of Refueling Stops | Hard | [Solution](leetcode/871.%20Minimum%20Number%20of%20Refueling%20Stops)
 872 | Leaf-Similar Trees | Easy | [Solution](leetcode/872.%20Leaf-Similar%20Trees)
 874 | Walking Robot Simulation | Easy | [Solution](leetcode/874.%20Walking%20Robot%20Simulation)
 875 | Koko Eating Bananas | Medium | [Solution](leetcode/875.%20Koko%20Eating%20Bananas)
@@ -1420,6 +1421,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1894 | Find the Student that Will Replace the Chalk | Medium | [Solution](leetcode/1894.%20Find%20the%20Student%20that%20Will%20Replace%20the%20Chalk)
 1895 | Largest Magic Square | Medium | [Solution](leetcode/1895.%20Largest%20Magic%20Square)
 1896 | Minimum Cost to Change the Final Value of Expression | Hard | [Solution](leetcode/1896.%20Minimum%20Cost%20to%20Change%20the%20Final%20Value%20of%20Expression)
+1897 | Redistribute Characters to Make All Strings Equal | Easy | [Solution](leetcode/1897.%20Redistribute%20Characters%20to%20Make%20All%20Strings%20Equal)
+1898 | Maximum Number of Removable Characters | Medium | [Solution](leetcode/1898.%20Maximum%20Number%20of%20Removable%20Characters)
+1899 | Merge Triplets to Form Target Triplet | Medium | [Solution](leetcode/1899.%20Merge%20Triplets%20to%20Form%20Target%20Triplet)
+1900 | The Earliest and Latest Rounds Where Players Compete | Hard | [Solution](leetcode/1900.%20The%20Earliest%20and%20Latest%20Rounds%20Where%20Players%20Compete)
 
 # License
 
