@@ -1,28 +1,55 @@
 # [53. Maximum Subarray (Easy)](https://leetcode.com/problems/maximum-subarray/)
 
-<p>Given an integer array <code>nums</code>, find the contiguous subarray&nbsp;(containing at least one number) which has the largest sum and return its sum.</p>
+<p>Given an integer array <code>nums</code>, find the contiguous subarray (containing at least one number) which has the largest sum and return <em>its sum</em>.</p>
 
-<p><strong>Example:</strong></p>
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-<pre><strong>Input:</strong> [-2,1,-3,4,-1,2,1,-5,4],
+<pre><strong>Input:</strong> nums = [-2,1,-3,4,-1,2,1,-5,4]
 <strong>Output:</strong> 6
-<strong>Explanation:</strong>&nbsp;[4,-1,2,1] has the largest sum = 6.
+<strong>Explanation:</strong> [4,-1,2,1] has the largest sum = 6.
 </pre>
 
-<p><strong>Follow up:</strong></p>
+<p><strong>Example 2:</strong></p>
 
-<p>If you have figured out the O(<em>n</em>) solution, try coding another solution using the divide and conquer approach, which is more subtle.</p>
+<pre><strong>Input:</strong> nums = [1]
+<strong>Output:</strong> 1
+</pre>
 
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> nums = [5,4,-1,7,8]
+<strong>Output:</strong> 23
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>-10<sup>5</sup> &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
+</ul>
+
+<p>&nbsp;</p>
+<strong>Follow up:</strong> If you have figured out the <code>O(n)</code> solution, try coding another solution using the <strong>divide and conquer</strong> approach, which is more subtle.
 
 **Companies**:  
-[Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon), [LinkedIn](https://leetcode.com/company/linkedin), [Apple](https://leetcode.com/company/apple), [Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg), [Facebook](https://leetcode.com/company/facebook), [Adobe](https://leetcode.com/company/adobe), [SAP](https://leetcode.com/company/sap), [Oracle](https://leetcode.com/company/oracle), [Paypal](https://leetcode.com/company/paypal), [Cisco](https://leetcode.com/company/cisco), [Intel](https://leetcode.com/company/intel), [Uber](https://leetcode.com/company/uber), [Yahoo](https://leetcode.com/company/yahoo), [Capital One](https://leetcode.com/company/capital-one), [Zillow](https://leetcode.com/company/zillow), [JPMorgan](https://leetcode.com/company/jpmorgan), [Atlassian](https://leetcode.com/company/atlassian), [ByteDance](https://leetcode.com/company/bytedance)
+[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Apple](https://leetcode.com/company/apple), [LinkedIn](https://leetcode.com/company/linkedin), [Google](https://leetcode.com/company/google), [Facebook](https://leetcode.com/company/facebook), [Adobe](https://leetcode.com/company/adobe), [ByteDance](https://leetcode.com/company/bytedance), [Splunk](https://leetcode.com/company/splunk), [eBay](https://leetcode.com/company/ebay), [Bloomberg](https://leetcode.com/company/bloomberg), [Cisco](https://leetcode.com/company/cisco)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Divide and Conquer](https://leetcode.com/tag/divide-and-conquer/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
+**Similar Questions**:
+* [Best Time to Buy and Sell Stock (Easy)](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+* [Maximum Product Subarray (Medium)](https://leetcode.com/problems/maximum-product-subarray/)
+* [Degree of an Array (Easy)](https://leetcode.com/problems/degree-of-an-array/)
+* [Longest Turbulent Subarray (Medium)](https://leetcode.com/problems/longest-turbulent-subarray/)
+* [Maximum Absolute Sum of Any Subarray (Medium)](https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray/)
+* [Maximum Subarray Sum After One Operation (Medium)](https://leetcode.com/problems/maximum-subarray-sum-after-one-operation/)
+
 ## Solution 1. Rolling Sum + Greedy
 
-We can first get the rolling sum so that `sum[i] = nums[0] + ... + sum[i]`. With `partial_sum` we can do that in place.
+We can first get the rolling sum so that `sum[i] = nums[0] + ... + nums[i]`. With `partial_sum` we can do that in place.
 
 Then this problem is almost the same as [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) -- finding the maximum `sum[j] - sum[i]` where `j > i`. The only difference is that the sub array can start at index `0`, so we also need to take `sum[i]` where `0 <= i < N` into consideration. So the "minimum sum we've seen so far" should be initialized as 0. 
 
@@ -35,6 +62,27 @@ public:
         for (int n : nums) {
             ans = max(ans, n - minSum);
             minSum = min(minSum, n);
+        }
+        return ans;
+    }
+};
+```
+
+Or 
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-subarray/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int maxSubArray(vector<int>& A) {
+        int mn = 0, sum = 0, ans = A[0];
+        for (int n : A) {
+            sum += n;
+            ans = max(ans, sum - mn);
+            mn = min(mn, sum);
         }
         return ans;
     }
