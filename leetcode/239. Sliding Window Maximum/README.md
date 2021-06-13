@@ -1,16 +1,15 @@
 # [239. Sliding Window Maximum (Hard)](https://leetcode.com/problems/sliding-window-maximum/)
 
-<p>Given an array <em>nums</em>, there is a sliding window of size <em>k</em> which is moving from the very left of the array to the very right. You can only see the <em>k</em> numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.</p>
+<p>You are given an array of integers&nbsp;<code>nums</code>, there is a sliding window of size <code>k</code> which is moving from the very left of the array to the very right. You can only see the <code>k</code> numbers in the window. Each time the sliding window moves right by one position.</p>
 
-<p><strong>Follow up:</strong><br>
-Could you solve it in linear time?</p>
+<p>Return <em>the max sliding window</em>.</p>
 
-<p><strong>Example:</strong></p>
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-<pre><strong>Input:</strong> <em>nums</em> = <code>[1,3,-1,-3,5,3,6,7]</code>, and <em>k</em> = 3
-<strong>Output: </strong><code>[3,3,5,5,6,7] 
-<strong>Explanation: 
-</strong></code>
+<pre><strong>Input:</strong> nums = [1,3,-1,-3,5,3,6,7], k = 3
+<strong>Output:</strong> [3,3,5,5,6,7]
+<strong>Explanation:</strong> 
 Window position                Max
 ---------------               -----
 [1  3  -1] -3  5  3  6  7       <strong>3</strong>
@@ -21,26 +20,54 @@ Window position                Max
  1  3  -1  -3  5 [3  6  7]      <strong>7</strong>
 </pre>
 
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums = [1], k = 1
+<strong>Output:</strong> [1]
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> nums = [1,-1], k = 1
+<strong>Output:</strong> [1,-1]
+</pre>
+
+<p><strong>Example 4:</strong></p>
+
+<pre><strong>Input:</strong> nums = [9,11], k = 2
+<strong>Output:</strong> [11]
+</pre>
+
+<p><strong>Example 5:</strong></p>
+
+<pre><strong>Input:</strong> nums = [4,-2], k = 2
+<strong>Output:</strong> [4]
+</pre>
+
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= nums.length &lt;= 10^5</code></li>
-	<li><code>-10^4&nbsp;&lt;= nums[i]&nbsp;&lt;= 10^4</code></li>
-	<li><code>1 &lt;= k&nbsp;&lt;= nums.length</code></li>
+	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
+	<li><code>1 &lt;= k &lt;= nums.length</code></li>
 </ul>
 
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google), [Facebook](https://leetcode.com/company/facebook), [ByteDance](https://leetcode.com/company/bytedance), [Bloomberg](https://leetcode.com/company/bloomberg), [Microsoft](https://leetcode.com/company/microsoft), [Citadel](https://leetcode.com/company/citadel), [Twitter](https://leetcode.com/company/twitter), [Akuna Capital](https://leetcode.com/company/akuna-capital)
+
 **Related Topics**:  
-[Heap](https://leetcode.com/tag/heap/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
+[Heap](https://leetcode.com/tag/heap/), [Sliding Window](https://leetcode.com/tag/sliding-window/), [Dequeue](https://leetcode.com/tag/dequeue/)
 
 **Similar Questions**:
 * [Minimum Window Substring (Hard)](https://leetcode.com/problems/minimum-window-substring/)
 * [Min Stack (Easy)](https://leetcode.com/problems/min-stack/)
 * [Longest Substring with At Most Two Distinct Characters (Medium)](https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/)
 * [Paint House II (Hard)](https://leetcode.com/problems/paint-house-ii/)
+* [Jump Game VI (Medium)](https://leetcode.com/problems/jump-game-vi/)
 
-## Solution 1. Monotonous Deque
+## Solution 1. Mono-Deque
 
 Assume the array is `[3, 1, 2, ...]` and `k = 3`, popping `3` out of the window will result in max value update, but popping `1` won't. This means that we can just keep track of `[3, 2]`, i.e. a monotonically decreasing sequence of values.
 
@@ -69,7 +96,7 @@ public:
 };
 ```
 
-## Solution 2. Monotonous Deque
+## Solution 2. Mono-Deque
 
 Similar to Solution 1, but here we store the values instead of the indexes in the deque.
 
