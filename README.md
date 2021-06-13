@@ -208,6 +208,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 214 | Shortest Palindrome | Hard | [Solution](leetcode/214.%20Shortest%20Palindrome)
 215 | Kth Largest Element in an Array | Medium | [Solution](leetcode/215.%20Kth%20Largest%20Element%20in%20an%20Array)
 216 | Combination Sum III | Medium | [Solution](leetcode/216.%20Combination%20Sum%20III)
+217 | Contains Duplicate | Easy | [Solution](leetcode/217.%20Contains%20Duplicate)
 218 | The Skyline Problem | Hard | [Solution](leetcode/218.%20The%20Skyline%20Problem)
 219 | Contains Duplicate II | Easy | [Solution](leetcode/219.%20Contains%20Duplicate%20II)
 220 | Contains Duplicate III | Medium | [Solution](leetcode/220.%20Contains%20Duplicate%20III)
