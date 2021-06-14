@@ -46,14 +46,20 @@ Attend the third event on day 3.
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= events.length &lt;= 10^5</code></li>
+	<li><code>1 &lt;= events.length &lt;= 10<sup>5</sup></code></li>
 	<li><code>events[i].length == 2</code></li>
-	<li><code>1 &lt;= events[i][0] &lt;= events[i][1] &lt;= 10^5</code></li>
+	<li><code>1 &lt;= startDay<sub>i</sub> &lt;= endDay<sub>i</sub> &lt;= 10<sup>5</sup></code></li>
 </ul>
 
 
+**Companies**:  
+[Microsoft](https://leetcode.com/company/microsoft), [Infosys](https://leetcode.com/company/infosys)
+
 **Related Topics**:  
 [Greedy](https://leetcode.com/tag/greedy/), [Sort](https://leetcode.com/tag/sort/), [Segment Tree](https://leetcode.com/tag/segment-tree/)
+
+**Similar Questions**:
+* [Maximum Number of Events That Can Be Attended II (Hard)](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/)
 
 ## Solution 1. Greedy
 
@@ -81,7 +87,7 @@ class Solution {
 public:
     int maxEvents(vector<vector<int>>& A) {
         sort(A.begin(), A.end());
-        priority_queue<int, vector<int>, greater<int>> pq;
+        priority_queue<int, vector<int>, greater<>> pq;
         int N = A.size(), i = 0, day = A[0][0], ans = 0;
         while (i < N || pq.size()) {
             if (pq.empty()) day = A[i][0]; // If no active event is available and there are still more events to pick, jump to the start date of the next event.
@@ -95,3 +101,7 @@ public:
     }
 };
 ```
+
+## Note
+
+Similar to [1834. Single-Threaded CPU (Medium)](https://leetcode.com/problems/single-threaded-cpu/)
