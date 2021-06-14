@@ -53,7 +53,9 @@ We start from the container with the maximum width. Now we need to decrease the 
 
 The strategy of moving the pointers is that we always move the smaller edge inwards.
 
-The reason is that **if we move the greater edge, the volumn of the container won't increase** -- the width of the container decreases by one, and the height of the container limited by the smaller edge won't increase.
+Reason: Assume `A[L] > A[R]`, then all the pairs of `A[R]` with `A[i]` (`L < i < R`) can be discarded because the width between `A[i]` and `A[R]` is less AND the height of the container won't be taller than `A[R]`.
+
+Thus, to discardi all the pairs of `A[R]` with `A[i]` (`L < i < R`), we can simply `--R`.
 
 If the height of the two edges are the same, moving either one is fine because the change won't increase the volumn either way. BUT, we shouldn't break here because the volumn might increase later. Example case `[1, 100, 200, 1]`.
 
