@@ -1,22 +1,22 @@
-# [371. Sum of Two Integers (Easy)](https://leetcode.com/problems/sum-of-two-integers/)
+# [371. Sum of Two Integers (Medium)](https://leetcode.com/problems/sum-of-two-integers/)
 
-<p>Calculate the sum of two integers <i>a</i> and <i>b</i>, but you are <b>not allowed</b> to use the operator <code>+</code> and <code>-</code>.</p>
+<p>Given two integers <code>a</code> and <code>b</code>, return <em>the sum of the two integers without using the operators</em> <code>+</code> <em>and</em> <code>-</code>.</p>
 
-<div>
+<p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
-
-<pre><strong>Input: </strong>a = <span id="example-input-1-1">1</span>, b = <span id="example-input-1-2">2</span>
-<strong>Output: </strong><span id="example-output-1">3</span>
+<pre><strong>Input:</strong> a = 1, b = 2
+<strong>Output:</strong> 3
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> a = 2, b = 3
+<strong>Output:</strong> 5
 </pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<div>
-<p><strong>Example 2:</strong></p>
+<ul>
+	<li><code>-1000 &lt;= a, b &lt;= 1000</code></li>
+</ul>
 
-<pre><strong>Input: </strong>a = -<span id="example-input-2-1">2</span>, b = <span id="example-input-2-2">3</span>
-<strong>Output: </strong>1
-</pre>
-</div>
-</div>
 
 **Companies**:  
 [Facebook](https://leetcode.com/company/facebook)
@@ -28,6 +28,34 @@
 * [Add Two Numbers (Medium)](https://leetcode.com/problems/add-two-numbers/)
 
 ## Solution 1.
+
+```cpp
+// OJ: https://leetcode.com/problems/sum-of-two-integers/
+// Author: github.com/lzl124631x
+// Time: O(1)
+// Space: O(1)
+class Solution {
+public:
+    int getSum(int a, int b) {
+        int carry = 0, ans = 0;
+        for (int i = 0; i < 32; ++i) {
+            int x = (a >> i & 1), y = (b >> i & 1);
+            if (carry) {
+                if (x == y) {
+                    ans |= 1 << i;
+                    if (!x & !y) carry = 0;
+                }
+            } else {
+                if (x != y) ans |= 1 << i;
+                if (x & y) carry = 1;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2.
 
 ```cpp
 // OJ: https://leetcode.com/problems/sum-of-two-integers/
