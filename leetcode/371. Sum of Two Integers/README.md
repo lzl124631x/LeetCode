@@ -57,6 +57,11 @@ public:
 
 ## Solution 2.
 
+1. Get `carry = (a & b) << 1`, i.e. the bits that are 1s both in `a` and `b` are picked and shifted left by 1.
+2. As the `11` case is handled, the rest `10`, `01`, `00` cases can be get using `a ^ b`.
+3. Now the problem becomes calculating the sum of `(a & b) << 1` and `a ^ b`.
+4. Go back to step 1 until there is no more `carry`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/sum-of-two-integers/
 // Author: github.com/lzl124631x
