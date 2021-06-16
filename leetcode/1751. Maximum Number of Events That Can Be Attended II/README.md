@@ -97,3 +97,29 @@ public:
     }
 };
 ```
+
+## Solution 2. DP Bottom-up + Space Optimization
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/
+// Author: github.com/lzl124631x
+// Time: O(KNlogN)
+// Space: O(N)
+class Solution {
+public:
+    int maxValue(vector<vector<int>>& A, int k) {
+        sort(begin(A), end(A));
+        int N = A.size();
+        vector<int> dp(N + 1);
+        for (int i = 1; i <= k; ++i) {
+            vector<int> next(N + 1);
+            for (int j = N - 1; j >= 0; --j) {
+                int t = upper_bound(begin(A) + j, end(A), A[j][1], [](int t, auto &v) { return v[0] > t; }) - begin(A);
+                next[j] = max(dp[t] + A[j][2], next[j + 1]);
+            }
+            swap(dp, next);
+        }
+        return dp[0];
+    }
+};
+```
