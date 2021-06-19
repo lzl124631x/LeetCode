@@ -98,7 +98,7 @@ public:
 // Space: O(logN) on averge, O(N) in the worst case
 class Solution {
 private:
-    void quickSort(ListNode *begin, ListNode *end) {
+    void quickSort(ListNode *begin, ListNode *end = NULL) {
         if (begin == end || begin->next == end) return;
         auto p = partition(begin, end);
         quickSort(begin, p.first);
@@ -118,11 +118,11 @@ private:
             }
             p = p->next;
         }
-        return make_pair(eqHead, eqTail->next);
+        return {eqHead, eqTail->next};
     }
 public:
     ListNode* sortList(ListNode* head) {
-        quickSort(head, NULL);
+        quickSort(head);
         return head;
     }
 };
