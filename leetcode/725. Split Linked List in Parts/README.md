@@ -68,7 +68,7 @@ public:
             if (r > 0) --r;
             ans.push_back(head);
             if (!head) continue;
-            for (int i = 1; i < cnt; ++i, head = head->next); 
+            while (--cnt) head = head->next;
             auto next = head->next;
             head->next = NULL;
             head = next;
