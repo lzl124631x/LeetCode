@@ -1322,6 +1322,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1739 | Building Boxes | Hard | [Solution](leetcode/1739.%20Building%20Boxes)
 1744 | Can You Eat Your Favorite Candy on Your Favorite Day? | Medium | [Solution](leetcode/1744.%20Can%20You%20Eat%20Your%20Favorite%20Candy%20on%20Your%20Favorite%20Day%3F)
 1745 | Palindrome Partitioning IV | Hard | [Solution](leetcode/1745.%20Palindrome%20Partitioning%20IV)
+1748 | Sum of Unique Elements | Easy | [Solution](leetcode/1748.%20Sum%20of%20Unique%20Elements)
 1749 | Maximum Absolute Sum of Any Subarray | Medium | [Solution](leetcode/1749.%20Maximum%20Absolute%20Sum%20of%20Any%20Subarray)
 1750 | Minimum Length of String After Deleting Similar Ends | Medium | [Solution](leetcode/1750.%20Minimum%20Length%20of%20String%20After%20Deleting%20Similar%20Ends)
 1751 | Maximum Number of Events That Can Be Attended II | Hard | [Solution](leetcode/1751.%20Maximum%20Number%20of%20Events%20That%20Can%20Be%20Attended%20II)
@@ -1428,6 +1429,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1898 | Maximum Number of Removable Characters | Medium | [Solution](leetcode/1898.%20Maximum%20Number%20of%20Removable%20Characters)
 1899 | Merge Triplets to Form Target Triplet | Medium | [Solution](leetcode/1899.%20Merge%20Triplets%20to%20Form%20Target%20Triplet)
 1900 | The Earliest and Latest Rounds Where Players Compete | Hard | [Solution](leetcode/1900.%20The%20Earliest%20and%20Latest%20Rounds%20Where%20Players%20Compete)
+1903 | Largest Odd Number in String | Easy | [Solution](leetcode/1903.%20Largest%20Odd%20Number%20in%20String)
+1904 | The Number of Full Rounds You Have Played | Medium | [Solution](leetcode/1904.%20The%20Number%20of%20Full%20Rounds%20You%20Have%20Played)
+1905 | Count Sub Islands | Medium | [Solution](leetcode/1905.%20Count%20Sub%20Islands)
+1906 | Minimum Absolute Difference Queries | Medium | [Solution](leetcode/1906.%20Minimum%20Absolute%20Difference%20Queries)
 
 # License
 
