@@ -650,6 +650,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 773 | Sliding Puzzle | Hard | [Solution](leetcode/773.%20Sliding%20Puzzle)
 775 | Global and Local Inversions | Medium | [Solution](leetcode/775.%20Global%20and%20Local%20Inversions)
 777 | Swap Adjacent in LR String | Medium | [Solution](leetcode/777.%20Swap%20Adjacent%20in%20LR%20String)
+778 | Swim in Rising Water | Hard | [Solution](leetcode/778.%20Swim%20in%20Rising%20Water)
 780 | Reaching Points | Hard | [Solution](leetcode/780.%20Reaching%20Points)
 781 | Rabbits in Forest | Medium | [Solution](leetcode/781.%20Rabbits%20in%20Forest)
 783 | Minimum Distance Between BST Nodes | Medium | [Solution](leetcode/783.%20Minimum%20Distance%20Between%20BST%20Nodes)
