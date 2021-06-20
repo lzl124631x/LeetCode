@@ -60,7 +60,7 @@ You did not play the full round from 12:30 to 12:45 because you stopped playing 
 Note that if `startTime` and `finishTime` are in the same 15-minute round, the above returns `-1`. We should return `max(0, floor(finish / 15) - ceil(start / 15))`
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-246/problems/the-number-of-full-rounds-you-have-played/
+// OJ: https://leetcode.com/problems/the-number-of-full-rounds-you-have-played/
 // Author: github.com/lzl124631x
 // Time: O(1)
 // Space: O(1)
