@@ -127,3 +127,61 @@ public:
     }
 };
 ```
+
+## Solution 3. Bottom-up Merge Sort
+
+```cpp
+// OJ: https://leetcode.com/problems/sort-list/solution/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+    pair<ListNode*, ListNode*> mergeList(ListNode *a, ListNode *b) {
+        ListNode head, *tail = &head;
+        while (a || b) {
+            ListNode *node;
+            if (!b || (a && a->val <= b->val)) {
+                node = a;
+                a = a->next;
+            } else {
+                node = b;
+                b = b->next;
+            }
+            tail->next = node;
+            tail = node;
+        }
+        return {head.next, tail};
+    }
+    int getLength(ListNode *head) {
+        int ans = 0;
+        for (; head; head = head->next, ++ans);
+        return ans;
+    }
+public:
+    ListNode* sortList(ListNode* head) {
+        ListNode dummy;
+        dummy.next = head;
+        int length = getLength(head);
+        for (int len = 1; len < length; len *= 2) {
+            auto p = dummy.next, prev = &dummy;
+            while (p) {
+                auto a = p;
+                for (int i = 1; i < len && p->next; ++i) p = p->next;
+                auto b = p->next;
+                p->next = NULL;
+                if (b == NULL) break;
+                p = b;
+                for (int i = 1; i < len && p->next; ++i) p = p->next;
+                auto next = p->next;
+                p->next = NULL;
+                auto [h, t] = mergeList(a, b);
+                prev->next = h;
+                t->next = next;
+                p = next;
+                prev = t;
+            }
+        }
+        return dummy.next;
+    }
+};
+```
