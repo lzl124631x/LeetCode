@@ -67,3 +67,93 @@ public:
     }
 };
 ```
+
+## Solution 2. DP
+
+```cpp
+// OJ: https://leetcode.com/problems/bomb-enemy/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(MN)
+class Solution {
+public:
+    int maxKilledEnemies(vector<vector<char>>& G) {
+        int M = G.size(), N = G[0].size(), ans = 0;
+        vector<vector<int>> top(M, vector<int>(N)), left(M, vector<int>(N)), right(M, vector<int>(N)), bottom(M, vector<int>(N));
+        for (int j = 0; j < N; ++j) {
+            int cnt = 0;
+            for (int i = 0; i < M; ++i) {
+                if (G[i][j] == 'E') ++cnt;
+                else if (G[i][j] == 'W') cnt = 0;
+                top[i][j] = cnt;
+            }
+        }
+        for (int i = 0; i < M; ++i) {
+            int cnt = 0;
+            for (int j = 0; j < N; ++j) {
+                if (G[i][j] == 'E') ++cnt;
+                else if (G[i][j] == 'W') cnt = 0;
+                left[i][j] = cnt;
+            }
+        }
+        for (int j = 0; j < N; ++j) {
+            int cnt = 0;
+            for (int i = M - 1; i >= 0; --i) {
+                if (G[i][j] == 'E') ++cnt;
+                else if (G[i][j] == 'W') cnt = 0;
+                bottom[i][j] = cnt;
+            }
+        }
+        for (int i = 0; i < M; ++i) {
+            int cnt = 0;
+            for (int j = N - 1; j >= 0; --j) {
+                if (G[i][j] == 'E') ++cnt;
+                else if (G[i][j] == 'W') cnt = 0;
+                right[i][j] = cnt;
+            }
+        }
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (G[i][j] != '0') continue;
+                ans = max(ans, top[i][j] + left[i][j] + bottom[i][j] + right[i][j]);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3. DP
+
+```cpp
+// OJ: https://leetcode.com/problems/bomb-enemy/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/bomb-enemy/solution/
+class Solution {
+public:
+    int maxKilledEnemies(vector<vector<char>>& G) {
+        int M = G.size(), N = G[0].size(), row = 0, ans = 0;
+        vector<int> col(N);
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (j == 0 || G[i][j - 1] == 'W') {
+                    row = 0;
+                    for (int k = j; k < N && G[i][k] != 'W'; ++k) {
+                        row += G[i][k] == 'E';
+                    }
+                }
+                if (i == 0 || G[i - 1][j] == 'W') {
+                    col[j] = 0;
+                    for (int k = i; k < M && G[k][j] != 'W'; ++k) {
+                        col[j] += G[k][j] == 'E';
+                    }
+                }
+                if (G[i][j] == '0') ans = max(ans, row + col[j]);
+            }
+        }
+        return ans;
+    }
+};
+```
