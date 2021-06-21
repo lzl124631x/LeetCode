@@ -52,7 +52,7 @@ k = 1
 **Related Topics**:  
 [Breadth-first Search](https://leetcode.com/tag/breadth-first-search/)
 
-## Solution 1. BFS
+## Solution 1. BFS + DP
 
 ```cpp
 // OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
@@ -124,7 +124,7 @@ public:
 };
 ```
 
-## Solution 3. BFS
+## Solution 3. DFS
 
 ```cpp
 // OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
@@ -150,6 +150,40 @@ public:
         for (int i = 0; i < k; ++i) dp[0][0][k] = 0;
         dfs(G, 0, 0, k, 0);
         return ans == INT_MAX ? -1 : ans;
+    }
+};
+```
+
+## Solution 4. BFS
+
+```cpp
+// OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
+// Author: github.com/lzl124631x
+// Time: O(MN * min(K, M + N))
+// Space: O(MNK)
+class Solution {
+    typedef tuple<int, int, int, int> Point; // distance, x, y, bomb
+public:
+    int shortestPath(vector<vector<int>>& G, int K) {
+        int M = G.size(), N = G[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}}, ans = INT_MAX;
+        vector<vector<vector<bool>>> seen(M, vector<vector<bool>>(N, vector<bool>(K + 1)));
+        queue<Point> q;
+        q.emplace(0, 0, 0, K);
+        seen[0][0][K] = true;
+        while (q.size()) {
+            auto [d, x, y, bomb] = q.front();
+            q.pop();
+            if (x == M - 1 && y == N - 1) return d;
+            for (auto &[dx, dy] : dirs) {
+                int a = x + dx, b = y + dy;
+                if (a < 0 || a >= M || b < 0 || b >= N) continue;
+                int nextDist = 1 + d, nextBomb = bomb - (G[a][b] == 1);
+                if (nextBomb == -1 || seen[a][b][nextBomb]) continue;
+                seen[a][b][nextBomb] = true;
+                q.emplace(nextDist, a, b, nextBomb);
+            }
+        }
+        return -1;
     }
 };
 ```
