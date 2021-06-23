@@ -45,6 +45,38 @@
 
 ## Solution 1.
 
+Given the constraints, we can't compare each `A[i]` with `s` to check if `A[i]` is a subsequence of `s` because each of these comparison takes `O(W + S)` time so the overall time complexity is `O(N * (W + S))` which will get TLE.
+
+We can first preprocess `s` in a way such that checking if `A[i]` is a subsequence of `s` only takes `O(W)` time, then the time complexity becomes `O(NW)` for the subsequence checking part.
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-matching-subsequences/
+// Author: github.com/lzl124631x
+// Time: O(SC + NW) where S is the length of `s`, C is the range of characters, N is the length of `A` and W is the maximum length of strings in `A`
+// Space: O(SC)
+class Solution {
+public:
+    int numMatchingSubseq(string s, vector<string>& A) {
+        int next[50002][26] = {}, N = s.size(), ans = 0;
+        memset(next, -1, sizeof(next));
+        for (int i = N - 1; i >= 0; --i) {
+            for (int j = 0; j < 26; ++j) next[i][j] = next[i + 1][j];
+            next[i][s[i] - 'a'] = i + 1;
+        }
+        for (auto &w : A) {
+            int i = 0, j = 0;
+            for (; i < w.size() && next[j][w[i] - 'a'] != -1; ++i) {
+                j = next[j][w[i] - 'a'];
+            }
+            if (i == w.size()) ++ans;
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 1.
+
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-matching-subsequences/
 // Author: github.com/lzl124631x
