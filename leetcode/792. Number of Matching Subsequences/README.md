@@ -43,7 +43,7 @@
 * [Is Subsequence (Easy)](https://leetcode.com/problems/is-subsequence/)
 * [Shortest Way to Form String (Medium)](https://leetcode.com/problems/shortest-way-to-form-string/)
 
-## Solution 1.
+## Solution 1. Next Pointers
 
 Given the constraints, we can't compare each `A[i]` with `s` to check if `A[i]` is a subsequence of `s` because each of these comparison takes `O(W + S)` time so the overall time complexity is `O(N * (W + S))` which will get TLE.
 
@@ -75,7 +75,7 @@ public:
 };
 ```
 
-## Solution 1.
+## Solution 2.
 
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-matching-subsequences/
@@ -99,6 +99,40 @@ public:
             ans += i == w.size();
         }
         return ans;
+    }
+};
+```
+
+## Solution 3. Separate Task Queues
+
+1. Split the words into different queues each of which corresponds to one of the 26 English letters.
+2. A queue is activated when we see the corresponding letter in `s`. We move all the pointers in the queue forward, and distribute the pointers into the new queues based on the next letter.
+3. In the end, the words left in the queue are those that are not subsequence of `s`.
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-matching-subsequences/
+// Author: github.com/lzl124631x
+// Time: O(S + NW)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/number-of-matching-subsequences/discuss/117634/Efficient-and-simple-go-through-words-in-parallel-with-explanation
+class Solution {
+public:
+    int numMatchingSubseq(string s, vector<string>& A) {
+        int N = A.size(), sum = 0;
+        queue<pair<int, int>> q[26];
+        for (int i = 0; i < N; ++i) q[A[i][0] - 'a'].emplace(i, 0);
+        for (char c : s) {
+            int cnt = q[c - 'a'].size();
+            while (cnt--) {
+                auto [i, j] = q[c - 'a'].front();
+                q[c - 'a'].pop();
+                if (A[i][j] == c) ++j;
+                if (j == A[i].size()) continue;
+                q[A[i][j] - 'a'].emplace(i, j);
+            }
+        }
+        for (int i = 0; i < 26; ++i) sum += q[i].size();
+        return A.size() - sum;
     }
 };
 ```
