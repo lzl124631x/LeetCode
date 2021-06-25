@@ -1172,6 +1172,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1519 | Number of Nodes in the Sub-Tree With the Same Label | Medium | [Solution](leetcode/1519.%20Number%20of%20Nodes%20in%20the%20Sub-Tree%20With%20the%20Same%20Label)
 1520 | Maximum Number of Non-Overlapping Substrings | Medium | [Solution](leetcode/1520.%20Maximum%20Number%20of%20Non-Overlapping%20Substrings)
 1521 | Find a Value of a Mysterious Function Closest to Target | Hard | [Solution](leetcode/1521.%20Find%20a%20Value%20of%20a%20Mysterious%20Function%20Closest%20to%20Target)
+1522 | Diameter of N-Ary Tree | Medium | [Solution](leetcode/1522.%20Diameter%20of%20N-Ary%20Tree)
 1523 | Count Odd Numbers in an Interval Range | Easy | [Solution](leetcode/1523.%20Count%20Odd%20Numbers%20in%20an%20Interval%20Range)
 1524 | Number of Sub-arrays With Odd Sum | Medium | [Solution](leetcode/1524.%20Number%20of%20Sub-arrays%20With%20Odd%20Sum)
 1525 | Number of Good Ways to Split a String | Medium | [Solution](leetcode/1525.%20Number%20of%20Good%20Ways%20to%20Split%20a%20String)
