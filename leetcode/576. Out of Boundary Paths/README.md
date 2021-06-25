@@ -183,14 +183,13 @@ Because when computing `dp[i][j][k]`, assume we know `dp[i][j][k - 1]`, then we 
 // Space: O(MN)
 class Solution {
 public:
-    const int dirs[4][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}}, mod = 1e9 + 7;
-    int findPaths(int m, int n, int maxMoves, int x, int y) {
-        if (!maxMoves) return 0;
-        int dp[50][50][2] = {};
+    int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
+        if (maxMove == 0) return 0;
+        int dp[50][50][2] = {}, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}}, mod = 1e9 + 7;
         for (int i = 0; i < m; ++i) dp[i][0][1]++, dp[i][n - 1][1]++;
         for (int i = 0; i < n; ++i) dp[0][i][1]++, dp[m - 1][i][1]++;
-        int ans = dp[x][y][1];
-        for (int k = 2; k <= maxMoves; ++k) {
+        int ans = dp[startRow][startColumn][1];
+        for (int k = 2; k <= maxMove; ++k) {
             for (int i = 0; i < m; ++i) {
                 for (int j = 0; j < n; ++j) {
                     int val = 0;
@@ -200,9 +199,9 @@ public:
                         val = (val + dp[a][b][(k - 1) % 2]) % mod;
                     }
                     dp[i][j][k % 2] = val;
-                    if (x == i && y == j) ans = (ans + val) % mod;
                 }
             }
+            ans = (ans + dp[startRow][startColumn][k % 2]) % mod;
         }
         return ans;
     }
@@ -228,23 +227,19 @@ dp[i][j][k] = SUM( dp[a][b][k - 1] | (a, b) is neighbor of (i, j) )
 // Space: O(MN)
 // Ref: https://leetcode.com/problems/out-of-boundary-paths/solution/
 class Solution {
-    const int dirs[4][2] = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}}, mod = 1e9 + 7;
 public:
-    int findPaths(int m, int n, int maxMove, int x, int y) {
-        if (!maxMove) return 0;
-        int dp[50][50][2] = {}, ans = 0;
-        dp[x][y][0] = 1;
+    int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
+        if (maxMove == 0) return 0;
+        long dp[50][50][2] = {}, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}}, mod = 1e9 + 7, ans = 0;
+        dp[startRow][startColumn][0] = 1;
         for (int k = 0; k < maxMove; ++k) {
             for (int i = 0; i < m; ++i) {
                 for (int j = 0; j < n; ++j) {
-                    int val = dp[i][j][k % 2];
-                    if (!i) ans = (ans + val) % mod;
-                    if (i == m - 1) ans = (ans + val) % mod;
-                    if (!j) ans = (ans + val) % mod;
-                    if (j == n - 1) ans = (ans + val) % mod;
+                    int val = dp[i][j][k % 2], cnt = (i == 0) + (i == m - 1) + (j == 0) + (j == n - 1); 
+                    ans = (ans + cnt * val % mod) % mod;
                     val = 0;
-                    for (auto &dir : dirs) {
-                        int a = i + dir[0], b = j + dir[1];
+                    for (auto &[dx, dy] : dirs) {
+                        int a = i + dx, b = j + dy;
                         if (a < 0 || a >= m || b < 0 || b >= n) continue;
                         val = (val + dp[a][b][k % 2]) % mod;
                     }
@@ -252,7 +247,7 @@ public:
                 }
             }
         }
-        return ans; 
+        return ans;
     }
 };
 ```
