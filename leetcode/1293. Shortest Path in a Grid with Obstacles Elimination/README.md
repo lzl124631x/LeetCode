@@ -52,44 +52,83 @@ k = 1
 **Related Topics**:  
 [Breadth-first Search](https://leetcode.com/tag/breadth-first-search/)
 
-## Solution 1. BFS + DP
+## Note
+
+1. If `K >= M + N - 3`, we can reach the destination with number of steps equaling the Manhattan Distance between `(0,0)` and `(M-1,N-1)`, i.e. `M+N-2`.  
+Since `K` is at most `M * N`, this check can help reduce `K` significantly from `O(MN)` to `O(M+N)`.
+2. Since we are looking for the shortest distance, BFS should be the first option.
+
+## Solution 1. BFS (Layer by Layer)
+
+If `k = 0`, we will just use a plain BFS to get the shortest path.
+
+Now consider we have some bombs, for the same cell `(x, y)`, using some bomb might help us get to this cell faster.
+
+Assume `f(x, y, b)` is the shortest path to get to cell `(x, y)` with `b` bombs used (`b <= k`).
+
+The answer would be `min( f(M-1, N-1, b) | 0 <= b <= k )`.
+
+Since we are using BFS layer by layer, the first visit to cell `(M-1, N-1)` will tell us the length of the shortest path.
+
+Example: Consider the following grid and `k = 1`.
+
+For simplicity, assume we want to go from `(0, 0)` to `(0, N-1)`. If we don't use bomb, the shortest distance is `6`. If we use one bomb, the shortest distance is `2`.
+
+```
+0 1 0
+0 1 0
+0 0 0
+```
+
+We start with state `f(0, 0, 0) = 0`.
+
+Moving downwards results in `f(1, 0, 0) = 1`.
+
+Moving rightwards results in `f(0, 1, 1) = 1`. Note that we used one bomb in order to step on cell `(0, 1)`.
+
+Moving rightwards from `f(0, 1, 1) = 1` will results in `f(0, 2, 1) = 2`. So `2` is the shortest distance.
 
 ```cpp
 // OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
 // Author: github.com/lzl124631x
 // Time: O(MN * min(K, M + N))
-// Space: O(MNK)
+// Space: O(MN * min(K, M + N))
 class Solution {
 public:
-    int shortestPath(vector<vector<int>>& G, int K) {
-        int M = G.size(), N = G[0].size(), dp[40][40][80], seen[40][40][80] = {}, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
-        memset(dp, 0x3f, sizeof(dp));
-        if (K >= M + N - 3) return M + N - 2; // This line is super important.
-        for (int k = 0; k <= K; ++k) {
-            dp[M - 1][N - 1][k] = 0;
-            queue<vector<int>> q;
-            q.push({ M - 1, N - 1, 0, 0 });
-            seen[M - 1][N - 1][k] = 1;
-            while (q.size()) {
-                auto pos = q.front();
+    int shortestPath(vector<vector<int>>& G, int k) {
+        int M = G.size(), N = G[0].size(), step = 0, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        if (k >= M + N - 3) return M + N - 2;
+        bool seen[40][40][80] = {};
+        queue<tuple<int, int, int>> q; // x, y, bomb
+        q.emplace(0, 0, 0);
+        seen[0][0][0] = true;
+        while (q.size()) {
+            int cnt = q.size();
+            while (cnt--) {
+                auto [x, y, bomb] = q.front();
                 q.pop();
-                int x = pos[0], y = pos[1], i = pos[2], val = pos[3];
-                dp[x][y][k] = val;
-                seen[x][y][k] = 1;
-                for (auto &dir : dirs) {
-                    int a = x + dir[0], b = y + dir[1];
-                    if (a < 0 || b < 0 || a >= M || b >= N || seen[a][b][k] || i + (G[x][y] == 1) > k) continue;
-                    seen[a][b][k] = 1;
-                    q.push({ a, b, i + (G[x][y] == 1), val + 1 });
+                if (x == M - 1 && y == N - 1) return step;
+                for (auto &[dx, dy] : dirs) {
+                    int a = x + dx, b = y + dy;
+                    if (a < 0 || a >= M || b < 0 || b >= N) continue;
+                    int nextBomb = bomb + G[a][b];
+                    if (nextBomb > k || seen[a][b][nextBomb]) continue;
+                    q.emplace(a, b, nextBomb);
+                    seen[a][b][nextBomb] = true;
                 }
             }
+            ++step;
         }
-        return dp[0][0][K] >= 0x3f3f3f3f ? -1 : dp[0][0][K];
+        return -1;
     }
 };
 ```
 
-## Solution 2. BFS
+## Solution 2. BFS (Continuously)
+
+Almost the same as Solution 1, here we are not doing BFS layer by layer, but doing it continuously. We need each state be a tuple of `(x, y, bomb, step)`.
+
+Since `(x, y, bomb)` uniquely corresponds to a single smallest `step`, the `seen` array is still 3 dimensional.
 
 ```cpp
 // OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
@@ -99,24 +138,24 @@ public:
 // Ref: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/discuss/451787/Python-O(m*n*k)-BFS-Solution-with-Explanation
 class Solution {
 public:
-    int shortestPath(vector<vector<int>>& G, int K) {
-        int M = G.size(), N = G[0].size(), seen[40][40][80] = {}, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
-        if (K >= M + N - 3) return M + N - 2;
-        queue<vector<int>> q;
-        q.push({ 0, 0, K, 0 });
-        seen[0][0][K] = 1;
+    int shortestPath(vector<vector<int>>& G, int k) {
+        int M = G.size(), N = G[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        if (k >= M + N - 3) return M + N - 2;
+        bool seen[40][40][80] = {};
+        queue<tuple<int, int, int, int>> q; // x, y, bomb, step
+        q.emplace(0, 0, 0, 0);
+        seen[0][0][0] = true;
         while (q.size()) {
-            auto pos = q.front();
+            auto [x, y, bomb, step] = q.front();
             q.pop();
-            int x = pos[0], y = pos[1], r = pos[2], val = pos[3];
+            if (x == M - 1 && y == N - 1) return step;
             for (auto &[dx, dy] : dirs) {
                 int a = x + dx, b = y + dy;
-                if (a < 0 || b < 0 || a >= M || b >= N) continue;
-                int rr = r - (G[x][y] == 1);
-                if (rr < 0 || seen[a][b][rr]) continue;
-                if (a == M - 1 && b == N - 1) return val + 1;
-                seen[a][b][rr] = 1;
-                q.push({ a, b, rr, val + 1 });
+                if (a < 0 || a >= M || b < 0 || b >= N) continue;
+                int nextBomb = bomb + G[a][b];
+                if (nextBomb > k || seen[a][b][nextBomb]) continue;
+                q.emplace(a, b, nextBomb, step + 1);
+                seen[a][b][nextBomb] = true;
             }
         }
         return -1;
@@ -124,7 +163,78 @@ public:
 };
 ```
 
-## Solution 3. DFS
+## Solution 3. BFS
+
+Similar to Solution 1, instead of using `seen[x][y][b]` to denote whether we visited cell `(x, y)` with `b` bombs, we use `seen[x][y]` as the least bombs needed to get to cell `(x, y)`.
+
+Consider the following case:
+
+```
+0 0 0
+1 1 0
+0 0 0
+0 1 1
+0 0 0
+```
+
+We can get to `(2, 1)` with 1 bomb in 3 steps:
+
+* `(0,0) -> (0,1) -> (1,1) -> (2,1)`. We set `seen[2][0] = 1`, and push `(x,y,bomb) = (2,1,1)` into the queue.
+* `(0,0) -> (1,0) -> (2,0) -> (2,1)`. This path takes the same number of steps and bombs, so we don't need to push `(x,y,bomb) = (2,1,1)` into the queue again.
+
+We can get to `(2, 1)` with 2 bombs in 3 steps:
+
+* `(0,0) -> (1,0) -> (1,1) -> (2,1)`. This path takes the same number of steps but more bombs, so it won't be better than what we've seen before. We don't push `(x,y,bomb) = (2,1,2)` into the queue.
+
+We can get to `(2,1)` with 0 bomb in 5 steps:
+
+* `(0,0) -> (0,1) -> (0,2) -> (1,2) -> (2,2) -> (2,1)`. This path takes more steps but less bombs. Even though it takes more steps as of now, with the saved bombs, we might be able to take some shortcut later to save steps. So we should push `(x,y,bomb) = (2,1,0)` into the queue.
+
+Now we can see that, we can get to the same cell `(x, y)` through different paths with different bombs. 
+
+* If we reach `(x, y)` with LESS bombs than before, we push `(x, y, bomb)` into the queue
+* If we reach `(x, y)` with the SAME or MORE bombs than before, we don't push `(x, y, bomb)` into the queue.
+
+```cpp
+// OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
+// Author: github.com/lzl124631x
+// Time: O(MN * min(K, M + N))
+// Space: O(MN)
+class Solution {
+public:
+    int shortestPath(vector<vector<int>>& G, int k) {
+        int M = G.size(), N = G[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        if (k >= M + N - 3) return M + N - 2;
+        int seen[40][40] = {}, step = 0; // seen[x][y] is the number of bombs we used to get to cell (x, y)
+        memset(seen, 0x3f, sizeof(seen));
+        seen[0][0] = 0;
+        queue<tuple<int, int, int>> q; // x, y, bomb
+        q.emplace(0, 0, 0);
+        while (q.size()) {
+            int cnt = q.size();
+            while (cnt--) {
+                auto [x, y, bomb] = q.front();
+                q.pop();
+                if (x == M - 1 && y == N - 1) return step;
+                for (auto &[dx, dy] : dirs) {
+                    int a = x + dx, b = y + dy;
+                    if (a < 0 || a >= M || b < 0 || b >= N) continue;
+                    int nextBomb = bomb + G[a][b];
+                    if (nextBomb >= seen[a][b] || nextBomb > k) continue; // If we reached (a,b) with more bombs that before, this state is no better than before so we shouldn't push it into queue.
+                    q.emplace(a, b, nextBomb);
+                    seen[a][b] = nextBomb;
+                }
+            }
+            ++step;
+        }
+        return -1;
+    }
+};
+```
+
+## Solution 4. DFS
+
+We should use BFS instead of DFS when searching for the shortest path. Just for completeness, a DFS solution is listed here.
 
 ```cpp
 // OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
@@ -153,42 +263,3 @@ public:
     }
 };
 ```
-
-## Solution 4. BFS
-
-```cpp
-// OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
-// Author: github.com/lzl124631x
-// Time: O(MN * min(K, M + N))
-// Space: O(MNK)
-class Solution {
-    typedef tuple<int, int, int, int> Point; // distance, x, y, bomb
-public:
-    int shortestPath(vector<vector<int>>& G, int K) {
-        int M = G.size(), N = G[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}}, ans = INT_MAX;
-        vector<vector<vector<bool>>> seen(M, vector<vector<bool>>(N, vector<bool>(K + 1)));
-        queue<Point> q;
-        q.emplace(0, 0, 0, K);
-        seen[0][0][K] = true;
-        while (q.size()) {
-            auto [d, x, y, bomb] = q.front();
-            q.pop();
-            if (x == M - 1 && y == N - 1) return d;
-            for (auto &[dx, dy] : dirs) {
-                int a = x + dx, b = y + dy;
-                if (a < 0 || a >= M || b < 0 || b >= N) continue;
-                int nextDist = 1 + d, nextBomb = bomb - (G[a][b] == 1);
-                if (nextBomb == -1 || seen[a][b][nextBomb]) continue;
-                seen[a][b][nextBomb] = true;
-                q.emplace(nextDist, a, b, nextBomb);
-            }
-        }
-        return -1;
-    }
-};
-```
-
-## Note
-
-* For shortest path problem, BFS should be the first choice.
-* Initially my solution got TLE just because I didn't add the check `if (K >= M + N - 3) return M + N - 2;`. This line reduces the time complexity from `O(M^2 * N^2)` to `O(MN * min(K, M + N))`.
