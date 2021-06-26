@@ -1438,6 +1438,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1905 | Count Sub Islands | Medium | [Solution](leetcode/1905.%20Count%20Sub%20Islands)
 1906 | Minimum Absolute Difference Queries | Medium | [Solution](leetcode/1906.%20Minimum%20Absolute%20Difference%20Queries)
 1909 | Remove One Element to Make the Array Strictly Increasing | Easy | [Solution](leetcode/1909.%20Remove%20One%20Element%20to%20Make%20the%20Array%20Strictly%20Increasing)
+1910 | Remove All Occurrences of a Substring | Medium | [Solution](leetcode/1910.%20Remove%20All%20Occurrences%20of%20a%20Substring)
 1911 | Maximum Alternating Subsequence Sum | Medium | [Solution](leetcode/1911.%20Maximum%20Alternating%20Subsequence%20Sum)
 1912 | Design Movie Rental System | Hard | [Solution](leetcode/1912.%20Design%20Movie%20Rental%20System)
 
