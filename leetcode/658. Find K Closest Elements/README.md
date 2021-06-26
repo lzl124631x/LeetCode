@@ -56,6 +56,31 @@ public:
 };
 ```
 
+## Solution 2. Binary Search Left Edge (L < R)
+
+Binary Search (L <= R) doesn't fit this problem because `L` and `R` might go out of boundary.
+
+We binary search the left edge.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-k-closest-elements/
+// Author: github.com/lzl124631x
+// Time: O(log(N - k) + k)
+// Space: O(1)
+class Solution {
+public:
+    vector<int> findClosestElements(vector<int>& A, int k, int x) {
+        int L = 0, R = A.size() - k;
+        while (L < R) {
+            int M = (L + R) / 2;
+            if (x - A[M] > A[M + k] - x) L = M + 1;
+            else R = M;
+        }
+        return vector<int>(begin(A) + R, begin(A) + R + k);
+    }
+};
+```
+
 ## TODO
 
 https://leetcode.com/problems/find-k-closest-elements/discuss/106426/JavaC%2B%2BPython-Binary-Search-O(log(N-K)-%2B-K)
