@@ -49,7 +49,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 31 | Next Permutation | Medium | [Solution](leetcode/31.%20Next%20Permutation)
 32 | Longest Valid Parentheses | Hard | [Solution](leetcode/32.%20Longest%20Valid%20Parentheses)
 33 | Search in Rotated Sorted Array | Medium | [Solution](leetcode/33.%20Search%20in%20Rotated%20Sorted%20Array)
-34 | Search for a Range |  | [Solution](leetcode/34.%20Search%20for%20a%20Range)
+34 | Find First and Last Position of Element in Sorted Array | Medium | [Solution](leetcode/34.%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array)
 35 | Search Insert Position | Easy | [Solution](leetcode/35.%20Search%20Insert%20Position)
 36 | Valid Sudoku |  | [Solution](leetcode/36.%20Valid%20Sudoku)
 38 | Count and Say |  | [Solution](leetcode/38.%20Count%20and%20Say)
