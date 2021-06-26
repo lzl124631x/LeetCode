@@ -328,7 +328,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 371 | Sum of Two Integers | Medium | [Solution](leetcode/371.%20Sum%20of%20Two%20Integers)
 372 | Super Pow |  | [Solution](leetcode/372.%20Super%20Pow)
 373 | Find K Pairs with Smallest Sums |  | [Solution](leetcode/373.%20Find%20K%20Pairs%20with%20Smallest%20Sums)
-374 | Guess Number Higher or Lower |  | [Solution](leetcode/374.%20Guess%20Number%20Higher%20or%20Lower)
+374 | Guess Number Higher or Lower | Easy | [Solution](leetcode/374.%20Guess%20Number%20Higher%20or%20Lower)
 375 | Guess Number Higher or Lower II | Medium | [Solution](leetcode/375.%20Guess%20Number%20Higher%20or%20Lower%20II)
 376 | Wiggle Subsequence | Medium | [Solution](leetcode/376.%20Wiggle%20Subsequence)
 377 | Combination Sum IV | Medium | [Solution](leetcode/377.%20Combination%20Sum%20IV)
@@ -1437,6 +1437,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1904 | The Number of Full Rounds You Have Played | Medium | [Solution](leetcode/1904.%20The%20Number%20of%20Full%20Rounds%20You%20Have%20Played)
 1905 | Count Sub Islands | Medium | [Solution](leetcode/1905.%20Count%20Sub%20Islands)
 1906 | Minimum Absolute Difference Queries | Medium | [Solution](leetcode/1906.%20Minimum%20Absolute%20Difference%20Queries)
+1909 | Remove One Element to Make the Array Strictly Increasing | Easy | [Solution](leetcode/1909.%20Remove%20One%20Element%20to%20Make%20the%20Array%20Strictly%20Increasing)
+1911 | Maximum Alternating Subsequence Sum | Medium | [Solution](leetcode/1911.%20Maximum%20Alternating%20Subsequence%20Sum)
+1912 | Design Movie Rental System | Hard | [Solution](leetcode/1912.%20Design%20Movie%20Rental%20System)
 
 # License
 
