@@ -434,6 +434,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 490 | The Maze | Medium | [Solution](leetcode/490.%20The%20Maze)
 491 | Increasing Subsequences | Medium | [Solution](leetcode/491.%20Increasing%20Subsequences)
 492 | Construct the Rectangle |  | [Solution](leetcode/492.%20Construct%20the%20Rectangle)
+493 | Reverse Pairs | Hard | [Solution](leetcode/493.%20Reverse%20Pairs)
 494 | Target Sum | Medium | [Solution](leetcode/494.%20Target%20Sum)
 495 | Teemo Attacking | Medium | [Solution](leetcode/495.%20Teemo%20Attacking)
 496 | Next Greater Element I | Easy | [Solution](leetcode/496.%20Next%20Greater%20Element%20I)
@@ -1441,6 +1442,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1910 | Remove All Occurrences of a Substring | Medium | [Solution](leetcode/1910.%20Remove%20All%20Occurrences%20of%20a%20Substring)
 1911 | Maximum Alternating Subsequence Sum | Medium | [Solution](leetcode/1911.%20Maximum%20Alternating%20Subsequence%20Sum)
 1912 | Design Movie Rental System | Hard | [Solution](leetcode/1912.%20Design%20Movie%20Rental%20System)
+1913 | Maximum Product Difference Between Two Pairs | Easy | [Solution](leetcode/1913.%20Maximum%20Product%20Difference%20Between%20Two%20Pairs)
+1914 | Cyclically Rotating a Grid | Medium | [Solution](leetcode/1914.%20Cyclically%20Rotating%20a%20Grid)
+1915 | Number of Wonderful Substrings | Medium | [Solution](leetcode/1915.%20Number%20of%20Wonderful%20Substrings)
 
 # License
 
