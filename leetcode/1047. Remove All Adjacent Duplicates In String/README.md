@@ -50,3 +50,26 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+Doing it in-place.
+
+```cpp
+// OJ: https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    string removeDuplicates(string s) {
+        int i = 0, j = 0, N = s.size();
+        for (; j < N; ++j) {
+            if (i == 0 || s[j] != s[i - 1]) s[i++] = s[j];
+            else --i;
+        }
+        s.resize(i);
+        return s;
+    }
+};
+```
