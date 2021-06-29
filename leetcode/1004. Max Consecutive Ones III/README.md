@@ -47,12 +47,12 @@ Bolded numbers were flipped from 0 to 1.  The longest subarray is underlined.
 // Space: O(1)
 class Solution {
 public:
-    int longestOnes(vector<int>& A, int K) {
-        int ans = 0, zero = 0, i = 0, j = 0, N = A.size();
-        while (j < N) {
-            zero += A[j++] == 0;
-            if (zero <= K) ans = max(ans, j - i);
-            while (zero > K) zero -= A[i++] == 0;
+    int longestOnes(vector<int>& A, int k) {
+        int i = 0, j = 0, N = A.size(), used = 0, ans = 0;
+        for (; j < N; ++j) {
+            used += A[j] == 0;
+            while (used > k) used -= A[i++] == 0;
+            ans = max(ans, j - i + 1);
         }
         return ans;
     }
