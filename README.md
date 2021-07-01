@@ -924,6 +924,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1129 | Shortest Path with Alternating Colors | Medium | [Solution](leetcode/1129.%20Shortest%20Path%20with%20Alternating%20Colors)
 1130 | Minimum Cost Tree From Leaf Values | Medium | [Solution](leetcode/1130.%20Minimum%20Cost%20Tree%20From%20Leaf%20Values)
 1131 | Maximum of Absolute Value Expression | Medium | [Solution](leetcode/1131.%20Maximum%20of%20Absolute%20Value%20Expression)
+1134 | Armstrong Number | Easy | [Solution](leetcode/1134.%20Armstrong%20Number)
 1137 | N-th Tribonacci Number | Easy | [Solution](leetcode/1137.%20N-th%20Tribonacci%20Number)
 1138 | Alphabet Board Path | Medium | [Solution](leetcode/1138.%20Alphabet%20Board%20Path)
 1139 | Largest 1-Bordered Square | Medium | [Solution](leetcode/1139.%20Largest%201-Bordered%20Square)
