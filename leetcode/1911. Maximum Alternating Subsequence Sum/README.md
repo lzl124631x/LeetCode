@@ -95,3 +95,24 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-alternating-subsequence-sum/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    long long maxAlternatingSum(vector<int>& A) {
+        long long even = 0, odd = 0;
+        for (int n : A) {
+            long long o = even - n, e = odd + n;
+            even = max(even, e);
+            odd = max(odd, o);
+        }
+        return even; 
+    }
+};
+```
