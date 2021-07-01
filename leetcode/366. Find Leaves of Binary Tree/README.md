@@ -1,46 +1,42 @@
 # [366. Find Leaves of Binary Tree (Medium)](https://leetcode.com/problems/find-leaves-of-binary-tree/)
 
-<p>Given a binary tree, collect a tree's nodes as if you were doing this: Collect and remove all leaves, repeat until the tree is empty.</p>
+<p>Given the <code>root</code> of a binary tree, collect a tree's nodes as if you were doing this:</p>
+
+<ul>
+	<li>Collect all the leaf nodes.</li>
+	<li>Remove all the leaf&nbsp;nodes.</li>
+	<li>Repeat until the tree is empty.</li>
+</ul>
 
 <p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/03/16/remleaves-tree.jpg" style="width: 500px; height: 215px;">
+<pre><strong>Input:</strong> root = [1,2,3,4,5]
+<strong>Output:</strong> [[4,5,3],[2],[1]]
+Explanation:
+[[3,5,4],[2],[1]] and [[3,4,5],[2],[1]] are also considered correct answers since per each level it does not matter the order on which elements are returned.
+</pre>
 
-<p><strong>Example:</strong></p>
+<p><strong>Example 2:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-1-1">[1,2,3,4,5]
-&nbsp; 
-&nbsp;         </span>1
-         / \
-        2   3
-       / \     
-      4   5    
-
-<strong>Output: </strong><span id="example-output-1">[[4,5,3],[2],[1]]</span>
+<pre><strong>Input:</strong> root = [1]
+<strong>Output:</strong> [[1]]
 </pre>
 
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><strong>Explanation:</strong></p>
+<ul>
+	<li>The number of nodes in the tree is in the range <code>[1, 100]</code>.</li>
+	<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+</ul>
 
-<p>1. Removing the leaves <code>[4,5,3]</code> would result in this tree:</p>
 
-<pre>          1
-         / 
-        2          
-</pre>
+**Companies**:  
+[LinkedIn](https://leetcode.com/company/linkedin), [Amazon](https://leetcode.com/company/amazon)
 
-<p>&nbsp;</p>
-
-<p>2. Now removing the leaf <code>[2]</code> would result in this tree:</p>
-
-<pre>          1          
-</pre>
-
-<p>&nbsp;</p>
-
-<p>3. Now removing the leaf <code>[1]</code> would result in the empty tree:</p>
-
-<pre>          []         
-</pre>
+**Related Topics**:  
+[Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
 
 ## Solution 1.
 
@@ -48,7 +44,7 @@
 // OJ: https://leetcode.com/problems/find-leaves-of-binary-tree/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(logN)
+// Space: O(H)
 class Solution {
 private:
     bool dfs(TreeNode *root, vector<int> &v) {
@@ -74,6 +70,30 @@ public:
             ans.push_back(removeLeaves(root));
         }
         ans.push_back({ root->val });
+        return ans;
+    }
+};
+```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-leaves-of-binary-tree/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+    vector<vector<int>> ans;
+    int dfs(TreeNode *root) {
+        if (!root) return -1;
+        int left = dfs(root->left), right = dfs(root->right), level = 1 + max(left, right);
+        if (ans.size() <= level) ans.emplace_back();
+        ans[level].push_back(root->val);
+        return level;
+    }
+public:
+    vector<vector<int>> findLeaves(TreeNode* root) {
+        dfs(root);
         return ans;
     }
 };
