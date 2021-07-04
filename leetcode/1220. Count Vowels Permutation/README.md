@@ -41,6 +41,9 @@
 </ul>
 
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon)
+
 **Related Topics**:  
 [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
@@ -90,6 +93,30 @@ public:
             a = aa, e = ee, i = ii, o = oo, u = uu;
         }
         return ((((a + e) % mod + i) % mod + o) % mod + u) % mod;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/count-vowels-permutation/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int countVowelPermutation(int n) {
+        long mod = 1e9 + 7, a = 1, e = 1, i = 1, o = 1, u = 1;
+        while (--n) {
+            long aa = e;
+            long ee = (a + i) % mod;
+            long ii = ((a + e) % mod + (o + u) % mod) % mod;
+            long oo = (i + u) % mod;
+            long uu = a;
+            a = aa, e = ee, i = ii, o = oo, u = uu;
+        }
+        return (((((a + e) % mod + i) % mod) + o) % mod + u) % mod;
     }
 };
 ```
