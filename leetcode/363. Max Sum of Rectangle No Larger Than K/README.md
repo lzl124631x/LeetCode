@@ -62,7 +62,7 @@ For a `M x N` matrix, we can enumerate different starting rows. For each startin
 
 The overall time complexity is `O(M^2 * NlogN)
 
-## Solution 1.
+## Solution 1. DP + Binary Search
 
 ```cpp
 // OJ: https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/
@@ -133,7 +133,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Transpose Matrix to Reduce Time
 
 Considering the follow-up, the original algorithm is using `O(M^2 * NlogN)` time and `M` is always the number of rows.
 
