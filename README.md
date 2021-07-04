@@ -86,6 +86,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 70 | Climbing Stairs | Easy | [Solution](leetcode/70.%20Climbing%20Stairs)
 71 | Simplify Path |  | [Solution](leetcode/71.%20Simplify%20Path)
 72 | Edit Distance | Hard | [Solution](leetcode/72.%20Edit%20Distance)
+73 | Set Matrix Zeroes | Medium | [Solution](leetcode/73.%20Set%20Matrix%20Zeroes)
 74 | Search a 2D Matrix | Medium | [Solution](leetcode/74.%20Search%20a%202D%20Matrix)
 75 | Sort Colors | Medium | [Solution](leetcode/75.%20Sort%20Colors)
 76 | Minimum Window Substring | Hard | [Solution](leetcode/76.%20Minimum%20Window%20Substring)
@@ -1448,6 +1449,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1913 | Maximum Product Difference Between Two Pairs | Easy | [Solution](leetcode/1913.%20Maximum%20Product%20Difference%20Between%20Two%20Pairs)
 1914 | Cyclically Rotating a Grid | Medium | [Solution](leetcode/1914.%20Cyclically%20Rotating%20a%20Grid)
 1915 | Number of Wonderful Substrings | Medium | [Solution](leetcode/1915.%20Number%20of%20Wonderful%20Substrings)
+1920 | Build Array from Permutation | Easy | [Solution](leetcode/1920.%20Build%20Array%20from%20Permutation)
+1921 | Eliminate Maximum Number of Monsters | Medium | [Solution](leetcode/1921.%20Eliminate%20Maximum%20Number%20of%20Monsters)
+1922 | Count Good Numbers | Medium | [Solution](leetcode/1922.%20Count%20Good%20Numbers)
+1923 | Longest Common Subpath | Hard | [Solution](leetcode/1923.%20Longest%20Common%20Subpath)
 
 # License
 
