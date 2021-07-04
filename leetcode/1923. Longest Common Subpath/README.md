@@ -58,7 +58,7 @@
 class Solution {
     bool valid(vector<vector<int>> &A, int len) {
         unordered_map<unsigned long long, int> m;
-        unordered_set<unsigned long long> s; // Note that we must use `unsigned long long` to avoid hash conflict
+        unordered_set<unsigned long long> s; // Note that we must use `unsigned long long` to reduce the chance of hash conflict
         unsigned d = 16777619;
         for (auto &v : A) {
             s.clear();
