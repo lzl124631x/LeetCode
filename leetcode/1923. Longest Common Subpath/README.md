@@ -63,10 +63,10 @@ class Solution {
         for (auto &v : A) {
             s.clear();
             unsigned long long h = 0, p = 1;
-            for (int i = 0; i < len ; ++i) p *= d;
             for (int i = 0; i < v.size(); ++i) {
                 h = h * d + v[i];
                 if (i >= len) h -= v[i - len] * p;
+                else p *= d;
                 if (i >= len - 1) s.insert(h);
             }
             for (auto x : s) {
