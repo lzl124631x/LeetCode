@@ -89,3 +89,39 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-common-subpath/
+// Author: github.com/lzl124631x
+// Time: O(N + logM * P) where P is the total length of all paths.
+// Space: O(M)
+class Solution {
+    bool valid(vector<vector<int>> &A, int len) {
+        unordered_set<unsigned long long> s, tmp;
+        for (int i = 0; i < A.size() && (i == 0 || s.size()); ++i) {
+            unsigned long long d = 16777619, h = 0, p = 1;
+            tmp.clear();
+            swap(s, tmp);
+            for (int j = 0; j < A[i].size(); ++j) {
+                h = h * d + A[i][j];
+                if (j < len) p *= d;
+                else h -= A[i][j - len] * p;
+                if (j >= len - 1 && (i == 0 || tmp.count(h))) s.insert(h);
+            }
+        }
+        return s.size();
+    }
+public:
+    int longestCommonSubpath(int n, vector<vector<int>>& A) {
+        int L = 0, R = min_element(begin(A), end(A), [](auto &a, auto &b) { return a.size() < b.size(); })->size();
+        while (L < R) {
+            int M = (L + R + 1) / 2;
+            if (valid(A, M)) L = M;
+            else R = M - 1;
+        }
+        return L;
+    }
+};
+```
