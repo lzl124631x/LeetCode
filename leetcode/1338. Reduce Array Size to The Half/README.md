@@ -48,8 +48,12 @@ Choosing set {2,7} is not possible as it will make the new array [3,3,3,3,5,5,5]
 	<li><code>1 &lt;= arr[i] &lt;= 10^5</code></li>
 </ul>
 
+**Companies**:  
+[Akuna Capital](https://leetcode.com/company/akuna-capital)
+
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Greedy](https://leetcode.com/tag/greedy/)
+[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Greedy](https://leetcode.com/tag/greedy/), [Sorting](https://leetcode.com/tag/sorting/), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue/)
+
 
 ## Solution 1.
 
@@ -71,6 +75,32 @@ public:
             cnt += n;
             ++ans;
             if (cnt >= (arr.size() + 1) / 2) break;
+        }
+        return ans;
+    }
+};
+```
+
+Or
+
+
+```cpp
+// OJ: https://leetcode.com/problems/reduce-array-size-to-the-half/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class Solution {
+public:
+    int minSetSize(vector<int>& A) {
+        int N = A.size(), sum = 0, ans = 0;
+        unordered_map<int, int> m;
+        for (int n : A) m[n]++;
+        priority_queue<int> pq;
+        for (auto &[n, cnt] : m) pq.push(cnt);
+        while (sum < N / 2) {
+            sum += pq.top();
+            pq.pop();
+            ++ans;
         }
         return ans;
     }
