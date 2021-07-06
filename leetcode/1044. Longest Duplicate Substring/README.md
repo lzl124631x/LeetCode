@@ -1,37 +1,72 @@
 # [1044. Longest Duplicate Substring (Hard)](https://leetcode.com/problems/longest-duplicate-substring/)
 
-<p>Given a string <code>S</code>, consider all <em>duplicated substrings</em>: (contiguous) substrings of S that occur 2 or more times.&nbsp; (The occurrences&nbsp;may overlap.)</p>
+<p>Given a string <code>s</code>, consider all <em>duplicated substrings</em>: (contiguous) substrings of s that occur 2 or more times.&nbsp;The occurrences&nbsp;may overlap.</p>
 
-<p>Return <strong>any</strong> duplicated&nbsp;substring that has the longest possible length.&nbsp; (If <code>S</code> does not have a duplicated substring, the answer is <code>""</code>.)</p>
+<p>Return <strong>any</strong> duplicated&nbsp;substring that has the longest possible length.&nbsp;If <code>s</code> does not have a duplicated substring, the answer is <code>""</code>.</p>
 
 <p>&nbsp;</p>
-
 <p><strong>Example 1:</strong></p>
-
-<pre><strong>Input: </strong><span id="example-input-1-1">"banana"</span>
-<strong>Output: </strong><span id="example-output-1">"ana"</span>
+<pre><strong>Input:</strong> s = "banana"
+<strong>Output:</strong> "ana"
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> s = "abcd"
+<strong>Output:</strong> ""
 </pre>
-
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input: </strong><span id="example-input-2-1">"abcd"</span>
-<strong>Output: </strong><span id="example-output-2">""</span>
-</pre>
-
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><strong>Note:</strong></p>
+<ul>
+	<li><code>2 &lt;= s.length &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>s</code> consists of lowercase English letters.</li>
+</ul>
 
-<ol>
-	<li><code>2 &lt;= S.length &lt;= 10^5</code></li>
-	<li><code>S</code> consists of lowercase English letters.</li>
-</ol>
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
-[Hash Table](https://leetcode.com/tag/hash-table/), [Binary Search](https://leetcode.com/tag/binary-search/)
+[String](https://leetcode.com/tag/string/), [Binary Search](https://leetcode.com/tag/binary-search/), [Sliding Window](https://leetcode.com/tag/sliding-window/), [Rolling Hash](https://leetcode.com/tag/rolling-hash/), [Suffix Array](https://leetcode.com/tag/suffix-array/), [Hash Function](https://leetcode.com/tag/hash-function/)
 
 ## Solution 1. Binary Search + Rabin Karp
+
+Without hash conflict check
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-duplicate-substring/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class Solution {
+    int findDup(string &s, int len) {
+        unordered_set<unsigned long long> st;
+        unsigned long long d = 16777619, h = 0, p = 1;
+        for (int i = 0; i < s.size(); ++i) {
+            h = h * d + s[i];
+            if (i < len) p *= d;
+            else h -= s[i - len] * p;
+            if (i >= len - 1) {
+                if (st.count(h)) return i - len + 1;
+                st.insert(h);
+            }
+        }
+        return -1;
+    }
+public:
+    string longestDupSubstring(string s) {
+        int L = 0, R = s.size() - 1, start = 0;
+        while (L < R) {
+            int M = (L + R + 1) / 2, i = findDup(s, M);
+            if (i != -1) {
+                L = M;
+                start = i;
+            } else R = M - 1;
+        }
+        return s.substr(start, L);
+    }
+};
+```
+
+Or with hash conflict check.
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-duplicate-substring/
@@ -40,12 +75,12 @@
 // Space: O(N)
 class Solution {
     int findDup(string &s, int len) {
-        unordered_map<unsigned, vector<int>> m;
-        unsigned h = 0, p = 1, d = 16777619;
+        unordered_map<unsigned long long, vector<int>> m;
+        unsigned long long h = 0, p = 1, d = 16777619;
         for (int i = 0; i < s.size(); ++i) {
-            h = h * d + s[i] - 'a';
-            if (i >= len) h -= (s[i - len] - 'a') * p;
-            else p *= d;
+            h = h * d + s[i];
+            if (i < len) p *= d;
+            else h -= s[i - len] * p;
             if (i >= len - 1) {
                 if (m.count(h)) {
                     for (int k : m[h]) {
@@ -61,20 +96,64 @@ class Solution {
     }
 public:
     string longestDupSubstring(string S) {
-        int L = 1, R = S.size(), start = 0;
-        while (L <= R) {
-            int M = (L + R) / 2, i = findDup(S, M);
+        int L = 0, R = S.size(), start = 0;
+        while (L < R) {
+            int M = (L + R + 1) / 2, i = findDup(S, M);
             if (i != -1) {
-                L = M + 1;
+                L = M;
                 start = i;
             } else R = M - 1;
         }
-        return S.substr(start, R);
+        return S.substr(start, L);
     }
 };
 ```
 
-## Solution 2.
+Or precompute the hashes and pow values.
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-duplicate-substring/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+const int maxN = 30001;
+class Solution {
+    typedef unsigned long long ULL;
+    ULL p[maxN], h[maxN], N, d = 16777619;
+    ULL hash(int begin, int end) {
+        return h[end] - h[begin] * p[end - begin];
+    }
+    int findDup(string &s, int len) {
+        unordered_set<ULL> st;
+        for (int i = 0; i + len <= N; ++i) {
+            ULL x = hash(i, i + len);
+            if (st.count(x)) return i;
+            st.insert(x);
+        }
+        return -1;
+    }
+public:
+    string longestDupSubstring(string s) {
+        N = s.size();
+        p[0] = 1;
+        for (int i = 0; i < N; ++i) {
+            p[i + 1] = p[i] * d;
+            h[i + 1] = h[i] * d + s[i];
+        }
+        int L = 0, R = N - 1, start = 0;
+        while (L < R) {
+            int M = L + R + 1 >> 1, i = findDup(s, M);
+            if (i != -1) {
+                start = i;
+                L = M;
+            } else R = M - 1;
+        }
+        return s.substr(start, L);
+    }
+};
+```
+
+## Solution 2. Binary Search + String View
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-duplicate-substring/
