@@ -157,3 +157,50 @@ public:
     }
 };
 ```
+
+Precompute hashes:
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-length-of-repeated-subarray/
+// Author: github.com/lzl124631x
+// Time: O((A + B)log(min(A, B)))
+// Space: O(A)
+const int maxN = 1001;
+class Solution {
+    typedef unsigned long long ULL;
+    ULL ha[maxN], hb[maxN], p[maxN], d = 16777619;
+    ULL hash(ULL *h, int begin, int end) {
+        return h[end] - h[begin] * p[end - begin];
+    }
+    bool valid(vector<int> &A, vector<int> &B, int len) {
+        unordered_map<ULL, vector<int>> m;
+        for (int i = 0; i + len <= A.size(); ++i) m[hash(ha, i, i + len)].push_back(i);
+        for (int i = 0; i + len <= B.size(); ++i) {
+            ULL h = hash(hb, i, i + len);
+            if (m.count(h) == 0) continue;
+            for (int j : m[h]) {
+                int k = 0;
+                for (; k < len && A[j + k] == B[i + k]; ++k);
+                if (k == len) return true;
+            }
+        }
+        return false;
+    }
+public:
+    int findLength(vector<int>& A, vector<int>& B) {
+        p[0] = 1;
+        for (int i = 0; i < A.size() || i < B.size(); ++i) {
+            p[i + 1] = p[i] * d;
+            if (i < A.size()) ha[i + 1] = ha[i] * d + A[i];
+            if (i < B.size()) hb[i + 1] = hb[i] * d + B[i];
+        }
+        int L = 0, R = min(A.size(), B.size());
+        while (L < R) {
+            int M = (L + R + 1) / 2;
+            if (valid(A, B, M)) L = M;
+            else R = M - 1;
+        }
+        return L;
+    }
+};
+```
