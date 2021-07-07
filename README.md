@@ -334,7 +334,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 375 | Guess Number Higher or Lower II | Medium | [Solution](leetcode/375.%20Guess%20Number%20Higher%20or%20Lower%20II)
 376 | Wiggle Subsequence | Medium | [Solution](leetcode/376.%20Wiggle%20Subsequence)
 377 | Combination Sum IV | Medium | [Solution](leetcode/377.%20Combination%20Sum%20IV)
-378 | Kth Smallest Element in a Sorted Matrix |  | [Solution](leetcode/378.%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix)
+378 | Kth Smallest Element in a Sorted Matrix | Medium | [Solution](leetcode/378.%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix)
 379 | Design Phone Directory | Medium | [Solution](leetcode/379.%20Design%20Phone%20Directory)
 380 | Insert Delete GetRandom O(1) | Medium | [Solution](leetcode/380.%20Insert%20Delete%20GetRandom%20O%281%29)
 381 | Insert Delete GetRandom O(1) - Duplicates allowed | Hard | [Solution](leetcode/381.%20Insert%20Delete%20GetRandom%20O%281%29%20-%20Duplicates%20allowed)
