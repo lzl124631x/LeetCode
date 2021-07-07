@@ -1,29 +1,35 @@
 # [718. Maximum Length of Repeated Subarray (Medium)](https://leetcode.com/problems/maximum-length-of-repeated-subarray/)
 
-<p>Given two integer arrays <code>A</code> and <code>B</code>, return the maximum length of an subarray that appears in both arrays.</p>
+<p>Given two integer arrays <code>nums1</code> and <code>nums2</code>, return <em>the maximum length of a subarray that appears in <strong>both</strong> arrays</em>.</p>
 
-<p><b>Example 1:</b><br>
-</p><pre><b>Input:</b>
-A: [1,2,3,2,1]
-B: [3,2,1,4,7]
-<b>Output:</b> 3
-<b>Explanation:</b> 
-The repeated subarray with maximum length is [3, 2, 1].
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> The repeated subarray with maximum length is [3,2,1].
 </pre>
-<p></p>
 
-<p><b>Note:</b><br>
-</p><ol>
-<li>1 &lt;= len(A), len(B) &lt;= 1000</li>
-<li>0 &lt;= A[i], B[i] &lt; 100</li>
-</ol>
-<p></p>
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums1 = [0,0,0,0,0], nums2 = [0,0,0,0,0]
+<strong>Output:</strong> 5
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums1.length, nums2.length &lt;= 1000</code></li>
+	<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 100</code></li>
+</ul>
+
 
 **Companies**:  
-[Intuit](https://leetcode.com/company/intuit)
+[Karat](https://leetcode.com/company/karat), [Indeed](https://leetcode.com/company/indeed), [Apple](https://leetcode.com/company/apple), [Amazon](https://leetcode.com/company/amazon), [Intuit](https://leetcode.com/company/intuit), [Wayfair](https://leetcode.com/company/wayfair)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Binary Search](https://leetcode.com/tag/binary-search/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Sliding Window](https://leetcode.com/tag/sliding-window/), [Rolling Hash](https://leetcode.com/tag/rolling-hash/), [Hash Function](https://leetcode.com/tag/hash-function/)
 
 **Similar Questions**:
 * [Minimum Size Subarray Sum (Medium)](https://leetcode.com/problems/minimum-size-subarray-sum/)
@@ -67,71 +73,87 @@ Use binary answer to search the maximum length.
 
 For a given length `len`, generate the rolling hash on `A` and `B` and see if there is any hash showing up for both array.
 
+Without hash conflict check:
+
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-length-of-repeated-subarray/
 // Author: github.com/lzl124631x
-// Time: O(log(min(M, N)) * (M + N))
-// Space: O(M + N)
+// Time: O((A + B)log(min(A, B)))
+// Space: O(max(A, B))
 class Solution {
-    vector<int> rolling(vector<int> &A, int len) {
-        vector<int> ans(A.size() - len + 1);
-        long h = A[0], p = 1, mod = 1e9+7, d = 113;
-        for (int i = 1; i < len; ++i) {
-            h = (h * d + A[i]) % mod;
-            p = (p * d) % mod;
+    bool valid(vector<int> &A, vector<int> &B, int len) {
+        unsigned long long d = 16777619, h = 0, p = 1;
+        unordered_set<unsigned long long> s;
+        for (int i = 0; i < A.size(); ++i) {
+            h = h * d + A[i];
+            if (i < len) p *= d;
+            else h -= A[i - len] * p;
+            if (i >= len - 1) s.insert(h);
         }
-        ans[0] = h;
-        for (int i = 0; i < A.size() - len; ++i) {
-            h = ((h - A[i] * p) * d + A[i + len]) % mod;
-            if (h < 0) h += mod;
-            ans[i + 1] = h;
-        }
-        return ans;
-    }
-    bool valid(int len, vector<int> &A, vector<int>& B) {
-        if (!len) return true;
-        unordered_map<int, vector<int>> m;
-        int index = 0;
-        for (int h : rolling(A, len)) m[h].push_back(index++);
-        int j = 0;
-        for (int h : rolling(B, len)) {
-            for (int i : m[h]) {
-                bool same = true;
-                for (int k = 0; k < len && same; ++k) same = A[i + k] == B[j + k];
-                if (same) return true;
-            }
-            ++j;
+        h = 0;
+        for (int i = 0; i < B.size(); ++i) {
+            h = h * d + B[i];
+            if (i >= len) h -= B[i - len] * p;
+            if (i >= len - 1 && s.count(h)) return true;
         }
         return false;
     }
 public:
     int findLength(vector<int>& A, vector<int>& B) {
         int L = 0, R = min(A.size(), B.size());
-        while (L <= R) {
-            int M = (L + R) / 2;
-            if (valid(M, A, B)) L = M + 1;
+        while (L < R) {
+            int M = (L + R + 1) / 2;
+            if (valid(A, B, M)) L = M;
             else R = M - 1;
         }
-        return R;
+        return L;
     }
 };
 ```
 
-Another implementation of the `rolling` function
+With hash conflict check:
 
 ```cpp
-vector<int> rolling(vector<int> &A, int len) {
-    vector<int> ans(A.size() - len + 1);
-    long h = 0, p = 1, mod = 1e9+7, d = 113;
-    for (int i = 0; i < A.size(); ++i) {
-        h = (h * d + A[i]) % mod;
-        if (i < len - 1) p = (p * d) % mod;
-        else {
-            ans[i - len + 1] = h;
-            h = (h - A[i - len + 1] * p) % mod;
-            if (h < 0) h += mod;
+// OJ: https://leetcode.com/problems/maximum-length-of-repeated-subarray/
+// Author: github.com/lzl124631x
+// Time: O((A + B)log(min(A, B)))
+// Space: O(A + B)
+class Solution {
+    typedef unsigned long long ULL;
+    vector<ULL> rolling(vector<int> &A, int len) {
+        unsigned long long d = 16777619, h = 0, p = 1;
+        vector<ULL> ans;
+        for (int i = 0; i < A.size(); ++i) {
+            h = h * d + A[i];
+            if (i < len) p *= d;
+            else h -= A[i - len] * p;
+            if (i >= len - 1) ans.push_back(h);
         }
+        return ans;
     }
-    return ans;
-}
+    bool valid(vector<int> &A, vector<int> &B, int len) {
+        unordered_map<ULL, vector<int>> m;
+        auto ra = rolling(A, len), rb = rolling(B, len);
+        for (int i = 0; i < ra.size(); ++i) m[ra[i]].push_back(i);
+        for (int i = 0; i < rb.size(); ++i) {
+            if (m.count(rb[i]) == 0) continue;
+            for (int j : m[rb[i]]) {
+                int k = 0;
+                for (; k < len && A[j + k] == B[i + k]; ++k);
+                if (k == len) return true;
+            }
+        }
+        return false;
+    }
+public:
+    int findLength(vector<int>& A, vector<int>& B) {
+        int L = 0, R = min(A.size(), B.size());
+        while (L < R) {
+            int M = (L + R + 1) / 2;
+            if (valid(A, B, M)) L = M;
+            else R = M - 1;
+        }
+        return L;
+    }
+};
 ```
