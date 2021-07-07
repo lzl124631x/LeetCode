@@ -73,7 +73,7 @@ Use binary answer to search the maximum length.
 
 For a given length `len`, generate the rolling hash on `A` and `B` and see if there is any hash showing up for both array.
 
-Without hash conflict check:
+Without hash conflict check (unsafe):
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-length-of-repeated-subarray/
@@ -138,9 +138,7 @@ class Solution {
         for (int i = 0; i < rb.size(); ++i) {
             if (m.count(rb[i]) == 0) continue;
             for (int j : m[rb[i]]) {
-                int k = 0;
-                for (; k < len && A[j + k] == B[i + k]; ++k);
-                if (k == len) return true;
+                if (equal(begin(A) + j, begin(A) + j + len, begin(B) + i)) return true;
             }
         }
         return false;
@@ -179,9 +177,7 @@ class Solution {
             ULL h = hash(hb, i, i + len);
             if (m.count(h) == 0) continue;
             for (int j : m[h]) {
-                int k = 0;
-                for (; k < len && A[j + k] == B[i + k]; ++k);
-                if (k == len) return true;
+                if (equal(begin(A) + j, begin(A) + j + len, begin(B) + i)) return true;
             }
         }
         return false;
