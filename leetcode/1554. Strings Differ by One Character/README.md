@@ -81,18 +81,17 @@ class Solution {
     typedef unsigned long long ULL;
 public:
     bool differByOne(vector<string>& A) {
-        ULL d = 16777619, N = A.size(), M = A[0].size();
-        vector<ULL> h(N), p(M, 1);
-        for (int i = 1; i < M; ++i) p[i] = p[i - 1] * d;
+        ULL d = 16777619, p = 1, N = A.size(), M = A[0].size();
+        vector<ULL> h(N);
         for (int i = 0; i < N; ++i) {
             for (int j = 0; j < M; ++j) {
                 h[i] = h[i] * d + A[i][j];
             }
         }
-        for (int i = 0; i < M; ++i) {
+        for (int i = M - 1; i >= 0; --i, p *= d) {
             unordered_set<ULL> s;
             for (int j = 0; j < N; ++j) {
-                ULL n = h[j] - A[j][i] * p[M - i - 1];
+                ULL n = h[j] - A[j][i] * p;
                 if (s.count(n)) return true;
                 s.insert(n);
             }
