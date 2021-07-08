@@ -1200,6 +1200,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1551 | Minimum Operations to Make Array Equal | Medium | [Solution](leetcode/1551.%20Minimum%20Operations%20to%20Make%20Array%20Equal)
 1552 | Magnetic Force Between Two Balls | Medium | [Solution](leetcode/1552.%20Magnetic%20Force%20Between%20Two%20Balls)
 1553 | Minimum Number of Days to Eat N Oranges | Hard | [Solution](leetcode/1553.%20Minimum%20Number%20of%20Days%20to%20Eat%20N%20Oranges)
+1554 | Strings Differ by One Character | Medium | [Solution](leetcode/1554.%20Strings%20Differ%20by%20One%20Character)
 1556 | Thousand Separator | Easy | [Solution](leetcode/1556.%20Thousand%20Separator)
 1557 | Minimum Number of Vertices to Reach All Nodes | Medium | [Solution](leetcode/1557.%20Minimum%20Number%20of%20Vertices%20to%20Reach%20All%20Nodes)
 1558 | Minimum Numbers of Function Calls to Make Target Array | Medium | [Solution](leetcode/1558.%20Minimum%20Numbers%20of%20Function%20Calls%20to%20Make%20Target%20Array)
