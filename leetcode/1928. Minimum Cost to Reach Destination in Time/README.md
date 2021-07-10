@@ -65,7 +65,7 @@ You cannot take path 0 -&gt; 1 -&gt; 2 -&gt; 5 since it would take too long.
 
 We can use Dijkstra for this greedy BFS. We use a min heap to keep track the expandable nodes with the shortest time taken. Each expandable nodes are represented as `(node, time, cost)` in the min heap.
 
-We need two arrays, `minCost[u]` and `minTime[u]` are the minimum cost/time to reach node `u`, respectively.
+We keep track of `minCost[u]` and `minTime[u]` which are the minimum cost/time to reach node `u`, respectively.
 
 For a given node `(u, time, cost)`, we try expanding to each of `u`'s neighbor node `v`.
 
@@ -101,7 +101,7 @@ public:
         }
         auto cmp = [](auto &a, auto &b) { return a[1] > b[1]; }; // min-heap: Heap top is the node with the smallest time to reach
         priority_queue<Node, vector<Node>, decltype(cmp)> pq(cmp);
-        pq.push({0, 0, F[0]});
+        pq.push({0, 0, F[0]}); // we start from node `0` whose time is 0 and cost is fee[0]
         cost[0] = F[0];
         minTime[0] = 0;
         while (pq.size()) {
