@@ -1455,6 +1455,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1921 | Eliminate Maximum Number of Monsters | Medium | [Solution](leetcode/1921.%20Eliminate%20Maximum%20Number%20of%20Monsters)
 1922 | Count Good Numbers | Medium | [Solution](leetcode/1922.%20Count%20Good%20Numbers)
 1923 | Longest Common Subpath | Hard | [Solution](leetcode/1923.%20Longest%20Common%20Subpath)
+1925 | Count Square Sum Triples | Easy | [Solution](leetcode/1925.%20Count%20Square%20Sum%20Triples)
+1926 | Nearest Exit from Entrance in Maze | Medium | [Solution](leetcode/1926.%20Nearest%20Exit%20from%20Entrance%20in%20Maze)
+1928 | Minimum Cost to Reach Destination in Time | Hard | [Solution](leetcode/1928.%20Minimum%20Cost%20to%20Reach%20Destination%20in%20Time)
 
 # License
 
