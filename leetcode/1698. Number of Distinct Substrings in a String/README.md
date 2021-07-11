@@ -44,7 +44,7 @@
 // Space: O(N)
 class Solution {
     int count(string &s, int len) {
-        unsigned long long d = 16777619, h = 0, p = 1;
+        unsigned long long d = 1099511628211, h = 0, p = 1;
         unordered_set<unsigned long long> seen;
         for (int i = 0; i < s.size(); ++i) {
             h = h * d + s[i];
@@ -73,7 +73,7 @@ public:
 class Solution {
 public:
     int countDistinct(string s) {
-        unsigned long long d = 16777619, h[501] = {}, p[501] = {1}, N = s.size();
+        unsigned long long d = 1099511628211, h[501] = {}, p[501] = {1}, N = s.size();
         for (int i = 0; i < N; ++i) {
             p[i + 1] = p[i] * d;
             h[i + 1] = h[i] * d + s[i];
