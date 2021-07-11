@@ -80,7 +80,7 @@ public:
 };
 ```
 
-## Solution 2. Binary Search
+## Solution 2. Binary Search (Regret Greedy)
 
 We use a `vector<int> v` to store the LIS. `v` is always sorted.
 
