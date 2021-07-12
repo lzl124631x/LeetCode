@@ -47,7 +47,7 @@
 **Similar Questions**:
 * [Course Schedule II (Medium)](https://leetcode.com/problems/course-schedule-ii/)
 
-## Solution 1. Topologic Sort
+## Solution 1. Topologic Sort (BFS)
 
 ```cpp
 // OJ: https://leetcode.com/problems/alien-dictionary/
@@ -89,6 +89,49 @@ public:
                 if (--indegree[v] == 0) q.push(v);
             }
         }
+        return ans.size() == G.size() ? ans : "";
+    }
+};
+```
+
+## Solution 2. Topological Sort (DFS)
+
+```cpp
+// OJ: https://leetcode.com/problems/alien-dictionary/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+    unordered_map<int, unordered_set<int>> G;
+    int state[26] = { [0 ... 25] = -1 };
+    string ans;
+    bool dfs(int u) {
+        if (state[u] != -1) return state[u];
+        state[u] = 0;
+        for (int v : G[u]) {
+            if (!dfs(v)) return false;
+        }
+        ans += 'a' + u;
+        return state[u] = 1;
+    }
+public:
+    string alienOrder(vector<string>& A) {
+        for (auto &s : A) {
+            for (char c : s) G[c - 'a'] = {};
+        }
+        for (int i = 1; i < A.size(); ++i) {
+            int j = 0;
+            for (; j < min(A[i - 1].size(), A[i].size()); ++j) {
+                if (A[i - 1][j] == A[i][j]) continue;
+                G[A[i - 1][j] - 'a'].insert(A[i][j] - 'a');
+                break;
+            }
+            if (j == A[i].size() && j < A[i - 1].size()) return "";
+        }
+        for (auto &[from, tos] : G) {
+            if (!dfs(from)) return "";
+        }
+        reverse(begin(ans), end(ans));
         return ans.size() == G.size() ? ans : "";
     }
 };
