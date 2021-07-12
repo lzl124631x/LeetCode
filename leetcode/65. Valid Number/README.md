@@ -41,6 +41,13 @@ The signature of the <code>C++</code> function had been updated. If you still se
 
 ## Solution 1.
 
+Pro:
+* Each function has a single responsibility and relatively simpler than the original problem.
+
+Con:
+* Multiple passes
+* `O(N)` space (but can be changed to `O(1)` space if we just pass in string reference and `begin` `end` pointers.)
+
 ```cpp
 // OJ: https://leetcode.com/problems/valid-number/
 // Author: github.com/lzl124631x
@@ -80,6 +87,12 @@ public:
 
 ## Solution 2.
 
+Pro:
+* Strictly single pass
+
+Con:
+* Easy to miss corner cases.
+
 ```cpp
 // OJ: https://leetcode.com/problems/valid-number/
 // Author: github.com/lzl124631x
@@ -113,6 +126,10 @@ public:
 ```
 
 ## Solution 3.
+
+Pro:
+* Short code and space efficient.
+* For each character type, the check is straight forward.
 
 ```cpp
 // OJ: https://leetcode.com/problems/valid-number/
