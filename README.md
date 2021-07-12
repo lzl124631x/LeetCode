@@ -200,6 +200,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 202 | Happy Number | Easy | [Solution](leetcode/202.%20Happy%20Number)
 203 | Remove Linked List Elements | Easy | [Solution](leetcode/203.%20Remove%20Linked%20List%20Elements)
 204 | Count Primes | Easy | [Solution](leetcode/204.%20Count%20Primes)
+205 | Isomorphic Strings | Easy | [Solution](leetcode/205.%20Isomorphic%20Strings)
 206 | Reverse Linked List | Easy | [Solution](leetcode/206.%20Reverse%20Linked%20List)
 207 | Course Schedule | Medium | [Solution](leetcode/207.%20Course%20Schedule)
 208 | Implement Trie (Prefix Tree) | Medium | [Solution](leetcode/208.%20Implement%20Trie%20%28Prefix%20Tree%29)
