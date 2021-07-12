@@ -82,6 +82,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 65 | Valid Number | Hard | [Solution](leetcode/65.%20Valid%20Number)
 66 | Plus One | Easy | [Solution](leetcode/66.%20Plus%20One)
 67 | Add Binary | Easy | [Solution](leetcode/67.%20Add%20Binary)
+68 | Text Justification | Hard | [Solution](leetcode/68.%20Text%20Justification)
 69 | Sqrt(x) |  | [Solution](leetcode/69.%20Sqrt%28x%29)
 70 | Climbing Stairs | Easy | [Solution](leetcode/70.%20Climbing%20Stairs)
 71 | Simplify Path |  | [Solution](leetcode/71.%20Simplify%20Path)
