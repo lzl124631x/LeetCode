@@ -45,27 +45,102 @@ The signature of the <code>C++</code> function had been updated. If you still se
 // OJ: https://leetcode.com/problems/valid-number/
 // Author: github.com/lzl124631x
 // Time: O(N)
+// Space: O(N)
+class Solution {
+    bool isInteger(string s) {
+        if (s.empty()) return false;
+        int i = 0, N = s.size();
+        if (s[i] == '+' || s[i] == '-') ++i;
+        if (i == N) return false;
+        while (i < N && isdigit(s[i])) ++i;
+        return i == N;
+    }
+    bool isDecimal(string s) {
+        if (s.empty()) return false;
+        int i = 0, N = s.size();
+        if (s[i] == '+' || s[i] == '-') ++i;
+        if (i == N) return false;
+        bool hasInteger = isdigit(s[i]);
+        while (i < N && isdigit(s[i])) ++i;
+        if (i == N || s[i] != '.') return false;
+        ++i;
+        if (i == N) return hasInteger;
+        while (i < N && isdigit(s[i])) ++i;
+        return i == N;
+    }
+public:
+    bool isNumber(string s) {
+        auto eIndex = s.find_first_of("eE");
+        if (eIndex == string::npos) return isDecimal(s) || isInteger(s);
+        auto first = s.substr(0, eIndex), second = s.substr(eIndex + 1);
+        return (isDecimal(first) || isInteger(first)) && isInteger(second);
+    }
+};
+```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/valid-number/
+// Author: github.com/lzl124631x
+// Time: O(N)
 // Space: O(1)
 class Solution {
 public:
     bool isNumber(string s) {
         int i = 0, N = s.size();
-        while (i < N && s[i] == ' ') ++i;
         if (i < N && (s[i] == '+' || s[i] == '-')) ++i;
-        bool digitFound = false;
-        while (i < N && isdigit(s[i])) { ++i; digitFound = true; }
-        if (i < N && s[i] == '.') ++i;
-        while (i < N && isdigit(s[i])) { ++i; digitFound = true; }
-        if (!digitFound) return false;
-        if (i < N && s[i] == 'e') {
+        if (i == N) return false;
+        bool hasDigit = isdigit(s[i]);
+        while (i < N && isdigit(s[i])) ++i; 
+        if (i == N) return true;
+        if (s[i] == '.') ++i;
+        if (i == N) return hasDigit;
+        hasDigit = hasDigit || isdigit(s[i]);
+        while (i < N && isdigit(s[i])) ++i;
+        if (i == N) return hasDigit;
+        if (s[i] == 'e' || s[i] == 'E') {
+            if (!hasDigit) return false;
             ++i;
-            if (i < N && (s[i] == '+' || s[i] == '-')) ++i;
-            bool expFound = false;
-            while (i < N && isdigit(s[i])) { ++i; expFound = true; }
-            if (!expFound) return false;
+            if (i == N) return false;
+            if (s[i] == '+' || s[i] == '-') ++i;
+            if (i == N) return false;
+            while (i < N && isdigit(s[i])) ++i;
         }
-        while (i < N && s[i] == ' ') ++i;
         return i == N;
+    }
+};
+```
+
+## Solution 3.
+
+```cpp
+// OJ: https://leetcode.com/problems/valid-number/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/valid-number/solution/
+class Solution {
+public:
+    bool isNumber(string s) {
+        bool seenDigit = false, seenExp = false, seenDot = false;
+        int i = 0, N = s.size();
+        for (; i < N; ++i) {
+            char c = s[i];
+            if (isdigit(c)) {
+                seenDigit = true;
+            } else if (c == '+' || c == '-') {
+                if (i > 0 && s[i - 1] != 'e' && s[i - 1] != 'E') return false;
+            } else if (c == 'e' || c == 'E') {
+                if (seenExp || !seenDigit) return false;
+                seenExp = true;
+                seenDigit = false;
+            } else if (c == '.') {
+                if (seenDot || seenExp) return false;
+                seenDot = true;
+            } else return false;
+        }
+        return seenDigit;
     }
 };
 ```
