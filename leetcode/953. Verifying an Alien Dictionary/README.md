@@ -53,10 +53,12 @@
 
 ## Solution 1.
 
+If we can change the original arary, we can map the strings in the `words` array to new strings using the mapping specified in `order`, then just check if the words are in ascending order.
+
 ```cpp
 // OJ: https://leetcode.com/problems/verifying-an-alien-dictionary/
 // Author: github.com/lzl124631x
-// Time: O(C) where C is the total content of `words`
+// Time: O(C) where C is the length of all the content in `words`
 // Space: O(1)
 class Solution {
 public:
@@ -68,6 +70,32 @@ public:
         }
         for (int i = 1; i < words.size(); ++i) {
             if (words[i - 1] > words[i]) return false;
+        }
+        return true;
+    }
+};
+```
+
+## Solution 2.
+
+If we can't change the original array, we check whether each consecutive word pairs obeys the order.
+
+```cpp
+// OJ: https://leetcode.com/problems/verifying-an-alien-dictionary/
+// Author: github.com/lzl124631x
+// Time: O(C) where C is the length of all the content in `words`.
+// Space: O(1)
+class Solution {
+public:
+    bool isAlienSorted(vector<string>& A, string order) {
+        int priority[26] = {};
+        for (int i = 0; i < 26; ++i) priority[order[i] - 'a'] = i;
+        int N = A.size();
+        for (int i = 1; i < N; ++i) {
+            int j = 0, M = min(A[i - 1].size(), A[i].size());
+            for (; j < M && A[i - 1][j] == A[i][j]; ++j);
+            if ((j == M && A[i - 1].size() > A[i].size())
+                || (j < M && priority[A[i - 1][j] - 'a'] > priority[A[i][j] - 'a'])) return false;
         }
         return true;
     }
