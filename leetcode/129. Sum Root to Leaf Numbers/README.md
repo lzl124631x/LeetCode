@@ -68,6 +68,24 @@ public:
 };
 ```
 
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/sum-root-to-leaf-numbers/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+public:
+    int sumNumbers(TreeNode* root, int sum = 0) {
+        if (!root) return 0;
+        sum = 10 * sum + root->val;
+        if (!root->left && !root->right) return sum;
+        return sumNumbers(root->left, sum) + sumNumbers(root->right, sum);
+    }
+};
+```
+
 ## Solution 2. Pre-order traversal (Iterative)
 
 ```cpp
