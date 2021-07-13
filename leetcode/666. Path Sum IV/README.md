@@ -73,11 +73,43 @@ public:
         for (int n : nums) {
             int d = n / 100, p = n / 10 % 10, v = m[d * 10 + p];
             int left = (d + 1) * 10 + p * 2 - 1, right = left + 1;
-            if (m.find(left) != m.end()) m[left] += v;
-            if (m.find(right) != m.end()) m[right] += v;
-            if (m.find(left) == m.end() && m.find(right) == m.end()) sum += v;
+            if (m.count(left)) m[left] += v;
+            if (m.count(right)) m[right] += v;
+            if (m.count(left) == 0 && m.count(right) == 0) sum += v;
         }
         return sum;
+    }
+};
+```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/path-sum-iv/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+    int vals[33] = {[0 ... 32] = -1}, ans = 0;
+    void dfs(int i, int sum) {
+        if (vals[i] == -1) return;
+        sum += vals[i];
+        int left = 2 * i, right = 2 * i + 1;
+        if (vals[left] == -1 && vals[right] == -1) {
+            ans += sum;
+            return;
+        }
+        dfs(left, sum);
+        dfs(right, sum);
+    }
+public:
+    int pathSum(vector<int>& A) {
+        for (int n : A) {
+            int lv = n / 100, index = n % 100 / 10, val = n % 10, i = (1 << (lv - 1)) - 1 + index;
+            vals[i] = val;
+        }
+        dfs(1, 0);
+        return ans;
     }
 };
 ```
