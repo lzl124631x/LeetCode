@@ -174,6 +174,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 159 | Longest Substring with At Most Two Distinct Characters | Hard | [Solution](leetcode/159.%20Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters)
 161 | One Edit Distance | Medium | [Solution](leetcode/161.%20One%20Edit%20Distance)
 162 | Find Peak Element | Medium | [Solution](leetcode/162.%20Find%20Peak%20Element)
+163 | Missing Ranges | Easy | [Solution](leetcode/163.%20Missing%20Ranges)
 164 | Maximum Gap | Hard | [Solution](leetcode/164.%20Maximum%20Gap)
 165 | Compare Version Numbers | Medium | [Solution](leetcode/165.%20Compare%20Version%20Numbers)
 166 | Fraction to Recurring Decimal |  | [Solution](leetcode/166.%20Fraction%20to%20Recurring%20Decimal)
