@@ -110,7 +110,7 @@ public:
 }
 ```
 
-## Solution 3. Pre-order Traversal with Hash Map
+## Solution 3. Pre-order Traversal with Prefix State Map
 
 ```cpp
 // OJ: https://leetcode.com/problems/path-sum-iii/
@@ -119,7 +119,7 @@ public:
 // Space: O(N)
 // Ref: https://leetcode.com/problems/path-sum-iii/discuss/91878/17-ms-O(n)-java-Prefix-sum-method
 class Solution {
-    unordered_map<int, int> m; // map from the path sum (from root to the current node) to the corresponding count
+    unordered_map<int, int> m{{0,1}}; // map from the path sum (from root to the current node) to the corresponding count
     int dfs(TreeNode *root, int target, int sum) {
         if (!root) return 0;
         sum += root->val;
@@ -131,7 +131,6 @@ class Solution {
     }
 public:
     int pathSum(TreeNode* root, int sum) {
-        m[0] = 1;
         return dfs(root, sum, 0);
     }
 };
