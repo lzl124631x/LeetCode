@@ -1,36 +1,57 @@
-# [211. Add and Search Word - Data structure design (Medium)](https://leetcode.com/problems/add-and-search-word-data-structure-design/)
+# [211. Design Add and Search Words Data Structure (Medium)](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
 
-<p>Design a data structure that supports the following two operations:</p>
+<p>Design a data structure that supports adding new words and finding if a string matches any previously added string.</p>
 
-<pre>void addWord(word)
-bool search(word)
-</pre>
+<p>Implement the <code>WordDictionary</code> class:</p>
 
-<p>search(word) can search a literal word or a regular expression string containing only letters <code>a-z</code> or <code>.</code>. A <code>.</code> means it can represent any one letter.</p>
+<ul>
+	<li><code>WordDictionary()</code>&nbsp;Initializes the object.</li>
+	<li><code>void addWord(word)</code> Adds <code>word</code> to the data structure, it can be matched later.</li>
+	<li><code>bool search(word)</code>&nbsp;Returns <code>true</code> if there is any string in the data structure that matches <code>word</code>&nbsp;or <code>false</code> otherwise. <code>word</code> may contain dots <code>'.'</code> where dots can be matched with any letter.</li>
+</ul>
 
+<p>&nbsp;</p>
 <p><strong>Example:</strong></p>
 
-<pre>addWord("bad")
-addWord("dad")
-addWord("mad")
-search("pad") -&gt; false
-search("bad") -&gt; true
-search(".ad") -&gt; true
-search("b..") -&gt; true
+<pre><strong>Input</strong>
+["WordDictionary","addWord","addWord","addWord","search","search","search","search"]
+[[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]]
+<strong>Output</strong>
+[null,null,null,null,false,true,true,true]
+
+<strong>Explanation</strong>
+WordDictionary wordDictionary = new WordDictionary();
+wordDictionary.addWord("bad");
+wordDictionary.addWord("dad");
+wordDictionary.addWord("mad");
+wordDictionary.search("pad"); // return False
+wordDictionary.search("bad"); // return True
+wordDictionary.search(".ad"); // return True
+wordDictionary.search("b.."); // return True
 </pre>
 
-<p><b>Note:</b><br>
-You may assume that all words are consist of lowercase letters <code>a-z</code>.</p>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
+<ul>
+	<li><code>1 &lt;= word.length &lt;= 500</code></li>
+	<li><code>word</code> in <code>addWord</code> consists lower-case English letters.</li>
+	<li><code>word</code> in <code>search</code> consist of&nbsp; <code>'.'</code> or lower-case English letters.</li>
+	<li>At most <code>50000</code>&nbsp;calls will be made to <code>addWord</code>&nbsp;and <code>search</code>.</li>
+</ul>
+
+
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google), [Oracle](https://leetcode.com/company/oracle), [Apple](https://leetcode.com/company/apple), [Microsoft](https://leetcode.com/company/microsoft)
 
 **Related Topics**:  
-[Backtracking](https://leetcode.com/tag/backtracking/), [Design](https://leetcode.com/tag/design/), [Trie](https://leetcode.com/tag/trie/)
+[String](https://leetcode.com/tag/string/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Design](https://leetcode.com/tag/design/), [Trie](https://leetcode.com/tag/trie/)
 
 **Similar Questions**:
 * [Implement Trie (Prefix Tree) (Medium)](https://leetcode.com/problems/implement-trie-prefix-tree/)
 * [Prefix and Suffix Search (Hard)](https://leetcode.com/problems/prefix-and-suffix-search/)
 
-## Solution 1.
+## Solution 1. Trie
 
 ```cpp
 // OJ: https://leetcode.com/problems/add-and-search-word-data-structure-design/
@@ -65,8 +86,7 @@ public:
         node->end = true;
     }
     bool search(string word) {
-        auto node = &root;
-        return dfs(node, word, 0);
+        return dfs(&root, word, 0);
     }
 };
 ```
