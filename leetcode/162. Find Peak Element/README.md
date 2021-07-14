@@ -31,7 +31,7 @@
 **Similar Questions**:
 * [Peak Index in a Mountain Array (Easy)](https://leetcode.com/problems/peak-index-in-a-mountain-array/)
 
-## Solution 1.
+## Solution 1. Binary Search (L <= R)
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-peak-element/
@@ -39,16 +39,13 @@
 // Time: O(logN)
 // Space: O(1)
 class Solution {
-    inline long long get(vector<int> &A, int i) {
-        return i < 0 || i >= A.size() ? LONG_MIN : A[i];
-    }
 public:
     int findPeakElement(vector<int>& A) {
-        int L = 0, R = A.size();
+        int L = 0, R = A.size() - 1;
         while (L <= R) {
-            long long M = (L + R) / 2, val = get(A, M), left = get(A, M - 1), right = get(A, M + 1);
-            if (val > left && val > right) return M;
-            if (val < left) R = M - 1;
+            long M = (L + R) / 2, left = M == 0 ? LONG_MIN : A[M - 1], right = M == A.size() - 1 ? LONG_MIN : A[M + 1];
+            if (A[M] > left && A[M] > right) return M;
+            if (A[M] < left) R = M - 1;
             else L = M + 1;
         }
         return -1;
@@ -56,7 +53,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Binary Search (L < R)
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-peak-element/
