@@ -1,45 +1,108 @@
-# [427. Construct Quad Tree (Easy)](https://leetcode.com/problems/construct-quad-tree/)
+# [427. Construct Quad Tree (Medium)](https://leetcode.com/problems/construct-quad-tree/)
 
-<p>We want to use quad trees to store an <code>N x N</code> boolean grid. Each cell in the grid can only be true or false. The root node represents the whole grid. For each node, it will be subdivided into four children nodes <strong>until the values in the region it represents are all the same</strong>.</p>
+<p>Given a <code>n * n</code> matrix <code>grid</code> of <code>0's</code> and <code>1's</code> only. We want to represent the <code>grid</code> with a Quad-Tree.</p>
 
-<p>Each node has another two boolean attributes : <code>isLeaf</code> and <code>val</code>. <code>isLeaf</code> is true if and only if the node is a leaf node. The <code>val</code> attribute for a leaf node contains the value of the region it represents.</p>
+<p>Return <em>the root of the Quad-Tree</em> representing the <code>grid</code>.</p>
 
-<p>Your task is to use a quad tree to represent a given grid. The following example may help you understand the problem better:</p>
+<p>Notice that you can assign the value of a node to <strong>True</strong> or <strong>False</strong> when <code>isLeaf</code> is <strong>False</strong>, and both are <strong>accepted</strong> in the answer.</p>
 
-<p>Given the <code>8 x 8</code> grid below, we want to construct the corresponding quad tree:</p>
+<p>A Quad-Tree is a tree data structure in which each internal node has exactly four children. Besides, each node has two attributes:</p>
 
-<p><img alt="" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/01/962_grid.png" style="height:27%; max-height:300px; max-width:299px; width:27%"></p>
+<ul>
+	<li><code>val</code>: True if the node represents a grid of 1's or False if the node represents a grid of 0's.&nbsp;</li>
+	<li><code>isLeaf</code>: True if the node is leaf node on the tree or False if the node has the four children.</li>
+</ul>
 
-<p>It can be divided according to the definition above:</p>
+<pre>class Node {
+    public boolean val;
+&nbsp; &nbsp; public boolean isLeaf;
+&nbsp; &nbsp; public Node topLeft;
+&nbsp; &nbsp; public Node topRight;
+&nbsp; &nbsp; public Node bottomLeft;
+&nbsp; &nbsp; public Node bottomRight;
+}</pre>
 
-<p><img alt="" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/01/962_grid_divided.png" style="height:100%; max-height:300px; max-width:1107px; width:100%"></p>
-
-<p>&nbsp;</p>
-
-<p>The corresponding quad tree should be as following, where each node is represented as a <code>(isLeaf, val)</code> pair.</p>
-
-<p>For the non-leaf&nbsp;nodes,&nbsp;<code>val</code> can be arbitrary, so it is represented as <code>*</code>.</p>
-
-<p><img alt="" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/01/962_quad_tree.png" style="height:100%; max-height:300px; max-width:836px; width:100%"></p>
-
-<p><strong>Note:</strong></p>
+<p>We can construct a Quad-Tree from a two-dimensional area using the following steps:</p>
 
 <ol>
-	<li><code>N</code> is less than <code>1000</code> and guaranteened to be a power of 2.</li>
-	<li>If you want to know more about the quad tree, you can refer to its <a href="https://en.wikipedia.org/wiki/Quadtree">wiki</a>.</li>
+	<li>If the current grid has the same value (i.e all <code>1's</code> or all <code>0's</code>)&nbsp;set <code>isLeaf</code>&nbsp;True and set <code>val</code> to the value of the grid and set the four children to Null and stop.</li>
+	<li>If the current grid has different values, set <code>isLeaf</code> to False and&nbsp;set <code>val</code> to any value and divide the current grid into four sub-grids as shown in the photo.</li>
+	<li>Recurse for each of the children with the proper sub-grid.</li>
 </ol>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/02/11/new_top.png" style="width: 777px; height: 181px;">
+<p>If you want to know more about the Quad-Tree, you can refer to the&nbsp;<a href="https://en.wikipedia.org/wiki/Quadtree">wiki</a>.</p>
+
+<p><strong>Quad-Tree&nbsp;format:</strong></p>
+
+<p>The output represents the serialized format of a Quad-Tree using level order traversal, where <code>null</code> signifies a path terminator where no node exists below.</p>
+
+<p>It is very similar to the serialization of the binary tree. The only difference is that the node is represented as a list <code>[isLeaf, val]</code>.</p>
+
+<p>If the value of <code>isLeaf</code> or <code>val</code> is True we represent it as <strong>1</strong> in the list&nbsp;<code>[isLeaf, val]</code> and if the value of <code>isLeaf</code> or <code>val</code> is False we represent it as <strong>0</strong>.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/02/11/grid1.png" style="width: 777px; height: 99px;">
+<pre><strong>Input:</strong> grid = [[0,1],[1,0]]
+<strong>Output:</strong> [[0,1],[1,0],[1,1],[1,1],[1,0]]
+<strong>Explanation:</strong> The explanation of this example is shown below:
+Notice that 0 represnts False and 1 represents True in the photo representing the Quad-Tree.
+<img alt="" src="https://assets.leetcode.com/uploads/2020/02/12/e1tree.png" style="width: 777px; height: 186px;">
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<p><img alt="" src="https://assets.leetcode.com/uploads/2020/02/12/e2mat.png" style="width: 777px; height: 343px;"></p>
+
+<pre><strong>Input:</strong> grid = [[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0]]
+<strong>Output:</strong> [[0,1],[1,1],[0,1],[1,1],[1,0],null,null,null,null,[1,0],[1,0],[1,1],[1,1]]
+<strong>Explanation:</strong> All values in the grid are not the same. We divide the grid into four sub-grids.
+The topLeft, bottomLeft and bottomRight each has the same value.
+The topRight have different values so we divide it into 4 sub-grids where each has the same value.
+Explanation is shown in the photo below:
+<img alt="" src="https://assets.leetcode.com/uploads/2020/02/12/e2tree.png" style="width: 777px; height: 328px;">
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> grid = [[1,1],[1,1]]
+<strong>Output:</strong> [[1,1]]
+</pre>
+
+<p><strong>Example 4:</strong></p>
+
+<pre><strong>Input:</strong> grid = [[0]]
+<strong>Output:</strong> [[1,0]]
+</pre>
+
+<p><strong>Example 5:</strong></p>
+
+<pre><strong>Input:</strong> grid = [[1,1,0,0],[1,1,0,0],[0,0,1,1],[0,0,1,1]]
+<strong>Output:</strong> [[0,1],[1,1],[1,0],[1,0],[1,1]]
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>n == grid.length == grid[i].length</code></li>
+	<li><code>n == 2^x</code> where <code>0 &lt;= x &lt;= 6</code></li>
+</ul>
 
 
 **Companies**:  
 [Uber](https://leetcode.com/company/uber)
 
-## Solution 1.
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Divide and Conquer](https://leetcode.com/tag/divide-and-conquer/), [Tree](https://leetcode.com/tag/tree/), [Matrix](https://leetcode.com/tag/matrix/)
+
+## Solution 1. Brute Force
 
 ```cpp
 // OJ: https://leetcode.com/problems/construct-quad-tree/
 // Author: github.com/lzl124631x
-// Time: O(logN * N^2)
-// Space: O(logN)
+// Time: O(log_4^N * N^2)
+// Space: O(log_4^N)
 class Solution {
 private:
     Node *dfs(vector<vector<int>> &grid, int x, int y, int N) {
@@ -49,7 +112,7 @@ private:
                 same = grid[x][y] == grid[x + i][y + j];
             }
         }
-        if (same) return new Node(grid[x][y], true, NULL, NULL, NULL, NULL);
+        if (same) return new Node(grid[x][y], true);
         return new Node(true, false,
                              dfs(grid, x, y, N / 2),
                              dfs(grid, x, y + N / 2, N / 2),
@@ -59,6 +122,42 @@ private:
 public:
     Node* construct(vector<vector<int>>& grid) {
         return dfs(grid, 0, 0, grid.size());
+    }
+};
+```
+
+## Solution 2. Prefix Sum
+
+```cpp
+// OJ: https://leetcode.com/problems/construct-quad-tree/
+// Author: github.com/lzl124631x
+// Time: O(N^2 + log_4^N * N)
+// Space: O(N^2)
+class Solution {
+        if (d * d == target || target == 0) return new Node(target, true);
+    vector<vector<int>> prefix;
+private:
+    Node *dfs(int x, int y, int N) {
+        int sum = prefix[x + N][y + N] - prefix[x + N][y] - prefix[x][y + N] + prefix[x][y];
+        if (N * N == sum || sum == 0) return new Node(sum, true);
+        return new Node(true, false,
+                             dfs(x, y, N / 2),
+                             dfs(x, y + N / 2, N / 2),
+                             dfs(x + N / 2, y, N / 2),
+                             dfs(x + N / 2, y + N / 2, N / 2));
+    }
+public:
+    Node* construct(vector<vector<int>>& G) {
+        int N = G.size();
+        prefix.assign(N + 1, vector<int>(N + 1));
+        for (int i = 0; i < N; ++i) {
+            int sum = 0;
+            for (int j = 0; j < N; ++j) {
+                sum += G[i][j];
+                prefix[i + 1][j + 1] = sum + prefix[i][j + 1];
+            }
+        }
+        return dfs(0, 0, G.size());
     }
 };
 ```
