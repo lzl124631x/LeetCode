@@ -52,7 +52,7 @@ We need to wait until time 16 so that (0, 0) and (4, 4) are connected.
 ```cpp
 // OJ: https://leetcode.com/problems/swim-in-rising-water/
 // Author: github.com/lzl124631x
-// Time: O(N^2 * log(N^2))
+// Time: O(N^2 * logN)
 // Space: O(N^2)
 class Solution {
     int N, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
@@ -86,12 +86,12 @@ public:
 };
 ```
 
-## Solution 2. Greedy
+## Solution 2. Heap
 
 ```cpp
 // OJ: https://leetcode.com/problems/swim-in-rising-water/
 // Author: github.com/lzl124631x
-// Time: O(N^2)
+// Time: O(N^2 * logN)
 // Space: O(N^2)
 class Solution {
     typedef tuple<int, int, int> Point; // height, x, y
