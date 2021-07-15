@@ -64,6 +64,8 @@ I usually forgot that I need to store the `<key, value>` pair in the list which 
 
 We'd better write the logic as comments first, then we can find the detailed data structure we need and see if there is any common utility function that we can extract. 
 
+Need to remember the signature of the `splice` function: `toList.splice(toListIterator, fromList, fromListIterator)` is moving the data pointed by the `fromListIterator` from the `fromList` into the position pointed by the `toListIterator` within the `toList`.
+
 ## Solution 1.
 
 Use a `list<pair<int, int>> data` to store the key-value pairs, `unordered_map<int, list<pair<int, int>>::iterator> m` to store the mapping from **key** to **the corresponding iterator pointing into data**.
