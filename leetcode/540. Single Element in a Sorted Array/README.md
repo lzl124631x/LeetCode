@@ -26,45 +26,22 @@ Your solution should run in O(log n) time and O(1) space.
 
 ## Solution 1. Binary Search
 
-Use binary search. Initially set `L = 0, R = N - 1`.
-
-Exit condition: If `L == R` then we only have one value, we can break right away. So the exit condition can be `L < R`. BTW, we guarantee there are at least 3 elements in range `[L, R]`.
-
-Let `M = (L + R) / 2`. Now we need to determine which direction to go:
-
-Firstly, take a look at the relationship between `nums[M]` and `nums[M - 1]`:
-
-* If  `nums[M] == nums[M - 1]`, we need to further break it down into two cases:
-  * If `[L, M]` have odd number elements, go left by `R = M`. (consider case `1 2 [2] 3 3`)
-  * Otherwise, go right by `L = M + 1`. (consider case `1 [1] 2`)
-* If `nums[M] != nums[M - 1]`, similarly, further two cases:
-  * If `[M, R]` have odd number elements, go right by `L = M`. (consider case `1 1 [2] 2 3`)
-  * Otherwise, go left by `R = M - 1`. (consider case `1 [2] 2`)
-
-Eventually, it will stop at `L == R` and returning either `nums[L]` or `nums[R]` is fine.
-
-
 ```cpp
 // OJ: https://leetcode.com/problems/single-element-in-a-sorted-array/
 // Author: github.com/lzl124631x
 // Time: O(logN)
 // Space: O(1)
 class Solution {
-private:
 public:
-    int singleNonDuplicate(vector<int>& nums) {
-        int L = 0, R = nums.size() - 1;
+    int singleNonDuplicate(vector<int>& A) {
+        int L = 0, R = A.size() - 1;
         while (L < R) {
             int M = (L + R) / 2;
-            if (nums[M] == nums[M - 1]) {
-                if ((M - L + 1) % 2) R = M;
-                else L = M + 1;
-            } else {
-                if ((R - M + 1) % 2) L = M;
-                else R = M - 1;
-            } 
+            if ((M % 2 == 0 && A[M] == A[M + 1])
+               || (M % 2 == 1 && A[M] == A[M - 1])) L = M + 1;
+                else R = M;
         }
-        return nums[L];
+        return A[L];
     }
 };
 ```
