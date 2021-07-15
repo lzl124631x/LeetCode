@@ -1,40 +1,41 @@
 # [438. Find All Anagrams in a String (Medium)](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
 
-<p>Given a string <b>s</b> and a <b>non-empty</b> string <b>p</b>, find all the start indices of <b>p</b>'s anagrams in <b>s</b>.</p>
+<p>Given two strings <code>s</code> and <code>p</code>, return <em>an array of all the start indices of </em><code>p</code><em>'s anagrams in </em><code>s</code>. You may return the answer in <strong>any order</strong>.</p>
 
-<p>Strings consists of lowercase English letters only and the length of both strings <b>s</b> and <b>p</b> will not be larger than 20,100.</p>
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-<p>The order of output does not matter.</p>
-
-<p><b>Example 1:</b>
-</p><pre><b>Input:</b>
-s: "cbaebabacd" p: "abc"
-
-<b>Output:</b>
-[0, 6]
-
-<b>Explanation:</b>
+<pre><strong>Input:</strong> s = "cbaebabacd", p = "abc"
+<strong>Output:</strong> [0,6]
+<strong>Explanation:</strong>
 The substring with start index = 0 is "cba", which is an anagram of "abc".
 The substring with start index = 6 is "bac", which is an anagram of "abc".
 </pre>
-<p></p>
 
-<p><b>Example 2:</b>
-</p><pre><b>Input:</b>
-s: "abab" p: "ab"
+<p><strong>Example 2:</strong></p>
 
-<b>Output:</b>
-[0, 1, 2]
-
-<b>Explanation:</b>
+<pre><strong>Input:</strong> s = "abab", p = "ab"
+<strong>Output:</strong> [0,1,2]
+<strong>Explanation:</strong>
 The substring with start index = 0 is "ab", which is an anagram of "ab".
 The substring with start index = 1 is "ba", which is an anagram of "ab".
 The substring with start index = 2 is "ab", which is an anagram of "ab".
 </pre>
-<p></p>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= s.length, p.length &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>s</code> and <code>p</code> consist of lowercase English letters.</li>
+</ul>
+
+
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Bloomberg](https://leetcode.com/company/bloomberg), [Snapchat](https://leetcode.com/company/snapchat), [Facebook](https://leetcode.com/company/facebook), [Paypal](https://leetcode.com/company/paypal), [Yandex](https://leetcode.com/company/yandex), [Apple](https://leetcode.com/company/apple)
 
 **Related Topics**:  
-[Hash Table](https://leetcode.com/tag/hash-table/)
+[Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
 
 **Similar Questions**:
 * [Valid Anagram (Easy)](https://leetcode.com/problems/valid-anagram/)
@@ -54,12 +55,10 @@ public:
         for (char c : p) target[c - 'a']++;
         vector<int> ans;
         for (int i = 0; i < s.size(); ++i) {
-            if (i >= p.size()) cnt[s[i - p.size()] - 'a']--;
             cnt[s[i] - 'a']++;
+            if (i >= p.size()) cnt[s[i - p.size()] - 'a']--;
             int j = 0;
-            for (; j < 26; ++j) {
-                if (cnt[j] != target[j]) break;
-            }
+            for (; j < 26 && target[j] == cnt[j]; ++j);
             if (j == 26) ans.push_back(i - p.size() + 1);
         }
         return ans;
@@ -77,14 +76,13 @@ public:
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
-        int cnt[26] = {};
+        int cnt[26] = {}, matched = 0;
+        for (char c : p) cnt[c - 'a']++;
         vector<int> ans;
-        int M = s.size(), N = p.size(), count = N;
-        for (char c : p) ++cnt[c - 'a'];
-        for (int i = 0; i < M; ++i) {
-            if (i >= N && cnt[s[i - N] - 'a']++ >= 0) ++count;
-            if (cnt[s[i] - 'a']-- > 0) --count;
-            if (!count) ans.push_back(i - N + 1);
+        for (int i = 0; i < s.size(); ++i) {
+            if (--cnt[s[i] - 'a'] >= 0) ++matched;
+            if (i >= p.size() && ++cnt[s[i - p.size()] - 'a'] > 0) --matched;
+            if (matched == p.size()) ans.push_back(i - p.size() + 1);
         }
         return ans;
     }
