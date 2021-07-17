@@ -90,8 +90,8 @@ public:
 ```cpp
 // https://leetcode.com/problems/kth-largest-element-in-an-array/
 // Author: github.com/lzl124631x
-// Time: O(k + (N - k)logk)
-// Space: O(k)
+// Time: O(NlogK)
+// Space: O(K)
 class Solution {
 public:
     int findKthLargest(vector<int>& A, int k) {
@@ -110,6 +110,25 @@ public:
 
 Or
 
+```cpp
+// OJ: https://leetcode.com/problems/kth-largest-element-in-an-array/
+// Author: github.com/lzl124631x
+// Time: O(NlogK)
+// Space: O(K)
+class Solution {
+public:
+    int findKthLargest(vector<int>& A, int k) {
+        priority_queue<int, vector<int>, greater<>> pq;
+        for (int n : A) {
+            pq.push(n);
+            if (pq.size() > k) pq.pop();
+        }
+        return pq.top();
+    }
+};
+```
+
+Or
 
 ```cpp
 // OJ: https://leetcode.com/problems/kth-largest-element-in-an-array/
@@ -174,6 +193,33 @@ public:
             push_heap(begin(A), begin(A) + len);
         }
         return A[0];
+    }
+};
+```
+
+Or we can combine the max-heap and min-heap depending on `k`.
+
+
+```cpp
+// OJ: https://leetcode.com/problems/kth-largest-element-in-an-array/
+// Author: github.com/lzl124631x
+// Time: O(Nlog(min(k, N - k)))
+// Space: O(min(k, N - k))
+class Solution {
+public:
+    int findKthLargest(vector<int>& A, int k) {
+        function<bool(int, int)> cmp = greater<int>();
+        int size = k;
+        if (k > A.size() / 2) {
+            cmp = less<int>();
+            size = A.size() - k + 1;
+        }
+        priority_queue<int, vector<int>, decltype(cmp)> pq(cmp);
+        for (int n : A) {
+            pq.push(n);
+            if (pq.size() > size) pq.pop();
+        }
+        return pq.top();
     }
 };
 ```
