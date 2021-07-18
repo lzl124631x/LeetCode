@@ -158,7 +158,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 143 | Reorder List | Medium | [Solution](leetcode/143.%20Reorder%20List)
 144 | Binary Tree Preorder Traversal | Medium | [Solution](leetcode/144.%20Binary%20Tree%20Preorder%20Traversal)
 145 | Binary Tree Postorder Traversal | Hard | [Solution](leetcode/145.%20Binary%20Tree%20Postorder%20Traversal)
-146 | LRU Cache | Hard | [Solution](leetcode/146.%20LRU%20Cache)
+146 | LRU Cache | Medium | [Solution](leetcode/146.%20LRU%20Cache)
 147 | Insertion Sort List | Medium | [Solution](leetcode/147.%20Insertion%20Sort%20List)
 148 | Sort List | Medium | [Solution](leetcode/148.%20Sort%20List)
 149 | Max Points on a Line | Hard | [Solution](leetcode/149.%20Max%20Points%20on%20a%20Line)
@@ -657,6 +657,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 769 | Max Chunks To Make Sorted | Medium | [Solution](leetcode/769.%20Max%20Chunks%20To%20Make%20Sorted)
 770 | Basic Calculator IV | Hard | [Solution](leetcode/770.%20Basic%20Calculator%20IV)
 771 | Jewels and Stones | Easy | [Solution](leetcode/771.%20Jewels%20and%20Stones)
+772 | Basic Calculator III | Hard | [Solution](leetcode/772.%20Basic%20Calculator%20III)
 773 | Sliding Puzzle | Hard | [Solution](leetcode/773.%20Sliding%20Puzzle)
 775 | Global and Local Inversions | Medium | [Solution](leetcode/775.%20Global%20and%20Local%20Inversions)
 777 | Swap Adjacent in LR String | Medium | [Solution](leetcode/777.%20Swap%20Adjacent%20in%20LR%20String)
@@ -788,6 +789,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 924 | Minimize Malware Spread | Hard | [Solution](leetcode/924.%20Minimize%20Malware%20Spread)
 925 | Long Pressed Name | Easy | [Solution](leetcode/925.%20Long%20Pressed%20Name)
 926 | Flip String to Monotone Increasing | Medium | [Solution](leetcode/926.%20Flip%20String%20to%20Monotone%20Increasing)
+927 | Three Equal Parts | Hard | [Solution](leetcode/927.%20Three%20Equal%20Parts)
 928 | Minimize Malware Spread II | Hard | [Solution](leetcode/928.%20Minimize%20Malware%20Spread%20II)
 929 | Unique Email Addresses | Easy | [Solution](leetcode/929.%20Unique%20Email%20Addresses)
 930 | Binary Subarrays With Sum | Medium | [Solution](leetcode/930.%20Binary%20Subarrays%20With%20Sum)
@@ -1469,6 +1471,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1929 | Concatenation of Array | Easy | [Solution](leetcode/1929.%20Concatenation%20of%20Array)
 1930 | Unique Length-3 Palindromic Subsequences | Medium | [Solution](leetcode/1930.%20Unique%20Length-3%20Palindromic%20Subsequences)
 1931 | Painting a Grid With Three Different Colors | Hard | [Solution](leetcode/1931.%20Painting%20a%20Grid%20With%20Three%20Different%20Colors)
+1935 | Maximum Number of Words You Can Type | Easy | [Solution](leetcode/1935.%20Maximum%20Number%20of%20Words%20You%20Can%20Type)
+1936 | Add Minimum Number of Rungs | Medium | [Solution](leetcode/1936.%20Add%20Minimum%20Number%20of%20Rungs)
+1937 | Maximum Number of Points with Cost | Medium | [Solution](leetcode/1937.%20Maximum%20Number%20of%20Points%20with%20Cost)
 
 # License
 
