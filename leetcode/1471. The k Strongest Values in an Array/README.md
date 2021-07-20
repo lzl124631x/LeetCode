@@ -59,10 +59,13 @@ Any permutation of [11,8,6,6,7] is <strong>accepted</strong>.
 	<li><code>1 &lt;= k &lt;= arr.length</code></li>
 </ul>
 
-**Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Sort](https://leetcode.com/tag/sort/)
+**Companies**:  
+[Google](https://leetcode.com/company/google)
 
-## Solution 1. Brute Force
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Sorting](https://leetcode.com/tag/sorting/)
+
+## Solution 1. Sort
 
 ```cpp
 // OJ: https://leetcode.com/problems/the-k-strongest-values-in-an-array/
@@ -77,8 +80,7 @@ public:
         sort(A.begin(), A.end(), [&](int &a, int &b) {
             return abs(a - m) == abs(b - m) ? a > b : (abs(a - m) > abs(b - m));
         });
-        vector<int> ans(A.begin(), A.begin() + k);
-        return ans;
+        return vector<int> (A.begin(), A.begin() + k);
     }
 };
 ```
@@ -111,7 +113,7 @@ public:
 ```cpp
 // OJ: https://leetcode.com/problems/the-k-strongest-values-in-an-array/
 // Author: github.com/lzl124631x
-// Time: O(NlogK)
+// Time: O(N) on average, O(N^2) in the worst case
 // Space: O(1)
 // Ref: https://leetcode.com/problems/the-k-strongest-values-in-an-array/discuss/674384/C%2B%2BJavaPython-Two-Pointers-%2B-3-Bonuses
 class Solution {
@@ -122,8 +124,27 @@ public:
         partial_sort(A.begin(), A.begin() + k, A.end(), [&](int a, int b) {
             return abs(a - m) == abs(b - m) ? a > b : abs(a - m) > abs(b - m);
         });
-        A.resize(k);
-        return A;
+        return vector<int>(begin(A), begin(A) + k);
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/the-k-strongest-values-in-an-array/
+// Author: github.com/lzl124631x
+// Time: O(N) on average, O(N^2) in the worst case
+// Space: O(2)
+class Solution {
+public:
+    vector<int> getStrongest(vector<int>& A, int k) {
+        nth_element(begin(A), begin(A) + (A.size() - 1) / 2, end(A));
+        int m = A[(A.size() - 1) / 2];
+        nth_element(begin(A), begin(A) + k - 1, end(A), [&](int a, int b) { 
+            return abs(a - m) == abs(b - m) ? a > b : abs(a - m) > abs(b - m);
+        });
+        return vector<int>(begin(A), begin(A) + k);
     }
 };
 ```
@@ -155,28 +176,6 @@ public:
             q.pop();
         }
         return ans;
-    }
-};
-```
-
-## Solution 5. Quick Select
-
-```cpp
-// OJ: https://leetcode.com/problems/the-k-strongest-values-in-an-array/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
-// Ref: https://leetcode.com/problems/the-k-strongest-values-in-an-array/discuss/674384/C%2B%2BJavaPython-Two-Pointers-%2B-3-Bonuses
-class Solution {
-public:
-    vector<int> getStrongest(vector<int>& A, int k) {
-        nth_element(A.begin(), A.begin() + (A.size() - 1) / 2, A.end());
-        int m = A[(A.size() - 1) / 2];
-        nth_element(A.begin(), A.begin() + k, A.end(), [&](int a, int b) {
-            return abs(a - m) == abs(b - m) ? a > b : abs(a - m) > abs(b - m); 
-        });
-        A.resize(k);
-        return A;
     }
 };
 ```
