@@ -1,65 +1,58 @@
 # [795. Number of Subarrays with Bounded Maximum (Medium)](https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum/)
 
-<p>We are given an array <code>A</code> of positive integers, and two positive integers <code>L</code> and <code>R</code> (<code>L &lt;= R</code>).</p>
+<p>Given an integer array <code>nums</code> and two integers <code>left</code> and <code>right</code>, return <em>the number of contiguous non-empty <strong>subarrays</strong> such that the value of the maximum array element in that subarray is in the range </em><code>[left, right]</code>.</p>
 
-<p>Return the number of (contiguous, non-empty) subarrays such that the value of the maximum array element in that subarray is at least <code>L</code> and at most <code>R</code>.</p>
+<p>The test cases are generated so that the answer will fit in a <strong>32-bit</strong> integer.</p>
 
-<pre><strong>Example :</strong>
-<strong>Input:</strong> 
-A = [2, 1, 4, 3]
-L = 2
-R = 3
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> nums = [2,1,4,3], left = 2, right = 3
 <strong>Output:</strong> 3
 <strong>Explanation:</strong> There are three subarrays that meet the requirements: [2], [2, 1], [3].
 </pre>
 
-<p><strong>Note:</strong></p>
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums = [2,9,2,5,6], left = 2, right = 8
+<strong>Output:</strong> 7
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
 <ul>
-	<li>L, R&nbsp; and <code>A[i]</code> will be an integer in the range <code>[0, 10^9]</code>.</li>
-	<li>The length of <code>A</code> will be in the range of <code>[1, 50000]</code>.</li>
+	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>0 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
+	<li><code>0 &lt;= left &lt;= right &lt;= 10<sup>9</sup></code></li>
 </ul>
 
 
 **Companies**:  
-[Adobe](https://leetcode.com/company/adobe)
+[Amazon](https://leetcode.com/company/amazon), [DoorDash](https://leetcode.com/company/doordash)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/)
+[Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/)
 
-## Solution 1.
+## Solution 1. Two Pointers
 
-Let's pretend each element is either `0` if it is less than `L`; `1` if it is between `L` and `R`; or `2` if it is greater than `R`.
+For simplicity, let's map `A[i]` in the following way:
 
-Since the subarray cannot contain `2`, so we look for this pattern.
+* `A[i] = 0` if `A[i] < left`
+* `A[i] = 1` if `left <= A[i] <= right`
+* `A[i] = 2` if `A[i] > right`
 
-```
-2 0 0 1 0 1 0 2
-```
+Consider `A = [2 0 1 1 0 0 0 1 2 0 1 0 1]`. The subarray can't have any `2`. So `2` separates `A` into several segments and we just need to look within each segment.
 
-That is, a subarray surrounded by `2`. We look within this subsequence.
+For the first segment, `[0 1 1 0 0 0 1]`, let's consider the subarrays from left to right one by one:
 
-There can be multiple `1`s in the subarray. Now the question is: count subarrays that contain at least one `1`.
+* `[0]` is not a valid subarray
+* `[0 1]` is a valid subarray. And we can also form a valid subarray `[1]` by just using the second element.
+* `[0 1 1]` is a valid subarray. And its subarrays ending with the last `1` are also valid -- `[1 1]` and `[1]`.
+* `[0 1 1 0]` is a valid subarray. And its subarrays ending with the last `1` are also valid -- `[1 1 0]`, `[1, 0]`.
+* ...
 
-In this solution, I choosed to look at the `1`s one by one.
-
-For the first `1`:
-```
-       v
-2) 0 0 1 0 1 0 (2
-```
-
-There are `2` zeros to its left, and `3` zero/ones to its right. So the count of subarray containing this `1` is `(2 + 1) * (3 + 1) = 12`. 
-
-Then for the next `1`:
-```
-       x   v
-2) 0 0 1 0 1 0 (2
-```
-To prevent recount the subarrays containing the first `1`, we only look at the zeros to its left, and the count of which is `1`. And there are `1` zero/ones to its right. So the count of subarray containing this second `1` but not the first `1` is `(1 + 1) * (1 + 1) = 2`.
-
-So the answer should be `12 + 2 = 14`.
-
+We can see that we can scan each segment from left to right, and just log the index of last `1` as `last`. For the current element `A[i]`, there are `last - start + 1` subarrays we can form starting from `start` where `start` is the index of the first element of this segment.
 
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum/
@@ -68,25 +61,41 @@ So the answer should be `12 + 2 = 14`.
 // Space: O(1)
 class Solution {
 public:
-    int numSubarrayBoundedMax(vector<int>& A, int L, int R) {
-        int N = A.size(), begin = 0, maxVal = INT_MIN, cnt = 0;
-        while (begin < N) {
-            int end = begin;
-            while (end < N && A[end] <= R) {
-                maxVal = max(maxVal, A[end++]);
+    int numSubarrayBoundedMax(vector<int>& A, int left, int right) {
+        int N = A.size(), ans = 0;
+        for (int i = 0; i < N; ++i) {
+            if (A[i] > right) continue;
+            int last = -1, start = i;
+            for (; i < N && A[i] <= right; ++i) {
+                if (A[i] >= left && A[i] <= right) last = i;
+                if (last != -1) ans += last - start + 1;
             }
-            if (maxVal >= L) {
-                while (true) {
-                    int i = begin;
-                    while (i < end && A[i] < L) ++i;
-                    if (i == end) break;
-                    cnt += (i - begin + 1) * (end - i);
-                    begin = i + 1;
-                }
-            }
-            begin = end + 1;
         }
-        return cnt;
+        return ans;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int numSubarrayBoundedMax(vector<int>& A, int left, int right) {
+        int N = A.size(), ans = 0, start = -1, end = -1;
+        for (int i = 0; i < N; ++i) {
+            if (A[i] > right) {
+                start = end = i;
+                continue;
+            }
+            if (A[i] >= left) end = i;
+            ans += (end - start);
+        }
+        return ans;
     }
 };
 ```
