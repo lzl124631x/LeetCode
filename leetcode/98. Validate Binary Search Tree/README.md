@@ -1,8 +1,8 @@
 # [98. Validate Binary Search Tree (Medium)](https://leetcode.com/problems/validate-binary-search-tree/)
 
-<p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
+<p>Given the <code>root</code> of a binary tree, <em>determine if it is a valid binary search tree (BST)</em>.</p>
 
-<p>Assume a BST is defined as follows:</p>
+<p>A <strong>valid BST</strong> is defined as follows:</p>
 
 <ul>
 	<li>The left subtree of a node contains only nodes with keys <strong>less than</strong> the node's key.</li>
@@ -11,36 +11,36 @@
 </ul>
 
 <p>&nbsp;</p>
-
 <p><strong>Example 1:</strong></p>
-
-<pre>    2
-   / \
-  1   3
-
-<strong>Input:</strong>&nbsp;[2,1,3]
+<img alt="" src="https://assets.leetcode.com/uploads/2020/12/01/tree1.jpg" style="width: 302px; height: 182px;">
+<pre><strong>Input:</strong> root = [2,1,3]
 <strong>Output:</strong> true
 </pre>
 
 <p><strong>Example 2:</strong></p>
-
-<pre>    5
-   / \
-  1   4
-&nbsp;    / \
-&nbsp;   3   6
-
-<strong>Input:</strong> [5,1,4,null,null,3,6]
+<img alt="" src="https://assets.leetcode.com/uploads/2020/12/01/tree2.jpg" style="width: 422px; height: 292px;">
+<pre><strong>Input:</strong> root = [5,1,4,null,null,3,6]
 <strong>Output:</strong> false
 <strong>Explanation:</strong> The root node's value is 5 but its right child's value is 4.
 </pre>
 
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li>The number of nodes in the tree is in the range <code>[1, 10<sup>4</sup>]</code>.</li>
+	<li><code>-2<sup>31</sup> &lt;= Node.val &lt;= 2<sup>31</sup> - 1</code></li>
+</ul>
+
+
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook), [Bloomberg](https://leetcode.com/company/bloomberg), [Microsoft](https://leetcode.com/company/microsoft), [Zillow](https://leetcode.com/company/zillow), [Apple](https://leetcode.com/company/apple), [Google](https://leetcode.com/company/google), [Uber](https://leetcode.com/company/uber), [ByteDance](https://leetcode.com/company/bytedance)
 
 **Related Topics**:  
-[Tree](https://leetcode.com/tag/tree/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/)
+[Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Binary Search Tree](https://leetcode.com/tag/binary-search-tree/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
 
 **Similar Questions**:
-* [Binary Tree Inorder Traversal (Medium)](https://leetcode.com/problems/binary-tree-inorder-traversal/)
+* [Binary Tree Inorder Traversal (Easy)](https://leetcode.com/problems/binary-tree-inorder-traversal/)
 * [Find Mode in Binary Search Tree (Easy)](https://leetcode.com/problems/find-mode-in-binary-search-tree/)
 
 ## Solution 1. Pre-order Traversal
@@ -51,31 +51,28 @@
 // Time: O(N)
 // Space: O(H)
 class Solution {
-private:
-  bool isValidBST(TreeNode *root, TreeNode *lb, TreeNode *rb) {
-    if (!root) return true;
-    if ((lb && root->val <= lb->val) || (rb && root->val >= rb->val)) return false;
-    return isValidBST(root->left, lb, root) && isValidBST(root->right, root, rb);
-  }
 public:
-  bool isValidBST(TreeNode* root) {
-    return isValidBST(root, NULL, NULL);
-  }
+    bool isValidBST(TreeNode* root, TreeNode *left = NULL, TreeNode *right = NULL) {
+        if (!root) return true;
+        if ((left && root->val <= left->val) || (right && root->val >= right->val)) return false;
+        return isValidBST(root->left, left, root) && isValidBST(root->right, root, right);
+    }
 };
 ```
 
 Or
 
 ```cpp
-// OJ: https://leetcode.com/problems/validate-binary-search-tree
+// OJ: https://leetcode.com/problems/validate-binary-search-tree/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(H)
 class Solution {
 public:
-    bool isValidBST(TreeNode* root, TreeNode *left = NULL, TreeNode *right = NULL) {
+    bool isValidBST(TreeNode* root, long left = LONG_MIN, long right = LONG_MAX) {
         if (!root) return true;
-        return (!left || root->val > left->val) && (!right || root->val < right->val) && isValidBST(root->left, left, root) && isValidBST(root->right, root, right);
+        if (root->val <= left || root->val >= right) return false;
+        return isValidBST(root->left, left, root->val) && isValidBST(root->right, root->val, right);
     }
 };
 ```
@@ -88,14 +85,13 @@ public:
 // Time: O(N)
 // Space: O(logN)
 class Solution {
-private:
-  TreeNode *last = NULL;
+    TreeNode *prev = NULL;
 public:
-  bool isValidBST(TreeNode* root) {
-    if (!root) return true;
-    if (!isValidBST(root->left) || (last && last->val >= root->val)) return false;
-    last = root;
-    return isValidBST(root->right);
-  }
+    bool isValidBST(TreeNode* root) {
+        if (!root) return true;
+        if (!isValidBST(root->left) || (prev && prev->val >= root->val)) return false; 
+        prev = root;
+        return isValidBST(root->right);
+    }
 };
 ```
