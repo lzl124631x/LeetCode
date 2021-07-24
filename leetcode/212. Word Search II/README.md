@@ -96,3 +96,66 @@ public:
     }
 };
 ```
+
+## Solution 2. Trie
+
+We mark visited end nodes using `end = false` to prevent re-adding the same word. But we still might waste time visting a subtree of Trie which doesn't have any valid words. To prevent such case, we can keep a counter `cnt` in the TrieNode. Whenever an end node is visited, we decrement the counter on it and on all its ancester nodes. In this way, when the counter is `0`, we don't need to traverse the Trie subtree.
+
+```cpp
+// OJ: https://leetcode.com/problems/word-search-ii/
+// Author: github.com/lzl124631x
+// Time: O(WL + MN * 4^L) where M, N is the size of board, W is the size of words and L is the average length of word
+// Space: O(WL)
+struct TrieNode {
+    TrieNode *next[26] = {};
+    int cnt = 0;
+    bool end = false;
+};
+class Solution {
+    int M, N, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+    string tmp;
+    vector<string> ans;
+    void addWord(TrieNode *node, string &s) {
+        for (char c : s) {
+            if (!node->next[c - 'a']) node->next[c - 'a'] = new TrieNode();
+            node = node->next[c - 'a'];
+            node->cnt++;
+        }
+        node->end = true;
+    }
+    int dfs(vector<vector<char>> &A, int i, int j, TrieNode *node) {
+        node = node->next[A[i][j] - 'a'];
+        if (!node || !node->cnt) return 0;
+        char c = A[i][j];
+        tmp.push_back(A[i][j]);
+        A[i][j] = '\0';
+        int cnt = 0;
+        if (node->end) {
+            ans.push_back(tmp);
+            ++cnt;
+            node->end = false;
+        }
+        for (auto &[dx, dy] : dirs) {
+            int x = i + dx, y = j + dy;
+            if (x < 0 || x >= M || y < 0 || y >= N || A[x][y] == '\0') continue;
+            cnt += dfs(A, x, y, node);
+        }
+        node->cnt -= cnt;
+        tmp.pop_back();
+        A[i][j] = c;
+        return cnt;
+    }
+public:
+    vector<string> findWords(vector<vector<char>>& A, vector<string>& words) {
+        TrieNode root;
+        for (auto &w : words) addWord(&root, w);
+        M = A.size(), N = A[0].size();
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                dfs(A, i, j, &root);
+            }
+        }
+        return ans;
+    }
+};
+```
