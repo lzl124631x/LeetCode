@@ -347,7 +347,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 381 | Insert Delete GetRandom O(1) - Duplicates allowed | Hard | [Solution](leetcode/381.%20Insert%20Delete%20GetRandom%20O%281%29%20-%20Duplicates%20allowed)
 382 | Linked List Random Node | Medium | [Solution](leetcode/382.%20Linked%20List%20Random%20Node)
 383 | Ransom Note | Easy | [Solution](leetcode/383.%20Ransom%20Note)
-384 | Shuffle an Array |  | [Solution](leetcode/384.%20Shuffle%20an%20Array)
+384 | Shuffle an Array | Medium | [Solution](leetcode/384.%20Shuffle%20an%20Array)
 385 | Mini Parser | Medium | [Solution](leetcode/385.%20Mini%20Parser)
 386 | Lexicographical Numbers | Medium | [Solution](leetcode/386.%20Lexicographical%20Numbers)
 387 | First Unique Character in a String | Easy | [Solution](leetcode/387.%20First%20Unique%20Character%20in%20a%20String)
@@ -832,7 +832,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 969 | Pancake Sorting | Medium | [Solution](leetcode/969.%20Pancake%20Sorting)
 970 | Powerful Integers | Easy | [Solution](leetcode/970.%20Powerful%20Integers)
 971 | Flip Binary Tree To Match Preorder Traversal | Medium | [Solution](leetcode/971.%20Flip%20Binary%20Tree%20To%20Match%20Preorder%20Traversal)
-973 | K Closest Points to Origin | Easy | [Solution](leetcode/973.%20K%20Closest%20Points%20to%20Origin)
+973 | K Closest Points to Origin | Medium | [Solution](leetcode/973.%20K%20Closest%20Points%20to%20Origin)
 974 | Subarray Sums Divisible by K | Medium | [Solution](leetcode/974.%20Subarray%20Sums%20Divisible%20by%20K)
 975 | Odd Even Jump | Hard | [Solution](leetcode/975.%20Odd%20Even%20Jump)
 977 | Squares of a Sorted Array | Easy | [Solution](leetcode/977.%20Squares%20of%20a%20Sorted%20Array)
@@ -1475,6 +1475,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1935 | Maximum Number of Words You Can Type | Easy | [Solution](leetcode/1935.%20Maximum%20Number%20of%20Words%20You%20Can%20Type)
 1936 | Add Minimum Number of Rungs | Medium | [Solution](leetcode/1936.%20Add%20Minimum%20Number%20of%20Rungs)
 1937 | Maximum Number of Points with Cost | Medium | [Solution](leetcode/1937.%20Maximum%20Number%20of%20Points%20with%20Cost)
+1941 | Check if All Characters Have Equal Number of Occurrences | Easy | [Solution](leetcode/1941.%20Check%20if%20All%20Characters%20Have%20Equal%20Number%20of%20Occurrences)
+1942 | The Number of the Smallest Unoccupied Chair | Medium | [Solution](leetcode/1942.%20The%20Number%20of%20the%20Smallest%20Unoccupied%20Chair)
+1943 | Describe the Painting | Medium | [Solution](leetcode/1943.%20Describe%20the%20Painting)
+1944 | Number of Visible People in a Queue | Hard | [Solution](leetcode/1944.%20Number%20of%20Visible%20People%20in%20a%20Queue)
 
 # License
 
