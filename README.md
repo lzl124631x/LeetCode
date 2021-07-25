@@ -1479,6 +1479,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1942 | The Number of the Smallest Unoccupied Chair | Medium | [Solution](leetcode/1942.%20The%20Number%20of%20the%20Smallest%20Unoccupied%20Chair)
 1943 | Describe the Painting | Medium | [Solution](leetcode/1943.%20Describe%20the%20Painting)
 1944 | Number of Visible People in a Queue | Hard | [Solution](leetcode/1944.%20Number%20of%20Visible%20People%20in%20a%20Queue)
+1945 | Sum of Digits of String After Convert | Easy | [Solution](leetcode/1945.%20Sum%20of%20Digits%20of%20String%20After%20Convert)
+1946 | Largest Number After Mutating Substring | Medium | [Solution](leetcode/1946.%20Largest%20Number%20After%20Mutating%20Substring)
+1947 | Maximum Compatibility Score Sum |  | [Solution](leetcode/1947.%20Maximum%20Compatibility%20Score%20Sum)
+1948 | Delete Duplicate Folders in System | Hard | [Solution](leetcode/1948.%20Delete%20Duplicate%20Folders%20in%20System)
 
 # License
 
