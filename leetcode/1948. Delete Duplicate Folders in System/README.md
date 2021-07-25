@@ -114,7 +114,7 @@ Assume `N` is the number of folders, `W` is the maximum length of folder name, `
 3. **Generate Paths**: In the worst case we traverse the `N` nodes again. Each visit takes `O(W)` time to update the current `path` and `O(DW)` time to update the answer. So overall the time complexity is `O(NDW)` and space complexity is `O(DW)` for the temporary `path`.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-251/problems/delete-duplicate-folders-in-system/
+// OJ: https://leetcode.com/problems/delete-duplicate-folders-in-system/
 // Author: github.com/lzl124631x
 // Time: O(NDWlogC + N^2 * W) where `N` is the number of folders, `W` is the maximum length of folder name, 
 //                                  `D` is the deepest folder depth, and `C` is the maximum number of direct child folders.
