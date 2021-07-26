@@ -50,7 +50,7 @@ Thus, "<u>021</u>" becomes "<u>934</u>".
 
 ## Solution 1. Greedy
 
-**Intuition**: Try to change the digit from left to right. We always only greedily only make the change if we can make it greater or the same.
+**Intuition**: Try to change the digit from left to right. We only greedily make the change if we can make it greater or the same.
 
 **Algorithm**:
 
