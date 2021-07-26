@@ -1,11 +1,13 @@
 # [600. Non-negative Integers without Consecutive Ones (Hard)](https://leetcode.com/problems/non-negative-integers-without-consecutive-ones/)
 
-<p>Given a positive integer n, find the number of <b>non-negative</b> integers less than or equal to n, whose binary representations do NOT contain <b>consecutive ones</b>.</p>
+<p>Given a positive integer <code>n</code>, return the number of the integers in the range <code>[0, n]</code> whose binary representations <strong>do not</strong> contain consecutive ones.</p>
 
-<p><b>Example 1:</b><br>
-</p><pre><b>Input:</b> 5
-<b>Output:</b> 5
-<b>Explanation:</b> 
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> n = 5
+<strong>Output:</strong> 5
+<strong>Explanation:</strong>
 Here are the non-negative integers &lt;= 5 with their corresponding binary representations:
 0 : 0
 1 : 1
@@ -15,11 +17,25 @@ Here are the non-negative integers &lt;= 5 with their corresponding binary repre
 5 : 101
 Among them, only integer 3 disobeys the rule (two consecutive ones) and the other 5 satisfy the rule. 
 </pre>
-<p></p>
 
-<p><b>Note:</b>
-1 &lt;= n &lt;= 10<sup>9</sup>
-</p>
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> n = 1
+<strong>Output:</strong> 2
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> n = 2
+<strong>Output:</strong> 3
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= n &lt;= 10<sup>9</sup></code></li>
+</ul>
 
 
 **Companies**:  
@@ -27,6 +43,11 @@ Among them, only integer 3 disobeys the rule (two consecutive ones) and the othe
 
 **Related Topics**:  
 [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+
+**Similar Questions**:
+* [House Robber (Medium)](https://leetcode.com/problems/house-robber/)
+* [House Robber II (Medium)](https://leetcode.com/problems/house-robber-ii/)
+* [Ones and Zeroes (Medium)](https://leetcode.com/problems/ones-and-zeroes/)
 
 ## Solution 1.
 
@@ -89,6 +110,37 @@ private:
 public:
     int findIntegers(int num) {
         return num + 1 - find(num);
+    }
+};
+```
+
+
+## Solution 2. DP
+
+```cpp
+// OJ: https://leetcode.com/problems/non-negative-integers-without-consecutive-ones/
+// Author: github.com/lzl124631x
+// Time: O(logN)
+// Space: O(logN)
+class Solution {
+    unordered_map<int, int> m;
+public:
+    int findIntegers(int n) {
+        if (n <= 1) return n + 1;
+        if (m.count(n)) return m[n];
+        int first = -1, second = -1;
+        for (int i = 31; i >= 0 && second == -1; --i) {
+            if ((n >> i & 1) == 0) continue;
+            if (first == -1) first = i;
+            else second = i;
+        }
+        if (second == -1) {
+            return m[n] = findIntegers((1 << first) - 1) + 1;
+        }
+        if (first != second + 1) {
+            return m[n] = findIntegers(n - (1 << first)) + findIntegers((1 << first) - 1);
+        }
+        return m[n] = findIntegers((1 << first) - 1) + findIntegers((1 << second) - 1);
     }
 };
 ```
