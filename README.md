@@ -986,6 +986,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1235 | Maximum Profit in Job Scheduling | Hard | [Solution](leetcode/1235.%20Maximum%20Profit%20in%20Job%20Scheduling)
 1237 | Find Positive Integer Solution for a Given Equation | Easy | [Solution](leetcode/1237.%20Find%20Positive%20Integer%20Solution%20for%20a%20Given%20Equation)
 1238 | Circular Permutation in Binary Representation | Medium | [Solution](leetcode/1238.%20Circular%20Permutation%20in%20Binary%20Representation)
+1245 | Tree Diameter | Medium | [Solution](leetcode/1245.%20Tree%20Diameter)
 1247 | Minimum Swaps to Make Strings Equal | Medium | [Solution](leetcode/1247.%20Minimum%20Swaps%20to%20Make%20Strings%20Equal)
 1248 | Count Number of Nice Subarrays | Medium | [Solution](leetcode/1248.%20Count%20Number%20of%20Nice%20Subarrays)
 1249 | Minimum Remove to Make Valid Parentheses | Medium | [Solution](leetcode/1249.%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses)
