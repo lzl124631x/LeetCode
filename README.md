@@ -484,7 +484,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 539 | Minimum Time Difference |  | [Solution](leetcode/539.%20Minimum%20Time%20Difference)
 540 | Single Element in a Sorted Array | Medium | [Solution](leetcode/540.%20Single%20Element%20in%20a%20Sorted%20Array)
 541 | Reverse String II |  | [Solution](leetcode/541.%20Reverse%20String%20II)
-542 | 01 Matrix |  | [Solution](leetcode/542.%2001%20Matrix)
+542 | 01 Matrix | Medium | [Solution](leetcode/542.%2001%20Matrix)
 543 | Diameter of Binary Tree | Easy | [Solution](leetcode/543.%20Diameter%20of%20Binary%20Tree)
 544 | Output Contest Matches | Medium | [Solution](leetcode/544.%20Output%20Contest%20Matches)
 546 | Remove Boxes | Hard | [Solution](leetcode/546.%20Remove%20Boxes)
