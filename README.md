@@ -489,7 +489,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 544 | Output Contest Matches | Medium | [Solution](leetcode/544.%20Output%20Contest%20Matches)
 546 | Remove Boxes | Hard | [Solution](leetcode/546.%20Remove%20Boxes)
 547 | Friend Circles | Medium | [Solution](leetcode/547.%20Friend%20Circles)
-549 | Binary Tree Longest Consecutive Sequence II |  | [Solution](leetcode/549.%20Binary%20Tree%20Longest%20Consecutive%20Sequence%20II)
+549 | Binary Tree Longest Consecutive Sequence II | Medium | [Solution](leetcode/549.%20Binary%20Tree%20Longest%20Consecutive%20Sequence%20II)
 551 | Student Attendance Record I | Easy | [Solution](leetcode/551.%20Student%20Attendance%20Record%20I)
 552 | Student Attendance Record II | Hard | [Solution](leetcode/552.%20Student%20Attendance%20Record%20II)
 553 | Optimal Division | Medium | [Solution](leetcode/553.%20Optimal%20Division)
