@@ -26,8 +26,11 @@
 </ul>
 
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Goldman Sachs](https://leetcode.com/company/goldman-sachs), [Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg), [Microsoft](https://leetcode.com/company/microsoft), [Adobe](https://leetcode.com/company/adobe), [Apple](https://leetcode.com/company/apple), [Yandex](https://leetcode.com/company/yandex), [Rubrik](https://leetcode.com/company/rubrik), [Snapchat](https://leetcode.com/company/snapchat), [Lyft](https://leetcode.com/company/lyft), [Grab](https://leetcode.com/company/grab), [C3 IoT](https://leetcode.com/company/c3-iot)
+
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Stack](https://leetcode.com/tag/stack/)
+[Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Stack](https://leetcode.com/tag/stack/), [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/)
 
 **Similar Questions**:
 * [Container With Most Water (Medium)](https://leetcode.com/problems/container-with-most-water/)
@@ -57,7 +60,7 @@ public:
 };
 ```
 
-Or
+Or compute `left` on the fly.
 
 ```cpp
 // OJ: https://leetcode.com/problems/trapping-rain-water/
@@ -79,7 +82,7 @@ public:
 };
 ```
 
-Or use stack.
+Or use a mono-increasing stack which potentially saves some space because it only push new elements into the stack if the element is greater than the element at the stack top.
 
 ```cpp
 // OJ: https://leetcode.com/problems/trapping-rain-water/
@@ -106,6 +109,37 @@ public:
 ```
 
 ## Solution 2. Two Pointers
+
+```cpp
+// OJ: https://leetcode.com/problems/trapping-rain-water/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int trap(vector<int>& A) {
+        int i = 0, j = A.size() - 1, ans = 0;
+        while (i < j) {
+            if (A[i] < A[j]) {
+                int h = A[i];
+                while (i < j && A[i] <= h) {
+                    ans += h - A[i];
+                    ++i;
+                }
+            } else {
+                int h = A[j];
+                while (i < j && A[j] <= h) {
+                    ans += h - A[j];
+                    --j;
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+Or
 
 ```cpp
 // OJ: https://leetcode.com/problems/trapping-rain-water/
