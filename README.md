@@ -1485,6 +1485,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1946 | Largest Number After Mutating Substring | Medium | [Solution](leetcode/1946.%20Largest%20Number%20After%20Mutating%20Substring)
 1947 | Maximum Compatibility Score Sum |  | [Solution](leetcode/1947.%20Maximum%20Compatibility%20Score%20Sum)
 1948 | Delete Duplicate Folders in System | Hard | [Solution](leetcode/1948.%20Delete%20Duplicate%20Folders%20in%20System)
+1952 | Three Divisors | Easy | [Solution](leetcode/1952.%20Three%20Divisors)
+1954 | Minimum Garden Perimeter to Collect Enough Apples | Medium | [Solution](leetcode/1954.%20Minimum%20Garden%20Perimeter%20to%20Collect%20Enough%20Apples)
+1955 | Count Number of Special Subsequences | Hard | [Solution](leetcode/1955.%20Count%20Number%20of%20Special%20Subsequences)
 
 # License
 
