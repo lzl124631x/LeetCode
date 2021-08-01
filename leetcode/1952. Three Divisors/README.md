@@ -45,3 +45,25 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/three-divisors/
+// Author: github.com/lzl124631x
+// Time: O(sqrt(N))
+// Space: O(1)
+class Solution {
+public:
+    bool isThree(int n) {
+        int ans = 0;
+        for (int i = 1; i * i <= n && ans <= 3; ++i) {
+            if (n % i == 0) {
+                ++ans;
+                if (n / i != i) ++ans;
+            }
+        }
+        return ans == 3;
+    }
+};
+```
