@@ -42,7 +42,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 24 | Swap Nodes in Pairs | Medium | [Solution](leetcode/24.%20Swap%20Nodes%20in%20Pairs)
 25 | Reverse Nodes in k-Group | Hard | [Solution](leetcode/25.%20Reverse%20Nodes%20in%20k-Group)
 26 | Remove Duplicates from Sorted Array | Easy | [Solution](leetcode/26.%20Remove%20Duplicates%20from%20Sorted%20Array)
-27 | Remove Element |  | [Solution](leetcode/27.%20Remove%20Element)
+27 | Remove Element | Easy | [Solution](leetcode/27.%20Remove%20Element)
 28 | Implement strStr() | Easy | [Solution](leetcode/28.%20Implement%20strStr%28%29)
 29 | Divide Two Integers | Medium | [Solution](leetcode/29.%20Divide%20Two%20Integers)
 30 | Substring with Concatenation of All Words |  | [Solution](leetcode/30.%20Substring%20with%20Concatenation%20of%20All%20Words)
