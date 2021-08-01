@@ -65,7 +65,6 @@ public:
             sum = f * 8 - 6 * i * (i + 1);
             if (sum >= target) return 8 * i;
         }
-        return -1;
     }
 };
 ```
