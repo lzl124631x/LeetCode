@@ -72,7 +72,7 @@ public:
 };
 ```
 
-Or
+Or this more generalized way. This generalized way also works for n-ary tree. For example, in [1948. Delete Duplicate Folders in System (Hard)](https://leetcode.com/problems/delete-duplicate-folders-in-system/submissions/)
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-duplicate-subtrees/
@@ -83,7 +83,7 @@ class Solution {
     unordered_map<string, int> cnt;
     vector<TreeNode*> ans;
     string dfs(TreeNode *root) {
-        if (!root) return "()";
+        if (!root) return "#";
         auto s = "(" + to_string(root->val) + dfs(root->left) + dfs(root->right) + ")";
         if (++cnt[s] == 2) ans.push_back(root);
         return s;
