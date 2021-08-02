@@ -48,6 +48,8 @@
 
 ## Solution 1.
 
+Must not encode `null` as empty string because then we can't tell if it's left child or right child.
+
 ```cpp
 // OJ: https://leetcode.com/problems/find-duplicate-subtrees/
 // Author: github.com/lzl124631x
