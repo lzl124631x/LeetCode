@@ -29,7 +29,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 11 | Container With Most Water | Medium | [Solution](leetcode/11.%20Container%20With%20Most%20Water)
 12 | Integer to Roman | Medium | [Solution](leetcode/12.%20Integer%20to%20Roman)
 13 | Roman to Integer | Easy | [Solution](leetcode/13.%20Roman%20to%20Integer)
-14 | Longest Common Prefix |  | [Solution](leetcode/14.%20Longest%20Common%20Prefix)
+14 | Longest Common Prefix | Easy | [Solution](leetcode/14.%20Longest%20Common%20Prefix)
 15 | 3Sum | Medium | [Solution](leetcode/15.%203Sum)
 16 | 3Sum Closest | Medium | [Solution](leetcode/16.%203Sum%20Closest)
 17 | Letter Combinations of a Phone Number | Medium | [Solution](leetcode/17.%20Letter%20Combinations%20of%20a%20Phone%20Number)
