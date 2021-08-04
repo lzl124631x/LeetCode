@@ -34,10 +34,10 @@
 
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Microsoft](https://leetcode.com/company/microsoft)
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
-[Tree](https://leetcode.com/tag/tree/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/)
+[Backtracking](https://leetcode.com/tag/backtracking/), [Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
 
 **Similar Questions**:
 * [Path Sum (Easy)](https://leetcode.com/problems/path-sum/)
@@ -54,18 +54,15 @@
 // Space: O(H)
 class Solution {
     vector<vector<int>> ans;
-    vector<int> path;
+    vector<int> tmp;
     void dfs(TreeNode *root, int target) {
         if (!root) return;
-        path.push_back(root->val);
+        tmp.push_back(root->val);
         target -= root->val;
-        if (!root->left && !root->right && target == 0) {
-            ans.push_back(path);
-        } else {
-            dfs(root->left, target);
-            dfs(root->right, target);
-        }
-        path.pop_back();
+        if (target == 0 && !root->left && !root->right) ans.push_back(tmp);
+        dfs(root->left, target);
+        dfs(root->right, target);
+        tmp.pop_back();
     }
 public:
     vector<vector<int>> pathSum(TreeNode* root, int target) {
