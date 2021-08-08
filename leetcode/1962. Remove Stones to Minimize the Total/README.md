@@ -60,7 +60,7 @@ public:
         priority_queue<int> pq;
         for (int n : A) pq.push(n);
         long rm = 0, sum = accumulate(begin(A), end(A), 0L);
-        for (int i = 0; i < k && pq.size(); ++i) {
+        for (int i = 0; i < k; ++i) {
             int n = pq.top();
             pq.pop();
             if (n == 1) break;
