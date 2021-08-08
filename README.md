@@ -388,7 +388,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 424 | Longest Repeating Character Replacement |  | [Solution](leetcode/424.%20Longest%20Repeating%20Character%20Replacement)
 426 | Convert Binary Search Tree to Sorted Doubly Linked List | Medium | [Solution](leetcode/426.%20Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List)
 427 | Construct Quad Tree | Medium | [Solution](leetcode/427.%20Construct%20Quad%20Tree)
-429 | N-ary Tree Level Order Traversal | Easy | [Solution](leetcode/429.%20N-ary%20Tree%20Level%20Order%20Traversal)
+429 | N-ary Tree Level Order Traversal | Medium | [Solution](leetcode/429.%20N-ary%20Tree%20Level%20Order%20Traversal)
 430 | Flatten a Multilevel Doubly Linked List | Medium | [Solution](leetcode/430.%20Flatten%20a%20Multilevel%20Doubly%20Linked%20List)
 432 | All O`one Data Structure |  | [Solution](leetcode/432.%20All%20O%60one%20Data%20Structure)
 434 | Number of Segments in a String |  | [Solution](leetcode/434.%20Number%20of%20Segments%20in%20a%20String)
@@ -1488,6 +1488,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1952 | Three Divisors | Easy | [Solution](leetcode/1952.%20Three%20Divisors)
 1954 | Minimum Garden Perimeter to Collect Enough Apples | Medium | [Solution](leetcode/1954.%20Minimum%20Garden%20Perimeter%20to%20Collect%20Enough%20Apples)
 1955 | Count Number of Special Subsequences | Hard | [Solution](leetcode/1955.%20Count%20Number%20of%20Special%20Subsequences)
+1961 | Check If String Is a Prefix of Array | Easy | [Solution](leetcode/1961.%20Check%20If%20String%20Is%20a%20Prefix%20of%20Array)
+1962 | Remove Stones to Minimize the Total | Medium | [Solution](leetcode/1962.%20Remove%20Stones%20to%20Minimize%20the%20Total)
+1963 | Minimum Number of Swaps to Make the String Balanced | Medium | [Solution](leetcode/1963.%20Minimum%20Number%20of%20Swaps%20to%20Make%20the%20String%20Balanced)
+1964 | Find the Longest Valid Obstacle Course at Each Position | Hard | [Solution](leetcode/1964.%20Find%20the%20Longest%20Valid%20Obstacle%20Course%20at%20Each%20Position)
 
 # License
 
