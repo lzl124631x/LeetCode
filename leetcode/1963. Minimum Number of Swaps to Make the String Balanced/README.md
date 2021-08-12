@@ -93,3 +93,82 @@ public:
     }
 };
 ```
+
+## Solution 2. Two Pointers
+
+Find the first unmatched `[` from the left, and swap it with the first `]` from the right.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int minSwaps(string s) {
+        int N = s.size(), cnt = 0, i = 0, j = N - 1, ans = 0;
+        for (int i = 0; i < j; ++i) {
+            cnt += s[i] == '[' ? 1 : -1;
+            if (cnt == -1) {
+                while (s[j] == ']') --j;
+                cnt = 1;
+                ++ans;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3. Math
+
+We can discard all the balanced components first. The remaining string must be in this form
+
+```
+]]]]...[[[[...
+```
+
+The optimal approach is to balance 2 sets of brackets at a time using 1 swap.
+
+For example:
+
+```
+]]]]]][[[[[[
+// swap 1
+    v  v
+]]]][][][[[[
+// swap 2
+  v      v
+]][][][][][[
+// swap 3
+v          v
+[][][][][][]
+```
+
+We can write the number of mismatches and the corresponding optimal swaps
+
+```
+mismatches = 0, 1, 2, 3, 4, 5, 6, ...
+     swaps = 0, 1, 1, 2, 2, 3, 3, ...
+```
+
+We can see the pattern is `swaps = (mismatches + 1) / 2`.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int minSwaps(string s) {
+        int N = s.size(), cnt = 0, mismatch = 0;
+        for (char c : s) {
+            if (c == '[') ++cnt;
+            else if (cnt > 0) --cnt;
+            else ++mismatch;
+        }
+        return (mismatch + 1) / 2;
+    }
+};
+```
