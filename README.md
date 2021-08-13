@@ -999,6 +999,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1261 | Find Elements in a Contaminated Binary Tree | Medium | [Solution](leetcode/1261.%20Find%20Elements%20in%20a%20Contaminated%20Binary%20Tree)
 1262 | Greatest Sum Divisible by Three | Medium | [Solution](leetcode/1262.%20Greatest%20Sum%20Divisible%20by%20Three)
 1263 | Minimum Moves to Move a Box to Their Target Location | Hard | [Solution](leetcode/1263.%20Minimum%20Moves%20to%20Move%20a%20Box%20to%20Their%20Target%20Location)
+1265 | Print Immutable Linked List in Reverse | Medium | [Solution](leetcode/1265.%20Print%20Immutable%20Linked%20List%20in%20Reverse)
 1266 | Minimum Time Visiting All Points | Easy | [Solution](leetcode/1266.%20Minimum%20Time%20Visiting%20All%20Points)
 1267 | Count Servers that Communicate | Medium | [Solution](leetcode/1267.%20Count%20Servers%20that%20Communicate)
 1268 | Search Suggestions System | Medium | [Solution](leetcode/1268.%20Search%20Suggestions%20System)
