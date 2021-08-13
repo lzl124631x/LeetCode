@@ -31,14 +31,14 @@
 <p><strong>Follow up:</strong></p>
 
 <ul>
-	<li>A straight forward solution using <code><em>O(mn)</em></code> space is probably a bad idea.</li>
+	<li>A straightforward solution using <code>O(mn)</code> space is probably a bad idea.</li>
 	<li>A simple improvement uses <code>O(m + n)</code> space, but still not the best solution.</li>
 	<li>Could you devise a constant space solution?</li>
 </ul>
 
 
 **Companies**:  
-[Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon), [Bloomberg](https://leetcode.com/company/bloomberg), [Facebook](https://leetcode.com/company/facebook), [Goldman Sachs](https://leetcode.com/company/goldman-sachs), [VMware](https://leetcode.com/company/vmware), [Qualtrics](https://leetcode.com/company/qualtrics)
+[Microsoft](https://leetcode.com/company/microsoft), [Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Qualtrics](https://leetcode.com/company/qualtrics)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Matrix](https://leetcode.com/tag/matrix/)
@@ -87,8 +87,8 @@ public:
         int M = A.size(), N = A[0].size();
         for (int i = 0; i < N && !firstRow; ++i) firstRow = A[0][i] == 0;
         for (int i = 0; i < M && !firstColumn; ++i) firstColumn = A[i][0] == 0;
-        for (int i = 0; i < M; ++i) {
-            for (int j = 0; j < N; ++j) {
+        for (int i = 1; i < M; ++i) {
+            for (int j = 1; j < N; ++j) {
                 if (A[i][j] == 0) A[i][0] = A[0][j] = 0;
             }
         }
