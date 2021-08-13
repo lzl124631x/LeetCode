@@ -1,70 +1,63 @@
 # [921. Minimum Add to Make Parentheses Valid (Medium)](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/)
 
-<p>Given a string&nbsp;<code>S</code> of <code>'('</code> and <code>')'</code> parentheses, we add the minimum number of parentheses ( <code>'('</code> or <code>')'</code>, and in any positions ) so that the resulting parentheses string is valid.</p>
-
-<p>Formally, a parentheses string is valid if and only if:</p>
+<p>A parentheses string is valid if and only if:</p>
 
 <ul>
-	<li>It is the empty string, or</li>
-	<li>It can be written as <code>AB</code>&nbsp;(<code>A</code> concatenated with <code>B</code>), where <code>A</code> and <code>B</code> are valid strings, or</li>
+	<li>It is the empty string,</li>
+	<li>It can be written as <code>AB</code> (<code>A</code> concatenated with <code>B</code>), where <code>A</code> and <code>B</code> are valid strings, or</li>
 	<li>It can be written as <code>(A)</code>, where <code>A</code> is a valid string.</li>
 </ul>
 
-<p>Given a parentheses string, return the minimum number of parentheses we must add to make the resulting string valid.</p>
+<p>You are given a parentheses string <code>s</code>. In one move, you can insert a parenthesis at any position of the string.</p>
+
+<ul>
+	<li>For example, if <code>s = "()))"</code>, you can insert an opening parenthesis to be <code>"(<strong>(</strong>)))"</code> or a closing parenthesis to be <code>"())<strong>)</strong>)"</code>.</li>
+</ul>
+
+<p>Return <em>the minimum number of moves required to make </em><code>s</code><em> valid</em>.</p>
 
 <p>&nbsp;</p>
-
 <p><strong>Example 1:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-1-1">"())"</span>
-<strong>Output: </strong><span id="example-output-1">1</span>
+<pre><strong>Input:</strong> s = "())"
+<strong>Output:</strong> 1
 </pre>
 
-<div>
 <p><strong>Example 2:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-2-1">"((("</span>
-<strong>Output: </strong><span id="example-output-2">3</span>
+<pre><strong>Input:</strong> s = "((("
+<strong>Output:</strong> 3
 </pre>
 
-<div>
 <p><strong>Example 3:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-3-1">"()"</span>
-<strong>Output: </strong><span id="example-output-3">0</span>
+<pre><strong>Input:</strong> s = "()"
+<strong>Output:</strong> 0
 </pre>
 
-<div>
 <p><strong>Example 4:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-4-1">"()))(("</span>
-<strong>Output: </strong><span id="example-output-4">4</span></pre>
+<pre><strong>Input:</strong> s = "()))(("
+<strong>Output:</strong> 4
+</pre>
 
 <p>&nbsp;</p>
-</div>
-</div>
-</div>
+<p><strong>Constraints:</strong></p>
 
-<p><strong>Note:</strong></p>
+<ul>
+	<li><code>1 &lt;= s.length &lt;= 1000</code></li>
+	<li><code>s[i]</code> is either <code>'('</code> or <code>')'</code>.</li>
+</ul>
 
-<ol>
-	<li><code>S.length &lt;= 1000</code></li>
-	<li><code>S</code> only consists of <code>'('</code> and <code>')'</code> characters.</li>
-</ol>
-
-<div>
-<div>
-<div>
-<div>&nbsp;</div>
-</div>
-</div>
-</div>
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [ServiceNow](https://leetcode.com/company/servicenow)
+[Facebook](https://leetcode.com/company/facebook)
 
 **Related Topics**:  
-[Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/)
+[String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/)
+
+**Similar Questions**:
+* [Minimum Number of Swaps to Make the String Balanced (Medium)](https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/)
 
 ## Solution 1.
 
