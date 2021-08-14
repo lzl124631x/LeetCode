@@ -63,7 +63,7 @@
 **Related Topics**:  
 [Linked List](https://leetcode.com/tag/linked-list/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Stack](https://leetcode.com/tag/stack/), [Recursion](https://leetcode.com/tag/recursion/)
 
-## Solution 1.
+## Solution 1. Recursion
 
 ```cpp
 // OJ: https://leetcode.com/problems/print-immutable-linked-list-in-reverse/
@@ -80,7 +80,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Brute force
 
 ```cpp
 // OJ: https://leetcode.com/problems/print-immutable-linked-list-in-reverse/
@@ -96,6 +96,49 @@ public:
             while (p->getNext() != last) p = p->getNext(); 
             p->printValue();
             last = p;
+        }
+    }
+};
+```
+
+## Solution 3. Sqrt Decomposition
+
+We break the list into batches, each of which is of length `sqrt(N)`. We store all heads of batches in a stack. After the stack is filled, we start popping the stack, and for each popped head, we use the recursive print method in Solution 1 to print this batch.
+
+### Complexity Analysis
+
+`getLength` takes `O(N)` time and `O(1)` space.
+
+Filling the stack takes `O(N)` time and `O(sqrt(N))` space.
+
+Printing each batch takes `O(sqrt(N))` time and `O(sqrt(N))` space. Because there are `sqrt(N)` batches, this popping stack and printing step takes `O(sqrt(N) * sqrt(N)) = O(N)` time and `O(sqrt(N))` space (the space doesn't add up).
+
+```cpp
+// OJ: https://leetcode.com/problems/print-immutable-linked-list-in-reverse/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(sqrt(N))
+class Solution {
+    int getLength(ImmutableListNode *head) {
+        int ans = 0;
+        for (; head; head = head->getNext(), ++ans);
+        return ans;
+    }
+    void print(ImmutableListNode *head, int len) {
+        if (!head || !len) return;
+        print(head->getNext(), len - 1);
+        head->printValue();
+    }
+public:
+    void printLinkedListInReverse(ImmutableListNode* head) {
+        int len = ceil(sqrt(getLength(head)));
+        stack<ImmutableListNode*> s;
+        for (int i = 0; head; head = head->getNext(), ++i) {
+            if (i % len == 0) s.push(head);
+        }
+        while (s.size()) {
+            print(s.top(), len);
+            s.pop();
         }
     }
 };
