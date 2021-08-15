@@ -43,10 +43,10 @@ Since the largest window of s only has one 'a', return empty string.
 <strong>Follow up:</strong> Could you find an algorithm that runs in <code>O(m + n)</code> time?
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Google](https://leetcode.com/company/google), [Apple](https://leetcode.com/company/apple), [LinkedIn](https://leetcode.com/company/linkedin), [Uber](https://leetcode.com/company/uber), [Adobe](https://leetcode.com/company/adobe), [ByteDance](https://leetcode.com/company/bytedance), [VMware](https://leetcode.com/company/vmware), [Lyft](https://leetcode.com/company/lyft)
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [LinkedIn](https://leetcode.com/company/linkedin), [Google](https://leetcode.com/company/google), [Adobe](https://leetcode.com/company/adobe), [Uber](https://leetcode.com/company/uber), [Apple](https://leetcode.com/company/apple), [Snapchat](https://leetcode.com/company/snapchat), [VMware](https://leetcode.com/company/vmware), [Microsoft](https://leetcode.com/company/microsoft), [Flipkart](https://leetcode.com/company/flipkart), [ByteDance](https://leetcode.com/company/bytedance)
 
 **Related Topics**:  
-[Hash Table](https://leetcode.com/tag/hash-table/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [String](https://leetcode.com/tag/string/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
+[Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
 
 **Similar Questions**:
 * [Substring with Concatenation of All Words (Hard)](https://leetcode.com/problems/substring-with-concatenation-of-all-words/)
@@ -66,23 +66,21 @@ Since the largest window of s only has one 'a', return empty string.
 class Solution {
 public:
     string minWindow(string s, string t) {
-        unordered_map<char, int> target, cur;
+        unordered_map<char, int> target, cnt;
+        int len = INT_MAX, i = 0, N = s.size(), matched = 0, begin = 0;
         for (char c : t) target[c]++;
-        int S = s.size(), T = target.size(), cnt = 0, i = 0, begin = -1, minLen = INT_MAX;
-        for (int j = 0; j < S; ++j) {
-            ++cur[s[j]];
-            if (target.count(s[j]) && target[s[j]] == cur[s[j]]) ++cnt;
-            while (cnt == T) {
-                if (target.count(s[i]) && cur[s[i]] == target[s[i]]) --cnt;
-                --cur[s[i]];
-                if (cnt < T && (begin == -1 || minLen > j - i + 1)) {
+        for (int j = 0; j < N; ++j) {
+            if (++cnt[s[j]] <= target[s[j]]) ++matched;
+            while (matched == t.size()) {
+                if (j - i + 1 < len) {
+                    len = j - i + 1;
                     begin = i;
-                    minLen = j - i + 1;
-                } 
+                }
+                if (--cnt[s[i]] < target[s[i]]) --matched;
                 ++i;
             }
         }
-        return begin == -1 ? "" : s.substr(begin, minLen);
+        return len == INT_MAX ? "" : s.substr(begin, len);
     }
 };
 ```
