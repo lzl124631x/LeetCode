@@ -60,12 +60,22 @@
 </ul>
 
 
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Apple](https://leetcode.com/company/apple), [LinkedIn](https://leetcode.com/company/linkedin)
+
 **Related Topics**:  
-[String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/)
+[String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/)
+
+**Similar Questions**:
+* [Minimum Number of Swaps to Make the String Balanced (Medium)](https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/)
+
 
 ## Solution 1.
 
 `left` and `right` represents the counts of currently unmatched left and right parenthesis respectively.
+
+* Whenever we see a `)` and we don't have `(` available, we add a `(` at this moment. This simplify the cases to consider.
+* Always reset `)` whenever we have two `)`s.
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/
@@ -78,22 +88,21 @@ public:
         int left = 0, right = 0, ans = 0;
         for (char c : s) {
             if (c == '(') {
-                ++left;
-                if (right) { // Unmatched right, reset it with a matching left parenthesis.
+                if (right) { // Must be a single unmatched `)`. Clear it with a `(`.
                     right = 0;
                     --left;
                     ++ans;
                 }
+                ++left;
             } else {
                 ++right;
-                if (left == 0) { // Make sure we always have a left parenthesis to match right parenthesis.
+                if (left == 0) { // We must add a `(` to match this `)`. This makes sure that if we have an unmatched `)`, there must be at least one `(`, simplifying the cases to consider.
                     left = 1;
                     ++ans;
                 }
-                if (right == 2) { // When `right` equals `2`, reset it to `0` with a matching left parenthesis, if any.
+                if (right == 2) { // We always reset `)` whenever we have two `)`s.
                     right = 0;
-                    if (left) --left;
-                    else ++ans;
+                    --left;
                 }
             }
         }
@@ -104,6 +113,9 @@ public:
 
 Or
 
+* Always reset `)` whenever we have two `)`s.
+* Since we don't add `(` early (when we see a `)` without any available `(`), we need more `if (left)` checks later.
+
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/
 // Author: github.com/lzl124631x
@@ -112,22 +124,52 @@ Or
 class Solution {
 public:
     int minInsertions(string s) {
-        int left = 0, right = 0, ans = 0;
-        for (int i = 0; i <= s.size(); ++i) {
-            if (i == s.size() || s[i] == '(') {
-                if (right) {
-                    if (left) {
+        int left = 0, right = 0, ans = 0, N = s.size();
+        for (int i = 0; i <= N; ++i) {
+            if (i == N || s[i] == '(') {
+                if (right) { // Need to clear this single unmatched `)`.
+                    if (left) { // If we have `(` available, use it
                         --left;
-                        ++ans;
-                    } else ans += 2;
+                        ++ans; // need to add a single `)`
+                    } else ans += 2; // need to add a `(` and a `)`.
                     right = 0;
                 }
-                if (i < s.size()) ++left;
-            } else if (++right == 2) {
+                if (i < N) ++left;
+            } else if (++right == 2) { // We always reset `)` whenever we have two `)`s.
                 if (left) --left;
                 else ++ans;
                 right = 0;
             }
+        }
+        return ans + 2 * left;
+    }
+};
+```
+
+Or
+
+* We don't even clear `)` when we have two `)`s. We clear `)` when we see `(` or reached end of string.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int minInsertions(string s) {
+        int left = 0, right = 0, ans = 0, N = s.size();
+        for (int i = 0; i <= N; ++i) {
+            if (i == N || s[i] == '(') {
+                if (right % 2) ++ans;
+                left -= (right + 1) / 2;
+                right = 0;
+                if (left < 0) {
+                    ans -= left;
+                    left = 0;
+                }
+                if (i < N) ++left;
+            } else ++right;
         }
         return ans + 2 * left;
     }
@@ -147,19 +189,19 @@ public:
 class Solution {
 public:
     int minInsertions(string s) {
-        int ans = 0, right = 0;
+        int right = 0, ans = 0;
         for (char c : s) {
             if (c == '(') {
-                if (right % 2) { // we need odd number right parenthesis, provide one right parenthesis to make `right` even.
+                if (right % 2) { // if there is a single `)` needed, we must clear it right now
                     --right;
                     ++ans;
                 }
-                right += 2; // Need to right parenthesis to match this left parenthesis
+                right += 2;
             } else {
-                --right;
-                if (right < 0) { // need to add a left parenthesis
-                    right += 2;
-                    ++ans;
+                if (right) --right;
+                else {
+                    right = 1;
+                    ++ans; // add a `(`
                 }
             }
         }
