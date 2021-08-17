@@ -1,50 +1,46 @@
 # [678. Valid Parenthesis String (Medium)](https://leetcode.com/problems/valid-parenthesis-string/)
 
-<p>
-Given a string containing only three types of characters: '(', ')' and '*', write a function to check whether this string is valid. We define the validity of a string by these rules:
-</p><ol>
-<li>Any left parenthesis <code>'('</code> must have a corresponding right parenthesis <code>')'</code>.</li>
-<li>Any right parenthesis <code>')'</code> must have a corresponding left parenthesis <code>'('</code>.</li>
-<li>Left parenthesis <code>'('</code> must go before the corresponding right parenthesis <code>')'</code>.</li>
-<li><code>'*'</code> could be treated as a single right parenthesis <code>')'</code> or a single left parenthesis <code>'('</code> or an empty string.</li>
-<li>An empty string is also valid.</li>
-</ol>
-<p></p>
+<p>Given a string <code>s</code> containing only three types of characters: <code>'('</code>, <code>')'</code> and <code>'*'</code>, return <code>true</code> <em>if</em> <code>s</code> <em>is <strong>valid</strong></em>.</p>
 
-<p><b>Example 1:</b><br>
-</p><pre><b>Input:</b> "()"
-<b>Output:</b> True
+<p>The following rules define a <strong>valid</strong> string:</p>
+
+<ul>
+	<li>Any left parenthesis <code>'('</code> must have a corresponding right parenthesis <code>')'</code>.</li>
+	<li>Any right parenthesis <code>')'</code> must have a corresponding left parenthesis <code>'('</code>.</li>
+	<li>Left parenthesis <code>'('</code> must go before the corresponding right parenthesis <code>')'</code>.</li>
+	<li><code>'*'</code> could be treated as a single right parenthesis <code>')'</code> or a single left parenthesis <code>'('</code> or an empty string <code>""</code>.</li>
+</ul>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<pre><strong>Input:</strong> s = "()"
+<strong>Output:</strong> true
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> s = "(*)"
+<strong>Output:</strong> true
+</pre><p><strong>Example 3:</strong></p>
+<pre><strong>Input:</strong> s = "(*))"
+<strong>Output:</strong> true
 </pre>
-<p></p>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><b>Example 2:</b><br>
-</p><pre><b>Input:</b> "(*)"
-<b>Output:</b> True
-</pre>
-<p></p>
+<ul>
+	<li><code>1 &lt;= s.length &lt;= 100</code></li>
+	<li><code>s[i]</code> is <code>'('</code>, <code>')'</code> or <code>'*'</code>.</li>
+</ul>
 
-<p><b>Example 3:</b><br>
-</p><pre><b>Input:</b> "(*))"
-<b>Output:</b> True
-</pre>
-<p></p>
-
-<p><b>Note:</b><br>
-</p><ol>
-<li>The string size will be in the range [1, 100].</li>
-</ol>
-<p></p>
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Bloomberg](https://leetcode.com/company/bloomberg)
+[Apple](https://leetcode.com/company/apple), [Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Facebook](https://leetcode.com/company/facebook)
 
 **Related Topics**:  
-[String](https://leetcode.com/tag/string/)
+[String](https://leetcode.com/tag/string/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/)
 
 **Similar Questions**:
 * [Special Binary String (Hard)](https://leetcode.com/problems/special-binary-string/)
 
-## Solution 1.
+## TLE Version
 
 This solution is not performant if `s` contains lots of `"*"`.
 
@@ -76,7 +72,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 1.
 
 Let `diff` be count of left parenthesis minus count of right parenthesis.
 
@@ -126,9 +122,13 @@ public:
             maxDiff += (c == '(' || c == '*') ? 1 : -1;
             minDiff += (c == ')' || c == '*') ? -1 : 1;
             if (maxDiff < 0) return false;
-            minDiff = max(0, minDiff);
+            if (minDiff < 0) minDiff = 0;
         }
         return minDiff == 0;
     }
 };
 ```
+
+## NOTE:
+
+My post: https://leetcode.com/problems/valid-parenthesis-string/discuss/302732/C%2B%2B-O(S)-Time-O(1)-Space-One-Pass-with-Explanation
