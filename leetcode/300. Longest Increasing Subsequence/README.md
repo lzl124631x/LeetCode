@@ -33,16 +33,14 @@
 </ul>
 
 <p>&nbsp;</p>
-<p><b>Follow up:</b></p>
+<p><b>Follow up:</b>&nbsp;Can you come up with an algorithm that runs in&nbsp;<code>O(n log(n))</code> time complexity?</p>
 
-<ul>
-	<li>Could you come up with the <code>O(n<sup>2</sup>)</code> solution?</li>
-	<li>Could you improve it to <code>O(n log(n))</code> time complexity?</li>
-</ul>
 
+**Companies**:  
+[Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon), [Twitter](https://leetcode.com/company/twitter), [Apple](https://leetcode.com/company/apple), [Bloomberg](https://leetcode.com/company/bloomberg), [Splunk](https://leetcode.com/company/splunk), [MakeMyTrip](https://leetcode.com/company/makemytrip), [ServiceNow](https://leetcode.com/company/servicenow), [Samsung](https://leetcode.com/company/samsung)
 
 **Related Topics**:  
-[Binary Search](https://leetcode.com/tag/binary-search/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
 **Similar Questions**:
 * [Increasing Triplet Subsequence (Medium)](https://leetcode.com/problems/increasing-triplet-subsequence/)
@@ -51,12 +49,16 @@
 * [Number of Longest Increasing Subsequence (Medium)](https://leetcode.com/problems/number-of-longest-increasing-subsequence/)
 * [Minimum ASCII Delete Sum for Two Strings (Medium)](https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/)
 * [Minimum Number of Removals to Make Mountain Array (Hard)](https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/)
+* [Find the Longest Valid Obstacle Course at Each Position (Hard)](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/)
 
 ## Solution 1. DP
 
+Let `dp[i]` be the length of the LIS ending at `A[i]`.
+
+For `dp[i]`, we can try each `dp[j]` before `A[i]` by appending `A[i]` to the LIS represented by `dp[j]` (`0 <= j < i && A[j] < A[i]`)
+
 ```
-dp[i] = max( dp[j] + 1 | 0 <= j < i && A[j] < A[i] )
-dp[0] = 1
+dp[i] = min(1, max( dp[j] + 1 | 0 <= j < i && A[j] < A[i] ))
 ```
 
 ```cpp
@@ -82,13 +84,13 @@ public:
 
 ## Solution 2. Binary Search (Regret Greedy)
 
-We use a `vector<int> v` to store the LIS. `v` is always sorted.
+We use a `vector<int> lis` to store the LIS. `lis` is always sorted.
 
-For each `n` in `A`, we first find the first `v[i]` that is `>= n`. 
+For each `n` in `A`, we first find the first `lis[i]` that is `>= n`. 
 
-If such `v[i]` exists, we replace `v[i]` with `n`. Such operation won't break the LIS but make this LIS easier to extend.
+If such `lis[i]` exists, we replace `lis[i]` with `n`. Such operation won't break the LIS but make this LIS easier to extend.
 
-Otherwise, `n` is greater than all values in `v`, we can simply append `n` into `v`.
+Otherwise, `n` is greater than all values in `lis`, we can simply append `n` into `lis`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-increasing-subsequence/
