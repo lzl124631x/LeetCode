@@ -1501,6 +1501,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1967 | Number of Strings That Appear as Substrings in Word | Easy | [Solution](leetcode/1967.%20Number%20of%20Strings%20That%20Appear%20as%20Substrings%20in%20Word)
 1968 | Array With Elements Not Equal to Average of Neighbors | Medium | [Solution](leetcode/1968.%20Array%20With%20Elements%20Not%20Equal%20to%20Average%20of%20Neighbors)
 1969 | Minimum Non-Zero Product of the Array Elements | Medium | [Solution](leetcode/1969.%20Minimum%20Non-Zero%20Product%20of%20the%20Array%20Elements)
+1974 | Minimum Time to Type Word Using Special Typewriter | Easy | [Solution](leetcode/1974.%20Minimum%20Time%20to%20Type%20Word%20Using%20Special%20Typewriter)
 
 # License
 
