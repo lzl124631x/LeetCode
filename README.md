@@ -1504,6 +1504,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1974 | Minimum Time to Type Word Using Special Typewriter | Easy | [Solution](leetcode/1974.%20Minimum%20Time%20to%20Type%20Word%20Using%20Special%20Typewriter)
 1975 | Maximum Matrix Sum | Medium | [Solution](leetcode/1975.%20Maximum%20Matrix%20Sum)
 1976 | Number of Ways to Arrive at Destination | Medium | [Solution](leetcode/1976.%20Number%20of%20Ways%20to%20Arrive%20at%20Destination)
+1977 | Number of Ways to Separate Numbers | Hard | [Solution](leetcode/1977.%20Number%20of%20Ways%20to%20Separate%20Numbers)
 
 # License
 
