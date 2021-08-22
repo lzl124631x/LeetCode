@@ -57,11 +57,11 @@ Note that any permutation of [1,2,-3] and also any permutation of [-1,-2,3] will
 
 **Intuition**: If all the numbers in the unknown array are non-negative, it's easy to solve because `A[0]` must be `0` (empty set) and `A[1]` must be a number in the unknown array.
 
-**Algorithm**
-
-Hint:
+**Hint**: 
 * **Step 1**: Solve the problem knowning that the unknown array only has non-negative numbers.
 * **Step 2**: Find a subset in the answer array whose sum is the minimal value in `A`, and turn all the numbers in this subset negative
+
+**Algorithm**:
 
 Let `mn` be the minimal number in `A`. We offset all the numbers in `A` by `-mn`, making all the numbers in `A` non-negative.
 
