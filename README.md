@@ -1505,6 +1505,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1975 | Maximum Matrix Sum | Medium | [Solution](leetcode/1975.%20Maximum%20Matrix%20Sum)
 1976 | Number of Ways to Arrive at Destination | Medium | [Solution](leetcode/1976.%20Number%20of%20Ways%20to%20Arrive%20at%20Destination)
 1977 | Number of Ways to Separate Numbers | Hard | [Solution](leetcode/1977.%20Number%20of%20Ways%20to%20Separate%20Numbers)
+1979 | Find Greatest Common Divisor of Array | Easy | [Solution](leetcode/1979.%20Find%20Greatest%20Common%20Divisor%20of%20Array)
 
 # License
 
