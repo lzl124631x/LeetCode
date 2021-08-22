@@ -74,7 +74,7 @@ For case 1 and case 2, they will take `O(N)` time without optimization, resultin
 
 Let `SUM[i][j] = sum( dp[k][i-1] | max(0, 2*i-j) <= k < i )`. 
 
-We can see that for a specific `i`, when `j` increases, the left bound of `k`'s range decreases while right bound stays the same. So we optimize it using prefix sum.
+We can see that for a specific `i`, when `j` increases, the left bound of `k`'s range decreases while right bound stays the same. So we optimize it using suffix sum.
 
 ```
 SUM[i][j-1] =                  dp[2*i-j+1][i-1] + dp[2*i-j+2][i-1] + ... + dp[i-1][i-1]
