@@ -71,6 +71,26 @@ Assume we have a `vector<int> lis` which stands for the longest increasing subse
 
 For each `A[i]`, we find the first `lis[j] > A[i]` by binary searching in the **entire** `lis`, and set `lis[j] = A[i]`. The length of the LIS ending with `A[i]` is `j + 1`, i.e. `ans[i] = j + 1`.
 
+```cpp
+// OJ: https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class Solution {
+public:
+    vector<int> longestObstacleCourseAtEachPosition(vector<int>& A) {
+        vector<int> ans, lis;
+        for (int n : A) {
+            int i = upper_bound(begin(lis), end(lis), n) - begin(lis);
+            if (i == lis.size()) lis.push_back(n);
+            else lis[i] = n;
+            ans.push_back(i + 1);
+        }
+        return ans;
+    }
+};
+```
+
 We can use `len` to keep track of the length of `lis`, and reuse `A` to store the `lis` values.
 
 ```cpp
