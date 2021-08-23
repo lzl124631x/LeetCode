@@ -32,8 +32,11 @@
 </ul>
 
 
+**Companies**:  
+[Google](https://leetcode.com/company/google)
+
 **Related Topics**:  
-[Greedy](https://leetcode.com/tag/greedy/)
+[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Binary Search](https://leetcode.com/tag/binary-search/), [Greedy](https://leetcode.com/tag/greedy/)
 
 ## Solution 1. LCS to LIS
 
@@ -109,7 +112,6 @@ So overall it's `O(T + AlogA)`.
 // Author: github.com/lzl124631x
 // Time: O(T + AlogA)
 // Space: O(T + A)
-};
 class Solution {
 public:
     int minOperations(vector<int>& T, vector<int>& A) {
