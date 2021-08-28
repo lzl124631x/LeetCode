@@ -471,6 +471,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 519 | Random Flip Matrix | Medium | [Solution](leetcode/519.%20Random%20Flip%20Matrix)
 520 | Detect Capital | Easy | [Solution](leetcode/520.%20Detect%20Capital)
 521 | Longest Uncommon Subsequence I | Easy | [Solution](leetcode/521.%20Longest%20Uncommon%20Subsequence%20I)
+522 | Longest Uncommon Subsequence II | Medium | [Solution](leetcode/522.%20Longest%20Uncommon%20Subsequence%20II)
 523 | Continuous Subarray Sum | Medium | [Solution](leetcode/523.%20Continuous%20Subarray%20Sum)
 524 | Longest Word in Dictionary through Deleting |  | [Solution](leetcode/524.%20Longest%20Word%20in%20Dictionary%20through%20Deleting)
 525 | Contiguous Array | Medium | [Solution](leetcode/525.%20Contiguous%20Array)
