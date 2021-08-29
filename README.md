@@ -1510,6 +1510,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1980 | Find Unique Binary String | Medium | [Solution](leetcode/1980.%20Find%20Unique%20Binary%20String)
 1981 | Minimize the Difference Between Target and Chosen Elements | Medium | [Solution](leetcode/1981.%20Minimize%20the%20Difference%20Between%20Target%20and%20Chosen%20Elements)
 1982 | Find Array Given Subset Sums | Hard | [Solution](leetcode/1982.%20Find%20Array%20Given%20Subset%20Sums)
+1984 | Minimum Difference Between Highest and Lowest of K Scores | Easy | [Solution](leetcode/1984.%20Minimum%20Difference%20Between%20Highest%20and%20Lowest%20of%20K%20Scores)
 
 # License
 
