@@ -1512,6 +1512,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1982 | Find Array Given Subset Sums | Hard | [Solution](leetcode/1982.%20Find%20Array%20Given%20Subset%20Sums)
 1984 | Minimum Difference Between Highest and Lowest of K Scores | Easy | [Solution](leetcode/1984.%20Minimum%20Difference%20Between%20Highest%20and%20Lowest%20of%20K%20Scores)
 1985 | Find the Kth Largest Integer in the Array | Medium | [Solution](leetcode/1985.%20Find%20the%20Kth%20Largest%20Integer%20in%20the%20Array)
+1986 | Minimum Number of Work Sessions to Finish the Tasks | Medium | [Solution](leetcode/1986.%20Minimum%20Number%20of%20Work%20Sessions%20to%20Finish%20the%20Tasks)
 
 # License
 
