@@ -139,3 +139,44 @@ public:
     }
 };
 ```
+
+## Solution 3. Manacher
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-palindromic-substring/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int N = s.size();
+        string t = "^*";
+        for (char c : s) {
+            t += c;
+            t += '*';
+        }
+        t += '$'; // inflating the `s` ( example: "abc" becomes "^*a*b*c*$" )
+        int M = t.size();
+        
+        vector<int> r(M); // `r[i]` is the number of palindromes with `t[i]` as the center (aka. the radius of the longest palindrome centered at `t[i]`)
+        r[1] = 1;
+        int j = 1; // `j` is the index with the furthest reach `j + r[j]`
+        for (int i = 2; i <= 2 * N; ++i) {
+            int cur = j + r[j] > i ? min(r[2 * j - i], j + r[j] - i) : 1; // `t[2*j-i]` is the symmetry point to `t[i]`
+            while (t[i - cur] == t[i + cur]) ++cur; // expanding the current radius
+            if (i + cur > j + r[j]) j = i;
+            r[i] = cur;
+        }
+        
+        int len = 1, start = 0;
+        for (int i = 2; i <= 2 * N; ++i) {
+            if (r[i] - 1 > len) {
+                len = r[i] - 1;
+                start = (i - r[i]) / 2;
+            }
+        }
+        return s.substr(start, len);
+    }
+};
+```
