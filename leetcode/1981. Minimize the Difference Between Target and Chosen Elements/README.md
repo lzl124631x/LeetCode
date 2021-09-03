@@ -56,7 +56,7 @@ The absolute difference is 1.
 * [Closest Subsequence Sum (Hard)](https://leetcode.com/problems/closest-subsequence-sum/)
 * [Maximum Number of Points with Cost (Medium)](https://leetcode.com/problems/maximum-number-of-points-with-cost/)
 
-## Solution 1.
+## Solution 1. Bitmask DP
 
 Use a `bitset<4901> bs` to represent the sums we can get. We use 4901 because there are at most 70 rows and values are at most 70, hence the sum is at most 4900.
 
@@ -112,6 +112,33 @@ public:
         if (i >= minSum) ans = target - i;
         for (i = target; i <= maxSum && !bs[i]; ++i);
         if (i <= maxSum) ans = min(ans, i - target);
+        return ans;
+    }
+};
+```
+
+Shorter but less efficient because we don't do sorting for each row, and need to go through all the `4900` numbers.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimize-the-difference-between-target-and-chosen-elements/
+// Author: github.com/lzl124631x
+// Time: O(M^2 * KN)
+// Space: O(MK)
+class Solution {
+public:
+    int minimizeTheDifference(vector<vector<int>>& A, int target) {
+        bitset<4901> bs = 1;
+        int M = A.size(), N = A[0].size(), ans = INT_MAX;
+        for (int i = 0; i < M; ++i) {
+            bitset<4901> next;
+            for (int j = 0; j < N; ++j) {
+                next |= bs << A[i][j];
+            }
+            swap(next, bs);
+        }
+        for (int i = 1; i < 4901; ++i) {
+            if (bs[i]) ans = min(ans, abs(i - target));
+        }
         return ans;
     }
 };
