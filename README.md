@@ -1517,6 +1517,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1987 | Number of Unique Good Subsequences | Hard | [Solution](leetcode/1987.%20Number%20of%20Unique%20Good%20Subsequences)
 1991 | Find the Middle Index in Array | Easy | [Solution](leetcode/1991.%20Find%20the%20Middle%20Index%20in%20Array)
 1992 | Find All Groups of Farmland | Medium | [Solution](leetcode/1992.%20Find%20All%20Groups%20of%20Farmland)
+1993 | Operations on Tree | Medium | [Solution](leetcode/1993.%20Operations%20on%20Tree)
 
 # License
 
