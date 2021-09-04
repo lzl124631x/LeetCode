@@ -86,10 +86,10 @@ class LockingTree {
         if (locked[i]) return false;
         return upwardValid(parent[i]);
     }
-    bool downwardValid(int i, int start) {
-        if (i != start && locked[i]) return true;
+    bool downwardValid(int i) {
+        if (locked[i]) return true;
         for (int ch : child[i]) {
-            if (downwardValid(ch, start)) return true;
+            if (downwardValid(ch)) return true;
         }
         return false;
     }
@@ -122,7 +122,7 @@ public:
     }
     
     bool upgrade(int num, int user) {
-        if (!upwardValid(num) || !downwardValid(num, num)) return false;
+        if (!upwardValid(num) || !downwardValid(num)) return false;
         downwardUnlock(num);
         locked[num] = user;
         return true;
