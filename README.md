@@ -1495,6 +1495,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1954 | Minimum Garden Perimeter to Collect Enough Apples | Medium | [Solution](leetcode/1954.%20Minimum%20Garden%20Perimeter%20to%20Collect%20Enough%20Apples)
 1955 | Count Number of Special Subsequences | Hard | [Solution](leetcode/1955.%20Count%20Number%20of%20Special%20Subsequences)
 1959 | Minimum Total Space Wasted With K Resizing Operations | Medium | [Solution](leetcode/1959.%20Minimum%20Total%20Space%20Wasted%20With%20K%20Resizing%20Operations)
+1960 | Maximum Product of the Length of Two Palindromic Substrings | Hard | [Solution](leetcode/1960.%20Maximum%20Product%20of%20the%20Length%20of%20Two%20Palindromic%20Substrings)
 1961 | Check If String Is a Prefix of Array | Easy | [Solution](leetcode/1961.%20Check%20If%20String%20Is%20a%20Prefix%20of%20Array)
 1962 | Remove Stones to Minimize the Total | Medium | [Solution](leetcode/1962.%20Remove%20Stones%20to%20Minimize%20the%20Total)
 1963 | Minimum Number of Swaps to Make the String Balanced | Medium | [Solution](leetcode/1963.%20Minimum%20Number%20of%20Swaps%20to%20Make%20the%20String%20Balanced)
@@ -1513,6 +1514,8 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1984 | Minimum Difference Between Highest and Lowest of K Scores | Easy | [Solution](leetcode/1984.%20Minimum%20Difference%20Between%20Highest%20and%20Lowest%20of%20K%20Scores)
 1985 | Find the Kth Largest Integer in the Array | Medium | [Solution](leetcode/1985.%20Find%20the%20Kth%20Largest%20Integer%20in%20the%20Array)
 1986 | Minimum Number of Work Sessions to Finish the Tasks | Medium | [Solution](leetcode/1986.%20Minimum%20Number%20of%20Work%20Sessions%20to%20Finish%20the%20Tasks)
+1987 | Number of Unique Good Subsequences | Hard | [Solution](leetcode/1987.%20Number%20of%20Unique%20Good%20Subsequences)
+1991 | Find the Middle Index in Array | Easy | [Solution](leetcode/1991.%20Find%20the%20Middle%20Index%20in%20Array)
 
 # License
 
