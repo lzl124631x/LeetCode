@@ -1516,6 +1516,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1986 | Minimum Number of Work Sessions to Finish the Tasks | Medium | [Solution](leetcode/1986.%20Minimum%20Number%20of%20Work%20Sessions%20to%20Finish%20the%20Tasks)
 1987 | Number of Unique Good Subsequences | Hard | [Solution](leetcode/1987.%20Number%20of%20Unique%20Good%20Subsequences)
 1991 | Find the Middle Index in Array | Easy | [Solution](leetcode/1991.%20Find%20the%20Middle%20Index%20in%20Array)
+1992 | Find All Groups of Farmland | Medium | [Solution](leetcode/1992.%20Find%20All%20Groups%20of%20Farmland)
 
 # License
 
