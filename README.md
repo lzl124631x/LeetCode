@@ -713,6 +713,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 831 | Masking Personal Information | Medium | [Solution](leetcode/831.%20Masking%20Personal%20Information)
 832 | Flipping an Image | Easy | [Solution](leetcode/832.%20Flipping%20an%20Image)
 833 | Find And Replace in String | Medium | [Solution](leetcode/833.%20Find%20And%20Replace%20in%20String)
+834 | Sum of Distances in Tree | Hard | [Solution](leetcode/834.%20Sum%20of%20Distances%20in%20Tree)
 835 | Image Overlap | Medium | [Solution](leetcode/835.%20Image%20Overlap)
 836 | Rectangle Overlap | Easy | [Solution](leetcode/836.%20Rectangle%20Overlap)
 837 | New 21 Game | Medium | [Solution](leetcode/837.%20New%2021%20Game)
