@@ -1,31 +1,43 @@
 # [899. Orderly Queue (Hard)](https://leetcode.com/problems/orderly-queue/)
 
-A string `S` of lowercase letters is given.  Then, we may make any number of _moves_.
+<p>You are given a string <code>s</code> and an integer <code>k</code>. You can choose one of the first <code>k</code> letters of <code>s</code> and append it at the end of the string..</p>
 
-In each move, we choose one of the first `K` letters (starting from the left), remove it, and place it at the end of the string.
+<p>Return <em>the lexicographically smallest string you could have after applying the mentioned step any number of moves</em>.</p>
 
-Return the lexicographically smallest string we could have after any number of moves.
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-**Example 1:**
+<pre><strong>Input:</strong> s = "cba", k = 1
+<strong>Output:</strong> "acb"
+<strong>Explanation:</strong> 
+In the first move, we move the 1<sup>st</sup> character 'c' to the end, obtaining the string "bac".
+In the second move, we move the 1<sup>st</sup> character 'b' to the end, obtaining the final result "acb".
+</pre>
 
-**Input:** S = "cba", K = 1  
-**Output:** "acb"  
-**Explanation:**   
-In the first move, we move the 1st character ("c") to the end, obtaining the string "bac".  
-In the second move, we move the 1st character ("b") to the end, obtaining the final result "acb".
+<p><strong>Example 2:</strong></p>
 
-**Example 2:**
+<pre><strong>Input:</strong> s = "baaca", k = 3
+<strong>Output:</strong> "aaabc"
+<strong>Explanation:</strong> 
+In the first move, we move the 1<sup>st</sup> character 'b' to the end, obtaining the string "aacab".
+In the second move, we move the 3<sup>rd</sup> character 'c' to the end, obtaining the final result "aaabc".
+</pre>
 
-**Input:** S = "baaca", K = 3  
-**Output:** "aaabc"  
-**Explanation:**   
-In the first move, we move the 1st character ("b") to the end, obtaining the string "aacab".  
-In the second move, we move the 3rd character ("c") to the end, obtaining the final result "aaabc".
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-**Note:**
+<ul>
+	<li><code>1 &lt;= k &lt;= s.length &lt;= 1000</code></li>
+	<li><code>s</code> consist of lowercase English letters.</li>
+</ul>
 
-1.  `1 <= K <= S.length <= 1000`
-2.  `S` consists of lowercase letters only.
+
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon)
+
+**Related Topics**:  
+[Math](https://leetcode.com/tag/math/), [String](https://leetcode.com/tag/string/), [Sorting](https://leetcode.com/tag/sorting/)
+
 
 ## Solution 1.
 
@@ -46,7 +58,7 @@ public:
             return S;
         }
         string ans = S;
-        for (int i = 0; i < S.size(); ++i) {
+        for (int i = 1; i < S.size(); ++i) {
             rotate(S.begin(), S.begin() + 1, S.end());
             if (S < ans) ans = S;
         }
