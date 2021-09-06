@@ -59,7 +59,7 @@ Let `dp[i]` be the number of days needed to jump from room `0` to room `i`. The 
 
 For `dp[i]`, on top of the days needed for reaching room `i-1`, i.e. `dp[i-1]`, we need these extra days to go from room `i-1` to room `i`.
 
-* If `A[i-1] == i`, we just need 2 days
+* If `A[i-1] == i-1`, we just need 2 days
 * Otherwise, we need to jump to room `A[i-1]` first, taking 1 day. Then spent `dp[i-1] - dp[A[i-1]]` days to go from room `A[i-1]` to room `i-1` again. Lastly, take 1 day to go from room `i-1` to room `i`. So in total, we need extra `2 + dp[i-1] - dp[A[i-1]]` days.
 
 After some simplification, we get the following:
