@@ -1278,6 +1278,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1625 | Lexicographically Smallest String After Applying Operations | Medium | [Solution](leetcode/1625.%20Lexicographically%20Smallest%20String%20After%20Applying%20Operations)
 1626 | Best Team With No Conflicts | Medium | [Solution](leetcode/1626.%20Best%20Team%20With%20No%20Conflicts)
 1627 | Graph Connectivity With Threshold | Hard | [Solution](leetcode/1627.%20Graph%20Connectivity%20With%20Threshold)
+1629 | Slowest Key | Easy | [Solution](leetcode/1629.%20Slowest%20Key)
 1631 | Path With Minimum Effort | Medium | [Solution](leetcode/1631.%20Path%20With%20Minimum%20Effort)
 1632 | Rank Transform of a Matrix | Hard | [Solution](leetcode/1632.%20Rank%20Transform%20of%20a%20Matrix)
 1636 | Sort Array by Increasing Frequency | Easy | [Solution](leetcode/1636.%20Sort%20Array%20by%20Increasing%20Frequency)
