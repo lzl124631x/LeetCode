@@ -1,10 +1,10 @@
 # [1494. Parallel Courses II (Hard)](https://leetcode.com/problems/parallel-courses-ii/)
 
-<p>Given the integer <code>n</code> representing the number of courses at some university labeled from <code>1</code> to <code>n</code>, and the array <code>dependencies</code> where <code>dependencies[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> &nbsp;represents a prerequisite relationship, that is, the course <code>x<sub>i</sub></code>&nbsp;must be taken before the course <code>y<sub>i</sub></code>. &nbsp;Also, you are given the&nbsp;integer <code>k</code>.</p>
+<p>You are given an integer <code>n</code>, which indicates that there are <code>n</code> courses labeled from <code>1</code> to <code>n</code>. You are also given an array <code>relations</code> where <code>relations[i] = [prevCourse<sub>i</sub>, nextCourse<sub>i</sub>]</code>, representing a prerequisite relationship between course <code>prevCourse<sub>i</sub></code> and course <code>nextCourse<sub>i</sub></code>: course <code>prevCourse<sub>i</sub></code> has to be taken before course <code>nextCourse<sub>i</sub></code>. Also, you are given the integer <code>k</code>.</p>
 
-<p>In one semester you can take <strong>at most</strong> <code>k</code> courses as long as you have taken all the prerequisites for the courses you are taking.</p>
+<p>In one semester, you can take <strong>at most</strong> <code>k</code> courses as long as you have taken all the prerequisites in the <strong>previous</strong> semester for the courses you are taking.</p>
 
-<p><em>Return the minimum number of semesters to take all courses</em>.&nbsp;It is guaranteed that you can take all courses in some way.</p>
+<p>Return <em>the <strong>minimum</strong> number of semesters needed to take all courses</em>. The testcases will be generated such that it is possible to take every course.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -13,7 +13,10 @@
 
 <pre><strong>Input:</strong> n = 4, dependencies = [[2,1],[3,1],[1,4]], k = 2
 <strong>Output:</strong> 3 
-<strong>Explanation:</strong> The figure above represents the given graph. In this case we can take courses 2 and 3 in the first semester, then take course 1 in the second semester and finally take course 4 in the third semester.
+<strong>Explanation:</strong> The figure above represents the given graph.
+In the first semester, you can take courses 2 and 3.
+In the second semester, you can take course 1.
+In the third semester, you can take course 4.
 </pre>
 
 <p><strong>Example 2:</strong></p>
@@ -22,7 +25,11 @@
 
 <pre><strong>Input:</strong> n = 5, dependencies = [[2,1],[3,1],[4,1],[1,5]], k = 2
 <strong>Output:</strong> 4 
-<strong>Explanation:</strong> The figure above represents the given graph. In this case one optimal way to take all courses is: take courses 2 and 3 in the first semester and take course 4 in the second semester, then take course 1 in the third semester and finally take course 5 in the fourth semester.
+<strong>Explanation:</strong> The figure above represents the given graph.
+In the first semester, you can take courses 2 and 3 only since you cannot take more than two per semester.
+In the second semester, you can take course 4.
+In the third semester, you can take course 1.
+In the fourth semester, you can take course 5.
 </pre>
 
 <p><strong>Example 3:</strong></p>
@@ -37,16 +44,23 @@
 <ul>
 	<li><code>1 &lt;= n &lt;= 15</code></li>
 	<li><code>1 &lt;= k &lt;= n</code></li>
-	<li><code>0 &lt;=&nbsp;dependencies.length &lt;= n * (n-1) / 2</code></li>
-	<li><code>dependencies[i].length == 2</code></li>
-	<li><code>1 &lt;= x<sub>i</sub>, y<sub>i</sub>&nbsp;&lt;= n</code></li>
-	<li><code>x<sub>i</sub> != y<sub>i</sub></code></li>
-	<li>All prerequisite relationships are distinct, that is, <code>dependencies[i] != dependencies[j]</code>.</li>
+	<li><code>0 &lt;= relations.length &lt;= n * (n-1) / 2</code></li>
+	<li><code>relations[i].length == 2</code></li>
+	<li><code>1 &lt;= prevCourse<sub>i</sub>, nextCourse<sub>i</sub> &lt;= n</code></li>
+	<li><code>prevCourse<sub>i</sub> != nextCourse<sub>i</sub></code></li>
+	<li>All the pairs <code>[prevCourse<sub>i</sub>, nextCourse<sub>i</sub>]</code> are <strong>unique</strong>.</li>
 	<li>The given graph is a directed acyclic graph.</li>
 </ul>
 
+
+**Companies**:  
+[Microsoft](https://leetcode.com/company/microsoft), [Google](https://leetcode.com/company/google)
+
 **Related Topics**:  
-[Graph](https://leetcode.com/tag/graph/)
+[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/), [Graph](https://leetcode.com/tag/graph/), [Bitmask](https://leetcode.com/tag/bitmask/)
+
+**Similar Questions**:
+* [Parallel Courses (Medium)](https://leetcode.com/problems/parallel-courses/)
 
 ## WA. Topological Sort + Heap
 
@@ -170,17 +184,49 @@ public:
         vector<int> pre(N), dp(1 << N, N);
         for (auto &e : E) pre[e[1] - 1] |= 1 << (e[0] - 1);
         dp[0] = 0;
-        for (int i = 0; i < (1 << N); ++i) {
+        for (int m = 0; m < (1 << N); ++m) {
             int next = 0;
-            for (int j = 0; j < N; ++j) {
-                if ((i & pre[j]) == pre[j]) next |= 1 << j; // If the current course set `i` covers all the prerequisite classes of `j`-th class, we can take `j`-th class.
+            for (int i = 0; i < N; ++i) {
+                if ((m & pre[i]) == pre[i]) next |= 1 << i; // If the current course set `m` covers all the prerequisite classes of `i`-th class, we can take `i`-th class.
             }
-            next &= ~i; // remove the classes that are already covered by `i`.
+            next &= ~m; // remove the classes that are already covered by `m`.
             for (int s = next; s; s = (s - 1) & next) { // enumerate all the non-empty subset of `next`.
-                if (__builtin_popcount(s) <= K) dp[i | s] = min(dp[i | s], dp[i] + 1);
+                if (__builtin_popcount(s) <= K) dp[m | s] = min(dp[m | s], dp[m] + 1);
             }
         }
         return dp.back();
+    }
+};
+```
+
+The code above uses push mode -- using the current `dp` value to update future `dp` values.
+
+The code below uses pull mode -- using computed `dp` values to update the current `dp` value.
+
+```cpp
+// OJ: https://leetcode.com/problems/parallel-courses-ii/
+// Author: github.com/lzl124631x
+// Time: O(3^N)
+// Space: O(2^N)
+class Solution {
+public:
+    int minNumberOfSemesters(int n, vector<vector<int>>& E, int k) {
+        vector<int> prev(n), deps(1 << n), dp(1 << n, n);
+        dp[0] = 0;
+        for (auto &e : E) prev[e[1] - 1] |= 1 << (e[0] - 1);
+        for (int mask = 1; mask < (1 << n); ++mask) {
+            int lb = mask & -mask;
+            deps[mask] = deps[mask - lb] | prev[__builtin_ctz(lb)];
+        }
+        for (int mask = 1; mask < (1 << n); ++mask) {
+            for (int sub = mask; sub; sub = (sub - 1) & mask) {
+                if (__builtin_popcount(sub) > k) continue;
+                int pre = mask - sub, dep = deps[sub];
+                if ((pre & dep) != dep) continue;
+                dp[mask] = min(dp[mask], dp[pre] + 1);
+            }
+        }
+        return dp[(1 << n) - 1];
     }
 };
 ```
