@@ -275,6 +275,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 290 | Word Pattern | Easy | [Solution](leetcode/290.%20Word%20Pattern)
 293 | Flip Game | Easy | [Solution](leetcode/293.%20Flip%20Game)
 295 | Find Median from Data Stream | Hard | [Solution](leetcode/295.%20Find%20Median%20from%20Data%20Stream)
+296 | Best Meeting Point | Hard | [Solution](leetcode/296.%20Best%20Meeting%20Point)
 297 | Serialize and Deserialize Binary Tree | Hard | [Solution](leetcode/297.%20Serialize%20and%20Deserialize%20Binary%20Tree)
 298 | Binary Tree Longest Consecutive Sequence | Medium | [Solution](leetcode/298.%20Binary%20Tree%20Longest%20Consecutive%20Sequence)
 299 | Bulls and Cows | Medium | [Solution](leetcode/299.%20Bulls%20and%20Cows)
