@@ -47,18 +47,58 @@
 // Space: O(N)
 // Ref: https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-substrings/discuss/1389958/Manacher-and-Queue
 class Solution {
+public:
+    long long maxProduct(string s) {
+        long long ans = 0, N = s.size();
+        vector<int> r(N), right(N);
+        for (int i = 0, L = 0, R = -1; i < N; ++i) {
+            int k = i > R ? 1 : min(r[L + R - i], R - i + 1);
+            while (0 <= i - k && i + k < N && s[i - k] == s[i + k]) k++;
+            r[i] = k--;
+            if (i + k > R) {
+                L = i - k;
+                R = i + k;
+            }
+        }
+        queue<array<int, 2>> q, q1; // index, radius
+        // right[i] is the length of the longest palinedome in [i, n)
+        for (int i = N - 1; i >= 0; --i) {
+            while (q.size() && q.front()[0] - q.front()[1] >= i) q.pop(); // if the queue front's range can't cover `i`, pop it.
+            q.push({i, r[i]});
+            right[i] = 1 + (q.front()[0] - i) * 2; // now queue front is the rightmost range that can cover `i`. It must be the center of the longest palindrom in `[i, n)`.
+        }
+        long long left = 0;
+        // left is the length of the longest palindrome in [0, i].
+        for (int i = 0; i < N - 1; ++i) {
+            while (q1.size() && q1.front()[0] + q1.front()[1] <= i) q1.pop();
+            q1.push({i, r[i]});
+            left = max(left, 1LL + (i - q1.front()[0]) * 2);
+            ans = max(ans, left * right[i + 1]);
+        }
+        return ans;
+    }
+};
+```
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-substrings/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-substrings/discuss/1389958/Manacher-and-Queue
+class Solution {
     vector<int> manachers(string s, int n) {
-        vector<int> m(n), l2r(n, 1);
-        for (int i = 0, l = 0, r = -1; i < n; ++i) {
-            int k = (i > r) ? 1 : min(m[l + r - i], r - i + 1);
+        vector<int> r(n), l2r(n, 1);
+        for (int i = 0, L = 0, R = -1; i < n; ++i) {
+            int k = (i > R) ? 1 : min(r[L + R - i], R - i + 1);
             while (0 <= i - k && i + k < n && s[i - k] == s[i + k]) {
                 l2r[i + k] = 2 * k + 1;
                 k++;
             }
-            m[i] = k--;
-            if (i + k > r) {
-                l = i - k;
-                r = i + k;
+            r[i] = k--;
+            if (i + k > R) {
+                L = i - k;
+                R = i + k;
             }
         }
         for (int i = 1; i < n; i++) l2r[i] = max(l2r[i], l2r[i - 1]);
