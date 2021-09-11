@@ -34,7 +34,7 @@
 **Related Topics**:  
 [String](https://leetcode.com/tag/string/)
 
-## Solution 1.
+## Solution 1. Horizontal Scanning
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-common-prefix/
@@ -49,6 +49,27 @@ public:
             int j = 0, end = min(len, (int)A[i].size());
             while (j < end && A[0][j] == A[i][j]) ++j;
             len = j;
+        }
+        return A[0].substr(0, len);
+    }
+};
+```
+
+## Solution 2. Vertical Scanning
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-common-prefix/
+// Author: github.com/lzl124631x
+// Time: O(NW)
+// Space: O(1)
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& A) {
+        int len = 0, N = A.size();
+        for (; len <= A[0].size(); ++len) {
+            int i = 1;
+            for (; i < N && A[i].size() >= len && A[i][len] == A[0][len]; ++i);
+            if (i < N) break;
         }
         return A[0].substr(0, len);
     }
