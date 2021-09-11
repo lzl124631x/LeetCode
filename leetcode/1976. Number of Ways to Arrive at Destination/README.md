@@ -47,6 +47,15 @@ The four ways to get there in 7 minutes are:
 
 ## Solution 1. Dijkstra
 
+**Intuition**: Since we are looking for the shortest path in a weighted graph, we can use Dijkstra.
+
+**Algorithm**: We just need to add one more array `cnt` such that `cnt[i]` is the number of ways to go from node `0` to node `i` with the shortest distance.
+
+If we find a new path from `u` to `v` with a total cost `c` that is:
+* `< dist[v]`, we do `dist[v] = c`, `cnt[v] = cnt[u]`, and push `(c, v)` into the heap.
+* `== dist[v]`, we do `cnt[v] += cnt[u]`. We don't need to push `(c, v)` into the heap because it must be pushed already.
+* `> dist[v]`, we can ignore this path.
+
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/
 // Author: github.com/lzl124631x
@@ -55,33 +64,33 @@ The four ways to get there in 7 minutes are:
 class Solution {
     typedef pair<long, long> ipair;
 public:
-    int countPaths(int n, vector<vector<int>>& A) {
-        vector<vector<pair<long, long>>> G(n);
-        long mod = 1e9 + 7;
-        for (auto &e : A) {
-            long u = e[0], v = e[1], t = e[2];
+    int countPaths(int n, vector<vector<int>>& E) {
+        vector<vector<pair<int, int>>> G(n);
+        for (auto &e : E) {
+            int u = e[0], v = e[1], t = e[2];
             G[u].emplace_back(v, t);
             G[v].emplace_back(u, t);
         }
-        priority_queue<ipair, vector<ipair>, greater<ipair>> pq;
+        long mod = 1e9 + 7;
         vector<long> dist(n, LONG_MAX), cnt(n);
-        dist[n-1] = 0;
-        cnt[n-1] = 1;
-        pq.emplace(0, n - 1);
+        priority_queue<ipair, vector<ipair>, greater<>> pq; // time, index
+        dist[0] = 0;
+        cnt[0] = 1;
+        pq.emplace(0, 0);
         while (pq.size()) {
             auto [cost, u] = pq.top();
             pq.pop();
             if (cost > dist[u]) continue;
-            for (auto &[v, t] : G[u]) {
-                long c = dist[u] + t;
-                if (dist[v] > c) {
+            for (auto &[v, time] : G[u]) {
+                long c = cost + time;
+                if (c < dist[v]) {
                     dist[v] = c;
                     cnt[v] = cnt[u];
-                    pq.emplace(dist[v], v);
-                } else if (dist[v] == c) cnt[v] = (cnt[v] + cnt[u]) % mod;
+                    pq.emplace(c, v);
+                } else if (c == dist[v]) cnt[v] = (cnt[v] + cnt[u]) % mod;
             }
         }
-        return cnt[0];
+        return cnt[n - 1];
     }
 };
 ```
