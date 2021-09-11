@@ -49,36 +49,35 @@
 class Solution {
 public:
     long long maxProduct(string s) {
-        long long ans = 0, N = s.size();
-        vector<int> r(N), right(N);
-        for (int i = 0, L = 0, R = -1; i < N; ++i) {
-            int k = i > R ? 1 : min(r[L + R - i], R - i + 1);
-            while (0 <= i - k && i + k < N && s[i - k] == s[i + k]) k++;
-            r[i] = k--;
-            if (i + k > R) {
-                L = i - k;
-                R = i + k;
-            }
+        int N = s.size(), j = 0;
+        vector<int> r(N, 1);
+        for (int i = 1; i < N; ++i) {
+            int cur = j + r[j] > i ? min(r[2 * j - i], j + r[j] - i) : 1;
+            while (i - cur >= 0 && i + cur < N && s[i - cur] == s[i + cur]) ++cur;
+            if (i + cur > j + r[j]) j = i;
+            r[i] = cur;
         }
-        queue<array<int, 2>> q, q1; // index, radius
-        // right[i] is the length of the longest palinedome in [i, n)
+        vector<int> right(N, 1); // right[i] is the length of the longest palinedome in [i, n)
+        queue<array<int, 2>> q, q1; // index, range
         for (int i = N - 1; i >= 0; --i) {
             while (q.size() && q.front()[0] - q.front()[1] >= i) q.pop(); // if the queue front's range can't cover `i`, pop it.
             q.push({i, r[i]});
             right[i] = 1 + (q.front()[0] - i) * 2; // now queue front is the rightmost range that can cover `i`. It must be the center of the longest palindrom in `[i, n)`.
         }
-        long long left = 0;
-        // left is the length of the longest palindrome in [0, i].
+        int left = 0; // left is the length of the longest palindrome in [0, i]. 
+        long long ans = 1;
         for (int i = 0; i < N - 1; ++i) {
             while (q1.size() && q1.front()[0] + q1.front()[1] <= i) q1.pop();
             q1.push({i, r[i]});
-            left = max(left, 1LL + (i - q1.front()[0]) * 2);
-            ans = max(ans, left * right[i + 1]);
+            left = max(left, 1 + (i - q1.front()[0]) * 2);
+            ans = max(ans, (long long)left * right[i + 1]);
         }
         return ans;
     }
 };
 ```
+
+Or
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-substrings/
@@ -87,30 +86,27 @@ public:
 // Space: O(N)
 // Ref: https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-substrings/discuss/1389958/Manacher-and-Queue
 class Solution {
-    vector<int> manachers(string s, int n) {
-        vector<int> r(n), l2r(n, 1);
-        for (int i = 0, L = 0, R = -1; i < n; ++i) {
-            int k = (i > R) ? 1 : min(r[L + R - i], R - i + 1);
-            while (0 <= i - k && i + k < n && s[i - k] == s[i + k]) {
-                l2r[i + k] = 2 * k + 1;
-                k++;
+    vector<int> manacher(string s, int N) {
+        vector<int> r(N, 1), mx(N, 1);
+        int j = 0;
+        for (int i = 1; i < N; ++i) {
+            int cur = j + r[j] > i ? min(r[2 * j - i], j + r[j] - i) : 1;
+            while (i - cur >= 0 && i + cur < N && s[i + cur] == s[i - cur]) {
+                mx[i + cur] = 2 * cur + 1; // now `mx[i]` is the length of the longest palindrome ending at `s[i]`.
+                ++cur;
             }
-            r[i] = k--;
-            if (i + k > R) {
-                L = i - k;
-                R = i + k;
-            }
+            if (i + cur > j + r[j]) j = i;
+            r[i] = cur;
         }
-        for (int i = 1; i < n; i++) l2r[i] = max(l2r[i], l2r[i - 1]);
-        return l2r;
+        for (int i = 1; i < N; ++i) mx[i] = max(mx[i], mx[i - 1]); // now `mx[i]` is the length of the longest palindrome in `s[0..i]`.
+        return mx;
     }
 public:
     long long maxProduct(string s) {
-        long long ans = 1, n = s.size();
-        auto l2r = manachers(s, n);
-        auto r2l = manachers(string(rbegin(s), rend(s)), n);
-        for (int i = 0, j = n - 2; i < n - 1; ++i, --j) {
-            long long tmp = ans;
+        long long ans = 1, N = s.size();
+        auto l2r = manacher(s, N);
+        auto r2l = manacher(string(rbegin(s), rend(s)), N);
+        for (int i = 0, j = N - 2; i < N - 1; ++i, --j) {
             ans = max(ans, (long long)l2r[i] * r2l[j]);
         }
         return ans;
