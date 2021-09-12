@@ -1528,6 +1528,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1998 | GCD Sort of an Array | Hard | [Solution](leetcode/1998.%20GCD%20Sort%20of%20an%20Array)
 2000 | Reverse Prefix of Word | Easy | [Solution](leetcode/2000.%20Reverse%20Prefix%20of%20Word)
 2001 | Number of Pairs of Interchangeable Rectangles | Medium | [Solution](leetcode/2001.%20Number%20of%20Pairs%20of%20Interchangeable%20Rectangles)
+2002 | Maximum Product of the Length of Two Palindromic Subsequences | Medium | [Solution](leetcode/2002.%20Maximum%20Product%20of%20the%20Length%20of%20Two%20Palindromic%20Subsequences)
 
 # License
 
