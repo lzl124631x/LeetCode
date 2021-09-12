@@ -47,9 +47,9 @@ The product of their lengths is: 5 * 5 = 25.
 
 ## Solution 1. Bitmask DP
 
-Let `dp[mask]` be the length of the longest palindromic subsequence within the subsequence represented by `mask`.
+Let `dp[mask]` be the length of the longest palindromic subsequence within a subsequence represented by `mask`.
 
-The answer is `max( dp[m] * dp[(1 << N) - 1 - m] | 1 <= m < 1 << N )`. (`(1 << N) - 1 - m)` is the complement subset of `m`.
+The answer is `max( dp[m] * dp[(1 << N) - 1 - m] | 1 <= m < 1 << N )`. (`(1 << N) - 1 - m)` is the complement subset of `m`).
 
 For `dp[m]`, we can brute-forcely enumerate each of its subset, and compute the maximum length of its palindromic subsets.
 
@@ -116,7 +116,7 @@ for (int m = 1; m < 1 << N; ++m) {
 Using the same DP idea, we can reduce the time complexity for filling the `dp` array from `O(3^N)` to `O(2^N)`, and we don't even need the `pal` array.
 
 ```
-// if `m` is only a single bit 1
+// if `m` has only a single bit 1
 dp[m] = 1 
 
 // otherwise
