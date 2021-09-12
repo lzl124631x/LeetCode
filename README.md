@@ -1526,6 +1526,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1996 | The Number of Weak Characters in the Game | Medium | [Solution](leetcode/1996.%20The%20Number%20of%20Weak%20Characters%20in%20the%20Game)
 1997 | First Day Where You Have Been in All the Rooms | Medium | [Solution](leetcode/1997.%20First%20Day%20Where%20You%20Have%20Been%20in%20All%20the%20Rooms)
 1998 | GCD Sort of an Array | Hard | [Solution](leetcode/1998.%20GCD%20Sort%20of%20an%20Array)
+2000 | Reverse Prefix of Word | Easy | [Solution](leetcode/2000.%20Reverse%20Prefix%20of%20Word)
 
 # License
 
