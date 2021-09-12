@@ -1527,6 +1527,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1997 | First Day Where You Have Been in All the Rooms | Medium | [Solution](leetcode/1997.%20First%20Day%20Where%20You%20Have%20Been%20in%20All%20the%20Rooms)
 1998 | GCD Sort of an Array | Hard | [Solution](leetcode/1998.%20GCD%20Sort%20of%20an%20Array)
 2000 | Reverse Prefix of Word | Easy | [Solution](leetcode/2000.%20Reverse%20Prefix%20of%20Word)
+2001 | Number of Pairs of Interchangeable Rectangles | Medium | [Solution](leetcode/2001.%20Number%20of%20Pairs%20of%20Interchangeable%20Rectangles)
 
 # License
 
