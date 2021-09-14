@@ -49,77 +49,75 @@ We can sort [10,5,9,3,15] by performing the following operations:
 
 ## Solution 1. Factorization + Sort within Union
 
+Assume `A` has `N` elements and the maximum number is `M`.
+
+1. Factorize each `A[i]` and use UnionFind to connect numbers that share the same factors. 
+2. For the numbers in the same union, sort them inplace.
+3. Check if the result array after sorting is non-decreasing.
+
+* Step 1 takes `O(N * sqrt(M))` time and `O(N * sqrt(M))` space.
+* Step 2 takes `O(NlogN)` time and `O(N)` space
+* Step 3 takes `O(N)` time and `O(1)` space.
+
+So, overall this solution takes `O(N * sqrt(M) + NlogN)` time and `O(N * sqrt(M))` space.
+
+
 ```cpp
 // OJ: https://leetcode.com/problems/gcd-sort-of-an-array/
 // Author: github.com/lzl124631x
-// Time: O(NlogN)
-// Space: O(N)
+// Time: O(N * sqrt(M) + NlogN)
+// Space: O(N * sqrt(M))
 class UnionFind {
     vector<int> id;
 public:
-    UnionFind(int n) : id(n) {
+    UnionFind(int N) : id(N) {
         iota(begin(id), end(id), 0);
-    }
-    void connect(int a, int b) {
-        int x = find(a), y = find(b);
-        if (x == y) return;
-        id[x] = y;
     }
     int find(int a) {
         return id[a] == a ? a : (id[a] = find(id[a]));
+    }
+    void connect(int a, int b) {
+        id[find(a)] = find(b);
     }
 };
 class Solution {
     vector<int> factors(int n) {
         vector<int> ans;
-        for (int i = 2; i * i <= n; ++i) {
-            if (n % i) continue;
-            ans.push_back(i);
-            while (n % i == 0) n /= i;
+        for (int d = 2; d * d <= n; ++d) {
+            if (n % d) continue;
+            ans.push_back(d);
+            while (n % d == 0) n /= d; 
         }
-        if (n > 1 || ans.empty()) ans.push_back(n);
+        if (n > 1) ans.push_back(n);
         return ans;
     }
 public:
     bool gcdSort(vector<int>& A) {
-        unordered_map<int, vector<int>> m;
+        unordered_map<int, int> m; // prime factor -> representative index
         int N = A.size();
-        for (int i = 0; i < N; ++i) {
-            auto fs = factors(A[i]);
-            for (int f : fs) m[f].push_back(i);
-        }
         UnionFind uf(N);
-        for (auto &[f, nums] : m) {
-            for (int i = 1; i < nums.size(); ++i) {
-                uf.connect(nums[0], nums[i]);
+        for (int i = 0; i < N; ++i) {
+            for (int f : factors(A[i])) {
+                if (m.count(f)) uf.connect(m[f], i);
+                else m[f] = i;
             }
         }
-        unordered_map<int, vector<int>> us;
+        unordered_map<int, vector<int>> groups;
         for (int i = 0; i < N; ++i) {
-            us[uf.find(i)].push_back(i);
+            groups[uf.find(i)].push_back(i);
         }
-        vector<int> ans(N);
-        for (auto &[f, ns] : us) {
-            auto cpy = ns;
-            sort(begin(ns), end(ns), [&](int a, int b){ return A[a] < A[b]; });
-            for (int i = 0; i < ns.size(); ++i) {
-                ans[cpy[i]] = A[ns[i]];
+        vector<int> sorted(N);
+        for (auto &[_, before] : groups) {
+            auto after = before;
+            sort(begin(after), end(after), [&](int a, int b) { return A[a] < A[b]; });
+            for (int i = 0; i < before.size(); ++i) {
+                sorted[before[i]] = A[after[i]];
             }
         }
         for (int i = 1; i < N; ++i) {
-            if (ans[i] < ans[i - 1]) return false;
+            if (sorted[i] < sorted[i - 1]) return false;
         }
         return true;
     }
 };
 ```
-
-## TODO
-
-Simplify code.
-
-Solve Similar questions:
-
-LC 952 https://leetcode.com/problems/largest-component-size-by-common-factor/ (UnionFind + Prime Factorization)
-LC 1627 https://leetcode.com/problems/graph-connectivity-with-threshold/ (UnionFind + Factorization)
-LC 1735 https://leetcode.com/problems/count-ways-to-make-array-with-product/ (DP + Prime Factorization)
