@@ -62,6 +62,14 @@
 
 ## Solution 1. DP
 
+Let `inc[i]` and `dec[i]` be the length of the longest turbulent subarray ending at `A[i]` in `A[0..i]`.
+
+`inc[0] = dec[0] = 1`. The answer is the maximum value among all `inc[i]` and `dec[i]`.
+
+* If `A[i] == A[i - 1]`, we set `inc[i] = dec[i] = 1`.
+* If `A[i] > A[i - 1]`, `inc[i] = dec[i-1] + 1` and `dec[i] = 1`.
+* If `A[i] < A[i - 1]`, `dec[i] = inc[i-1] + 1` and `inc[i] = 1`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/longest-turbulent-subarray/
 // Author: github.com/lzl124631x
@@ -81,6 +89,35 @@ public:
                 inc = 1;
             }
             ans = max({ ans, inc, dec });
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2. DP
+
+Turn the array to sequence of `1`, `-1`, or `0`. If `A[i] > A[i-1]`, `B[i-1] = 1`. If `A[i] < A[i-1]`, `B[i-1] = -1`. If `A[i] == A[i-1]`, `B[i-1] = 0`.
+
+Now, we need to find the longest subarray with alternating `-1` and `1` values.
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-turbulent-subarray/solution/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int maxTurbulenceSize(vector<int>& A) {
+        int sign = 0, N = A.size(), len = 1, ans = 1;
+        for (int i = 1; i < N; ++i) {
+            int newSign = A[i] == A[i - 1] ? 0 : (A[i] > A[i - 1] ? 1 : -1);
+            if (newSign) {
+                if (i == 1 || newSign * sign == -1) ++len;
+                else len = 2;
+                ans = max(ans, len);
+            } else len = 1;
+            sign = newSign;
         }
         return ans;
     }
