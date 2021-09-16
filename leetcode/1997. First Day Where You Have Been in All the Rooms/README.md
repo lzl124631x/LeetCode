@@ -89,3 +89,7 @@ public:
 };
 ```
 
+
+## Discuss
+
+https://leetcode.com/problems/first-day-where-you-have-been-in-all-the-rooms/discuss/1445156/C%2B%2B-DP
