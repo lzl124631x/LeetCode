@@ -152,3 +152,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/discuss/1458788/C%2B%2B-DP-from-O(3N)-to-O(2N)
