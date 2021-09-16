@@ -1,51 +1,58 @@
 # [978. Longest Turbulent Subarray (Medium)](https://leetcode.com/problems/longest-turbulent-subarray/)
 
-<p>A subarray <code>A[i], A[i+1], ..., A[j]</code>&nbsp;of <code>A</code> is said to be <em>turbulent</em> if and only if:</p>
+<p>Given an integer array <code>arr</code>, return <em>the length of a maximum size turbulent subarray of</em> <code>arr</code>.</p>
+
+<p>A subarray is <strong>turbulent</strong> if the comparison sign flips between each adjacent pair of elements in the subarray.</p>
+
+<p>More formally, a subarray <code>[arr[i], arr[i + 1], ..., arr[j]]</code> of <code>arr</code> is said to be turbulent if and only if:</p>
 
 <ul>
-	<li>For <code>i &lt;= k &lt; j</code>, <code>A[k] &gt; A[k+1]</code> when <code>k</code> is odd, and <code>A[k] &lt; A[k+1]</code> when <code>k</code> is even;</li>
-	<li><strong>OR</strong>, for <code>i &lt;= k &lt; j</code>, <code>A[k] &gt; A[k+1]</code> when <code>k</code> is even, and <code>A[k] &lt; A[k+1]</code> when <code>k</code> is odd.</li>
+	<li>For <code>i &lt;= k &lt; j</code>:
+
+	<ul>
+		<li><code>arr[k] &gt; arr[k + 1]</code> when <code>k</code> is odd, and</li>
+		<li><code>arr[k] &lt; arr[k + 1]</code> when <code>k</code> is even.</li>
+	</ul>
+	</li>
+	<li>Or, for <code>i &lt;= k &lt; j</code>:
+	<ul>
+		<li><code>arr[k] &gt; arr[k + 1]</code> when <code>k</code> is even, and</li>
+		<li><code>arr[k] &lt; arr[k + 1]</code> when <code>k</code> is odd.</li>
+	</ul>
+	</li>
 </ul>
 
-<p>That is, the subarray is turbulent if the comparison sign flips between each adjacent pair of elements in the subarray.</p>
-
-<p>Return the <strong>length</strong> of a&nbsp;maximum size turbulent subarray of A.</p>
-
 <p>&nbsp;</p>
-
-<div>
 <p><strong>Example 1:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-1-1">[9,4,2,10,7,8,8,1,9]</span>
-<strong>Output: </strong><span id="example-output-1">5</span>
-<strong>Explanation: </strong>(A[1] &gt; A[2] &lt; A[3] &gt; A[4] &lt; A[5])
+<pre><strong>Input:</strong> arr = [9,4,2,10,7,8,8,1,9]
+<strong>Output:</strong> 5
+<strong>Explanation:</strong> arr[1] &gt; arr[2] &lt; arr[3] &gt; arr[4] &lt; arr[5]
 </pre>
 
-<div>
 <p><strong>Example 2:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-2-1">[4,8,12,16]</span>
-<strong>Output: </strong><span id="example-output-2">2</span>
+<pre><strong>Input:</strong> arr = [4,8,12,16]
+<strong>Output:</strong> 2
 </pre>
 
-<div>
 <p><strong>Example 3:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-3-1">[100]</span>
-<strong>Output: </strong><span id="example-output-3">1</span>
+<pre><strong>Input:</strong> arr = [100]
+<strong>Output:</strong> 1
 </pre>
-</div>
-</div>
-</div>
 
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><strong>Note:</strong></p>
+<ul>
+	<li><code>1 &lt;= arr.length &lt;= 4 * 10<sup>4</sup></code></li>
+	<li><code>0 &lt;= arr[i] &lt;= 10<sup>9</sup></code></li>
+</ul>
 
-<ol>
-	<li><code>1 &lt;= A.length &lt;= 40000</code></li>
-	<li><code>0 &lt;= A[i] &lt;= 10^9</code></li>
-</ol>
+
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
@@ -53,7 +60,7 @@
 **Similar Questions**:
 * [Maximum Subarray (Easy)](https://leetcode.com/problems/maximum-subarray/)
 
-## Solution 1. 
+## Solution 1. DP
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-turbulent-subarray/
@@ -61,16 +68,19 @@
 // Time: O(N)
 // Space: O(1)
 class Solution {
-    inline int getSign(int n) { return n > 0 ? 1 : (n == 0 ? 0 : -1); }
 public:
     int maxTurbulenceSize(vector<int>& A) {
-        if (A.size() == 1) return 1;
-        int sign = getSign(A[0] - A[1]), start = 0, ans = sign ? 2 : 1;
-        for (int i = 2; i < A.size(); ++i) {
-            int next = getSign(A[i - 1] - A[i]);
-            if (next * sign >= 0) start = i - 1;
-            else ans = max(ans, i - start + 1);
-            sign = next;
+        int inc = 1, dec = 1, N = A.size(), ans = 1;
+        for (int i = 1; i < N; ++i) {
+            if (A[i] == A[i - 1]) inc = dec = 1;
+            else if (A[i] > A[i - 1]) {
+                inc = dec + 1;
+                dec = 1;
+            } else {
+                dec = inc + 1;
+                inc = 1;
+            }
+            ans = max({ ans, inc, dec });
         }
         return ans;
     }
