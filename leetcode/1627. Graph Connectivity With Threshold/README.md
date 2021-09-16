@@ -76,7 +76,7 @@ A more efficient way is to use similar idea as in [Sieve of Eratosthenes](https:
 
 For each number `i` in `[1 + threshold, n]`, we connect `i` with multiples of `i` (i.e. `2 * i, 3 * i, 4 * i, ...`).
 
-In the worst case where `threshold = 0`, iterating all the city pairs cost `N + N / 2 + N / 3 + ... + 1 = N * (1 + 1 / 2 + 1 / 3 + ... + 1 / N)`. `1 + 1 / 2 + 1 / 3 + ... + 1 / N` is a [harmonic series](https://en.wikipedia.org/wiki/Harmonic_series_(mathematics)) and bounded by `logN`. So the iteration takes `O(NlogN)`.
+In the worst case where `threshold = 0`, iterating all the city pairs cost `N + N / 2 + N / 3 + ... + 1 = N * (1 + 1 / 2 + 1 / 3 + ... + 1 / N)`. `1 + 1 / 2 + 1 / 3 + ... + 1 / N` is a [Harmonic series (调和级数)](https://en.wikipedia.org/wiki/Harmonic_series_(mathematics)) and bounded by `logN`. So the iteration takes `O(NlogN)`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/graph-connectivity-with-threshold/
@@ -94,9 +94,7 @@ public:
         return id[x] == x ? x : (id[x] = find(id[x]));
     }
     void connect(int a, int b) {
-        int p = find(a), q = find(b);
-        if (p == q) return;
-        id[p] = q;
+        id[find(a)] = find(b);
     }
     bool connected(int a, int b) {
         return find(a) == find(b);
@@ -105,15 +103,14 @@ public:
 class Solution {
 public:
     vector<bool> areConnected(int n, int threshold, vector<vector<int>>& Q) {
-        unordered_map<int, int> m;
-        UnionFind uf(n);
-        for (int i = 1 + threshold; i <= n; ++i) {
-            for (int j = 2 * i; j <= n; j += i) {
-                uf.connect(i - 1, j - 1);
+        UnionFind uf(n + 1);
+        for (int d = threshold + 1; d <= n; ++d) { // Enumerate all possible common divisors
+            for (int i = 2 * d; i <= n; i += d) { // Union all the numbers sharing the same divisors together
+                uf.connect(d, i);
             }
         }
         vector<bool> ans;
-        for (auto &q : Q) ans.push_back(uf.connected(q[0] - 1, q[1] - 1));
+        for (auto &q : Q) ans.push_back(uf.connected(q[0], q[1]));
         return ans;
     }
 };
