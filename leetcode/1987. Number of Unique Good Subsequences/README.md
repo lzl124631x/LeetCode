@@ -104,3 +104,21 @@ public:
     }
 };
 ```
+
+## Solution 2. DP
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-unique-good-subsequences/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/number-of-unique-good-subsequences/discuss/1431819/JavaC%2B%2BPython-DP-4-lines-O(N)-Time-O(1)-Space
+class Solution {
+public:
+    int numberOfUniqueGoodSubsequences(string s) {
+        long mod = 1e9 + 7, cnt[2] = {};
+        for (char c : s) cnt[c - '0'] = (cnt[0] + cnt[1] + c - '0') % mod;
+        return (cnt[0] + cnt[1] + (s.find('0') != string::npos)) % mod;
+    }
+};
+```
