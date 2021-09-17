@@ -1,12 +1,12 @@
 # [1284. Minimum Number of Flips to Convert Binary Matrix to Zero Matrix (Hard)](https://leetcode.com/problems/minimum-number-of-flips-to-convert-binary-matrix-to-zero-matrix/)
 
-<p>Given a <code>m x n</code> binary matrix <code>mat</code>. In one step, you can choose one cell and flip it and all the four neighbours of it&nbsp;if they exist (Flip is changing 1 to 0 and 0 to 1). A pair of cells are called neighboors if they share one edge.</p>
+<p>Given a <code>m x n</code> binary matrix <code>mat</code>. In one step, you can choose one cell and flip it and all the four neighbors of it if they exist (Flip is changing <code>1</code> to <code>0</code> and <code>0</code> to <code>1</code>). A pair of cells are called neighbors if they share one edge.</p>
 
-<p>Return the <em>minimum number of steps</em> required to convert <code>mat</code>&nbsp;to a zero matrix or <strong>-1</strong> if you cannot.</p>
+<p>Return the <em>minimum number of steps</em> required to convert <code>mat</code> to a zero matrix or <code>-1</code> if you cannot.</p>
 
-<p>Binary matrix is a matrix with all cells equal to 0 or 1 only.</p>
+<p>A <strong>binary matrix</strong> is a matrix with all cells equal to <code>0</code> or <code>1</code> only.</p>
 
-<p>Zero matrix is a matrix with all cells equal to 0.</p>
+<p>A <strong>zero matrix</strong> is a matrix with all cells equal to <code>0</code>.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -40,18 +40,20 @@
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>m ==&nbsp;mat.length</code></li>
-	<li><code>n ==&nbsp;mat[0].length</code></li>
-	<li><code>1 &lt;= m&nbsp;&lt;= 3</code></li>
-	<li><code>1 &lt;= n&nbsp;&lt;= 3</code></li>
-	<li><code>mat[i][j]</code> is 0 or 1.</li>
+	<li><code>m == mat.length</code></li>
+	<li><code>n == mat[i].length</code></li>
+	<li><code>1 &lt;= m, n &lt;= 3</code></li>
+	<li><code>mat[i][j]</code> is either <code>0</code> or <code>1</code>.</li>
 </ul>
 
 
-**Related Topics**:  
-[Breadth-first Search](https://leetcode.com/tag/breadth-first-search/)
+**Companies**:  
+[Google](https://leetcode.com/company/google), [Airbnb](https://leetcode.com/company/airbnb)
 
-## Solution 1. Bit vector + BFS
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Matrix](https://leetcode.com/tag/matrix/)
+
+## Solution 1. Bit Mask + BFS
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-number-of-flips-to-convert-binary-matrix-to-zero-matrix/
@@ -61,34 +63,30 @@
 class Solution {
 public:
     int minFlips(vector<vector<int>>& A) {
-        int start = 0, M = A.size(), N = A[0].size(), step = 0, dirs[5] = {1,0,-1,0,1};
+        int M = A.size(), N = A[0].size(), step = 0, mask = 0, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                start |= (A[i][j] << (i * 3 + j));
+                if (A[i][j]) mask |= (1 << (N * i + j));
             }
         }
-        queue<int> q;
-        unordered_set<int> s;
-        q.push(start);
-        s.insert(start);
+        queue<int> q{{mask}};
+        unordered_set<int> seen{mask};
         while (q.size()) {
             int cnt = q.size();
             while (cnt--) {
-                int state = q.front();
+                mask = q.front();
                 q.pop();
-                if (state == 0) return step;
-                for (int i = 0; i < 9; ++i) {
-                    int next = state, r = i / 3, c = i % 3;
-                    next ^= (1 << (r * 3 + c));
-                    for (int j = 0; j < 4; ++j) {
-                        int x = r + dirs[j], y = c + dirs[j + 1];
-                        if (x < 0 || x >= M || y < 0 || y >= N) continue;
-                        next ^= (1 << (x * 3 + y));
+                if (mask == 0) return step;
+                for (int i = 0; i < M * N; ++i) {
+                    int next = mask ^ (1 << i), x = i / N, y = i % N;
+                    for (auto &[dx, dy] : dirs) {
+                        int a = x + dx, b = y + dy;
+                        if (a < 0 || a >= M || b < 0 || b >= N) continue;
+                        next ^= 1 << (a * N + b);
                     }
-                    if (s.count(next) == 0) {
-                        q.push(next);
-                        s.insert(next);
-                    }
+                    if (seen.count(next)) continue;
+                    seen.insert(next);
+                    q.push(next);
                 }
             }
             ++step;
