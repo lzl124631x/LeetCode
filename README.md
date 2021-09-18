@@ -664,6 +664,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 771 | Jewels and Stones | Easy | [Solution](leetcode/771.%20Jewels%20and%20Stones)
 772 | Basic Calculator III | Hard | [Solution](leetcode/772.%20Basic%20Calculator%20III)
 773 | Sliding Puzzle | Hard | [Solution](leetcode/773.%20Sliding%20Puzzle)
+774 | Minimize Max Distance to Gas Station | Hard | [Solution](leetcode/774.%20Minimize%20Max%20Distance%20to%20Gas%20Station)
 775 | Global and Local Inversions | Medium | [Solution](leetcode/775.%20Global%20and%20Local%20Inversions)
 777 | Swap Adjacent in LR String | Medium | [Solution](leetcode/777.%20Swap%20Adjacent%20in%20LR%20String)
 778 | Swim in Rising Water | Hard | [Solution](leetcode/778.%20Swim%20in%20Rising%20Water)
