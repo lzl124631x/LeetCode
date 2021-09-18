@@ -100,3 +100,23 @@ public:
     }
 };
 ```
+
+## Solution 3. Frequency Map
+
+```cpp
+// OJ: https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(C) where `C` is the range of numbers in `A`.
+class Solution {
+public:
+    int countKDifference(vector<int>& A, int k) {
+        int N = A.size(), ans = 0, cnt[101] = {};
+        for (int n : A) {
+            ans += (n + k <= 100 ? cnt[n + k] : 0) + (n - k >= 1 ? cnt[n - k] : 0);
+            cnt[n]++;
+        }
+        return ans;
+    }
+};
+```
