@@ -42,7 +42,7 @@ Other original arrays could be [4,3,1] or [3,1,4].
 **Similar Questions**:
 * [Array of Doubled Pairs (Medium)](https://leetcode.com/problems/array-of-doubled-pairs/)
 
-## Solution 1. Map
+## Solution 1. Frequency Map
 
 Sort the array `A`. Keep removing the smallest element `n` and `2 * n` from the array, and put `n` into the answer until `A` becomes empty. Anytime we can't do the removal, we return empty array.
 
@@ -56,8 +56,7 @@ We can keep a frequency map in `map<int, int> m`, and remove elements of the sam
 class Solution {
 public:
     vector<int> findOriginalArray(vector<int>& A) {
-        int N = A.size();
-        if (N % 2) return {};
+        if (A.size() % 2) return {};
         map<int, int> m; // a frequency map
         for (int n : A) m[n]++;
         vector<int> ans;
@@ -74,6 +73,32 @@ public:
                 m[2 * n] -= cnt;
                 if (m[2 * n] == 0) m.erase(2 * n);
             }
+        }
+        return ans;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/find-original-array-from-doubled-array/
+// Author: github.com/lzl124631x
+// Time: O(NlogK) where `N` is the length of `A`, and `K` is the number of unique elements in `A`
+// Space: O(N)
+class Solution {
+public:
+    vector<int> findOriginalArray(vector<int>& A) {
+        if (A.size() % 2) return {};
+        unordered_map<int, int> m;
+        for (int n : A) m[n]++;
+        vector<int> nums;
+        for (auto [n, cnt] : m) nums.push_back(n);
+        sort(begin(nums), end(nums));
+        vector<int> ans;
+        for (int n : nums) {
+            if (m[2 * n] < m[n]) return {};
+            for (int i = 0; i < m[n]; ++i, --m[2 * n]) ans.push_back(n);
         }
         return ans;
     }
