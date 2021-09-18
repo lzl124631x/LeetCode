@@ -84,7 +84,7 @@ Or
 ```cpp
 // OJ: https://leetcode.com/problems/find-original-array-from-doubled-array/
 // Author: github.com/lzl124631x
-// Time: O(NlogK) where `N` is the length of `A`, and `K` is the number of unique elements in `A`
+// Time: O(N + KlogK) where `N` is the length of `A`, and `K` is the number of unique elements in `A`
 // Space: O(N)
 class Solution {
 public:
