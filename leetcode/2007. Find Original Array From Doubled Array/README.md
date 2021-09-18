@@ -51,7 +51,7 @@ We can keep a frequency map in `map<int, int> m`, and remove elements of the sam
 ```cpp
 // OJ: https://leetcode.com/problems/find-original-array-from-doubled-array/
 // Author: github.com/lzl124631x
-// Time: O(NlogN)
+// Time: O(NlogK) where `N` is the length of `A`, and `K` is the number of unique elements in `A`
 // Space: O(N)
 class Solution {
 public:
