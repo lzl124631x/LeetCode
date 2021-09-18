@@ -1530,6 +1530,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2000 | Reverse Prefix of Word | Easy | [Solution](leetcode/2000.%20Reverse%20Prefix%20of%20Word)
 2001 | Number of Pairs of Interchangeable Rectangles | Medium | [Solution](leetcode/2001.%20Number%20of%20Pairs%20of%20Interchangeable%20Rectangles)
 2002 | Maximum Product of the Length of Two Palindromic Subsequences | Medium | [Solution](leetcode/2002.%20Maximum%20Product%20of%20the%20Length%20of%20Two%20Palindromic%20Subsequences)
+2006 | Count Number of Pairs With Absolute Difference K | Easy | [Solution](leetcode/2006.%20Count%20Number%20of%20Pairs%20With%20Absolute%20Difference%20K)
+2007 | Find Original Array From Doubled Array | Medium | [Solution](leetcode/2007.%20Find%20Original%20Array%20From%20Doubled%20Array)
+2008 | Maximum Earnings From Taxi | Medium | [Solution](leetcode/2008.%20Maximum%20Earnings%20From%20Taxi)
+2009 | Minimum Number of Operations to Make Array Continuous | Hard | [Solution](leetcode/2009.%20Minimum%20Number%20of%20Operations%20to%20Make%20Array%20Continuous)
 
 # License
 
