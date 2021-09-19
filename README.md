@@ -1537,6 +1537,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2011 | Final Value of Variable After Performing Operations | Easy | [Solution](leetcode/2011.%20Final%20Value%20of%20Variable%20After%20Performing%20Operations)
 2012 | Sum of Beauty in the Array | Medium | [Solution](leetcode/2012.%20Sum%20of%20Beauty%20in%20the%20Array)
 2013 | Detect Squares | Medium | [Solution](leetcode/2013.%20Detect%20Squares)
+2014 | Longest Subsequence Repeated k Times | Hard | [Solution](leetcode/2014.%20Longest%20Subsequence%20Repeated%20k%20Times)
 
 # License
 
