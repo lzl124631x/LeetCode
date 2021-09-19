@@ -93,7 +93,7 @@ public:
             while (i < N && A[i] == n) ++i, ++cnt;
             while (j < N && A[j] < n + k) ++j;
             int start = j;
-            while (j < N && A[j] <= n + k) ++j;
+            while (j < N && A[j] == n + k) ++j;
             ans += (j - start) * cnt;
         }
         return ans;
