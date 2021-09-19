@@ -50,7 +50,7 @@ detectSquares.count([11, 10]); // return 2. You can choose:
 </ul>
 
 
-## Solution 1. Enumerate `x` values
+## Solution 1. Enumerate seen `x` values
 
 **Intuition**: For query `(x, y)`, we try each `x` values we've seen, say `x1`, as the `x` value of the other vertical edge. Because we want to form **squares**, there are only two square candidates possible.
 
