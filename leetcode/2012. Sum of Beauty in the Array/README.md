@@ -51,6 +51,12 @@
 
 ## Solution 1.
 
+**Intuition**: Let `left[i]` be the greatest value in `A[0..i]`, and `right[i]` be the smallest value in `A[i..(N-1)]`. For the first condition, we just need to check if `A[i] > left[i - 1] && A[i] < right[i + 1]`.
+
+**Algorithm**:
+
+We can precompute the `right` array and then compute `left` on the fly. 
+
 ```cpp
 // OJ: https://leetcode.com/problems/sum-of-beauty-in-the-array/
 // Author: github.com/lzl124631x
@@ -60,8 +66,8 @@ class Solution {
 public:
     int sumOfBeauties(vector<int>& A) {
         int N = A.size(), left = A[0], ans = 0;
-        vector<int> right(N + 1, INT_MAX);
-        for (int i = N - 1; i >= 0; --i) right[i] = min(right[i + 1], A[i]);
+        vector<int> right(N, A[N - 1]);
+        for (int i = N - 2; i > 0; --i) right[i] = min(right[i + 1], A[i]);
         for (int i = 1; i < N - 1; ++i) {
             if (A[i] > left && A[i] < right[i + 1]) ans += 2;
             else if (A[i] > A[i - 1] && A[i] < A[i + 1]) ans++;
