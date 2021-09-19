@@ -1,12 +1,14 @@
 # [1143. Longest Common Subsequence (Medium)](https://leetcode.com/problems/longest-common-subsequence/)
 
-<p>Given two strings <code>text1</code> and <code>text2</code>, return the length of their longest common subsequence.</p>
+<p>Given two strings <code>text1</code> and <code>text2</code>, return <em>the length of their longest <strong>common subsequence</strong>. </em>If there is no <strong>common subsequence</strong>, return <code>0</code>.</p>
 
-<p>A <em>subsequence</em> of a string is a new string generated from the original string with some characters(can be none) deleted without changing the relative order of the remaining characters. (eg, "ace" is a subsequence of "abcde" while "aec" is not).&nbsp;A <em>common subsequence</em>&nbsp;of two strings is a subsequence that is common to both strings.</p>
+<p>A <strong>subsequence</strong> of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.</p>
 
-<p>&nbsp;</p>
+<ul>
+	<li>For example, <code>"ace"</code> is a subsequence of <code>"abcde"</code>.</li>
+</ul>
 
-<p>If there is no common subsequence, return 0.</p>
+<p>A <strong>common subsequence</strong> of two strings is a subsequence that is common to both strings.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -34,14 +36,16 @@
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= text1.length &lt;= 1000</code></li>
-	<li><code>1 &lt;= text2.length &lt;= 1000</code></li>
-	<li>The input strings consist of lowercase English characters only.</li>
+	<li><code>1 &lt;= text1.length, text2.length &lt;= 1000</code></li>
+	<li><code>text1</code> and <code>text2</code> consist of only lowercase English characters.</li>
 </ul>
 
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google), [Karat](https://leetcode.com/company/karat), [Indeed](https://leetcode.com/company/indeed), [Adobe](https://leetcode.com/company/adobe), [VMware](https://leetcode.com/company/vmware)
+
 **Related Topics**:  
-[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[String](https://leetcode.com/tag/string/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
 **Similar Questions**:
 * [Longest Palindromic Subsequence (Medium)](https://leetcode.com/problems/longest-palindromic-subsequence/)
@@ -50,11 +54,11 @@
 
 ## Solution 1. DP
 
-Let `dp[i][j]` be the length of the longest common subsequence of `s[0..(i-1)]` and `t[0..(j-1)]`.
+Let `dp[i+1][j+1]` be the length of the longest common subsequence of `s[0..i]` and `t[0..j]`.
 
 ```
-dp[i][j] = 1 + dp[i-1][j-1]                If s[i-1] == t[j-1]
-         = max(dp[i-1][j], dp[i][j-1])     If s[i-1] != t[j-1]
+dp[i+1][j+1] = 1 + dp[i][j]                    // If s[i-1] == t[j-1]
+             = max(dp[i+1][j], dp[i][j+1])     // If s[i-1] != t[j-1]
 dp[i][0] = dp[0][i] = 0
 ```
 
@@ -81,7 +85,7 @@ public:
 
 ## Solution 2. DP + Space Optimization
 
-Since `dp[i][j]` is only dependent on `dp[i-1][j-1]`, `dp[i-1][j]` and `dp[i][j-1]`, we can reduce the space of `dp` array from `N * N` to `1 * N` with a temporary variable storing `dp[i-1][j-1]`.
+Since `dp[i+1][j+1]` is only dependent on `dp[i][j]`, `dp[i+1][j]` and `dp[i][j+1]`, we can reduce the space of `dp` array from `N * N` to `1 * N` with a temporary variable storing `dp[i][j]`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-common-subsequence/
@@ -94,13 +98,13 @@ public:
         int M = s.size(), N = t.size();
         if (M < N) swap(M, N), swap(s, t);
         vector<int> dp(N + 1);
-        for (int i = 1; i <= M; ++i) {
+        for (int i = 0; i < M; ++i) {
             int prev = 0;
-            for (int j = 1; j <= N; ++j) {
-                int cur = dp[j];
-                if (s[i - 1] == t[j - 1]) dp[j] = 1 + prev;
-                else dp[j] = max(dp[j], dp[j - 1]);
-                prev = cur;
+            for (int j = 0; j < N; ++j) {
+                int cur = dp[j + 1];
+                if (s[i] == t[j]) dp[j + 1] = prev + 1;
+                else dp[j + 1] = max(dp[j], dp[j + 1]);
+                prev = cur; 
             }
         }
         return dp[N];
