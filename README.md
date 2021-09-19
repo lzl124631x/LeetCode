@@ -1534,6 +1534,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2007 | Find Original Array From Doubled Array | Medium | [Solution](leetcode/2007.%20Find%20Original%20Array%20From%20Doubled%20Array)
 2008 | Maximum Earnings From Taxi | Medium | [Solution](leetcode/2008.%20Maximum%20Earnings%20From%20Taxi)
 2009 | Minimum Number of Operations to Make Array Continuous | Hard | [Solution](leetcode/2009.%20Minimum%20Number%20of%20Operations%20to%20Make%20Array%20Continuous)
+2011 | Final Value of Variable After Performing Operations | Easy | [Solution](leetcode/2011.%20Final%20Value%20of%20Variable%20After%20Performing%20Operations)
+2012 | Sum of Beauty in the Array | Medium | [Solution](leetcode/2012.%20Sum%20of%20Beauty%20in%20the%20Array)
+2013 | Detect Squares | Medium | [Solution](leetcode/2013.%20Detect%20Squares)
 
 # License
 
