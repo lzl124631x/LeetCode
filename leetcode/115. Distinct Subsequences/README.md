@@ -1,133 +1,91 @@
 # [115. Distinct Subsequences (Hard)](https://leetcode.com/problems/distinct-subsequences/)
 
-Given a string **S** and a string **T**, count the number of distinct subsequences of **S** which equals **T**.
+<p>Given two strings <code>s</code> and <code>t</code>, return <em>the number of distinct subsequences of <code>s</code> which equals <code>t</code></em>.</p>
 
-A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, `"ACE"` is a subsequence of `"ABCDE"` while `"AEC"` is not).
+<p>A string's <strong>subsequence</strong> is a new string formed from the original string by deleting some (can be none) of the characters without disturbing the remaining characters' relative positions. (i.e., <code>"ACE"</code> is a subsequence of <code>"ABCDE"</code> while <code>"AEC"</code> is not).</p>
 
-**Example 1:**
+<p>It is guaranteed the answer fits on a 32-bit signed integer.</p>
 
-**Input:** S = `"rabbbit"`, T = "rabbit"  
-**Output:** 3  
-**Explanation:**   
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> s = "rabbbit", t = "rabbit"
+<strong>Output:</strong> 3
+<strong>Explanation:</strong>
 As shown below, there are 3 ways you can generate "rabbit" from S.
-(The caret symbol ^ means the chosen letters)
+<code><strong><u>rabb</u></strong>b<strong><u>it</u></strong></code>
+<code><strong><u>ra</u></strong>b<strong><u>bbit</u></strong></code>
+<code><strong><u>rab</u></strong>b<strong><u>bit</u></strong></code>
+</pre>
 
-```
-`rabbbit`
-^^^^ ^^
-`rabbbit`
-^^ ^^^^
-`rabbbit`
-^^^ ^^^
-```
+<p><strong>Example 2:</strong></p>
 
-**Example 2:**
-
-**Input:** S = `"babgbag"`, T = "bag"  
-**Output:** 5  
-**Explanation:**   
+<pre><strong>Input:</strong> s = "babgbag", t = "bag"
+<strong>Output:</strong> 5
+<strong>Explanation:</strong>
 As shown below, there are 5 ways you can generate "bag" from S.
-(The caret symbol ^ means the chosen letters)
+<code><strong><u>ba</u></strong>b<u><strong>g</strong></u>bag</code>
+<code><strong><u>ba</u></strong>bgba<strong><u>g</u></strong></code>
+<code><u><strong>b</strong></u>abgb<strong><u>ag</u></strong></code>
+<code>ba<u><strong>b</strong></u>gb<u><strong>ag</strong></u></code>
+<code>babg<strong><u>bag</u></strong></code></pre>
 
-```
-`babgbag`
-^^ ^
-`babgbag`
-^^    ^
-`babgbag`
-^    ^^
-`babgbag`
-  ^  ^^
-`babgbag`
-    ^^^
-```
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-## Solution 1. DP Top-down (DFS + memo)
+<ul>
+	<li><code>1 &lt;= s.length, t.length &lt;= 1000</code></li>
+	<li><code>s</code> and <code>t</code> consist of English letters.</li>
+</ul>
 
-```cpp
-// OJ: https://leetcode.com/problems/distinct-subsequences
-// Author: github.com/lzl124631x
-// Time: O(2^S), since there are O(2^S) subsequences. But the memo helped reduce lots of duplicate computation.
-// Space: O(ST)
-class Solution {
-private:
-    string S;
-    string T;
-    vector<vector<int>> v;
-    int dfs(int start, int index) {
-        if (index == T.size()) {
-            return 1;
-        }
-        if (start >= S.size()) return 0;
-        if (v[start][index] != -1) return v[start][index];
-        int cnt = 0;
-        for (int i = start; i < S.size(); ++i) {
-            if (S[i] != T[index]) continue;
-            int c = dfs(i + 1, index + 1);
-            cnt += c;
-        }
-        v[start][index] = cnt;
-        return cnt;
-    }
-public:
-    int numDistinct(string s, string t) {
-        S = s;
-        T = t;
-        v = vector<vector<int>>(s.size(), vector<int>(t.size(), -1));
-        return dfs(0, 0);
-    }
-};
-```
 
-## Solution 2. 2-d DP
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Mathworks](https://leetcode.com/company/mathworks), [Google](https://leetcode.com/company/google)
 
-Why we can use DP for this question? Because there are lots of duplicate sub-problems.
+**Related Topics**:  
+[String](https://leetcode.com/tag/string/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+
+**Similar Questions**:
+* [Number of Unique Good Subsequences (Hard)](https://leetcode.com/problems/number-of-unique-good-subsequences/)
+
+## Solution 1. Bottom-up DP
+
+Can use DP for this problem? Yes, because there are lots of duplicate sub-problems.
 
 For example, if `s = ddoooo` and `t = do`, assume we solved the sub-problem `s' = dd` and `t' = d` whose result is 2. Now I have four `o` in `s` to match the `o` in `t`. So the result of sub-problem can be used four times.
 
-Assume `s(i)` is `s[0..(i-1)]`, i.e. the first `i` characters of `s`.
+Let `dp[i+1][j+1]` the be distinct subsequence of `s[0..i]` and `t[0..j]`. The answer is `dp[M][N]`.
 
-Define `dp(i, j)` as the count of distinct subsequence of `s(i)`  which equals `t(j)`, where `0 <= i <= S` and `0 <= j <= T`.
+For `dp[i+1][j+1]`, we can:
+* add `dp[i][j+1]` to it, which means we simply don't use `s[i]` at all.
+* If `s[i] == t[j]`, we can add `dp[i][j]` to it. 
 
-For `i == 0`, we can't match any `t(j)` if `j > 0`. So `dp(0, j) = 0 (0 < j <= T)`.
-
-For `j == 0`, we can always use empty subsequence to match the empty `t(0)`. So `dp(i, 0) = 1 (0 <= i <= S)`.
-
-For `1 <= i <= S` and `1 <= j <= T`:  
-If `s[i - 1] == t[j - 1]` then we have two choices: either use `s[i - 1]` to or not to match `t[j - 1]`.
-* If use it, the sub-problem is `dp(i - 1, j - 1)`.
-* If not, the sub-problem is `dp(i - 1, j)`
-
-If `s[i - 1] != t[j - 1]` then we have only one choice -- using `s(i-1)` to match `t(j)`, i.e. sub-problem `dp(i - 1, j)`.
-
-In sum:
+So we have:
 
 ```
-dp(i, j) = => dp(i-1, j) + dp(i-1, j-1)     if s[i] == t[j]
-           => dp(i-1, j)                    if s[i] != t[j]
-           (0 < j <= T, 0 < i <= S)
+dp[i+1][j+1] = dp[i][j+1]
+                + (s[i] == t[j] ? dp[i][j] : 0) 
 
-dp(0, j) = 0  (0 < j <= T)
-
-dp(i, 0) = 1  (0 <= i <= S)
+dp[0][j] = 0 
+dp[i][0] = 1
 ```
 
 ```cpp
 // OJ: https://leetcode.com/problems/distinct-subsequences
 // Author: github.com/lzl124631x
-// Time: O(ST)
-// Space: O(ST)
+// Time: O(MN)
+// Space: O(MN)
 class Solution {
-    typedef long long LL;
 public:
     int numDistinct(string s, string t) {
         int M = s.size(), N = t.size();
-        vector<vector<LL>> dp(M + 1, vector<LL>(N + 1, 0));
+        vector<vector<long>> dp(M + 1, vector<long>(N + 1));
         for (int i = 0; i <= M; ++i) dp[i][0] = 1;
-        for (int i = 1; i <= M; ++i) {
-            for (int j = 1; j <= N; ++j) {
-                dp[i][j] = dp[i - 1][j];
-                if (s[i - 1] == t[j - 1]) dp[i][j] += dp[i - 1][j - 1];
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                dp[i + 1][j + 1] = dp[i][j + 1];
+                if (s[i] == t[j]) dp[i + 1][j + 1] += dp[i][j];
+                if (dp[i + 1][j + 1] > INT_MAX) dp[i + 1][j + 1] = 0; // Since the answer is guaranteed to fit on a 32-bit signed integer, once the intermediate value exceeds `INT_MAX`, we can reset it to `0` since it won't be used in the answer.
             }
         }
         return dp[M][N];
@@ -135,115 +93,54 @@ public:
 };
 ```
 
-Or in another form:
+## Solution 2. Space-optimized Bottom-up DP
+
+Since `dp[i+1][j+1]` only depends on `dp[i][j]` and `dp[i][j+1]`, we can reduce the `dp` array from `M * N` to `1 * N`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/distinct-subsequences
 // Author: github.com/lzl124631x
-// Time: O(ST)
-// Space: O(ST)
+// Time: O(MN)
+// Space: O(N)
 class Solution {
-    typedef long long LL;
 public:
     int numDistinct(string s, string t) {
         int M = s.size(), N = t.size();
-        vector<vector<LL>> dp(M + 1, vector<LL>(N + 1));
-        for (int i = M; i >= 0; --i) {
-            for (int j = N; j >= 0; --j) {
-                if (i == M || j == N) dp[i][j] = j == N;
-                else dp[i][j] = dp[i + 1][j] + (s[i] == t[j] ? dp[i + 1][j + 1] : 0);
-            }
-        }
-        return dp[0][0];
-    }
-};
-```
-
-## Solution 3. 1-d DP
-
-From this equation
-```
-dp(i, j) = => dp(i-1, j) + dp(i-1, j-1)     if s[i] == t[j]
-           => dp(i-1, j)                    if s[i] != t[j]
-           (0 < j <= T, 0 < i <= S)
-
-dp(0, j) = 0  (0 < j <= T)
-
-dp(i, 0) = 1  (0 <= i <= S)
-```
-
-we realized that `dp(i, j)` is only dependent on `dp(i-1, j)` and `dp(i-1, j-1)`.
-
-So if we loop from `i = 1` to `i = S` while `j = T` to `j = 1`, using just one dimensional array is enough since we can reuse the result in the array.
-
-```cpp
-// OJ: https://leetcode.com/problems/distinct-subsequences
-// Author: github.com/lzl124631x
-// Time: O(ST)
-// Space: O(T)
-class Solution {
-    typedef long long LL;
-public:
-    int numDistinct(string s, string t) {
-        vector<LL> dp(t.size() + 1);
+        vector<long> dp(N + 1);
         dp[0] = 1;
-        for (int i = 0; i < s.size(); ++i) {
-            for (int j = t.size(); j > 0; --j) {
-                if (s[i] == t[j - 1]) dp[j] += dp[j - 1];
+        for (int i = 0; i < M; ++i) {
+            for (int j = N - 1; j >= 0; --j) {
+                if (s[i] == t[j]) dp[j + 1] += dp[j];
+                if (dp[j + 1] > INT_MAX) dp[j + 1] = 0;
             }
         }
-        return dp[t.size()];
+        return dp[N];
     }
 };
 ```
+## Solution 3. Top-down DP (DFS + memo)
 
-Or in another form:
+Using the same DP formula, we can do a top-down DP as well.
 
 ```cpp
 // OJ: https://leetcode.com/problems/distinct-subsequences
 // Author: github.com/lzl124631x
-// Time: O(ST)
-// Space: O(T)
+// Time: O(MN)
+// Space: O(MN)
 class Solution {
-    typedef long long LL;
 public:
     int numDistinct(string s, string t) {
         int M = s.size(), N = t.size();
-        vector<LL> dp(N + 1);
-        for (int i = M; i >= 0; --i) {
-            int prev;
-            for (int j = N; j >= 0; --j) {
-                int cur = dp[j];
-                if (i == M || j == N) dp[j] = j == N;
-                else if (s[i] == t[j]) dp[j] += prev;
-                prev = cur;
-            }
-        }
-        return dp[0];
-    }
-};
-```
-
-Or:
-
-```cpp
-// OJ: https://leetcode.com/problems/distinct-subsequences
-// Author: github.com/lzl124631x
-// Time: O(ST)
-// Space: O(T)
-class Solution {
-    typedef long long LL;
-public:
-    int numDistinct(string s, string t) {
-        int M = s.size(), N = t.size();
-        vector<LL> dp(N + 1);
-        for (int i = M; i >= 0; --i) {
-            for (int j = 0; j <= N; ++j) {
-                if (i == M || j == N) dp[j] = j == N;
-                else if (s[i] == t[j]) dp[j] += dp[j + 1];
-            }
-        }
-        return dp[0];
+        vector<vector<int>> m(M, vector<int>(N, -1));
+        function<int(int, int)> dp = [&](int i, int j) {
+            if (i == M || j == N) return int(j == N);
+            if (m[i][j] != -1) return m[i][j];
+            long ans = dp(i + 1, j);
+            if (s[i] == t[j]) ans += dp(i + 1, j + 1);
+            if (ans > INT_MAX) ans = 0;
+            return m[i][j] = ans;
+        };
+        return dp(0, 0);
     }
 };
 ```
