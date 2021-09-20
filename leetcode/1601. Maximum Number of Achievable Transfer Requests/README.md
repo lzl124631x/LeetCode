@@ -53,13 +53,9 @@ We can achieve all the requests. </pre>
 **Related Topics**:  
 [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
-## Solution 1.
+## Solution 1. Bitmask
 
-Check all the different combinations of the requests.
-
-For each combination, check if the sum of indegree is the same as the sum of outdegree. If they are equal, it's a valid combination.
-
-Return the maximum size of the valid combinations.
+Check all the different combinations of the requests by enumerating bitmasks.
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-number-of-achievable-transfer-requests/
@@ -67,24 +63,24 @@ Return the maximum size of the valid combinations.
 // Time: O(2^M * (M + N))
 // Space: O(N)
 class Solution {
-public:
-    int maximumRequests(int n, vector<vector<int>>& requests) {
-        int m = requests.size(), ans = 0, g[20] = {};
-        for (int mask = (1 << m) - 1; mask; mask--) {
-            memset(g, 0, sizeof(g));
-            int cnt = 0;
-            for (int i = 0; i < m; ++i) {
-                if (mask & (1 << i)) {
-                    cnt++;
-                    auto &r = requests[i];
-                    int u = r[0], v = r[1];
-                    g[u]++;
-                    g[v]--;
-                }
+    bool valid(vector<vector<int>> &A, int n, int m) {
+        int cnt[20] = {};
+        for (int i = 0; i < A.size(); ++i) {
+            if (m >> i & 1) {
+                cnt[A[i][0]]++;
+                cnt[A[i][1]]--;
             }
-            bool good = true;
-            for (int i = 0; i < n && good; ++i) good = g[i] == 0;
-            if (good) ans = max(ans, cnt);
+        }
+        for (int i = 0; i < n; ++i) {
+            if (cnt[i]) return false;
+        }
+        return true;
+    }
+public:
+    int maximumRequests(int n, vector<vector<int>>& A) {
+        int ans = 0;
+        for (int m = 1; m < 1 << A.size(); ++m) {
+            if (valid(A, n, m)) ans = max(ans, __builtin_popcount(m));
         }
         return ans;
     }
