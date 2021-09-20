@@ -59,8 +59,8 @@ We earn 9 + 5 + 6 = 20 dollars in total.</pre>
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-earnings-from-taxi/
 // Author: github.com/lzl124631x
-// Time: O(NlogN)
-// Space: O(N)
+// Time: O(MlogM) where `M` is the length of `A`.
+// Space: O(M)
 class Solution {
 public:
     long long maxTaxiEarnings(int n, vector<vector<int>>& A) {
