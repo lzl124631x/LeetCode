@@ -35,7 +35,7 @@ We only want the closest k = 1 points from the origin, so the answer is just [[-
 
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [DoorDash](https://leetcode.com/company/doordash), [Google](https://leetcode.com/company/google), [LinkedIn](https://leetcode.com/company/linkedin), [Microsoft](https://leetcode.com/company/microsoft), [Uber](https://leetcode.com/company/uber), [ByteDance](https://leetcode.com/company/bytedance), [Apple](https://leetcode.com/company/apple), [Asana](https://leetcode.com/company/asana)
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [DoorDash](https://leetcode.com/company/doordash), [Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft), [LinkedIn](https://leetcode.com/company/linkedin), [Uber](https://leetcode.com/company/uber), [Asana](https://leetcode.com/company/asana), [Flipkart](https://leetcode.com/company/flipkart)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Math](https://leetcode.com/tag/math/), [Divide and Conquer](https://leetcode.com/tag/divide-and-conquer/), [Geometry](https://leetcode.com/tag/geometry/), [Sorting](https://leetcode.com/tag/sorting/), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue/), [Quickselect](https://leetcode.com/tag/quickselect/)
@@ -66,7 +66,7 @@ public:
 };
 ```
 
-## Solution 2. Heap
+## Solution 2. Heap of size `N`
 
 Keep a min-heap of all elements and pop `K` times.
 
@@ -83,21 +83,45 @@ class Solution {
     }
 public:
     vector<vector<int>> kClosest(vector<vector<int>>& A, int K) {
-        auto cmp = [&](vector<int> &a, vector<int> &b) {
-            return dist(a) > dist(b);
-        };
-        priority_queue<vector<int>, vector<vector<int>>, decltype(cmp)> q(begin(A), end(A), cmp);
+        auto cmp = [&](auto &a, auto &b) { return dist(a) > dist(b); };
+        priority_queue<vector<int>, vector<vector<int>>, decltype(cmp)> pq(begin(A), end(A), cmp);
         vector<vector<int>> ans;
         while (ans.size() < K) {
-            ans.push_back(q.top());
-            q.pop();
+            ans.push_back(pq.top());
+            pq.pop();
         }
         return ans;
     }
 };
 ```
 
-## Solution 3. Heap
+Or use `make_heap` and `pop_heap` in place.
+
+```cpp
+// OJ: https://leetcode.com/problems/k-closest-points-to-origin/
+// Author: github.com/lzl124631x
+// Time: O(N + KlogN)
+// Space: O(1)
+class Solution {
+    int dist(vector<int> &p) {
+        return p[0] * p[0] + p[1] * p[1];
+    }
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& A, int k) {
+        auto cmp = [&](auto &a, auto &b) { return dist(a) > dist(b); };
+        make_heap(begin(A), end(A), cmp);
+        vector<vector<int>> ans;
+        while (k--) {
+            pop_heap(begin(A), end(A), cmp);
+            ans.push_back(A.back());
+            A.pop_back();
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3. Heap of size `K`
 
 If the space is limited, we can keep a max-heap of size `K`.
 
@@ -113,55 +137,20 @@ In the end, all the elements left in the heap forms the answer.
 // Time: O(NlogK)
 // Space: O(K)
 class Solution {
-    int dist(const vector<int> &p) {
+    int dist(vector<int> &p) {
         return p[0] * p[0] + p[1] * p[1];
     }
 public:
     vector<vector<int>> kClosest(vector<vector<int>>& A, int K) {
-        auto cmp = [&](const vector<int> &a, const vector<int> &b) {
-            return dist(a) < dist(b);
-        };
-        priority_queue<vector<int>, vector<vector<int>>, decltype(cmp)> q(cmp);
-        for (auto & p : A) {
-            if (q.size() == K) {
-                if (dist(p) >= dist(q.top())) continue;
-                q.pop();
-            }
-            q.push(p);
-        }
-        vector<vector<int>> ans;
-        while (q.size()) {
-            ans.push_back(q.top());
-            q.pop();
-        }
-        return ans;
-    }
-};
-```
-
-Or
-
-```cpp
-// OJ: https://leetcode.com/problems/k-closest-points-to-origin/
-// Author: github.com/lzl124631x
-// Time: O(NlogK)
-// Space: O(K)
-class Solution {
-private:
-    int dist(vector<int> &p) {
-        return p[0] * p[0]  + p[1] * p[1];
-    }
-public:
-    vector<vector<int>> kClosest(vector<vector<int>>& A, int K) {
-        auto cmp = [&](int a, int b) { return dist(A[a]) < dist(A[b]); };
-        priority_queue<int, vector<int>, decltype(cmp)> pq(cmp);
-        for (int i = 0; i < A.size(); ++i) {
-            pq.push(i);
+        auto cmp = [&](auto &a, auto &b) { return dist(a) < dist(b); };
+        priority_queue<vector<int>, vector<vector<int>>, decltype(cmp)> pq(cmp);
+        for (auto &p : A) {
+            pq.push(p);
             if (pq.size() > K) pq.pop();
         }
         vector<vector<int>> ans;
         while (pq.size()) {
-            ans.push_back(A[pq.top()]);
+            ans.push_back(pq.top());
             pq.pop();
         }
         return ans;
@@ -178,27 +167,27 @@ public:
 // Space: O(1)
 class Solution {
     int dist(vector<int> &p) {
-        return p[0] * p[0]  + p[1] * p[1];
+        return p[0] * p[0] + p[1] * p[1];
     }
     int quickSelect(vector<vector<int>> &A, int L, int R) {
         int i = L, j = L, pivotIndex = L + rand() % (R - L + 1), pivot = dist(A[pivotIndex]);
         swap(A[pivotIndex], A[R]);
         for (; i < R; ++i) {
-            if (dist(A[i]) < pivot) swap(A[j++], A[i]);
+            if (dist(A[i]) < pivot) swap(A[i], A[j++]);
         }
         swap(A[j], A[R]);
         return j;
     }
 public:
-    vector<vector<int>> kClosest(vector<vector<int>>& A, int k) {
+    vector<vector<int>> kClosest(vector<vector<int>>& A, int K) {
         int L = 0, R = A.size() - 1;
         while (L < R) {
             int M = quickSelect(A, L, R);
-            if (M + 1 == k) break;
-            if (M + 1 > k) R = M - 1;
+            if (M + 1 == K) break;
+            if (M + 1 > K) R = M - 1;
             else L = M + 1;
         }
-        return vector<vector<int>>(begin(A), begin(A) + k);
+        return vector<vector<int>>(begin(A), begin(A) + K);
     }
 };
 ```
