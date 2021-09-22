@@ -41,28 +41,56 @@
 ```cpp
 // OJ: https://leetcode.com/problems/top-k-frequent-elements/
 // Author: github.com/lzl124631x
-// Time: O(NlogK)
-// Space: O(N + K)
+// Time: O(N + UlogK) where `U` is the number of unique elements in `A`.
+// Space: O(U)
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& A, int k) {
         if (A.size() == k) return A;
-        unordered_map<int, int> m;
-        for (int n : A) m[n]++;
+        unordered_map<int, int> cnt;
+        for (int n : A) cnt[n]++;
         vector<int> ans;
-        if (m.size() == k) {
-            for (auto &p : m) ans.push_back(p.first);
+        if (cnt.size() == k) {
+            for (auto &[n, c] : cnt) ans.push_back(n);
             return ans;
         }
-        auto cmp = [&](int a, int b) { return m[a] > m[b]; };
-        priority_queue<int, vector<int>, decltype(cmp)> q(cmp); // keep a min-heap of size at most k
-        for (auto &p : m) {
-            q.push(p.first);
-            if (q.size() > k) q.pop();
+        auto cmp = [&](int a, int b) { return cnt[a] > cnt[b]; };
+        priority_queue<int, vector<int>, decltype(cmp)> pq(cmp); // keep a min-heap of size at most k
+        for (auto &[n, c] : cnt) {
+            pq.push(n);
+            if (pq.size() > k) pq.pop();
         }
-        while (ans.size() < k) {
-            ans.push_back(q.top());
-            q.pop();
+        while (pq.size()) {
+            ans.push_back(pq.top());
+            pq.pop();
+        }
+        return ans;
+    }
+};
+```
+
+Or use `make_heap` and `pop_heap`.
+
+```cpp
+// OJ: https://leetcode.com/problems/top-k-frequent-elements/
+// Author: github.com/lzl124631x
+// Time: O(N + UlogK) where `U` is the number of unique elements in `A`.
+// Space: O(U)
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& A, int k) {
+        if (A.size() == k) return A;
+        unordered_map<int, int> cnt;
+        for (int n : A) cnt[n]++;
+        vector<int> nums, ans;
+        for (auto &[n, c] : cnt) nums.push_back(n);
+        if (nums.size() == k) return nums;
+        auto cmp = [&](int a, int b) { return cnt[a] < cnt[b]; };
+        make_heap(begin(nums), end(nums), cmp);
+        while (k--) {
+            pop_heap(begin(nums), end(nums), cmp);
+            ans.push_back(nums.back());
+            nums.pop_back();
         }
         return ans;
     }
@@ -74,18 +102,59 @@ public:
 ```cpp
 // OJ: https://leetcode.com/problems/top-k-frequent-elements/
 // Author: github.com/lzl124631x
-// Time: O(N) on average, O(N^2) in the worst case
+// Time: O(N + U) on average, O(N + U^2) in the worst case
+// Space: O(U)
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& A, int k) {
+        if (A.size() == k) return A;
+        unordered_map<int, int> cnt;
+        for (int n : A) cnt[n]++;
+        vector<int> ans;
+        for (auto &[n, c] : cnt) ans.push_back(n);
+        if (ans.size() == k) return ans;
+        function<int(int, int)> partition = [&](int L, int R) {
+            int i = L, j = L, pivotIndex = L + rand() % (R - L + 1), pivot = cnt[ans[pivotIndex]];
+            swap(ans[pivotIndex], ans[R]);
+            for (; i < R; ++i) {
+                if (cnt[ans[i]] > pivot) swap(ans[i], ans[j++]);
+            }
+            swap(ans[j], ans[R]);
+            return j;
+        };
+        auto quickSelect = [&](int k) {
+            int L = 0, R = ans.size() - 1;
+            while (L < R) {
+                int M = partition(L, R);
+                if (M + 1 == k) break;
+                if (M + 1 > k) R = M - 1;
+                else L = M + 1;
+            }
+        };
+        quickSelect(k);
+        ans.resize(k);
+        return ans;
+    }
+};
+```
+
+Or use STL's `nth_element`.
+
+```cpp
+// OJ: https://leetcode.com/problems/top-k-frequent-elements/
+// Author: github.com/lzl124631x
+// Time: O(N + U) on average, O(N + U^2) in the worst casee
 // Space: O(N)
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& A, int k) {
         if (A.size() == k) return A;
-        unordered_map<int, int> m;
-        for (int n : A) m[n]++;
+        unordered_map<int, int> cnt;
+        for (int n : A) cnt[n]++;
         vector<int> ans;
-        for (auto &p : m) ans.push_back(p.first);
-        if (m.size() == k) return ans;
-        nth_element(begin(ans), begin(ans) + k - 1, end(ans), [&](int a, int b) { return m[a] > m[b]; });
+        for (auto &[n, c] : cnt) ans.push_back(n);
+        if (ans.size() == k) return ans;
+        nth_element(begin(ans), begin(ans) + k - 1, end(ans), [&](int a, int b) { return cnt[a] > cnt[b]; });
         ans.resize(k);
         return ans;
     }
