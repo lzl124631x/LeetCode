@@ -1,8 +1,8 @@
 # [1293. Shortest Path in a Grid with Obstacles Elimination (Hard)](https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/)
 
-<p>Given a <code>m * n</code> grid, where each cell is either <code>0</code> (empty)&nbsp;or <code>1</code> (obstacle).&nbsp;In one step, you can move up, down, left or right from and to an empty cell.</p>
+<p>You are given an <code>m x n</code> integer matrix <code>grid</code> where each cell is either <code>0</code> (empty) or <code>1</code> (obstacle). You can move up, down, left, or right from and to an empty cell in <strong>one step</strong>.</p>
 
-<p>Return the minimum number of steps to walk from the upper left corner&nbsp;<code>(0, 0)</code>&nbsp;to the lower right corner&nbsp;<code>(m-1, n-1)</code> given that you can eliminate&nbsp;<strong>at most</strong> <code>k</code> obstacles. If it is not possible to find such&nbsp;walk return -1.</p>
+<p>Return <em>the minimum number of <strong>steps</strong> to walk from the upper left corner </em><code>(0, 0)</code><em> to the lower right corner </em><code>(m - 1, n - 1)</code><em> given that you can eliminate <strong>at most</strong> </em><code>k</code><em> obstacles</em>. If it is not possible to find such walk return <code>-1</code>.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -21,8 +21,6 @@ k = 1
 The shortest path with one obstacle elimination at position (3,2) is 6. Such path is <code>(0,0) -&gt; (0,1) -&gt; (0,2) -&gt; (1,2) -&gt; (2,2) -&gt; <strong>(3,2)</strong> -&gt; (4,2)</code>.
 </pre>
 
-<p>&nbsp;</p>
-
 <p><strong>Example 2:</strong></p>
 
 <pre><strong>Input:</strong> 
@@ -40,25 +38,47 @@ k = 1
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>grid.length&nbsp;== m</code></li>
-	<li><code>grid[0].length&nbsp;== n</code></li>
+	<li><code>m == grid.length</code></li>
+	<li><code>n == grid[i].length</code></li>
 	<li><code>1 &lt;= m, n &lt;= 40</code></li>
-	<li><code>1 &lt;= k &lt;= m*n</code></li>
+	<li><code>1 &lt;= k &lt;= m * n</code></li>
 	<li><code>grid[i][j] == 0 <strong>or</strong> 1</code></li>
-	<li><code>grid[0][0] == grid[m-1][n-1] == 0</code></li>
+	<li><code>grid[0][0] == grid[m - 1][n - 1] == 0</code></li>
 </ul>
 
 
+**Companies**:  
+[Google](https://leetcode.com/company/google)
+
 **Related Topics**:  
-[Breadth-first Search](https://leetcode.com/tag/breadth-first-search/)
+[Array](https://leetcode.com/tag/array/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Matrix](https://leetcode.com/tag/matrix/)
+
+**Similar Questions**:
+* [Shortest Path to Get Food (Medium)](https://leetcode.com/problems/shortest-path-to-get-food/)
 
 ## Note
 
 1. If `K >= M + N - 3`, we can reach the destination with number of steps equaling the Manhattan Distance between `(0,0)` and `(M-1,N-1)`, i.e. `M+N-2`.  
 Since `K` is at most `M * N`, this check can help reduce `K` significantly from `O(MN)` to `O(M+N)`.
-2. Since we are looking for the shortest distance, BFS should be the first option.
+2. Since we are looking for the shortest distance, BFS should be the first option. We can BFS the grid **layer by layer**, and the steps we've taken to reach `(M-1,N-1)` the first time is the answer.
+3. Normally we use `seen[x][y] = true` to denote that we've visited cell `(x,y)`. But in this case, **we want to visit the same cell again (with more steps) if we have more bombs available**, because using having more bombs available for later might help us get to `(M-1,N-1)` quicker.
 
-## Solution 1. BFS (Layer by Layer)
+Example:
+
+Assume we can reach `(1, 4)` in two ways: 
+1. 5 steps with 0 bombs available
+2. 9 steps with 1 bombs available
+
+We definitely need to try the 2nd case with more bombs available, even though it took more steps.
+
+```
+? ? ? ? ?
+? ? ? ? 0
+? ? ? 1 1
+? ? ? 1 0
+```
+
+## Solution 1. BFS (seen[x][y][bomb] as boolean)
 
 If `k = 0`, we will just use a plain BFS to get the shortest path.
 
@@ -124,11 +144,7 @@ public:
 };
 ```
 
-## Solution 2. BFS (Continuously)
-
-Almost the same as Solution 1, here we are not doing BFS layer by layer, but doing it continuously. We need each state be a tuple of `(x, y, bomb, step)`.
-
-Since `(x, y, bomb)` uniquely corresponds to a single smallest `step`, the `seen` array is still 3 dimensional.
+Or we can BFS continuously.
 
 ```cpp
 // OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
@@ -163,9 +179,9 @@ public:
 };
 ```
 
-## Solution 3. BFS
+## Solution 2. BFS (seen[x][y] as the maximum bombs available when reaching `(x,y)`)
 
-Similar to Solution 1, instead of using `seen[x][y][b]` to denote whether we visited cell `(x, y)` with `b` bombs, we use `seen[x][y]` as the least bombs needed to get to cell `(x, y)`.
+Similar to Solution 1, instead of using `seen[x][y][b]` to denote whether we visited cell `(x, y)` with `b` bombs, we use `seen[x][y]` as the maximum bombs available when reaching cell `(x, y)`.
 
 Consider the following case:
 
@@ -203,13 +219,11 @@ Now we can see that, we can get to the same cell `(x, y)` through different path
 class Solution {
 public:
     int shortestPath(vector<vector<int>>& G, int k) {
-        int M = G.size(), N = G[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        int M = G.size(), N = G[0].size(), step = 0, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
         if (k >= M + N - 3) return M + N - 2;
-        int seen[40][40] = {}, step = 0; // seen[x][y] is the number of bombs we used to get to cell (x, y)
-        memset(seen, 0x3f, sizeof(seen));
-        seen[0][0] = 0;
-        queue<tuple<int, int, int>> q; // x, y, bomb
-        q.emplace(0, 0, 0);
+        vector<vector<int>> seen(M, vector<int>(N, -1)); // maximum bomb available when visiting (x, y)
+        seen[0][0] = k;
+        queue<tuple<int, int, int>> q{{{0,0,k}}}; // x, y, bomb
         while (q.size()) {
             int cnt = q.size();
             while (cnt--) {
@@ -219,10 +233,10 @@ public:
                 for (auto &[dx, dy] : dirs) {
                     int a = x + dx, b = y + dy;
                     if (a < 0 || a >= M || b < 0 || b >= N) continue;
-                    int nextBomb = bomb + G[a][b];
-                    if (nextBomb >= seen[a][b] || nextBomb > k) continue; // If we reached (a,b) with more bombs that before, this state is no better than before so we shouldn't push it into queue.
-                    q.emplace(a, b, nextBomb);
-                    seen[a][b] = nextBomb;
+                    int newBomb = bomb - G[a][b];
+                    if (newBomb <= seen[a][b]) continue; // We only visit a cell if we have more bombs available than before.
+                    seen[a][b] = newBomb;
+                    q.emplace(a, b, newBomb);
                 }
             }
             ++step;
@@ -232,7 +246,40 @@ public:
 };
 ```
 
-## Solution 4. DFS
+Or we can BFS continuously
+
+```cpp
+// OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
+// Author: github.com/lzl124631x
+// Time: O(MN * min(K, M + N))
+// Space: O(MN)
+class Solution {
+public:
+    int shortestPath(vector<vector<int>>& G, int k) {
+        int M = G.size(), N = G[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        if (k >= M + N - 3) return M + N - 2;
+        vector<vector<int>> seen(M, vector<int>(N, -1)); // maximum bomb available when visiting (x, y)
+        seen[0][0] = k;
+        queue<tuple<int, int, int, int>> q{{{0,0,k,0}}}; // x, y, bomb, step
+        while (q.size()) {
+            auto [x, y, bomb, step] = q.front();
+            q.pop();
+            if (x == M - 1 && y == N - 1) return step;
+            for (auto &[dx, dy] : dirs) {
+                int a = x + dx, b = y + dy;
+                if (a < 0 || a >= M || b < 0 || b >= N) continue;
+                int newBomb = bomb - G[a][b];
+                if (newBomb <= seen[a][b]) continue; // We only visit a cell if we have more bombs available than before.
+                seen[a][b] = newBomb;
+                q.emplace(a, b, newBomb, step + 1);
+            }
+        }
+        return -1;
+    }
+};
+```
+
+## Solution 3. DFS
 
 We should use BFS instead of DFS when searching for the shortest path. Just for completeness, a DFS solution is listed here.
 
