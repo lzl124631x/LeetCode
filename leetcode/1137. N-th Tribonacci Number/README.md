@@ -30,8 +30,11 @@ T_4 = 1 + 1 + 2 = 4
 	<li>The answer is guaranteed to fit within a 32-bit integer, ie. <code>answer &lt;= 2^31 - 1</code>.</li>
 </ul>
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon)
+
 **Related Topics**:  
-[Recursion](https://leetcode.com/tag/recursion/)
+[Math](https://leetcode.com/tag/math/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Memoization](https://leetcode.com/tag/memoization/)
 
 **Similar Questions**:
 * [Climbing Stairs (Easy)](https://leetcode.com/problems/climbing-stairs/)
