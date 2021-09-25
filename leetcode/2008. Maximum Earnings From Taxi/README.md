@@ -64,14 +64,13 @@ We earn 9 + 5 + 6 = 20 dollars in total.</pre>
 class Solution {
 public:
     long long maxTaxiEarnings(int n, vector<vector<int>>& A) {
+        sort(begin(A), end(A), [](auto &a, auto &b) { return a[0] > b[0]; }); // Sort the array in descending order of `start`
+        map<int, long long> m{{INT_MAX,0}}; // `dp` value. A mapping from a `start` point to the maximum profit we can get in range `[start, Infinity)`
         long long ans = 0;
-        vector<int> id(A.size());
-        iota(begin(id), end(id), 0);
-        sort(begin(id), end(id), [&](int a, int b) { return A[a][0] > A[b][0]; }); // Sort the array in descending order of `start`
-        map<int, long long> m{{INT_MAX, 0}}; // `dp` value. A mapping from a `start` point to the maximum profit we can get in range `[start, Infinity)`
-        for (int i : id) {
-            m[A[i][0]] = max(ans, (long long)A[i][2] + A[i][1] - A[i][0] + m.lower_bound(A[i][1])->second);
-            ans = m[A[i][0]];
+        for (auto &r : A) {
+            int s = r[0], e = r[1], p = r[2];
+            m[s] = max(ans, p + e - s + m.lower_bound(e)->second);
+            ans = max(ans, m[s]);
         }
         return ans;
     }
@@ -88,13 +87,13 @@ public:
 class Solution {
 public:
     long long maxTaxiEarnings(int n, vector<vector<int>>& A) {
-        vector<vector<pair<int, int>>> rideStartAt(n);
+        vector<vector<pair<int, int>>> rideStartAt(n); // group all the rides starting at the same time
         for (auto &ride : A) {
             int s = ride[0], e = ride[1], t = ride[2];
             rideStartAt[s].push_back({ e, e - s + t });  // [end, dollar]
         }
         vector<long long> dp(n + 1);
-        for (int i = n - 1; i >= 1; --i) {
+        for (int i = n - 1; i >= 1; --i) { // Traverse the rides in descending order of start time
             for (auto &[e, d] : rideStartAt[i]) {
                 dp[i] = max(dp[i], dp[e] + d);
             }
