@@ -60,7 +60,11 @@
 **Related Topics**:  
 [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Union Find](https://leetcode.com/tag/union-find/)
 
-## Solution 1.
+## Solution 1. DFS
+
+* Only the node with value 1 and its ancestors have missing value greater than 1. All other nodes must have missing value 1.
+* We traverse from the node with value 1 through its ancestors until the root. For each node, we DFS to visit all its children to collect the values we've seen.
+* Based on the values we've seen, we can use a single variable `miss` to keep track of the first missing value. This value is monotonically increasing.
 
 ```cpp
 // OJ: https://leetcode.com/problems/smallest-missing-genetic-value-in-each-subtree/
@@ -83,7 +87,7 @@ public:
             for (int j : children[i]) dfs(j);
             seen[A[i]] = 1;
         };
-        while (i > -1) {
+        while (i > -1) { // from the node of value 1, traverse all its ancestors
             dfs(i);
             while (seen[miss]) miss++;
             ans[i] = miss;
