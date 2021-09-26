@@ -1541,6 +1541,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2012 | Sum of Beauty in the Array | Medium | [Solution](leetcode/2012.%20Sum%20of%20Beauty%20in%20the%20Array)
 2013 | Detect Squares | Medium | [Solution](leetcode/2013.%20Detect%20Squares)
 2014 | Longest Subsequence Repeated k Times | Hard | [Solution](leetcode/2014.%20Longest%20Subsequence%20Repeated%20k%20Times)
+2016 | Maximum Difference Between Increasing Elements | Easy | [Solution](leetcode/2016.%20Maximum%20Difference%20Between%20Increasing%20Elements)
+2017 | Grid Game | Medium | [Solution](leetcode/2017.%20Grid%20Game)
+2018 | Check if Word Can Be Placed In Crossword | Medium | [Solution](leetcode/2018.%20Check%20if%20Word%20Can%20Be%20Placed%20In%20Crossword)
 
 # License
 
