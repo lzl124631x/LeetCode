@@ -63,3 +63,23 @@ public:
     }
 };
 ```
+
+## Solution 2. DP
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-difference-between-increasing-elements/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int maximumDifference(vector<int>& A) {
+        int N = A.size(), ans = -1, mn = INT_MAX;
+        for (int i = 0; i < N; ++i) {
+            mn = min(mn, A[i]);
+            if (A[i] > mn) ans = max(ans, A[i] - mn);
+        }
+        return ans;
+    }
+};
+```
