@@ -1544,6 +1544,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2016 | Maximum Difference Between Increasing Elements | Easy | [Solution](leetcode/2016.%20Maximum%20Difference%20Between%20Increasing%20Elements)
 2017 | Grid Game | Medium | [Solution](leetcode/2017.%20Grid%20Game)
 2018 | Check if Word Can Be Placed In Crossword | Medium | [Solution](leetcode/2018.%20Check%20if%20Word%20Can%20Be%20Placed%20In%20Crossword)
+2019 | The Score of Students Solving Math Expression | Hard | [Solution](leetcode/2019.%20The%20Score%20of%20Students%20Solving%20Math%20Expression)
 
 # License
 
