@@ -49,6 +49,10 @@
 
 ## Solution 1. Brute Force
 
+Implement a function `match(A, s)`  which returns `true` if matrix `A` matches word `s` horizontally. To handle the vertical case, we can simply use `B` as the transpose of `A`, and check `match(B, s)`.
+
+Within `match` function, we check line by line. For each line, we scan each segment surrounded by `#`s or line boundaries. For each segment, we check if it equals string `s` from left to right, or from right to left.
+
 The time complexity is `O(MN)` because each cell is matched at most 4 times.
 
 ```cpp
@@ -57,7 +61,7 @@ The time complexity is `O(MN)` because each cell is matched at most 4 times.
 // Time: O(MN)
 // Space: O(MN)
 class Solution {
-    bool same(vector<char> &A, int start, int end, string &s) {
+    bool same(vector<char> &A, int start, int end, string &s) { // returns true if `A[start..(end-1)]` equals `s` or reversed `s`.
         if (end - start != s.size()) return false;
         int j = 0;
         while (start + j < end && (A[start + j] == ' ' || A[start + j] == s[j])) ++j; // match from left to right
@@ -66,7 +70,7 @@ class Solution {
         while (end - 1 - j >= start && (A[end - 1 - j] == ' ' || A[end - 1 - j] == s[j])) ++j; // match from right to left
         return j == s.size();
     }
-    bool match(vector<vector<char>> &A, string s) {
+    bool match(vector<vector<char>> &A, string s) { // returns `true` if matrix `A` matches string `s` horizontally
         int M = A.size(), N = A[0].size();
         for (int i = 0; i < M; ++i) {
             int j = 0;
