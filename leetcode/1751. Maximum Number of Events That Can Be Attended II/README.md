@@ -53,7 +53,7 @@ Notice that you cannot attend any other event as they overlap, and that you do <
 * [Maximum Number of Events That Can Be Attended (Medium)](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/)
 * [Maximum Earnings From Taxi (Medium)](https://leetcode.com/problems/maximum-earnings-from-taxi/)
 
-## Solution 1. DP
+## Solution 1. Top-down DP + Binary Search
 
 sort `A` in ascending order of start time
 
@@ -63,7 +63,7 @@ Let `dp[k][i]` be the maximum value we can get with at most `k` events selected 
 dp[k][i] = max(
                 dp[k-1][j] + A[i][2], // pick
                 dp[k][i+1]            // skip
-                )
+              )
 where `j` is the smallest index that `A[j][0] > A[i][1]`
 and 1 <= k <= K, 0 <= i < N
 ```
@@ -83,23 +83,22 @@ The answer is `dp[K][0]`.
 // Time: O(KNlogN)
 // Space: O(KN)
 class Solution {
-    vector<vector<int>> dp;
-    int dfs(vector<vector<int>> &A, int k, int i) {
-        if (k == 0 || i >= A.size()) return 0;
-        if (dp[k][i] != -1) return dp[k][i];
-        int j = upper_bound(begin(A) + i, end(A), A[i][1], [](int t, const auto &v) { return v[0] > t; }) - begin(A);
-        return dp[k][i] = max(dfs(A, k - 1, j) + A[i][2], dfs(A, k, i + 1));
-    }
 public:
     int maxValue(vector<vector<int>>& A, int k) {
         sort(begin(A), end(A));
-        dp.assign(k + 1, vector<int>(A.size(), -1));
-        return dfs(A, k, 0);
+        vector<vector<int>> dp(k + 1, vector<int>(A.size(), -1));
+        function<int(int, int)> dfs = [&](int k, int i) {
+            if (k == 0 || i >= A.size()) return 0;
+            if (dp[k][i] != -1) return dp[k][i];
+            int j = upper_bound(begin(A) + i + 1, end(A), A[i][1], [](int t, auto &a) { return a[0] > t; }) - begin(A);
+            return dp[k][i] = max(dfs(k, i + 1), A[i][2] + dfs(k - 1, j));
+        };
+        return dfs(k, 0);
     }
 };
 ```
 
-## Solution 2. DP Bottom-up + Space Optimization
+## Solution 2. Bottom-up DP + Binary Search + Space Optimization
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/
@@ -115,7 +114,7 @@ public:
         for (int i = 1; i <= k; ++i) {
             vector<int> next(N + 1);
             for (int j = N - 1; j >= 0; --j) {
-                int t = upper_bound(begin(A) + j, end(A), A[j][1], [](int t, auto &v) { return v[0] > t; }) - begin(A);
+                int t = upper_bound(begin(A) + j + 1, end(A), A[j][1], [](int t, auto &v) { return v[0] > t; }) - begin(A);
                 next[j] = max(dp[t] + A[j][2], next[j + 1]);
             }
             swap(dp, next);
