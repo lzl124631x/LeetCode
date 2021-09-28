@@ -73,7 +73,7 @@ class Solution {
 public:
     int snakesAndLadders(vector<vector<int>>& A) {
         int N = A.size(), step = 0;
-        vector<bool> seen(N * N + 1); // we only mark `seen[i]` as `true` only if we directly step on `i` without any ladder or snake.
+        vector<bool> seen(N * N + 1);
         seen[1] = true;
         queue<int> q{{1}};
         while (q.size()) {
@@ -83,13 +83,13 @@ public:
                 if (u == N * N) return step;
                 q.pop();
                 for (int v = u + 1; v <= min(N * N, u + 6); ++v) {
-                    if (seen[v]) continue;
-                    seen[v] = true;
                     int x = (v - 1) / N, y = (v - 1) % N;
                     if (x % 2) y = N - 1 - y;
                     x = N - 1 - x;
-                    if (A[x][y] == -1) q.push(v);
-                    else q.push(A[x][y]); // If we reached `A[x][y]` through a ladder or snake, we don't mark `seen[A[x][y]]` as `true` because we might need to jump from `A[x][y]` to `A[A[x][y]]` through a ladder or snake later.
+                    int next = A[x][y] == -1 ? v : A[x][y];
+                    if (seen[next]) continue;
+                    seen[next] = true;
+                    q.push(next);
                 }
             }
             ++step;
