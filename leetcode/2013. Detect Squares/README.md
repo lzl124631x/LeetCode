@@ -68,29 +68,31 @@ So the answer is `count(x1, y) * [ count(x, y1) * count(x1, y1) + count(x, y2) *
 // Time:
 //      DetectSquares: O(1)
 //      add: O(1)
-//      count: O(N)
+//      count: O(U) where `U` is the number of unique `x` values
 // Space: O(N)
 class DetectSquares {
     unordered_map<int, int> cnt;
     unordered_set<int> xs;
-    int count(int x, int y) {
-        int key = x * 10000 + y;
-        return cnt.count(key) ? cnt[key] : 0;
+    inline int key(int x, int y) {
+        return 10000 * x + y;
+    }
+    inline int count(int x, int y) {
+        int k = key(x, y); 
+        return cnt.count(k) ? cnt[k] : 0;
     }
 public:
     DetectSquares() {}
     void add(vector<int> p) {
-        cnt[p[0] * 10000 + p[1]]++;
+        cnt[key(p[0], p[1])]++;
         xs.insert(p[0]);
     }
     int count(vector<int> p) {
         int x = p[0], y = p[1], ans = 0;
         for (int x1 : xs) {
-            if (x1 == x || cnt.count(x1 * 10000 + y) == 0) continue;
-            int c1 = count(x1, y);
-            if (c1 == 0) continue;
-            int d = abs(x - x1), y1 = y - d, y2 = y + d;
-            ans += c1 * (count(x, y1) * count(x1, y1) + count(x, y2) * count(x1, y2));
+            if (x1 == x) continue;
+            int c = count(x1, y), d = abs(x - x1), y1 = y - d, y2 = y + d;
+            if (c == 0) continue;
+            ans += c * (count(x, y1) * count(x1, y1) + count(x, y2) * count(x1, y2));
         }
         return ans;
     }
