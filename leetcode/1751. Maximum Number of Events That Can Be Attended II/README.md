@@ -47,10 +47,11 @@ Notice that you cannot attend any other event as they overlap, and that you do <
 [Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
-[Binary Search](https://leetcode.com/tag/binary-search/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
 **Similar Questions**:
 * [Maximum Number of Events That Can Be Attended (Medium)](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/)
+* [Maximum Earnings From Taxi (Medium)](https://leetcode.com/problems/maximum-earnings-from-taxi/)
 
 ## Solution 1. DP
 
@@ -120,6 +121,34 @@ public:
             swap(dp, next);
         }
         return dp[0];
+    }
+};
+```
+
+## Solution 3. DP + Map
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/
+// Author: github.com/lzl124631x
+// Time: O(KNlogU) where `U` is the number of unique start times.
+// Space: O(U)
+class Solution {
+public:
+    int maxValue(vector<vector<int>>& A, int k) {
+        sort(begin(A), end(A), [&](auto &a, auto &b) { return a[0] > b[0]; });
+        map<int, int> m{{INT_MAX, 0}};
+        int ans;
+        while (k--) {
+            map<int, int> next{{INT_MAX, 0}};
+            ans = 0;
+            for (auto &a : A) {
+                int s = a[0], e = a[1], v = a[2];
+                next[s] = max(ans, v + m.upper_bound(e)->second);
+                ans = max(ans, next[s]);
+            }
+            swap(m, next);
+        }
+        return ans;
     }
 };
 ```
