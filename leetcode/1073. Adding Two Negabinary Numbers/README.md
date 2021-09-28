@@ -2,30 +2,45 @@
 
 <p>Given two numbers <code>arr1</code> and <code>arr2</code> in base <strong>-2</strong>, return the result of adding them together.</p>
 
-<p>Each number is given in <em>array format</em>:&nbsp; as an array of 0s and 1s, from most significant bit to least significant bit.&nbsp; For example, <code>arr = [1,1,0,1]</code> represents the number <code>(-2)^3&nbsp;+ (-2)^2 + (-2)^0 = -3</code>.&nbsp; A number <code>arr</code> in <em>array format</em> is also guaranteed to have no leading zeros: either&nbsp;<code>arr == [0]</code> or <code>arr[0] == 1</code>.</p>
+<p>Each number is given in <em>array format</em>:&nbsp; as an array of 0s and 1s, from most significant bit to least significant bit.&nbsp; For example, <code>arr = [1,1,0,1]</code> represents the number <code>(-2)^3&nbsp;+ (-2)^2 + (-2)^0 = -3</code>.&nbsp; A number <code>arr</code> in <em>array, format</em> is also guaranteed to have no leading zeros: either&nbsp;<code>arr == [0]</code> or <code>arr[0] == 1</code>.</p>
 
 <p>Return the result of adding <code>arr1</code> and <code>arr2</code> in the same format: as an array of 0s and 1s with no leading zeros.</p>
 
 <p>&nbsp;</p>
-
 <p><strong>Example 1:</strong></p>
 
-<pre><strong>Input: </strong>arr1 = <span id="example-input-1-1">[1,1,1,1,1]</span>, arr2 = <span id="example-input-1-2">[1,0,1]</span>
-<strong>Output: </strong><span id="example-output-1">[1,0,0,0,0]
-</span><strong>Explanation: </strong>arr1 represents 11, arr2 represents 5, the output represents 16.
+<pre><strong>Input:</strong> arr1 = [1,1,1,1,1], arr2 = [1,0,1]
+<strong>Output:</strong> [1,0,0,0,0]
+<strong>Explanation: </strong>arr1 represents 11, arr2 represents 5, the output represents 16.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> arr1 = [0], arr2 = [0]
+<strong>Output:</strong> [0]
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> arr1 = [0], arr2 = [1]
+<strong>Output:</strong> [1]
 </pre>
 
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><strong>Note:</strong></p>
-
-<ol>
-	<li><code>1 &lt;= arr1.length &lt;= 1000</code></li>
-	<li><code>1 &lt;= arr2.length &lt;= 1000</code></li>
+<ul>
+	<li><code>1 &lt;= arr1.length,&nbsp;arr2.length &lt;= 1000</code></li>
+	<li><code>arr1[i]</code>&nbsp;and <code>arr2[i]</code> are&nbsp;<code>0</code> or <code>1</code></li>
 	<li><code>arr1</code> and <code>arr2</code> have no leading zeros</li>
-	<li><code>arr1[i]</code> is <code>0</code> or <code>1</code></li>
-	<li><code>arr2[i]</code> is <code>0</code> or <code>1</code></li>
-</ol>
+</ul>
+
+
+**Companies**:  
+[Grab](https://leetcode.com/company/grab)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Math](https://leetcode.com/tag/math/)
 
 ## Solution 1.
 
@@ -84,6 +99,44 @@ public:
         }
         while (ans.size() > 1 && ans.back() == 0) ans.pop_back();
         reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};
+```
+
+## Solution 2.
+
+Add the two numbers first without any carry over into any array `ans`.
+
+If `ans[i] >= 2`:
+* If `ans[i+1] != 0`, we do `ans[i] -= 2` and `ans[i+1]--`
+* Otherwise, we do `ans[i] -= 2` and `ans[i+1]++, ans[i+2]++`.
+
+```cpp
+// OJ: https://leetcode.com/problems/adding-two-negabinary-numbers/
+// Author: github.com/lzl124631x
+// Time: O()
+// Space: O()
+class Solution {
+public:
+    vector<int> addNegabinary(vector<int>& A, vector<int>& B) {
+        int carry = 0;
+        vector<int> ans;
+        for (int i = A.size() - 1, j = B.size() - 1; i >= 0 || j >= 0;) {
+            ans.emplace_back();
+            if (i >= 0) ans.back() += A[i--];
+            if (j >= 0) ans.back() += B[j--];
+        }
+        for (int i = 0; i < ans.size(); ++i) {
+            if (ans[i] < 2) continue;
+            ans[i] -= 2;
+            if (i + 1 == ans.size()) ans.emplace_back();
+            if (i + 2 == ans.size()) ans.emplace_back();
+            if (ans[i + 1]) ans[i + 1]--;
+            else ans[i + 1]++, ans[i + 2]++;
+        }
+        while (ans.size() > 1 && ans.back() == 0) ans.pop_back();
+        reverse(begin(ans), end(ans));
         return ans;
     }
 };
