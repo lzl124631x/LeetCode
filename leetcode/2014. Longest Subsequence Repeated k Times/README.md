@@ -47,14 +47,21 @@
 
 <ul>
 	<li><code>n == s.length</code></li>
-	<li><code>2 &lt;= k &lt;= 2000</code></li>
+	<li><code>2 &lt;= n, k &lt;= 2000</code></li>
 	<li><code>2 &lt;= n &lt; k * 8</code></li>
 	<li><code>s</code> consists of lowercase English letters.</li>
 </ul>
 
 
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook)
+
+**Related Topics**:  
+[String](https://leetcode.com/tag/string/), [Backtracking](https://leetcode.com/tag/backtracking/), [Greedy](https://leetcode.com/tag/greedy/), [Counting](https://leetcode.com/tag/counting/), [Enumeration](https://leetcode.com/tag/enumeration/)
+
 **Similar Questions**:
 * [Longest Substring with At Least K Repeating Characters (Medium)](https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/)
+
 
 ## Solution 1. DFS
 
