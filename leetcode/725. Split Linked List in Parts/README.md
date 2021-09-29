@@ -37,7 +37,7 @@ The input has been split into consecutive parts with size difference at most 1, 
 
 
 **Companies**:  
-[Amazon](https://leetcode.com/company/amazon), [Adobe](https://leetcode.com/company/adobe)
+[Oracle](https://leetcode.com/company/oracle)
 
 **Related Topics**:  
 [Linked List](https://leetcode.com/tag/linked-list/)
