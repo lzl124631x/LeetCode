@@ -101,6 +101,51 @@ public:
 };
 ```
 
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-subsequence-repeated-k-times/
+// Author: github.com/lzl124631x
+// Time: O(26^(N/K) * N)
+// Space: O(N/K)
+class Solution {
+    string ans;
+    int cnt[26] = {};
+    bool match(string &s, int k) {
+        int i = 0, j = 0, M = s.size(), N = ans.size();
+        for (; i < M && k; ++i) {
+            if (s[i] != ans[j]) continue;
+            ++j;
+            if (j == N) j = 0, --k;
+        }
+        return k == 0;
+    }
+    bool dfs(string &s, int k, int len) {
+        if (len == 0) return true;
+        for (char c = 'z'; c >= 'a'; --c) {
+            if (ans.size() && ans.back() == c) continue;
+            int used = min(len, cnt[c - 'a']);
+            for (int i = 0; i < used; ++i) ans.push_back(c);
+            while (ans.size() && ans.back() == c) {
+                if (match(s, k) && dfs(s, k, len - used)) return true;
+                --used;
+                ans.pop_back();
+            }
+        }
+        return false;
+    }
+public:
+    string longestSubsequenceRepeatedK(string s, int k) {
+        for (char c : s) cnt[c - 'a']++;
+        for (int &n : cnt) n /= k;
+        for (int len = s.size() / k; len >= 1; --len) {
+            if (dfs(s, k, len)) return ans;
+        }
+        return "";
+    }
+};
+```
+
 ## Solution 2. BFS
 
 ```cpp
