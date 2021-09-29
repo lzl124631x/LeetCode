@@ -298,6 +298,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 322 | Coin Change | Medium | [Solution](leetcode/322.%20Coin%20Change)
 323 | Number of Connected Components in an Undirected Graph | Medium | [Solution](leetcode/323.%20Number%20of%20Connected%20Components%20in%20an%20Undirected%20Graph)
 324 | Wiggle Sort II |  | [Solution](leetcode/324.%20Wiggle%20Sort%20II)
+325 | Maximum Size Subarray Sum Equals k | Medium | [Solution](leetcode/325.%20Maximum%20Size%20Subarray%20Sum%20Equals%20k)
 326 | Power of Three | Easy | [Solution](leetcode/326.%20Power%20of%20Three)
 327 | Count of Range Sum | Hard | [Solution](leetcode/327.%20Count%20of%20Range%20Sum)
 328 | Odd Even Linked List | Medium | [Solution](leetcode/328.%20Odd%20Even%20Linked%20List)
