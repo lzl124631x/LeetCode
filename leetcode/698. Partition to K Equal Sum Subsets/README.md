@@ -47,6 +47,7 @@ public:
         sum /= k;
         vector<int> dp(1 << N, -1); // -1 unvisited, 0 can't k-partition, 1 can k-partition
         dp[(1 << N) - 1] = 1; // If we can use all elements, it's a valid k-partition
+        sort(begin(A), end(A), greater<>()); // Try the rocks earlier than sands
         function<bool(int, int)> dfs = [&](int mask, int target) {
             if (dp[mask] != -1) return dp[mask];
             dp[mask] = 0;
