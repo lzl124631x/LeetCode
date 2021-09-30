@@ -42,7 +42,7 @@
 * [Longest Increasing Subsequence (Medium)](https://leetcode.com/problems/longest-increasing-subsequence/)
 * [The Number of Weak Characters in the Game (Medium)](https://leetcode.com/problems/the-number-of-weak-characters-in-the-game/)
 
-## Solution 1.
+## Solution 1. LIS
 
 ```cpp
 // OJ: https://leetcode.com/problems/russian-doll-envelopes/
