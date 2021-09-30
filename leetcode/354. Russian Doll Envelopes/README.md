@@ -31,14 +31,10 @@ Rotation is not allowed.</p>
 // Time: O(NlogN)
 // Space: O(N)
 // Ref: https://leetcode.com/problems/russian-doll-envelopes/discuss/82763/Java-NLogN-Solution-with-Explanation
-bool cmp(const vector<int> &a, const vector<int> &b) {
-    return a[0] != b[0] ? a[0] < b[0] : a[1] > b[1];
-}
 class Solution {
 public:
     int maxEnvelopes(vector<vector<int>>& A) {
-        sort(begin(A), end(A), cmp);
-        if (i.first == j.first)
+        sort(begin(A), end(A), [](auto &a, auto &b) { return a[0] != b[0] ? a[0] < b[0] : a[1] > b[1]; });
         vector<int> dp;
         for (int i = 0; i < A.size(); ++i) {
             auto it = lower_bound(begin(dp), end(dp), A[i][1]);
