@@ -39,7 +39,7 @@ The maximum working time is 11.</pre>
 
 See https://liuzhenglaichn.gitbook.io/algorithm/k-subset-partitioning
 
-## Solution 1. DFS to Fill Buckets
+## Solution 1. Backtrack to Fill Buckets
 
 Using similar solution to [698. Partition to K Equal Sum Subsets (Medium)](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/).
 
@@ -48,7 +48,7 @@ One difference is that, here we should sort the `A` in ascending order because i
 ```cpp
 // OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 // Author: github.com/lzl124631x
-// Time: O(K^N) ~150ms as of 1/17/2020
+// Time: O(K^N) ~150ms as of 1/17/2021
 // Space: O(NK)
 // Ref: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/discuss/1009817/One-branch-cutting-trick-to-solve-three-LeetCode-questions
 class Solution {
@@ -80,12 +80,12 @@ public:
 
 Another trick is to spread the works across different workers during DFS using different `start`. In this way, we can distribute the works more evenly instead of piling on the first worker.
 
-Note that with this trick, it's better sorting the `A` in descending order so that the pebbles settle at the beginning of the DFS and the sands are shuffled at the tail of the DFS, making it more likely to get evenly distributed.
+Note that with this trick, it's better sorting the `A` in descending order so that the rocks settle at the beginning of the DFS and the sands are shuffled at the tail of the DFS, making it more likely to get evenly distributed.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 // Author: github.com/lzl124631x
-// Time: O(K^N) ~24ms as of 1/17/2020
+// Time: O(K^N) ~24ms as of 1/17/2021
 // Space: O(NK)
 // Ref: https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/discuss/1009817/One-branch-cutting-trick-to-solve-three-LeetCode-questions/814428
 class Solution {
@@ -100,7 +100,7 @@ class Solution {
         unordered_set<int> seen;
         for (int s = start, j = 0; j < v.size(); ++j) {
             int t = (s + j) % v.size();
-            if (seen.count(v[t]) || v[t] + A[i] > ans) continue;
+            if (seen.count(v[t]) || v[t] + A[i] > ans) continue; // Must use set `seen` instead of `if (v[t] == 0) break;`.
             seen.insert(v[t]);
             v[t] += A[i];
             dfs(A, i + 1);
@@ -153,7 +153,7 @@ public:
 };
 ```
 
-## Solution 2. Binary Search + DFS
+## Solution 2. Binary Answer + Backtrack to Fill Buckets
 
 The range of the answer is `[max(A), sum(A)]`. We can binary search in this range.
 
