@@ -30,7 +30,7 @@
 **Related Topics**:  
 [Depth-first Search](https://leetcode.com/tag/depth-first-search/)
 
-## Solution 1. DP on Subsets
+## Solution 1. Bitmask DP on Subsets
 
 ```cpp
 // OJ: https://leetcode.com/problems/matchsticks-to-square/
@@ -38,30 +38,30 @@
 // Time: O(N * 2^N)
 // Space: O(2^N)
 class Solution {
-    vector<int> dp;
-    bool dfs(vector<int> &A, int used, int todo, int target) {
-        if (dp[used] != -1) return dp[used];
-        dp[used] = 0;
-        int mx = todo % target;
-        if (mx == 0) mx = target;
-        for (int i = 0; i < A.size() && !dp[used]; ++i) {
-            dp[used] = ((used >> i) & 1) == 0 && A[i] <= mx && dfs(A, used | (1 << i), todo - A[i], target);
-        }
-        return dp[used];
-    }
 public:
     bool makesquare(vector<int>& A) {
-        if (A.empty()) return false;
-        int len = accumulate(begin(A), end(A), 0);
-        if (len % 4 || *max_element(begin(A), end(A)) > len / 4) return false;
-        dp.assign(1 << A.size(), -1);
-        dp[(1 << A.size()) - 1] = 1;
-        return dfs(A, 0, len, len / 4);
+        int sum = accumulate(begin(A), end(A), 0), N = A.size();
+        if (sum % 4 || *max_element(begin(A), end(A)) > sum / 4) return false;
+        sum /= 4;
+        sort(begin(A), end(A), greater<>());
+        vector<int> dp(1 << N, -1);
+        dp[(1 << N) - 1] = 1;
+        function<bool(int, int)> dfs = [&](int mask, int target) {
+            if (dp[mask] != -1) return dp[mask];
+            dp[mask] = 0;
+            if (target == 0) target = sum;
+            for (int i = 0; i < N && !dp[mask]; ++i) {
+                if ((mask >> i & 1) || A[i] > target) continue;
+                dp[mask] = dfs(mask | (1 << i), target - A[i]);
+            }
+            return dp[mask];
+        };
+        return dfs(0, sum);
     }
 };
 ```
 
-## Solution 2. DFS to Fill Buckets
+## Solution 2. Backtrack to Fill Buckets
 
 Let `target = sum(A) / 4`, which is the target length of each edge.
 
@@ -78,27 +78,57 @@ Two optimizations here:
 // Time: O(4^N)
 // Space: O(N * SUM(A))
 class Solution {
-    int edge[4] = {}, target;
-    bool dfs(vector<int> &A, int i) {
-        if (i == A.size()) return true;
-        unordered_set<int> seen;
-        for (int j = 0; j < 4; ++j) {
-            if (seen.count(edge[j]) || edge[j] + A[i] > target) continue;
-            seen.insert(edge[j]);
-            edge[j] += A[i];
-            if (dfs(A, i + 1)) return true;
-            edge[j] -= A[i];
-        }
-        return false;
-    }
 public:
     bool makesquare(vector<int>& A) {
-        if (A.size() < 4) return false;
+        vector<int> v(4);
         int sum = accumulate(begin(A), end(A), 0);
         if (sum % 4 || *max_element(begin(A), end(A)) > sum / 4) return false;
-        target = sum / 4;
-        sort(begin(A), end(A), greater<>());
-        return dfs(A, 0);
+        sum /= 4;
+        sort(begin(A), end(A), greater<>()); // Try rocks before sands
+        function<bool(int)> dfs = [&](int i) {
+            if (i == A.size()) return true;
+            unordered_set<int> seen;
+            for (int j = 0; j < 4; ++j) {
+                if (A[i] + v[j] > sum || seen.count(v[j])) continue;
+                seen.insert(v[j]);
+                v[j] += A[i];
+                if (dfs(i + 1)) return true;
+                v[j] -= A[i];
+            }
+            return false;
+        };
+        return dfs(0);
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/matchsticks-to-square/
+// Author: github.com/lzl124631x
+// Time: O(4^N)
+// Space: O(N * SUM(A))
+class Solution {
+public:
+    bool makesquare(vector<int>& A) {
+        vector<int> v(4);
+        int sum = accumulate(begin(A), end(A), 0);
+        if (sum % 4 || *max_element(begin(A), end(A)) > sum / 4) return false;
+        sum /= 4;
+        sort(begin(A), end(A), greater<>()); // Try rocks before sands
+        function<bool(int)> dfs = [&](int i) {
+            if (i == A.size()) return true;
+            for (int j = 0; j < 4; ++j) {
+                if (A[i] + v[j] > sum) continue;
+                v[j] += A[i];
+                if (dfs(i + 1)) return true;
+                v[j] -= A[i];
+                if (v[j] == 0) continue; // Simply don't visit empty bucket again. This takes less space but longer time.
+            }
+            return false;
+        };
+        return dfs(0);
     }
 };
 ```
