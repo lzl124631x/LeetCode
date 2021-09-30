@@ -73,6 +73,32 @@ public:
 };
 ```
 
+## Solution 2. LIS
+
+Similar to [354. Russian Doll Envelopes (Hard)](https://leetcode.com/problems/russian-doll-envelopes/)
+
+```cpp
+// OJ: https://leetcode.com/problems/the-number-of-weak-characters-in-the-game/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class Solution {
+public:
+    int numberOfWeakCharacters(vector<vector<int>>& A) {
+        sort(begin(A), end(A), [](auto &a, auto &b) { return a[0] != b[0] ? a[0] > b[0] : a[1] < b[1]; });
+        vector<int> dp;
+        int ans = 0;
+        for (auto &c : A) {
+            int i = lower_bound(begin(dp), end(dp), c[1], greater<>()) - begin(dp);
+            if (i == dp.size()) dp.emplace_back();
+            dp[i] = c[1];
+            ans += i > 0;
+        }
+        return ans;
+    }
+};
+```
+
 ## TODO
 
 Use Bucket Sort. Work on `O(N)` solution.
