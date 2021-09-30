@@ -43,8 +43,8 @@ public:
         int sum = accumulate(begin(A), end(A), 0), N = A.size();
         if (sum % 4 || *max_element(begin(A), end(A)) > sum / 4) return false;
         sum /= 4;
-        sort(begin(A), end(A), greater<>());
-        vector<int> dp(1 << N, -1);
+        sort(begin(A), end(A), greater<>()); // Try rocks before sands
+        vector<int> dp(1 << N, -1); // -1 unvisited, 0 invalid, 1 valid
         dp[(1 << N) - 1] = 1;
         function<bool(int, int)> dfs = [&](int mask, int target) {
             if (dp[mask] != -1) return dp[mask];
