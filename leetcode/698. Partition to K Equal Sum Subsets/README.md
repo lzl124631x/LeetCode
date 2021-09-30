@@ -39,28 +39,30 @@ This problem is very similar to [473. Matchsticks to Square (Medium)](https://le
 // Time: O(N * 2^N)
 // Space: O(2^Nk)
 class Solution {
-    vector<int> dp;
-    bool dfs(vector<int> &A, int used, int todo, int target) {
-        if (dp[used] != -1) return dp[used];
-        dp[used] = 0;
-        int rest = (todo - 1) % target + 1;
-        for (int i = 0; i < A.size() && !dp[used]; ++i) {
-            dp[used] = ((used >> i) & 1) == 0 && A[i] <= rest && dfs(A, used | (1 << i), todo - A[i], target);
-        }
-        return dp[used];
-    }
 public:
     bool canPartitionKSubsets(vector<int>& A, int k) {
         int sum = accumulate(begin(A), end(A), 0);
-        if (sum % k || *max_element(begin(A), end(A)) > sum / k) return false;
-        dp.assign(1 << A.size(), -1);
-        dp[(1 << A.size()) - 1] = 1;
-        return dfs(A, 0, sum, sum / k);
+        if (sum % k) return false;
+        int N = A.size();
+        sum /= k;
+        vector<int> dp(1 << N, -1); // -1 unvisited, 0 can't k-partition, 1 can k-partition
+        dp[(1 << N) - 1] = 1; // If we can use all elements, it's a valid k-partition
+        function<bool(int, int)> dfs = [&](int mask, int target) {
+            if (dp[mask] != -1) return dp[mask];
+            dp[mask] = 0;
+            if (target == 0) target = sum;
+            for (int i = 0; i < N && !dp[mask]; ++i) {
+                if ((mask >> i & 1) || A[i] > target) continue; // If `A[i]` is used in `mask`, or `A[i] > target`, skip this `A[i]`
+                dp[mask] = dfs(mask | (1 << i), target - A[i]);
+            }
+            return dp[mask];
+        };
+        return dfs(0, sum);
     }
 };
 ```
 
-## Solution 2. DFS to Fill Buckets
+## Solution 2. Backtrack to Fill Buckets 
 
 ```cpp
 // OJ: https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
@@ -68,28 +70,25 @@ public:
 // Time: O(K^N)
 // Space: O(N * SUM(A) / K)
 class Solution {
-    vector<int> v;
-    int target;
-    bool dfs(vector<int> &A, int i) {
-        if (i == A.size()) return true;
-        unordered_set<int> seen;
-        for (int j = 0; j < v.size(); ++j) {
-            if (seen.count(v[j]) || v[j] + A[i] > target) continue;
-            seen.insert(v[j]);
-            v[j] += A[i];
-            if (dfs(A, i + 1)) return true;
-            v[j] -= A[i];
-        }
-        return false;
-    }
 public:
     bool canPartitionKSubsets(vector<int>& A, int k) {
         int sum = accumulate(begin(A), end(A), 0);
         if (sum % k) return false;
-        target = sum / k;
-        sort(begin(A), end(A), greater<>());
-        v.assign(k, 0);
-        return dfs(A, 0);
+        sum /= k;
+        vector<int> v(k);
+        sort(begin(A), end(A), greater<>()); // Try the rocks earlier than sands
+        function<bool(int)> dfs = [&](int i) {
+            if (i == A.size()) return true;
+            for (int j = 0; j < k; ++j) {
+                if (v[j] + A[i] > sum) continue;
+                v[j] += A[i];
+                if (dfs(i + 1)) return true;
+                v[j] -= A[i];
+                if (v[j] == 0) break; // don't try empty buckets multiple times.
+            }
+            return false;
+        };
+        return dfs(0);
     }
 };
 ```
