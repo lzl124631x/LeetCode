@@ -31,7 +31,7 @@
 
 This problem is very similar to [473. Matchsticks to Square (Medium)](https://leetcode.com/problems/matchsticks-to-square/).
 
-## Solution 1. DP on Subsets
+## Solution 1. Bitmask DP on Subsets
 
 ```cpp
 // OJ: https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
