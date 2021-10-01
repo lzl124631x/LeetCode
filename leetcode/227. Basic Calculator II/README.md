@@ -40,13 +40,21 @@
 * [Expression Add Operators (Hard)](https://leetcode.com/problems/expression-add-operators/)
 * [Basic Calculator III (Hard)](https://leetcode.com/problems/basic-calculator-iii/)
 
-## Solution 1.
+## Solution 1. Stack
+
+Use two stacks. One for operands `nums`, another for operators `ops`.
+
+We push numbers into `nums`, and operators into `ops`. Before we push a new operator `c` into the `ops`, we need to `eval` the stacks -- calculating all the operators whose priorities are greater than or equal to the priority of `c`.
+
+We also need to `eval` when we exhaust the input string to calculate all the operands. 
+
+In the end, `nums.top()` is the answer.
 
 ```cpp
 // OJ: https://leetcode.com/problems/basic-calculator-ii/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(N)
+// Space: O(1) becase we at most store two operators and their corresponding operands in the stacks
 class Solution {
     stack<int> nums;
     stack<char> ops;
