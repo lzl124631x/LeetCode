@@ -1,36 +1,39 @@
 # [227. Basic Calculator II (Medium)](https://leetcode.com/problems/basic-calculator-ii/)
 
-<p>Implement a basic calculator to evaluate a simple expression string.</p>
+<p>Given a string <code>s</code> which represents an expression, <em>evaluate this expression and return its value</em>.&nbsp;</p>
 
-<p>The expression string contains only <b>non-negative</b> integers, <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> operators and empty spaces <code> </code>. The integer division should truncate toward zero.</p>
+<p>The integer division should truncate toward zero.</p>
 
+<p><b data-stringify-type="bold">Note:&nbsp;</b>You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as&nbsp;<code data-stringify-type="code">eval()</code>.</p>
+
+<p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
-
-<pre><strong>Input: </strong>"3+2*2"
+<pre><strong>Input:</strong> s = "3+2*2"
 <strong>Output:</strong> 7
-</pre>
-
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input:</strong> " 3/2 "
-<strong>Output:</strong> 1</pre>
-
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input:</strong> " 3+5 / 2 "
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> s = " 3/2 "
+<strong>Output:</strong> 1
+</pre><p><strong>Example 3:</strong></p>
+<pre><strong>Input:</strong> s = " 3+5 / 2 "
 <strong>Output:</strong> 5
 </pre>
-
-<p><b>Note:</b></p>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
 <ul>
-	<li>You may assume that the given expression is always valid.</li>
-	<li><b>Do not</b> use the <code>eval</code> built-in library function.</li>
+	<li><code>1 &lt;= s.length &lt;= 3 * 10<sup>5</sup></code></li>
+	<li><code>s</code> consists of integers and operators <code>('+', '-', '*', '/')</code> separated by some number of spaces.</li>
+	<li><code>s</code> represents <strong>a valid expression</strong>.</li>
+	<li>All the integers in the expression are non-negative integers in the range <code>[0, 2<sup>31</sup> - 1]</code>.</li>
+	<li>The answer is <strong>guaranteed</strong> to fit in a <strong>32-bit integer</strong>.</li>
 </ul>
 
 
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Roblox](https://leetcode.com/company/roblox), [Google](https://leetcode.com/company/google), [Apple](https://leetcode.com/company/apple), [Snapchat](https://leetcode.com/company/snapchat), [Uber](https://leetcode.com/company/uber)
+
 **Related Topics**:  
-[String](https://leetcode.com/tag/string/)
+[Math](https://leetcode.com/tag/math/), [String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/)
 
 **Similar Questions**:
 * [Basic Calculator (Hard)](https://leetcode.com/problems/basic-calculator/)
@@ -45,29 +48,27 @@
 // Time: O(N)
 // Space: O(N)
 class Solution {
-    stack<char> ops;
     stack<int> nums;
-    inline int priority(char op) {
-        if (op == '\0') return 0;
-        return op == '*' || op == '/' ? 2 : 1;
-    }
-    void eval(char op = '\0') {
-        while (ops.size() && priority(op) <= priority(ops.top())) {
-            int n = nums.top();
+    stack<char> ops;
+    unordered_map<char, int> priority{{'+',0},{'-',0},{'*',1},{'/',1}};
+    void eval(char op = 0) {
+        while (ops.size() && (op == 0 || priority[ops.top()] >= priority[op])) {
+            int b = nums.top();
             nums.pop();
-            switch(ops.top()) {
-                case '+': nums.top() += n; break;
-                case '-': nums.top() -= n; break;
-                case '*': nums.top() *= n; break;
-                case '/': nums.top() /= n; break;
+            switch (ops.top()) {
+                case '+': nums.top() += b; break;
+                case '-': nums.top() -= b; break;
+                case '*': nums.top() *= b; break;
+                case '/': nums.top() /= b; break;
             }
             ops.pop();
         }
-        ops.push(op);
+        if (op) ops.push(op);
     }
 public:
     int calculate(string s) {
-        for (int i = 0, N = s.size(); i < N; ++i) {
+        int N = s.size();
+        for (int i = 0; i < N; ++i) {
             if (s[i] == ' ') continue;
             if (isdigit(s[i])) {
                 int n = 0;
