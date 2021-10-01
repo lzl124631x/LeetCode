@@ -61,24 +61,22 @@ The time complexity is `O(MN)` because each cell is matched at most 4 times.
 // Time: O(MN)
 // Space: O(MN)
 class Solution {
-    bool same(vector<char> &A, int start, int end, string &s) { // returns true if `A[start..(end-1)]` equals `s` or reversed `s`.
-        if (end - start != s.size()) return false;
-        int j = 0;
-        while (start + j < end && (A[start + j] == ' ' || A[start + j] == s[j])) ++j; // match from left to right
-        if (j == s.size()) return true;
-        j = 0;
-        while (end - 1 - j >= start && (A[end - 1 - j] == ' ' || A[end - 1 - j] == s[j])) ++j; // match from right to left
-        return j == s.size();
+    bool same(vector<char> &A, int first, int last, string &s) { // returns true if `A[first..last]` equals `s` or reversed `s`.
+        if (last - first + 1 != s.size()) return false;
+        int i = 0, N = s.size();
+        while (i < N && (A[first + i] == ' ' || A[first + i] == s[i])) ++i; // match from left to right
+        if (i == N) return true;
+        for (i = 0; i < N && (A[last - i] == ' ' || A[last - i] == s[i]);) ++i; // match from right to left
+        return i == N;
     }
     bool match(vector<vector<char>> &A, string s) { // returns `true` if matrix `A` matches string `s` horizontally
-        int M = A.size(), N = A[0].size();
-        for (int i = 0; i < M; ++i) {
-            int j = 0;
-            while (j < N) {
-                while (j < N && A[i][j] == '#') ++j;
-                int start = j;
-                while (j < N && A[i][j] != '#') ++j;
-                if (same(A[i], start, j, s)) return true; // match `A[i][start..(j-1)]` with `s`.
+        int N = A[0].size();
+        for (auto &row : A) {
+            for (int i = 0; i < N; ) {
+                while (i < N && row[i] == '#') ++i;
+                int start = i;
+                while (i < N && row[i] != '#') ++i;
+                if (same(row, start, i - 1, s)) return true; // match `row[start..(i-1)]` with `s`.
             }
         }
         return false;
