@@ -58,6 +58,8 @@ The resulting array is [1,2,3,4], which is continuous.
 
 ## Solution 1. Sliding Window
 
+Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)" which can help you solve all sliding window problems.
+
 **Intuition**: Sort and only keep unique elements. The problem is the same as "get the length of the longest subarray whose difference between min and max elements is `N - 1`".
 
 **Algorithm**:
@@ -86,3 +88,50 @@ public:
     }
 };
 ```
+
+Use Shrinkable Sliding Window Template: 
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int minOperations(vector<int>& A) {
+        int N = A.size(), i = 0, j = 0, ans = 0;
+        sort(begin(A), end(A));
+        A.erase(unique(begin(A), end(A)), end(A)); // only keep unique elements
+        for (int M = A.size(); j < M; ++j) {
+            while (A[i] + N <= A[j]) ++i; // let `i` point to the first element that is in range -- `A[i] + N > A[j]`
+            ans = max(ans, j - i + 1);
+        }
+        return N - ans;
+    }
+};
+```
+
+Use Non-shrinkable Sliding Window Template:
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int minOperations(vector<int>& A) {
+        int N = A.size(), i = 0, j = 0;
+        sort(begin(A), end(A));
+        A.erase(unique(begin(A), end(A)), end(A)); // only keep unique elements
+        for (int M = A.size(); j < M; ++j) {
+            if (A[i] + N <= A[j]) ++i;
+        }
+        return N - j + i;
+    }
+};
+```
+
+## Discuss
+
+https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/discuss/1470857/C%2B%2B-Sliding-Window
