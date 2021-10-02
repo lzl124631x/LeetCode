@@ -390,7 +390,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 421 | Maximum XOR of Two Numbers in an Array | Medium | [Solution](leetcode/421.%20Maximum%20XOR%20of%20Two%20Numbers%20in%20an%20Array)
 422 | Valid Word Square | Easy | [Solution](leetcode/422.%20Valid%20Word%20Square)
 423 | Reconstruct Original Digits from English |  | [Solution](leetcode/423.%20Reconstruct%20Original%20Digits%20from%20English)
-424 | Longest Repeating Character Replacement |  | [Solution](leetcode/424.%20Longest%20Repeating%20Character%20Replacement)
+424 | Longest Repeating Character Replacement | Medium | [Solution](leetcode/424.%20Longest%20Repeating%20Character%20Replacement)
 426 | Convert Binary Search Tree to Sorted Doubly Linked List | Medium | [Solution](leetcode/426.%20Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List)
 427 | Construct Quad Tree | Medium | [Solution](leetcode/427.%20Construct%20Quad%20Tree)
 429 | N-ary Tree Level Order Traversal | Medium | [Solution](leetcode/429.%20N-ary%20Tree%20Level%20Order%20Traversal)
@@ -1550,6 +1550,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2017 | Grid Game | Medium | [Solution](leetcode/2017.%20Grid%20Game)
 2018 | Check if Word Can Be Placed In Crossword | Medium | [Solution](leetcode/2018.%20Check%20if%20Word%20Can%20Be%20Placed%20In%20Crossword)
 2019 | The Score of Students Solving Math Expression | Hard | [Solution](leetcode/2019.%20The%20Score%20of%20Students%20Solving%20Math%20Expression)
+2024 | Maximize the Confusion of an Exam | Medium | [Solution](leetcode/2024.%20Maximize%20the%20Confusion%20of%20an%20Exam)
 
 # License
 
