@@ -105,3 +105,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/number-of-pairs-of-strings-with-concatenation-equal-to-target/discuss/1499270/C%2B%2B-Frequency-Map
