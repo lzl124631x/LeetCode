@@ -69,7 +69,7 @@ obj.calculateMKAverage(); // The last 3 elements are [5,5,5].
 * Use `sum` to track the sum of numbers in `mid`.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-236/problems/finding-mk-average/
+// OJ: https://leetcode.com/problems/finding-mk-average/
 // Author: github.com/lzl124631x
 // Time: 
 //     MKAverage: O(1)
@@ -151,3 +151,7 @@ public:
     }
 };
 ```
+
+## TODO
+
+Try BIT: https://leetcode.com/problems/finding-mk-average/discuss/1152438/Python3-Fenwick-tree
