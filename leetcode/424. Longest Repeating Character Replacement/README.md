@@ -43,6 +43,8 @@ The substring "BBBB" has the longest repeating letters, which is 4.
 
 ## Solution 1. Sliding Window
 
+Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)".
+
 Shrinkable Sliding Window:
 
 ```cpp
@@ -83,3 +85,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/longest-repeating-character-replacement/discuss/1499834/C%2B%2B-Sliding-Window-(%2B-Cheat-Sheet)

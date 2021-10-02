@@ -56,7 +56,7 @@ In both cases, there are five consecutive 'T's.
 
 ## Solution 1. Sliding Window
 
-Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)" which can help you solve all sliding window problems.
+Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)".
 
 **Intuition**: Use a sliding window to get the longest substring with at most `k` `'T'` (or `'F'`).
 
