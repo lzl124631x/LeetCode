@@ -73,25 +73,23 @@ public:
             G[u].emplace_back(v, w);
             G[v].emplace_back(u, w);
         }
-        map<int, int> dist;
+        vector<int> dist(N, INT_MAX);
         dist[0] = 0;
-        for (int i = 1; i < N; ++i) dist[i] = M + 1; // M is the maximum steps we can take, so M + 1 is the smallest invalid value.
         map<pii, int> used;
         int ans = 0;
         priority_queue<pii, vector<pii>, greater<pii>> q; // weight, node
         q.emplace(0, 0);
         while (q.size()) {
-            auto top = q.top();
+            auto [d, u] = q.top();
             q.pop();
-            int d = top.first, u = top.second;
             if (d > dist[u]) continue;
             ++ans;
             for (auto [v, w] : G[u]) {
                 used[{ u, v }] = min(w, M - d); // M - d is how much further we can walk from this `u` node
-                int d2 = d + w + 1; // d2 is the minimal distance from source node to this `v` node.
-                if (d2 < min(dist[v], M + 1)) {
-                    q.emplace(d2, v);
-                    dist[v] = d2;
+                int dv = d + w + 1; // dv is the minimal distance from source node to this `v` node.
+                if (dv < min(dist[v], M + 1)) {
+                    q.emplace(dv, v);
+                    dist[v] = dv;
                 }
             }
         }
