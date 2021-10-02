@@ -50,7 +50,7 @@
 **Related Topics**:  
 [Binary Search](https://leetcode.com/tag/binary-search/), [Queue](https://leetcode.com/tag/queue/)
 
-## Solution 1. Sliding Window
+## Solution 1. Sliding Window + Mono-deque
 
 Let `P[i] = A[0] + ... A[i - 1]` where `i` &isin; `[1, N]`. Our goal is to find the smallest `y - x` such that `P[y] - P[x] >= K`.
 
@@ -64,7 +64,7 @@ Rule 2 tells us that we can further shrink the sequence from the front whenever 
 
 **Algorithm**
 
-Maintain a "monoqueue" of indices of `P`: a deque of indices `x_0, x_1, ...` such that `P[x_0], P[x_1], ...` is increasing.
+Maintain a mono-deque of indices of `P`: a deque of indices `x_0, x_1, ...` such that `P[x_0], P[x_1], ...` is increasing.
 
 When adding a new index `y`, we'll pop `x_i` from the end of the deque so that `P[x_0], P[x_1], ..., P[y]` will be increasing.
 
