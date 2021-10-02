@@ -118,3 +118,26 @@ public:
     }
 };
 ```
+
+## Solution 3.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int minFlips(string s) {
+        int N = s.size(), t = 0;
+        for (int i = 0; i < N; ++i) t += (s[i] == '0') ^ (i % 2 == 0);
+        int ans = min(t, N - t);
+        if (N % 2 == 0) return ans;
+        for (int i = 0; i < N - 1; ++i) {
+            t = N - t + (s[i] == '0' ? -1 : 1);
+            ans = min(ans, min(t, N - t));
+        }
+        return ans;
+    }
+};
+```
