@@ -86,11 +86,11 @@ public:
 };
 ```
 
-## Solution 2. Sliding Window
+## Solution 2. Shrinkable Sliding Window
+
+Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)" which can help you solve all sliding window problems.
 
 We can turn this problem into two find maximum sliding window problem: one is to find a window with at most `k` different integers, another is to find a window with at most `k - 1` different integers.
-
-Shrinkable Sliding Window:
 
 ```cpp
 // OJ: https://leetcode.com/problems/subarrays-with-k-different-integers/
@@ -98,18 +98,19 @@ Shrinkable Sliding Window:
 // Time: O(N)
 // Space: O(U) where U is the number of unique numbers in `A`
 class Solution {
-public:
-    int subarraysWithKDistinct(vector<int>& A, int k) {
-        int distinct1 = 0, distinct2 = 0, i = 0, j = 0, t = 0, N = A.size(), ans = 0;
-        unordered_map<int, int> c1, c2;
-        for (; t < N; ++t) {
-            distinct1 += ++c1[A[t]] == 1;
-            distinct2 += ++c2[A[t]] == 1;
-            while (distinct1 > k) distinct1 -= --c1[A[i++]] == 0;
-            while (distinct2 > k - 1) distinct2 -= --c2[A[j++]] == 0;
+    int atMost(vector<int> &A, int k) {
+        int distinct = 0, i = 0, j = 0, N = A.size(), ans = 0;
+        unordered_map<int, int> cnt;
+        for (; j < N; ++j) {
+            distinct += ++cnt[A[j]] == 1;
+            while (distinct > k) distinct -= --cnt[A[i++]] == 0;
             ans += j - i;
         }
         return ans;
+    }
+public:
+    int subarraysWithKDistinct(vector<int>& A, int k) {
+        return atMost(A, k) - atMost(A, k - 1);
     }
 };
 ```
