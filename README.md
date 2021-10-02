@@ -725,6 +725,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 839 | Similar String Groups | Hard | [Solution](leetcode/839.%20Similar%20String%20Groups)
 840 | Magic Squares In Grid | Easy | [Solution](leetcode/840.%20Magic%20Squares%20In%20Grid)
 841 | Keys and Rooms | Medium | [Solution](leetcode/841.%20Keys%20and%20Rooms)
+842 | Split Array into Fibonacci Sequence | Medium | [Solution](leetcode/842.%20Split%20Array%20into%20Fibonacci%20Sequence)
 843 | Guess the Word | Hard | [Solution](leetcode/843.%20Guess%20the%20Word)
 844 | Backspace String Compare | Easy | [Solution](leetcode/844.%20Backspace%20String%20Compare)
 845 | Longest Mountain in Array | Medium | [Solution](leetcode/845.%20Longest%20Mountain%20in%20Array)
