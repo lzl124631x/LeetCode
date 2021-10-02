@@ -101,7 +101,7 @@ class Solution {
     bool valid(vector<vector<int>> &A, int len) {
         unordered_set<unsigned long long> s, tmp;
         for (int i = 0; i < A.size() && (i == 0 || s.size()); ++i) {
-            unsigned long long d = 16777619, h = 0, p = 1;
+            unsigned long long d = 1099511628211, h = 0, p = 1;
             tmp.clear();
             swap(s, tmp);
             for (int j = 0; j < A[i].size(); ++j) {
