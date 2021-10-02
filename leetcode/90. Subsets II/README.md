@@ -1,25 +1,67 @@
 # [90. Subsets II (Medium)](https://leetcode.com/problems/subsets-ii/)
 
-<p>Given a collection of integers that might contain duplicates, <strong><em>nums</em></strong>, return all possible subsets (the power set).</p>
+<p>Given an integer array <code>nums</code> that may contain duplicates, return <em>all possible subsets (the power set)</em>.</p>
 
-<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
+<p>The solution set <strong>must not</strong> contain duplicate subsets. Return the solution in <strong>any order</strong>.</p>
 
-<p><strong>Example:</strong></p>
-
-<pre><strong>Input:</strong> [1,2,2]
-<strong>Output:</strong>
-[
-  [2],
-  [1],
-  [1,2,2],
-  [2,2],
-  [1,2],
-  []
-]
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<pre><strong>Input:</strong> nums = [1,2,2]
+<strong>Output:</strong> [[],[1],[1,2],[1,2,2],[2],[2,2]]
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [0]
+<strong>Output:</strong> [[],[0]]
 </pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 10</code></li>
+	<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
+</ul>
 
 
-## Solution 1.
+**Companies**:  
+[Apple](https://leetcode.com/company/apple), [Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Bloomberg](https://leetcode.com/company/bloomberg), [ByteDance](https://leetcode.com/company/bytedance)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Backtracking](https://leetcode.com/tag/backtracking/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/)
+
+**Similar Questions**:
+* [Subsets (Medium)](https://leetcode.com/problems/subsets/)
+
+## Solution 1. Brute Force
+
+There are at most `2^N` subsets in the `set`. Each insertion into the `set` takes `O(log(2^N) * N) = O(N^2)` time. So overall the time complexity is `O(2^N * N^2)`.
+
+```cpp
+// OJ: https://leetcode.com/problems/subsets-ii/
+// Author: github.com/lzl124631x
+// Time: O(2^N * N^2)
+// Space: O(2^N * N)
+class Solution {
+    set<vector<int>> s;
+    vector<int> tmp;
+    void dfs(vector<int> &A, int i) {
+        if (i == A.size()) {
+            s.insert(tmp);
+            return;
+        }
+        dfs(A, i + 1);
+        tmp.push_back(A[i]);
+        dfs(A, i + 1);
+        tmp.pop_back();
+    }
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& A) {
+        sort(begin(A), end(A));
+        dfs(A, 0);
+        return vector<vector<int>>(begin(s), end(s));
+    }
+};
+```
+
+## Solution 2.
 
 ```cpp
 // OJ: https://leetcode.com/problems/subsets-ii/
@@ -50,7 +92,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 3.
 
 ```cpp
 // OJ: https://leetcode.com/problems/subsets-ii/
