@@ -65,49 +65,43 @@ public:
 };
 ```
 
-## Solution 2. Sliding Window (Shrinkable)
+## Solution 2. Sliding Window
 
-Sliding window `[i, j]` without repeating characters.
-
-1. Keep extending the right edge.
-1. Only shrink when needed.
-1. The size of the current window is `j - i + 1`.
-1. Back to step 1 until reaching the end.
+Shrinkable Sliding Window:
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-substring-without-repeating-characters/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(1)
+// Space: O(C)
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int i = 0, j = 0, N = s.size(), ans = 0, cnt[128] = {};
-        for (; j < N; ++j) {
-            cnt[s[j]]++;
-            while (cnt[s[j]] > 1) cnt[s[i++]]--;
-            ans = max(ans, j - i + 1);
+        int i = 0, j = 0, N = s.size(), cnt[128] = {}, dup = 0, ans = 0;
+        while (j < N) {
+            dup += ++cnt[s[j++]] == 2;
+            while (dup) dup -= --cnt[s[i++]] == 1;
+            ans = max(ans, j - i);
         }
         return ans;
     }
 };
 ```
 
-## Solution 3. Sliding Window (Non-shrinkable)
+Non-shrinable Sliding Window:
 
-In this solution the sliding window `[i, j]` never shrinks.
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-substring-without-repeating-characters/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(1)
+// Space: O(C)
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int i = 0, j = 0, N = s.size(), cnt[128] = {}, dup = 0;
-        for (; j < N; ++j) {
-            dup += ++cnt[s[j]] == 2;
+        while (j < N) {
+            dup += ++cnt[s[j++]] == 2;
             if (dup) dup -= --cnt[s[i++]] == 1;
         }
         return j - i;
