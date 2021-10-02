@@ -40,6 +40,9 @@
 
 ## Solution 1. Sliding Window
 
+Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)".
+
+
 Shrinkable Sliding Window:
 ```cpp
 // OJ: https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/
@@ -82,3 +85,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/discuss/1499839/C%2B%2B-Sliding-Window-(%2B-Cheat-Sheet)

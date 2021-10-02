@@ -85,7 +85,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Shrinkable Slinding Window
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-window-substring/
@@ -96,17 +96,17 @@ public:
 class Solution {
 public:
     string minWindow(string s, string t) {
-        vector<int> m(128, 0);
-        for (char c : t) ++m[c];
-        int begin = 0, end = 0, head = 0, cnt = t.size(), len = INT_MAX;
-        while (end < s.size()) {
-            if (m[s[end++]]-- > 0) --cnt;
-            while (!cnt) {
-                if (end - begin < len) len = end - (head = begin);
-                if (m[s[begin++]]++ == 0) ++cnt;
+        int cnt[128] = {};
+        for (char c : t) cnt[c]++;
+        int N = s.size(), i = 0, j = 0, start = -1, minLen = INT_MAX, matched = 0;
+        while (j < N) {
+            matched += --cnt[s[j++]] >= 0;
+            while (matched == t.size()) {
+                if (j - i < minLen) minLen = j - i, start = i;
+                matched -= ++cnt[s[i++]] > 0;
             }
         }
-        return len == INT_MAX ? "" : s.substr(head, len);
+        return start == -1 ? "" : s.substr(start, minLen);
     }
 };
 ```
