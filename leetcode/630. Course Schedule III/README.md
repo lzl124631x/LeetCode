@@ -76,8 +76,16 @@ public:
 };
 ```
 
-## Solution 1. Greedy
+## Solution 1. Regret Greedy (反悔贪心)
 
+1. We should greedily take the courses whose deadline is earlier.
+2. If taking a course won't meet its deadline, what we can try is swapping this course with the longest course we've taken that is longer than the current course. In this way, we won't reduce the number of courses we've taken, but at the same time we reduced the total time we used to take courses. That is, this approach
+
+Example: We have 3 courses, `[[2,3],[4,6],[3,7]]`
+
+* Taking the first course is fine. We spent `2` days and the current deadline is `3`.
+* Taking the second course is fine. We spent `2 + 4 = 6` days and the current deadline is `6`.
+* We can't the third course additionally because it costs `2 + 4 + 3 = 9` days in total but the deadline is `7`. What we can do is swapping the 2nd and 3rd courses, so we spent `2 + 3 = 5` days in total and the dealine is `7`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/course-schedule-iii/
@@ -92,13 +100,13 @@ public:
         int time = 1, ans = 0;
         for (auto &v : A) {
             int duration = v[0], last = v[1];
-            if (time + duration - 1 <= last) {
+            if (time + duration - 1 <= last) { // if we can take the current course, take it.
                 ++ans;
                 time += duration;
                 m[duration]++;
-            } else if (m.size()) {
-                int d = m.rbegin()->first;
-                if (d > duration) {
+            } else if (m.size()) { // if we can't this course, we try swapping this course we've taken previously
+                int d = m.rbegin()->first; // use the longest course for swapping
+                if (d > duration) { // the course to be swapped must cost longer time than the current one.
                     if (--m[d] == 0) m.erase(d);
                     time += duration - d;
                     m[duration]++;
@@ -109,10 +117,3 @@ public:
     }
 };
 ```
-
-## TODO
-
-Write summary
-
-
-It is always profitable to take the course with a smaller end day prior to a course with a larger end day.
