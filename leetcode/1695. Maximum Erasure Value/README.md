@@ -30,13 +30,16 @@
 </ul>
 
 
+**Companies**:  
+[Cashfree](https://leetcode.com/company/cashfree)
+
 **Related Topics**:  
-[Two Pointers](https://leetcode.com/tag/two-pointers/)
+[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
 
 **Similar Questions**:
 * [Longest Substring Without Repeating Characters (Medium)](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 
-## Solution 1.
+## Solution 1. Shrinkable Sliding Window
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-erasure-value/
@@ -47,7 +50,7 @@ class Solution {
 public:
     int maximumUniqueSubarray(vector<int>& A) {
         int i = 0, ans = 0, N = A.size();
-        unordered_map<int, int> m;
+        unordered_map<int, int> m; // number -> index of last occurrence.
         vector<int> sum(N + 1);
         partial_sum(begin(A), end(A), begin(sum) + 1);
         for (int j = 0; j < N; ++j) {
@@ -60,13 +63,13 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Shrinkable Sliding Window
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-erasure-value/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(N)
+// Space: O(U) where U is the number of unique elements in `A`
 class Solution {
 public:
     int maximumUniqueSubarray(vector<int>& A) {
@@ -79,6 +82,32 @@ public:
             }
             s.insert(A[j]);
             sum += A[j];
+            ans = max(ans, sum);
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3. Shrinkable Sliding Window
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-erasure-value/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(U) where U is the number of unique elements in `A`
+class Solution {
+public:
+    int maximumUniqueSubarray(vector<int>& A) {
+        int i = 0, j = 0, N = A.size(), ans = 0, dup = 0, sum = 0;
+        unordered_map<int, int> cnt;
+        while (j < N) {
+            dup += ++cnt[A[j]] == 2;
+            sum += A[j++];
+            while (dup) {
+                dup -= --cnt[A[i]] == 1;
+                sum -= A[i++];
+            }
             ans = max(ans, sum);
         }
         return ans;
