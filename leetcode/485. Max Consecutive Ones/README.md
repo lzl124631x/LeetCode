@@ -37,7 +37,7 @@
 * [Consecutive Characters (Easy)](https://leetcode.com/problems/consecutive-characters/)
 * [Longer Contiguous Segments of Ones than Zeros (Easy)](https://leetcode.com/problems/longer-contiguous-segments-of-ones-than-zeros/)
 
-## Solution 1.
+## Solution 1. Greedy
 
 ```cpp
 // OJ: https://leetcode.com/problems/max-consecutive-ones/
