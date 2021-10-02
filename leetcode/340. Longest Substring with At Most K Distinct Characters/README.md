@@ -25,7 +25,9 @@
 **Related Topics**:  
 [Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
 
-## Solution 1.
+## Solution 1. Sliding Window
+
+Shrinkable Sliding Window:
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
@@ -35,16 +37,33 @@
 class Solution {
 public:
     int lengthOfLongestSubstringKDistinct(string s, int k) {
-        vector<int> m(128, 0);
-        int i = 0, j = 0, ans = 0, cnt = 0;
-        while (j < s.size()) {
-            if (m[s[j++]]++ == 0) cnt++;
-            while (cnt > k) {
-                if (m[s[i++]]-- == 1) cnt--;
-            }
+        int cnt[128] = {}, distinct = 0, i = 0, j = 0, ans = 0, N = s.size();
+        while (j < N) {
+            distinct += cnt[s[j++]]++ == 0;
+            while (distinct > k) distinct -= --cnt[s[i++]] == 0;
             ans = max(ans, j - i);
         }
         return ans;
+    }
+};
+```
+
+Non-shrinkable Sliding Window:
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int lengthOfLongestSubstringKDistinct(string s, int k) {
+        int cnt[128] = {}, distinct = 0, i = 0, j = 0, N = s.size();
+        while (j < N) {
+            distinct += cnt[s[j++]]++ == 0;
+            if (distinct > k) distinct -= --cnt[s[i++]] == 0;
+        }
+        return j - i;
     }
 };
 ```
