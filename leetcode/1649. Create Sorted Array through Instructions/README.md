@@ -97,3 +97,45 @@ public:
     }
 };
 ```
+
+## Solution 2. Divide and Conquer
+
+```cpp
+// OJ: https://leetcode.com/problems/create-sorted-array-through-instructions/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+const int maxN = 100001;
+int id[maxN], lt[maxN], gt[maxN], tmp[maxN];
+class Solution {
+    void solve(vector<int> &A, int begin, int end) {
+        if (begin + 1 >= end) return;
+        int mid = (begin + end) / 2, i = begin, j = mid, k = begin;
+        solve(A, begin, mid);
+        solve(A, mid, end);
+        for (; j < end; ++j) {
+            while (i < mid && A[id[i]] < A[id[j]]) ++i;
+            lt[id[j]] += i - begin;
+        }
+        for (i = mid - 1, j = end - 1; j >= mid; --j) {
+            while (i >= begin && A[id[i]] > A[id[j]]) --i;
+            gt[id[j]] += mid - i - 1;
+        }
+        for (i = begin, j = mid; i < mid || j < end;) {
+            if (j >= end || (i < mid && A[id[i]] < A[id[j]])) tmp[k++] = id[i++];
+            else tmp[k++] = id[j++];
+        }
+        for (i = begin; i < end; ++i) id[i] = tmp[i];
+    }
+public:
+    int createSortedArray(vector<int>& A) {
+        long N = A.size(), ans = 0, mod = 1e9 + 7;
+        iota(begin(id), begin(id) + N, 0);
+        memset(lt, 0, sizeof(lt));
+        memset(gt, 0, sizeof(lt));
+        solve(A, 0, N);
+        for (int i = 0; i < N; ++i) ans = (ans + min(lt[i], gt[i])) % mod;
+        return ans;
+    }
+};
+```

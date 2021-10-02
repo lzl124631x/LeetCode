@@ -1,33 +1,72 @@
-# [45. Jump Game II (Hard)](https://leetcode.com/problems/jump-game-ii/)
+# [45. Jump Game II (Medium)](https://leetcode.com/problems/jump-game-ii/)
 
-<p>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
+<p>Given an array of non-negative integers <code>nums</code>, you are initially positioned at the first index of the array.</p>
 
 <p>Each element in the array represents your maximum jump length at that position.</p>
 
 <p>Your goal is to reach the last index in the minimum number of jumps.</p>
 
-<p><strong>Example:</strong></p>
-
-<pre><strong>Input:</strong> [2,3,1,1,4]
-<strong>Output:</strong> 2
-<strong>Explanation:</strong> The minimum number of jumps to reach the last index is 2.
-    Jump 1 step from index 0 to 1, then 3 steps to the last index.</pre>
-
-<p><strong>Note:</strong></p>
-
 <p>You can assume that you can always reach the last index.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> nums = [2,3,1,1,4]
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums = [2,3,0,1,4]
+<strong>Output:</strong> 2
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 1000</code></li>
+	<li><code>0 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
+</ul>
 
 
 **Companies**:  
-[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Goldman Sachs](https://leetcode.com/company/goldman-sachs)
+[Amazon](https://leetcode.com/company/amazon), [Apple](https://leetcode.com/company/apple), [tcs](https://leetcode.com/company/tcs)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Greedy](https://leetcode.com/tag/greedy/)
 
 **Similar Questions**:
 * [Jump Game (Medium)](https://leetcode.com/problems/jump-game/)
+* [Jump Game III (Medium)](https://leetcode.com/problems/jump-game-iii/)
 
-## Idea
+## Solution 1. DP
+
+```cpp
+// OJ: https://leetcode.com/problems/jump-game-ii/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N)
+class Solution {
+public:
+    int jump(vector<int>& A) {
+        int N = A.size();
+        vector<int> dp(N, INT_MAX);
+        dp[0] = 0;
+        for (int i = 0; i < N; ++i) {
+            for (int j = 1; j <= A[i] && i + j < N; ++j) {
+                dp[i + j] = min(dp[i + j], 1 + dp[i]);
+            }
+        }
+        return dp[N - 1];
+    }
+};
+```
+
+## Solution 2.
+
+**Intuition**:
 
 This problem is asking for **the shortest distance**, so **BFS** should be the first solution we come up with.
 
@@ -35,7 +74,7 @@ The following solutions are variants of BFS.
 
 Normally we use `queue` to keep track of the active indexes. But for this problem, we just need to track the **furthest index we can reach**.
 
-## Solution 1.
+**Algorithm**:
 
 Use `vector<int> endsAt` to store the furthest index we can go. `endsAt[i]` means we can reach `endsAt[i]` given `i` steps. It starts with a single 0 at position 0, and will be strictly ascending.
 

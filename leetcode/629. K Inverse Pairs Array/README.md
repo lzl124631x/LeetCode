@@ -41,6 +41,32 @@ The array [1,3,2] and [2,1,3] have exactly 1 inverse pair.
 [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
 ## Solution 1.
+
+Let `dp[i][j]` be the number ways to form `k` reverse pairs with `i` numbers.
+
+For `i` numbers, there are `i!` permutations.
+
+The decreasing sequence has `(i-1) + (i-2) + ... + 0 = (i-1) * i / 2` reverse pairs.
+
+```
+dp[1][0] = 1       (1)
+
+dp[2][0] = 1       (12)
+dp[2][1] = 1       (21)
+
+dp[3][0] = 1       (123)
+dp[3][1] = 2       (132, 213)
+dp[3][2] = 2       (312, 231)
+dp[3][3] = 1       (321)
+
+dp[4][0] = 1       (1234)
+dp[4][1] = 3        (2134,1324,1243)
+dp[4][2] = 
+dp[4][3] = 
+dp[4][4] =          (4321)
+
+```
+
 Denote `R(n, k)` as the result number, `P` as a permutation.
 
 

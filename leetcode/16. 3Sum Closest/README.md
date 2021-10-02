@@ -20,8 +20,11 @@
 </ul>
 
 
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Apple](https://leetcode.com/company/apple), [Adobe](https://leetcode.com/company/adobe), [Uber](https://leetcode.com/company/uber), [Google](https://leetcode.com/company/google), [Capital One](https://leetcode.com/company/capital-one)
+
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/)
+[Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Sorting](https://leetcode.com/tag/sorting/)
 
 **Similar Questions**:
 * [3Sum (Medium)](https://leetcode.com/problems/3sum/)

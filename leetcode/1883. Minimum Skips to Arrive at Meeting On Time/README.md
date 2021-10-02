@@ -86,13 +86,12 @@ dp[0][j] = 0
 class Solution {
 public:
     int minSkips(vector<int>& D, int S, int H) {
-        long N = D.size(), mx = (long)S * H;
-        vector<vector<int>> dp(N + 1, vector<int>(N + 1, INT_MAX));
+        long N = D.size(), mx = (long)S * H, dp[1001][1001] = {};
+        memset(dp, 0x3f, sizeof(dp));
         for (int i = 0; i <= N; ++i) dp[0][i] = 0;
         for (int i = 0; i < N; ++i) {
             for (int j = 0; j < N; ++j) {
-                int sum = dp[i][j] + D[i], div = sum / S, r = sum % S, val = (div + (r > 0)) * S;
-                dp[i + 1][j] = min(j - 1 >= 0 ? dp[i][j - 1] + D[i] : INT_MAX, val);
+                dp[i + 1][j] = min(j - 1 >= 0 ? dp[i][j - 1] + D[i] : INT_MAX, ((long)dp[i][j] + D[i] + S - 1) / S * S);
                 if (i == N - 1 && dp[i + 1][j] <= mx) return j;
             }
         }

@@ -70,7 +70,7 @@ public:
 };
 ```
 
-## SQRT decomposition
+## Solution 2. SQRT decomposition
 
 ```cpp
 // OJ: https://leetcode.com/problems/range-sum-query-mutable/
