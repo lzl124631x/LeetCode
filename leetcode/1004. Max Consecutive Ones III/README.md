@@ -40,6 +40,7 @@ Bolded numbers were flipped from 0 to 1.  The longest subarray is underlined.
 
 ## Solution 1. Sliding Window
 
+Shrinkable sliding window:
 ```cpp
 // OJ: https://leetcode.com/problems/max-consecutive-ones-iii/
 // Author: github.com/lzl124631x
@@ -48,13 +49,33 @@ Bolded numbers were flipped from 0 to 1.  The longest subarray is underlined.
 class Solution {
 public:
     int longestOnes(vector<int>& A, int k) {
-        int i = 0, j = 0, N = A.size(), used = 0, ans = 0;
-        for (; j < N; ++j) {
-            used += A[j] == 0;
-            while (used > k) used -= A[i++] == 0;
-            ans = max(ans, j - i + 1);
+        int i = 0, j = 0, cnt = 0, N = A.size(), ans = 0;
+        while (j < N) {
+            cnt += A[j++] == 0;
+            while (cnt > k) cnt -= A[i++] == 0;
+            ans = max(ans, j - i);
         }
         return ans;
+    }
+};
+```
+
+Or non-shrinkable sliding window:
+
+```cpp
+// OJ: https://leetcode.com/problems/max-consecutive-ones-iii/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int longestOnes(vector<int>& A, int k) {
+        int i = 0, j = 0, cnt = 0, N = A.size();
+        while (j < N) {
+            cnt += A[j++] == 0;
+            if (cnt > k) cnt -= A[i++] == 0;
+        }
+        return j - i;
     }
 };
 ```
