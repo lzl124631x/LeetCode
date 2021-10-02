@@ -79,3 +79,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/convert-1d-array-into-2d-array/discuss/1499226/C%2B%2B-Brute-Force
