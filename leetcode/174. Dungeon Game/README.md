@@ -1,64 +1,47 @@
 # [174. Dungeon Game (Hard)](https://leetcode.com/problems/dungeon-game/)
 
-<style type="text/css">table.dungeon, .dungeon th, .dungeon td {
-  border:3px solid black;
-}
+<p>The demons had captured the princess and imprisoned her in <strong>the bottom-right corner</strong> of a <code>dungeon</code>. The <code>dungeon</code> consists of <code>m x n</code> rooms laid out in a 2D grid. Our valiant knight was initially positioned in <strong>the top-left room</strong> and must fight his way through <code>dungeon</code> to rescue the princess.</p>
 
- .dungeon th, .dungeon td {
-    text-align: center;
-    height: 70px;
-    width: 70px;
-}
-</style>
-<p>The demons had captured the princess (<strong>P</strong>) and imprisoned her in the bottom-right corner of a dungeon. The dungeon consists of M x N rooms laid out in a 2D grid. Our valiant knight (<strong>K</strong>) was initially positioned in the top-left room and must fight his way through the dungeon to rescue the princess.</p>
+<p>The knight has an initial health point represented by a positive integer. If at any point his health point drops to <code>0</code> or below, he dies immediately.</p>
 
-<p>The knight has an initial health point represented by a positive integer. If at any point his health point drops to 0 or below, he dies immediately.</p>
+<p>Some of the rooms are guarded by demons (represented by negative integers), so the knight loses health upon entering these rooms; other rooms are either empty (represented as 0) or contain magic orbs that increase the knight's health (represented by positive integers).</p>
 
-<p>Some of the rooms are guarded by demons, so the knight loses health (<em>negative</em> integers) upon entering these rooms; other rooms are either empty (<em>0's</em>) or contain magic orbs that increase the knight's health (<em>positive</em> integers).</p>
+<p>To reach the princess as quickly as possible, the knight decides to move only <strong>rightward</strong> or <strong>downward</strong> in each step.</p>
 
-<p>In order to reach the princess as quickly as possible, the knight decides to move only rightward or downward in each step.</p>
+<p>Return <em>the knight's minimum initial health so that he can rescue the princess</em>.</p>
+
+<p><strong>Note</strong> that any room can contain threats or power-ups, even the first room the knight enters and the bottom-right room where the princess is imprisoned.</p>
 
 <p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/03/13/dungeon-grid-1.jpg" style="width: 253px; height: 253px;">
+<pre><strong>Input:</strong> dungeon = [[-2,-3,3],[-5,-10,1],[10,30,-5]]
+<strong>Output:</strong> 7
+<strong>Explanation:</strong> The initial health of the knight must be at least 7 if he follows the optimal path: RIGHT-&gt; RIGHT -&gt; DOWN -&gt; DOWN.
+</pre>
 
-<p><strong>Write a function to determine the knight's minimum initial health so that he is able to rescue the princess.</strong></p>
+<p><strong>Example 2:</strong></p>
 
-<p>For example, given the dungeon below, the initial health of the knight must be at least <strong>7</strong> if he follows the optimal path <code>RIGHT-&gt; RIGHT -&gt; DOWN -&gt; DOWN</code>.</p>
-
-<table class="dungeon">
-	<tbody>
-		<tr>
-			<td>-2 (K)</td>
-			<td>-3</td>
-			<td>3</td>
-		</tr>
-		<tr>
-			<td>-5</td>
-			<td>-10</td>
-			<td>1</td>
-		</tr>
-		<tr>
-			<td>10</td>
-			<td>30</td>
-			<td>-5 (P)</td>
-		</tr>
-	</tbody>
-</table>
+<pre><strong>Input:</strong> dungeon = [[0]]
+<strong>Output:</strong> 1
+</pre>
 
 <p>&nbsp;</p>
-
-<p><strong>Note:</strong></p>
+<p><strong>Constraints:</strong></p>
 
 <ul>
-	<li>The knight's health has no upper bound.</li>
-	<li>Any room can contain threats or power-ups, even the first room the knight enters and the bottom-right room where the princess is imprisoned.</li>
+	<li><code>m == dungeon.length</code></li>
+	<li><code>n == dungeon[i].length</code></li>
+	<li><code>1 &lt;= m, n &lt;= 200</code></li>
+	<li><code>-1000 &lt;= dungeon[i][j] &lt;= 1000</code></li>
 </ul>
 
 
 **Companies**:  
-[Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon)
+[Uber](https://leetcode.com/company/uber), [Google](https://leetcode.com/company/google), [Adobe](https://leetcode.com/company/adobe), [Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
-[Binary Search](https://leetcode.com/tag/binary-search/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Matrix](https://leetcode.com/tag/matrix/)
 
 **Similar Questions**:
 * [Unique Paths (Medium)](https://leetcode.com/problems/unique-paths/)
@@ -71,13 +54,13 @@ Let `dp[i][j]` be the minimum health required at `dungeon[i][j]`. `dp[i][j]` sho
 
 We can compute it from `dp[M - 1][N - 1]` to `dp[0][0]` and `dp[0][0]` is the answer.
 
-Let `prev` be minimum health required in the previous step. `prev = min(dp[i + 1][j], dp[i][j + 1])`.
+Let `need` be minimum health required in the previous step. `need = min(dp[i + 1][j], dp[i][j + 1])`.
 
-If `dungeon[i][j] < 0`, `dp[i][j] = prev - dungeon[i][j] > 1`.
+If `dungeon[i][j] < 0`, `dp[i][j] = need - dungeon[i][j] > 1`.
 
-If `dungeon[i][j] >= 0`, `dp[i][j] = max(1, prev - dungeon[i][j])`.
+If `dungeon[i][j] >= 0`, `dp[i][j] = max(1, need - dungeon[i][j])`.
 
-So combining these two cases, `dp[i][j] = max(1, prev - dungeon[i][j])` for `i` in `[0, M-1)` and `j` in `[0, N-1)`.
+So combining these two cases, `dp[i][j] = max(1, need - dungeon[i][j])` for `i` in `[0, M-1)` and `j` in `[0, N-1)`.
 
 For the corner case `i = M - 1` or `j = N - 1`, either `dp[i + 1][j]` or `dp[i][j + 1]` is nonexistent and we can treat it as `Infinity`.
 
@@ -86,33 +69,9 @@ If both of them are `Infinity`, i.e. `i = M - 1, j = N - 1`, `dp[i][j] = max(1, 
 So in sum:
 
 ```
-dp[i][j] = max(1, (prev === Infinity ? 1 : prev) - dungeon[i][j])
-           where prev = min(dp[i + 1][j], dp[i][j + 1])
+dp[i][j] = max(1, (need === Infinity ? 1 : need) - dungeon[i][j])
+           where need = min(dp[i + 1][j], dp[i][j + 1])
 ```
-
-```cpp
-// OJ: https://leetcode.com/problems/dungeon-game
-// Author: github.com/lzl124631x
-// Time: O(MN)
-// Space: O(1)
-class Solution {
-public:
-  int calculateMinimumHP(vector<vector<int>>& dungeon) {
-    int M = dungeon.size(), N = dungeon[0].size();
-    for (int i = M - 1; i >= 0; --i) {
-      for (int j = N - 1; j >= 0; --j) {
-        int val = INT_MAX;
-        if (i + 1 < M) val = min(val, dungeon[i + 1][j]);
-        if (j + 1 < N) val = min(val, dungeon[i][j + 1]);
-        dungeon[i][j] = max(1, (val == INT_MAX ? 1 : val) - dungeon[i][j]);
-      }
-    }
-    return dungeon[0][0];
-  }
-};
-```
-
-Or
 
 ```cpp
 // OJ: https://leetcode.com/problems/dungeon-game
@@ -125,12 +84,9 @@ public:
         int M = A.size(), N = A[0].size();
         for (int i = M - 1; i >= 0; --i) {
             for (int j = N - 1; j >= 0; --j) {
-                int req;
-                if (i == M - 1 && j == N - 1) req = 1;
-                else if (i == M - 1) req = A[i][j + 1];
-                else if (j == N - 1) req = A[i + 1][j];
-                else req = min(A[i][j + 1], A[i + 1][j]);
-                A[i][j] = max(1, req - A[i][j]);
+                int need = min(i + 1 < M ? A[i + 1][j] : INT_MAX, j + 1 < N ? A[i][j + 1] : INT_MAX);
+                if (need == INT_MAX) need = 1;
+                A[i][j] = max(1, need - A[i][j]);
             }
         }
         return A[0][0];
@@ -138,9 +94,7 @@ public:
 };
 ```
 
-## Solution 2.
-
-In case it's not allowed to change the input array.
+Or, in case it's not allowed to change the input array.
 
 ```cpp
 // OJ: https://leetcode.com/problems/dungeon-game
