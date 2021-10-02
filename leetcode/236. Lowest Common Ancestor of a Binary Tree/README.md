@@ -91,7 +91,7 @@ public:
 class Solution {
     TreeNode *ans = NULL;
     int dfs(TreeNode *root, TreeNode *p, TreeNode *q) {
-        if (!root) return 0;
+        if (!root || ans) return 0; // if we've already found the LCA, we can skip all subsequent DFS.
         int left = dfs(root->left, p, q), right = dfs(root->right, p, q);
         int cnt = (root == p || root == q) + left + right;
         if (cnt == 2 && (left == 1 || right == 1)) ans = root;
