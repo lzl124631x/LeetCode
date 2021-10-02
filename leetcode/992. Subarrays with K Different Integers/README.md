@@ -88,6 +88,8 @@ public:
 
 ## Solution 2. Sliding Window
 
+We can turn this problem into two find maximum sliding window problem: one is to find a window with at most `k` different integers, another is to find a window with at most `k - 1` different integers.
+
 Shrinkable Sliding Window:
 
 ```cpp
