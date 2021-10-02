@@ -85,3 +85,29 @@ public:
     }
 };
 ```
+
+## Solution 2. Sliding Window
+
+Shrinkable Sliding Window:
+
+```cpp
+// OJ: https://leetcode.com/problems/subarrays-with-k-different-integers/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(U) where U is the number of unique numbers in `A`
+class Solution {
+public:
+    int subarraysWithKDistinct(vector<int>& A, int k) {
+        int distinct1 = 0, distinct2 = 0, i = 0, j = 0, t = 0, N = A.size(), ans = 0;
+        unordered_map<int, int> c1, c2;
+        for (; t < N; ++t) {
+            distinct1 += ++c1[A[t]] == 1;
+            distinct2 += ++c2[A[t]] == 1;
+            while (distinct1 > k) distinct1 -= --c1[A[i++]] == 0;
+            while (distinct2 > k - 1) distinct2 -= --c2[A[j++]] == 0;
+            ans += j - i;
+        }
+        return ans;
+    }
+};
+```
