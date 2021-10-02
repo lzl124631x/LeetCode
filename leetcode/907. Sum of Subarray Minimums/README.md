@@ -33,6 +33,17 @@ Sum is 17.
 
 ## Solution 1. Mono Stack
 
+Think from simple case to complex case.
+
+If there is only one number, say `A = [1]`, the answer is `A[0] = 1`.
+
+If there are two numbers, can we reuse the previous results?
+
+Assume based on `A = [1]`, we add a number `2`. This new number will create two new subarrays, `[1,2]` and `[2]`. The min value of `[2]` is trivial. For min value of `[1,2]`, we can reuse the result we got when `A = [1]`.
+
+Now assume based on `A = [1]`, we add a number `0`. This new number will create two new subarrays, `[1,0]` and `[0]`. For `[1,0]`, the min value becomes `0`. And if we keep adding more numbers, this leading `1` will no longer be added because of this smaller `0`.
+
+Here we can see that we need a mono stack of keep track of the small numbers in ascending order. For example, if `A = [100,1,100,2,100,3,100]`, the stack should be `[1,2,3,100]`. Then when we push a new number into the stack, we know that are the numbers that need to be replaced. Each time we pop a number, we 
 
 ```cpp
 // OJ: https://leetcode.com/problems/sum-of-subarray-minimums/
@@ -60,3 +71,9 @@ public:
     }
 };
 ```
+
+## TODO
+
+https://leetcode.com/problems/sum-of-subarray-minimums/discuss/178876/stack-solution-with-very-detailed-explanation-step-by-step
+
+https://leetcode.com/problems/sum-of-subarray-minimums/discuss/170750/C++JavaPython-Stack-Solution
