@@ -76,3 +76,42 @@ public:
     }
 };
 ```
+
+## Solution 2. Frequency Prefix Sum 
+
+```
+A:       [1,1,2,2,2,3,5,8,8]
+
+          1,2,3,4,5,6,7,8
+freq:    [2,3,1,0,1,0,0,2]
+
+freq      1,2,3,4,5,6,7,8
+prefix : [2,5,6,6,7,7,7,9]
+sum
+```
+
+```cpp
+// OJ: https://leetcode.com/problems/sum-of-floored-pairs/
+// Author: github.com/lzl124631x
+// Time: O()
+// Space: O()
+class Solution {
+public:
+    int sumOfFlooredPairs(vector<int>& A) {
+        unordered_map<int, int> freq;
+        long prefix[100001] = {};
+        long mx = *max_element(begin(A), end(A)), ans = 0, mod = 1e9 + 7;
+        for (int n : A) freq[n]++;
+        for (int i = 1; i <= mx; ++i) {
+            prefix[i] += prefix[i - 1];
+            if (freq.count(i)) prefix[i] += freq[i];
+        }
+        for (auto &[n, cnt] : freq) {
+            for (long i = 1; i <= mx / n; ++i) {
+                ans = (ans + i * cnt % mod * (prefix[min(n * (i + 1) - 1, mx)] - prefix[n * i - 1]) % mod) % mod;
+            }
+        }
+        return ans;
+    }
+};
+```
