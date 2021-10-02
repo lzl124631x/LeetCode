@@ -45,7 +45,7 @@ The string is now alternating.
 
 ## Solution 1. Two Pointers
 
-**Intuition**: Count number of `0`s and `1`s. If either count is greater than `1` + the other count, return `-1`. 
+Count number of `0`s and `1`s. If either count is greater than `1` + the other count, return `-1`. Otherwise, we can try putting `0` or `1` at the first position and use two pointers to try to swap the numbers.
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-binary-string-alternating/
