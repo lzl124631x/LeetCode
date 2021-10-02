@@ -1,28 +1,50 @@
 # [209. Minimum Size Subarray Sum (Medium)](https://leetcode.com/problems/minimum-size-subarray-sum/)
 
-<p>Given an array of <strong>n</strong> positive integers and a positive integer <strong>s</strong>, find the minimal length of a <b>contiguous</b> subarray of which the sum ≥ <strong>s</strong>. If there isn't one, return 0 instead.</p>
+<p>Given an array of positive integers <code>nums</code> and a positive integer <code>target</code>, return the minimal length of a <strong>contiguous subarray</strong> <code>[nums<sub>l</sub>, nums<sub>l+1</sub>, ..., nums<sub>r-1</sub>, nums<sub>r</sub>]</code> of which the sum is greater than or equal to <code>target</code>. If there is no such subarray, return <code>0</code> instead.</p>
 
-<p><strong>Example:&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-<pre><strong>Input:</strong> <code>s = 7, nums = [2,3,1,2,4,3]</code>
+<pre><strong>Input:</strong> target = 7, nums = [2,3,1,2,4,3]
 <strong>Output:</strong> 2
-<strong>Explanation: </strong>the subarray <code>[4,3]</code> has the minimal length under the problem constraint.</pre>
+<strong>Explanation:</strong> The subarray [4,3] has the minimal length under the problem constraint.
+</pre>
 
-<div class="spoilers"><b>Follow up:</b></div>
+<p><strong>Example 2:</strong></p>
 
-<div class="spoilers">If you have figured out the <i>O</i>(<i>n</i>) solution, try coding another solution of which the time complexity is <i>O</i>(<i>n</i> log <i>n</i>).&nbsp;</div>
+<pre><strong>Input:</strong> target = 4, nums = [1,4,4]
+<strong>Output:</strong> 1
+</pre>
 
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> target = 11, nums = [1,1,1,1,1,1,1,1]
+<strong>Output:</strong> 0
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= target &lt;= 10<sup>9</sup></code></li>
+	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
+</ul>
+
+<p>&nbsp;</p>
+<strong>Follow up:</strong> If you have figured out the <code>O(n)</code> solution, try coding another solution of which the time complexity is <code>O(n log(n))</code>.
 
 **Companies**:  
-[Goldman Sachs](https://leetcode.com/company/goldman-sachs), [Facebook](https://leetcode.com/company/facebook), [Microsoft](https://leetcode.com/company/microsoft)
+[Goldman Sachs](https://leetcode.com/company/goldman-sachs), [Facebook](https://leetcode.com/company/facebook), [Bloomberg](https://leetcode.com/company/bloomberg), [ByteDance](https://leetcode.com/company/bytedance)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Binary Search](https://leetcode.com/tag/binary-search/)
+[Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/), [Sliding Window](https://leetcode.com/tag/sliding-window/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
 
 **Similar Questions**:
 * [Minimum Window Substring (Hard)](https://leetcode.com/problems/minimum-window-substring/)
 * [Maximum Size Subarray Sum Equals k (Medium)](https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/)
 * [Maximum Length of Repeated Subarray (Medium)](https://leetcode.com/problems/maximum-length-of-repeated-subarray/)
+* [Minimum Operations to Reduce X to Zero (Medium)](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/)
 
 ## Solution 1. Sliding Window
 
@@ -55,16 +77,16 @@ public:
 // Space: O(1)
 class Solution {
 public:
-    int minSubArrayLen(int s, vector<int>& A) {
-        int i = 0, N = A.size(), ans = N + 1, sum = 0;
-        for (int j = 0; j < N; ++j) {
-            sum += A[j];
-            while (sum >= s) {
-                ans = min(ans, j - i + 1);
+    int minSubArrayLen(int target, vector<int>& A) {
+        int sum = 0, N = A.size(), i = 0, j = 0, ans = INT_MAX;
+        while (j < N) {
+            sum += A[j++];
+            while (sum >= target) {
+                ans = min(ans, j - i);
                 sum -= A[i++];
             }
         }
-        return ans == N + 1 ? 0 : ans;
+        return ans == INT_MAX ? 0 : ans;
     }
 };
 ```
