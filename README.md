@@ -172,7 +172,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 156 | Binary Tree Upside Down | Medium | [Solution](leetcode/156.%20Binary%20Tree%20Upside%20Down)
 157 | Read N Characters Given Read4 | Easy | [Solution](leetcode/157.%20Read%20N%20Characters%20Given%20Read4)
 158 | Read N Characters Given Read4 II - Call multiple times | Hard | [Solution](leetcode/158.%20Read%20N%20Characters%20Given%20Read4%20II%20-%20Call%20multiple%20times)
-159 | Longest Substring with At Most Two Distinct Characters | Hard | [Solution](leetcode/159.%20Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters)
+159 | Longest Substring with At Most Two Distinct Characters | Medium | [Solution](leetcode/159.%20Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters)
 161 | One Edit Distance | Medium | [Solution](leetcode/161.%20One%20Edit%20Distance)
 162 | Find Peak Element | Medium | [Solution](leetcode/162.%20Find%20Peak%20Element)
 163 | Missing Ranges | Easy | [Solution](leetcode/163.%20Missing%20Ranges)
@@ -1554,6 +1554,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2023 | Number of Pairs of Strings With Concatenation Equal to Target | Medium | [Solution](leetcode/2023.%20Number%20of%20Pairs%20of%20Strings%20With%20Concatenation%20Equal%20to%20Target)
 2024 | Maximize the Confusion of an Exam | Medium | [Solution](leetcode/2024.%20Maximize%20the%20Confusion%20of%20an%20Exam)
 2025 | Maximum Number of Ways to Partition an Array | Hard | [Solution](leetcode/2025.%20Maximum%20Number%20of%20Ways%20to%20Partition%20an%20Array)
+2027 | Minimum Moves to Convert String | Easy | [Solution](leetcode/2027.%20Minimum%20Moves%20to%20Convert%20String)
 
 # License
 
