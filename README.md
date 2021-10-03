@@ -1555,6 +1555,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2024 | Maximize the Confusion of an Exam | Medium | [Solution](leetcode/2024.%20Maximize%20the%20Confusion%20of%20an%20Exam)
 2025 | Maximum Number of Ways to Partition an Array | Hard | [Solution](leetcode/2025.%20Maximum%20Number%20of%20Ways%20to%20Partition%20an%20Array)
 2027 | Minimum Moves to Convert String | Easy | [Solution](leetcode/2027.%20Minimum%20Moves%20to%20Convert%20String)
+2028 | Find Missing Observations | Medium | [Solution](leetcode/2028.%20Find%20Missing%20Observations)
 
 # License
 
