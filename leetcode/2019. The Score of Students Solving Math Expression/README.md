@@ -65,7 +65,7 @@ The points for the students are: [0,0,5,0,0,5]. The sum of the points is 10.
 * [Basic Calculator (Hard)](https://leetcode.com/problems/basic-calculator/)
 * [Different Ways to Add Parentheses (Medium)](https://leetcode.com/problems/different-ways-to-add-parentheses/)
 
-## Solution 1. Bottom-up DP
+## Solution 1. DP
 
 Let `dp[i][j]` be the possible values the students can get using `s[i..j]`.
 
@@ -77,6 +77,7 @@ For `dp[i][j]`, we enumerate all the indexes `k` of the operators between `i` an
 * If `s[k] == '+'`, we insert `a + b` into `dp[i][j]`
 * If `s[k] == '*'`, we insert `a * b` into `dp[i][j]` 
 
+Bottom-up DP:
 ```cpp
 // OJ: https://leetcode.com/problems/the-score-of-students-solving-math-expression/
 // Author: github.com/lzl124631x
@@ -112,6 +113,51 @@ public:
         for (int n : A) {
             if (n == correct) ans += 5;
             else if (dp[0][N - 1].count(n)) ans += 2;
+        }
+        return ans;
+    }
+};
+```
+
+Or Top-down DP:
+
+```cpp
+// OJ: https://leetcode.com/problems/the-score-of-students-solving-math-expression/
+// Author: github.com/lzl124631x
+// Time: O(N^3 * 1000^2)
+// Space: O(N^2 * 1000)
+class Solution {
+    int eval(string &s, int first, int last) {
+        if (first == last) return s[first] - '0';
+        auto it = find(begin(s) + first, begin(s) + last + 1, '+');
+        if (it == begin(s) + last + 1) {
+            int ans = 1;
+            for (int j = first; j <= last; j += 2) ans *= s[j] - '0';
+            return ans;
+        }
+        return eval(s, first, it - begin(s) - 1) + eval(s, it - begin(s) + 1, last);
+    }
+    unordered_set<int> m[32][32] = {};
+    unordered_set<int> *dp(string &s, int first, int last) {
+        if (m[first][last].size()) return &m[first][last];
+        for (int i = first + 1; i < last; i += 2) {
+            for (int a : *dp(s, first, i - 1)) {
+                for (int b : *dp(s, i + 1, last)) {
+                    int val = s[i] == '+' ? a + b : a * b;
+                    if (val <= 1000) m[first][last].insert(val);
+                }
+            }
+        }
+        return &m[first][last];
+    }
+public:
+    int scoreOfStudents(string s, vector<int>& A) {
+        int correct = eval(s, 0, s.size() - 1), ans = 0;
+        for (int i = 0; i < s.size(); i += 2) m[i][i].insert(s[i] - '0');
+        auto all = dp(s, 0, s.size() - 1);
+        for (int n : A) {
+            if (n == correct) ans += 5;
+            else if (all->count(n)) ans += 2;
         }
         return ans;
     }
