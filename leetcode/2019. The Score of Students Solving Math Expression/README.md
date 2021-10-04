@@ -65,7 +65,7 @@ The points for the students are: [0,0,5,0,0,5]. The sum of the points is 10.
 * [Basic Calculator (Hard)](https://leetcode.com/problems/basic-calculator/)
 * [Different Ways to Add Parentheses (Medium)](https://leetcode.com/problems/different-ways-to-add-parentheses/)
 
-## Solution 1. DP
+## Solution 1. Bottom-up DP
 
 Let `dp[i][j]` be the possible values the students can get using `s[i..j]`.
 
@@ -84,38 +84,36 @@ For `dp[i][j]`, we enumerate all the indexes `k` of the operators between `i` an
 // Space: O(N^2 * 1000)
 class Solution {
 public:
-    int dfs(string &s, int first, int last) {
+    int eval(string &s, int first, int last) {
         if (first == last) return s[first] - '0';
         int i = first + 1;
         for (; i <= last && s[i] == '*'; i += 2); // find the first '+'
-        if (i <= last) return dfs(s, first, i - 1) + dfs(s, i + 1, last); // calculate the first '+'
-        return dfs(s, first, first) * dfs(s, first + 2, last); // If there is no `+`, calculate all the `*`s
+        if (i <= last) return eval(s, first, i - 1) + eval(s, i + 1, last); // calculate the first '+'
+        int ans = 1;
+        for (int i = first; i <= last; i += 2) ans *= s[i] - '0';
+        return ans; // If there is no `+`, calculate all the `*`s
     }
     int scoreOfStudents(string s, vector<int>& A) {
-        int ans = 0, N = s.size(), correct = dfs(s, 0, N - 1); // calculate the correct answer
+        int ans = 0, N = s.size(), correct = eval(s, 0, N - 1);
         unordered_set<long long> dp[32][32];
         for (int i = 0; i < N; i += 2) dp[i][i].insert(s[i] - '0');
         for (int i = N - 3; i >= 0; i -= 2) {
             for (int j = i + 2; j < N; j += 2){
-                for (int k = i + 1; k < j; k += 2) {
-                    for (auto p : dp[i][k - 1]) {
-                        for (auto q : dp[k + 1][j]) {
-                            if (s[k] == '+') {
-                                if (p + q <= 1000) dp[i][j].insert(p + q);
-                            } else {
-                                if (p * q <= 1000) dp[i][j].insert(p * q);
-                            }
+                for (int k = i + 1; k < j; k += 2) { // For s[i..j], enumerate every operators' indexes `k`
+                    for (auto a : dp[i][k - 1]) {
+                        for (auto b : dp[k + 1][j]) {
+                            int val = s[k] == '+' ? a + b : a * b;
+                            if (val <= 1000) dp[i][j].insert(val);
                         }
                     }
                 }
             }
         }
-        for (int i = 0; i < A.size(); ++i) {
-            if (A[i] == correct) ans += 5;
-            else if (dp[0][N - 1].count(A[i])) ans += 2;
+        for (int n : A) {
+            if (n == correct) ans += 5;
+            else if (dp[0][N - 1].count(n)) ans += 2;
         }
         return ans;
     }
 };
-
 ```
