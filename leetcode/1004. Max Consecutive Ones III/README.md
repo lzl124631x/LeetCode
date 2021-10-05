@@ -42,6 +42,8 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 
 ## Solution 1. Sliding Window
 
+Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)"
+
 Shrinkable sliding window:
 ```cpp
 // OJ: https://leetcode.com/problems/max-consecutive-ones-iii/
@@ -81,3 +83,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/max-consecutive-ones-iii/discuss/1504260/C%2B%2B-Sliding-Window-(%2B-Cheat-Sheet)
