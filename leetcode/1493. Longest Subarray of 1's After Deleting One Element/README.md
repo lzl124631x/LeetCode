@@ -84,12 +84,9 @@ public:
 
 ## Solution 2. Sliding Window
 
-Sliding window `[i, j]` with at most `1` zero.
+Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)"
 
-1. Keep extending the right edge.
-2. Once the `cnt > 1`, shrink the left edge.
-3. The size for this window with one deletion is `j - i`.
-4. Back to step 1 until it reaches the end.
+Shrinkable Sliding Window:
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
@@ -110,9 +107,7 @@ public:
 };
 ```
 
-## Solution 3. Sliding Window
-
-Sliding window `[i, j]` with at most `1` zero that never shrinks.
+Non-shrinkable Sliding Window:
 
 ```cpp
 // OJ: https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
@@ -131,3 +126,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/discuss/1504267/C%2B%2B-Sliding-Window-(%2B-Cheat-Sheet)
