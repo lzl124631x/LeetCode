@@ -57,7 +57,7 @@ public:
 };
 ```
 
-For Oj, this solution is accepted. But for production, this solution generates a tree that has not only new nodes merged from old trees, but also pointers to the old trees. It means that if you destroy the old trees, the newly merged tree will be broken. To avoid this, use solution 2.
+This solution is accepted by the OJ. But in real world, this solution generates a tree that has not only new nodes merged from old trees, but also pointers to the old trees. It means that if you destroy the old trees, the newly merged tree will be broken. To avoid this, use solution 2.
 
 ## Solution 2.
 
