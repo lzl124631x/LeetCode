@@ -56,7 +56,7 @@
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-pairs-of-strings-with-concatenation-equal-to-target/
 // Author: github.com/lzl124631x
-// Time: O(N)
+// Time: O(NW) where `N` is the length of `A` and `W` is the maximum length of elements in `A`
 // Space: O(U) where `U` is the number of unique strings in `A`.
 class Solution {
 public:
@@ -85,7 +85,7 @@ public:
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-pairs-of-strings-with-concatenation-equal-to-target/
 // Author: github.com/lzl124631x
-// Time: O(N)
+// Time: O(NW) where `N` is the length of `A` and `W` is the maximum length of elements in `A`
 // Space: O(U) where `U` is the number of unique strings in `A`.
 class Solution {
 public:
