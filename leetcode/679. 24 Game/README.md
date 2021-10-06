@@ -80,7 +80,7 @@ class Solution {
             }
         }
         for (double n : dp[0][3]) {
-            if (abs(n - 24) < 0.0000001) return true;
+            if (abs(n - 24) < 1e-6) return true;
         }
         return false;
     }
