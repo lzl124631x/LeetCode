@@ -587,9 +587,11 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 672 | Bulb Switcher II | Medium | [Solution](leetcode/672.%20Bulb%20Switcher%20II)
 673 | Number of Longest Increasing Subsequence | Medium | [Solution](leetcode/673.%20Number%20of%20Longest%20Increasing%20Subsequence)
 674 | Longest Continuous Increasing Subsequence | Easy | [Solution](leetcode/674.%20Longest%20Continuous%20Increasing%20Subsequence)
+675 | Cut Off Trees for Golf Event | Hard | [Solution](leetcode/675.%20Cut%20Off%20Trees%20for%20Golf%20Event)
 676 | Implement Magic Dictionary | Medium | [Solution](leetcode/676.%20Implement%20Magic%20Dictionary)
 677 | Map Sum Pairs | Medium | [Solution](leetcode/677.%20Map%20Sum%20Pairs)
 678 | Valid Parenthesis String | Medium | [Solution](leetcode/678.%20Valid%20Parenthesis%20String)
+679 | 24 Game | Hard | [Solution](leetcode/679.%2024%20Game)
 680 | Valid Palindrome II | Easy | [Solution](leetcode/680.%20Valid%20Palindrome%20II)
 682 | Baseball Game | Easy | [Solution](leetcode/682.%20Baseball%20Game)
 684 | Redundant Connection | Medium | [Solution](leetcode/684.%20Redundant%20Connection)
@@ -1557,6 +1559,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2027 | Minimum Moves to Convert String | Easy | [Solution](leetcode/2027.%20Minimum%20Moves%20to%20Convert%20String)
 2028 | Find Missing Observations | Medium | [Solution](leetcode/2028.%20Find%20Missing%20Observations)
 2029 | Stone Game IX | Medium | [Solution](leetcode/2029.%20Stone%20Game%20IX)
+2030 | Smallest K-Length Subsequence With Occurrences of a Letter | Hard | [Solution](leetcode/2030.%20Smallest%20K-Length%20Subsequence%20With%20Occurrences%20of%20a%20Letter)
 
 # License
 
