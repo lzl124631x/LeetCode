@@ -598,6 +598,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 686 | Repeated String Match | Medium | [Solution](leetcode/686.%20Repeated%20String%20Match)
 687 | Longest Univalue Path | Easy | [Solution](leetcode/687.%20Longest%20Univalue%20Path)
 688 | Knight Probability in Chessboard | Medium | [Solution](leetcode/688.%20Knight%20Probability%20in%20Chessboard)
+689 | Maximum Sum of 3 Non-Overlapping Subarrays | Hard | [Solution](leetcode/689.%20Maximum%20Sum%20of%203%20Non-Overlapping%20Subarrays)
 690 | Employee Importance | Easy | [Solution](leetcode/690.%20Employee%20Importance)
 691 | Stickers to Spell Word | Hard | [Solution](leetcode/691.%20Stickers%20to%20Spell%20Word)
 692 | Top K Frequent Words | Medium | [Solution](leetcode/692.%20Top%20K%20Frequent%20Words)
