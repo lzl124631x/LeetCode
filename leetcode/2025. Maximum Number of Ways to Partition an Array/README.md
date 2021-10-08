@@ -75,18 +75,18 @@ We scan from left to right. For each `A[i]`, we try to update `ans` with `L[d] +
 class Solution {
 public:
     int waysToPartition(vector<int>& A, int k) {
-        long sum = accumulate(begin(A), end(A), 0L), N = A.size(), ans = 0;
+        long sum = accumulate(begin(A), end(A), 0L), N = A.size();
         unordered_map<long, int> L, R;
         for (long i = 0, left = 0; i < N - 1; ++i) {
             left += A[i];
             long right = sum - left;
             R[left - right]++;
         }
-        ans = R[0]; // If we don't do any replacement, answer is the number of `0`s in the frequency map
+        int ans = R[0]; // If we don't do any replacement, answer is the number of `0`s in the frequency map
         for (long i = 0, left = 0; i < N; ++i) {
             left += A[i];
             long right = sum - left, d = k - A[i];
-            ans = max(ans, (long)L[d] + R[-d]); // If we replace `A[i]` with `k`, we will get `L[d] + R[-d]` pivots
+            ans = max(ans, L[d] + R[-d]); // If we replace `A[i]` with `k`, we will get `L[d] + R[-d]` pivots
             R[left - right]--; // transfer the frequency from `R` to `L`.
             L[left - right]++;
         }
