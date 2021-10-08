@@ -705,6 +705,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 812 | Largest Triangle Area | Easy | [Solution](leetcode/812.%20Largest%20Triangle%20Area)
 813 | Largest Sum of Averages | Medium | [Solution](leetcode/813.%20Largest%20Sum%20of%20Averages)
 814 | Binary Tree Pruning | Medium | [Solution](leetcode/814.%20Binary%20Tree%20Pruning)
+815 | Bus Routes | Hard | [Solution](leetcode/815.%20Bus%20Routes)
 816 | Ambiguous Coordinates | Medium | [Solution](leetcode/816.%20Ambiguous%20Coordinates)
 817 | Linked List Components | Medium | [Solution](leetcode/817.%20Linked%20List%20Components)
 819 | Most Common Word | Easy | [Solution](leetcode/819.%20Most%20Common%20Word)
