@@ -648,6 +648,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 746 | Min Cost Climbing Stairs | Easy | [Solution](leetcode/746.%20Min%20Cost%20Climbing%20Stairs)
 747 | Largest Number At Least Twice of Others | Easy | [Solution](leetcode/747.%20Largest%20Number%20At%20Least%20Twice%20of%20Others)
 748 | Shortest Completing Word | Easy | [Solution](leetcode/748.%20Shortest%20Completing%20Word)
+749 | Contain Virus | Hard | [Solution](leetcode/749.%20Contain%20Virus)
 750 | Number Of Corner Rectangles | Medium | [Solution](leetcode/750.%20Number%20Of%20Corner%20Rectangles)
 751 | IP to CIDR | Hard | [Solution](leetcode/751.%20IP%20to%20CIDR)
 752 | Open the Lock | Medium | [Solution](leetcode/752.%20Open%20the%20Lock)
