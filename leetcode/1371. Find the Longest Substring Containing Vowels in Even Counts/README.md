@@ -39,7 +39,7 @@
 **Related Topics**:  
 [Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
 
-## Solution 1. Prefix State Map
+## Solution 1. Bitmask + Prefix State Map
 
 At the first glance it's like a sliding window problem. For a find maximum sliding window problem, the initial state should be valid, then keep extending the 2nd pointer until the state becomes invalid (now the maximum is found), then move the first pointer to get back the valid state again.
 
