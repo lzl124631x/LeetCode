@@ -85,3 +85,40 @@ public:
     }
 };
 ```
+
+## Solution 2. Bitmask DP
+
+We can also use DP but for this problem it's slower and takes more space.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-score-words-formed-by-letters/
+// Author: github.com/lzl124631x
+// Time: O(2^N * C)
+// Space: O(2^N * C)
+class Solution {
+public:
+    int maxScoreWords(vector<string>& A, vector<char>& letters, vector<int>& score) {
+        int avail[26] = {}, ans = 0, cnt[14][26] = {}, wordScore[14] = {}, N = A.size();
+        vector<array<int, 26>> used(1 << N);
+        vector<int> scoreSum(1 << N);
+        for (char c : letters) avail[c - 'a']++;
+        for (int i = 0; i < N; ++i) {
+            for (char c : A[i]) {
+                cnt[i][c - 'a']++;
+                wordScore[i] += score[c - 'a'];
+            }
+        }
+        for (int m = 1; m < 1 << N; ++m) {
+            int lb = m & -m, i = __builtin_ctz(lb);
+            used[m] = used[m - lb];
+            for (int j = 0; j < 26; ++j) used[m][j] += cnt[i][j];
+            int j = 0;
+            for (; j < 26 && used[m][j] <= avail[j]; ++j);
+            if (j < 26) continue;
+            scoreSum[m] = scoreSum[m - lb] + wordScore[i];
+            ans = max(ans, scoreSum[m]);
+        }
+        return ans;
+    }
+};
+```
