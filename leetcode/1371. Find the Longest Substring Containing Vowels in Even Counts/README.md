@@ -32,10 +32,14 @@
 	<li><code>s</code>&nbsp;contains only lowercase English letters.</li>
 </ul>
 
-**Related Topics**:  
-[String](https://leetcode.com/tag/string/)
 
-## Solution 1. Greedy + State Compression
+**Companies**:  
+[Microsoft](https://leetcode.com/company/microsoft)
+
+**Related Topics**:  
+[Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
+
+## Solution 1. Prefix State Map
 
 At the first glance it's like a sliding window problem. For a find maximum sliding window problem, the initial state should be valid, then keep extending the 2nd pointer until the state becomes invalid (now the maximum is found), then move the first pointer to get back the valid state again.
 
@@ -83,9 +87,9 @@ For example, if the state of `aeiou` are even, even, odd, odd, even respectively
 
 Let `index` be a map from state `x` to the index of the first occurrence of state `x`.
 
-For each index `i`, we get the corresponding state `h` of `s[i]` first, then:
-* If we've seen this state, then try to update the answer using `i - index[h]`.
-* Otherwise, `m[h] = i`.
+For each index `i`, we get the corresponding state `mask` of `s[i]` first, then:
+* If we've seen this state, then try to update the answer using `i - index[mask]`.
+* Otherwise, `index[mask] = i`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-the-longest-substring-containing-vowels-in-even-counts/
