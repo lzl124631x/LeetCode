@@ -1570,6 +1570,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2030 | Smallest K-Length Subsequence With Occurrences of a Letter | Hard | [Solution](leetcode/2030.%20Smallest%20K-Length%20Subsequence%20With%20Occurrences%20of%20a%20Letter)
 2032 | Two Out of Three | Easy | [Solution](leetcode/2032.%20Two%20Out%20of%20Three)
 2033 | Minimum Operations to Make a Uni-Value Grid | Medium | [Solution](leetcode/2033.%20Minimum%20Operations%20to%20Make%20a%20Uni-Value%20Grid)
+2034 | Stock Price Fluctuation | Medium | [Solution](leetcode/2034.%20Stock%20Price%20Fluctuation)
 
 # License
 
