@@ -108,42 +108,6 @@ public:
 };
 ```
 
-Or
-
-```cpp
-// OJ: https://leetcode.com/problems/binary-subarrays-with-sum/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
-class Solution {
-public:
-    int numSubarraysWithSum(vector<int>& A, int S) {
-        int j = 0, N = A.size(), sum = 0, ans = 0;
-        if (S == 0) {
-            int cnt = 0;
-            for (int i = 0; i <= N; ++i) {
-                if (i == N || A[i] == 1) {
-                    ans += cnt * (1 + cnt) / 2;
-                    cnt = 0;
-                } else ++cnt;
-            }
-            return ans;
-        }
-        while (j < N && A[j] == 0) ++j;
-        int leadingZeros = j, i = j;
-        while (j < N) {
-            while (j < N && sum + A[j] <= S) {
-                sum += A[j++];
-                if (sum == S) ans += leadingZeros + 1;
-            }
-            while (i < j && sum == S) sum -= A[i++];
-            leadingZeros = 0;
-            while (i < j && A[i] == 0) {
-                leadingZeros++; 
-                ++i;
-            }
-        }
-        return ans;
-    }
-};
-```
+Similar problem:
+* [992. Subarrays with K Different Integers (Hard)](https://leetcode.com/problems/subarrays-with-k-different-integers/)
+* [1248. Count Number of Nice Subarrays (Medium)](https://leetcode.com/problems/count-number-of-nice-subarrays/)
