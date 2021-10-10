@@ -77,3 +77,35 @@ public:
     }
 };
 ```
+
+## Solution 2. Median
+
+Any median minimizes the sum of absolute deviations. ([Reference](https://math.stackexchange.com/questions/113270/the-median-minimizes-the-sum-of-absolute-deviations-the-ell-1-norm))
+
+If the array has odd number of elements, there is only a single median which minimizes the sum of absolute deviations.
+
+If the array has even number of elements, any numbers between (including) the two median numbers minimizes the sum of absolute deviations.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-operations-to-make-a-uni-value-grid/
+// Author: github.com/lzl124631x
+// Time: O(NlogN) where `N` is the count of all elements in `A`.
+// Space: O(N)
+class Solution {
+public:
+    int minOperations(vector<vector<int>>& A, int x) {
+        vector<int> B;
+        for (auto &r : A) {
+            for (int n : r) B.push_back(n);
+        }
+        sort(begin(B), end(B));
+        int median = B[B.size() / 2], ans = 0;
+        for (int i = 0; i < B.size(); ++i) {
+            int d = abs(B[i] - median);
+            if (d % x) return -1;
+            ans += abs(d) / x;
+        }
+        return ans;
+    }
+};
+```
