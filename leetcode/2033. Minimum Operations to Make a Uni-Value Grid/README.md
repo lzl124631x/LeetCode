@@ -78,7 +78,7 @@ public:
 };
 ```
 
-## Solution 2. Median
+## Solution 2. Median Minimizes Sum of Absolute Deviations
 
 Any median minimizes the sum of absolute deviations. ([Reference](https://math.stackexchange.com/questions/113270/the-median-minimizes-the-sum-of-absolute-deviations-the-ell-1-norm))
 
