@@ -1,35 +1,66 @@
 # [930. Binary Subarrays With Sum (Medium)](https://leetcode.com/problems/binary-subarrays-with-sum/)
 
-<p>In an array <code>A</code> of <code>0</code>s and <code>1</code>s, how many <strong>non-empty</strong> subarrays have sum <code>S</code>?</p>
+<p>Given a binary array <code>nums</code> and an integer <code>goal</code>, return <em>the number of non-empty <strong>subarrays</strong> with a sum</em> <code>goal</code>.</p>
+
+<p>A <strong>subarray</strong> is a contiguous part of the array.</p>
 
 <p>&nbsp;</p>
-
 <p><strong>Example 1:</strong></p>
 
-<pre><strong>Input: </strong>A = <span id="example-input-1-1">[1,0,1,0,1]</span>, S = <span id="example-input-1-2">2</span>
-<strong>Output: </strong><span id="example-output-1">4</span>
-<strong>Explanation: </strong>
-The 4 subarrays are bolded below:
-[<strong>1,0,1</strong>,0,1]
-[<strong>1,0,1,0</strong>,1]
-[1,<strong>0,1,0,1</strong>]
-[1,0,<strong>1,0,1</strong>]
+<pre><strong>Input:</strong> nums = [1,0,1,0,1], goal = 2
+<strong>Output:</strong> 4
+<strong>Explanation:</strong> The 4 subarrays are bolded and underlined below:
+[<u><strong>1,0,1</strong></u>,0,1]
+[<u><strong>1,0,1,0</strong></u>,1]
+[1,<u><strong>0,1,0,1</strong></u>]
+[1,0,<u><strong>1,0,1</strong></u>]
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums = [0,0,0,0,0], goal = 0
+<strong>Output:</strong> 15
 </pre>
 
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><strong>Note:</strong></p>
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>nums[i]</code> is either <code>0</code> or <code>1</code>.</li>
+	<li><code>0 &lt;= goal &lt;= nums.length</code></li>
+</ul>
 
-<ol>
-	<li><code>A.length &lt;= 30000</code></li>
-	<li><code>0 &lt;= S &lt;= A.length</code></li>
-	<li><code>A[i]</code>&nbsp;is either <code>0</code>&nbsp;or <code>1</code>.</li>
-</ol>
+**Companies**:  
+[C3 IoT](https://leetcode.com/company/c3-iot), [Adobe](https://leetcode.com/company/adobe)
 
 **Related Topics**:  
-[Hash Table](https://leetcode.com/tag/hash-table/), [Two Pointers](https://leetcode.com/tag/two-pointers/)
+[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Sliding Window](https://leetcode.com/tag/sliding-window/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
 
-## Solution 1. Prefix Sum
+## Solution 1. Prefix State Map
+
+```cpp
+// OJ: https://leetcode.com/problems/binary-subarrays-with-sum/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int numSubarraysWithSum(vector<int>& A, int goal) {
+        unordered_map<int, int> m{{0,-1}}; // count of 1s -> index
+        int ans = 0;
+        for (int i = 0, N = A.size(), sum = 0; i < N; ++i) {
+            sum += A[i];
+            if (m.count(sum) == 0) m[sum] = i;
+            if (goal == 0) ans += i - m[sum];
+            else if (sum - goal >= 0) ans += m[sum - goal + 1] - m[sum - goal];
+        }
+        return ans;
+    }
+};
+```
+
+Or
 
 ```cpp
 // OJ: https://leetcode.com/problems/binary-subarrays-with-sum/
@@ -39,7 +70,7 @@ The 4 subarrays are bolded below:
 class Solution {
 public:
     int numSubarraysWithSum(vector<int>& A, int S) {
-        unordered_map<int, int> m{{0, 1}};
+        unordered_map<int, int> m{{0, 1}}; // sum -> number of occurrences of this sum
         int sum = 0, ans = 0;
         for (int n : A) {
             sum += n;
@@ -51,7 +82,33 @@ public:
 };
 ```
 
-## Solution 2. Sliding Window
+## Solution 2. Find Maximum Sliding Window
+
+Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)".
+
+```cpp
+// OJ: https://leetcode.com/problems/binary-subarrays-with-sum/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+    int atMost(vector<int> A, int goal) {
+        int N = A.size(), i = 0, j = 0, cnt = 0, ans = 0;
+        while (j < N) {
+            cnt += A[j++];
+            while (i < j && cnt > goal) cnt -= A[i++];
+            ans += j - i;
+        }
+        return ans;
+    }
+public:
+    int numSubarraysWithSum(vector<int>& A, int goal) {
+        return atMost(A, goal) - atMost(A, goal - 1);
+    }
+};
+```
+
+Or
 
 ```cpp
 // OJ: https://leetcode.com/problems/binary-subarrays-with-sum/
