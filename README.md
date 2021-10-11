@@ -290,7 +290,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 313 | Super Ugly Number |  | [Solution](leetcode/313.%20Super%20Ugly%20Number)
 314 | Binary Tree Vertical Order Traversal | Medium | [Solution](leetcode/314.%20Binary%20Tree%20Vertical%20Order%20Traversal)
 315 | Count of Smaller Numbers After Self | Hard | [Solution](leetcode/315.%20Count%20of%20Smaller%20Numbers%20After%20Self)
-316 | Remove Duplicate Letters | Hard | [Solution](leetcode/316.%20Remove%20Duplicate%20Letters)
+316 | Remove Duplicate Letters | Medium | [Solution](leetcode/316.%20Remove%20Duplicate%20Letters)
 317 | Shortest Distance from All Buildings | Hard | [Solution](leetcode/317.%20Shortest%20Distance%20from%20All%20Buildings)
 318 | Maximum Product of Word Lengths | Medium | [Solution](leetcode/318.%20Maximum%20Product%20of%20Word%20Lengths)
 320 | Generalized Abbreviation | Medium | [Solution](leetcode/320.%20Generalized%20Abbreviation)
@@ -973,6 +973,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1169 | Invalid Transactions | Medium | [Solution](leetcode/1169.%20Invalid%20Transactions)
 1170 | Compare Strings by Frequency of the Smallest Character | Easy | [Solution](leetcode/1170.%20Compare%20Strings%20by%20Frequency%20of%20the%20Smallest%20Character)
 1171 | Remove Zero Sum Consecutive Nodes from Linked List | Medium | [Solution](leetcode/1171.%20Remove%20Zero%20Sum%20Consecutive%20Nodes%20from%20Linked%20List)
+1172 | Dinner Plate Stacks | Hard | [Solution](leetcode/1172.%20Dinner%20Plate%20Stacks)
 1175 | Prime Arrangements | Easy | [Solution](leetcode/1175.%20Prime%20Arrangements)
 1177 | Can Make Palindrome from Substring | Medium | [Solution](leetcode/1177.%20Can%20Make%20Palindrome%20from%20Substring)
 1182 | Shortest Distance to Target Color | Medium | [Solution](leetcode/1182.%20Shortest%20Distance%20to%20Target%20Color)
@@ -1571,6 +1572,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2032 | Two Out of Three | Easy | [Solution](leetcode/2032.%20Two%20Out%20of%20Three)
 2033 | Minimum Operations to Make a Uni-Value Grid | Medium | [Solution](leetcode/2033.%20Minimum%20Operations%20to%20Make%20a%20Uni-Value%20Grid)
 2034 | Stock Price Fluctuation | Medium | [Solution](leetcode/2034.%20Stock%20Price%20Fluctuation)
+2035 | Partition Array Into Two Arrays to Minimize Sum Difference | Hard | [Solution](leetcode/2035.%20Partition%20Array%20Into%20Two%20Arrays%20to%20Minimize%20Sum%20Difference)
 
 # License
 
