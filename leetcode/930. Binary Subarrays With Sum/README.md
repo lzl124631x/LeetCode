@@ -82,7 +82,7 @@ public:
 };
 ```
 
-## Solution 2. Find Maximum Sliding Window
+## Solution 2. At Most to Equal + Find Maximum Sliding Window
 
 Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)".
 
