@@ -34,11 +34,14 @@
 	<li><code>1 &lt;= k &lt;= nums.length</code></li>
 </ul>
 
+**Companies**:  
+[Booking.com](https://leetcode.com/company/bookingcom), [Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
-[Two Pointers](https://leetcode.com/tag/two-pointers/)
+[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Math](https://leetcode.com/tag/math/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
 
-## Solution 1. Map
+
+## Solution 1. Prefix State Map
 
 Use a map `m` to store the mapping from the count of odd numbers `cnt` to the first index in the array that has `cnt` numbers in front of it and including itself.
 
@@ -122,7 +125,9 @@ public:
 };
 ```
 
-## Solution 3. At Most
+## Solution 3. AtMost to Equal
+
+Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)"
 
 Exactly `k` times = At Most `k` times - At Most `k - 1` times.
 
