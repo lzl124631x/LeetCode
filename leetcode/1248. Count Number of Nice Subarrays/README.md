@@ -153,3 +153,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/count-number-of-nice-subarrays/discuss/1515501/C%2B%2B-Prefix-State-Map-Two-Pointers-Sliding-Window
