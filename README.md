@@ -1164,6 +1164,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1448 | Count Good Nodes in Binary Tree | Medium | [Solution](leetcode/1448.%20Count%20Good%20Nodes%20in%20Binary%20Tree)
 1449 | Form Largest Integer With Digits That Add up to Target | Hard | [Solution](leetcode/1449.%20Form%20Largest%20Integer%20With%20Digits%20That%20Add%20up%20to%20Target)
 1452 | People Whose List of Favorite Companies Is Not a Subset of Another List | Medium | [Solution](leetcode/1452.%20People%20Whose%20List%20of%20Favorite%20Companies%20Is%20Not%20a%20Subset%20of%20Another%20List)
+1453 | Maximum Number of Darts Inside of a Circular Dartboard | Hard | [Solution](leetcode/1453.%20Maximum%20Number%20of%20Darts%20Inside%20of%20a%20Circular%20Dartboard)
 1455 | Check If a Word Occurs As a Prefix of Any Word in a Sentence | Easy | [Solution](leetcode/1455.%20Check%20If%20a%20Word%20Occurs%20As%20a%20Prefix%20of%20Any%20Word%20in%20a%20Sentence)
 1456 | Maximum Number of Vowels in a Substring of Given Length | Medium | [Solution](leetcode/1456.%20Maximum%20Number%20of%20Vowels%20in%20a%20Substring%20of%20Given%20Length)
 1457 | Pseudo-Palindromic Paths in a Binary Tree | Medium | [Solution](leetcode/1457.%20Pseudo-Palindromic%20Paths%20in%20a%20Binary%20Tree)
