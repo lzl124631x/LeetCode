@@ -60,17 +60,18 @@ Alice loses the game because the sum of the removed stones (15) is divisible by 
 
 ## Solution 1. Brain Teaser
 
-Since we only care if the sum is divisible by `3`, we can convert each `A[i]` to `A[i] % 3`.
+Since we only care if the sum is divisible by `3`, we can convert each `A[i]` to `A[i] % 3`, and count the frequency of `0, 1, 2`.
 
-For the first round, Alice can't remove `0`, so we only consider case `1` and `2`.
+Firstly, let's ignore `0` for now.
 
-If Alice removes `1` in the first round, Bob can only remove `0` or `1`.
+* If Alice starts with `1`, Alice and Bob have to pick `11212...` in order.
+* If Alice starts with `2`, Alice and Bob have to pick `22121...` in order.
 
-Ignore all the `0`s for now. If Bob removes `1`, the sum becomes `2`. And then Alice must remove `2`, then Bob `1`... So the pattern is `1121212..`
+For the case where Alice starts with `1`, after matching the `11212...` pattern, if there are still `1`s left, Alice wins; otherwise, Bob wins.
 
-Now consider `0`, since the sum modulo 3 won't change after removing `3`, it's the same as Alice and Bob swapping order. So, except the first removal, `0`s can be inserted into the `1` and `2` removal sequence freely. 
-
-If Alice removes `2` in the first round, then the sequence is `2212121..`
+Now, consider the `0`s.
+* If `cnt[0]` is even, Bob picks a `3`, Alice can always pick another `0`. The result won't be changed.
+* If `cnt[0]` is odd, the final result will be reversed, expect the cases where Bob wins because all numbers are consumed.
 
 Our goal is to get the length of the longest `112121...` sequence plus the number of `0`s.
 
@@ -100,6 +101,100 @@ public:
         for (int n : A) c[n % 3]++;
         return check(c[0], c[1], c[2]) // Alice removes `1` first
             || check(c[0], c[2], c[1]); // Alice removes `2` first
+    }
+};
+```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/stone-game-ix/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+// Ref: https://youtu.be/8MTch2zTOoY
+class Solution {
+    bool win(array<int, 3> &cnt, int sum, int turn) { // turn: 0 - Alice, 1 - Bob
+        if (cnt[0] + cnt[1] + cnt[2] == 0) return turn == 1;
+        if (cnt[0]) {
+            cnt[0]--; // If there is `0` left, use it first (because `0` will shift the "bomb" to the other player; the players must use the `0`s anyway)
+            return !win(cnt, sum, 1 - turn);
+        } else if (sum % 3 == 1) { // If the remainder is 1, the player must pick 1
+            if (cnt[1]) {
+                cnt[1]--;
+                return !win(cnt, sum + 1, 1 - turn);
+            } return false;
+        } else if (cnt[2]) { // If the remainder is 2, the player must pick 2.
+            cnt[2]--;
+            return !win(cnt, sum + 2, 1 - turn);
+        }
+        return false;
+    }
+public:
+    bool stoneGameIX(vector<int>& A) {
+        array<int, 3> cnt = {};
+        for (int n : A) cnt[n % 3]++;
+        auto tmp = cnt;
+        if (tmp[1]) { // If there is `1` available, Alice can try picking 1.
+            tmp[1]--;
+            if (!win(tmp, 1, 1)) return true;
+        }
+        tmp = cnt;
+        if (tmp[2]) { // If there is `2` available, Alice can try picking 2.
+            tmp[2]--;
+            if (!win(tmp, 2, 1)) return true;
+        }
+        return false;
+    }
+};
+```
+
+## Solution 3.
+
+Count the frequency of mod3 = 0, 1, 2.
+
+Firstly, don't consider `0`.
+
+* If Alice starts with `1`, Alice and Bob have to pick `1,1,2,1,2,...` in order.
+* If Alice starts with `2`, Alice and Bob have to pick `2,1,2,1,2,...` in order.
+
+If Alice starts with `1`, then Alice needs `1` and Bob needs `2`. If `1` is much more than `2`, then Bob is going to lose.
+
+So, if `cnt[0] == 0`, the result can be determined by Alice.
+
+Now, consider the `0`s.
+* If `cnt[0]` is even, Bob picks a `3`, Alice can always one another `0`. The result won't be changed.
+* If `cnt[0]` is odd, the final result will be reversed, expect the case where Bob wins because all numbers are consumed.
+
+**Algorithm**:
+
+If `cnt[1] == 0`, Alice needs to start with `2`.  
+If `cnt[2] == 0`, Alice needs to start with `1`.  
+Alice can win if `max(cnt[1], cnt[2]) > 2 && cnt[0] % 2 > 0`. Example: `[1,1,1,3]`.
+
+If `cnt[0] % 2 == 0`, Alice can win in at least one of the two options, picking the less one.
+
+If `cnt[0] % 2 == 1`, the result is reversed.
+
+If `abs(cnt[1] - cnt[2]) > 2`:
+* Alice will pick `2` if `2` is more
+* Alice will pick `1` if `1` is more
+
+If `abs(cnt[1] - cnt[2]) <= 2`, Alice will lose for no number remaining.
+
+```cpp
+// OJ: https://leetcode.com/problems/stone-game-ix/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/stone-game-ix/discuss/1500245/JavaC%2B%2BPython-Easy-and-Concise-6-lines-O(n)
+class Solution {
+public:
+    bool stoneGameIX(vector<int>& A) {
+        int cnt[3] = {};
+        for (int n : A) cnt[n % 3]++;
+        if (min(cnt[1], cnt[2]) == 0) return max(cnt[1], cnt[2]) > 2 && cnt[0] % 2; // If either one is `0`, Alice has to choose the non-zero one.
+        return abs(cnt[1] - cnt[2]) > 2 || cnt[0] % 2 == 0;
     }
 };
 ```
