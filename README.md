@@ -875,6 +875,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 998 | Maximum Binary Tree II | Medium | [Solution](leetcode/998.%20Maximum%20Binary%20Tree%20II)
 999 | Available Captures for Rook | Easy | [Solution](leetcode/999.%20Available%20Captures%20for%20Rook)
 1000 | Minimum Cost to Merge Stones | Hard | [Solution](leetcode/1000.%20Minimum%20Cost%20to%20Merge%20Stones)
+1001 | Grid Illumination | Hard | [Solution](leetcode/1001.%20Grid%20Illumination)
 1002 | Find Common Characters | Easy | [Solution](leetcode/1002.%20Find%20Common%20Characters)
 1003 | Check If Word Is Valid After Substitutions | Medium | [Solution](leetcode/1003.%20Check%20If%20Word%20Is%20Valid%20After%20Substitutions)
 1004 | Max Consecutive Ones III | Medium | [Solution](leetcode/1004.%20Max%20Consecutive%20Ones%20III)
