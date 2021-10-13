@@ -1014,6 +1014,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1247 | Minimum Swaps to Make Strings Equal | Medium | [Solution](leetcode/1247.%20Minimum%20Swaps%20to%20Make%20Strings%20Equal)
 1248 | Count Number of Nice Subarrays | Medium | [Solution](leetcode/1248.%20Count%20Number%20of%20Nice%20Subarrays)
 1249 | Minimum Remove to Make Valid Parentheses | Medium | [Solution](leetcode/1249.%20Minimum%20Remove%20to%20Make%20Valid%20Parentheses)
+1250 | Check If It Is a Good Array | Hard | [Solution](leetcode/1250.%20Check%20If%20It%20Is%20a%20Good%20Array)
 1252 | Cells with Odd Values in a Matrix | Easy | [Solution](leetcode/1252.%20Cells%20with%20Odd%20Values%20in%20a%20Matrix)
 1253 | Reconstruct a 2-Row Binary Matrix | Medium | [Solution](leetcode/1253.%20Reconstruct%20a%202-Row%20Binary%20Matrix)
 1254 | Number of Closed Islands | Medium | [Solution](leetcode/1254.%20Number%20of%20Closed%20Islands)
