@@ -997,6 +997,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1213 | Intersection of Three Sorted Arrays | Easy | [Solution](leetcode/1213.%20Intersection%20of%20Three%20Sorted%20Arrays)
 1216 | Valid Palindrome III | Hard | [Solution](leetcode/1216.%20Valid%20Palindrome%20III)
 1217 | Minimum Cost to Move Chips to The Same Position | Easy | [Solution](leetcode/1217.%20Minimum%20Cost%20to%20Move%20Chips%20to%20The%20Same%20Position)
+1218 | Longest Arithmetic Subsequence of Given Difference | Medium | [Solution](leetcode/1218.%20Longest%20Arithmetic%20Subsequence%20of%20Given%20Difference)
 1219 | Path with Maximum Gold | Medium | [Solution](leetcode/1219.%20Path%20with%20Maximum%20Gold)
 1220 | Count Vowels Permutation | Hard | [Solution](leetcode/1220.%20Count%20Vowels%20Permutation)
 1221 | Split a String in Balanced Strings | Easy | [Solution](leetcode/1221.%20Split%20a%20String%20in%20Balanced%20Strings)
