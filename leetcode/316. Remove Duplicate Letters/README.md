@@ -1,24 +1,40 @@
-# [316. Remove Duplicate Letters (Hard)](https://leetcode.com/problems/remove-duplicate-letters/)
+# [316. Remove Duplicate Letters (Medium)](https://leetcode.com/problems/remove-duplicate-letters/)
 
-<p>Given a string which contains only lowercase letters, remove duplicate letters so that every letter appear once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.</p>
+<p>Given a string <code>s</code>, remove duplicate letters so that every letter appears once and only once. You must make sure your result is <strong>the smallest in lexicographical order</strong> among all possible results.</p>
 
-<p><b>Example 1:</b></p>
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-<pre><b>Input:</b> <code>"bcabc"</code>
-<b>Output:</b> <code>"abc"</code>
+<pre><strong>Input:</strong> s = "bcabc"
+<strong>Output:</strong> "abc"
 </pre>
 
-<p><b>Example 2:</b></p>
+<p><strong>Example 2:</strong></p>
 
-<pre><b>Input:</b> <code>"cbacdcbc"</code>
-<b>Output:</b> <code>"acdb"</code>
+<pre><strong>Input:</strong> s = "cbacdcbc"
+<strong>Output:</strong> "acdb"
 </pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= s.length &lt;= 10<sup>4</sup></code></li>
+	<li><code>s</code> consists of lowercase English letters.</li>
+</ul>
+
+<p>&nbsp;</p>
+<p><strong>Note:</strong> This question is the same as 1081: <a href="https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/" target="_blank">https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/</a></p>
+
 
 **Companies**:  
-[Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft)
+[Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook), [Apple](https://leetcode.com/company/apple), [Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg)
 
 **Related Topics**:  
-[Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/)
+[String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/), [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/)
+
+**Similar Questions**:
+* [Smallest K-Length Subsequence With Occurrences of a Letter (Hard)](https://leetcode.com/problems/smallest-k-length-subsequence-with-occurrences-of-a-letter/)
 
 ## Solution 1. Greedy
 
@@ -110,39 +126,27 @@ public:
 
 ## Solution 3. Stack + Greedy
 
-See comments.
-
 ```cpp
 // OJ: https://leetcode.com/problems/remove-duplicate-letters/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(N)
-// Ref: https://leetcode.com/problems/remove-duplicate-letters/discuss/76769/Java-solution-using-Stack-with-comments
+// Space: O(1) because there are at most 26 letters stored
 class Solution {
 public:
     string removeDuplicateLetters(string s) {
-        if (s.empty()) return s;
-        unordered_map<char, int> cnt;
-        unordered_set<char> added;
-        stack<char> st;
-        for (char c : s) cnt[c]++;
-        for (char c : s) {
-            cnt[c]--;
-            if (added.find(c) != added.end()) continue; // if the letter is added into stack, skip
-            // If the stack top is poppable and the current letter is smaller than the stack top, pop the stack top.
-            while (st.size() && c < st.top() && cnt[st.top()]) {
-                added.erase(st.top());
-                st.pop();
-            }
-            st.push(c); // push the current letter into stack
-            added.insert(c);
-        }
+        int cnt[26] = {}, used[26] = {};
+        for (char c : s) cnt[c - 'a']++;
         string ans;
-        while (st.size()) {
-            ans += st.top();
-            st.pop();
+        for (char c : s) {
+            --cnt[c - 'a'];
+            if (used[c - 'a']) continue; // once used, don't use it again.
+            while (ans.size() && ans.back() > c && cnt[ans.back() - 'a']) { // If the stack top `x` is greater than the current letter, and there are more letters `x` available, we pop `x`
+                used[ans.back() - 'a'] = 0;
+                ans.pop_back();
+            }
+            ans.push_back(c);
+            used[c - 'a'] = 1;
         }
-        reverse(ans.begin(), ans.end());
         return ans;
     }
 };
