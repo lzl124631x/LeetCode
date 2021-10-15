@@ -67,8 +67,8 @@ We traverse from left to right:
 ```cpp
 // OJ: https://leetcode.com/problems/remove-duplicate-letters/
 // Author: github.com/lzl124631x
-// Time: O(N^2)
-// Space: O(N^2)
+// Time: O(NC) where `N` is the length of `s`, and `C` is the range of the letters
+// Space: O(NC)
 class Solution {
 public:
     string removeDuplicateLetters(string s) {
@@ -94,8 +94,8 @@ Same idea as Solution 1, use iterative method instead of recursive.
 ```cpp
 // OJ: https://leetcode.com/problems/remove-duplicate-letters/
 // Author: github.com/lzl124631x
-// Time: O(N^2)
-// Space: O(N)
+// Time: O(NC) where `N` is the length of `s`, and `C` is the range of the letters
+// Space: O(NC)
 class Solution {
 public:
     string removeDuplicateLetters(string s) {
@@ -124,13 +124,13 @@ public:
 };
 ```
 
-## Solution 3. Stack + Greedy
+## Solution 3. Mono-stack + Greedy
 
 ```cpp
 // OJ: https://leetcode.com/problems/remove-duplicate-letters/
 // Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1) because there are at most 26 letters stored
+// Time: O(N) where `N` is the length of `s`, and `C` is the range of the letters
+// Space: O(C)
 class Solution {
 public:
     string removeDuplicateLetters(string s) {
