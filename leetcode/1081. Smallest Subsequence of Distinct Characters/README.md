@@ -1,58 +1,47 @@
 # [1081. Smallest Subsequence of Distinct Characters (Medium)](https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/)
 
-<p>Return the lexicographically smallest subsequence of <code>text</code> that contains all the distinct characters of <code>text</code> exactly once.</p>
+<p>Given a string <code>s</code>, return <em>the lexicographically smallest subsequence of</em> <code>s</code> <em>that contains all the distinct characters of</em> <code>s</code> <em>exactly once</em>.</p>
 
 <p>&nbsp;</p>
-
 <p><strong>Example 1:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-1-1">"cdadabcc"</span>
-<strong>Output: </strong><span id="example-output-1">"adbc"</span>
+<pre><strong>Input:</strong> s = "bcabc"
+<strong>Output:</strong> "abc"
 </pre>
 
-<div>
 <p><strong>Example 2:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-2-1">"abcd"</span>
-<strong>Output: </strong><span id="example-output-2">"abcd"</span>
-</pre>
-
-<div>
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input: </strong><span id="example-input-3-1">"ecbacba"</span>
-<strong>Output: </strong><span id="example-output-3">"eacb"</span>
-</pre>
-
-<div>
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input: </strong><span id="example-input-4-1">"leetcode"</span>
-<strong>Output: </strong><span id="example-output-4">"letcod"</span>
+<pre><strong>Input:</strong> s = "cbacdcbc"
+<strong>Output:</strong> "acdb"
 </pre>
 
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><strong>Note:</strong></p>
-
-<ol>
-	<li><code>1 &lt;= text.length &lt;= 1000</code></li>
-	<li><code>text</code> consists of lowercase English letters.</li>
-</ol>
+<ul>
+	<li><code>1 &lt;= s.length &lt;= 1000</code></li>
+	<li><code>s</code> consists of lowercase English letters.</li>
+</ul>
 
 <p>&nbsp;</p>
-</div>
-</div>
-</div>
+<strong>Note:</strong> This question is the same as 316: <a href="https://leetcode.com/problems/remove-duplicate-letters/" target="_blank">https://leetcode.com/problems/remove-duplicate-letters/</a>
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Bloomberg](https://leetcode.com/company/bloomberg)
 
-## Solution 1.
+**Related Topics**:  
+[String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/), [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/)
+
+**Similar Questions**:
+* [Find the Most Competitive Subsequence (Medium)](https://leetcode.com/problems/find-the-most-competitive-subsequence/)
+
+## Solution 1. Mono-stack + Greedy
 
 ```cpp
 // OJ: https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/
 // Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
+// Time: O(N) where `N` is the length of `s`, and `C` is the range of the letters
+// Space: O(C)
 class Solution {
 public:
     string smallestSubsequence(string text) {
