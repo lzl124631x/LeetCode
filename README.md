@@ -1521,6 +1521,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1954 | Minimum Garden Perimeter to Collect Enough Apples | Medium | [Solution](leetcode/1954.%20Minimum%20Garden%20Perimeter%20to%20Collect%20Enough%20Apples)
 1955 | Count Number of Special Subsequences | Hard | [Solution](leetcode/1955.%20Count%20Number%20of%20Special%20Subsequences)
 1957 | Delete Characters to Make Fancy String | Easy | [Solution](leetcode/1957.%20Delete%20Characters%20to%20Make%20Fancy%20String)
+1958 | Check if Move is Legal | Medium | [Solution](leetcode/1958.%20Check%20if%20Move%20is%20Legal)
 1959 | Minimum Total Space Wasted With K Resizing Operations | Medium | [Solution](leetcode/1959.%20Minimum%20Total%20Space%20Wasted%20With%20K%20Resizing%20Operations)
 1960 | Maximum Product of the Length of Two Palindromic Substrings | Hard | [Solution](leetcode/1960.%20Maximum%20Product%20of%20the%20Length%20of%20Two%20Palindromic%20Substrings)
 1961 | Check If String Is a Prefix of Array | Easy | [Solution](leetcode/1961.%20Check%20If%20String%20Is%20a%20Prefix%20of%20Array)
