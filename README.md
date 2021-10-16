@@ -1581,6 +1581,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2033 | Minimum Operations to Make a Uni-Value Grid | Medium | [Solution](leetcode/2033.%20Minimum%20Operations%20to%20Make%20a%20Uni-Value%20Grid)
 2034 | Stock Price Fluctuation | Medium | [Solution](leetcode/2034.%20Stock%20Price%20Fluctuation)
 2035 | Partition Array Into Two Arrays to Minimize Sum Difference | Hard | [Solution](leetcode/2035.%20Partition%20Array%20Into%20Two%20Arrays%20to%20Minimize%20Sum%20Difference)
+2038 | Remove Colored Pieces if Both Neighbors are the Same Color | Medium | [Solution](leetcode/2038.%20Remove%20Colored%20Pieces%20if%20Both%20Neighbors%20are%20the%20Same%20Color)
 2039 | The Time When the Network Becomes Idle | Medium | [Solution](leetcode/2039.%20The%20Time%20When%20the%20Network%20Becomes%20Idle)
 
 # License
