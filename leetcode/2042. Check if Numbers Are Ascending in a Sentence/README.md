@@ -83,3 +83,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/check-if-numbers-are-ascending-in-a-sentence/discuss/1525203/C%2B%2B-Brute-Force
