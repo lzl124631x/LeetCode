@@ -82,7 +82,7 @@ The second minimum time path is 1 -&gt; 2 -&gt; 1 -&gt; 2 with time = 11 minutes
 1. Use a queue `q` to visit all the different lengths of paths. And insert the corresponding time into a `set`. Once the `set` has two elements, we return the greater one.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-263/problems/second-minimum-time-to-reach-destination/
+// OJ: https://leetcode.com/problems/second-minimum-time-to-reach-destination/
 // Author: github.com/lzl124631x
 // Time: O(N + E)
 // Space: O(N + E)
