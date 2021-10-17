@@ -1584,6 +1584,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2037 | Minimum Number of Moves to Seat Everyone | Easy | [Solution](leetcode/2037.%20Minimum%20Number%20of%20Moves%20to%20Seat%20Everyone)
 2038 | Remove Colored Pieces if Both Neighbors are the Same Color | Medium | [Solution](leetcode/2038.%20Remove%20Colored%20Pieces%20if%20Both%20Neighbors%20are%20the%20Same%20Color)
 2039 | The Time When the Network Becomes Idle | Medium | [Solution](leetcode/2039.%20The%20Time%20When%20the%20Network%20Becomes%20Idle)
+2040 | Kth Smallest Product of Two Sorted Arrays | Hard | [Solution](leetcode/2040.%20Kth%20Smallest%20Product%20of%20Two%20Sorted%20Arrays)
 
 # License
 
