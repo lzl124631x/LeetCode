@@ -781,6 +781,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 895 | Maximum Frequency Stack | Hard | [Solution](leetcode/895.%20Maximum%20Frequency%20Stack)
 896 | Monotonic Array | Easy | [Solution](leetcode/896.%20Monotonic%20Array)
 897 | Increasing Order Search Tree | Easy | [Solution](leetcode/897.%20Increasing%20Order%20Search%20Tree)
+898 | Bitwise ORs of Subarrays | Medium | [Solution](leetcode/898.%20Bitwise%20ORs%20of%20Subarrays)
 899 | Orderly Queue | Hard | [Solution](leetcode/899.%20Orderly%20Queue)
 900 | RLE Iterator | Medium | [Solution](leetcode/900.%20RLE%20Iterator)
 901 | Online Stock Span | Medium | [Solution](leetcode/901.%20Online%20Stock%20Span)
