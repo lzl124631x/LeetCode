@@ -30,14 +30,17 @@
 </ul>
 
 
+**Companies**:  
+[Dunzo](https://leetcode.com/company/dunzo)
+
 **Related Topics**:  
-[Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/)
+[Array](https://leetcode.com/tag/array/), [Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/), [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/)
 
 **Similar Questions**:
 * [Remove K Digits (Medium)](https://leetcode.com/problems/remove-k-digits/)
 * [Smallest Subsequence of Distinct Characters (Medium)](https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/)
 
-## Solution 1. Mono Stack
+## Solution 1. Mono-stack + Greedy
 
 This problem is very similar to [402. Remove K Digits (Medium)](https://leetcode.com/problems/remove-k-digits/).
 
