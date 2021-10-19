@@ -994,6 +994,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1202 | Smallest String With Swaps | Medium | [Solution](leetcode/1202.%20Smallest%20String%20With%20Swaps)
 1203 | Sort Items by Groups Respecting Dependencies | Hard | [Solution](leetcode/1203.%20Sort%20Items%20by%20Groups%20Respecting%20Dependencies)
 1207 | Unique Number of Occurrences | Easy | [Solution](leetcode/1207.%20Unique%20Number%20of%20Occurrences)
+1208 | Get Equal Substrings Within Budget | Medium | [Solution](leetcode/1208.%20Get%20Equal%20Substrings%20Within%20Budget)
 1209 | Remove All Adjacent Duplicates in String II | Medium | [Solution](leetcode/1209.%20Remove%20All%20Adjacent%20Duplicates%20in%20String%20II)
 1210 | Minimum Moves to Reach Target with Rotations | Hard | [Solution](leetcode/1210.%20Minimum%20Moves%20to%20Reach%20Target%20with%20Rotations)
 1213 | Intersection of Three Sorted Arrays | Easy | [Solution](leetcode/1213.%20Intersection%20of%20Three%20Sorted%20Arrays)
