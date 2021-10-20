@@ -760,6 +760,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 870 | Advantage Shuffle | Medium | [Solution](leetcode/870.%20Advantage%20Shuffle)
 871 | Minimum Number of Refueling Stops | Hard | [Solution](leetcode/871.%20Minimum%20Number%20of%20Refueling%20Stops)
 872 | Leaf-Similar Trees | Easy | [Solution](leetcode/872.%20Leaf-Similar%20Trees)
+873 | Length of Longest Fibonacci Subsequence | Medium | [Solution](leetcode/873.%20Length%20of%20Longest%20Fibonacci%20Subsequence)
 874 | Walking Robot Simulation | Easy | [Solution](leetcode/874.%20Walking%20Robot%20Simulation)
 875 | Koko Eating Bananas | Medium | [Solution](leetcode/875.%20Koko%20Eating%20Bananas)
 876 | Middle of the Linked List | Easy | [Solution](leetcode/876.%20Middle%20of%20the%20Linked%20List)
