@@ -281,6 +281,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 299 | Bulls and Cows | Medium | [Solution](leetcode/299.%20Bulls%20and%20Cows)
 300 | Longest Increasing Subsequence | Medium | [Solution](leetcode/300.%20Longest%20Increasing%20Subsequence)
 301 | Remove Invalid Parentheses | Hard | [Solution](leetcode/301.%20Remove%20Invalid%20Parentheses)
+302 | Smallest Rectangle Enclosing Black Pixels | Hard | [Solution](leetcode/302.%20Smallest%20Rectangle%20Enclosing%20Black%20Pixels)
 303 | Range Sum Query - Immutable |  | [Solution](leetcode/303.%20Range%20Sum%20Query%20-%20Immutable)
 304 | Range Sum Query 2D - Immutable |  | [Solution](leetcode/304.%20Range%20Sum%20Query%202D%20-%20Immutable)
 307 | Range Sum Query - Mutable | Medium | [Solution](leetcode/307.%20Range%20Sum%20Query%20-%20Mutable)
