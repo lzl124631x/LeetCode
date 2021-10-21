@@ -743,6 +743,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 847 | Shortest Path Visiting All Nodes | Hard | [Solution](leetcode/847.%20Shortest%20Path%20Visiting%20All%20Nodes)
 848 | Shifting Letters | Medium | [Solution](leetcode/848.%20Shifting%20Letters)
 849 | Maximize Distance to Closest Person | Medium | [Solution](leetcode/849.%20Maximize%20Distance%20to%20Closest%20Person)
+851 | Loud and Rich | Medium | [Solution](leetcode/851.%20Loud%20and%20Rich)
 852 | Peak Index in a Mountain Array | Easy | [Solution](leetcode/852.%20Peak%20Index%20in%20a%20Mountain%20Array)
 853 | Car Fleet | Medium | [Solution](leetcode/853.%20Car%20Fleet)
 855 | Exam Room | Medium | [Solution](leetcode/855.%20Exam%20Room)
