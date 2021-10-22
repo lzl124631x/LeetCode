@@ -1494,6 +1494,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1898 | Maximum Number of Removable Characters | Medium | [Solution](leetcode/1898.%20Maximum%20Number%20of%20Removable%20Characters)
 1899 | Merge Triplets to Form Target Triplet | Medium | [Solution](leetcode/1899.%20Merge%20Triplets%20to%20Form%20Target%20Triplet)
 1900 | The Earliest and Latest Rounds Where Players Compete | Hard | [Solution](leetcode/1900.%20The%20Earliest%20and%20Latest%20Rounds%20Where%20Players%20Compete)
+1901 | Find a Peak Element II | Medium | [Solution](leetcode/1901.%20Find%20a%20Peak%20Element%20II)
 1903 | Largest Odd Number in String | Easy | [Solution](leetcode/1903.%20Largest%20Odd%20Number%20in%20String)
 1904 | The Number of Full Rounds You Have Played | Medium | [Solution](leetcode/1904.%20The%20Number%20of%20Full%20Rounds%20You%20Have%20Played)
 1905 | Count Sub Islands | Medium | [Solution](leetcode/1905.%20Count%20Sub%20Islands)
