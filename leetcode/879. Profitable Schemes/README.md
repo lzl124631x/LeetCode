@@ -114,19 +114,20 @@ Since `dp[i+1]` values only depends on `dp[i]`, we can reduce the space complexi
 class Solution {
 public:
     int profitableSchemes(int N, int minProfit, vector<int>& group, vector<int>& profit) {
-        long mod = 1e9 + 7, M = group.size(), dp[2][101][101] = {}; // crime, members, profit
-        for (int j = 0; j <= N; ++j) dp[0][j][0] = 1;
+        long mod = 1e9 + 7, M = group.size(), dp[101][101] = {}, tmp[101][101] = {}; // crime, members, profit
+        for (int j = 0; j <= N; ++j) dp[j][0] = 1;
         for (int i = 0; i < M; ++i) {
+            swap(tmp, dp);
             for (int j = 0; j <= N; ++j) {
                 for (int k = 0; k <= minProfit; ++k) {
-                    long val = dp[i % 2][j][k];
+                    long val = tmp[j][k];
                     if (j - group[i] >= 0)
-                        val = (val + dp[i % 2][j - group[i]][max(0, k - profit[i])]) % mod;
-                    dp[(i + 1) % 2][j][k] = val;
+                        val = (val + tmp[j - group[i]][max(0, k - profit[i])]) % mod;
+                    dp[j][k] = val;
                 }
             }
         }
-        return dp[M % 2][N][minProfit];
+        return dp[N][minProfit];
     }
 };
 ```
