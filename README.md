@@ -663,6 +663,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 757 | Set Intersection Size At Least Two | Hard | [Solution](leetcode/757.%20Set%20Intersection%20Size%20At%20Least%20Two)
 759 | Employee Free Time | Hard | [Solution](leetcode/759.%20Employee%20Free%20Time)
 760 | Find Anagram Mappings | Easy | [Solution](leetcode/760.%20Find%20Anagram%20Mappings)
+761 | Special Binary String | Hard | [Solution](leetcode/761.%20Special%20Binary%20String)
 762 | Prime Number of Set Bits in Binary Representation | Easy | [Solution](leetcode/762.%20Prime%20Number%20of%20Set%20Bits%20in%20Binary%20Representation)
 763 | Partition Labels | Medium | [Solution](leetcode/763.%20Partition%20Labels)
 764 | Largest Plus Sign | Medium | [Solution](leetcode/764.%20Largest%20Plus%20Sign)
