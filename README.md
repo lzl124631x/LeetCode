@@ -771,6 +771,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 875 | Koko Eating Bananas | Medium | [Solution](leetcode/875.%20Koko%20Eating%20Bananas)
 876 | Middle of the Linked List | Easy | [Solution](leetcode/876.%20Middle%20of%20the%20Linked%20List)
 877 | Stone Game | Medium | [Solution](leetcode/877.%20Stone%20Game)
+879 | Profitable Schemes | Hard | [Solution](leetcode/879.%20Profitable%20Schemes)
 880 | Decoded String at Index | Medium | [Solution](leetcode/880.%20Decoded%20String%20at%20Index)
 881 | Boats to Save People | Medium | [Solution](leetcode/881.%20Boats%20to%20Save%20People)
 882 | Reachable Nodes In Subdivided Graph | Hard | [Solution](leetcode/882.%20Reachable%20Nodes%20In%20Subdivided%20Graph)
