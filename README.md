@@ -882,6 +882,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 992 | Subarrays with K Different Integers | Hard | [Solution](leetcode/992.%20Subarrays%20with%20K%20Different%20Integers)
 993 | Cousins in Binary Tree | Easy | [Solution](leetcode/993.%20Cousins%20in%20Binary%20Tree)
 994 | Rotting Oranges | Medium | [Solution](leetcode/994.%20Rotting%20Oranges)
+995 | Minimum Number of K Consecutive Bit Flips | Hard | [Solution](leetcode/995.%20Minimum%20Number%20of%20K%20Consecutive%20Bit%20Flips)
 996 | Number of Squareful Arrays | Hard | [Solution](leetcode/996.%20Number%20of%20Squareful%20Arrays)
 997 | Find the Town Judge | Easy | [Solution](leetcode/997.%20Find%20the%20Town%20Judge)
 998 | Maximum Binary Tree II | Medium | [Solution](leetcode/998.%20Maximum%20Binary%20Tree%20II)
