@@ -98,7 +98,9 @@ public:
 };
 ```
 
-## Solution 2. DFS + Memo (Post-order Traversal)
+## Solution 2. Topological Sort (DFS)
+
+DFS version topological sort is **Post-order Traversal + Memo**.
 
 ```cpp
 // OJ: https://leetcode.com/problems/parallel-courses-iii/
