@@ -90,7 +90,7 @@ public:
 };
 ```
 
-## Solution 2. DFS (Post-order)
+## Solution 2. Topological Sort (Post-order DFS)
 
 ```cpp
 // OJ: https://leetcode.com/problems/loud-and-rich/
@@ -105,7 +105,6 @@ public:
         vector<int> ans(N, -1);
         for (auto &r : R) G[r[1]].push_back(r[0]);
         function<int(int)> dfs = [&](int u) {
-            int u = r[0], v = r[1];
             if (ans[u] != -1) return ans[u];
             ans[u] = u;
             for (int v : G[u]) {
