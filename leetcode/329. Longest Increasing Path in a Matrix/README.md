@@ -39,9 +39,11 @@
 **Related Topics**:  
 [Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Topological Sort](https://leetcode.com/tag/topological-sort/), [Memoization](https://leetcode.com/tag/memoization/)
 
-# Solution 1. DFS + Memoization (DP)
+# Solution 1. Topological Sort (DFS)
 
-Typical DFS. Use a `vector<vector<int>> cnt`, where `cnt[i][j]` is the length of longest increasing path starting from `matrix[i][j]`. Initially values in `cnt` are all zeroes.
+A DFS version topoligical sort is **Post-order Traversal + Memo**.
+
+Use a `vector<vector<int>> cnt`, where `cnt[i][j]` is the length of longest increasing path starting from `matrix[i][j]`. Initially values in `cnt` are all zeroes.
 
 For each position `matrix[x][y]`,
 * if `cnt[x][y]` is not zero, which means it's already visited, return `cnt[x][y]` right away.
@@ -80,14 +82,11 @@ public:
 
 ## Solution 2. Topological Sort (BFS)
 
-Note that the DFS version of topological sort solution is the same as the Solution 1.
-
 ```cpp
 // OJ: https://leetcode.com/problems/longest-increasing-path-in-a-matrix/
 // Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(MN)
-// Ref: https://leetcode.com/problems/longest-increasing-path-in-a-matrix/discuss/288520/BFS-Implemented-Topological-Sort
 class Solution {
 public:
     int longestIncreasingPath(vector<vector<int>>& A) {
@@ -112,7 +111,7 @@ public:
                 q.pop();
                 for (auto &[dx, dy] : dirs) {
                     int a = x + dx, b = y + dy;
-                    if (a < 0 || b < 0 || a >= M || b >= N || indegree[a][b] == 0 || A[a][b] <= A[x][y]) continue;
+                    if (a < 0 || b < 0 || a >= M || b >= N || A[a][b] <= A[x][y]) continue;
                     if (--indegree[a][b] == 0) q.push({ a, b });
                 }
             }
