@@ -98,6 +98,31 @@ public:
 };
 ```
 
+## Solution 2. DFS + Memo (Post-order Traversal)
+
+```cpp
+// OJ: https://leetcode.com/problems/parallel-courses-iii/
+// Author: github.com/lzl124631x
+// Time: O(N + E)
+// Space: O(N + E)
+class Solution {
+public:
+    int minimumTime(int n, vector<vector<int>>& E, vector<int>& T) {
+        vector<vector<int>> G(n);
+        vector<int> dist(n);
+        for (auto &e : E) G[e[1] - 1].push_back(e[0] - 1);
+        function<int(int)> dfs = [&](int u) {
+            if (dist[u]) return dist[u];
+            int mx = 0;
+            for (int v : G[u]) mx = max(mx, dfs(v));
+            return dist[u] = mx + T[u];
+        };
+        for (int i = 0; i < n; ++i) dfs(i);
+        return *max_element(begin(dist), end(dist));
+    }
+};
+```
+
 ## Discuss
 
 https://leetcode.com/problems/parallel-courses-iii/discuss/1537501/C%2B%2B-Topological-Sort
