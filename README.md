@@ -1027,6 +1027,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1237 | Find Positive Integer Solution for a Given Equation | Easy | [Solution](leetcode/1237.%20Find%20Positive%20Integer%20Solution%20for%20a%20Given%20Equation)
 1238 | Circular Permutation in Binary Representation | Medium | [Solution](leetcode/1238.%20Circular%20Permutation%20in%20Binary%20Representation)
 1239 | Maximum Length of a Concatenated String with Unique Characters | Medium | [Solution](leetcode/1239.%20Maximum%20Length%20of%20a%20Concatenated%20String%20with%20Unique%20Characters)
+1240 | Tiling a Rectangle with the Fewest Squares | Hard | [Solution](leetcode/1240.%20Tiling%20a%20Rectangle%20with%20the%20Fewest%20Squares)
 1245 | Tree Diameter | Medium | [Solution](leetcode/1245.%20Tree%20Diameter)
 1247 | Minimum Swaps to Make Strings Equal | Medium | [Solution](leetcode/1247.%20Minimum%20Swaps%20to%20Make%20Strings%20Equal)
 1248 | Count Number of Nice Subarrays | Medium | [Solution](leetcode/1248.%20Count%20Number%20of%20Nice%20Subarrays)
@@ -1605,6 +1606,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2043 | Simple Bank System | Medium | [Solution](leetcode/2043.%20Simple%20Bank%20System)
 2044 | Count Number of Maximum Bitwise-OR Subsets | Medium | [Solution](leetcode/2044.%20Count%20Number%20of%20Maximum%20Bitwise-OR%20Subsets)
 2045 | Second Minimum Time to Reach Destination | Hard | [Solution](leetcode/2045.%20Second%20Minimum%20Time%20to%20Reach%20Destination)
+2047 | Number of Valid Words in a Sentence | Easy | [Solution](leetcode/2047.%20Number%20of%20Valid%20Words%20in%20a%20Sentence)
+2048 | Next Greater Numerically Balanced Number | Medium | [Solution](leetcode/2048.%20Next%20Greater%20Numerically%20Balanced%20Number)
+2049 | Count Nodes With the Highest Score | Medium | [Solution](leetcode/2049.%20Count%20Nodes%20With%20the%20Highest%20Score)
+2050 | Parallel Courses III | Hard | [Solution](leetcode/2050.%20Parallel%20Courses%20III)
 
 # License
 

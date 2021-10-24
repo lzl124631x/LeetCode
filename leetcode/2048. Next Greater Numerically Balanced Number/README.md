@@ -74,3 +74,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/next-greater-numerically-balanced-number/discuss/1537491/C%2B%2B-Brute-Force

@@ -83,3 +83,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/count-nodes-with-the-highest-score/discuss/1537494/C%2B%2B-Post-order-Traversal

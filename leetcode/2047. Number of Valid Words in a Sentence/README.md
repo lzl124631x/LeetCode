@@ -86,3 +86,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/number-of-valid-words-in-a-sentence/discuss/1537483/C%2B%2B-Straight-Forward
