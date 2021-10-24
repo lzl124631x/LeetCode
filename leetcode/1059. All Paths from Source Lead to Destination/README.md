@@ -99,3 +99,46 @@ public:
     }
 };
 ```
+
+## Solution 2. Topological Sort (BFS)
+
+To make the BFS version work, quite a few modifications were added. The DFS version is easier for this problem.
+
+```cpp
+// OJ: https://leetcode.com/problems/all-paths-from-source-lead-to-destination/
+// Author: github.com/lzl124631x
+// Time: O(N + E)
+// Space: O(N + E)
+class Solution {
+public:
+    bool leadsToDestination(int n, vector<vector<int>>& E, int src, int dest) {
+        vector<vector<int>> G(n);
+        vector<int> indegree(n), outdegree(n), state(n); // 0 - unvisited, 1 - should be visited, 2 - visited
+        for (auto &e : E) {
+            int u = e[0], v = e[1];
+            G[u].push_back(v);
+            ++indegree[v];
+            ++outdegree[u];
+        }
+        queue<int> q;
+        for (int i = 0; i < n; ++i) {
+            if (indegree[i] == 0) q.push(i);
+        }
+        state[src] = 1;
+        while (q.size()) {
+            int u = q.front();
+            q.pop();
+            if (state[u] == 1) state[u] = 2;
+            if (outdegree[u] == 0 && state[u] == 2 && u != dest) return false;
+            for (int v : G[u]) {
+                if (state[u]) state[v] = 1;
+                if (--indegree[v] == 0) q.push(v);
+            }
+        }
+        for (int i = 0; i < n; ++i) {
+            if (state[i] == 1) return false;
+        }
+        return true;
+    }
+};
+```
