@@ -642,6 +642,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 732 | My Calendar III | Hard | [Solution](leetcode/732.%20My%20Calendar%20III)
 733 | Flood Fill | Easy | [Solution](leetcode/733.%20Flood%20Fill)
 735 | Asteroid Collision | Medium | [Solution](leetcode/735.%20Asteroid%20Collision)
+736 | Parse Lisp Expression | Hard | [Solution](leetcode/736.%20Parse%20Lisp%20Expression)
 738 | Monotone Increasing Digits | Medium | [Solution](leetcode/738.%20Monotone%20Increasing%20Digits)
 739 | Daily Temperatures | Medium | [Solution](leetcode/739.%20Daily%20Temperatures)
 740 | Delete and Earn | Medium | [Solution](leetcode/740.%20Delete%20and%20Earn)
