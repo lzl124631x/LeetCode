@@ -992,6 +992,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1172 | Dinner Plate Stacks | Hard | [Solution](leetcode/1172.%20Dinner%20Plate%20Stacks)
 1175 | Prime Arrangements | Easy | [Solution](leetcode/1175.%20Prime%20Arrangements)
 1177 | Can Make Palindrome from Substring | Medium | [Solution](leetcode/1177.%20Can%20Make%20Palindrome%20from%20Substring)
+1178 | Number of Valid Words for Each Puzzle | Hard | [Solution](leetcode/1178.%20Number%20of%20Valid%20Words%20for%20Each%20Puzzle)
 1182 | Shortest Distance to Target Color | Medium | [Solution](leetcode/1182.%20Shortest%20Distance%20to%20Target%20Color)
 1184 | Distance Between Bus Stops | Easy | [Solution](leetcode/1184.%20Distance%20Between%20Bus%20Stops)
 1185 | Day of the Week | Easy | [Solution](leetcode/1185.%20Day%20of%20the%20Week)
