@@ -686,6 +686,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 783 | Minimum Distance Between BST Nodes | Medium | [Solution](leetcode/783.%20Minimum%20Distance%20Between%20BST%20Nodes)
 784 | Letter Case Permutation | Easy | [Solution](leetcode/784.%20Letter%20Case%20Permutation)
 785 | Is Graph Bipartite? | Medium | [Solution](leetcode/785.%20Is%20Graph%20Bipartite%3F)
+786 | K-th Smallest Prime Fraction | Hard | [Solution](leetcode/786.%20K-th%20Smallest%20Prime%20Fraction)
 787 | Cheapest Flights Within K Stops | Medium | [Solution](leetcode/787.%20Cheapest%20Flights%20Within%20K%20Stops)
 788 | Rotated Digits | Easy | [Solution](leetcode/788.%20Rotated%20Digits)
 789 | Escape The Ghosts | Medium | [Solution](leetcode/789.%20Escape%20The%20Ghosts)
