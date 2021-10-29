@@ -1026,6 +1026,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1223 | Dice Roll Simulation | Medium | [Solution](leetcode/1223.%20Dice%20Roll%20Simulation)
 1224 | Maximum Equal Frequency | Hard | [Solution](leetcode/1224.%20Maximum%20Equal%20Frequency)
 1226 | The Dining Philosophers | Medium | [Solution](leetcode/1226.%20The%20Dining%20Philosophers)
+1227 | Airplane Seat Assignment Probability | Medium | [Solution](leetcode/1227.%20Airplane%20Seat%20Assignment%20Probability)
 1232 | Check If It Is a Straight Line | Easy | [Solution](leetcode/1232.%20Check%20If%20It%20Is%20a%20Straight%20Line)
 1233 | Remove Sub-Folders from the Filesystem | Medium | [Solution](leetcode/1233.%20Remove%20Sub-Folders%20from%20the%20Filesystem)
 1234 | Replace the Substring for Balanced String | Medium | [Solution](leetcode/1234.%20Replace%20the%20Substring%20for%20Balanced%20String)
