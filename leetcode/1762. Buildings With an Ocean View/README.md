@@ -41,10 +41,13 @@
 </ul>
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook)
+[Facebook](https://leetcode.com/company/facebook), [Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
-[Greedy](https://leetcode.com/tag/greedy/)
+[Array](https://leetcode.com/tag/array/), [Stack](https://leetcode.com/tag/stack/), [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/)
+
+**Similar Questions**:
+* [Number of Visible People in a Queue (Hard)](https://leetcode.com/problems/number-of-visible-people-in-a-queue/)
 
 ## Solution 1.
 
@@ -56,11 +59,9 @@
 class Solution {
 public:
     vector<int> findBuildings(vector<int>& A) {
-        int mx = 0;
-        vector<int> ans;
-        for (int i = A.size() - 1; i >= 0; --i) {
-            if (A[i] > mx) ans.push_back(i);
-            mx = max(mx, A[i]);
+        vector<int> ans{(int)A.size() - 1};
+        for (int i = A.size() - 2; i >= 0; --i) {
+            if (A[i] > A[ans.back()]) ans.push_back(i);
         }
         reverse(begin(ans), end(ans));
         return ans;
