@@ -73,13 +73,7 @@ The second minimum time path is 1 -&gt; 2 -&gt; 1 -&gt; 2 with time = 11 minutes
 
 ## Solution 1. BFS
 
-**Intuition**: Given a length of a path, we can compute the total time needed to finish the path. So, we need to get the unique distances from vertex `0` to vertex `n-1` via different intermediate vertices. Note that for a path of length `d`, it can be extended to `d + 2, d + 4, ...` by keep jumping back and forth between vertex `n-1` and another vertex.
-
-**Algorithm**:
-
-1. Implement a `getTime(len, time, change)` function which returns the total time needed to traverse a path of length `len`.
-1. BFS to compute the distances from vertex `0` and vertex `n-1` to each vertices. Then we can get the different distances from vertex `0` to vertex `n-1` via different intermediate vertices.
-1. Use a queue `q` to visit all the different lengths of paths. And insert the corresponding time into a `set`. Once the `set` has two elements, we return the greater one.
+**Intuition**: If the shortest path from `1` to `n` is of length `L`, find whether there is a path of length `L + 1`. There is always a path of length `L + 2`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/second-minimum-time-to-reach-destination/
@@ -87,14 +81,6 @@ The second minimum time path is 1 -&gt; 2 -&gt; 1 -&gt; 2 with time = 11 minutes
 // Time: O(N + E)
 // Space: O(N + E)
 class Solution {
-    long long getTime(int len, int time, int change) {
-        long long ans = 0;
-        for (int i = 0; i < len; ++i) {
-            ans += time;
-            if (i < len - 1 && ans / change % 2) ans = (ans / change + 1) * change;
-        }
-        return ans;
-    }
 public:
     int secondMinimum(int n, vector<vector<int>>& E, int time, int change) {
         vector<vector<int>> G(n);
@@ -103,47 +89,38 @@ public:
             G[u].push_back(v);
             G[v].push_back(u);
         }
-        vector<int> a(n, INT_MAX), b(n, INT_MAX);
-        auto bfs = [&](int from, vector<int> &dist){
-            int step  = 0;
-            queue<int> q{{from}};
-            dist[from] = 0;
-            while (q.size()) {
-                int cnt = q.size();
-                while (cnt--) {
-                    int u = q.front();
-                    q.pop();
-                    for (int v : G[u]) {
-                        if (dist[v] != INT_MAX) continue;
-                        dist[v] = step + 1;
-                        q.push(v);
-                    }
-                }
-                step++;
-            }
-            return dist;
-        };
-        bfs(0, a);
-        bfs(n - 1, b);
-        set<int> unique, times;
-        for (int i = 1; i < n; ++i) unique.insert(a[i] + b[i]);
-        queue<int> q;
-        unordered_set<int> seen;
-        for (int d : unique) {
-            if (seen.count(d)) continue;
-            q.push(d);
-            seen.insert(d);
-        }
-        while (times.size() < 2) {
-            int d = q.front();
+        vector<int> dist(n, INT_MAX);
+        dist[n - 1] = 0;
+        queue<int> q{{n - 1}};
+        while (q.size()) {
+            int u = q.front();
             q.pop();
-            times.insert(getTime(d, time, change));
-            if (seen.count(d + 2) == 0) {
-                seen.insert(d + 2);
-                q.push(d + 2);
+            for (int v : G[u]) {
+                if (dist[v] != INT_MAX) continue;
+                dist[v] = 1 + dist[u];
+                q.push(v);
             }
         }
-        return *times.rbegin();
+        int len = dist[0] + 2; // Try to find a path of length `dist[0] + 1`
+        q.push(0);
+        bool found = false;
+        while (q.size() && !found) {
+            int u = q.front();
+            q.pop();
+            for (int v : G[u]) {
+                if (dist[v] == dist[u]) { // u and v are at the same layer, so dist[u] can be 1 + dist[u] by going to v first then u.
+                    len--;
+                    found = true;
+                    break;
+                } else if (dist[v] == dist[u] - 1) q.push(v); // push the nodes at the next layer
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < len; ++i) {
+            ans += time;
+            if (i != len - 1 && ans / change % 2) ans = (ans / change + 1) * change;
+        }
+        return ans;
     }
 };
 ```
