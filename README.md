@@ -1617,6 +1617,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2048 | Next Greater Numerically Balanced Number | Medium | [Solution](leetcode/2048.%20Next%20Greater%20Numerically%20Balanced%20Number)
 2049 | Count Nodes With the Highest Score | Medium | [Solution](leetcode/2049.%20Count%20Nodes%20With%20the%20Highest%20Score)
 2050 | Parallel Courses III | Hard | [Solution](leetcode/2050.%20Parallel%20Courses%20III)
+2057 | Smallest Index With Equal Value | Easy | [Solution](leetcode/2057.%20Smallest%20Index%20With%20Equal%20Value)
 
 # License
 
