@@ -101,8 +101,7 @@ public:
                 for (int d : A) {
                     for (int next : {n + d, n - d, n ^ d}) {
                         if (next == goal) return step + 1;
-                        if (next < 0 || next > 1000) continue;
-                        if (seen[next]) continue;
+                        if (next < 0 || next > 1000 || seen[next]) continue;
                         seen[next] = true;
                         q.push(next);
                     }
