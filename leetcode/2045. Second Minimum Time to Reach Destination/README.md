@@ -73,13 +73,14 @@ The second minimum time path is 1 -&gt; 2 -&gt; 1 -&gt; 2 with time = 11 minutes
 
 ## Solution 1. BFS
 
-**Intuition**: If the shortest path from `1` to `n` is of length `L`, find whether there is a path of length `L + 1`. There is always a path of length `L + 2`.
+**Intuition**: If the shortest path from `1` to `n` is of length `L`, find whether there is a path of length `L + 1` by taking a detour. There is always a path of length `L + 2` (by going back-and-forth).
 
 ```cpp
 // OJ: https://leetcode.com/problems/second-minimum-time-to-reach-destination/
 // Author: github.com/lzl124631x
 // Time: O(N + E)
 // Space: O(N + E)
+// Ref: https://leetcode.com/problems/second-minimum-time-to-reach-destination/discuss/1525165/C%2B%2B-Two-BFS-with-detailed-explanation
 class Solution {
 public:
     int secondMinimum(int n, vector<vector<int>>& E, int time, int change) {
@@ -108,11 +109,11 @@ public:
             int u = q.front();
             q.pop();
             for (int v : G[u]) {
-                if (dist[v] == dist[u]) { // u and v are at the same layer, so dist[u] can be 1 + dist[u] by going to v first then u.
+                if (dist[v] == dist[u]) { // u and v are at the same layer of the shortest path, so dist[u] can be 1 + dist[u] by going to v first then u.
                     len--;
                     found = true;
                     break;
-                } else if (dist[v] == dist[u] - 1) q.push(v); // push the nodes at the next layer
+                } else if (dist[v] == dist[u] - 1) q.push(v); // push the nodes on the next layer of the shortest path
             }
         }
         int ans = 0;
@@ -121,6 +122,51 @@ public:
             if (i != len - 1 && ans / change % 2) ans = (ans / change + 1) * change;
         }
         return ans;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/second-minimum-time-to-reach-destination/
+// Author: github.com/lzl124631x
+// Time: O(N + E)
+// Space: O(N + E)
+// Ref: https://leetcode.com/problems/second-minimum-time-to-reach-destination/discuss/1525154/No-Dijkstra%3A-(n-%2B-1)-or-(n-%2B-2)
+class Solution {
+public:
+    int secondMinimum(int n, vector<vector<int>>& E, int time, int change) {
+        auto getTime = [&](int step) {
+            int ans = 0;
+            for (int i = 0; i < step; ++i) {
+                ans += time;
+                if (i != step - 1 && ans / change % 2) ans = (ans / change + 1) * change;
+            }
+            return ans;
+        };
+        vector<vector<int>> G(n);
+        for (auto &e : E) {
+            int u = e[0] - 1, v = e[1] - 1;
+            G[u].push_back(v);
+            G[v].push_back(u);
+        }
+        vector<int> dist(n, 10001);
+        queue<int> q{{0}};
+        int step = 0;
+        while (q.size() && step <= dist[n - 1] + 1) {
+            int cnt = q.size();
+            while (cnt--) {
+                int u = q.front();
+                q.pop();
+                if (step == dist[u] || step > dist[u] + 1) continue; // Only visit node `u` if it haven't been visited or this visit takes only one more step than last time.
+                dist[u] = min(dist[u], step);
+                if (u == n - 1 && step == dist[n - 1] + 1) return getTime(step);
+                for (int v : G[u]) q.push(v);
+            }
+            ++step;
+        }
+        return getTime(dist[n - 1] + 2);
     }
 };
 ```
