@@ -1620,6 +1620,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2057 | Smallest Index With Equal Value | Easy | [Solution](leetcode/2057.%20Smallest%20Index%20With%20Equal%20Value)
 2058 | Find the Minimum and Maximum Number of Nodes Between Critical Points | Medium | [Solution](leetcode/2058.%20Find%20the%20Minimum%20and%20Maximum%20Number%20of%20Nodes%20Between%20Critical%20Points)
 2059 | Minimum Operations to Convert Number | Medium | [Solution](leetcode/2059.%20Minimum%20Operations%20to%20Convert%20Number)
+2060 | Check if an Original String Exists Given Two Encoded Strings | Hard | [Solution](leetcode/2060.%20Check%20if%20an%20Original%20String%20Exists%20Given%20Two%20Encoded%20Strings)
 
 # License
 

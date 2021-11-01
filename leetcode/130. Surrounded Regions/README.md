@@ -1,32 +1,39 @@
 # [130. Surrounded Regions (Medium)](https://leetcode.com/problems/surrounded-regions/)
 
-<p>Given a 2D board containing <code>'X'</code> and <code>'O'</code> (<strong>the letter O</strong>), capture all regions surrounded by <code>'X'</code>.</p>
+<p>Given an <code>m x n</code> matrix <code>board</code> containing <code>'X'</code> and <code>'O'</code>, <em>capture all regions that are 4-directionally&nbsp;surrounded by</em> <code>'X'</code>.</p>
 
-<p>A region is captured by flipping all <code>'O'</code>s into <code>'X'</code>s in that surrounded region.</p>
+<p>A region is <strong>captured</strong> by flipping all <code>'O'</code>s into <code>'X'</code>s in that surrounded region.</p>
 
-<p><strong>Example:</strong></p>
-
-<pre>X X X X
-X O O X
-X X O X
-X O X X
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/02/19/xogrid.jpg" style="width: 550px; height: 237px;">
+<pre><strong>Input:</strong> board = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
+<strong>Output:</strong> [["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]]
+<strong>Explanation:</strong> Surrounded regions should not be on the border, which means that any 'O' on the border of the board are not flipped to 'X'. Any 'O' that is not on the border and it is not connected to an 'O' on the border will be flipped to 'X'. Two cells are connected if they are adjacent cells connected horizontally or vertically.
 </pre>
 
-<p>After running your function, the board should be:</p>
+<p><strong>Example 2:</strong></p>
 
-<pre>X X X X
-X X X X
-X X X X
-X O X X
+<pre><strong>Input:</strong> board = [["X"]]
+<strong>Output:</strong> [["X"]]
 </pre>
 
-<p><strong>Explanation:</strong></p>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p>Surrounded regions shouldn’t be on the border, which means that any <code>'O'</code>&nbsp;on the border of the board are not flipped to <code>'X'</code>. Any <code>'O'</code>&nbsp;that is not on the border and it is not connected to an <code>'O'</code>&nbsp;on the border will be flipped to <code>'X'</code>. Two cells are connected if they are adjacent cells connected horizontally or vertically.</p>
+<ul>
+	<li><code>m == board.length</code></li>
+	<li><code>n == board[i].length</code></li>
+	<li><code>1 &lt;= m, n &lt;= 200</code></li>
+	<li><code>board[i][j]</code> is <code>'X'</code> or <code>'O'</code>.</li>
+</ul>
 
+
+**Companies**:  
+[Google](https://leetcode.com/company/google), [Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft)
 
 **Related Topics**:  
-[Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Breadth-first Search](https://leetcode.com/tag/breadth-first-search/), [Union Find](https://leetcode.com/tag/union-find/)
+[Array](https://leetcode.com/tag/array/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Union Find](https://leetcode.com/tag/union-find/), [Matrix](https://leetcode.com/tag/matrix/)
 
 **Similar Questions**:
 * [Number of Islands (Medium)](https://leetcode.com/problems/number-of-islands/)
@@ -40,27 +47,19 @@ X O X X
 // Time: O(MN)
 // Space: O(MN)
 class Solution {
-    int M, N, dirs[4][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-    void dfs(vector<vector<char>> &board, int x, int y) {
-        if (x < 0 || x >= M || y < 0 || y >= N || board[x][y] != 'O') return;
-        board[x][y] = '#';
-        for (auto &dir : dirs) dfs(board, x + dir[0], y + dir[1]);
-    }
 public:
-    void solve(vector<vector<char>>& board) {
-        if (board.empty() || board[0].empty()) return;
-        M = board.size(), N = board[0].size();
+    void solve(vector<vector<char>>& A) {
+        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        function<void(int, int)> dfs = [&](int x, int y) {
+            if (x < 0 || x >= M || y < 0 || y >= N || A[x][y] != 'O') return;
+            A[x][y] = '#';
+            for (auto &[dx, dy] : dirs) dfs(x + dx, y + dy);
+        };
+        for (int i = 0; i < M; ++i) dfs(i, 0), dfs(i, N - 1);
+        for (int j = 0; j < N; ++j) dfs(0, j), dfs(M - 1, j);
         for (int i = 0; i < M; ++i) {
-            dfs(board, i, 0);
-            dfs(board, i, N - 1);
-        }
-        for (int j = 0; j < N; ++j) {
-            dfs(board, 0, j);
-            dfs(board, M - 1, j);
-        }
-        for (auto &row : board) {
-            for (auto &cell : row) {
-                cell = cell == '#' ? 'O' : 'X';
+            for (int j = 0; j < N; ++j) {
+                A[i][j] = A[i][j] == '#' ? 'O' : 'X';
             }
         }
     }
@@ -74,33 +73,32 @@ public:
 // Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(MN)
-#define FILL(x, y) do { if (board[x][y] == 'O') { q.emplace(x, y); board[x][y] = '#'; }} while(0)
 class Solution {
-private:
-    const int dirs[4][2] = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 public:
-    void solve(vector<vector<char>>& board) {
-        if (board.empty() || board[0].empty()) return;
-        int M = board.size(), N = board[0].size();
-        queue<pair<int, int>> q;
-        for (int i = 0; i < N; ++i) {
-            FILL(0, i);
-            FILL(M - 1, i);
-        }
-        for (int i = 1; i < M - 1; ++i) {
-            FILL(i, 0);
-            FILL(i, N - 1);
-        }
-        while (q.size()) {
-            auto p = q.front();
-            q.pop();
-            for (auto &dir : dirs) {
-                int x = p.first + dir[0], y = p.second + dir[1];
-                if (x >= 0 && x < M && y >= 0 && y < N) FILL(x, y);
+    void solve(vector<vector<char>>& A) {
+        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        auto bfs = [&](int x, int y) {
+            if (A[x][y] != 'O') return;
+            queue<pair<int, int>> q{{{x, y}}};
+            A[x][y] = '#';
+            while (q.size()) {
+                auto [x, y] = q.front();
+                q.pop();
+                for (auto &[dx, dy] : dirs) {
+                    int a = x + dx, b = y + dy;
+                    if (a < 0 || a >= M || b < 0 || b >= N || A[a][b] != 'O') continue;
+                    A[a][b] = '#';
+                    q.emplace(a, b);
+                }
+            }
+        };
+        for (int i = 0; i < M; ++i) bfs(i, 0), bfs(i, N - 1);
+        for (int j = 0; j < N; ++j) bfs(0, j), bfs(M - 1, j);
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                A[i][j] = A[i][j] == '#' ? 'O' : 'X';
             }
         }
-        for (auto &row : board)
-            for (char &c : row) c = c == '#' ? 'O' : 'X';
     }
 };
 ```
@@ -112,50 +110,42 @@ public:
 // Author: github.com/lzl124631x
 // Time: O(MN)
 // Space: O(MN)
-// Ref: https://discuss.leetcode.com/topic/1944/solve-it-using-union-find
 class UnionFind {
-    vector<int> id, rank;
+    vector<int> id;
 public:
-    UnionFind(int n): id(n), rank(n, 1) {
-        for (int i = 0; i < n; ++i) id[i] = i;
-    }
-    void connect(int a, int b) {
-        int x = find(a), y = find(b);
-        if (x == y) return;
-        if (rank[x] <= rank[y]) {
-            id[x] = y;
-            if (rank[x] == rank[y]) rank[y]++;
-        } else id[y] = x;
+    UnionFind(int N) : id(N) {
+        iota(begin(id), end(id), 0);
     }
     int find(int a) {
         return id[a] == a ? a : (id[a] = find(id[a]));
+    }
+    void connect(int a, int b) {
+        id[find(a)] = find(b);
     }
     bool connected(int a, int b) {
         return find(a) == find(b);
     }
 };
 class Solution {
-    int M, N, dirs[4][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-    inline int get(int x, int y) { return N * x + y; }
 public:
-    void solve(vector<vector<char>>& board) {
-        if (board.empty() || board[0].empty()) return;
-        M = board.size(), N = board[0].size();
+    void solve(vector<vector<char>>& A) {
+        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        auto key = [&](int x, int y) { return x * N + y; };
         UnionFind uf(M * N + 1);
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                if (board[i][j] != 'O') continue;
-                if (!i || i == M - 1 || !j || j == N - 1) uf.connect(get(i, j), M * N);
-                for (auto &dir : dirs) {
-                    int x = i + dir[0], y = j + dir[1];
-                    if (x < 0 || x >= M || y < 0 || y >= N || board[x][y] != 'O') continue;
-                    uf.connect(get(i, j), get(x, y));
+                if (A[i][j] != 'O') continue;
+                if (i == 0 || i == M - 1 || j == 0 || j == N - 1) uf.connect(key(i, j), M * N);
+                for (auto &[dx, dy] : dirs) {
+                    int a = i + dx, b = j + dy;
+                    if (a < 0 || a >= M || b < 0 || b >= N || A[a][b] != 'O') continue;
+                    uf.connect(key(a, b), key(i, j));
                 }
             }
         }
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                if (!uf.connected(get(i, j), M * N)) board[i][j] = 'X';
+                A[i][j] = uf.connected(key(i, j), M * N) ? 'O' : 'X';
             }
         }
     }
