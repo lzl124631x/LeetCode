@@ -101,3 +101,42 @@ public:
     }
 };
 ```
+
+Or we are not allowed to change the grid, we can use a bitmask to track visited cells.
+
+```cpp
+// OJ: https://leetcode.com/problems/unique-paths-iii/
+// Author: github.com/lzl124631x
+// Time: O(3^(MN))
+// Space: O(MN)
+class Solution {
+public:
+    int uniquePathsIII(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size(), sx, sy, goal = 0, ans = 0, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}}, seen = 0;
+        function<void(int, int)> dfs = [&](int x, int y) {
+            if (A[x][y] == 2) {
+                ans += goal == 1;
+                return;
+            }
+            int bit = 1 << (x * N + y);
+            seen ^= bit;
+            --goal;
+            for (auto &[dx, dy] : dirs) {
+                int a = x + dx, b = y + dy;
+                if (a < 0 || a >= M || b < 0 || b >= N || A[a][b] == -1 || seen & (1 << (a * N + b))) continue;
+                dfs(a, b);
+            }
+            ++goal;
+            seen ^= bit;
+        };
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (A[i][j] != -1) ++goal;
+                if (A[i][j] == 1) sx = i, sy = j;
+            }
+        }
+        dfs(sx, sy);
+        return ans;
+    }
+};
+```
