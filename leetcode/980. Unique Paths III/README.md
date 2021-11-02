@@ -69,27 +69,26 @@ Note that the starting and ending square can be anywhere in the grid.
 ```cpp
 // OJ: https://leetcode.com/problems/unique-paths-iii/
 // Author: github.com/lzl124631x
-// Time: O(4^(MN))
-// Space: O(1)
+// Time: O(3^(MN))
+// Space: O(MN) due to call stack
 class Solution {
 public:
     int uniquePathsIII(vector<vector<int>>& A) {
         int M = A.size(), N = A[0].size(), sx, sy, goal = 0, ans = 0, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
-        vector<vector<bool>> seen(M, vector<bool>(N));
         function<void(int, int)> dfs = [&](int x, int y) {
             if (A[x][y] == 2) {
                 ans += goal == 1;
                 return;
             }
-            seen[x][y] = true;
+            A[x][y] = -1;
             --goal;
             for (auto &[dx, dy] : dirs) {
                 int a = x + dx, b = y + dy;
-                if (a < 0 || a >= M || b < 0 || b >= N || seen[a][b] || A[a][b] == -1) continue;
+                if (a < 0 || a >= M || b < 0 || b >= N || A[a][b] == -1) continue;
                 dfs(a, b);
             }
             ++goal;
-            seen[x][y] = false;
+            A[x][y] = 0;
         };
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
