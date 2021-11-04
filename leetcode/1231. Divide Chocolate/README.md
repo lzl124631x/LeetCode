@@ -54,12 +54,12 @@
 ```cpp
 // OJ: https://leetcode.com/problems/divide-chocolate/
 // Author: github.com/lzl124631x
-// Time: O(NlogM) where `N` is the length of `A` and `M` is the sum of elements in `A`.
+// Time: O(Nlog(M/(k+1))) where `N` is the length of `A` and `M` is the sum of elements in `A`.
 // Space: O(1)
 class Solution {
 public:
     int maximizeSweetness(vector<int>& A, int k) {
-        long N = A.size(), L = 0, R = accumulate(begin(A), end(A), 0L);
+        long N = A.size(), L = 0, R = accumulate(begin(A), end(A), 0L) / (k + 1);
         auto valid = [&](int goal) {
             for (int i = 0, sum = 0, cnt = 0; i < N; ++i) {
                 sum += A[i];
