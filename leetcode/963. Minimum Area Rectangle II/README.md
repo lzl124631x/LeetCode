@@ -74,7 +74,7 @@ For each triangle, let's try to find the 4th point and whether it is a rectangle
 
 Say the first 3 points are `p1, p2, p3`, and that `p2` and `p3` are opposite corners of the final rectangle. The 4th point must be `p4 = p2 + p3 - p1` (using vector notation) because `p1, p2, p4, p3` must form a parallelogram, and `p1 + (p2 - p1) + (p3 - p1) = p4`.
 
-If this point exists in our collection (we can use a set to check), then we should check that the angles of this parallelogram are 90 degrees. The easiest way is to check the dot product of the two vectors `(p2 - p1)` and `(p3 - p1)`. (Another way is we could normalize the vectors to length 1, and check that one equals the other rotated by 90 degrees.)
+If this point exists in our collection (we can use a set to check), then we should check that the angles of this parallelogram are 90 degrees. The easiest way is to check the dot product of the two vectors `(p2 - p1)` and `(p3 - p1)`. (Another way is that we could normalize the vectors to length 1, and check that one equals the other rotated by 90 degrees.)
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-area-rectangle-ii/
