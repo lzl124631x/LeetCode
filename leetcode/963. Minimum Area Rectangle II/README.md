@@ -114,6 +114,45 @@ public:
 };
 ```
 
-## TODO
+## Solution 2. Map
 
-https://leetcode.com/problems/minimum-area-rectangle-ii/solution/ 2nd solution
+```cpp
+// OJ: https://leetcode.com/problems/minimum-area-rectangle-ii/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N^2)
+// Ref: https://leetcode.com/problems/minimum-area-rectangle-ii/discuss/208361/JAVA-O(n2)-using-Map
+class Solution {
+    inline long distance(vector<int> &a, vector<int> &b) {
+        return (a[0] - b[0]) * (a[0] - b[0]) + (a[1] - b[1]) * (a[1] - b[1]);
+    }
+public:
+    double minAreaFreeRect(vector<vector<int>>& A) {
+        int N = A.size();
+        double ans = DBL_MAX;
+        if (N < 4) return 0;
+        unordered_map<string, vector<vector<int>>> m;
+        for (int i = 0; i < N; ++i) {
+            for (int j = i + 1; j < N; ++j) {
+                long dist = distance(A[i], A[j]);
+                double centerX = (A[i][0] + A[j][0]) / 2.0;
+                double centerY = (A[i][1] + A[j][1]) / 2.0;
+                auto key = to_string(dist) + "," + to_string(centerX) + "," + to_string(centerY);
+                m[key].push_back({ i, j });
+            }
+        }
+        for (auto &[key, val] : m) {
+            if (val.size() <= 1) continue;
+            for (int i = 0; i < val.size(); ++i) {
+                for (int j = i + 1; j < val.size(); ++j) {
+                    int a = val[i][0], b = val[i][1], c = val[j][0];
+                    double len1 = sqrt(distance(A[a], A[c]));
+                    double len2 = sqrt(distance(A[b], A[c]));
+                    ans = min(ans, len1 * len2);
+                }
+            }
+        }
+        return ans == DBL_MAX ? 0 : ans;
+    }
+};
+```
