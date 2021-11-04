@@ -116,10 +116,17 @@ public:
 
 ## Solution 2. Map
 
+1. Two diagonals of a rectangle bisect each other, and are of equal length.
+1. A map's key is a string including diagonal length and coordinate of the diagonal center; A map's value is a vector of index pairs of two points forming the diagonal.
+
+The first part takes `O(N^2)` time.
+
+For the second part, according to the Theorem 9 in [Finding squares and rectangles in sets of points. M.J. van Kreveld and M.T. de Berg](http://www.cs.uu.nl/research/techreps/repo/CS-1989/1989-10.pdf), there are at most `O(N^2 * sqrt(N))` rectangles with these `N` points, so the time complexity is `O(N^2 * sqrt(N))`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-area-rectangle-ii/
 // Author: github.com/lzl124631x
-// Time: O(N^2)
+// Time: O(N^2 * sqrt(N))
 // Space: O(N^2)
 // Ref: https://leetcode.com/problems/minimum-area-rectangle-ii/discuss/208361/JAVA-O(n2)-using-Map
 class Solution {
