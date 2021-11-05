@@ -4,7 +4,7 @@
 
 <p>The <strong>path sum</strong> of a path is the sum of the node's values in the path.</p>
 
-<p>Given the <code>root</code> of a binary tree, return <em>the maximum <strong>path sum</strong> of any path</em>.</p>
+<p>Given the <code>root</code> of a binary tree, return <em>the maximum <strong>path sum</strong> of any <strong>non-empty</strong> path</em>.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -29,8 +29,9 @@
 	<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>
 </ul>
 
+
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft), [Apple](https://leetcode.com/company/apple), [ByteDance](https://leetcode.com/company/bytedance), [Bloomberg](https://leetcode.com/company/bloomberg), [Adobe](https://leetcode.com/company/adobe), [Wish](https://leetcode.com/company/wish), [Yandex](https://leetcode.com/company/yandex), [DiDi](https://leetcode.com/company/didi)
+[Facebook](https://leetcode.com/company/facebook), [DoorDash](https://leetcode.com/company/doordash), [Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft), [Adobe](https://leetcode.com/company/adobe), [Samsung](https://leetcode.com/company/samsung), [Bloomberg](https://leetcode.com/company/bloomberg), [ByteDance](https://leetcode.com/company/bytedance), [Myntra](https://leetcode.com/company/myntra), [Flipkart](https://leetcode.com/company/flipkart)
 
 **Related Topics**:  
 [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
@@ -60,17 +61,16 @@ In sum, we can use post order traversal to compute `f(n)` and update maximum pat
 // Time: O(N)
 // Space: O(H)
 class Solution {
-private:
     int ans = INT_MIN;
-    int postOrder(TreeNode *root) {
-        if (!root) return INT_MIN;
-        int L = max(0, postOrder(root->left)), R = max(0, postOrder(root->right));
-        ans = max(ans, L + R + root->val);
-        return root->val + max(L, R);
+    int dfs(TreeNode *root) {
+        if (!root) return 0;
+        int left = dfs(root->left), right = dfs(root->right);
+        ans = max(ans, root->val + left + right);
+        return max(0, root->val + max(left, right));
     }
 public:
     int maxPathSum(TreeNode* root) {
-        postOrder(root);
+        dfs(root);
         return ans;
     }
 };
