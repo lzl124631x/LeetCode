@@ -42,11 +42,11 @@ public:
     vector<int> singleNumber(vector<int>& A) {
         int x = 0;
         for (int n : A) x ^= n;
-        int mask = x & -x, a = 0;
+        int lb = x & -(unsigned)x, a = 0;
         for (int n : A) {
-            if (mask & n) a ^= n;
+            if (n & lb) a ^= n;
         }
-        return { a, x ^ a };
+        return {a, x ^ a};
     }
 };
 ```
