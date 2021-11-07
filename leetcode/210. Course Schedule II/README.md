@@ -98,22 +98,20 @@ public:
 // Time: O(V + E)
 // Space: O(V + E)
 class Solution {
-    vector<vector<int>> G;
-    vector<int> ans, state; // -1 unvisited, 0 visiting, 1 visited
-    bool dfs(int u) {
-        if (state[u] != -1) return state[u];
-        state[u] = 0;
-        for (int v : G[u]) {
-            if (!dfs(v)) return false;
-        }
-        ans.push_back(u);
-        return state[u] = 1;
-    }
 public:
     vector<int> findOrder(int n, vector<vector<int>>& E) {
-        G.assign(n, {});
-        state.assign(n, -1);
+        vector<vector<int>> G(n);
         for (auto &e : E) G[e[1]].push_back(e[0]);
+        vector<int> ans, state(n, -1); // -1 unvisited, 0 visiting, 1 visited
+        function<bool(int)> dfs = [&](int u) -> bool {
+            if (state[u] != -1) return state[u];
+            state[u] = 0;
+            for (int v : G[u]) {
+                if (!dfs(v)) return false;
+            }
+            ans.push_back(u);
+            return state[u] = 1;
+        };
         for (int i = 0; i < n; ++i) {
             if (!dfs(i)) return {};
         }
