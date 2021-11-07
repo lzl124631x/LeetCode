@@ -58,7 +58,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 40 | Combination Sum II | Medium | [Solution](leetcode/40.%20Combination%20Sum%20II)
 41 | First Missing Positive | Hard | [Solution](leetcode/41.%20First%20Missing%20Positive)
 42 | Trapping Rain Water | Hard | [Solution](leetcode/42.%20Trapping%20Rain%20Water)
-43 | Multiply Strings |  | [Solution](leetcode/43.%20Multiply%20Strings)
+43 | Multiply Strings | Medium | [Solution](leetcode/43.%20Multiply%20Strings)
 44 | Wildcard Matching | Hard | [Solution](leetcode/44.%20Wildcard%20Matching)
 45 | Jump Game II | Medium | [Solution](leetcode/45.%20Jump%20Game%20II)
 46 | Permutations | Medium | [Solution](leetcode/46.%20Permutations)
@@ -1622,6 +1622,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2058 | Find the Minimum and Maximum Number of Nodes Between Critical Points | Medium | [Solution](leetcode/2058.%20Find%20the%20Minimum%20and%20Maximum%20Number%20of%20Nodes%20Between%20Critical%20Points)
 2059 | Minimum Operations to Convert Number | Medium | [Solution](leetcode/2059.%20Minimum%20Operations%20to%20Convert%20Number)
 2060 | Check if an Original String Exists Given Two Encoded Strings | Hard | [Solution](leetcode/2060.%20Check%20if%20an%20Original%20String%20Exists%20Given%20Two%20Encoded%20Strings)
+2062 | Count Vowel Substrings of a String | Easy | [Solution](leetcode/2062.%20Count%20Vowel%20Substrings%20of%20a%20String)
+2063 | Vowels of All Substrings | Medium | [Solution](leetcode/2063.%20Vowels%20of%20All%20Substrings)
+2064 | Minimized Maximum of Products Distributed to Any Store | Medium | [Solution](leetcode/2064.%20Minimized%20Maximum%20of%20Products%20Distributed%20to%20Any%20Store)
+2065 | Maximum Path Quality of a Graph | Hard | [Solution](leetcode/2065.%20Maximum%20Path%20Quality%20of%20a%20Graph)
 
 # License
 
