@@ -126,3 +126,38 @@ public:
     }
 };
 ```
+
+Or brute force
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-path-quality-of-a-graph/
+// Author: github.com/lzl124631x
+// Time: O(4^10)
+// Space: O(V + E)
+class Solution {
+public:
+    int maximalPathQuality(vector<int>& V, vector<vector<int>>& E, int maxTime) {
+        int N = V.size();
+        vector<vector<pair<int, int>>> G(N); // build graph
+        for (auto &e : E) {
+            int u = e[0], v = e[1], c = e[2];
+            G[u].emplace_back(v, c);
+            G[v].emplace_back(u, c);
+        }
+        vector<int> cnt(N); // `cnt[u]` is the number of times we've visted node `u` in the current path
+        int ans = 0;
+        function<void(int, int, int)> dfs = [&](int u, int val, int time) {
+            if (cnt[u] == 0) val += V[u];
+            cnt[u]++;
+            if (u == 0) ans = max(ans, val); // Only update answer if the current node is `0`.
+            for (auto &[v, c] : G[u]) {
+                if (time + c > maxTime) continue; // if the current time + the edge time + dist[u] is greater than maxTime, skip
+                dfs(v, val, time + c);
+            }
+            cnt[u]--;
+        };
+        dfs(0, 0, 0);
+        return ans;
+    }
+};
+```
