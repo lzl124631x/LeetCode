@@ -118,3 +118,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/discuss/1563749/C%2B%2B-Binary-Search
