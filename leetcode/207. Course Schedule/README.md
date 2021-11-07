@@ -38,7 +38,7 @@ To take course 1 you should have finished course 0, and to take course 0 you sho
 
 
 **Companies**:  
-[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Facebook](https://leetcode.com/company/facebook), [Intuit](https://leetcode.com/company/intuit), [Google](https://leetcode.com/company/google), [Karat](https://leetcode.com/company/karat), [Uber](https://leetcode.com/company/uber), [Oracle](https://leetcode.com/company/oracle), [ByteDance](https://leetcode.com/company/bytedance), [DoorDash](https://leetcode.com/company/doordash), [eBay](https://leetcode.com/company/ebay), [Splunk](https://leetcode.com/company/splunk), [Zillow](https://leetcode.com/company/zillow)
+[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Google](https://leetcode.com/company/google), [Facebook](https://leetcode.com/company/facebook), [Robinhood](https://leetcode.com/company/robinhood), [Oracle](https://leetcode.com/company/oracle), [ByteDance](https://leetcode.com/company/bytedance), [tiktok](https://leetcode.com/company/tiktok), [Bloomberg](https://leetcode.com/company/bloomberg), [Apple](https://leetcode.com/company/apple), [Wish](https://leetcode.com/company/wish), [Twilio](https://leetcode.com/company/twilio), [Zillow](https://leetcode.com/company/zillow)
 
 **Related Topics**:  
 [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Graph](https://leetcode.com/tag/graph/), [Topological Sort](https://leetcode.com/tag/topological-sort/)
@@ -48,6 +48,7 @@ To take course 1 you should have finished course 0, and to take course 0 you sho
 * [Graph Valid Tree (Medium)](https://leetcode.com/problems/graph-valid-tree/)
 * [Minimum Height Trees (Medium)](https://leetcode.com/problems/minimum-height-trees/)
 * [Course Schedule III (Hard)](https://leetcode.com/problems/course-schedule-iii/)
+
 ## Solution 1. Topological Sort (BFS)
 
 ```cpp
@@ -57,27 +58,26 @@ To take course 1 you should have finished course 0, and to take course 0 you sho
 // Space: O(V + E)
 class Solution {
 public:
-    bool canFinish(int N, vector<vector<int>>& E) {
-        vector<vector<int>> G(N);
-        vector<int> indegree(N);
+    bool canFinish(int n, vector<vector<int>>& E) {
+        vector<vector<int>> G(n);
+        vector<int> indegree(n);
         for (auto &e : E) {
             G[e[1]].push_back(e[0]);
             ++indegree[e[0]];
         }
         queue<int> q;
-        for (int i = 0; i < N; ++i) {
+        for (int i = 0; i < n; ++i) {
             if (indegree[i] == 0) q.push(i);
         }
-        int cnt = 0;
         while (q.size()) {
             int u = q.front();
             q.pop();
-            ++cnt;
+            --n;
             for (int v : G[u]) {
                 if (--indegree[v] == 0) q.push(v);
             }
         }
-        return cnt == N;
+        return n == 0;
     }
 };
 ```
@@ -90,22 +90,21 @@ public:
 // Time: O(V + E)
 // Space: O(V + E)
 class Solution {
-    vector<int> state; // -1 unvisited, 0 visiting, 1 visited
-    bool dfs(vector<vector<int>> &G, int u) {
-        if (state[u] != -1) return state[u];
-        state[u] = 0;
-        for (int v : G[u]) {
-            if (!dfs(G, v)) return false;
-        }
-        return state[u] = 1;
-    }
 public:
-    bool canFinish(int N, vector<vector<int>>& E) {
-        vector<vector<int>> G(N);
-        state.assign(N, -1);
+    bool canFinish(int n, vector<vector<int>>& E) {
+        vector<vector<int>> G(n);
         for (auto &e : E) G[e[1]].push_back(e[0]);
-        for (int i = 0; i < N; ++i) {
-            if (!dfs(G, i)) return false;
+        vector<int> state(n, -1); // -1 unvisited, 0 visiting, 1 visited
+        function<bool(int)> dfs = [&](int u) -> bool {
+            if (state[u] != -1) return state[u]; 
+            state[u] = 0;
+            for (int v : G[u]) {
+                if (!dfs(v)) return false;
+            }
+            return state[u] = 1;
+        };
+        for (int i = 0; i < n; ++i) {
+            if (!dfs(i)) return false;
         }
         return true;
     }
