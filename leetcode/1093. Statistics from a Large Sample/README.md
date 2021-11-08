@@ -88,7 +88,7 @@ public:
             cnt += A[i];
             if (mode == -1 || A[i] > A[mode]) mode = i;
         }
-        return vector<double>{ (double)mn, (double)mx, (double)sum / total, median, (double)mode };
+        return { (double)mn, (double)mx, (double)sum / total, median, (double)mode };
     }
 };
 ```
