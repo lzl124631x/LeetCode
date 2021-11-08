@@ -87,6 +87,8 @@ public:
 
 ## Solution 2. Sliding Window
 
+Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)"
+
 Function `atMost(s, goal)` returns the number of substrings that has at most `goal` number of unique vowels. The answer is `atMost(s, 5) - atMost(s, 4)`.
 
 ```cpp
@@ -111,7 +113,7 @@ class Solution {
             for (; cnt.size() > goal; ++i) {
                 if (--cnt[s[i]] == 0) cnt.erase(s[i]);
             }
-            ans += j - i + 1;
+            ans += j - i + 1; // this window [i, j] is the maximum window ending at `s[j]` that has at most `goal` number of unique vowels.
         }
         return ans;
     }
