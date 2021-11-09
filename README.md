@@ -392,6 +392,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 422 | Valid Word Square | Easy | [Solution](leetcode/422.%20Valid%20Word%20Square)
 423 | Reconstruct Original Digits from English |  | [Solution](leetcode/423.%20Reconstruct%20Original%20Digits%20from%20English)
 424 | Longest Repeating Character Replacement | Medium | [Solution](leetcode/424.%20Longest%20Repeating%20Character%20Replacement)
+425 | Word Squares | Hard | [Solution](leetcode/425.%20Word%20Squares)
 426 | Convert Binary Search Tree to Sorted Doubly Linked List | Medium | [Solution](leetcode/426.%20Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List)
 427 | Construct Quad Tree | Medium | [Solution](leetcode/427.%20Construct%20Quad%20Tree)
 429 | N-ary Tree Level Order Traversal | Medium | [Solution](leetcode/429.%20N-ary%20Tree%20Level%20Order%20Traversal)
