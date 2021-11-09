@@ -56,7 +56,7 @@
 ```cpp
 // OJ: https://leetcode.com/problems/plates-between-candles/
 // Author: github.com/lzl124631x
-// Time: O(NlogN)
+// Time: O((N + Q) * logN)
 // Space: O(N)
 class Solution {
 public:
