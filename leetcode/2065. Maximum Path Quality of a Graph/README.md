@@ -93,7 +93,7 @@ public:
             cnt[u]++;
             if (u == 0) ans = max(ans, val); // Only update answer if the current node is `0`.
             for (auto &[v, c] : G[u]) {
-                if (time + c > maxTime) continue; // if the current time + the edge time + dist[u] is greater than maxTime, skip
+                if (time + c > maxTime) continue; // if the current time + the edge time is greater than maxTime, skip
                 dfs(v, val, time + c);
             }
             cnt[u]--;
