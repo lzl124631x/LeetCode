@@ -82,3 +82,32 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/
+// Author: github.com/lzl124631x
+// Time: O(WC + P * 2^L) where `W` is the length of `words`, `C` is the max length of `words[i]`, `P` is the length of `puzzles`, and `L` is the length of `puzzles[i]`.
+// Space: O(W)
+class Solution {
+    int encode(const string &s) {
+        int b = 0;
+        for (char c : s) b |= 1 << (c - 'a');
+        return b;
+    }
+public:
+    vector<int> findNumOfValidWords(vector<string>& W, vector<string>& P) {
+        unordered_map<int, int> cnt;
+        for (auto &w : W) cnt[encode(w)]++;
+        vector<int> ans;
+        auto count = [&](int m) { return cnt.count(m) ? cnt[m] : 0; };
+        for (auto &p : P) {
+            int b = encode(p.substr(1)), first = 1 << (p[0] - 'a'), c = count(first);
+            for (int m = b; m; m = (m - 1) & b) c += count(m | first);
+            ans.push_back(c);
+        }
+        return ans;
+    }
+};
+```
