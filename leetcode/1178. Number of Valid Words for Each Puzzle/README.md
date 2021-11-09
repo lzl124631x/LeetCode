@@ -111,3 +111,47 @@ public:
     }
 };
 ```
+
+## Solution 2. Trie
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/
+// Author: github.com/lzl124631x
+// Time: O(WC + P * 2^L) where `W` is the length of `words`, `C` is the max length of `words[i]`, `P` is the length of `puzzles`, and `L` is the length of `puzzles[i]`.
+// Space: O(W)
+struct TrieNode {
+    TrieNode *next[26] = {};
+    int cnt = 0;
+};
+class Solution {
+    int encode(const string &s) {
+        int b = 0;
+        for (char c : s) b |= 1 << (c - 'a');
+        return b;
+    }
+    void addWord(TrieNode *node, int b) {
+        if (__builtin_popcount(b) > 7) return;
+        for (int i = 0; i < 26; ++i) {
+            if ((b >> i & 1) == 0) continue;
+            if (!node->next[i]) node->next[i] = new TrieNode();
+            node = node->next[i];
+        }
+        node->cnt++;
+    }
+    int dfs(TrieNode *node, int b, int i, int first) {
+        if (!node) return 0;
+        if (i == 26) return node->cnt;
+        if (i == first) return dfs(node->next[i], b, i + 1, first); // first letter must be selected.
+        if ((b >> i & 1) == 0) return dfs(node, b, i + 1, first); // this letter is not in the puzzle, skip
+        return dfs(node->next[i], b, i + 1, first) + dfs(node, b, i + 1, first); // either choose the current letter or not
+    }
+public:
+    vector<int> findNumOfValidWords(vector<string>& W, vector<string>& P) {
+        TrieNode root;
+        for (auto &w : W) addWord(&root, encode(w));
+        vector<int> ans;
+        for (auto &p : P) ans.push_back(dfs(&root, encode(p.substr(1)), 0, p[0] - 'a'));
+        return ans;
+    }
+};
+```
