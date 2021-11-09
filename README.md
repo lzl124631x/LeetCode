@@ -1622,6 +1622,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2050 | Parallel Courses III | Hard | [Solution](leetcode/2050.%20Parallel%20Courses%20III)
 2053 | Kth Distinct String in an Array | Easy | [Solution](leetcode/2053.%20Kth%20Distinct%20String%20in%20an%20Array)
 2054 | Two Best Non-Overlapping Events | Medium | [Solution](leetcode/2054.%20Two%20Best%20Non-Overlapping%20Events)
+2055 | Plates Between Candles | Medium | [Solution](leetcode/2055.%20Plates%20Between%20Candles)
 2057 | Smallest Index With Equal Value | Easy | [Solution](leetcode/2057.%20Smallest%20Index%20With%20Equal%20Value)
 2058 | Find the Minimum and Maximum Number of Nodes Between Critical Points | Medium | [Solution](leetcode/2058.%20Find%20the%20Minimum%20and%20Maximum%20Number%20of%20Nodes%20Between%20Critical%20Points)
 2059 | Minimum Operations to Convert Number | Medium | [Solution](leetcode/2059.%20Minimum%20Operations%20to%20Convert%20Number)
