@@ -63,14 +63,14 @@ The maximum number of products given to any store is max(100000) = 100000.
 
 **Intuition**: 
 1. Given `k` (the maximum number of products given to any store), we can compute the number of stores we are able to assign in `O(Q)` time where `Q` is the length of `quantities`.
-2. `k` is in range `[1, SUM(quantities)]` and this answer range has perfect monotonicity: There must exist a `K` that for every `k >= K`, we can do the assignment with `k`; for every `k < K`, we can't do the assignment because the number of stores are not enough.
+2. `k` is in range `[1, MAX(quantities)]` and this answer range has perfect monotonicity: There must exist a `K` that for every `k >= K`, we can do the assignment with `k`; for every `k < K`, we can't do the assignment because the number of stores are not enough.
 
-So, we can use binary search to find this `K` in `O(Qlog(SUM(quantities)))` time.
+So, we can use binary search to find this `K` in `O(Qlog(MAX(quantities)))` time.
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/
 // Author: github.com/lzl124631x
-// Time: O(QlogS) where `Q` is the length of `quantities` and `S` is the sum of elements in `quantities`.
+// Time: O(QlogM) where `Q` is the length of `quantities` and `M` is the max element in `quantities`.
 // Space: O(1)
 class Solution {
 public:
@@ -96,12 +96,12 @@ Or use `L < R` template
 ```cpp
 // OJ: https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/
 // Author: github.com/lzl124631x
-// Time: O(QlogS) where `Q` is the length of `quantities` and `S` is the sum of elements in `quantities`.
+// Time: O(QlogM) where `Q` is the length of `quantities` and `M` is the max element in `quantities`.
 // Space: O(1
 class Solution {
 public:
     int minimizedMaximum(int n, vector<int>& Q) {
-        long long L = 1, R = accumulate(begin(Q), end(Q), 0LL);
+        long long L = 1, R = *max_element(begin(Q), end(Q));
         auto valid = [&](int M) {
             int ans = 0;
             for (int n : Q) {
