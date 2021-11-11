@@ -127,3 +127,30 @@ public:
     }
 };
 ```
+
+## Solution 4. Line Sweep
+
+```cpp
+// OJ: https://leetcode.com/problems/two-best-non-overlapping-events/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/two-best-non-overlapping-events/discuss/1552570/Very-Simple-sort-%2B-greedy%3A-No-DP-no-Binary-Search-no-HeapPQBST
+class Solution {
+public:
+    int maxTwoEvents(vector<vector<int>>& A) {
+        vector<array<int, 3>> B; // time, isStart, value
+        for (auto &e : A) {
+            B.push_back({ e[0], 1, e[2] });
+            B.push_back({ e[1] + 1, 0, e[2] });
+        }
+        sort(begin(B), end(B));
+        int ans = 0, maxEndValue = 0;
+        for (auto &[time, isStart, value] : B) {
+            if (isStart) ans = max(ans, value + maxEndValue);
+            else maxEndValue = max(maxEndValue, value);
+        }
+        return ans;
+    }
+};
+```
