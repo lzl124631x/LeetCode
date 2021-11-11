@@ -42,12 +42,32 @@
 	<li><code>-100 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
+**Companies**:  
+[Hotstar](https://leetcode.com/company/hotstar)
+
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/)
+[Array](https://leetcode.com/tag/array/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
 
 ## Solution 1.
 
 This problem is similar to finding the minimum prefix sum of `nums`. Once we find that minimum prefix sum `m`, we return `1 - min(0, m)` where `min(0, m)` returns 0 for positive `m`.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int minStartValue(vector<int>& A) {
+        int sum = 0, mn = INT_MAX;
+        for (int n : A) mn = min(mn, sum += n);
+        return 1 - min(0, mn);
+    }
+};
+```
+
+Or
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/
