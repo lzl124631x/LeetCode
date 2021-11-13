@@ -1637,6 +1637,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2065 | Maximum Path Quality of a Graph | Hard | [Solution](leetcode/2065.%20Maximum%20Path%20Quality%20of%20a%20Graph)
 2068 | Check Whether Two Strings are Almost Equivalent | Easy | [Solution](leetcode/2068.%20Check%20Whether%20Two%20Strings%20are%20Almost%20Equivalent)
 2069 | Walking Robot Simulation II | Medium | [Solution](leetcode/2069.%20Walking%20Robot%20Simulation%20II)
+2070 | Most Beautiful Item for Each Query | Medium | [Solution](leetcode/2070.%20Most%20Beautiful%20Item%20for%20Each%20Query)
 
 # License
 
