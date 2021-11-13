@@ -1531,6 +1531,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1923 | Longest Common Subpath | Hard | [Solution](leetcode/1923.%20Longest%20Common%20Subpath)
 1925 | Count Square Sum Triples | Easy | [Solution](leetcode/1925.%20Count%20Square%20Sum%20Triples)
 1926 | Nearest Exit from Entrance in Maze | Medium | [Solution](leetcode/1926.%20Nearest%20Exit%20from%20Entrance%20in%20Maze)
+1927 | Sum Game | Medium | [Solution](leetcode/1927.%20Sum%20Game)
 1928 | Minimum Cost to Reach Destination in Time | Hard | [Solution](leetcode/1928.%20Minimum%20Cost%20to%20Reach%20Destination%20in%20Time)
 1929 | Concatenation of Array | Easy | [Solution](leetcode/1929.%20Concatenation%20of%20Array)
 1930 | Unique Length-3 Palindromic Subsequences | Medium | [Solution](leetcode/1930.%20Unique%20Length-3%20Palindromic%20Subsequences)
