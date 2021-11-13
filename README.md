@@ -940,6 +940,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1052 | Grumpy Bookstore Owner | Medium | [Solution](leetcode/1052.%20Grumpy%20Bookstore%20Owner)
 1053 | Previous Permutation With One Swap | Medium | [Solution](leetcode/1053.%20Previous%20Permutation%20With%20One%20Swap)
 1054 | Distant Barcodes | Medium | [Solution](leetcode/1054.%20Distant%20Barcodes)
+1055 | Shortest Way to Form String | Medium | [Solution](leetcode/1055.%20Shortest%20Way%20to%20Form%20String)
 1059 | All Paths from Source Lead to Destination | Medium | [Solution](leetcode/1059.%20All%20Paths%20from%20Source%20Lead%20to%20Destination)
 1062 | Longest Repeating Substring | Medium | [Solution](leetcode/1062.%20Longest%20Repeating%20Substring)
 1071 | Greatest Common Divisor of Strings | Easy | [Solution](leetcode/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
