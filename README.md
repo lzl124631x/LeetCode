@@ -928,6 +928,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1037 | Valid Boomerang | Easy | [Solution](leetcode/1037.%20Valid%20Boomerang)
 1038 | Binary Search Tree to Greater Sum Tree | Medium | [Solution](leetcode/1038.%20Binary%20Search%20Tree%20to%20Greater%20Sum%20Tree)
 1039 | Minimum Score Triangulation of Polygon | Medium | [Solution](leetcode/1039.%20Minimum%20Score%20Triangulation%20of%20Polygon)
+1040 | Moving Stones Until Consecutive II | Medium | [Solution](leetcode/1040.%20Moving%20Stones%20Until%20Consecutive%20II)
 1041 | Robot Bounded In Circle | Medium | [Solution](leetcode/1041.%20Robot%20Bounded%20In%20Circle)
 1042 | Flower Planting With No Adjacent | Easy | [Solution](leetcode/1042.%20Flower%20Planting%20With%20No%20Adjacent)
 1043 | Partition Array for Maximum Sum | Medium | [Solution](leetcode/1043.%20Partition%20Array%20for%20Maximum%20Sum)
