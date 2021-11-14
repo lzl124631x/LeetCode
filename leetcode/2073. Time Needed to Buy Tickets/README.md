@@ -46,7 +46,7 @@ The person at&nbsp;position 0 has successfully bought 5 tickets and it took 4 + 
 ## Solution 1. Brute Force Simulation
 
 ```cpp
-// OJ: https://leetcode.com/problems/reverse-nodes-in-even-length-groups/
+// OJ: https://leetcode.com/problems/time-needed-to-buy-tickets/
 // Author: github.com/lzl124631x
 // Time: O(SUM(A))
 // Space: O(1)
@@ -73,7 +73,7 @@ For `i <= k`, `A[i]` contributes `min(A[k], A[i])` steps.
 For `i > k`, `A[i]` contributes `min(A[k] - 1, A[i])` steps.
 
 ```cpp
-// OJ: https://leetcode.com/problems/reverse-nodes-in-even-length-groups/
+// OJ: https://leetcode.com/problems/time-needed-to-buy-tickets/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
