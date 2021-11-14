@@ -1638,6 +1638,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2068 | Check Whether Two Strings are Almost Equivalent | Easy | [Solution](leetcode/2068.%20Check%20Whether%20Two%20Strings%20are%20Almost%20Equivalent)
 2069 | Walking Robot Simulation II | Medium | [Solution](leetcode/2069.%20Walking%20Robot%20Simulation%20II)
 2070 | Most Beautiful Item for Each Query | Medium | [Solution](leetcode/2070.%20Most%20Beautiful%20Item%20for%20Each%20Query)
+2073 | Time Needed to Buy Tickets | Easy | [Solution](leetcode/2073.%20Time%20Needed%20to%20Buy%20Tickets)
+2074 | Reverse Nodes in Even Length Groups | Medium | [Solution](leetcode/2074.%20Reverse%20Nodes%20in%20Even%20Length%20Groups)
+2075 | Decode the Slanted Ciphertext | Medium | [Solution](leetcode/2075.%20Decode%20the%20Slanted%20Ciphertext)
+2076 | Process Restricted Friend Requests | Hard | [Solution](leetcode/2076.%20Process%20Restricted%20Friend%20Requests)
 
 # License
 
