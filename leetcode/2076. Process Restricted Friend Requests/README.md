@@ -85,6 +85,9 @@ public:
     int find(int a) {
         return id[a] == a ? a : (id[a] = find(id[a]));
     }
+    int connected(int a, int b) {
+        return find(a) == find(b);
+    }
 };
 class Solution {
 public:
@@ -94,11 +97,13 @@ public:
         for (auto &r : requests) {
             int p = uf.find(r[0]), q = uf.find(r[1]); // the leaders of the two parties
             bool valid = true;
-            for (auto &b : bans) {
-                int x = uf.find(b[0]), y = uf.find(b[1]); // the leaders of the two banned parties
-                if ((x == p && y == q) || (x == q && y == p)) {
-                    valid = false;
-                    break;
+            if (!uf.connected(p, q)) { // Only need to check the bans if the two parties are not already connected
+                for (auto &b : bans) {
+                    int x = uf.find(b[0]), y = uf.find(b[1]); // the leaders of the two banned parties
+                    if ((x == p && y == q) || (x == q && y == p)) {
+                        valid = false;
+                        break;
+                    }
                 }
             }
             ans.push_back(valid);
