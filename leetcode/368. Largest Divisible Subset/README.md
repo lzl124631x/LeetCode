@@ -1,29 +1,43 @@
 # [368. Largest Divisible Subset (Medium)](https://leetcode.com/problems/largest-divisible-subset/)
 
-<p>Given a set of <b>distinct</b> positive integers, find the largest subset such that every pair (S<sub>i</sub>, S<sub>j</sub>) of elements in this subset satisfies:</p>
+<p>Given a set of <strong>distinct</strong> positive integers <code>nums</code>, return the largest subset <code>answer</code> such that every pair <code>(answer[i], answer[j])</code> of elements in this subset satisfies:</p>
 
-<p>S<sub>i</sub> % S<sub>j</sub> = 0 or S<sub>j</sub> % S<sub>i</sub> = 0.</p>
+<ul>
+	<li><code>answer[i] % answer[j] == 0</code>, or</li>
+	<li><code>answer[j] % answer[i] == 0</code></li>
+</ul>
 
-<p>If there are multiple solutions, return any subset is fine.</p>
+<p>If there are multiple solutions, return any of them.</p>
 
+<p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
 
-<div>
-<pre><strong>Input: </strong><span id="example-input-1-1">[1,2,3]</span>
-<strong>Output: </strong><span id="example-output-1">[1,2] </span>(of course, [1,3] will also be ok)
+<pre><strong>Input:</strong> nums = [1,2,3]
+<strong>Output:</strong> [1,2]
+<strong>Explanation:</strong> [1,3] is also accepted.
 </pre>
 
-<div>
 <p><strong>Example 2:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-2-1">[1,2,4,8]</span>
-<strong>Output: </strong><span id="example-output-2">[1,2,4,8]</span>
+<pre><strong>Input:</strong> nums = [1,2,4,8]
+<strong>Output:</strong> [1,2,4,8]
 </pre>
-</div>
-</div>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 1000</code></li>
+	<li><code>1 &lt;= nums[i] &lt;= 2 * 10<sup>9</sup></code></li>
+	<li>All the integers in <code>nums</code> are <strong>unique</strong>.</li>
+</ul>
+
+
+**Companies**:  
+[Codenation](https://leetcode.com/company/codenation), [Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft), [Apple](https://leetcode.com/company/apple)
 
 **Related Topics**:  
-[Math](https://leetcode.com/tag/math/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array/), [Math](https://leetcode.com/tag/math/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Sorting](https://leetcode.com/tag/sorting/)
 
 ## Solution 1. DP
 
@@ -36,7 +50,7 @@ dp[i] = max(dp[j] + 1 | 0 <= j < i && A[i] % A[j] == 0)
 dp[0] = 1
 ```
 
-In order to recover the subset, we make `dp[i]` as a pair, where the second element is the size mentioned aboved, and the first element is the index to the previous element.
+In order to recover the subset, we also use a `prev` array where `prev[i]` is the choice of previous index corresponding to `dp[i]`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/largest-divisible-subset/
@@ -46,21 +60,19 @@ In order to recover the subset, we make `dp[i]` as a pair, where the second elem
 class Solution {
 public:
     vector<int> largestDivisibleSubset(vector<int>& A) {
-        if (A.empty()) return {};
         sort(begin(A), end(A));
-        int N = A.size(), best = 0;
-        vector<pair<int, int>> dp(N, {-1, 1});
+        int N = A.size(), last = 0;
+        vector<int> dp(N, 1), prev(N, -1), ans;
         for (int i = 1; i < N; ++i) {
             for (int j = 0; j < i; ++j) {
-                if (A[i] % A[j] == 0 && dp[i].second < dp[j].second + 1) dp[i] = {j, dp[j].second + 1};
+                if (A[i] % A[j] == 0 && dp[j] + 1 > dp[i]) {
+                    dp[i] = dp[j] + 1;
+                    prev[i] = j;
+                }
             }
-            if (dp[i].second > dp[best].second) best = i;
+            if (dp[i] > dp[last]) last = i;
         }
-        vector<int> ans;
-        while (best >= 0) {
-            ans.push_back(A[best]);
-            best = dp[best].first;
-        }
+        for (int i = last; i != -1; i = prev[i]) ans.push_back(A[i]);
         return ans;
     }
 };
