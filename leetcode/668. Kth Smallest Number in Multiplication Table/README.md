@@ -63,15 +63,15 @@ class Solution {
 public:
     int findKthNumber(int m, int n, int k) {
         int L = 1, R = m * n;
-        auto le = [&](int num) {
-            int cnt = 0, last = min(m, num);
+        auto valid = [&](int num) {
+            int cnt = 0, last = min(m, num);  // count the numbers that are less than or equal to `num`
             for (int i = 1; i <= last; ++i) cnt += min(num / i, n);
-            return cnt;
+            return cnt >= k;
         };
         while (L <= R) {
             int M = L + (R - L) / 2;
-            if (le(M) < k) L = M + 1;
-            else R = M - 1;
+            if (valid(M)) R = M - 1;
+            else L = M + 1;
         }
         return L;
     }
@@ -89,15 +89,15 @@ class Solution {
 public:
     int findKthNumber(int m, int n, int k) {
         int L = 1, R = m * n;
-        auto le = [&](int num) { // count the numbers that are less than or equal to `num`
-            int cnt = 0, last = min(m, num);
+        auto valid = [&](int num) { 
+            int cnt = 0, last = min(m, num);// count the numbers that are less than or equal to `num`
             for (int i = 1; i <= last; ++i) cnt += min(num / i, n);
-            return cnt;
+            return cnt >= k;
         };
         while (L < R) {
             int M = L + (R - L) / 2;
-            if (le(M) < k) L = M + 1;
-            else R = M;
+            if (valid(M)) R = M;
+            else L = M + 1;
         }
         return L;
     }
