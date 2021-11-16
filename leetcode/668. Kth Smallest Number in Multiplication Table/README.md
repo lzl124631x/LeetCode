@@ -1,46 +1,35 @@
 # [668. Kth Smallest Number in Multiplication Table (Hard)](https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/)
 
-<p>
-Nearly every one have used the <a href="https://en.wikipedia.org/wiki/Multiplication_table">Multiplication Table</a>. But could you find out the <code>k-th</code> smallest number quickly from the multiplication table?
-</p>
+<p>Nearly everyone has used the <a href="https://en.wikipedia.org/wiki/Multiplication_table" target="_blank">Multiplication Table</a>. The multiplication table of size <code>m x n</code> is an integer matrix <code>mat</code> where <code>mat[i][j] == i * j</code> (<strong>1-indexed</strong>).</p>
 
-<p>
-Given the height <code>m</code> and the length <code>n</code> of a <code>m * n</code> Multiplication Table, and a positive integer <code>k</code>, you need to return the <code>k-th</code> smallest number in this table.
-</p>
+<p>Given three integers <code>m</code>, <code>n</code>, and <code>k</code>, return <em>the </em><code>k<sup>th</sup></code><em> smallest element in the </em><code>m x n</code><em> multiplication table</em>.</p>
 
-<p><b>Example 1:</b><br>
-</p><pre><b>Input:</b> m = 3, n = 3, k = 5
-<b>Output:</b> 
-<b>Explanation:</b> 
-The Multiplication Table:
-1	2	3
-2	4	6
-3	6	9
-
-The 5-th smallest number is 3 (1, 2, 2, 3, 3).
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/05/02/multtable1-grid.jpg" style="width: 500px; height: 254px;">
+<pre><strong>Input:</strong> m = 3, n = 3, k = 5
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> The 5<sup>th</sup> smallest number is 3.
 </pre>
-<p></p>
 
-
-<p><b>Example 2:</b><br>
-</p><pre><b>Input:</b> m = 2, n = 3, k = 6
-<b>Output:</b> 
-<b>Explanation:</b> 
-The Multiplication Table:
-1	2	3
-2	4	6
-
-The 6-th smallest number is 6 (1, 2, 2, 3, 4, 6).
+<p><strong>Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/05/02/multtable2-grid.jpg" style="width: 493px; height: 293px;">
+<pre><strong>Input:</strong> m = 2, n = 3, k = 6
+<strong>Output:</strong> 6
+<strong>Explanation:</strong> The 6<sup>th</sup> smallest number is 6.
 </pre>
-<p></p>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= m, n &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>1 &lt;= k &lt;= m * n</code></li>
+</ul>
 
 
-<p><b>Note:</b><br>
-</p><ol>
-<li>The <code>m</code> and <code>n</code> will be in the range [1, 30000].</li>
-<li>The <code>k</code> will be in the range [1, m * n]</li>
-</ol>
-<p></p>
+**Companies**:  
+[Rubrik](https://leetcode.com/company/rubrik)
 
 **Related Topics**:  
 [Binary Search](https://leetcode.com/tag/binary-search/)
@@ -49,32 +38,6 @@ The 6-th smallest number is 6 (1, 2, 2, 3, 4, 6).
 * [Kth Smallest Element in a Sorted Matrix (Medium)](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/)
 * [Find K-th Smallest Pair Distance (Hard)](https://leetcode.com/problems/find-k-th-smallest-pair-distance/)
 * [K-th Smallest Prime Fraction (Hard)](https://leetcode.com/problems/k-th-smallest-prime-fraction/)
-
-## TLE version: Next Heap
-
-```cpp
-// OJ: https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/
-// Author: github.com/lzl124631x
-// Time: O(k * MlogM) = O(M^2 * NlogM)
-// Space: O(M)
-class Solution {
-public:
-    int findKthNumber(int m, int n, int k) {
-        auto cmp = [](pair<int, int> &a, pair<int, int> &b) { return a.first * a.second > b.first * b.second; };
-        priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp)> q(cmp);
-        for (int i = 1; i <= m; ++i) q.emplace(i, 1);
-        int ans = 0;
-        while (k--) {
-            auto p = q.top();
-            q.pop();
-            ans = p.first * p.second;
-            if (p.second < n) q.emplace(p.first, p.second + 1);
-        }
-        return ans;
-    }
-};
-```
-
 ## Solution 1. Binary Answer
 
 The range of the answer is `[1, m * n]`. We can use binary answer to find it.
@@ -99,12 +62,42 @@ In the end, `L` will point to the first element whose `cnt >= k` and it is the a
 class Solution {
 public:
     int findKthNumber(int m, int n, int k) {
-        long long L = 1, R = m * n;
+        int L = 1, R = m * n;
+        auto le = [&](int num) {
+            int cnt = 0, last = min(m, num);
+            for (int i = 1; i <= last; ++i) cnt += min(num / i, n);
+            return cnt;
+        };
         while (L <= R) {
-            long long M = (L + R) / 2, cnt = 0;
-            for (int i = 1; i <= m; ++i) cnt += min(M / i, (long long) n);
-            if (cnt < k) L = M + 1;
+            int M = L + (R - L) / 2;
+            if (le(M) < k) L = M + 1;
             else R = M - 1;
+        }
+        return L;
+    }
+};
+```
+
+Or use `L < R` template
+
+```cpp
+// OJ: https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/
+// Author: github.com/lzl124631x
+// Time: O(Mlog(MN))
+// Space: O(1)
+class Solution {
+public:
+    int findKthNumber(int m, int n, int k) {
+        int L = 1, R = m * n;
+        auto le = [&](int num) { // count the numbers that are less than or equal to `num`
+            int cnt = 0, last = min(m, num);
+            for (int i = 1; i <= last; ++i) cnt += min(num / i, n);
+            return cnt;
+        };
+        while (L < R) {
+            int M = L + (R - L) / 2;
+            if (le(M) < k) L = M + 1;
+            else R = M;
         }
         return L;
     }
