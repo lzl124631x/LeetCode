@@ -135,3 +135,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/two-furthest-houses-with-different-colors/discuss/1589010/C%2B%2B-O(N)-Time-One-Pass

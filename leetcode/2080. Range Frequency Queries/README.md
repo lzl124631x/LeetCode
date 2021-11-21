@@ -78,3 +78,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/range-frequency-queries/discuss/1589028/C%2B%2B-Straightforward-Binary-Search

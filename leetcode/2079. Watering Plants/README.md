@@ -90,3 +90,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/watering-plants/discuss/1589015/C%2B%2B-O(N)-One-Pass
