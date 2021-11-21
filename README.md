@@ -1541,6 +1541,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1935 | Maximum Number of Words You Can Type | Easy | [Solution](leetcode/1935.%20Maximum%20Number%20of%20Words%20You%20Can%20Type)
 1936 | Add Minimum Number of Rungs | Medium | [Solution](leetcode/1936.%20Add%20Minimum%20Number%20of%20Rungs)
 1937 | Maximum Number of Points with Cost | Medium | [Solution](leetcode/1937.%20Maximum%20Number%20of%20Points%20with%20Cost)
+1938 | Maximum Genetic Difference Query | Hard | [Solution](leetcode/1938.%20Maximum%20Genetic%20Difference%20Query)
 1941 | Check if All Characters Have Equal Number of Occurrences | Easy | [Solution](leetcode/1941.%20Check%20if%20All%20Characters%20Have%20Equal%20Number%20of%20Occurrences)
 1942 | The Number of the Smallest Unoccupied Chair | Medium | [Solution](leetcode/1942.%20The%20Number%20of%20the%20Smallest%20Unoccupied%20Chair)
 1943 | Describe the Painting | Medium | [Solution](leetcode/1943.%20Describe%20the%20Painting)
@@ -1643,6 +1644,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2074 | Reverse Nodes in Even Length Groups | Medium | [Solution](leetcode/2074.%20Reverse%20Nodes%20in%20Even%20Length%20Groups)
 2075 | Decode the Slanted Ciphertext | Medium | [Solution](leetcode/2075.%20Decode%20the%20Slanted%20Ciphertext)
 2076 | Process Restricted Friend Requests | Hard | [Solution](leetcode/2076.%20Process%20Restricted%20Friend%20Requests)
+2078 | Two Furthest Houses With Different Colors | Easy | [Solution](leetcode/2078.%20Two%20Furthest%20Houses%20With%20Different%20Colors)
+2079 | Watering Plants | Medium | [Solution](leetcode/2079.%20Watering%20Plants)
+2080 | Range Frequency Queries | Medium | [Solution](leetcode/2080.%20Range%20Frequency%20Queries)
 
 # License
 
