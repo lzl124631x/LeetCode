@@ -51,7 +51,7 @@ public:
 };
 ```
 
-## Solution 2. Binary Search
+## Solution 2. Binary Search on Even Indices Only
 
 We make sure the `M` is always even number. Then we check whether `A[M] == A[M + 1]`.
 
