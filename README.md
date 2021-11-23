@@ -120,7 +120,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 102 | Binary Tree Level Order Traversal | Medium | [Solution](leetcode/102.%20Binary%20Tree%20Level%20Order%20Traversal)
 103 | Binary Tree Zigzag Level Order Traversal | Medium | [Solution](leetcode/103.%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal)
 104 | Maximum Depth of Binary Tree | Easy | [Solution](leetcode/104.%20Maximum%20Depth%20of%20Binary%20Tree)
-106 | Construct Binary Tree from Inorder and Postorder Traversal |  | [Solution](leetcode/106.%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal)
+106 | Construct Binary Tree from Inorder and Postorder Traversal | Medium | [Solution](leetcode/106.%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal)
 107 | Binary Tree Level Order Traversal II | Medium | [Solution](leetcode/107.%20Binary%20Tree%20Level%20Order%20Traversal%20II)
 108 | Convert Sorted Array to Binary Search Tree | Easy | [Solution](leetcode/108.%20Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree)
 109 | Convert Sorted List to Binary Search Tree | Medium | [Solution](leetcode/109.%20Convert%20Sorted%20List%20to%20Binary%20Search%20Tree)
@@ -1647,6 +1647,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2078 | Two Furthest Houses With Different Colors | Easy | [Solution](leetcode/2078.%20Two%20Furthest%20Houses%20With%20Different%20Colors)
 2079 | Watering Plants | Medium | [Solution](leetcode/2079.%20Watering%20Plants)
 2080 | Range Frequency Queries | Medium | [Solution](leetcode/2080.%20Range%20Frequency%20Queries)
+2081 | Sum of k-Mirror Numbers | Hard | [Solution](leetcode/2081.%20Sum%20of%20k-Mirror%20Numbers)
 
 # License
 
