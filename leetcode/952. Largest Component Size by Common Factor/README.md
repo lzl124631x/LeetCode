@@ -82,8 +82,7 @@ class Solution {
     vector<int> factors(int n) {
         vector<int> ans;
         for (int i = 2; i * i <= n; ++i) {
-            if (n % i) continue;
-            ans.push_back(i);
+            if (n % i == 0) ans.push_back(i);
             while (n % i == 0) n /= i;
         }
         if (n > 1) ans.push_back(n);
@@ -91,23 +90,16 @@ class Solution {
     }
 public:
     int largestComponentSize(vector<int>& A) {
+        int N = A.size(), ans = 0;
+        UnionFind uf(N);
         unordered_map<int, vector<int>> m; // prime factor -> all indexes of numbers with this factor
-        for (int i = 0; i < A.size(); ++i) {
-            auto fs = factors(A[i]);
-            for (int f : fs) {
-                m[f].push_back(i);
-            }
+        for (int i = 0; i < N; ++i) {
+            for (int &f : factors(A[i])) m[f].push_back(i);
         }
-        UnionFind uf(A.size());
-        for (auto &[f, indexes] : m) {
-            for (int i = 1; i < indexes.size(); ++i) {
-                uf.connect(indexes[0], indexes[i]);
-            }
+        for (auto &[f, indices] : m) {
+            for (int i = 1; i < indices.size(); ++i) uf.connect(indices[0], indices[i]);
         }
-        int ans = 1;
-        for (int i = 0; i < A.size(); ++i) {
-            ans = max(ans, uf.getSize(i));
-        }
+        for (int i = 0; i < N; ++i) ans = max(ans, uf.getSize(i));
         return ans;
     }
 };
@@ -141,8 +133,7 @@ class Solution {
     vector<int> factors(int n) {
         vector<int> ans;
         for (int i = 2; i * i <= n; ++i) {
-            if (n % i) continue;
-            ans.push_back(i);
+            if (n % i == 0) ans.push_back(i);
             while (n % i == 0) n /= i;
         }
         if (n > 1) ans.push_back(n);
@@ -150,19 +141,16 @@ class Solution {
     }
 public:
     int largestComponentSize(vector<int>& A) {
-        unordered_map<int, int> m; // primce factor -> a representative (the first) number with this factor
-        UnionFind uf(A.size());
-        for (int i = 0; i < A.size(); ++i) {
-            auto fs = factors(A[i]);
-            for (int f : fs) {
+        int N = A.size(), ans = 0;
+        UnionFind uf(N);
+        unordered_map<int, int> m;  // primce factor -> a representative (the first) number with this factor
+        for (int i = 0; i < N; ++i) {
+            for (int &f : factors(A[i])) { 
                 if (m.count(f)) uf.connect(i, m[f]);
                 else m[f] = i;
             }
         }
-        int ans = 1;
-        for (int i = 0; i < A.size(); ++i) {
-            ans = max(ans, uf.getSize(i));
-        }
+        for (int i = 0; i < N; ++i) ans = max(ans, uf.getSize(i));
         return ans;
     }
 };
