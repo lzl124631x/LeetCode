@@ -87,3 +87,39 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/the-number-of-good-subsets/
+// Author: github.com/lzl124631x
+// Time: O(30 * 2^10)
+// Space: O(30 * 2^10)
+long mod = 1e9 + 7, dp[1024][31] = {};
+class Solution {
+public:
+    int numberOfGoodSubsets(vector<int>& A) {
+        int primes[10] = {2,3,5,7,11,13,17,19,23,29}, cnt[31] = {}, bitmasks[31] = {}, bad[31] = {};
+        for (int n : A) cnt[n]++;
+        for (int i = 2; i <= 30; ++i) {
+            for (int j = 0; j < 10; ++j) {
+                if (i % primes[j] == 0) bitmasks[i] |= 1 << j;
+            }
+        }
+        for (int n : {4,8,9,12,16,18,20,24,25,27,28}) bad[n] = 1;
+        memset(dp, -1, sizeof(dp));
+        function<long(int, int)> dfs = [&](int mask, int num) -> long {
+            if (num == 1) return 1;
+            if (dp[mask][num] != -1) return dp[mask][num];
+            long ans = dfs(mask, num - 1); // If we skip this number
+            if (bad[num] == 0 && (mask & bitmasks[num]) == 0) { // If this number is not bad and it doesn't conflict with the selected numbers
+                ans = (ans + dfs(mask | bitmasks[num], num - 1) * cnt[num] % mod) % mod; // then we take this number
+            }
+            return dp[mask][num] = ans;
+        };
+        long ans = (dfs(0, 30) - 1 + mod) % mod;
+        while (cnt[1]--) ans = (ans << 1) % mod;
+        return ans;
+    }
+};
+```
