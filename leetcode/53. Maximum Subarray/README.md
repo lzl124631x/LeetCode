@@ -2,6 +2,8 @@
 
 <p>Given an integer array <code>nums</code>, find the contiguous subarray (containing at least one number) which has the largest sum and return <em>its sum</em>.</p>
 
+<p>A <strong>subarray</strong> is a <strong>contiguous</strong> part of an array.</p>
+
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
 
@@ -26,15 +28,16 @@
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li>
-	<li><code>-10<sup>5</sup> &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
 <p>&nbsp;</p>
-<strong>Follow up:</strong> If you have figured out the <code>O(n)</code> solution, try coding another solution using the <strong>divide and conquer</strong> approach, which is more subtle.
+<p><strong>Follow up:</strong> If you have figured out the <code>O(n)</code> solution, try coding another solution using the <strong>divide and conquer</strong> approach, which is more subtle.</p>
+
 
 **Companies**:  
-[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Apple](https://leetcode.com/company/apple), [LinkedIn](https://leetcode.com/company/linkedin), [Google](https://leetcode.com/company/google), [Facebook](https://leetcode.com/company/facebook), [Adobe](https://leetcode.com/company/adobe), [ByteDance](https://leetcode.com/company/bytedance), [Splunk](https://leetcode.com/company/splunk), [eBay](https://leetcode.com/company/ebay), [Bloomberg](https://leetcode.com/company/bloomberg), [Cisco](https://leetcode.com/company/cisco)
+[LinkedIn](https://leetcode.com/company/linkedin), [Amazon](https://leetcode.com/company/amazon), [Apple](https://leetcode.com/company/apple), [Adobe](https://leetcode.com/company/adobe), [Microsoft](https://leetcode.com/company/microsoft), [Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg), [Cisco](https://leetcode.com/company/cisco), [Uber](https://leetcode.com/company/uber), [eBay](https://leetcode.com/company/ebay), [Intel](https://leetcode.com/company/intel), [Oracle](https://leetcode.com/company/oracle), [Walmart Labs](https://leetcode.com/company/walmart-labs), [Facebook](https://leetcode.com/company/facebook), [Yahoo](https://leetcode.com/company/yahoo), [Goldman Sachs](https://leetcode.com/company/goldman-sachs), [JPMorgan](https://leetcode.com/company/jpmorgan), [ServiceNow](https://leetcode.com/company/servicenow), [Shopee](https://leetcode.com/company/shopee)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Divide and Conquer](https://leetcode.com/tag/divide-and-conquer/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
@@ -54,6 +57,10 @@ We can first get the rolling sum so that `sum[i] = nums[0] + ... + nums[i]`. Wit
 Then this problem is almost the same as [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) -- finding the maximum `sum[j] - sum[i]` where `j > i`. The only difference is that the sub array can start at index `0`, so we also need to take `sum[i]` where `0 <= i < N` into consideration. So the "minimum sum we've seen so far" should be initialized as 0. 
 
 ```cpp
+// OJ: https://leetcode.com/problems/maximum-subarray/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
@@ -78,7 +85,7 @@ Or
 class Solution {
 public:
     int maxSubArray(vector<int>& A) {
-        int mn = 0, sum = 0, ans = A[0];
+        int mn = 0, sum = 0, ans = INT_MIN;
         for (int n : A) {
             sum += n;
             ans = max(ans, sum - mn);
