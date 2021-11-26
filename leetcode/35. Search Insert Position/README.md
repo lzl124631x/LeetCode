@@ -33,7 +33,7 @@
 
 
 **Companies**:  
-[Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook)
+[Google](https://leetcode.com/company/google), [Amazon](https://leetcode.com/company/amazon), [Bloomberg](https://leetcode.com/company/bloomberg), [Facebook](https://leetcode.com/company/facebook), [VMware](https://leetcode.com/company/vmware), [Apple](https://leetcode.com/company/apple)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/)
@@ -41,7 +41,7 @@
 **Similar Questions**:
 * [First Bad Version (Easy)](https://leetcode.com/problems/first-bad-version/)
 
-## Solution 1. Binary Search
+## Solution 1. Binary Search (L <= R)
 
 ```cpp
 // OJ: https://leetcode.com/problems/search-insert-position/
@@ -73,7 +73,7 @@ public:
 class Solution {
 public:
     int searchInsert(vector<int>& A, int target) {
-        int N = A.size(), L = 0, R = N;
+        int L = 0, R = A.size();
         while (L < R) {
             int M = (L + R) / 2;
             if (A[M] < target) L = M + 1;
