@@ -599,6 +599,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 680 | Valid Palindrome II | Easy | [Solution](leetcode/680.%20Valid%20Palindrome%20II)
 682 | Baseball Game | Easy | [Solution](leetcode/682.%20Baseball%20Game)
 684 | Redundant Connection | Medium | [Solution](leetcode/684.%20Redundant%20Connection)
+685 | Redundant Connection II | Hard | [Solution](leetcode/685.%20Redundant%20Connection%20II)
 686 | Repeated String Match | Medium | [Solution](leetcode/686.%20Repeated%20String%20Match)
 687 | Longest Univalue Path | Medium | [Solution](leetcode/687.%20Longest%20Univalue%20Path)
 688 | Knight Probability in Chessboard | Medium | [Solution](leetcode/688.%20Knight%20Probability%20in%20Chessboard)
