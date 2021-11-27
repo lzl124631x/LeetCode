@@ -869,6 +869,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 969 | Pancake Sorting | Medium | [Solution](leetcode/969.%20Pancake%20Sorting)
 970 | Powerful Integers | Easy | [Solution](leetcode/970.%20Powerful%20Integers)
 971 | Flip Binary Tree To Match Preorder Traversal | Medium | [Solution](leetcode/971.%20Flip%20Binary%20Tree%20To%20Match%20Preorder%20Traversal)
+972 | Equal Rational Numbers | Hard | [Solution](leetcode/972.%20Equal%20Rational%20Numbers)
 973 | K Closest Points to Origin | Medium | [Solution](leetcode/973.%20K%20Closest%20Points%20to%20Origin)
 974 | Subarray Sums Divisible by K | Medium | [Solution](leetcode/974.%20Subarray%20Sums%20Divisible%20by%20K)
 975 | Odd Even Jump | Hard | [Solution](leetcode/975.%20Odd%20Even%20Jump)
