@@ -1,37 +1,46 @@
 # [459. Repeated Substring Pattern (Easy)](https://leetcode.com/problems/repeated-substring-pattern/)
 
-<p>Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.</p>
+<p>Given a string <code>s</code>, check if it can be constructed by taking a substring of it and appending multiple copies of the substring together.</p>
 
 <p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-<p><b>Example 1:</b></p>
-
-<pre><b>Input:</b> "abab"
-<b>Output:</b> True
-<b>Explanation:</b> It's the substring "ab" twice.
+<pre><strong>Input:</strong> s = "abab"
+<strong>Output:</strong> true
+<strong>Explanation:</strong> It is the substring "ab" twice.
 </pre>
 
-<p><b>Example 2:</b></p>
+<p><strong>Example 2:</strong></p>
 
-<pre><b>Input:</b> "aba"
-<b>Output:</b> False
+<pre><strong>Input:</strong> s = "aba"
+<strong>Output:</strong> false
 </pre>
 
-<p><b>Example 3:</b></p>
+<p><strong>Example 3:</strong></p>
 
-<pre><b>Input:</b> "abcabcabcabc"
-<b>Output:</b> True
-<b>Explanation:</b> It's the substring "abc" four times. (And the substring "abcabc" twice.)
+<pre><strong>Input:</strong> s = "abcabcabcabc"
+<strong>Output:</strong> true
+<strong>Explanation:</strong> It is the substring "abc" four times or the substring "abcabc" twice.
 </pre>
 
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= s.length &lt;= 10<sup>4</sup></code></li>
+	<li><code>s</code> consists of lowercase English letters.</li>
+</ul>
+
+
+**Companies**:  
+[Google](https://leetcode.com/company/google), [Salesforce](https://leetcode.com/company/salesforce)
 
 **Related Topics**:  
-[String](https://leetcode.com/tag/string/)
+[String](https://leetcode.com/tag/string/), [String Matching](https://leetcode.com/tag/string-matching/)
 
 **Similar Questions**:
 * [Implement strStr() (Easy)](https://leetcode.com/problems/implement-strstr/)
 * [Repeated String Match (Medium)](https://leetcode.com/problems/repeated-string-match/)
-
 ## Solution 1. Brute force
 
 ```cpp
@@ -90,13 +99,13 @@ public:
 class Solution {
 public:
     bool repeatedSubstringPattern(string s) {
-        int k = -1, N = s.size();
-        vector<int> pi(N + 1, -1);
+        int N = s.size(), j = -1;
+        vector<int> lps(N + 1, -1);
         for (int i = 1; i <= N; ++i) {
-            while (k >= 0 && s[k] != s[i - 1]) k = pi[k];
-            pi[i] = ++k;
+            while (j >= 0 && s[i - 1] != s[j]) j = lps[j];
+            lps[i] = ++j;
         }
-        return pi[N] && (pi[N] % (N - pi[N]) == 0);
+        return lps[N] && (lps[N] % (N - lps[N])) == 0;
     }
 };
 ```
