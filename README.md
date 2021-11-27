@@ -1653,6 +1653,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2081 | Sum of k-Mirror Numbers | Hard | [Solution](leetcode/2081.%20Sum%20of%20k-Mirror%20Numbers)
 2085 | Count Common Words With One Occurrence | Easy | [Solution](leetcode/2085.%20Count%20Common%20Words%20With%20One%20Occurrence)
 2086 | Minimum Number of Buckets Required to Collect Rainwater from Houses | Medium | [Solution](leetcode/2086.%20Minimum%20Number%20of%20Buckets%20Required%20to%20Collect%20Rainwater%20from%20Houses)
+2087 | Minimum Cost Homecoming of a Robot in a Grid | Medium | [Solution](leetcode/2087.%20Minimum%20Cost%20Homecoming%20of%20a%20Robot%20in%20a%20Grid)
 
 # License
 
