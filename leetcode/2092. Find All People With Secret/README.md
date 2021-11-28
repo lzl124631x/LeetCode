@@ -134,3 +134,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/find-all-people-with-secret/discuss/1599815/C%2B%2B-Union-Find

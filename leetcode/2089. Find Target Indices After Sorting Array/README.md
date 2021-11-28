@@ -92,3 +92,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/find-target-indices-after-sorting-array/discuss/1599800/C%2B%2B-O(N)-Time-Counting-Sort

@@ -63,11 +63,7 @@ We can remove it with 1 deletion.
 
 **Algorithm**:
 
-If `a == b`, return the minimum of the following:
-* `a + 1` -> delete from left
-* `N - a` -> delete from right
-
-Otherwise, make sure `a < b`, and return the minimum of the following:
+Make sure `a < b`, and return the minimum of the following:
 * `(a + 1) + (N - b)` -> delete both from left and right
 * `b + 1` -> delete from left
 * `N - a` -> delete from right
@@ -81,9 +77,12 @@ class Solution {
 public:
     int minimumDeletions(vector<int>& A) {
         int a = max_element(begin(A), end(A)) - begin(A), b = min_element(begin(A), end(A)) - begin(A), N = A.size();
-        if (a == b) return min(a + 1, N - a);
         if (a > b) swap(a, b);
         return min({ a + 1 + N - b, b + 1, N - a });
     }
 };
 ```
+
+## Disucss
+
+https://leetcode.com/problems/removing-minimum-and-maximum-from-array/discuss/1599809/C%2B%2B-Only-3-cases

@@ -95,3 +95,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/k-radius-subarray-averages/discuss/1599803/C%2B%2B-O(N)-time-Sliding-Window
