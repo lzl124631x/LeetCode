@@ -111,7 +111,7 @@ public:
         sort(begin(A), end(A), [](auto &a, auto &b) { return a[2] < b[2]; }); // Sort the meetings in ascending order of meeting time
         int i = 0, M = A.size();
         UnionFind uf(n);
-        uf.connect(0, firstPerson); // Connect person 0 and the first person
+        uf.connect(0, firstPerson); // Connect person 0 with the first person
         vector<int> ppl;
         while (i < M) {
             ppl.clear();
@@ -122,13 +122,13 @@ public:
                 ppl.push_back(A[i][1]);
                 ++i;
             }
-            for (int n : ppl) { // For each person in the pool, check if it's connected with person 0.
+            for (int n : ppl) { // For each person in the pool, check if he/she's connected with person 0.
                 if (!uf.connected(0, n)) uf.reset(n); // If not, this person doesn't have secret, reset it.
             }
         }
         vector<int> ans;
         for (int j = 0; j < n; ++j) {
-            if (uf.connected(0, j)) ans.push_back(j); // Push all the persons who are connected to person 0 into answer array
+            if (uf.connected(0, j)) ans.push_back(j); // Push all the persons who are connected with person 0 into answer array
         }
         return ans;
     }
