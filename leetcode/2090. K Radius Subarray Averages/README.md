@@ -62,7 +62,7 @@
 
 ## Solution 1. Sliding Window
 
-**Intuition**: Keep a fixed-length sliding window of length `2k + 1`. Sliding it from left to right, and update the sum of the window on the fly.
+**Intuition**: Keep a fixed-length sliding window of length `2k + 1`. Slide it from left to right, and update the sum of the window on the fly.
 
 **Algorithm**:
 
