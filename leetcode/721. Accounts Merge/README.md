@@ -12,8 +12,8 @@
 <pre><strong>Input:</strong> accounts = [["John","johnsmith@mail.com","john_newyork@mail.com"],["John","johnsmith@mail.com","john00@mail.com"],["Mary","mary@mail.com"],["John","johnnybravo@mail.com"]]
 <strong>Output:</strong> [["John","john00@mail.com","john_newyork@mail.com","johnsmith@mail.com"],["Mary","mary@mail.com"],["John","johnnybravo@mail.com"]]
 <strong>Explanation:</strong>
-The first and third John's are the same person as they have the common email "johnsmith@mail.com".
-The second John and Mary are different people as none of their email addresses are used by other accounts.
+The first and second John's are the same person as they have the common email "johnsmith@mail.com".
+The third John and Mary are different people as none of their email addresses are used by other accounts.
 We could return these lists in any order, for example the answer [['Mary', 'mary@mail.com'], ['John', 'johnnybravo@mail.com'], 
 ['John', 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com']] would still be accepted.
 </pre>
@@ -37,17 +37,17 @@ We could return these lists in any order, for example the answer [['Mary', 'mary
 
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon), [LinkedIn](https://leetcode.com/company/linkedin), [Uber](https://leetcode.com/company/uber), [Apple](https://leetcode.com/company/apple), [Rubrik](https://leetcode.com/company/rubrik)
+[Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Pinterest](https://leetcode.com/company/pinterest), [Bloomberg](https://leetcode.com/company/bloomberg), [Apple](https://leetcode.com/company/apple)
 
 **Related Topics**:  
-[Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Union Find](https://leetcode.com/tag/union-find/)
+[Array](https://leetcode.com/tag/array/), [String](https://leetcode.com/tag/string/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Union Find](https://leetcode.com/tag/union-find/)
 
 **Similar Questions**:
 * [Redundant Connection (Medium)](https://leetcode.com/problems/redundant-connection/)
 * [Sentence Similarity (Easy)](https://leetcode.com/problems/sentence-similarity/)
 * [Sentence Similarity II (Medium)](https://leetcode.com/problems/sentence-similarity-ii/)
 
-## Solution 1. Union Find
+## Solution 1. Union Find (Account as Nodes)
 
 ### Complexity Analysis
 
@@ -86,7 +86,7 @@ public:
 class Solution {
 public:
     vector<vector<string>> accountsMerge(vector<vector<string>>& A) {
-        unordered_map<string, int> emailToIndex;
+        unordered_map<string, int> emailToIndex; // email to the index of the last account entry containing this email
         for (int i = 0; i < A.size(); ++i) {
             for (int j = 1; j < A[i].size(); ++j) emailToIndex[A[i][j]] = i;
         }
@@ -109,7 +109,65 @@ public:
 };
 ```
 
-## Solution 2. DFS
+## Solution 2. Union Find (Email as Nodes)
+
+```cpp
+// OJ: https://leetcode.com/problems/accounts-merge/
+// Author: github.com/lzl124631x
+// Time: O(NMWlog(NM))
+// Space: O(NMW)
+class UnionFind {
+    vector<int> id;
+public:
+    UnionFind(int n) : id(n) {
+        iota(begin(id), end(id), 0);
+    }
+    int find(int a) {
+        return id[a] == a ? a : (id[a] = find(id[a]));
+    }
+    void connect(int a, int b) {
+        id[find(a)] = find(b);
+    }
+}; 
+class Solution {
+public:
+    vector<vector<string>> accountsMerge(vector<vector<string>>& A) {
+        unordered_map<string, int> emailIds; // Assign each email an ID
+        int N = A.size(), emailId = 0;
+        for (auto &v : A) {
+            for (int j = 1; j < v.size(); ++j) {
+                if (!emailIds.count(v[j])) emailIds[v[j]] = emailId++;
+            }
+        }
+        UnionFind uf(emailId);
+        for (auto &v : A) {
+            for (int j = 2; j < v.size(); ++j) {
+                uf.connect(emailIds[v[1]], emailIds[v[j]]); // Connect the email IDs
+            }
+        }
+        unordered_set<int> seen;
+        vector<vector<string>> ans;
+        unordered_map<int, int> emailIdToIndex; // Representative email ID to the index of person in answer array
+        for (auto &v : A) {
+            int id = uf.find(emailIds[v[1]]);
+            if (!emailIdToIndex.count(id)) { // If we haven't seen this representative email ID, this is a new person.
+                emailIdToIndex[id] = ans.size();
+                ans.push_back({ v[0] });
+            }
+            int index = emailIdToIndex[id];
+            for (int i = 1; i < v.size(); ++i) {
+                if (seen.count(emailIds[v[i]])) continue;
+                seen.insert(emailIds[v[i]]);
+                ans[index].push_back(v[i]);
+            }
+        }
+        for (auto &v : ans) sort(begin(v) + 1, end(v));
+        return ans;
+    }
+};
+```
+
+## Solution 3. DFS (Emails as Nodes)
 
 We first build a graph where the nodes are the emails. If two emails belongs to the same person, we will add an edge between them.
 
