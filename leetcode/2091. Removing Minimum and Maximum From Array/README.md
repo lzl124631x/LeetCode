@@ -63,7 +63,7 @@ We can remove it with 1 deletion.
 
 **Algorithm**:
 
-Make sure `a < b`, and return the minimum of the following:
+Make sure `a <= b`, and return the minimum of the following:
 * `(a + 1) + (N - b)` -> delete both from left and right
 * `b + 1` -> delete from left
 * `N - a` -> delete from right
