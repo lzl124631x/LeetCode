@@ -86,8 +86,9 @@ In the end, we add all the persons who are connected to person 0 into the answer
 ```cpp
 // OJ: https://leetcode.com/problems/find-all-people-with-secret/
 // Author: github.com/lzl124631x
-// Time: O(MlogM + N) where `M` is the length of `meetings`
-// Space: O(N)
+// Time: O(MlogM + (M + N) * logN) where `M` is the length of `meetings`
+//        Can be reduced to `O(MlogM + (M + N) * alpha(N))`
+// Space: O(M + N). Can be reduced to O(N) if we make `ppl` an `unordered_set`.
 class UnionFind {
     vector<int> id;
 public:
@@ -109,31 +110,43 @@ class Solution {
 public:
     vector<int> findAllPeople(int n, vector<vector<int>>& A, int firstPerson) {
         sort(begin(A), end(A), [](auto &a, auto &b) { return a[2] < b[2]; }); // Sort the meetings in ascending order of meeting time
-        int i = 0, M = A.size();
         UnionFind uf(n);
         uf.connect(0, firstPerson); // Connect person 0 with the first person
         vector<int> ppl;
-        while (i < M) {
+        for (int i = 0, M = A.size(); i < M; ) {
             ppl.clear();
             int time = A[i][2];
-            while (i < M && A[i][2] == time) { // For all the meetings happending at the same time
+            for (; i < M && A[i][2] == time; ++i) { // For all the meetings happending at the same time
                 uf.connect(A[i][0], A[i][1]); // Connect the two persons
                 ppl.push_back(A[i][0]); // Add both persons into the pool
                 ppl.push_back(A[i][1]);
-                ++i;
             }
             for (int n : ppl) { // For each person in the pool, check if he/she's connected with person 0.
                 if (!uf.connected(0, n)) uf.reset(n); // If not, this person doesn't have secret, reset it.
             }
         }
         vector<int> ans;
-        for (int j = 0; j < n; ++j) {
-            if (uf.connected(0, j)) ans.push_back(j); // Push all the persons who are connected with person 0 into answer array
+        for (int i = 0; i < n; ++i) {
+            if (uf.connected(0, i)) ans.push_back(i); // Push all the persons who are connected with person 0 into answer array
         }
         return ans;
     }
 };
 ```
+
+**Complexity Analysis**:
+
+Sorting takes `O(MlogM)` time.
+
+Each meeting is visited and pushed into/popped out of `ppl` only once. For each visit, the `connect`/`connected` takes amortized `O(logN)` time. So, traversing all the meetings takes `O(MlogN)` time. Note that if we do union-by-rank, the time complexity can be reduced to `O(M * alpha(N))` where `alpha(N)` is the inverse function of Ackermann function, and is even more efficient than `logN`. But in LeetCode, the difference is negligible, so I usually just use path compression for simplicity. It's definitly worth mentioning this knowledge during your interview though.
+
+Lastly, traversing all the persons and checking connection with person 0 takes amortized `O(NlogN)` time.
+
+So, overall the **time complexity** is amortized `O(MlogM + (M + N) * logN)`, which can be reduced to `O(MlogM + (M + N) * alpha(N))` with union-by-rank.
+
+As for space complexity, the Union Find takes `O(N)` space. The `ppl` array takes `O(M)` space in the worst case, but it can be reduced to `O(N)` if we use `unordered_set`. I use `vector<int>` because `unordered_set<int>` has extra overhead which at times consumes more time/space than `vector<int>` in LeetCode.
+
+So, overall the **(extra) space complexity** is `O(M + N)` which can be reduced to `O(N)`.
 
 ## Discuss
 
