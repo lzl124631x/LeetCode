@@ -1,34 +1,49 @@
-# [328. Odd Even Linked List (Medium)](https://leetcode.com/problems/odd-even-linked-list/)
+# [206. Reverse Linked List (Easy)](https://leetcode.com/problems/reverse-linked-list/)
 
-<p>Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.</p>
+<p>Given the <code>head</code> of a singly linked list, reverse the list, and return <em>the reversed list</em>.</p>
 
-<p>You should try to do it in place. The program should run in O(1) space complexity and O(nodes) time complexity.</p>
-
-<p><b>Example 1:</b></p>
-
-<pre><strong>Input: </strong><code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</code>
-<strong>Output: </strong><code>1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL</code>
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg" style="width: 542px; height: 222px;">
+<pre><strong>Input:</strong> head = [1,2,3,4,5]
+<strong>Output:</strong> [5,4,3,2,1]
 </pre>
 
-<p><b>Example 2:</b></p>
-
-<pre><strong>Input: </strong>2<code>-&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL</code>
-<strong>Output: </strong><code>2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</code>
+<p><strong>Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg" style="width: 182px; height: 222px;">
+<pre><strong>Input:</strong> head = [1,2]
+<strong>Output:</strong> [2,1]
 </pre>
 
-<p><b>Note:</b></p>
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> head = []
+<strong>Output:</strong> []
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
 <ul>
-	<li>The relative order inside both the even and odd groups should remain as it was in the input.</li>
-	<li>The first node is considered odd, the second node even and so on ...</li>
+	<li>The number of nodes in the list is the range <code>[0, 5000]</code>.</li>
+	<li><code>-5000 &lt;= Node.val &lt;= 5000</code></li>
 </ul>
 
+<p>&nbsp;</p>
+<p><strong>Follow up:</strong> A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
+
+
+**Companies**:  
+[Microsoft](https://leetcode.com/company/microsoft), [Bloomberg](https://leetcode.com/company/bloomberg), [Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook), [Apple](https://leetcode.com/company/apple), [Nvidia](https://leetcode.com/company/nvidia), [Google](https://leetcode.com/company/google), [Yandex](https://leetcode.com/company/yandex), [Adobe](https://leetcode.com/company/adobe), [eBay](https://leetcode.com/company/ebay), [IBM](https://leetcode.com/company/ibm)
 
 **Related Topics**:  
-[Linked List](https://leetcode.com/tag/linked-list/)
+[Linked List](https://leetcode.com/tag/linked-list/), [Recursion](https://leetcode.com/tag/recursion/)
 
 **Similar Questions**:
-* [Split Linked List in Parts (Medium)](https://leetcode.com/problems/split-linked-list-in-parts/)
+* [Reverse Linked List II (Medium)](https://leetcode.com/problems/reverse-linked-list-ii/)
+* [Binary Tree Upside Down (Medium)](https://leetcode.com/problems/binary-tree-upside-down/)
+* [Palindrome Linked List (Easy)](https://leetcode.com/problems/palindrome-linked-list/)
+* [Reverse Nodes in Even Length Groups (Medium)](https://leetcode.com/problems/reverse-nodes-in-even-length-groups/)
 
 ## Solution 1.
 
@@ -40,9 +55,8 @@
 class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
-        ListNode oddHead, *oddTail = &oddHead, evenHead, *evenTail = &evenHead;
-        bool odd = true;
-        while (head) {
+        ListNode evenHead, *evenTail = &evenHead, oddHead, *oddTail = &oddHead;
+        for (bool odd = true; head; odd = !odd, head = head->next) {
             if (odd) {
                 oddTail->next = head;
                 oddTail = head;
@@ -50,8 +64,6 @@ public:
                 evenTail->next = head;
                 evenTail = head;
             }
-            head = head->next;
-            odd = !odd;
         }
         oddTail->next = evenHead.next;
         evenTail->next = NULL;
@@ -71,7 +83,7 @@ class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
         if (!head || !head->next) return head;
-        ListNode *odd = head, *even = head->next, *evenHead = head->next;
+        ListNode *odd = head, *even = head->next, *evenHead = even; 
         while (even && even->next) {
             odd->next = even->next;
             even->next = even->next->next;
