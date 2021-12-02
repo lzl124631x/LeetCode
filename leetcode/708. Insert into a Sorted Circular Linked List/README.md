@@ -41,7 +41,7 @@
 
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Microsoft](https://leetcode.com/company/microsoft)
+[Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft)
 
 **Related Topics**:  
 [Linked List](https://leetcode.com/tag/linked-list/)
@@ -96,15 +96,45 @@ public:
         if (!head) return node;
         auto p = head;
         do {
-            while (p->next != head && p->next->val == p->val) p = p->next;  // find the break point
-            if ((p->val <= val && (p->next->val > val || p->next->val <= p->val) || (p->val >= p->next->val && p->next->val >= val))) {
-                node->next = p->next;
+            while (p->next != head && p->next->val == p->val) p = p->next;  // skip same values
+            if ((p->val >= p->next->val && (val >= p->val || val <= p->next->val)) // If `p` is the maximum node and `val` is smaller than minimum value or greater than maximum value
+               || (p->val <= p->next->val && val >= p->val && val < p->next->val)) { // If `p` is not the maximum node and `val` is intween `p->val` and `p->next->val`
+                node->next = p->next; // append node after `p`
                 p->next = node;
                 return head;
             }
             p = p->next;
         } while (p != head);
         return NULL;
+    }
+};
+```
+
+## Solution 3.
+
+```cpp
+// OJ: https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    Node* insert(Node* head, int val) {
+        auto node = new Node(val);
+        if (!head) {
+            node->next = node;
+            return node;
+        }
+        Node *lt = NULL, *mx = head, *h = head; // `lt` is the last node whose value is less than `val`. `mx` is the node with maximum value
+        do {
+            if (head->val < val && (!lt || head->val >= lt->val)) lt = head;
+            if (head->val >= mx->val) mx = head;
+            head = head->next;
+        } while (head != h);
+        if (!lt) lt = mx; // If no node has value less than `val`, `val` is the smallest value, we append it after `mx` node.
+        node->next = lt->next; // append node after `lt`
+        lt->next = node;
+        return h;
     }
 };
 ```
