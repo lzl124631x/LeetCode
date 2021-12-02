@@ -907,6 +907,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1010 | Pairs of Songs With Total Durations Divisible by 60 | Medium | [Solution](leetcode/1010.%20Pairs%20of%20Songs%20With%20Total%20Durations%20Divisible%20by%2060)
 1011 | Capacity To Ship Packages Within D Days | Medium | [Solution](leetcode/1011.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
 1012 | Complement of Base 10 Integer | Easy | [Solution](leetcode/1012.%20Complement%20of%20Base%2010%20Integer)
+1012 | Numbers With Repeated Digits | Hard | [Solution](leetcode/1012.%20Numbers%20With%20Repeated%20Digits)
 1013 | Partition Array Into Three Parts With Equal Sum | Easy | [Solution](leetcode/1013.%20Partition%20Array%20Into%20Three%20Parts%20With%20Equal%20Sum)
 1014 | Best Sightseeing Pair | Medium | [Solution](leetcode/1014.%20Best%20Sightseeing%20Pair)
 1016 | Binary String With Substrings Representing 1 To N | Medium | [Solution](leetcode/1016.%20Binary%20String%20With%20Substrings%20Representing%201%20To%20N)
