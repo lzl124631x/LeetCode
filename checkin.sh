@@ -9,6 +9,7 @@ fi
 git add README.md
 git add leetcode/$1.*
 git commit -m $1
+# https://www.aplawrence.com/Unix/getopts.html
 args=`getopt d $*`
 set -- $args
 push=true
