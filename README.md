@@ -721,6 +721,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 815 | Bus Routes | Hard | [Solution](leetcode/815.%20Bus%20Routes)
 816 | Ambiguous Coordinates | Medium | [Solution](leetcode/816.%20Ambiguous%20Coordinates)
 817 | Linked List Components | Medium | [Solution](leetcode/817.%20Linked%20List%20Components)
+818 | Race Car | Hard | [Solution](leetcode/818.%20Race%20Car)
 819 | Most Common Word | Easy | [Solution](leetcode/819.%20Most%20Common%20Word)
 820 | Short Encoding of Words | Medium | [Solution](leetcode/820.%20Short%20Encoding%20of%20Words)
 821 | Shortest Distance to a Character | Easy | [Solution](leetcode/821.%20Shortest%20Distance%20to%20a%20Character)
