@@ -864,6 +864,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 961 | N-Repeated Element in Size 2N Array | Easy | [Solution](leetcode/961.%20N-Repeated%20Element%20in%20Size%202N%20Array)
 962 | Maximum Width Ramp | Medium | [Solution](leetcode/962.%20Maximum%20Width%20Ramp)
 963 | Minimum Area Rectangle II | Medium | [Solution](leetcode/963.%20Minimum%20Area%20Rectangle%20II)
+964 | Least Operators to Express Number | Hard | [Solution](leetcode/964.%20Least%20Operators%20to%20Express%20Number)
 967 | Numbers With Same Consecutive Differences | Medium | [Solution](leetcode/967.%20Numbers%20With%20Same%20Consecutive%20Differences)
 968 | Binary Tree Cameras | Hard | [Solution](leetcode/968.%20Binary%20Tree%20Cameras)
 969 | Pancake Sorting | Medium | [Solution](leetcode/969.%20Pancake%20Sorting)
