@@ -931,6 +931,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1033 | Moving Stones Until Consecutive | Easy | [Solution](leetcode/1033.%20Moving%20Stones%20Until%20Consecutive)
 1034 | Coloring A Border | Medium | [Solution](leetcode/1034.%20Coloring%20A%20Border)
 1035 | Uncrossed Lines | Medium | [Solution](leetcode/1035.%20Uncrossed%20Lines)
+1036 | Escape a Large Maze | Hard | [Solution](leetcode/1036.%20Escape%20a%20Large%20Maze)
 1037 | Valid Boomerang | Easy | [Solution](leetcode/1037.%20Valid%20Boomerang)
 1038 | Binary Search Tree to Greater Sum Tree | Medium | [Solution](leetcode/1038.%20Binary%20Search%20Tree%20to%20Greater%20Sum%20Tree)
 1039 | Minimum Score Triangulation of Polygon | Medium | [Solution](leetcode/1039.%20Minimum%20Score%20Triangulation%20of%20Polygon)
