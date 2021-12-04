@@ -73,7 +73,7 @@ In this case, we map `2->4`, `3->6`.
 // OJ: https://leetcode.com/problems/random-pick-with-blacklist/
 // Author: github.com/lzl124631x
 // Time:
-//      Solution: O(B)
+//      Solution: O(BlogB)
 //      pick: O(1)
 // Space: O(B)
 class Solution {
