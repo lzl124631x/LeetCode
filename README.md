@@ -1664,6 +1664,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2090 | K Radius Subarray Averages | Medium | [Solution](leetcode/2090.%20K%20Radius%20Subarray%20Averages)
 2091 | Removing Minimum and Maximum From Array | Medium | [Solution](leetcode/2091.%20Removing%20Minimum%20and%20Maximum%20From%20Array)
 2092 | Find All People With Secret | Hard | [Solution](leetcode/2092.%20Find%20All%20People%20With%20Secret)
+2094 | Finding 3-Digit Even Numbers | Easy | [Solution](leetcode/2094.%20Finding%203-Digit%20Even%20Numbers)
 
 # License
 
