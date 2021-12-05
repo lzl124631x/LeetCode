@@ -1,25 +1,47 @@
 # [143. Reorder List (Medium)](https://leetcode.com/problems/reorder-list/)
 
-<p>Given a singly linked list <em>L</em>: <em>L</em><sub>0</sub>→<em>L</em><sub>1</sub>→…→<em>L</em><sub><em>n</em>-1</sub>→<em>L</em><sub>n</sub>,<br>
-reorder it to: <em>L</em><sub>0</sub>→<em>L</em><sub><em>n</em></sub>→<em>L</em><sub>1</sub>→<em>L</em><sub><em>n</em>-1</sub>→<em>L</em><sub>2</sub>→<em>L</em><sub><em>n</em>-2</sub>→…</p>
+<p>You are given the head of a singly linked-list. The list can be represented as:</p>
 
-<p>You may <strong>not</strong> modify the values in the list's nodes, only nodes itself may be changed.</p>
+<pre>L<sub>0</sub> → L<sub>1</sub> → … → L<sub>n - 1</sub> → L<sub>n</sub>
+</pre>
 
+<p><em>Reorder the list to be on the following form:</em></p>
+
+<pre>L<sub>0</sub> → L<sub>n</sub> → L<sub>1</sub> → L<sub>n - 1</sub> → L<sub>2</sub> → L<sub>n - 2</sub> → …
+</pre>
+
+<p>You may not modify the values in the list's nodes. Only nodes themselves may be changed.</p>
+
+<p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
-
-<pre>Given 1-&gt;2-&gt;3-&gt;4, reorder it to 1-&gt;4-&gt;2-&gt;3.</pre>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/03/04/reorder1linked-list.jpg" style="width: 422px; height: 222px;">
+<pre><strong>Input:</strong> head = [1,2,3,4]
+<strong>Output:</strong> [1,4,2,3]
+</pre>
 
 <p><strong>Example 2:</strong></p>
-
-<pre>Given 1-&gt;2-&gt;3-&gt;4-&gt;5, reorder it to 1-&gt;5-&gt;2-&gt;4-&gt;3.
+<img alt="" src="https://assets.leetcode.com/uploads/2021/03/09/reorder2-linked-list.jpg" style="width: 542px; height: 222px;">
+<pre><strong>Input:</strong> head = [1,2,3,4,5]
+<strong>Output:</strong> [1,5,2,4,3]
 </pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li>The number of nodes in the list is in the range <code>[1, 5 * 10<sup>4</sup>]</code>.</li>
+	<li><code>1 &lt;= Node.val &lt;= 1000</code></li>
+</ul>
 
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Microsoft](https://leetcode.com/company/microsoft), [Google](https://leetcode.com/company/google)
+[Amazon](https://leetcode.com/company/amazon), [Adobe](https://leetcode.com/company/adobe), [Bloomberg](https://leetcode.com/company/bloomberg)
 
 **Related Topics**:  
-[Linked List](https://leetcode.com/tag/linked-list/)
+[Linked List](https://leetcode.com/tag/linked-list/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Stack](https://leetcode.com/tag/stack/), [Recursion](https://leetcode.com/tag/recursion/)
+
+**Similar Questions**:
+* [Delete the Middle Node of a Linked List (Medium)](https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/)
 
 ## Solution 1.
 
@@ -29,8 +51,19 @@ reorder it to: <em>L</em><sub>0</sub>→<em>L</em><sub><em>n</em></sub>→<em>L<
 // Time: O(N)
 // Space: O(1)
 class Solution {
-private:
-    ListNode *reverse(ListNode* head) {
+    int getLength(ListNode *head) {
+        int ans = 0;
+        for (; head; head = head->next) ++ans;
+        return ans;
+    }
+    ListNode *splitList(ListNode *head) {
+        int len = (getLength(head) - 1) / 2;
+        while (len--) head = head->next;
+        auto ans = head->next;
+        head->next = nullptr;
+        return ans;
+    }
+    ListNode *reverseList(ListNode *head) {
         ListNode dummy;
         while (head) {
             auto node = head;
@@ -40,33 +73,25 @@ private:
         }
         return dummy.next;
     }
-    int getLength(ListNode *head) {
-        int len = 0;
-        for (; head; head = head->next) ++len;
-        return len;
+    void interleave(ListNode *first, ListNode *second) {
+        while (second) {
+            auto node = second;
+            second = second->next;
+            node->next = first->next;
+            first->next = node;
+            first = node->next;
+        }
     }
 public:
     void reorderList(ListNode* head) {
-        if (!head) return;
-        int len = (getLength(head) - 1) / 2;
-        ListNode *p = head, *q;
-        while (len--) p = p->next;
-        q = p->next;
-        p->next = NULL;
-        q = reverse(q);
-        p = head;
-        while (q) {
-            auto node = q;
-            q = q->next;
-            node->next = p->next;
-            p->next = node;
-            p = node->next;
-        }
+        auto second = splitList(head);
+        second = reverseList(second);
+        interleave(head, second);
     }
 };
 ```
 
-## Solution 2
+## Solution 2.
 
 ```cpp
 // OJ: https://leetcode.com/problems/reorder-list/
@@ -74,35 +99,45 @@ public:
 // Time: O(N)
 // Space: O(1)
 class Solution {
-private:
-    ListNode *reverseList(ListNode *head) {
-        ListNode newHead;
-        while (head) {
-            auto p = head;
-            head = head->next;
-            p->next = newHead.next;
-            newHead.next = p;
+    ListNode *splitList(ListNode *head) {
+        auto fast = head, slow = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        return newHead.next;
+        auto ans = slow->next;
+        slow->next = nullptr;
+        return ans;
+    }
+    ListNode *reverseList(ListNode *head) {
+        ListNode dummy;
+        while (head) {
+            auto node = head;
+            head = head->next;
+            node->next = dummy.next;
+            dummy.next = node;
+        }
+        return dummy.next;
+    }
+    void interleave(ListNode *first, ListNode *second) {
+        ListNode dummy, *tail = &dummy;
+        while (first && second) {
+            auto node = first;
+            first = first->next;
+            tail->next = node;
+            tail = node;
+            node = second;
+            second = second->next;
+            tail->next = node;
+            tail = node;
+        }
+        tail->next = first;
     }
 public:
     void reorderList(ListNode* head) {
-        if (!head) return;
-        ListNode *fast = head, *slow = head, *rightHead;
-        while (fast->next && fast->next->next) {
-            fast = fast->next->next;
-            slow = slow->next;
-        }
-        rightHead = slow->next;
-        slow->next = NULL;
-        rightHead = reverseList(rightHead);
-        while (rightHead) {
-            auto p = rightHead;
-            rightHead = rightHead->next;
-            p->next = head->next;
-            head->next = p;
-            head = p->next;
-        }
+        auto second = splitList(head);
+        second = reverseList(second);
+        interleave(head, second);
     }
 };
 ```
