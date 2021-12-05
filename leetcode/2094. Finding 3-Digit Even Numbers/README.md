@@ -68,13 +68,41 @@ All the integers that can be formed have <strong>leading zeros</strong>. Thus, t
 **Similar Questions**:
 * [Find Numbers with Even Number of Digits (Easy)](https://leetcode.com/problems/find-numbers-with-even-number-of-digits/)
 
-## Solution 1. DFS
+## Solution 1. Brute Force
+
+```cpp
+// OJ: https://leetcode.com/problems/finding-3-digit-even-numbers/
+// Author: github.com/lzl124631x
+// Time: O(N^3 * log(1000))
+// Space: O(1000) = O(1)
+class Solution {
+public:
+    vector<int> findEvenNumbers(vector<int>& A) {
+        set<int> s;
+        int N = A.size();
+        for (int i = 0; i < N; ++i) {
+            if (A[i] == 0) continue;
+            for (int j = 0; j < N; ++j) {
+                if (i == j) continue;
+                for (int k = 0; k < N; ++k) {
+                    if (k == i || k == j) continue;
+                    if (A[k] % 2) continue;
+                    s.insert(A[i] * 100 + A[j] * 10 + A[k]);
+                }
+            }
+        }
+        return vector<int>(begin(s), end(s));
+    }
+};
+```
+
+## Solution 2. DFS
 
 ```cpp
 // OJ: https://leetcode.com/problems/finding-3-digit-even-numbers/
 // Author: github.com/lzl124631x
 // Time: O(N + 10^3)
-// Space: O(1)
+// Space: O(10) = O(1)
 class Solution {
 public:
     vector<int> findEvenNumbers(vector<int>& A) {
@@ -99,7 +127,7 @@ public:
 };
 ```
 
-## Solution 2. Counting
+## Solution 3. Counting
 
 ```cpp
 // OJ: https://leetcode.com/problems/finding-3-digit-even-numbers/
@@ -126,7 +154,7 @@ public:
 };
 ```
 
-## Solution 3. 
+## Solution 4. 
 
 ```cpp
 // OJ: https://leetcode.com/problems/finding-3-digit-even-numbers/
