@@ -81,8 +81,8 @@ class Solution {
 public:
     ListNode* reverseEvenLengthGroups(ListNode* head) {
         ListNode dummy, *tail = &dummy;
-        for (int i = 0, total = getLength(head); head; ++i) {
-            int len = min(total, i + 1); // the length of the current section
+        for (int i = 1, total = getLength(head); head; ++i) {
+            int len = min(total, i); // the length of the current section
             ListNode *newTail = NULL; // The new tail if we need to reverse the current section
             for (int j = 0; j < len && head; ++j) {
                 auto p = head;
@@ -97,9 +97,9 @@ public:
                 }
             }
             if (newTail) tail = newTail;
-            tail->next = NULL;
             total -= len;
         }
+        tail->next = NULL;
         return dummy.next;
     }
 };
