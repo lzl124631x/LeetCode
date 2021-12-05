@@ -1666,6 +1666,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2092 | Find All People With Secret | Hard | [Solution](leetcode/2092.%20Find%20All%20People%20With%20Secret)
 2094 | Finding 3-Digit Even Numbers | Easy | [Solution](leetcode/2094.%20Finding%203-Digit%20Even%20Numbers)
 2095 | Delete the Middle Node of a Linked List | Medium | [Solution](leetcode/2095.%20Delete%20the%20Middle%20Node%20of%20a%20Linked%20List)
+2096 | Step-By-Step Directions From a Binary Tree Node to Another | Medium | [Solution](leetcode/2096.%20Step-By-Step%20Directions%20From%20a%20Binary%20Tree%20Node%20to%20Another)
 
 # License
 
