@@ -45,11 +45,9 @@ We cannot move south or west because we cannot go outside of the grid.
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/)
 
-## Solution 1. Distance-First Search
+## Solution 1. DFS
 
 If we can search a point whose distance to the `source` is `>= 200`, then we know that `source` must not be enclosed by the blocked points. The same for the `target` point. If both direction are not blocked, we can return `true`.
-
-To prioritize points with the longest distance, we use a Max Heap of `(distance, x, y)` whose top is the point with the longest distance.
 
 If `source` meets `target` within this search process, we can return `true`.
 
@@ -65,28 +63,25 @@ public:
     bool isEscapePossible(vector<vector<int>>& blocked, vector<int>& source, vector<int>& target) {
         unordered_map<int, unordered_set<int>> blk;
         for (auto &b : blocked) blk[b[0]].insert(b[1]);
-        auto bfs = [&](vector<int> &from, vector<int> &to) -> int { // 0 -> blocked, 1 -> source & target met, 2 -> from is not enclosed by blocked points
+        int dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        auto check = [&](vector<int> &from, vector<int> &to) -> int { // 0 -> blocked, 1 -> source & target met, 2 -> from is not enclosed by blocked points
             unordered_map<int, unordered_set<int>> seen;
-            priority_queue<array<int, 3>> q;
-            q.push({0, from[0], from[1]});
-            seen[from[0]].insert(from[1]);
-            int dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
-            while (q.size()) { 
-                auto [dist, x, y] = q.top();
-                q.pop();
+            function<int(int, int, int)> dfs = [&](int x, int y, int dist) {
                 if (x == to[0] && y == to[1]) return 1;
                 if (dist >= 200) return 2;
                 for (auto &[dx, dy] : dirs) {
                     int a = x + dx, b = y + dy;
                     if (a < 0 || b < 0 || a >= 1e6 || b >= 1e6 || (blk.count(a) && blk[a].count(b)) || seen[a].count(b)) continue;
                     seen[a].insert(b);
-                    q.push({abs(a - from[0]) + abs(b - from[1]), a, b});
+                    int ans = dfs(a, b, abs(a - from[0]) + abs(b - from[1]));
+                    if (ans) return ans;
                 }
-            }
-            return 0;
+                return 0;
+            };
+            return dfs(from[0], from[1], 0);
         };
-        int a = bfs(source, target);
-        return a == 1 || (a == 2 && bfs(target, source));
+        int a = check(source, target);
+        return a == 1 || (a == 2 && check(target, source));
     }
 };
 ```
