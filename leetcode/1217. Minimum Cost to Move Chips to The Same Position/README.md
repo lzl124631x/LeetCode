@@ -25,7 +25,7 @@ Total cost is 1.
 <img alt="" src="https://assets.leetcode.com/uploads/2020/08/15/chip_e2.jpg" style="width: 750px; height: 306px;">
 <pre><strong>Input:</strong> position = [2,2,2,3,3]
 <strong>Output:</strong> 2
-<strong>Explanation:</strong> We can move the two chips at poistion 3 to position 2. Each move has cost = 1. The total cost = 2.
+<strong>Explanation:</strong> We can move the two chips at position  3 to position 2. Each move has cost = 1. The total cost = 2.
 </pre>
 
 <p><strong>Example 3:</strong></p>
@@ -43,8 +43,14 @@ Total cost is 1.
 </ul>
 
 
+**Companies**:  
+[Apple](https://leetcode.com/company/apple), [Amazon](https://leetcode.com/company/amazon)
+
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Math](https://leetcode.com/tag/math/), [Greedy](https://leetcode.com/tag/greedy/)
+
+**Similar Questions**:
+* [Minimum Number of Operations to Move All Balls to Each Box (Medium)](https://leetcode.com/problems/minimum-number-of-operations-to-move-all-balls-to-each-box/)
 
 ## Solution 1.
 
