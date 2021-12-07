@@ -1630,6 +1630,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2043 | Simple Bank System | Medium | [Solution](leetcode/2043.%20Simple%20Bank%20System)
 2044 | Count Number of Maximum Bitwise-OR Subsets | Medium | [Solution](leetcode/2044.%20Count%20Number%20of%20Maximum%20Bitwise-OR%20Subsets)
 2045 | Second Minimum Time to Reach Destination | Hard | [Solution](leetcode/2045.%20Second%20Minimum%20Time%20to%20Reach%20Destination)
+2046 | Sort Linked List Already Sorted Using Absolute Values | Medium | [Solution](leetcode/2046.%20Sort%20Linked%20List%20Already%20Sorted%20Using%20Absolute%20Values)
 2047 | Number of Valid Words in a Sentence | Easy | [Solution](leetcode/2047.%20Number%20of%20Valid%20Words%20in%20a%20Sentence)
 2048 | Next Greater Numerically Balanced Number | Medium | [Solution](leetcode/2048.%20Next%20Greater%20Numerically%20Balanced%20Number)
 2049 | Count Nodes With the Highest Score | Medium | [Solution](leetcode/2049.%20Count%20Nodes%20With%20the%20Highest%20Score)
