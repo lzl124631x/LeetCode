@@ -45,8 +45,11 @@
 	<li>Each node's value is either&nbsp;<code>0</code> or <code>1</code>.</li>
 </ul>
 
+**Companies**:  
+[JPMorgan](https://leetcode.com/company/jpmorgan), [Mathworks](https://leetcode.com/company/mathworks), [Citrix](https://leetcode.com/company/citrix)
+
 **Related Topics**:  
-[Linked List](https://leetcode.com/tag/linked-list/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/)
+[Linked List](https://leetcode.com/tag/linked-list/), [Math](https://leetcode.com/tag/math/)
 
 ## Solution 1.
 
@@ -59,10 +62,7 @@ class Solution {
 public:
     int getDecimalValue(ListNode* head) {
         int ans = 0;
-        while (head) {
-            ans = (ans << 1) + head->val;
-            head = head->next;
-        }
+        for (; head; head = head->next) ans = ans << 1 | head->val;
         return ans;
     }
 };
