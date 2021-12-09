@@ -71,3 +71,35 @@ public:
     }
 };
 ```
+
+## Solution 2. Single Pass BFS
+
+```cpp
+// OJ: https://leetcode.com/problems/nested-list-weight-sum-ii/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+private:
+public:
+    int depthSumInverse(vector<NestedInteger>& list) {
+        queue<NestedInteger> q;
+        for (auto &item : list) q.push(item);
+        int ans = 0, unweighted = 0;
+        while (q.size()) {
+            int cnt = q.size();
+            while (cnt--) {
+                auto ni = q.front();
+                q.pop();
+                if (ni.isInteger()) {
+                    unweighted += ni.getInteger();
+                } else { 
+                    for (auto &item : ni.getList()) q.push(item);
+                }
+            }
+            ans += unweighted;
+        }
+        return ans;
+    }
+};
+```
