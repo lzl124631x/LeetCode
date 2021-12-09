@@ -35,18 +35,22 @@ index 0 -&gt; index 4 -&gt; index 1 -&gt; index 3
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= arr.length &lt;= 5 * 10^4</code></li>
+	<li><code>1 &lt;= arr.length &lt;= 5 * 10<sup>4</sup></code></li>
 	<li><code>0 &lt;= arr[i] &lt;&nbsp;arr.length</code></li>
 	<li><code>0 &lt;= start &lt; arr.length</code></li>
 </ul>
 
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Pinterest](https://leetcode.com/company/pinterest), [Goldman Sachs](https://leetcode.com/company/goldman-sachs)
+
 **Related Topics**:  
-[Breadth-first Search](https://leetcode.com/tag/breadth-first-search/), [Graph](https://leetcode.com/tag/graph/)
+[Array](https://leetcode.com/tag/array/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/)
 
 **Similar Questions**:
-* [Jump Game II (Hard)](https://leetcode.com/problems/jump-game-ii/)
+* [Jump Game II (Medium)](https://leetcode.com/problems/jump-game-ii/)
 * [Jump Game (Medium)](https://leetcode.com/problems/jump-game/)
+* [Jump Game VII (Medium)](https://leetcode.com/problems/jump-game-vii/)
 
 ## Solution 1. DFS
 
@@ -78,14 +82,20 @@ public:
     bool canReach(vector<int>& A, int start) {
         queue<int> q;
         q.push(start);
+        A[start] *= -1;
         while (q.size()) {
             int i = q.front();
             q.pop();
             if (A[i] == 0) return true;
-            if (A[i] < 0) continue;
-            if (i + A[i] < A.size()) q.push(i + A[i]);
-            if (i - A[i] >= 0) q.push(i - A[i]);
-            A[i] *= -1;
+            int d = -A[i];
+            if (i + d < A.size() && A[i + d] >= 0) {
+                A[i + d] *= -1;
+                q.push(i + d);
+            }
+            if (i - d >= 0 && A[i - d] >= 0) {
+                A[i - d] *= -1;
+                q.push(i - d);
+            }
         }
         return false;
     }
