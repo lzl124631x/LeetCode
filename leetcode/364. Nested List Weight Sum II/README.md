@@ -45,7 +45,7 @@
 * [Nested List Weight Sum (Medium)](https://leetcode.com/problems/nested-list-weight-sum/)
 * [Array Nesting (Medium)](https://leetcode.com/problems/array-nesting/)
 
-## Solution 1. DFS
+## Solution 1. Double Pass DFS
 
 ```cpp
 // OJ: https://leetcode.com/problems/nested-list-weight-sum-ii/
@@ -73,6 +73,8 @@ public:
 ```
 
 ## Solution 2. Single Pass BFS
+
+Each integer get added **one extra time** for the mere existence of each **one** level under it.
 
 ```cpp
 // OJ: https://leetcode.com/problems/nested-list-weight-sum-ii/
