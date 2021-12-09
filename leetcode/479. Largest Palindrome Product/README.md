@@ -50,11 +50,9 @@ On the other hand, `x >= sqrt(pal)` side guarantees that both `x` and `pal / x` 
 
 For example, for `n = 2, mx = 99`:
 
-If `pal = 9999`, `x`'s range is `sqrt(9999) = 99.99 <= x <= 99`. Note that this range is empty. `pal / x`'s range is `101 <= pal/x <= 99.99`
+If `pal = 9999`, `x`'s range `sqrt(9999) = 99.99 <= x <= 99` is empty. The first `pal` whose `x`'s range is not empty is `pal / x`'s range is `9779`. The corresponding `x`'s range is `sqrt(9779) = 98.89 <= x <= 99`, and `9779/99 = 98.78 <= pal/x <= 98.89`.
 
 If `pal = 1001`, `x`'s range is `sqrt(1001) = 31.64 <= x <= 99`. `pal / x`'s range is `1001 / 99 = 10.11 <= pal/x <= 31.64`. Both `x` and `pal / x` are `n`-digit integers.
-
-A more efficient way is to enumerate `x` from `mx` to `sqrt(pal)` (so that we make sure `x >= pal / x` and don't need to do the unnecessary computations for numbers `< pal / x`) and only check if `pal` is divisible by `x`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/largest-palindrome-product/
