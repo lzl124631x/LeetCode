@@ -1,54 +1,49 @@
 # [866. Prime Palindrome (Medium)](https://leetcode.com/problems/prime-palindrome/)
 
-<p>Find the smallest prime palindrome greater than or equal to <code>N</code>.</p>
+<p>Given an integer n, return <em>the smallest <strong>prime palindrome</strong> greater than or equal to </em><code>n</code>.</p>
 
-<p>Recall that a&nbsp;number is <em>prime</em> if it's only divisors are 1 and itself, and it is greater than 1.&nbsp;</p>
-
-<p>For example, 2,3,5,7,11 and 13 are&nbsp;primes.</p>
-
-<p>Recall that a number is a <em>palindrome</em> if it reads the same from left to right as it does from right to left.&nbsp;</p>
-
-<p>For example, 12321 is a palindrome.</p>
-
-<p>&nbsp;</p>
-
-<div>
-<p><strong>Example 1:</strong></p>
-
-<pre><strong>Input: </strong><span id="example-input-1-1">6</span>
-<strong>Output: </strong><span id="example-output-1">7</span>
-</pre>
-
-<div>
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input: </strong><span id="example-input-2-1">8</span>
-<strong>Output: </strong><span id="example-output-2">11</span>
-</pre>
-
-<div>
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input: </strong><span id="example-input-3-1">13</span>
-<strong>Output: </strong><span id="example-output-3">101</span></pre>
-</div>
-</div>
-</div>
-
-<p>&nbsp;</p>
-
-<p><strong>Note:</strong></p>
+<p>An integer is <strong>prime</strong> if it has exactly two divisors: <code>1</code> and itself. Note that <code>1</code> is not a prime number.</p>
 
 <ul>
-	<li><code>1 &lt;= N &lt;= 10^8</code></li>
-	<li>The answer is guaranteed to exist and be less than <code>2 * 10^8</code>.</li>
+	<li>For example, <code>2</code>, <code>3</code>, <code>5</code>, <code>7</code>, <code>11</code>, and <code>13</code> are all primes.</li>
+</ul>
+
+<p>An integer is a <strong>palindrome</strong> if it reads the same from left to right as it does from right to left.</p>
+
+<ul>
+	<li>For example, <code>101</code> and <code>12321</code> are palindromes.</li>
+</ul>
+
+<p>The test cases are generated so that the answer always exists and is in the range <code>[2, 2 * 10<sup>8</sup>]</code>.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<pre><strong>Input:</strong> n = 6
+<strong>Output:</strong> 7
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> n = 8
+<strong>Output:</strong> 11
+</pre><p><strong>Example 3:</strong></p>
+<pre><strong>Input:</strong> n = 13
+<strong>Output:</strong> 101
+</pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= n &lt;= 10<sup>8</sup></code></li>
 </ul>
 
 
 **Related Topics**:  
 [Math](https://leetcode.com/tag/math/)
 
-## Solution 1.
+**Similar Questions**:
+* [Sum of k-Mirror Numbers (Hard)](https://leetcode.com/problems/sum-of-k-mirror-numbers/)
+
+## Solution 1. Enumerate Palindromes
+
+Enumerate palindromes and check the first one that is `>= n` and is a prime.
 
 ```cpp
 // OJ: https://leetcode.com/problems/prime-palindrome/
@@ -57,27 +52,28 @@
 // Space: O(logN)
 // Ref: https://leetcode.com/problems/prime-palindrome/solution/
 class Solution {
-    bool isPrime(int x) {
-        if (x < 2) return false;
-        for (int d = 2, R = sqrt(x); d <= R; ++d) {
-            if (x % d == 0) return false;
+    int getPalindrome(int half, bool odd) {
+        string s = to_string(half);
+        for (int i = s.size() - 1 - odd; i >= 0; --i) s += s[i];
+        return stoi(s);
+    }
+    bool isPrime(int n) {
+        if (n < 2) return false;
+        for (int d = 2; d * d <= n; ++d) {
+            if (n % d == 0) return false;
         }
         return true;
     }
 public:
-    int primePalindrome(int N) {
-        for (int L = 1; L <= 5; ++L) {
-            for (int root = pow(10, L - 1); root < pow(10, L); ++root) { // check for odd-length palindromes
-                auto s = to_string(root);
-                for (int k = L - 2; k >= 0; --k) s += s[k];
-                int x = stoi(s);
-                if (x >= N && isPrime(x)) return x;
+    int primePalindrome(int n) {
+        for (int len = 1; len <= 5; ++len) {
+            for (int root = pow(10, len - 1); root < pow(10, len); ++root) { // Enumerate odd-length palindromes
+                int pal = getPalindrome(root, true);
+                if (pal >= n && isPrime(pal)) return pal;
             }
-            for (int root = pow(10, L - 1); root < pow(10, L); ++root) {
-                auto s = to_string(root);
-                for (int k = L - 1; k >= 0; --k) s += s[k];
-                int x = stoi(s);
-                if (x >= N && isPrime(x)) return x;
+            for (int root = pow(10, len - 1); root < pow(10, len); ++root) { // Enumerate even-length palindromes
+                int pal = getPalindrome(root, false);
+                if (pal >= n && isPrime(pal)) return pal;
             }
         }
         return -1;
@@ -85,7 +81,19 @@ public:
 };
 ```
 
+Another way for `getPalindrome`
+
+```cpp
+int getPalindrome(int half, bool odd) {
+    string s = to_string(half), r(rbegin(s), rend(s));
+    if (odd) s.pop_back();
+    return stoi(s + r);
+}
+```
+
 ## Solution 2. Brute Force with Mathematical Shortcut
+
+All even-digit palindromes, except for 11, are not primes because they are divisible by `11`. For example, `2332 / 11 = 212`
 
 ```cpp
 // OJ: https://leetcode.com/problems/prime-palindrome/
@@ -94,18 +102,18 @@ public:
 // Space: O(1)
 // Ref: https://leetcode.com/problems/prime-palindrome/solution/
 class Solution {
-    bool isPrime(int x) {
-        if (x < 2) return false;
-        for (int d = 2, R = sqrt(x); d <= R; ++d) {
-            if (x % d == 0) return false;
+    bool isPrime(int n) {
+        if (n < 2) return false;
+        for (int d = 2; d * d <= n; ++d) {
+            if (n % d == 0) return false;
         }
         return true;
     }
-    int reverse(int N) {
+    int reverse(int n) {
         int ans = 0;
-        while (N > 0) {
-            ans = 10 * ans + (N % 10);
-            N /= 10;
+        while (n > 0) {
+            ans = 10 * ans + (n % 10);
+            n /= 10;
         }
         return ans;
     }
@@ -118,4 +126,19 @@ public:
         }
     }
 };
+```
+
+Another way for `primePalindrome`
+
+```cpp
+int digits(int n) {
+    return (int)log10(n) + 1;
+}
+int primePalindrome(int n) {
+    while (true) {
+        if (n == reverse(n) && isPrime(n)) return n;
+        ++n;
+        if (n > 11 && digits(n) % 2 == 0) n = pow(10, digits(n));
+    }
+}
 ```
