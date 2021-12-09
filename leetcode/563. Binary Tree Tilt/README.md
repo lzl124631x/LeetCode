@@ -2,7 +2,7 @@
 
 <p>Given the <code>root</code> of a binary tree, return <em>the sum of every tree node's <strong>tilt</strong>.</em></p>
 
-<p>The <strong>tilt</strong> of a tree node is the <b>absolute difference</b> between the sum of all left subtree node <strong>values</strong> and all right subtree node <strong>values</strong>. If a node does not have a left child, then the sum of the left subtree node <strong>values</strong> is treated as <code>0</code>. The rule is similar if there the node does not have a right child.</p>
+<p>The <strong>tilt</strong> of a tree node is the <strong>absolute difference</strong> between the sum of all left subtree node <strong>values</strong> and all right subtree node <strong>values</strong>. If a node does not have a left child, then the sum of the left subtree node <strong>values</strong> is treated as <code>0</code>. The rule is similar if the node does not have a right child.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -12,7 +12,7 @@
 <strong>Explanation:</strong> 
 Tilt of node 2 : |0-0| = 0 (no children)
 Tilt of node 3 : |0-0| = 0 (no children)
-Tile of node 1 : |2-3| = 1 (left subtree is just left child, so sum is 2; right subtree is just right child, so sum is 3)
+Tilt of node 1 : |2-3| = 1 (left subtree is just left child, so sum is 2; right subtree is just right child, so sum is 3)
 Sum of every tilt : 0 + 0 + 1 = 1
 </pre>
 
@@ -44,8 +44,12 @@ Sum of every tilt : 0 + 0 + 0 + 2 + 7 + 6 = 15
 	<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>
 </ul>
 
+
+**Companies**:  
+[Indeed](https://leetcode.com/company/indeed)
+
 **Related Topics**:  
-[Tree](https://leetcode.com/tag/tree/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Recursion](https://leetcode.com/tag/recursion/)
+[Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
 
 **Similar Questions**:
 * [Find All The Lonely Nodes (Easy)](https://leetcode.com/problems/find-all-the-lonely-nodes/)
