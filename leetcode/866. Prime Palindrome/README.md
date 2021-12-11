@@ -43,7 +43,7 @@
 
 ## Solution 1. Enumerate Palindromes
 
-Enumerate palindromes and check the first one that is `>= n` and is a prime.
+Enumerate palindromes and return the first one that is `>= n` and is a prime.
 
 ```cpp
 // OJ: https://leetcode.com/problems/prime-palindrome/
@@ -81,14 +81,39 @@ public:
 };
 ```
 
-Another way for `getPalindrome`
+Or
 
 ```cpp
-int getPalindrome(int half, bool odd) {
-    string s = to_string(half), r(rbegin(s), rend(s));
-    if (odd) s.pop_back();
-    return stoi(s + r);
-}
+// OJ: https://leetcode.com/problems/prime-palindrome/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+    int getPalindrome(int half, bool odd) {
+        int pal = half;
+        if (odd) half /= 10;
+        for (; half; half /= 10) pal = pal * 10 + half % 10;
+        return pal;
+    }
+    bool isPrime(int n) {
+        if (n < 2) return false;
+        for (int d = 2; d * d <= n; ++d) {
+            if (n % d == 0) return false;
+        }
+        return true;
+    }
+public:
+    int primePalindrome(int n) {
+        for (int len = 1; true; ++len) {
+            int begin = pow(10, (len - 1) / 2), end = pow(10, (len + 1) / 2);
+            for (int half = begin; half < end; ++half) {
+                int pal = getPalindrome(half, len % 2);
+                if (pal >= n && isPrime(pal)) return pal;
+            }
+        }
+        return -1;
+    }
+};
 ```
 
 ## Solution 2. Brute Force with Mathematical Shortcut
