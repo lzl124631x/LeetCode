@@ -1670,6 +1670,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2095 | Delete the Middle Node of a Linked List | Medium | [Solution](leetcode/2095.%20Delete%20the%20Middle%20Node%20of%20a%20Linked%20List)
 2096 | Step-By-Step Directions From a Binary Tree Node to Another | Medium | [Solution](leetcode/2096.%20Step-By-Step%20Directions%20From%20a%20Binary%20Tree%20Node%20to%20Another)
 2097 | Valid Arrangement of Pairs | Hard | [Solution](leetcode/2097.%20Valid%20Arrangement%20of%20Pairs)
+2099 | Find Subsequence of Length K With the Largest Sum | Easy | [Solution](leetcode/2099.%20Find%20Subsequence%20of%20Length%20K%20With%20the%20Largest%20Sum)
+2100 | Find Good Days to Rob the Bank | Medium | [Solution](leetcode/2100.%20Find%20Good%20Days%20to%20Rob%20the%20Bank)
+2101 | Detonate the Maximum Bombs | Medium | [Solution](leetcode/2101.%20Detonate%20the%20Maximum%20Bombs)
+2102 | Sequentially Ordinal Rank Tracker | Hard | [Solution](leetcode/2102.%20Sequentially%20Ordinal%20Rank%20Tracker)
 
 # License
 

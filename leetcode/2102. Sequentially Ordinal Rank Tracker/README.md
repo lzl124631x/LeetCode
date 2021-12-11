@@ -80,8 +80,6 @@ If we create custom object for the location, we need to add quite a few lines of
 
 Since `score` should be sorted in descending order, we negate all the scores before adding them into the set.
 
-Adding a sentinel can simply the code.
-
 For `set`'s iterator, even though we can't do `it = it + 1`, we can do `++it`.
 
 ```cpp
@@ -104,6 +102,32 @@ public:
         pair<int, string> p = {-score, name};
         s.insert(p);
         if (p < *it) --it;
+    }
+    string get() {
+        return it++->second;
+    }
+};
+```
+
+Or without sentinel
+
+```cpp
+// OJ: https://leetcode.com/problems/sequentially-ordinal-rank-tracker/
+// Author: github.com/lzl124631x
+// Time: 
+//      SORTracker: O(1)
+//      add: O(logN)
+//      get: O(1)
+// Space: O(N)
+class SORTracker {
+    set<pair<int, string>> s;
+    set<pair<int, string>>::iterator it = s.end();
+public:
+    SORTracker() {}
+    void add(string name, int score) {
+        pair<int, string> p = {-score, name};
+        s.insert(p);
+        if (it == s.end() || p < *it) --it;
     }
     string get() {
         return it++->second;
