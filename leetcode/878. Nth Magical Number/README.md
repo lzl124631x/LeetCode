@@ -27,6 +27,9 @@
 </ul>
 
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon)
+
 **Related Topics**:  
 [Math](https://leetcode.com/tag/math/), [Binary Search](https://leetcode.com/tag/binary-search/)
 
@@ -40,8 +43,8 @@
 class Solution {
 public:
     int nthMagicalNumber(int n, int a, int b) {
-        long long L = 2, R = (long long)n * min(a, b), mod = 1e9 + 7;
-        auto valid = [&](long long M) { // returns `true` is the number of divisible numbers <= M is greater than or equal to n
+        long L = 2, R = (long)n * min(a, b), mod = 1e9 + 7;
+        auto valid = [&](long M) { // returns `true` is the number of divisible numbers <= M is greater than or equal to n
             return M / a + M / b - M / (a * b / gcd(a, b)) >= n;
         };
         while (L <= R) {
@@ -50,6 +53,46 @@ public:
             else L = M + 1;
         }
         return L % mod;
+    }
+};
+```
+
+## Solution 2. Math
+
+The pattern of magical numbers repeats.
+
+Let `L` be the least common multiple of `a` and `b`. If `x < L` is magical, then `x + L` is magical. Because, say `x = k * a`, `L = a * b / gcd(a, b)`, then `x + L = [k + b / gcd(a,b)] * a`. Example: `a = 3, b = 11, L = 33, x = 6, x + L = 39`.
+
+There are `M = L/a + L/b - 1` magical numbers `<= L`:
+* `L/a` of them are divisible by `a`
+* `L/b` of them are divisible by `b`
+* `1` of them are divisible by both `a` and `b`.
+
+So, for the first `L` numbers `[1, L]`, there are `M` of them are magical. Adding `L` to each of them, we know that for the second `L` numbers `[L+1, 2L]`, there are also `M` magical numbers. And so on.
+
+Suppose `n = M * q + r` and `r < M`. The first `L * q` numbers contain `M * q` magical numbers.
+
+For the remainder `r` magical numbers, we enumerate the smallest `r` numbers among `a, 2a, 3a, ...` and `b, 2b, 3b, ...`.
+
+Time complexity: The calculation of the `r`th magical number after `q * M` is `O(M) = O(A + B)`.
+
+```cpp
+// OJ: https://leetcode.com/problems/nth-magical-number/
+// Author: github.com/lzl124631x
+// Time: O(A + B)
+// Space: O(1)
+class Solution {
+public:
+    int nthMagicalNumber(int n, int a, int b) {
+        long mod = 1e9 + 7, L = a * b / gcd(a, b), M = L / a + L / b - 1, q = n / M, r = n % M, ans = (long)q * L % mod;
+        int val[2] = {0, 0};
+        for (int i = 0; i < r; ++i) {
+            auto [x, y] = val;
+            if (x <= y) val[0] += a;
+            if (y <= x) val[1] += b;
+        }
+        ans += min(val[0], val[1]);
+        return ans % mod;
     }
 };
 ```
