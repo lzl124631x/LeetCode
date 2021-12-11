@@ -35,6 +35,8 @@
 
 ## Solution 1. Binary Search + Inclusion-exclusion Principle
 
+`L <= R` template.
+
 ```cpp
 // OJ: https://leetcode.com/problems/nth-magical-number/
 // Author: github.com/lzl124631x
@@ -50,6 +52,30 @@ public:
         while (L <= R) {
             long M = L + (R - L) / 2;
             if (valid(M)) R = M - 1;
+            else L = M + 1;
+        }
+        return L % mod;
+    }
+};
+```
+
+Or `L < R` template
+
+```cpp
+// OJ: https://leetcode.com/problems/nth-magical-number/
+// Author: github.com/lzl124631x
+// Time: O(log(N * min(A, B)))
+// Space: O(1)
+class Solution {
+public:
+    int nthMagicalNumber(int n, int a, int b) {
+        long L = 2, R = (long)n * min(a, b), mod = 1e9 + 7;
+        auto valid = [&](long M) { // returns `true` is the number of divisible numbers <= M is greater than or equal to n
+            return M / a + M / b - M / (a * b / gcd(a, b)) >= n;
+        };
+        while (L < R) {
+            long M = L + (R - L) / 2;
+            if (valid(M)) R = M;
             else L = M + 1;
         }
         return L % mod;
