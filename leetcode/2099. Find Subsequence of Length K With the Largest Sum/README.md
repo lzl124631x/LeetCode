@@ -111,3 +111,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/find-subsequence-of-length-k-with-the-largest-sum/discuss/1623427/C%2B%2B-Sorting-or-Quick-Select
