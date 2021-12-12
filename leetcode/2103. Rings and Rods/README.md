@@ -60,7 +60,7 @@ Only one ring is given. Thus, no rods have all three colors.
 ## Solution 1. Counting
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-271/problems/rings-and-rods/
+// OJ: https://leetcode.com/problems/rings-and-rods/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
@@ -76,6 +76,28 @@ public:
         for (int i = 0; i < 10; ++i) {
             ans += cnt[i][0] && cnt[i][1] && cnt[i][2];
         }
+        return ans;
+    }
+};
+```
+
+## Solution 2. Counting with Bitmask
+
+```cpp
+// OJ: https://leetcode.com/problems/rings-and-rods/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int countPoints(string s) {
+        char cnt[10] = {};
+        for (int i = 0; i < s.size(); i += 2) {
+            int color = s[i] == 'R' ? 0 : (s[i] == 'G' ? 1 : 2), index = s[i + 1] - '0';
+            cnt[index] |= 1 << color;
+        }
+        int ans = 0;
+        for (int i = 0; i < 10; ++i) ans += cnt[i] == 0b111;
         return ans;
     }
 };
