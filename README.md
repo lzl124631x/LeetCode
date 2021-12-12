@@ -1674,6 +1674,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2100 | Find Good Days to Rob the Bank | Medium | [Solution](leetcode/2100.%20Find%20Good%20Days%20to%20Rob%20the%20Bank)
 2101 | Detonate the Maximum Bombs | Medium | [Solution](leetcode/2101.%20Detonate%20the%20Maximum%20Bombs)
 2102 | Sequentially Ordinal Rank Tracker | Hard | [Solution](leetcode/2102.%20Sequentially%20Ordinal%20Rank%20Tracker)
+2103 | Rings and Rods | Easy | [Solution](leetcode/2103.%20Rings%20and%20Rods)
+2104 | Sum of Subarray Ranges | Medium | [Solution](leetcode/2104.%20Sum%20of%20Subarray%20Ranges)
+2105 | Watering Plants II | Medium | [Solution](leetcode/2105.%20Watering%20Plants%20II)
+2106 | Maximum Fruits Harvested After at Most K Steps | Hard | [Solution](leetcode/2106.%20Maximum%20Fruits%20Harvested%20After%20at%20Most%20K%20Steps)
 
 # License
 
