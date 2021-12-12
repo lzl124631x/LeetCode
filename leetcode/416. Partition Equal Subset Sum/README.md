@@ -38,7 +38,7 @@
 * [Maximum Number of Ways to Partition an Array (Hard)](https://leetcode.com/problems/maximum-number-of-ways-to-partition-an-array/)
 * [Partition Array Into Two Arrays to Minimize Sum Difference (Hard)](https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/)
 
-## Solution 1.
+## Solution 1. DP
 
 ```cpp
 // OJ: https://leetcode.com/problems/partition-equal-subset-sum/
@@ -159,3 +159,7 @@ public:
     }
 };
 ```
+
+## NOTE
+
+Related to [494. Target Sum (Medium)](https://leetcode.com/problems/target-sum/)
