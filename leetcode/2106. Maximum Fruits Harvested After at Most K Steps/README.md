@@ -106,6 +106,16 @@ public:
 
 ## Solution 2. Sliding Window
 
+Note: when comparing 2 vectors, the result is determined in the following order:
+1. The first place where the values differ between the two arrays. 
+2. If we've exhausted one array and still can't have a difference, the array with longer length is greater.
+
+In the following code, we use `{start - k}` in the binary search. It is always smaller than a position with the same `x` value `{start - k, amount}`. So using `upper_bound` or `lower_bound` makes no difference.
+
+`(start - A[i][0]) + (A[j][0] - A[i][0])` is the steps needed to go left first then right.
+
+`(A[j][0] - A[i][0]) + (A[j][0] - start)` is the steps needed to go right first then left.
+
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-fruits-harvested-after-at-most-k-steps/
 // Author: github.com/lzl124631x
