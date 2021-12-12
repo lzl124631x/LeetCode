@@ -1,44 +1,42 @@
 # [416. Partition Equal Subset Sum (Medium)](https://leetcode.com/problems/partition-equal-subset-sum/)
 
-<p>Given a <b>non-empty</b> array containing <b>only positive integers</b>, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.</p>
-
-<p><b>Note:</b></p>
-
-<ol>
-	<li>Each of the array element will not exceed 100.</li>
-	<li>The array size will not exceed 200.</li>
-</ol>
+<p>Given a <strong>non-empty</strong> array <code>nums</code> containing <strong>only positive integers</strong>, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.</p>
 
 <p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-<p><b>Example 1:</b></p>
+<pre><strong>Input:</strong> nums = [1,5,11,5]
+<strong>Output:</strong> true
+<strong>Explanation:</strong> The array can be partitioned as [1, 5, 5] and [11].
+</pre>
 
-<pre>Input: [1, 5, 11, 5]
+<p><strong>Example 2:</strong></p>
 
-Output: true
-
-Explanation: The array can be partitioned as [1, 5, 5] and [11].
+<pre><strong>Input:</strong> nums = [1,2,3,5]
+<strong>Output:</strong> false
+<strong>Explanation:</strong> The array cannot be partitioned into equal sum subsets.
 </pre>
 
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><b>Example 2:</b></p>
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 200</code></li>
+	<li><code>1 &lt;= nums[i] &lt;= 100</code></li>
+</ul>
 
-<pre>Input: [1, 2, 3, 5]
 
-Output: false
-
-Explanation: The array cannot be partitioned into equal sum subsets.
-</pre>
-
-<p>&nbsp;</p>
-
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft), [Uber](https://leetcode.com/company/uber), [Apple](https://leetcode.com/company/apple), [Bloomberg](https://leetcode.com/company/bloomberg), [tcs](https://leetcode.com/company/tcs)
 
 **Related Topics**:  
-[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
 **Similar Questions**:
 * [Partition to K Equal Sum Subsets (Medium)](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/)
+* [Minimize the Difference Between Target and Chosen Elements (Medium)](https://leetcode.com/problems/minimize-the-difference-between-target-and-chosen-elements/)
+* [Maximum Number of Ways to Partition an Array (Hard)](https://leetcode.com/problems/maximum-number-of-ways-to-partition-an-array/)
+* [Partition Array Into Two Arrays to Minimize Sum Difference (Hard)](https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/)
 
 ## Solution 1.
 
@@ -79,6 +77,8 @@ dp[i+1][j] = dp[i][j] || (j >= A[i] && dp[i][j - A[i]])
 dp[i][0] = true where 0 <= i <= N
 ```
 
+If any `dp[i + 1][sum / 2]` is `true`, we return `true`. Otherwise, return `false`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/partition-equal-subset-sum/
 // Author: github.com/lzl124631x
@@ -96,8 +96,9 @@ public:
             for (int j = 1; j <= sum; ++j) {
                 dp[i + 1][j] = dp[i][j] || (j >= A[i] && dp[i][j - A[i]]);
             }
+            if (dp[i + 1][sum]) return true;
         }
-        return dp[N][sum];
+        return false;
     }
 };
 ```
@@ -123,37 +124,14 @@ public:
             for (int j = sum; j >= A[i]; --j) {
                 dp[j] = dp[j] || dp[j - A[i]];
             }
+            if (dp[sum]) return true;
         }
-        return dp[sum];
+        return false;
     }
 };
 ```
 
-Or
-
-```cpp
-// OJ: https://leetcode.com/problems/partition-equal-subset-sum
-// Author: github.com/lzl124631x
-// Time: O(NS)
-// Space: O(S) where S the sum of nums.
-class Solution {
-private:
-  bool subsetSum(vector<int> &nums, int S) {
-    vector<int> dp(S + 1);
-    dp[0] = 1;
-    for (int n : nums)
-      for (int i = S; i >= n; --i) dp[i] += dp[i - n];
-    return dp[S];
-  }
-public:
-  bool canPartition(vector<int>& nums) {
-    int sum = accumulate(nums.begin(), nums.end(), 0);
-    return sum % 2 == 0 && subsetSum(nums, sum / 2);
-  }
-};
-```
-
-## Solution 4. DP
+## Solution 4. DP (Bitmask Subset Sum)
 
 Create a bitmask `bits` of size `MAX_NUM * MAX_ARRAY_SIZE / 2 + 1`. If we can sum to `i`, then `bits[i] = 1`; otherwise `bits[i] = 0`.
 
