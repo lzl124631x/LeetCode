@@ -1,8 +1,8 @@
 # [1446. Consecutive Characters (Easy)](https://leetcode.com/problems/consecutive-characters/)
 
-<p>Given a string <code>s</code>, the power of the string is the maximum length of a non-empty substring that&nbsp;contains only one unique character.</p>
+<p>The <strong>power</strong> of the string is the maximum length of a non-empty substring that contains only one unique character.</p>
 
-<p>Return <em>the power</em>&nbsp;of the string.</p>
+<p>Given a string <code>s</code>, return <em>the <strong>power</strong> of</em> <code>s</code>.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -42,14 +42,19 @@
 
 <ul>
 	<li><code>1 &lt;= s.length &lt;= 500</code></li>
-	<li><code>s</code> contains only lowercase English letters.</li>
+	<li><code>s</code> consists of only lowercase English letters.</li>
 </ul>
+
+
+**Companies**:  
+[Microsoft](https://leetcode.com/company/microsoft)
 
 **Related Topics**:  
 [String](https://leetcode.com/tag/string/)
 
 **Similar Questions**:
 * [Max Consecutive Ones (Easy)](https://leetcode.com/problems/max-consecutive-ones/)
+* [Count Number of Homogenous Substrings (Medium)](https://leetcode.com/problems/count-number-of-homogenous-substrings/)
 
 ## Solution 1.
 
