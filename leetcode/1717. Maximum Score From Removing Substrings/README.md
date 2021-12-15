@@ -46,14 +46,17 @@ Total score = 5 + 4 + 5 + 5 = 19.</pre>
 </ul>
 
 
+**Companies**:  
+[Google](https://leetcode.com/company/google)
+
 **Related Topics**:  
-[Greedy](https://leetcode.com/tag/greedy/)
+[String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/)
 
 ## Solution 1. Greedy
 
 We greedily remove the pattern with greater points, then remove the other pattern.
 
-For removing the pattern string recursively, we can reuse [the solution](https://github.com/lzl124631x/LeetCode/blob/master/leetcode/1003.%20Check%20If%20Word%20Is%20Valid%20After%20Substitutions/README.md) to [1003. Check If Word Is Valid After Substitutions (Medium)](https://leetcode.com/problems/check-if-word-is-valid-after-substitutions/)
+For removing the pattern string iteratively, we can reuse [the solution](https://github.com/lzl124631x/LeetCode/blob/master/leetcode/1003.%20Check%20If%20Word%20Is%20Valid%20After%20Substitutions/README.md) to [1003. Check If Word Is Valid After Substitutions (Medium)](https://leetcode.com/problems/check-if-word-is-valid-after-substitutions/)
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-score-from-removing-substrings/
@@ -85,6 +88,10 @@ Assume `score(ab) > score(ba)` but removing `ba` first is optimal.
 
 This could only happen when the removal of a single `ab` prevents 2 `ba` removals, and `score(remove ba first) > score(remove ab first)` i.e. `score(ba) * 2 > score(ab)`.
 
-Only `b(ab)a` satisfies this requirement. But we after removing `ab` we can remove one `ba`, so we get `score(ab) + score(ba)` which is greater than `score(ba) * 2`.
+Only `b(ab)a` satisfies this requirement. But after removing `ab` we can remove one `ba`, so we get `score(ab) + score(ba)` which is greater than `score(ba) * 2`.
 
 Thus removing `ba` first is not optimal, the assumption is wrong.
+
+## Discuss
+
+https://leetcode.com/problems/maximum-score-from-removing-substrings/discuss/1009028/C%2B%2B-Greedy-O(N)-Time-O(1)-Space
