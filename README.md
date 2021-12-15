@@ -551,6 +551,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 621 | Task Scheduler | Medium | [Solution](leetcode/621.%20Task%20Scheduler)
 622 | Design Circular Queue | Medium | [Solution](leetcode/622.%20Design%20Circular%20Queue)
 623 | Add One Row to Tree | Medium | [Solution](leetcode/623.%20Add%20One%20Row%20to%20Tree)
+624 | Maximum Distance in Arrays | Medium | [Solution](leetcode/624.%20Maximum%20Distance%20in%20Arrays)
 627 | Swap Salary | Easy | [Solution](leetcode/627.%20Swap%20Salary)
 628 | Maximum Product of Three Numbers | Easy | [Solution](leetcode/628.%20Maximum%20Product%20of%20Three%20Numbers)
 629 | K Inverse Pairs Array | Hard | [Solution](leetcode/629.%20K%20Inverse%20Pairs%20Array)
