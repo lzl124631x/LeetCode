@@ -1,21 +1,42 @@
 # [221. Maximal Square (Medium)](https://leetcode.com/problems/maximal-square/)
 
-<p>Given a 2D binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.</p>
+<p>Given an <code>m x n</code> binary <code>matrix</code> filled with <code>0</code>'s and <code>1</code>'s, <em>find the largest square containing only</em> <code>1</code>'s <em>and return its area</em>.</p>
 
-<p><strong>Example:</strong></p>
-
-<pre><strong>Input: 
-</strong>
-1 0 1 0 0
-1 0 <font color="red">1</font> <font color="red">1</font> 1
-1 1 <font color="red">1</font> <font color="red">1</font> 1
-1 0 0 1 0
-
-<strong>Output: </strong>4
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/11/26/max1grid.jpg" style="width: 400px; height: 319px;">
+<pre><strong>Input:</strong> matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
+<strong>Output:</strong> 4
 </pre>
 
+<p><strong>Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/11/26/max2grid.jpg" style="width: 165px; height: 165px;">
+<pre><strong>Input:</strong> matrix = [["0","1"],["1","0"]]
+<strong>Output:</strong> 1
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> matrix = [["0"]]
+<strong>Output:</strong> 0
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>m == matrix.length</code></li>
+	<li><code>n == matrix[i].length</code></li>
+	<li><code>1 &lt;= m, n &lt;= 300</code></li>
+	<li><code>matrix[i][j]</code> is <code>'0'</code> or <code>'1'</code>.</li>
+</ul>
+
+
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Visa](https://leetcode.com/company/visa), [Microsoft](https://leetcode.com/company/microsoft), [IBM](https://leetcode.com/company/ibm), [Google](https://leetcode.com/company/google), [Twitter](https://leetcode.com/company/twitter), [Apple](https://leetcode.com/company/apple), [Booking.com](https://leetcode.com/company/bookingcom), [Indeed](https://leetcode.com/company/indeed)
+
 **Related Topics**:  
-[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Matrix](https://leetcode.com/tag/matrix/)
 
 **Similar Questions**:
 * [Maximal Rectangle (Hard)](https://leetcode.com/problems/maximal-rectangle/)
@@ -67,7 +88,7 @@ With these two arrays, for each `matrix[i][j]`, the side length of the square wh
 ```cpp
 // OJ: https://leetcode.com/problems/maximal-square/
 // Author: github.com/lzl124631x
-// Time: O(MN^2)
+// Time: O(M * N^2)
 // Space: O(MN)
 class Solution {
 public:
@@ -105,7 +126,7 @@ public:
 };
 ```
 
-## Solution 3. DP
+## Solution 3. Bottom-up DP
 
 Let `dp[i + 1][j + 1]` be the side length of the maximal square whose bottom right corner is at `matrix[i][j]`. Then we have:
 
@@ -121,13 +142,13 @@ dp[i + 1][j + 1] = min(dp[i][j], dp[i][j + 1], dp[i + 1][j]) + 1
 class Solution {
 public:
     int maximalSquare(vector<vector<char>>& A) {
-        if (A.empty() || A[0].empty()) return 0;
         int M = A.size(), N = A[0].size(), ans = 0;
         vector<vector<int>> dp(M + 1, vector<int>(N + 1));
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
                 if (A[i][j] == '0') continue;
-                ans = max(ans, dp[i + 1][j + 1] = min({ dp[i][j], dp[i][j + 1], dp[i + 1][j] }) + 1);
+                dp[i + 1][j + 1] = 1 + min({ dp[i][j], dp[i + 1][j], dp[i][j + 1] });
+                ans = max(ans, dp[i + 1][j + 1]);
             }
         }
         return ans * ans;
@@ -135,7 +156,7 @@ public:
 };
 ```
 
-## Solution 4. DP
+## Solution 4. Bottom-up DP with Space Optimization
 
 ```
    dp[i][j]    dp[i][j + 1]
@@ -148,10 +169,13 @@ dp[i+1][j] --  dp[i + 1][j + 1]
 Given the dependency above, we can use a `2 * N` array to store the DP values.
 
 ```cpp
+// OJ: https://leetcode.com/problems/maximal-square/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(N)
 class Solution {
 public:
     int maximalSquare(vector<vector<char>>& A) {
-        if (A.empty() || A[0].empty()) return 0;
         int M = A.size(), N = A[0].size(), ans = 0;
         vector<vector<int>> dp(2, vector<int>(N + 1));
         for (int i = 0; i < M; ++i) {
@@ -165,9 +189,7 @@ public:
 };
 ```
 
-## Solution 5. DP
-
-Use `prev` to store the `dp[i][j]`, then we can further reduce the `dp` array to 1D array.
+Or via swapping arrays.
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximal-square/
@@ -177,14 +199,39 @@ Use `prev` to store the `dp[i][j]`, then we can further reduce the `dp` array to
 class Solution {
 public:
     int maximalSquare(vector<vector<char>>& A) {
-        if (A.empty() || A[0].empty()) return 0;
+        int M = A.size(), N = A[0].size(), ans = 0;
+        vector<int> dp(N + 1), next;
+        for (int i = 0; i < M; ++i) {
+            next.assign(N + 1, 0);
+            for (int j = 0; j < N; ++j) {
+                if (A[i][j] == '0') continue;
+                next[j + 1] = 1 + min({ dp[j], dp[j + 1], next[j] });
+                ans = max(ans, next[j + 1]);
+            }
+            swap(next, dp);
+        }
+        return ans * ans;
+    }
+};
+```
+
+Or: Use a `prev` variable to store the `dp[i][j]`, then we can further reduce the `dp` array to 1D array.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximal-square/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(N)
+class Solution {
+public:
+    int maximalSquare(vector<vector<char>>& A) {
         int M = A.size(), N = A[0].size(), ans = 0;
         vector<int> dp(N + 1, 0);
         for (int i = 0; i < M; ++i) {
             int prev = 0;
             for (int j = 0; j < N; ++j) {
                 int cur = dp[j + 1];
-                if (A[i][j] == '1') dp[j + 1] = 1 + min({dp[j], dp[j + 1], prev});
+                if (A[i][j] == '1') dp[j + 1] = 1 + min({ prev, dp[j], dp[j + 1] });
                 else dp[j + 1] = 0;
                 prev = cur;
                 ans = max(ans, dp[j + 1]);
