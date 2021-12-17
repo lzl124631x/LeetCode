@@ -1026,6 +1026,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1201 | Ugly Number III | Medium | [Solution](leetcode/1201.%20Ugly%20Number%20III)
 1202 | Smallest String With Swaps | Medium | [Solution](leetcode/1202.%20Smallest%20String%20With%20Swaps)
 1203 | Sort Items by Groups Respecting Dependencies | Hard | [Solution](leetcode/1203.%20Sort%20Items%20by%20Groups%20Respecting%20Dependencies)
+1206 | Design Skiplist | Hard | [Solution](leetcode/1206.%20Design%20Skiplist)
 1207 | Unique Number of Occurrences | Easy | [Solution](leetcode/1207.%20Unique%20Number%20of%20Occurrences)
 1208 | Get Equal Substrings Within Budget | Medium | [Solution](leetcode/1208.%20Get%20Equal%20Substrings%20Within%20Budget)
 1209 | Remove All Adjacent Duplicates in String II | Medium | [Solution](leetcode/1209.%20Remove%20All%20Adjacent%20Duplicates%20in%20String%20II)
