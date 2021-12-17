@@ -75,44 +75,41 @@ skiplist.search(1); // return False, 1 has already been erased.</pre>
 //      search, add, erase: O(logN)
 // Space: O(N)
 struct Node {
-    Node *right = nullptr, *down = nullptr;
     int val;
-    Node(int val) : val(val) {}
-    Node(int val, Node *right, Node *down): val(val), right(right), down(down) {}
+    Node *right = nullptr, *down = nullptr;
+    Node(int val) : val(val) {};
+    Node(int val, Node *right, Node *down) : val(val), right(right), down(down) {}
 };
 class Skiplist {
     Node *head = new Node(-1, nullptr, nullptr);
 public:
     Skiplist() {}
-    bool search(int n) {
+    bool search(int target) {
         auto p = head;
         while (p) {
-            while (p->right && p->right->val < n) p = p->right;
-            if (p->right && p->right->val == n) return true;
+            while (p->right && p->right->val < target) p = p->right;
+            if (p->right && p->right->val == target) return true;
             p = p->down;
         }
         return false;
     }
     void add(int n) {
-        vector<Node*> insertPoints;
+        vector<Node*> insertionPoints;
         auto p = head;
         while (p) {
-            while (p->right && p->right->val < n) p = p->right;
-            insertPoints.push_back(p);
+            while (p->right && p->right-> val < n) p = p->right;
+            insertionPoints.push_back(p);
             p = p->down;
         }
-        Node* downNode = nullptr;
         bool insertUp = true;
-        while (insertUp && insertPoints.size()) {
-            auto ins = insertPoints.back();
-            insertPoints.pop_back();
-            ins->right = new Node(n, ins->right, downNode);
-            downNode = ins->right;
+        Node *downNode = nullptr;
+        while (insertUp && insertionPoints.size()) {
+            auto ins = insertionPoints.back();
+            insertionPoints.pop_back();
+            ins->right = downNode = new Node(n, ins->right, downNode);
             insertUp = rand() % 2;
         }
-        if (insertUp) {
-            head = new Node(-1, new Node(n, nullptr, downNode), head);
-        }
+        if (insertUp) head = new Node(-1, new Node(n, nullptr, downNode), head);
     }
     bool erase(int n) {
         auto p = head;
@@ -122,10 +119,10 @@ public:
             if (p->right && p->right->val == n) {
                 seen = true;
                 auto rm = p->right;
-                p->right = p->right->right;
+                p->right = rm->right;
                 delete rm;
-                p = p->down;
-            } else p = p->down;
+            }
+            p = p->down;
         }
         return seen;
     }
