@@ -1,28 +1,89 @@
 # [85. Maximal Rectangle (Hard)](https://leetcode.com/problems/maximal-rectangle/)
 
-<p>Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.</p>
+<p>Given a <code>rows x cols</code>&nbsp;binary <code>matrix</code> filled with <code>0</code>'s and <code>1</code>'s, find the largest rectangle containing only <code>1</code>'s and return <em>its area</em>.</p>
 
-<p><strong>Example:</strong></p>
-
-<pre><strong>Input:</strong>
-[
-  ["1","0","1","0","0"],
-  ["1","0","<strong>1</strong>","<strong>1</strong>","<strong>1</strong>"],
-  ["1","1","<strong>1</strong>","<strong>1</strong>","<strong>1</strong>"],
-  ["1","0","0","1","0"]
-]
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/09/14/maximal.jpg" style="width: 402px; height: 322px;">
+<pre><strong>Input:</strong> matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
 <strong>Output:</strong> 6
+<strong>Explanation:</strong> The maximal rectangle is shown in the above picture.
 </pre>
 
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> matrix = [["0"]]
+<strong>Output:</strong> 0
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> matrix = [["1"]]
+<strong>Output:</strong> 1
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>rows == matrix.length</code></li>
+	<li><code>cols == matrix[i].length</code></li>
+	<li><code>1 &lt;= row, cols &lt;= 200</code></li>
+	<li><code>matrix[i][j]</code> is <code>'0'</code> or <code>'1'</code>.</li>
+</ul>
+
+
+**Companies**:  
+[Google](https://leetcode.com/company/google), [Amazon](https://leetcode.com/company/amazon), [Apple](https://leetcode.com/company/apple), [Dunzo](https://leetcode.com/company/dunzo), [Bloomberg](https://leetcode.com/company/bloomberg)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Stack](https://leetcode.com/tag/stack/)
+[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Stack](https://leetcode.com/tag/stack/), [Matrix](https://leetcode.com/tag/matrix/), [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/)
 
 **Similar Questions**:
 * [Largest Rectangle in Histogram (Hard)](https://leetcode.com/problems/largest-rectangle-in-histogram/)
 * [Maximal Square (Medium)](https://leetcode.com/problems/maximal-square/)
 
 ## Solution 1. Monotonic Stack
+
+For each row:
+* Calculate an `h` array where `h[j]` is the height of `1`s from `A[i][j]` upwards.
+* Calculate `nextSmaller` and `prevSmaller` using Monotonic Stack where `nextSmaller`/`prevSmaller` is the index of the next/previous smaller element in `h` array. (Refer to [496. Next Greater Element I (Easy)](https://leetcode.com/problems/next-greater-element-i/discuss/97613/C%2B%2B-stack-%2B-unordered_map))
+* The answer is the maximum of `(nextSmaller - prevSmaller - 1) * h[j]`.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximal-rectangle/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(N)
+class Solution {
+public:
+    int maximalRectangle(vector<vector<char>>& A) {
+        int M = A.size(), N = A[0].size(), ans = 0;
+        vector<int> h(N), nextSmaller(N);
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                h[j] = A[i][j] == '0' ? 0 : (h[j] + 1);
+            }
+            stack<int> s;
+            for (int j = N - 1; j >= 0; --j) {
+                while (s.size() && h[j] <= h[s.top()]) s.pop();
+                nextSmaller[j] = s.size() ? s.top() : N;
+                s.push(j);
+            }
+            s = {};
+            for (int j = 0; j < N; ++j) {
+                while (s.size() && h[j] <= h[s.top()]) s.pop();
+                int prevSmaller = s.size() ? s.top() : -1;
+                ans = max(ans, (nextSmaller[j] - prevSmaller - 1) * h[j]);
+                s.push(j);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2. Monotonic Stack
 
 We can reuse the solution for [84. Largest Rectangle in Histogram (Hard)](https://leetcode.com/problems/largest-rectangle-in-histogram/).
 
@@ -34,18 +95,17 @@ We can reuse the solution for [84. Largest Rectangle in Histogram (Hard)](https:
 class Solution {
 public:
     int maximalRectangle(vector<vector<char>>& A) {
-        if (A.empty() || A[0].empty()) return 0;
         int M = A.size(), N = A[0].size(), ans = 0;
-        vector<int> H(N + 1);
+        vector<int> h(N + 1);
         for (int i = 0; i < M; ++i) {
             stack<int> s;
             for (int j = 0; j <= N; ++j) {
-                H[j] = j < N && A[i][j] == '1' ? H[j] + 1 : 0;
-                while (s.size() && H[s.top()] >= H[j]) {
-                    int h = H[s.top()];
+                h[j] = j < N && A[i][j] == '1' ? (h[j] + 1) : 0;
+                while (s.size() && h[j] <= h[s.top()]) {
+                    int height = h[s.top()];
                     s.pop();
-                    int w = s.size() ? (j - s.top() - 1) : j;
-                    ans = max(ans, w * h);
+                    int left = s.size() ? s.top() : -1;
+                    ans = max(ans, (j - left - 1) * height);
                 }
                 s.push(j);
             }
@@ -55,7 +115,38 @@ public:
 };
 ```
 
-## Solution 2. DP
+## Solution 3. DP
+
+```cpp
+// OJ: https://leetcode.com/problems/maximal-rectangle/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(N)
+class Solution {
+public:
+    int maximalRectangle(vector<vector<char>>& A) {
+        int M = A.size(), N = A[0].size(), ans = 0;
+        vector<int> h(N), prevSmaller(N, -1), nextSmaller(N, N);
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) h[j] = A[i][j] == '1' ? h[j] + 1 : 0;
+            for (int j = N - 2; j >= 0; --j) {
+                int k = j + 1;
+                while (k < N && h[k] >= h[j]) k = nextSmaller[k];
+                nextSmaller[j] = k;
+            }
+            for (int j = 1; j < N; ++j) {
+                int k = j - 1;
+                while (k >= 0 && h[k] >= h[j]) k = prevSmaller[k];
+                prevSmaller[j] = k;
+            }
+            for (int j = 0; j < N; ++j) ans = max(ans, (nextSmaller[j] - prevSmaller[j] - 1) * h[j]);
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 4. DP
 
 Let `height[i][j]` be the height of the bar from `A[i][j]` to `A[0][j]`.
 
