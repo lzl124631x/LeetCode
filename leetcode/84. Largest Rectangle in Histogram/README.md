@@ -1,76 +1,52 @@
 # [84. Largest Rectangle in Histogram (Hard)](https://leetcode.com/problems/largest-rectangle-in-histogram/)
 
-<p>Given <em>n</em> non-negative integers representing the histogram's bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.</p>
+<p>Given an array of integers <code>heights</code> representing the histogram's bar height where the width of each bar is <code>1</code>, return <em>the area of the largest rectangle in the histogram</em>.</p>
 
 <p>&nbsp;</p>
-
-<p><img src="https://assets.leetcode.com/uploads/2018/10/12/histogram.png" style="width: 188px; height: 204px;"><br>
-<small>Above is a histogram where width of each bar is 1, given height = <code>[2,1,5,6,2,3]</code>.</small></p>
-
-<p>&nbsp;</p>
-
-<p><img src="https://assets.leetcode.com/uploads/2018/10/12/histogram_area.png" style="width: 188px; height: 204px;"><br>
-<small>The largest rectangle is shown in the shaded area, which has area = <code>10</code> unit.</small></p>
-
-<p>&nbsp;</p>
-
-<p><strong>Example:</strong></p>
-
-<pre><strong>Input:</strong> [2,1,5,6,2,3]
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg" style="width: 522px; height: 242px;">
+<pre><strong>Input:</strong> heights = [2,1,5,6,2,3]
 <strong>Output:</strong> 10
+<strong>Explanation:</strong> The above is a histogram where width of each bar is 1.
+The largest rectangle is shown in the red area, which has an area = 10 units.
 </pre>
 
+<p><strong>Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/01/04/histogram-1.jpg" style="width: 202px; height: 362px;">
+<pre><strong>Input:</strong> heights = [2,4]
+<strong>Output:</strong> 4
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= heights.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>0 &lt;= heights[i] &lt;= 10<sup>4</sup></code></li>
+</ul>
+
+
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Google](https://leetcode.com/company/google), [Facebook](https://leetcode.com/company/facebook), [Adobe](https://leetcode.com/company/adobe), [Apple](https://leetcode.com/company/apple), [eBay](https://leetcode.com/company/ebay), [Snapchat](https://leetcode.com/company/snapchat), [HBO](https://leetcode.com/company/hbo)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Stack](https://leetcode.com/tag/stack/)
+[Array](https://leetcode.com/tag/array/), [Stack](https://leetcode.com/tag/stack/), [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/)
 
 **Similar Questions**:
 * [Maximal Rectangle (Hard)](https://leetcode.com/problems/maximal-rectangle/)
+* [Maximum Score of a Good Subarray (Hard)](https://leetcode.com/problems/maximum-score-of-a-good-subarray/)
 
-## Solution 1. Monotonic Stack
+## Solution 1. Monotonic Stack (Left and Right)
 
 For a specific bar `A[i]`, to form the largest rectangle we can form using `A[i]`, we need to find the previous and next smaller element.
 
-Assume their indexes are `left[i]` and `right[i]` respectively. So, `A[left[i]]` is the first element to left of `A[i]` that is smaller than `A[i]`, and `A[right[i]]` is the first element to the right of `A[i]` that is smaller than `A[i]`.
+Assume their indexes are `prevSmaller[i]` and `nextSmaller[i]` respectively. So, `A[prevSmaller[i]]` is the index of the closest element to left of `A[i]` that is smaller than `A[i]`, and `A[nextSmaller[i]]` is the index of the closest element to the right of `A[i]` that is smaller than `A[i]`.
 
-We can use similar solution as in [496. Next Greater Element I (Easy)](https://leetcode.com/problems/next-greater-element-i/), i.e. Monotoic Stack, to get these `left` and `right` arrays.
+We can use similar solution as in [496. Next Greater Element I (Easy)](https://leetcode.com/problems/next-greater-element-i/), i.e. Monotoic Stack, to get these `prevSmaller` and `nextSmaller` arrays.
 
-Then for each `A[i]`, the area of the max rectangle we can form using `A[i]` is `(right[i] - left[i] - 1) * A[i]`.
+Then for each `A[i]`, the area of the max rectangle we can form using `A[i]` is `(nextSmaller[i] - prevSmaller[i] - 1) * A[i]`.
 
-```cpp
-// OJ: https://leetcode.com/problems/largest-rectangle-in-histogram/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(N)
-class Solution {
-public:
-    int largestRectangleArea(vector<int>& A) {
-        A.insert(A.begin(), 0);
-        A.push_back(0);
-        int N = A.size(), ans = 0;
-        vector<int> left(N), right(N), s;
-        for (int i = 0; i < N; ++i) {
-            while (s.size() && A[s.back()] > A[i]) {
-                right[s.back()] = i;
-                s.pop_back();
-            }
-            s.push_back(i);
-        }
-        s.clear();
-        for (int i = N - 1; i >= 0; --i) {
-            while (s.size() && A[s.back()] > A[i]) {
-                left[s.back()] = i;
-                s.pop_back();
-            }
-            s.push_back(i);
-        }
-        for (int i = 0; i < N; ++i) ans = max(ans, (right[i] - left[i] - 1) * A[i]); 
-        return ans;
-    }
-};
-```
-
-If we just compute `left` array and get the `right` value on the fly:
+In this implementation, we can precompute `nextSmaller` array and compute `prevSmaller` values on the fly.
 
 ```cpp
 // OJ: https://leetcode.com/problems/largest-rectangle-in-histogram/
@@ -80,33 +56,33 @@ If we just compute `left` array and get the `right` value on the fly:
 class Solution {
 public:
     int largestRectangleArea(vector<int>& A) {
-        A.insert(A.begin(), 0);
-        A.push_back(0);
         int N = A.size(), ans = 0;
-        vector<int> left(N), s;
+        vector<int> nextSmaller(N);
+        stack<int> s;
         for (int i = N - 1; i >= 0; --i) {
-            while (s.size() && A[s.back()] > A[i]) {
-                left[s.back()] = i;
-                s.pop_back();
-            }
-            s.push_back(i);
+            while (s.size() && A[i] <= A[s.top()]) s.pop();
+            nextSmaller[i] = s.size() ? s.top() : N;
+            s.push(i);
         }
-        s.clear();
+        s = {};
         for (int i = 0; i < N; ++i) {
-            while (s.size() && A[s.back()] > A[i]) {
-                ans = max(ans, (i - left[s.back()] - 1) * A[s.back()]);
-                s.pop_back();
-            }
-            s.push_back(i);
+            while (s.size() && A[i] <= A[s.top()]) s.pop();
+            int prevSmaller = s.size() ? s.top() : -1;
+            ans = max(ans, (nextSmaller[i] - prevSmaller - 1) * A[i]);
+            s.push(i);
         }
         return ans;
     }
 };
 ```
 
-## Solution 2. Monotonic Stack
+## Solution 2. Monotonic Stack (One Pass)
 
-In fact, the `left` array is also unnecessary because the next-to-the-top element in the stack is `left[s.top()]`.
+If we use the current `A[i]` as the right edge, when `A[i] <= A[s.top()]`:
+* We use `A[s.top()]` as the height of the rectangle
+* `s.pop()`
+* The left edge `left = s.size() ? s.top() : - 1`.
+* The area of this rectangle is `(i - left - 1) * height`
 
 ```cpp
 // OJ: https://leetcode.com/problems/largest-rectangle-in-histogram/
@@ -120,11 +96,11 @@ public:
         int N = A.size(), ans = 0;
         stack<int> s;
         for (int i = 0; i < N; ++i) {
-            while (s.size() && A[s.top()] >= A[i]) {
-                int h = A[s.top()];
+            while (s.size() && A[i] <= A[s.top()]) {
+                int height = A[s.top()];
                 s.pop();
-                int j = s.size() ? s.top() : -1;
-                ans = max(ans, h * (i - j - 1));
+                int left = s.size() ? s.top() : -1;
+                ans = max(ans, (i - left - 1) * height);
             }
             s.push(i);
         }
@@ -135,7 +111,9 @@ public:
 
 ## Solution 3. DP
 
-Instead of using `stack`, we can reuse the previously computed `left` and `right` values to get the `left` and `right` values for the current `A[i]`.
+We can use DP to compute the `prevSmaller` and `nextSmaller` arrays.
+
+This is an `O(N)` solution because each computed `prevSmaller`/`nextSmaller` value is used at most once when computing a new `prevSmaller`/`nextSmaller` value.
 
 ```cpp
 // OJ: https://leetcode.com/problems/largest-rectangle-in-histogram/
@@ -146,22 +124,19 @@ Instead of using `stack`, we can reuse the previously computed `left` and `right
 class Solution {
 public:
     int largestRectangleArea(vector<int>& A) {
-        if (A.empty()) return 0;
         int N = A.size(), ans = 0;
-        vector<int> left(N), right(N);
-        left[0] = -1;
-        right[N - 1] = N;
-        for (int i = 1; i < N; ++i) {
-            int j = i - 1;
-            while (j >= 0 && A[j] >= A[i]) j = left[j];
-            left[i] = j;
-        }
+        vector<int> prevSmaller(N, -1), nextSmaller(N, N);
         for (int i = N - 2; i >= 0; --i) {
             int j = i + 1;
-            while (j < N && A[j] >= A[i]) j = right[j];
-            right[i] = j;
+            while (j < N && A[j] >= A[i]) j = nextSmaller[j];
+            nextSmaller[i] = j;
         }
-        for (int i = 0; i < N; ++i) ans = max(ans, (right[i] - left[i] - 1) * A[i]);
+        for (int i = 1; i < N; ++i) {
+            int j = i - 1;
+            while (j >= 0 && A[j] >= A[i]) j = prevSmaller[j];
+            prevSmaller[i] = j;
+        }
+        for (int i = 0; i < N; ++i) ans = max(ans, (nextSmaller[i] - prevSmaller[i] - 1) * A[i]);
         return ans;
     }
 };
