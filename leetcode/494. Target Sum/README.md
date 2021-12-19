@@ -49,32 +49,21 @@
 **Similar Questions**:
 * [Expression Add Operators (Hard)](https://leetcode.com/problems/expression-add-operators/)
 
-## Solution 1. DP
 
-```cpp
-// OJ: https://leetcode.com/problems/target-sum
-// Author: github.com/lzl124631x
-// Time: O(2^N)
-// Space: O(2^N)
-class Solution {
-public:
-    int findTargetSumWays(vector<int>& A, int target) {
-        unordered_map<int, int> m, next;
-        m[0] = 1;
-        for (int n : A) {
-            next.clear();
-            for (auto [val, cnt] : m) {
-                next[val + n] += cnt;
-                next[val - n] += cnt;
-            }
-            swap(m, next);
-        }
-        return m[target];
-    }
-};
+## Solution 1. Top-down DP (DFS + Memo)
+
+Let `dp[i][t]` be the number of ways to form `t` using `A[0..i]`. The answer is `dp[N-1][target]`.
+
+```
+dp[i][t] =    dp[i-1][t+A[i]]  // assign '+' to A[i]
+            + dp[i-1][t-A[i]]  // assign '-' to A[i]
+
+dp[-1][t] = (t == 0 ? 1 : 0)
 ```
 
-## Solution 3. Top-down DP (DFS + Memo)
+Time complexity: For each `A[i]`, there are two options, `+` and `-`, so there are `2^N` different combinations.
+
+Space compleixty: `memo[N-1]` at most has `2^N` elements in it. `memo[N-2]` at most has `2^(N-1)` elements in it. ... So in total it takes `1 + 2 + 4 + ... + 2^N = O(2^N)` space.
 
 ```cpp
 // OJ: https://leetcode.com/problems/target-sum/
@@ -85,17 +74,87 @@ class Solution {
 public:
     int findTargetSumWays(vector<int>& A, int target) {
         vector<unordered_map<int, int>> memo(A.size());
-        function<int(int, int)> dfs = [&](int start, int target) -> int {
-            if (start == A.size()) return target == 0;
-            if (memo[start].count(target)) return memo[start][target];
-            return memo[start][target] = dfs(start + 1, target - A[start]) + dfs(start + 1, target + A[start]);
+        function<int(int, int)> dfs = [&](int i, int target) -> int {
+            if (i < 0) return target == 0;
+            if (memo[i].count(target)) return memo[i][target];
+            return memo[i][target] = dfs(i - 1, target + A[i]) + dfs(i - 1, target - A[i]);
         };
-        return dfs(0, target);
+        return dfs(A.size() - 1, target);
+    }
+};
+```
+
+## Solution 2. Bottom-up DP
+
+This solution is the Bottom-up version of Solution 1.
+
+Since `dp[i]` only depends on `dp[i-1]`, we don't need to store `dp[j]` (`j < i - 1`).
+
+```cpp
+// OJ: https://leetcode.com/problems/target-sum
+// Author: github.com/lzl124631x
+// Time: O(2^N)
+// Space: O(2^N)
+class Solution {
+public:
+    int findTargetSumWays(vector<int>& A, int target) {
+        unordered_map<int, int> m{{0,1}}, next;
+        for (int n : A) {
+            next.clear();
+            for (auto &[val, cnt] : m) {
+                next[val + n] += cnt;
+                next[val - n] += cnt;
+            }
+            swap(m, next);
+        }
+        return m[target];
     }
 };
 ```
 
 ## Solution 3. Bottom-up DP (0-1 Knapsack)
+
+Let's say `X` is a subset of `A` and `Y` is the complement subset of `X`. We assign `+` to all numbers in `X` and `-` to all numbers in `Y`.
+
+We have `SUM(X) - SUM(Y) = target`. Since `SUM(Y) = SUM(A) - SUM(X)`, we have `2 * SUM(X) = target + SUM(A)`.
+
+So, we want to find a subset whose sum `S` satisfies `2S = target + SUM(A)` (`target + SUM(A) >= 0` and `target + SUM(A) % 2 == 0`). This is a 0-1 Knapsack problem.
+
+Let `dp[i+1][j]` be the number of ways to form sum `j` using `A[0..i]`. The answer is `dp[N][sum]`.
+
+```
+dp[i+1][j] =    dp[i][j]                                    // Skip A[i]
+              + (j - A[i] >= 0 ? dp[i][j - A[i]] : 0)       // Pick A[i]
+
+dp[0][0] = 1
+```
+
+```cpp
+// OJ: https://leetcode.com/problems/target-sum/
+// Author: github.com/lzl124631x
+// Time: O(NS)
+// Space: O(NS)
+class Solution {
+    int subsetSum(vector<int> &A, int sum) {
+        int N = A.size();
+        vector<vector<int>> dp(N + 1, vector<int>(sum + 1));
+        dp[0][0] = 1;
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j <= sum; ++j) {
+                dp[i + 1][j] = dp[i][j] + (j - A[i] >= 0 ? dp[i][j - A[i]] : 0);
+            }
+        }
+        return dp[N][sum];
+    }
+public:
+    int findTargetSumWays(vector<int>& A, int target) {
+        target += accumulate(begin(A), end(A), 0);
+        return target < 0 || target % 2 ? 0 : subsetSum(A, target / 2);
+    }
+};
+```
+
+Or with space-optimization.
 
 ```cpp
 // OJ: https://leetcode.com/problems/target-sum
@@ -115,7 +174,7 @@ class Solution {
     }
 public:
     int findTargetSumWays(vector<int>& A, int target) {
-        target = (accumulate(begin(A), end(A), 0) + target);
+        target += accumulate(begin(A), end(A), 0);
         return target < 0 || target % 2 ? 0 : subsetSum(A, target / 2);
     }
 };
