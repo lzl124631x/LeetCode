@@ -51,7 +51,7 @@ We are also able to place spaces before the first character of the string.
 ```cpp
 // OJ: https://leetcode.com/problems/adding-spaces-to-a-string/
 // Author: github.com/lzl124631x
-// Time: O(N)
+// Time: O(N + M) = O(N)
 // Space: O(1) extra space
 class Solution {
 public:
