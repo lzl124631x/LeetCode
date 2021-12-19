@@ -59,7 +59,7 @@ end<sub>1</sub> = 1 == 1 = start<sub>2</sub>
 * [Reconstruct Itinerary (Hard)](https://leetcode.com/problems/reconstruct-itinerary/)
 * [Find if Path Exists in Graph (Easy)](https://leetcode.com/problems/find-if-path-exists-in-graph/)
 
-## Solution 1.
+## Solution 1. Eulerian Circuit
 
 ```cpp
 // OJ: https://leetcode.com/problems/valid-arrangement-of-pairs/
@@ -71,7 +71,7 @@ class Solution {
 public:
     vector<vector<int>> validArrangement(vector<vector<int>>& E) {
         int N = E.size();
-        unordered_map<int, stack<int>> G;
+        unordered_map<int, vector<int>> G;
         unordered_map<int, int> indegree, outdegree;
         G.reserve(N);
         indegree.reserve(N);
@@ -80,25 +80,28 @@ public:
             int u = e[0], v = e[1];
             outdegree[u]++;
             indegree[v]++;
-            G[u].push(v);
+            G[u].push_back(v);
         }
         int start = -1;
-        for (auto &[u, s] : G) {
-            if (outdegree[u] - indegree[u] == 1) start = u;
+        for (auto &[u, vs] : G) {
+            if (outdegree[u] - indegree[u] == 1) {
+                start = u; // If there exists one node `u` that `outdegree[u] = indegree[u] + 1`, use `u` as the start node.
+                break;
+            }
         }
-        if (start == -1) start = G.begin()->first;
+        if (start == -1) start = G.begin()->first; // If there doesn't exist such node `u`, use any node as the start node
         vector<vector<int>> ans;
         function<void(int)> euler = [&](int u) {
-            auto &s = G[u];
-            while (s.size()) {
-                int v = s.top();
-                s.pop();
+            auto &vs = G[u];
+            while (vs.size()) {
+                int v = vs.back();
+                vs.pop_back();
                 euler(v);
-                ans.push_back({ u, v });
+                ans.push_back({ u, v }); // Post-order DFS. The edge is added after node `v` is exhausted
             }
         };
         euler(start);
-        reverse(begin(ans), end(ans));
+        reverse(begin(ans), end(ans)); // Need to reverse the answer array in the end.
         return ans;
     }
 };
