@@ -1,44 +1,61 @@
 # [753. Cracking the Safe (Hard)](https://leetcode.com/problems/cracking-the-safe/)
 
-<p>There is a box protected by a password. The password is a sequence of&nbsp;<code>n</code> digits&nbsp;where each digit can be one of the first <code>k</code> digits <code>0, 1, ..., k-1</code>.</p>
+<p>There is a safe protected by a password. The password is a sequence of <code>n</code> digits where each digit can be in the range <code>[0, k - 1]</code>.</p>
 
-<p>While entering a password,&nbsp;the last <code>n</code> digits entered will automatically be matched against the correct password.</p>
+<p>The safe has a peculiar way of checking the password. When you enter in a sequence, it checks the <strong>most recent </strong><code>n</code><strong> digits</strong> that were entered each time you type a digit.</p>
 
-<p>For example, assuming the correct password is <code>"345"</code>,&nbsp;if you type <code>"012345"</code>, the box will open because the correct password matches the suffix of the entered password.</p>
+<ul>
+	<li>For example, the correct password is <code>"345"</code> and you enter in <code>"012345"</code>:
 
-<p>Return any password of <strong>minimum length</strong> that is guaranteed to open the box at some point of entering it.</p>
+	<ul>
+		<li>After typing <code>0</code>, the most recent <code>3</code> digits is <code>"0"</code>, which is incorrect.</li>
+		<li>After typing <code>1</code>, the most recent <code>3</code> digits is <code>"01"</code>, which is incorrect.</li>
+		<li>After typing <code>2</code>, the most recent <code>3</code> digits is <code>"012"</code>, which is incorrect.</li>
+		<li>After typing <code>3</code>, the most recent <code>3</code> digits is <code>"123"</code>, which is incorrect.</li>
+		<li>After typing <code>4</code>, the most recent <code>3</code> digits is <code>"234"</code>, which is incorrect.</li>
+		<li>After typing <code>5</code>, the most recent <code>3</code> digits is <code>"345"</code>, which is correct and the safe unlocks.</li>
+	</ul>
+	</li>
+</ul>
+
+<p>Return <em>any string of <strong>minimum length</strong> that will unlock the safe <strong>at some point</strong> of entering it</em>.</p>
 
 <p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-<p><b>Example 1:</b></p>
-
-<pre><b>Input:</b> n = 1, k = 2
-<b>Output:</b> "01"
-<b>Note:</b> "10" will be accepted too.
+<pre><strong>Input:</strong> n = 1, k = 2
+<strong>Output:</strong> "10"
+<strong>Explanation:</strong> The password is a single digit, so enter each digit. "01" would also unlock the safe.
 </pre>
 
-<p><b>Example 2:</b></p>
+<p><strong>Example 2:</strong></p>
 
-<pre><b>Input:</b> n = 2, k = 2
-<b>Output:</b> "00110"
-<b>Note:</b> "01100", "10011", "11001" will be accepted too.
+<pre><strong>Input:</strong> n = 2, k = 2
+<strong>Output:</strong> "01100"
+<strong>Explanation:</strong> For each possible password:
+- "00" is typed in starting from the 4<sup>th</sup> digit.
+- "01" is typed in starting from the 1<sup>st</sup> digit.
+- "10" is typed in starting from the 3<sup>rd</sup> digit.
+- "11" is typed in starting from the 2<sup>nd</sup> digit.
+Thus "01100" will unlock the safe. "01100", "10011", and "11001" would also unlock the safe.
 </pre>
 
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><b>Note:</b></p>
+<ul>
+	<li><code>1 &lt;= n &lt;= 4</code></li>
+	<li><code>1 &lt;= k &lt;= 10</code></li>
+	<li><code>1 &lt;= k<sup>n</sup> &lt;= 4096</code></li>
+</ul>
 
-<ol>
-	<li><code>n</code> will be in the range <code>[1, 4]</code>.</li>
-	<li><code>k</code> will be in the range <code>[1, 10]</code>.</li>
-	<li><code>k^n</code> will be at most <code>4096</code>.</li>
-</ol>
 
-<p>&nbsp;</p>
-
+**Companies**:  
+[Google](https://leetcode.com/company/google), [Apple](https://leetcode.com/company/apple)
 
 **Related Topics**:  
-[Math](https://leetcode.com/tag/math/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/)
+[Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Graph](https://leetcode.com/tag/graph/), [Eulerian Circuit](https://leetcode.com/tag/eulerian-circuit/)
+
 
 ## Solution 1. DFS
 
@@ -92,54 +109,52 @@ public:
 
 ## Solution 2. DFS (post-order Hierholzer's algorithm)
 
-We can think of this problem as the problem of finding an Euler path (a path visiting every edge exactly once) on the following graph: there are `k^(n − 1)` nodes with each node standing for `n - 1` digits and having `k` edges
+We can think of this problem as a problem of finding an Eulerian path (a path visiting every edge exactly once) on the following graph: there are `k^(n − 1)` nodes with each node standing for `n - 1` digits and having `k` edges
 
 For example, when `k = 4, n = 3`, the nodes are `'00', '01', '02', ..., '32', '33'` and each node has 4 edges `'0', '1', '2', '3'`. A node plus edge represents a _complete edge_ which forms a password and is a substring of our answer.
 
-Any connected directed graph where all nodes have equal in-degree and out-degree has an Euler circuit (an Euler path ending where it started.) Because our graph is highly connected and symmetric, we should expect intuitively that taking any path greedily in some order will probably result in an Euler path.
+Any connected directed graph where all nodes have equal in-degree and out-degree has an Eulerian circuit (an Eulerian path ending where it started.) Because our graph is highly connected and symmetric, we should expect intuitively that taking any path greedily in some order will probably result in an Eulerian path.
 
-This intuition is called Hierholzer's algorithm: whenever there is an Euler cycle, we can construct it greedily. Please see my note of this algorithm [here](../../notes/euler-path.md).
+This intuition is called Hierholzer's algorithm: whenever there is an Eulerian circuit, we can construct it greedily. Please see my note of this algorithm [here](https://github.com/lzl124631x/algorithm/blob/master/graph/eulerian-path.md).
 
-Note that we shouldn't add the edge into the answer right after we visit it, because it will cause us to get stuck prematurely. For example, with `k = 2, n = 2`, we have the nodes `'0', '1'`. If we greedily visit complete edges `'00', '01', '10'`, we will be stuck at the node `'0'` prematurely. So we should record the edges in post-order, that is after finding a complete Euler circuit, keep recording the edges into answer as we back-tracking to the start node.
+Note that we shouldn't add the edge into the answer right after we visit it, because it will cause us to get stuck prematurely. For example, with `k = 2, n = 2`, we have the nodes `'0', '1'`. If we greedily visit complete edges `'00', '01', '10'`, we will be stuck at the node `'0'` prematurely. So we should record the edges in post-order, that is, after finding a complete Eulerian circuit, keep recording the edges into answer as we back-tracking to the start node.
 
 Again, take the `k = 2, n = 2` as example, we visit the complete edges in the following order:
 
 ```
-00
-01
-10 (stuck, back-track)
-11
-10 (all edges visited!)
+ a     0     b     1     c     0     d
+(0) ------> (0) ------> (1) ------> (0) [Stuck! Backtrack]
+      [00]        [01]   |    [10]
+                         |
+                         |     1      e
+                         └---------> (1) [All passwords visited!]
+                              [11]
 ```
 
-So when we reached `0` in the end, we start to pop the edges we've visited into answer, i.e. `0 -> 1 -> 1 -> 0`. And in the end push the start node `0` into the answer -- `'01100'`.
+We output `d -> e -> c -> b` i.e. `0110` to the `ans` string. Since `start = "0"`, the answer is `ans + start = "01100"`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/cracking-the-safe/
 // Author: github.com/lzl124631x
 // Time: O(N^(K^N))
 // Space: O(N*(K^N))
-// Ref: https://leetcode.com/problems/cracking-the-safe/solution/
 class Solution {
-private:
-    unordered_set<string> s;
-    string ans;
-    void dfs(string node, int k) {
-        for (char i = '0'; i < '0' + k; ++i) {
-            auto pwd = node + i;
-            if (!s.count(pwd)) {
-                s.insert(pwd);
-                dfs(pwd.substr(1), k);
-                ans.push_back(i);
-            }
-        }
-    }
 public:
     string crackSafe(int n, int k) {
         if (n == 1 && k == 1) return "0";
-        string str(n - 1, '0');
-        dfs(str, k);
-        return ans + str;
+        unordered_set<string> seen;
+        string ans, start(n - 1, '0');
+        function<void(string)> euler = [&](string u) {
+            for (char c = '0'; c < '0' + k; ++c) {
+                auto v = u + c;
+                if (seen.count(v)) continue;
+                seen.insert(v);
+                euler(v.substr(1));
+                ans.push_back(c);
+            }
+        };
+        euler(start);
+        return ans + start;
     }
 };
 ```
