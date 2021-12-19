@@ -1681,6 +1681,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2104 | Sum of Subarray Ranges | Medium | [Solution](leetcode/2104.%20Sum%20of%20Subarray%20Ranges)
 2105 | Watering Plants II | Medium | [Solution](leetcode/2105.%20Watering%20Plants%20II)
 2106 | Maximum Fruits Harvested After at Most K Steps | Hard | [Solution](leetcode/2106.%20Maximum%20Fruits%20Harvested%20After%20at%20Most%20K%20Steps)
+2108 | Find First Palindromic String in the Array | Easy | [Solution](leetcode/2108.%20Find%20First%20Palindromic%20String%20in%20the%20Array)
+2109 | Adding Spaces to a String | Medium | [Solution](leetcode/2109.%20Adding%20Spaces%20to%20a%20String)
+2110 | Number of Smooth Descent Periods of a Stock | Medium | [Solution](leetcode/2110.%20Number%20of%20Smooth%20Descent%20Periods%20of%20a%20Stock)
+2111 | Minimum Operations to Make the Array K-Increasing | Hard | [Solution](leetcode/2111.%20Minimum%20Operations%20to%20Make%20the%20Array%20K-Increasing)
 
 # License
 
