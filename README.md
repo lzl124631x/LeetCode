@@ -363,7 +363,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 391 | Perfect Rectangle |  | [Solution](leetcode/391.%20Perfect%20Rectangle)
 392 | Is Subsequence | Easy | [Solution](leetcode/392.%20Is%20Subsequence)
 393 | UTF-8 Validation |  | [Solution](leetcode/393.%20UTF-8%20Validation)
-394 | Decode String |  | [Solution](leetcode/394.%20Decode%20String)
+394 | Decode String | Medium | [Solution](leetcode/394.%20Decode%20String)
 395 | Longest Substring with At Least K Repeating Characters | Medium | [Solution](leetcode/395.%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters)
 396 | Rotate Function | Medium | [Solution](leetcode/396.%20Rotate%20Function)
 397 | Integer Replacement |  | [Solution](leetcode/397.%20Integer%20Replacement)
