@@ -76,32 +76,26 @@ We can use DFS to try all digits at each level and backtrack if the new digit ca
 // Space: O(N*(K^N))
 class Solution {
 private:
-    unordered_set<string> s;
-    string ans;
-    int N, K, cnt;
-    bool dfs(string &str) {
-        if (s.size() == cnt) {
-            ans = str;
-            return true;
-        }
-        for (int i = 0; i < K; ++i) {
-            str.push_back('0' + i);
-            auto pwd = str.substr(str.size() - N, N);
-            if (!s.count(pwd)) {
-                s.insert(pwd);
-                if (dfs(str)) return true;
-                s.erase(pwd);
-            }
-            str.pop_back();
-        }
-        return false;
-    }
 public:
     string crackSafe(int n, int k) {
-        string str(n, '0');
-        s.insert(str);
-        N = n, K = k, cnt = pow(K, N);
-        dfs(str);
+        string ans(n, '0');
+        unordered_set<string> seen{{ans}};
+        int goal = pow(k, n);
+        function<bool()> dfs = [&]() {
+            if (seen.size() == goal) return true;
+            for (int i = 0; i < k; ++i) {
+                ans += '0' + i;
+                auto pwd = ans.substr(ans.size() - n);
+                if (!seen.count(pwd)) {
+                    seen.insert(pwd);
+                    if (dfs()) return true;
+                    seen.erase(pwd);
+                }
+                ans.pop_back();
+            }
+            return false;
+        };
+        dfs();
         return ans;
     }
 };
