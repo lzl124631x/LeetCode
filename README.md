@@ -1558,6 +1558,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1929 | Concatenation of Array | Easy | [Solution](leetcode/1929.%20Concatenation%20of%20Array)
 1930 | Unique Length-3 Palindromic Subsequences | Medium | [Solution](leetcode/1930.%20Unique%20Length-3%20Palindromic%20Subsequences)
 1931 | Painting a Grid With Three Different Colors | Hard | [Solution](leetcode/1931.%20Painting%20a%20Grid%20With%20Three%20Different%20Colors)
+1933 | Check if String Is Decomposable Into Value-Equal Substrings | Easy | [Solution](leetcode/1933.%20Check%20if%20String%20Is%20Decomposable%20Into%20Value-Equal%20Substrings)
 1935 | Maximum Number of Words You Can Type | Easy | [Solution](leetcode/1935.%20Maximum%20Number%20of%20Words%20You%20Can%20Type)
 1936 | Add Minimum Number of Rungs | Medium | [Solution](leetcode/1936.%20Add%20Minimum%20Number%20of%20Rungs)
 1937 | Maximum Number of Points with Cost | Medium | [Solution](leetcode/1937.%20Maximum%20Number%20of%20Points%20with%20Cost)
