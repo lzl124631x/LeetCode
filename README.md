@@ -1014,6 +1014,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1171 | Remove Zero Sum Consecutive Nodes from Linked List | Medium | [Solution](leetcode/1171.%20Remove%20Zero%20Sum%20Consecutive%20Nodes%20from%20Linked%20List)
 1172 | Dinner Plate Stacks | Hard | [Solution](leetcode/1172.%20Dinner%20Plate%20Stacks)
 1175 | Prime Arrangements | Easy | [Solution](leetcode/1175.%20Prime%20Arrangements)
+1176 | Diet Plan Performance | Easy | [Solution](leetcode/1176.%20Diet%20Plan%20Performance)
 1177 | Can Make Palindrome from Substring | Medium | [Solution](leetcode/1177.%20Can%20Make%20Palindrome%20from%20Substring)
 1178 | Number of Valid Words for Each Puzzle | Hard | [Solution](leetcode/1178.%20Number%20of%20Valid%20Words%20for%20Each%20Puzzle)
 1182 | Shortest Distance to Target Color | Medium | [Solution](leetcode/1182.%20Shortest%20Distance%20to%20Target%20Color)
