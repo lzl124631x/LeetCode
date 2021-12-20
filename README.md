@@ -1060,6 +1060,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1238 | Circular Permutation in Binary Representation | Medium | [Solution](leetcode/1238.%20Circular%20Permutation%20in%20Binary%20Representation)
 1239 | Maximum Length of a Concatenated String with Unique Characters | Medium | [Solution](leetcode/1239.%20Maximum%20Length%20of%20a%20Concatenated%20String%20with%20Unique%20Characters)
 1240 | Tiling a Rectangle with the Fewest Squares | Hard | [Solution](leetcode/1240.%20Tiling%20a%20Rectangle%20with%20the%20Fewest%20Squares)
+1243 | Array Transformation | Easy | [Solution](leetcode/1243.%20Array%20Transformation)
 1245 | Tree Diameter | Medium | [Solution](leetcode/1245.%20Tree%20Diameter)
 1247 | Minimum Swaps to Make Strings Equal | Medium | [Solution](leetcode/1247.%20Minimum%20Swaps%20to%20Make%20Strings%20Equal)
 1248 | Count Number of Nice Subarrays | Medium | [Solution](leetcode/1248.%20Count%20Number%20of%20Nice%20Subarrays)
