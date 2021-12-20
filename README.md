@@ -957,6 +957,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1059 | All Paths from Source Lead to Destination | Medium | [Solution](leetcode/1059.%20All%20Paths%20from%20Source%20Lead%20to%20Destination)
 1062 | Longest Repeating Substring | Medium | [Solution](leetcode/1062.%20Longest%20Repeating%20Substring)
 1064 | Fixed Point | Easy | [Solution](leetcode/1064.%20Fixed%20Point)
+1065 | Index Pairs of a String | Easy | [Solution](leetcode/1065.%20Index%20Pairs%20of%20a%20String)
 1071 | Greatest Common Divisor of Strings | Easy | [Solution](leetcode/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
 1072 | Flip Columns For Maximum Number of Equal Rows | Medium | [Solution](leetcode/1072.%20Flip%20Columns%20For%20Maximum%20Number%20of%20Equal%20Rows)
 1073 | Adding Two Negabinary Numbers | Medium | [Solution](leetcode/1073.%20Adding%20Two%20Negabinary%20Numbers)
