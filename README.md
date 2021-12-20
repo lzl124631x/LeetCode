@@ -1241,6 +1241,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1463 | Cherry Pickup II | Hard | [Solution](leetcode/1463.%20Cherry%20Pickup%20II)
 1464 | Maximum Product of Two Elements in an Array | Easy | [Solution](leetcode/1464.%20Maximum%20Product%20of%20Two%20Elements%20in%20an%20Array)
 1467 | Probability of a Two Boxes Having The Same Number of Distinct Balls | Hard | [Solution](leetcode/1467.%20Probability%20of%20a%20Two%20Boxes%20Having%20The%20Same%20Number%20of%20Distinct%20Balls)
+1469 | Find All The Lonely Nodes | Easy | [Solution](leetcode/1469.%20Find%20All%20The%20Lonely%20Nodes)
 1470 | Shuffle the Array | Easy | [Solution](leetcode/1470.%20Shuffle%20the%20Array)
 1471 | The k Strongest Values in an Array | Medium | [Solution](leetcode/1471.%20The%20k%20Strongest%20Values%20in%20an%20Array)
 1472 | Design Browser History | Medium | [Solution](leetcode/1472.%20Design%20Browser%20History)
