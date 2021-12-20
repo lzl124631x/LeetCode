@@ -1037,6 +1037,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1190 | Reverse Substrings Between Each Pair of Parentheses | Medium | [Solution](leetcode/1190.%20Reverse%20Substrings%20Between%20Each%20Pair%20of%20Parentheses)
 1191 | K-Concatenation Maximum Sum | Medium | [Solution](leetcode/1191.%20K-Concatenation%20Maximum%20Sum)
 1192 | Critical Connections in a Network | Hard | [Solution](leetcode/1192.%20Critical%20Connections%20in%20a%20Network)
+1196 | How Many Apples Can You Put into the Basket | Easy | [Solution](leetcode/1196.%20How%20Many%20Apples%20Can%20You%20Put%20into%20the%20Basket)
 1197 | Minimum Knight Moves | Medium | [Solution](leetcode/1197.%20Minimum%20Knight%20Moves)
 1200 | Minimum Absolute Difference | Easy | [Solution](leetcode/1200.%20Minimum%20Absolute%20Difference)
 1201 | Ugly Number III | Medium | [Solution](leetcode/1201.%20Ugly%20Number%20III)
