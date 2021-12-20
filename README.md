@@ -1000,6 +1000,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1145 | Binary Tree Coloring Game | Medium | [Solution](leetcode/1145.%20Binary%20Tree%20Coloring%20Game)
 1146 | Snapshot Array | Medium | [Solution](leetcode/1146.%20Snapshot%20Array)
 1147 | Longest Chunked Palindrome Decomposition | Hard | [Solution](leetcode/1147.%20Longest%20Chunked%20Palindrome%20Decomposition)
+1150 | Check If a Number Is Majority Element in a Sorted Array | Easy | [Solution](leetcode/1150.%20Check%20If%20a%20Number%20Is%20Majority%20Element%20in%20a%20Sorted%20Array)
 1154 | Day of the Year | Easy | [Solution](leetcode/1154.%20Day%20of%20the%20Year)
 1155 | Number of Dice Rolls With Target Sum | Medium | [Solution](leetcode/1155.%20Number%20of%20Dice%20Rolls%20With%20Target%20Sum)
 1156 | Swap For Longest Repeated Character Substring | Medium | [Solution](leetcode/1156.%20Swap%20For%20Longest%20Repeated%20Character%20Substring)
