@@ -964,6 +964,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1079 | Letter Tile Possibilities | Medium | [Solution](leetcode/1079.%20Letter%20Tile%20Possibilities)
 1080 | Insufficient Nodes in Root to Leaf Paths | Medium | [Solution](leetcode/1080.%20Insufficient%20Nodes%20in%20Root%20to%20Leaf%20Paths)
 1081 | Smallest Subsequence of Distinct Characters | Medium | [Solution](leetcode/1081.%20Smallest%20Subsequence%20of%20Distinct%20Characters)
+1085 | Sum of Digits in the Minimum Number | Easy | [Solution](leetcode/1085.%20Sum%20of%20Digits%20in%20the%20Minimum%20Number)
 1086 | High Five | Easy | [Solution](leetcode/1086.%20High%20Five)
 1089 | Duplicate Zeros | Easy | [Solution](leetcode/1089.%20Duplicate%20Zeros)
 1090 | Largest Values From Labels | Medium | [Solution](leetcode/1090.%20Largest%20Values%20From%20Labels)
