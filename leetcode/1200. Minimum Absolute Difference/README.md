@@ -38,8 +38,11 @@
 </ul>
 
 
+**Companies**:  
+[Salesforce](https://leetcode.com/company/salesforce), [Twitter](https://leetcode.com/company/twitter)
+
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/)
+[Array](https://leetcode.com/tag/array/), [Sorting](https://leetcode.com/tag/sorting/)
 
 ## Solution 1.
 
@@ -47,7 +50,7 @@
 // OJ: https://leetcode.com/problems/minimum-absolute-difference/
 // Author: github.com/lzl124631x
 // Time: O(NlogN)
-// Space: O(1)
+// Space: O(1) extra space
 class Solution {
 public:
     vector<vector<int>> minimumAbsDifference(vector<int>& A) {
