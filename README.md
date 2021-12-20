@@ -999,6 +999,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1131 | Maximum of Absolute Value Expression | Medium | [Solution](leetcode/1131.%20Maximum%20of%20Absolute%20Value%20Expression)
 1133 | Largest Unique Number | Easy | [Solution](leetcode/1133.%20Largest%20Unique%20Number)
 1134 | Armstrong Number | Easy | [Solution](leetcode/1134.%20Armstrong%20Number)
+1135 | Connecting Cities With Minimum Cost | Medium | [Solution](leetcode/1135.%20Connecting%20Cities%20With%20Minimum%20Cost)
 1136 | Parallel Courses | Medium | [Solution](leetcode/1136.%20Parallel%20Courses)
 1137 | N-th Tribonacci Number | Easy | [Solution](leetcode/1137.%20N-th%20Tribonacci%20Number)
 1138 | Alphabet Board Path | Medium | [Solution](leetcode/1138.%20Alphabet%20Board%20Path)
