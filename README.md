@@ -1019,6 +1019,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1176 | Diet Plan Performance | Easy | [Solution](leetcode/1176.%20Diet%20Plan%20Performance)
 1177 | Can Make Palindrome from Substring | Medium | [Solution](leetcode/1177.%20Can%20Make%20Palindrome%20from%20Substring)
 1178 | Number of Valid Words for Each Puzzle | Hard | [Solution](leetcode/1178.%20Number%20of%20Valid%20Words%20for%20Each%20Puzzle)
+1180 | Count Substrings with Only One Distinct Letter | Easy | [Solution](leetcode/1180.%20Count%20Substrings%20with%20Only%20One%20Distinct%20Letter)
 1182 | Shortest Distance to Target Color | Medium | [Solution](leetcode/1182.%20Shortest%20Distance%20to%20Target%20Color)
 1184 | Distance Between Bus Stops | Easy | [Solution](leetcode/1184.%20Distance%20Between%20Bus%20Stops)
 1185 | Day of the Week | Easy | [Solution](leetcode/1185.%20Day%20of%20the%20Week)
