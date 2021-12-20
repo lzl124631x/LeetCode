@@ -52,36 +52,36 @@
 
 ## Solution 1.
 
+Get the two paths from root to target nodes, and return the last node that appears in both paths.
+
 ```cpp
 // OJ: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(H)
 class Solution {
-    bool dfs(TreeNode *root, TreeNode *target, vector<TreeNode*> &ans) {
-        if (!root) return false;
-        ans.push_back(root);
-        if (root == target) return true;
-        if (dfs(root->left, target, ans) || dfs(root->right, target, ans)) return true;
-        ans.pop_back();
+    bool findPath(TreeNode *node, TreeNode *target, vector<TreeNode*> &path) {
+        if (!node) return false;
+        path.push_back(node);
+        if (node == target) return true;
+        if (findPath(node->left, target, path) || findPath(node->right, target, path)) return true;
+        path.pop_back();
         return false;
-    }
-    vector<TreeNode*> getPath(TreeNode *root, TreeNode *target) {
-        vector<TreeNode*> ans;
-        dfs(root, target, ans);
-        return ans;
     }
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        auto a = getPath(root, p), b = getPath(root, q);
-        TreeNode *ans = NULL;
-        for (int i = 0; i < min(a.size(), b.size()) && a[i] == b[i]; ++i) ans = a[i];
-        return ans;
+        vector<TreeNode*> a, b;
+        findPath(root, p, a);
+        findPath(root, q, b);
+        int i = 0;
+        while (i < a.size() && i < b.size() && a[i] == b[i]) ++i;
+        return a[i - 1];
     }
 };
 ```
-
 ## Solution 2. Post-order Traversal
+
+This solution can skip nodes after finding two matched nodes.
 
 ```cpp
 // OJ: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
@@ -90,17 +90,41 @@ public:
 // Space: O(H)
 class Solution {
     TreeNode *ans = NULL;
-    int dfs(TreeNode *root, TreeNode *p, TreeNode *q) {
+    int dfs(TreeNode *root, TreeNode *p, TreeNode *q) { // returns the number of matched nodes in this subtree
         if (!root || ans) return 0; // if we've already found the LCA, we can skip all subsequent DFS.
         int left = dfs(root->left, p, q), right = dfs(root->right, p, q);
         int cnt = (root == p || root == q) + left + right;
-        if (cnt == 2 && (left == 1 || right == 1)) ans = root;
+        if (cnt == 2 && (left == 1 || right == 1)) ans = root; // If this subtree has two matched nodes and either the left or right subtree only has exactly one matched node, this is the LCA.
         return cnt;
     }
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         dfs(root, p, q);
         return ans;
+    }
+};
+```
+
+
+## Solution 3. Post-order Traversal
+
+This solution will visit all the nodes, but the logic is easier to understand and less error-prone.
+
+```cpp
+// OJ: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+    TreeNode *dfs(TreeNode *node, TreeNode *p, TreeNode *q) { 
+        if (!node || node == p || node == q) return node;
+        auto left = dfs(node->left, p, q), right = dfs(node->right, p, q);
+        if (left && right) return node;
+        return left ? left : right;
+    }
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        return dfs(root, p, q);
     }
 };
 ```
