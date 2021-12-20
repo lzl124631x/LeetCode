@@ -985,6 +985,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1110 | Delete Nodes And Return Forest | Medium | [Solution](leetcode/1110.%20Delete%20Nodes%20And%20Return%20Forest)
 1111 | Maximum Nesting Depth of Two Valid Parentheses Strings | Medium | [Solution](leetcode/1111.%20Maximum%20Nesting%20Depth%20of%20Two%20Valid%20Parentheses%20Strings)
 1118 | Number of Days in a Month | Easy | [Solution](leetcode/1118.%20Number%20of%20Days%20in%20a%20Month)
+1119 | Remove Vowels from a String | Easy | [Solution](leetcode/1119.%20Remove%20Vowels%20from%20a%20String)
 1120 | Maximum Average Subtree | Medium | [Solution](leetcode/1120.%20Maximum%20Average%20Subtree)
 1122 | Relative Sort Array | Easy | [Solution](leetcode/1122.%20Relative%20Sort%20Array)
 1123 | Lowest Common Ancestor of Deepest Leaves | Medium | [Solution](leetcode/1123.%20Lowest%20Common%20Ancestor%20of%20Deepest%20Leaves)
