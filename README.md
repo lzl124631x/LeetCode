@@ -1233,6 +1233,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1471 | The k Strongest Values in an Array | Medium | [Solution](leetcode/1471.%20The%20k%20Strongest%20Values%20in%20an%20Array)
 1472 | Design Browser History | Medium | [Solution](leetcode/1472.%20Design%20Browser%20History)
 1473 | Paint House III | Hard | [Solution](leetcode/1473.%20Paint%20House%20III)
+1474 | Delete N Nodes After M Nodes of a Linked List | Easy | [Solution](leetcode/1474.%20Delete%20N%20Nodes%20After%20M%20Nodes%20of%20a%20Linked%20List)
 1475 | Final Prices With a Special Discount in a Shop | Easy | [Solution](leetcode/1475.%20Final%20Prices%20With%20a%20Special%20Discount%20in%20a%20Shop)
 1476 | Subrectangle Queries | Medium | [Solution](leetcode/1476.%20Subrectangle%20Queries)
 1477 | Find Two Non-overlapping Sub-arrays Each With Target Sum |  | [Solution](leetcode/1477.%20Find%20Two%20Non-overlapping%20Sub-arrays%20Each%20With%20Target%20Sum)
