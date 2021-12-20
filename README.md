@@ -631,6 +631,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 713 | Subarray Product Less Than K | Medium | [Solution](leetcode/713.%20Subarray%20Product%20Less%20Than%20K)
 714 | Best Time to Buy and Sell Stock with Transaction Fee | Medium | [Solution](leetcode/714.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee)
 715 | Range Module | Hard | [Solution](leetcode/715.%20Range%20Module)
+716 | Max Stack | Easy | [Solution](leetcode/716.%20Max%20Stack)
 717 | 1-bit and 2-bit Characters | Easy | [Solution](leetcode/717.%201-bit%20and%202-bit%20Characters)
 718 | Maximum Length of Repeated Subarray | Medium | [Solution](leetcode/718.%20Maximum%20Length%20of%20Repeated%20Subarray)
 719 | Find K-th Smallest Pair Distance | Hard | [Solution](leetcode/719.%20Find%20K-th%20Smallest%20Pair%20Distance)
