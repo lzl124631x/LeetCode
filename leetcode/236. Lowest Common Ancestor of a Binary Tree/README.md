@@ -108,7 +108,7 @@ public:
 
 ## Solution 3. Post-order Traversal
 
-This solution will visit all the nodes, but the logic is easier to understand and less error-prone.
+This solution will visit all the nodes, but it's short and the logic is easier to understand and less error-prone.
 
 ```cpp
 // OJ: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
