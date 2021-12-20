@@ -1403,6 +1403,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1705 | Maximum Number of Eaten Apples | Medium | [Solution](leetcode/1705.%20Maximum%20Number%20of%20Eaten%20Apples)
 1706 | Where Will the Ball Fall | Medium | [Solution](leetcode/1706.%20Where%20Will%20the%20Ball%20Fall)
 1707 | Maximum XOR With an Element From Array | Hard | [Solution](leetcode/1707.%20Maximum%20XOR%20With%20an%20Element%20From%20Array)
+1708 | Largest Subarray Length K | Easy | [Solution](leetcode/1708.%20Largest%20Subarray%20Length%20K)
 1710 | Maximum Units on a Truck | Easy | [Solution](leetcode/1710.%20Maximum%20Units%20on%20a%20Truck)
 1711 | Count Good Meals | Medium | [Solution](leetcode/1711.%20Count%20Good%20Meals)
 1712 | Ways to Split Array Into Three Subarrays | Medium | [Solution](leetcode/1712.%20Ways%20to%20Split%20Array%20Into%20Three%20Subarrays)
