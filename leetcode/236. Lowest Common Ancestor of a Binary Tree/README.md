@@ -116,15 +116,11 @@ This solution will visit all the nodes, but it's short and the logic is easier t
 // Time: O(N)
 // Space: O(H)
 class Solution {
-    TreeNode *dfs(TreeNode *node, TreeNode *p, TreeNode *q) { 
-        if (!node || node == p || node == q) return node;
-        auto left = dfs(node->left, p, q), right = dfs(node->right, p, q);
-        if (left && right) return node;
-        return left ? left : right;
-    }
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        return dfs(root, p, q);
+        if (!root || root == p || root == q) return root;
+        auto left = lowestCommonAncestor(root->left, p, q), right = lowestCommonAncestor(root->right, p, q);
+        return left && right ? root : (left ? left : right);
     }
 };
 ```
