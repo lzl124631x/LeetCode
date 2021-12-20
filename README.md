@@ -1497,6 +1497,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1855 | Maximum Distance Between a Pair of Values | Medium | [Solution](leetcode/1855.%20Maximum%20Distance%20Between%20a%20Pair%20of%20Values)
 1856 | Maximum Subarray Min-Product | Medium | [Solution](leetcode/1856.%20Maximum%20Subarray%20Min-Product)
 1857 | Largest Color Value in a Directed Graph | Hard | [Solution](leetcode/1857.%20Largest%20Color%20Value%20in%20a%20Directed%20Graph)
+1858 | Longest Word With All Prefixes | Medium | [Solution](leetcode/1858.%20Longest%20Word%20With%20All%20Prefixes)
 1859 | Sorting the Sentence | Easy | [Solution](leetcode/1859.%20Sorting%20the%20Sentence)
 1860 | Incremental Memory Leak | Medium | [Solution](leetcode/1860.%20Incremental%20Memory%20Leak)
 1861 | Rotating the Box | Medium | [Solution](leetcode/1861.%20Rotating%20the%20Box)
