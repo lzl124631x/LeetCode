@@ -1493,6 +1493,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1823 | Find the Winner of the Circular Game | Medium | [Solution](leetcode/1823.%20Find%20the%20Winner%20of%20the%20Circular%20Game)
 1824 | Minimum Sideway Jumps | Medium | [Solution](leetcode/1824.%20Minimum%20Sideway%20Jumps)
 1825 | Finding MK Average | Hard | [Solution](leetcode/1825.%20Finding%20MK%20Average)
+1826 | Faulty Sensor | Easy | [Solution](leetcode/1826.%20Faulty%20Sensor)
 1827 | Minimum Operations to Make the Array Increasing | Easy | [Solution](leetcode/1827.%20Minimum%20Operations%20to%20Make%20the%20Array%20Increasing)
 1828 | Queries on Number of Points Inside a Circle | Medium | [Solution](leetcode/1828.%20Queries%20on%20Number%20of%20Points%20Inside%20a%20Circle)
 1829 | Maximum XOR for Each Query | Medium | [Solution](leetcode/1829.%20Maximum%20XOR%20for%20Each%20Query)
