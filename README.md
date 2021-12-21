@@ -497,6 +497,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 542 | 01 Matrix | Medium | [Solution](leetcode/542.%2001%20Matrix)
 543 | Diameter of Binary Tree | Easy | [Solution](leetcode/543.%20Diameter%20of%20Binary%20Tree)
 544 | Output Contest Matches | Medium | [Solution](leetcode/544.%20Output%20Contest%20Matches)
+545 | Boundary of Binary Tree | Medium | [Solution](leetcode/545.%20Boundary%20of%20Binary%20Tree)
 546 | Remove Boxes | Hard | [Solution](leetcode/546.%20Remove%20Boxes)
 547 | Friend Circles | Medium | [Solution](leetcode/547.%20Friend%20Circles)
 549 | Binary Tree Longest Consecutive Sequence II | Medium | [Solution](leetcode/549.%20Binary%20Tree%20Longest%20Consecutive%20Sequence%20II)
