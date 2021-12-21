@@ -52,7 +52,7 @@
 
 ## Solution 1.
 
-Get the two paths from root to target nodes, and return the last node that appears in both paths.
+Get the two paths from root to target nodes, and return the last node that appears in both paths. Also, this solution works even when `p` or `q` is not found (i.e. [1644. Lowest Common Ancestor of a Binary Tree II (Medium)](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-ii/))
 
 ```cpp
 // OJ: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
@@ -73,15 +73,15 @@ public:
         vector<TreeNode*> a, b;
         findPath(root, p, a);
         findPath(root, q, b);
-        int i = 0;
-        while (i < a.size() && i < b.size() && a[i] == b[i]) ++i;
-        return a[i - 1];
+        TreeNode *ans = nullptr;
+        for (int i = 0; i < a.size() && i < b.size() && a[i] == b[i]; ++i) ans = a[i];
+        return ans;
     }
 };
 ```
 ## Solution 2. Post-order Traversal
 
-This solution can skip nodes after finding two matched nodes.
+This solution can skip nodes after finding two matched nodes. Also, this solution works even when `p` or `q` is not found (i.e. [1644. Lowest Common Ancestor of a Binary Tree II (Medium)](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-ii/))
 
 ```cpp
 // OJ: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
