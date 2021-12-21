@@ -114,7 +114,7 @@ public:
                 pos.push_back({i, j});
             }
         }
-        sort(begin(pos), end(pos), [&](auto &a, auto &b) { return A[a[0]][a[1]] > A[b[0]][b[1]]; });
+        sort(begin(pos), end(pos), [&](auto &a, auto &b) { return A[a[0]][a[1]] > A[b[0]][b[1]]; }); // Greedily pick the cells with greatest value first.
         UnionFind uf(M * N);
         for (auto &[x, y] : pos) {
             ans = min(ans, A[x][y]);
