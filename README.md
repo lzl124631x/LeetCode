@@ -1023,6 +1023,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1162 | As Far from Land as Possible | Medium | [Solution](leetcode/1162.%20As%20Far%20from%20Land%20as%20Possible)
 1163 | Last Substring in Lexicographical Order | Hard | [Solution](leetcode/1163.%20Last%20Substring%20in%20Lexicographical%20Order)
 1165 | Single-Row Keyboard | Easy | [Solution](leetcode/1165.%20Single-Row%20Keyboard)
+1166 | Design File System | Medium | [Solution](leetcode/1166.%20Design%20File%20System)
 1167 | Minimum Cost to Connect Sticks | Medium | [Solution](leetcode/1167.%20Minimum%20Cost%20to%20Connect%20Sticks)
 1168 | Optimize Water Distribution in a Village | Hard | [Solution](leetcode/1168.%20Optimize%20Water%20Distribution%20in%20a%20Village)
 1169 | Invalid Transactions | Medium | [Solution](leetcode/1169.%20Invalid%20Transactions)
