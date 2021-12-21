@@ -1267,6 +1267,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1487 | Making File Names Unique | Medium | [Solution](leetcode/1487.%20Making%20File%20Names%20Unique)
 1488 | Avoid Flood in The City | Medium | [Solution](leetcode/1488.%20Avoid%20Flood%20in%20The%20City)
 1489 | Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree | Hard | [Solution](leetcode/1489.%20Find%20Critical%20and%20Pseudo-Critical%20Edges%20in%20Minimum%20Spanning%20Tree)
+1490 | Clone N-ary Tree | Medium | [Solution](leetcode/1490.%20Clone%20N-ary%20Tree)
 1491 | Average Salary Excluding the Minimum and Maximum Salary | Easy | [Solution](leetcode/1491.%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary)
 1492 | The kth Factor of n | Medium | [Solution](leetcode/1492.%20The%20kth%20Factor%20of%20n)
 1493 | Longest Subarray of 1's After Deleting One Element | Medium | [Solution](leetcode/1493.%20Longest%20Subarray%20of%201%27s%20After%20Deleting%20One%20Element)
