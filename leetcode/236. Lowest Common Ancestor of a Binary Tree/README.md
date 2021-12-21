@@ -89,7 +89,7 @@ This solution can skip nodes after finding two matched nodes. Also, this solutio
 // Time: O(N)
 // Space: O(H)
 class Solution {
-    TreeNode *ans = NULL;
+    TreeNode *ans = nullptr;
     int dfs(TreeNode *root, TreeNode *p, TreeNode *q) { // returns the number of matched nodes in this subtree
         if (!root || ans) return 0; // if we've already found the LCA, we can skip all subsequent DFS.
         int left = dfs(root->left, p, q), right = dfs(root->right, p, q);
