@@ -274,6 +274,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 287 | Find the Duplicate Number | Medium | [Solution](leetcode/287.%20Find%20the%20Duplicate%20Number)
 289 | Game of Life | Medium | [Solution](leetcode/289.%20Game%20of%20Life)
 290 | Word Pattern | Easy | [Solution](leetcode/290.%20Word%20Pattern)
+291 | Word Pattern II | Medium | [Solution](leetcode/291.%20Word%20Pattern%20II)
 293 | Flip Game | Easy | [Solution](leetcode/293.%20Flip%20Game)
 295 | Find Median from Data Stream | Hard | [Solution](leetcode/295.%20Find%20Median%20from%20Data%20Stream)
 296 | Best Meeting Point | Hard | [Solution](leetcode/296.%20Best%20Meeting%20Point)
