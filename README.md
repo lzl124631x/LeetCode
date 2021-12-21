@@ -248,6 +248,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 250 | Count Univalue Subtrees | Medium | [Solution](leetcode/250.%20Count%20Univalue%20Subtrees)
 252 | Meeting Rooms | Easy | [Solution](leetcode/252.%20Meeting%20Rooms)
 253 | Meeting Rooms II | Medium | [Solution](leetcode/253.%20Meeting%20Rooms%20II)
+255 | Verify Preorder Sequence in Binary Search Tree | Medium | [Solution](leetcode/255.%20Verify%20Preorder%20Sequence%20in%20Binary%20Search%20Tree)
 256 | Paint House | Easy | [Solution](leetcode/256.%20Paint%20House)
 257 | Binary Tree Paths | Easy | [Solution](leetcode/257.%20Binary%20Tree%20Paths)
 258 | Add Digits | Easy | [Solution](leetcode/258.%20Add%20Digits)
