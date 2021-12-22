@@ -272,6 +272,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 281 | Zigzag Iterator | Medium | [Solution](leetcode/281.%20Zigzag%20Iterator)
 284 | Peeking Iterator | Medium | [Solution](leetcode/284.%20Peeking%20Iterator)
 285 | Inorder Successor in BST | Medium | [Solution](leetcode/285.%20Inorder%20Successor%20in%20BST)
+286 | Walls and Gates | Medium | [Solution](leetcode/286.%20Walls%20and%20Gates)
 287 | Find the Duplicate Number | Medium | [Solution](leetcode/287.%20Find%20the%20Duplicate%20Number)
 289 | Game of Life | Medium | [Solution](leetcode/289.%20Game%20of%20Life)
 290 | Word Pattern | Easy | [Solution](leetcode/290.%20Word%20Pattern)
