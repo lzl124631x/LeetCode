@@ -1501,6 +1501,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1817 | Finding the Users Active Minutes | Medium | [Solution](leetcode/1817.%20Finding%20the%20Users%20Active%20Minutes)
 1818 | Minimum Absolute Sum Difference | Medium | [Solution](leetcode/1818.%20Minimum%20Absolute%20Sum%20Difference)
 1819 | Number of Different Subsequences GCDs | Hard | [Solution](leetcode/1819.%20Number%20of%20Different%20Subsequences%20GCDs)
+1820 | Maximum Number of Accepted Invitations | Medium | [Solution](leetcode/1820.%20Maximum%20Number%20of%20Accepted%20Invitations)
 1822 | Sign of the Product of an Array | Easy | [Solution](leetcode/1822.%20Sign%20of%20the%20Product%20of%20an%20Array)
 1823 | Find the Winner of the Circular Game | Medium | [Solution](leetcode/1823.%20Find%20the%20Winner%20of%20the%20Circular%20Game)
 1824 | Minimum Sideway Jumps | Medium | [Solution](leetcode/1824.%20Minimum%20Sideway%20Jumps)
