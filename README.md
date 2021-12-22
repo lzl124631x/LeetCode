@@ -1449,6 +1449,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1737 | Change Minimum Characters to Satisfy One of Three Conditions | Medium | [Solution](leetcode/1737.%20Change%20Minimum%20Characters%20to%20Satisfy%20One%20of%20Three%20Conditions)
 1738 | Find Kth Largest XOR Coordinate Value | Medium | [Solution](leetcode/1738.%20Find%20Kth%20Largest%20XOR%20Coordinate%20Value)
 1739 | Building Boxes | Hard | [Solution](leetcode/1739.%20Building%20Boxes)
+1740 | Find Distance in a Binary Tree | Medium | [Solution](leetcode/1740.%20Find%20Distance%20in%20a%20Binary%20Tree)
 1744 | Can You Eat Your Favorite Candy on Your Favorite Day? | Medium | [Solution](leetcode/1744.%20Can%20You%20Eat%20Your%20Favorite%20Candy%20on%20Your%20Favorite%20Day%3F)
 1745 | Palindrome Partitioning IV | Hard | [Solution](leetcode/1745.%20Palindrome%20Partitioning%20IV)
 1748 | Sum of Unique Elements | Easy | [Solution](leetcode/1748.%20Sum%20of%20Unique%20Elements)
