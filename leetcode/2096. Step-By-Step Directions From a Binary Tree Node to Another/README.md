@@ -43,6 +43,9 @@
 **Companies**:  
 [Google](https://leetcode.com/company/google)
 
+**Related Topics**:  
+[String](https://leetcode.com/tag/string/), [Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
+
 **Similar Questions**:
 * [Path Sum II (Medium)](https://leetcode.com/problems/path-sum-ii/)
 * [Lowest Common Ancestor of a Binary Tree (Medium)](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
