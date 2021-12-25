@@ -58,34 +58,32 @@ In the end, `nums.top()` is the answer.
 class Solution {
     stack<int> nums;
     stack<char> ops;
-    unordered_map<char, int> priority{{'+',0},{'-',0},{'*',1},{'/',1}};
-    void eval(char op = 0) {
-        while (ops.size() && (op == 0 || priority[ops.top()] >= priority[op])) {
-            int b = nums.top();
-            nums.pop();
-            switch (ops.top()) {
-                case '+': nums.top() += b; break;
-                case '-': nums.top() -= b; break;
-                case '*': nums.top() *= b; break;
-                case '/': nums.top() /= b; break;
-            }
-            ops.pop();
+    void eval() {
+        int b = nums.top(); nums.pop();
+        switch (ops.top()) {
+            case '+': nums.top() += b; break;
+            case '-': nums.top() -= b; break;
+            case '*': nums.top() *= b; break;
+            case '/': nums.top() /= b; break;
         }
-        if (op) ops.push(op);
+        ops.pop();
     }
 public:
+    unordered_map<char, int> priority{{'+',0},{'-',0},{'*',1},{'/',1}};
     int calculate(string s) {
         int N = s.size();
         for (int i = 0; i < N; ++i) {
-            if (s[i] == ' ') continue;
             if (isdigit(s[i])) {
                 int n = 0;
                 while (i < N && isdigit(s[i])) n = n * 10 + (s[i++] - '0');
                 --i;
                 nums.push(n);
-            } else eval(s[i]);
+            } else if (s[i] != ' ') {
+                while (ops.size() && priority[ops.top()] >= priority[s[i]]) eval(); // Note that it's `while` here. Consider 1+2*3-4. When we see `-`, we need to `eval` twice.
+                ops.push(s[i]);
+            }
         }
-        eval();
+        while (ops.size()) eval();
         return nums.top();
     }
 };
