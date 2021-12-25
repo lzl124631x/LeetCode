@@ -1406,6 +1406,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1673 | Find the Most Competitive Subsequence | Medium | [Solution](leetcode/1673.%20Find%20the%20Most%20Competitive%20Subsequence)
 1674 | Minimum Moves to Make Array Complementary | Medium | [Solution](leetcode/1674.%20Minimum%20Moves%20to%20Make%20Array%20Complementary)
 1675 | Minimize Deviation in Array | Hard | [Solution](leetcode/1675.%20Minimize%20Deviation%20in%20Array)
+1676 | Lowest Common Ancestor of a Binary Tree IV | Medium | [Solution](leetcode/1676.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree%20IV)
 1678 | Goal Parser Interpretation | Easy | [Solution](leetcode/1678.%20Goal%20Parser%20Interpretation)
 1679 | Max Number of K-Sum Pairs | Medium | [Solution](leetcode/1679.%20Max%20Number%20of%20K-Sum%20Pairs)
 1680 | Concatenation of Consecutive Binary Numbers | Medium | [Solution](leetcode/1680.%20Concatenation%20of%20Consecutive%20Binary%20Numbers)
