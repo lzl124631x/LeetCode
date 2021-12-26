@@ -233,6 +233,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 231 | Power of Two | Easy | [Solution](leetcode/231.%20Power%20of%20Two)
 232 | Implement Queue using Stacks | Easy | [Solution](leetcode/232.%20Implement%20Queue%20using%20Stacks)
 234 | Palindrome Linked List | Easy | [Solution](leetcode/234.%20Palindrome%20Linked%20List)
+235 | Lowest Common Ancestor of a Binary Search Tree | Easy | [Solution](leetcode/235.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree)
 236 | Lowest Common Ancestor of a Binary Tree | Medium | [Solution](leetcode/236.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree)
 237 | Delete Node in a Linked List | Easy | [Solution](leetcode/237.%20Delete%20Node%20in%20a%20Linked%20List)
 238 | Product of Array Except Self | Medium | [Solution](leetcode/238.%20Product%20of%20Array%20Except%20Self)
