@@ -58,8 +58,8 @@
 ```cpp
 // OJ: https://leetcode.com/problems/next-greater-element-i/
 // Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(N)
+// Time: O(A + B)
+// Space: O(B) extra space
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& A, vector<int>& B) {
