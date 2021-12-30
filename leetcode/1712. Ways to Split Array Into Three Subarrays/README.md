@@ -44,7 +44,40 @@
 **Related Topics**:  
 [Binary Search](https://leetcode.com/tag/binary-search/)
 
-## Solution 1. Three Pointers
+## Solution 1. Binary Search
+
+Turn array `A` into its prefix sum array. 
+
+Let `i` be the last index of the `left` part. So `A[i]` is the sum of the `left` part.
+
+For each `i`, we use binary search to find the range of the last index of the `mid` part.
+
+For `mid >= left`, we have `left + mid >= 2 * left`, so we need to find the first prefix sum that is `>= 2 * left`.
+
+For `mid <= right`, we have `mid <= total - left - mid`, so `mid <= (total - left) / 2`, so we need to find the last prefix sum that is `<= left + (total - left) / 2`.
+
+Note that the valid range of the last index of the `mid` part is `[i + 1, N - 1)`, so we need to make sure our binary search is searching within this range.
+
+```cpp
+// OJ: https://leetcode.com/problems/ways-to-split-array-into-three-subarrays/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1) if we are allowed to change the input array; otherwise O(N)
+class Solution {
+public:
+    int waysToSplit(vector<int>& A) {
+        long N = A.size(), mod = 1e9 + 7, ans = 0;
+        partial_sum(begin(A), end(A), begin(A));
+        for (int i = 0; i < N - 2; ++i) {
+            int j = lower_bound(begin(A) + i + 1, end(A) - 1, A[i] * 2) - begin(A);
+            int k = upper_bound(begin(A) + j, end(A) - 1, A[i] + (A.back() - A[i]) / 2) - begin(A);
+            ans = (ans + k - j) % mod;
+        }
+        return ans;
+    }
+};
+```
+## Solution 2. Three Pointers
 
 Turn array `A` into its prefix sum array. 
 
@@ -52,7 +85,7 @@ Let `i` be the last index of the `left` part. So `A[i]` is the sum of the `left`
 
 Given `i`, the last index of the `mid` part is a range. Let it be `[j, k)`. 
 
-When we increment `i`, `j` and `k` must increase monotonically.
+**Key Point: When we increment `i`, `j` and `k` must increase monotonically.**
 
 To find `j`, we can increment `j` from `i + 1` until `left <= mid` i.e. `A[j] - A[i] >= A[i]`.
 
@@ -105,40 +138,6 @@ public:
             if (j > N - 2) break;
             while (k < j) mid2 += A[++k];
             while (k <= N - 2 && mid2 <= total - mid2 - left) mid2 += A[++k];
-            ans = (ans + k - j) % mod;
-        }
-        return ans;
-    }
-};
-```
-
-## Solution 2. Binary Search
-
-Turn array `A` into its prefix sum array. 
-
-Let `i` be the last index of the `left` part. So `A[i]` is the sum of the `left` part.
-
-For each `i`, we use binary search to find the range of the last index of the `mid` part.
-
-For `mid >= left`, we have `left + mid >= 2 * left`, so we need to find the first prefix sum that is `>= 2 * left`.
-
-For `mid <= right`, we have `mid <= total - left - mid`, so `mid <= (total - left) / 2`, so we need to find the last prefix sum that is `<= left + (total - left) / 2`.
-
-Note that the valid range of the last index of the `mid` part is `[i + 1, N - 1)`, so we need to make sure our binary search is searching within this range.
-
-```cpp
-// OJ: https://leetcode.com/problems/ways-to-split-array-into-three-subarrays/
-// Author: github.com/lzl124631x
-// Time: O(NlogN)
-// Space: O(1)
-class Solution {
-public:
-    int waysToSplit(vector<int>& A) {
-        long N = A.size(), mod = 1e9 + 7, ans = 0;
-        partial_sum(begin(A), end(A), begin(A));
-        for (int i = 0; i < N - 2; ++i) {
-            int j = lower_bound(begin(A) + i + 1, end(A) - 1, A[i] * 2) - begin(A);
-            int k = upper_bound(begin(A) + j, end(A) - 1, A[i] + (A.back() - A[i]) / 2) - begin(A);
             ans = (ans + k - j) % mod;
         }
         return ans;
