@@ -80,6 +80,39 @@ public:
 };
 ```
 
+## Solution 2. Monotonic Stack
+
+```cpp
+// OJ: https://leetcode.com/problems/sum-of-subarray-ranges/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    long long subArrayRanges(vector<int>& A) {
+        long long ans = 0, N = A.size();
+        vector<int> prevLE(N, -1), nextLT(N, N), prevGE(N, -1), nextGT(N, N);
+        stack<int> ins, des;
+        for (int i = 0; i < N; ++i) {
+            while (ins.size() && A[ins.top()] > A[i]) {
+                nextLT[ins.top()] = i;
+                ins.pop();
+            }
+            if (ins.size()) prevLE[i] = ins.top();
+            ins.push(i);
+            while (des.size() && A[des.top()] < A[i]) {
+                nextGT[des.top()] = i;
+                des.pop();
+            }
+            if (des.size()) prevGE[i] = des.top();
+            des.push(i);
+        }
+        for (long i = 0; i < N; ++i) ans += A[i] * ((i - prevGE[i]) * (nextGT[i] - i) - (i - prevLE[i]) * (nextLT[i] - i));
+        return ans;
+    }
+};
+```
+
 ## TODO
 
 https://leetcode.com/problems/sum-of-subarray-ranges/discuss/1624222/JavaC%2B%2BPython-O(n)-solution-detailed-explanation
