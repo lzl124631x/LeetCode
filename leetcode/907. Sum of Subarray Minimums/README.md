@@ -72,6 +72,57 @@ public:
 };
 ```
 
+## Solution 2. Previous LessEqual and Next LessThan
+
+For a given `A[i]`, how many subarrays have this `A[i]` as the minimum value?
+
+The first intuition is that we can find the previous and next LessThan value.
+
+Example: 
+
+```
+ 0  1  2  3  4  5  6  7
+[1, 3, 4, 3, 2, 4, 3, 0]
+```
+
+For `A[4] = 2`:
+* the previous LessThan value is `A[0] = 1` so the left bound of the subarrays must be `0 < lb <= 4` (i.e. 4 candidate values).
+* the next LessThan value is `A[7] = 0`, so the right bound of the subarrays must be `4 <= rb < 7` (i.e. 3 candidate values).
+
+Since the left/right bound has 4/3 candidate values, `A[4] = 2` appears as the minimum value of `4 * 3 = 12` subarrays.
+
+Now **consider duplicates**.
+
+For `A[3] = 3`. If we still use LessThan values, `A[1]` and `A[3]` will be counted twice in subarray `A[1..3] = [3, 4, 3]` because they share the same left/right bound.
+
+To prevent counting duplicate values twice, we can limit left or right side to never go beyong the same values. For example, we find the previous LessEqual value instead.
+
+
+```cpp
+// OJ: https://leetcode.com/problems/sum-of-subarray-minimums/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int sumSubarrayMins(vector<int>& A) {
+        long N = A.size(), ans = 0, mod = 1e9 + 7;
+        vector<int> prevLE(N, -1), nextLT(N, N);
+        stack<int> s;
+        for (int i = 0; i < N; ++i) {
+            while (s.size() && A[s.top()] > A[i]) {
+                nextLT[s.top()] = i;
+                s.pop();
+            }
+            if (s.size()) prevLE[i] = s.top();
+            s.push(i);
+        }
+        for (int i = 0; i < N; ++i) ans = (ans + (i - prevLE[i]) * (nextLT[i] - i) % mod * A[i] % mod) % mod;
+        return ans;
+    }
+};
+```
+
 ## TODO
 
 https://leetcode.com/problems/sum-of-subarray-minimums/discuss/178876/stack-solution-with-very-detailed-explanation-step-by-step
