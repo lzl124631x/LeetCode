@@ -50,7 +50,7 @@
 [Uber](https://leetcode.com/company/uber)
 
 **Related Topics**:  
-[Binary Search](https://leetcode.com/tag/binary-search/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Sort](https://leetcode.com/tag/sort/), [Union Find](https://leetcode.com/tag/union-find/), [Queue](https://leetcode.com/tag/queue/), [Dequeue](https://leetcode.com/tag/dequeue/)
+[Array](https://leetcode.com/tag/array/), [Stack](https://leetcode.com/tag/stack/), [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
 
 ## Solution 1. Next Smaller Element
 
@@ -86,28 +86,28 @@ For "how to get the next smaller element", check out the mono-stack solutions to
 class Solution {
 public:
     int maxSumMinProduct(vector<int>& A) {
-        long long mod = 1e9+7, N = A.size(), ans = 0;
-        vector<long long> sum(N + 1); // prefix sum
+        long mod = 1e9 + 7, N = A.size(), ans = 0;
+        vector<long> sum(N + 1); // prefix sum
+        vector<int> prev(N, -1), next(N, N); // prev[i]/next[i] is the index of the previous/next smaller element
         for (int i = 0; i < N; ++i) sum[i + 1] = sum[i] + A[i];
-        vector<int> prev(N, -1), next(N, -1); // prev[i]/next[i] is the index to the previous/next smaller element
-        vector<int> s; // a stack.
-        for (int i = 0; i < N; ++i) { // compute the index to the previous smaller elements
-            while (s.size() && A[s.back()] >= A[i]) s.pop_back();
-            if (s.size()) prev[i] = s.back();
-            s.push_back(i);
+        stack<int> s; // monotonic stack
+        for (int i = 0; i < N; ++i) { // fill `next` array
+            while (s.size() && A[s.top()] > A[i]) {
+                next[s.top()] = i;
+                s.pop();
+            }
+            s.push(i);
         }
-        s.clear();
-        for (int i = N - 1; i >= 0; --i) { // compute the index to the next smaller elements
-            while (s.size() && A[s.back()] >= A[i]) s.pop_back();
-            if (s.size()) next[i] = s.back();
-            s.push_back(i);
+        s = {};
+        for (int i = N - 1; i >= 0; --i) { // fill `prev` array
+            while (s.size() && A[s.top()] > A[i]) {
+                prev[s.top()] = i;
+                s.pop();
+            }
+            s.push(i);
         }
         for (int i = 0; i < N; ++i) {
-            long long s = next[i] == -1 ? sum.back() : sum[next[i]];
-            if (prev[i] != -1) {
-                s -= sum[prev[i] + 1];
-            }
-            ans = max(ans, (long long) A[i] * s);
+            ans = max(ans, (sum[next[i]] - sum[prev[i] + 1]) * A[i]);
         }
         return ans % mod;
     }
