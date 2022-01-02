@@ -1739,6 +1739,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2119 | A Number After a Double Reversal | Easy | [Solution](leetcode/2119.%20A%20Number%20After%20a%20Double%20Reversal)
 2120 | Execution of All Suffix Instructions Staying in a Grid | Medium | [Solution](leetcode/2120.%20Execution%20of%20All%20Suffix%20Instructions%20Staying%20in%20a%20Grid)
 2124 | Check if All A's Appears Before All B's | Easy | [Solution](leetcode/2124.%20Check%20if%20All%20A%27s%20Appears%20Before%20All%20B%27s)
+2125 | Number of Laser Beams in a Bank | Medium | [Solution](leetcode/2125.%20Number%20of%20Laser%20Beams%20in%20a%20Bank)
 2127 | Maximum Employees to Be Invited to a Meeting | Hard | [Solution](leetcode/2127.%20Maximum%20Employees%20to%20Be%20Invited%20to%20a%20Meeting)
 
 # License
