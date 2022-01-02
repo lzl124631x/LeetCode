@@ -521,6 +521,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 565 | Array Nesting | Medium | [Solution](leetcode/565.%20Array%20Nesting)
 566 | Reshape the Matrix | Easy | [Solution](leetcode/566.%20Reshape%20the%20Matrix)
 567 | Permutation in String | Medium | [Solution](leetcode/567.%20Permutation%20in%20String)
+568 | Maximum Vacation Days | Hard | [Solution](leetcode/568.%20Maximum%20Vacation%20Days)
 570 | Managers with at Least 5 Direct Reports | Medium | [Solution](leetcode/570.%20Managers%20with%20at%20Least%205%20Direct%20Reports)
 572 | Subtree of Another Tree | Easy | [Solution](leetcode/572.%20Subtree%20of%20Another%20Tree)
 573 | Squirrel Simulation | Medium | [Solution](leetcode/573.%20Squirrel%20Simulation)
