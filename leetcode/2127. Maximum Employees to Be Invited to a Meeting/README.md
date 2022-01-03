@@ -108,26 +108,30 @@ public:
         }
         // handle case 2
         function<tuple<int, int, bool>(int)> dfs2 = [&](int u)->tuple<int, int, bool> {
-            if (m[u] != -1) return {u, m[u], false}; // this is the merge point
+            if (m[u] != -1) return {u, m[u], false}; // We visited this node the second time, so this node must be the entry point to the cycle
             m[u] = 0;
-            auto [mergePoint, depth, mergePointMet] = dfs2(A[u]);
-            if (mergePointMet) { // If we've met the merge point again already, this node is outside of the cycle and should be ignored.
-                m[u] = 0;
-                return {mergePoint, depth, true};
+            auto [entryPoint, depth, cycleVisited] = dfs2(A[u]);
+            if (cycleVisited) { // After the cycle being traversed, any other node in the backtracking process are outside of the cycle and should be ignored (by keeping m[u] as 0).
+                return {entryPoint, depth, true};
             }
-            m[u] = 1 + depth; // If we haven't met the merge point, we increment the depth.
-            return {mergePoint, m[u], u == mergePoint};
+            m[u] = 1 + depth; // If we haven't met the entry point again, this is a node within the cycle, so we increment the depth.
+            return {entryPoint, m[u], u == entryPoint}; // When we visit the entry point again, we know what we've done traversing the cycle.
         };
         for (int i = 0; i < N; ++i) {
             if(m[i] != -1) continue;
-            auto [mergePoint, depth, mergePointMet]= dfs2(i);
-            if (mergePointMet) ans = max(ans, depth);
+            auto [entryPoint, depth, cycleVisited] = dfs2(i);
+            if (cycleVisited) ans = max(ans, depth);
         }
         return max(ans, free);
     }
 };
 ```
 
+![](./case2-dfs-down.png)
+
+![](./case2-dfs-up.png)
+
+![](./case2-dfs-up2.png)
 ## Discuss
 
 https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting/discuss/1660944/C%2B%2B-DFS-with-illustration
