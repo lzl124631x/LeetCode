@@ -70,6 +70,13 @@ The answer is the maximum of:
 * the **sum** of all case 1 components
 * the **maximum** of case 2 components
 
+
+![](./case2-dfs-down.png)
+
+![](./case2-dfs-up.png)
+
+![](./case2-dfs-up2.png)
+
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting/
 // Author: github.com/lzl124631x
@@ -127,11 +134,6 @@ public:
 };
 ```
 
-![](./case2-dfs-down.png)
-
-![](./case2-dfs-up.png)
-
-![](./case2-dfs-up2.png)
 ## Discuss
 
 https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting/discuss/1660944/C%2B%2B-DFS-with-illustration
