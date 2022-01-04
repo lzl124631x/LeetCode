@@ -50,7 +50,7 @@ countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
 * [Encode and Decode Strings (Medium)](https://leetcode.com/problems/encode-and-decode-strings/)
 * [String Compression (Medium)](https://leetcode.com/problems/string-compression/)
 
-## Solution 1.
+## Solution 1. Recursive
 
 ```cpp
 // OJ: https://leetcode.com/problems/count-and-say/
@@ -67,6 +67,33 @@ public:
             int cnt = 1;
             while (i + 1 < N && s[i + 1] == s[i]) ++i, ++cnt;
             ans += to_string(cnt) + d;
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2. Iterative
+
+```cpp
+// OJ: https://leetcode.com/problems/count-and-say/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    string countAndSay(int n) {
+        string ans = "1";
+        while (--n) {
+            string next;
+            int i = 0;
+            while (i < ans.size()) {
+                char c = ans[i];
+                int cnt = 0;
+                while (i < ans.size() && ans[i] == c) ++cnt, ++i;
+                next += to_string(cnt) + c;
+            }
+            ans = next;
         }
         return ans;
     }
