@@ -86,7 +86,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 68 | Text Justification | Hard | [Solution](leetcode/68.%20Text%20Justification)
 69 | Sqrt(x) |  | [Solution](leetcode/69.%20Sqrt%28x%29)
 70 | Climbing Stairs | Easy | [Solution](leetcode/70.%20Climbing%20Stairs)
-71 | Simplify Path |  | [Solution](leetcode/71.%20Simplify%20Path)
+71 | Simplify Path | Medium | [Solution](leetcode/71.%20Simplify%20Path)
 72 | Edit Distance | Hard | [Solution](leetcode/72.%20Edit%20Distance)
 73 | Set Matrix Zeroes | Medium | [Solution](leetcode/73.%20Set%20Matrix%20Zeroes)
 74 | Search a 2D Matrix | Medium | [Solution](leetcode/74.%20Search%20a%202D%20Matrix)
