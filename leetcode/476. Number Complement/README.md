@@ -65,6 +65,29 @@ public:
 };
 ```
 
+## Solution 2. 
+
+```cpp
+// OJ: https://leetcode.com/problems/number-complement/
+// Author: github.com/lzl124631x
+// Time: O(1)
+// Space: O(1)
+class Solution {
+public:
+    int findComplement(int n) {
+        return (unsigned)~0 >> __builtin_clz(n) ^ n;
+    }
+};
+```
+
+For example:
+
+```
+n                                    = 00000101
+(unsigned)~0 >> __builtin_clz(n)     = 00000111
+(unsigned)~0 >> __builtin_clz(n) ^ n = 00000010
+```
+
 ## Discuss
 
-https://leetcode.com/problems/number-complement/discuss/96017/3-line-C%2B%2B
+https://leetcode.com/problems/number-complement/discuss/96017
