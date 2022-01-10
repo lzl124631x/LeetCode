@@ -1,31 +1,30 @@
 # [67. Add Binary (Easy)](https://leetcode.com/problems/add-binary/)
 
-<p>Given two binary strings, return their sum (also a binary string).</p>
+<p>Given two binary strings <code>a</code> and <code>b</code>, return <em>their sum as a binary string</em>.</p>
 
-<p>The input strings are both <strong>non-empty</strong> and contains only characters <code>1</code> or&nbsp;<code>0</code>.</p>
-
+<p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
-
 <pre><strong>Input:</strong> a = "11", b = "1"
-<strong>Output:</strong> "100"</pre>
-
-<p><strong>Example 2:</strong></p>
-
+<strong>Output:</strong> "100"
+</pre><p><strong>Example 2:</strong></p>
 <pre><strong>Input:</strong> a = "1010", b = "1011"
-<strong>Output:</strong> "10101"</pre>
-
+<strong>Output:</strong> "10101"
+</pre>
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li>Each string consists only of <code>'0'</code> or <code>'1'</code> characters.</li>
-	<li><code>1 &lt;= a.length, b.length &lt;= 10^4</code></li>
-	<li>Each string is either <code>"0"</code> or doesn't contain any leading zero.</li>
+	<li><code>1 &lt;= a.length, b.length &lt;= 10<sup>4</sup></code></li>
+	<li><code>a</code> and <code>b</code> consist&nbsp;only of <code>'0'</code> or <code>'1'</code> characters.</li>
+	<li>Each string does not contain leading zeros except for the zero itself.</li>
 </ul>
 
 
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Adobe](https://leetcode.com/company/adobe), [Samsung](https://leetcode.com/company/samsung), [Apple](https://leetcode.com/company/apple), [ByteDance](https://leetcode.com/company/bytedance)
+
 **Related Topics**:  
-[Math](https://leetcode.com/tag/math/), [String](https://leetcode.com/tag/string/)
+[Math](https://leetcode.com/tag/math/), [String](https://leetcode.com/tag/string/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/), [Simulation](https://leetcode.com/tag/simulation/)
 
 **Similar Questions**:
 * [Add Two Numbers (Medium)](https://leetcode.com/problems/add-two-numbers/)
@@ -51,8 +50,7 @@ public:
             ans += '0' + (carry & 1);
             carry >>= 1;
         }
-        reverse(begin(ans), end(ans));
-        return ans;
+        return string(rbegin(ans), rend(ans));
     }
 };
 ```
