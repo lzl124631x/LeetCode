@@ -1,38 +1,43 @@
 # [1022. Sum of Root To Leaf Binary Numbers (Easy)](https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/)
 
-<p>Given a binary tree, each node has value <code>0</code>&nbsp;or <code>1</code>.&nbsp; Each root-to-leaf path represents a binary number starting with the most significant bit.&nbsp; For example, if the path is <code>0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1</code>, then this could represent <code>01101</code> in binary, which is <code>13</code>.</p>
+<p>You are given the <code>root</code> of a binary tree where each node has a value <code>0</code> or <code>1</code>. Each root-to-leaf path represents a binary number starting with the most significant bit.</p>
 
-<p>For all leaves in the tree, consider the numbers represented by the path&nbsp;from the root to that leaf.</p>
+<ul>
+	<li>For example, if the path is <code>0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1</code>, then this could represent <code>01101</code> in binary, which is <code>13</code>.</li>
+</ul>
 
-<p>Return the sum of these numbers.</p>
+<p>For all leaves in the tree, consider the numbers represented by the path from the root to that leaf. Return <em>the sum of these numbers</em>.</p>
+
+<p>The test cases are generated so that the answer fits in a <strong>32-bits</strong> integer.</p>
 
 <p>&nbsp;</p>
-
 <p><strong>Example 1:</strong></p>
-
-<p><span id="example-output-1"><img alt="" src="https://assets.leetcode.com/uploads/2019/04/04/sum-of-root-to-leaf-binary-numbers.png" style="width: 304px; height: 200px;"></span></p>
-
-<pre><strong>Input: </strong><span id="example-input-1-1">[1,0,1,0,1,0,1]</span>
-<strong>Output: </strong><span id="example-output-1">22</span>
+<img alt="" src="https://assets.leetcode.com/uploads/2019/04/04/sum-of-root-to-leaf-binary-numbers.png" style="width: 400px; height: 263px;">
+<pre><strong>Input:</strong> root = [1,0,1,0,1,0,1]
+<strong>Output:</strong> 22
 <strong>Explanation: </strong>(100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22
 </pre>
 
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> root = [0]
+<strong>Output:</strong> 0
+</pre>
+
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><strong>Note:</strong></p>
-
-<ol>
-	<li>The number of nodes in the tree is between <code>1</code> and <code>1000</code>.</li>
-	<li>node.val is <code>0</code> or <code>1</code>.</li>
-	<li>The answer will not exceed <code>2^31 - 1</code>.</li>
-</ol>
+<ul>
+	<li>The number of nodes in the tree is in the range <code>[1, 1000]</code>.</li>
+	<li><code>Node.val</code> is <code>0</code> or <code>1</code>.</li>
+</ul>
 
 
 **Companies**:  
-[Amazon](https://leetcode.com/company/amazon)
+[Apple](https://leetcode.com/company/apple)
 
 **Related Topics**:  
-[Tree](https://leetcode.com/tag/tree/)
+[Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
 
 ## Solution 1.
 
@@ -42,44 +47,12 @@
 // Time: O(N)
 // Space: O(H)
 class Solution {
-    int ans = 0;
-    void preorder(TreeNode *root, int path) {
-        if (!root) return;
-        path = (path << 1) + root->val;
-        if (!root->left && !root->right) {
-            ans += path;
-            return;
-        }
-        preorder(root->left, path);
-        preorder(root->right, path);
-    }
 public:
-    int sumRootToLeaf(TreeNode* root) {
-        preorder(root, 0);
-        return ans;
-    }
-};
-```
-
-Or
-
-```cpp
-// OJ: https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(H)
-class Solution {
-    int sum = 0;
-public:
-    int sumRootToLeaf(TreeNode* root, int path = 0) {
+    int sumRootToLeaf(TreeNode* root, int pre = 0) {
         if (!root) return 0;
-        path = (path << 1) + root->val;
-        if (!root->left && !root->right) sum += path;
-        else {
-            sumRootToLeaf(root->left, path);
-            sumRootToLeaf(root->right, path);
-        }
-        return sum;
+        int val = (pre << 1) + root->val;
+        if (!root->left && !root->right) return val;
+        return sumRootToLeaf(root->left, val) + sumRootToLeaf(root->right, val);
     }
 };
 ```
