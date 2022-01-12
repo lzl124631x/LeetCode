@@ -57,6 +57,23 @@ IFS=$'\n'; for d in $(find leetcode/ -type d -maxdepth 1 -mindepth 1 -exec basen
 done
 
 echo "
+
+# FAQ
+
+## Space Complexity
+
+I always only estimate the **extra** space **excluding** the space taken by the answer.
+
+This is because the space for the answer is needed anyway for all algorithms of the same problem and it is the extra space that tells good algorithms apart from bad ones.
+
+For example, assume a problem's answer always takes \`O(N^2)\` space. Algorithm A takes \`O(1)\` extra space, algorithm B takes \`O(N)\` extra space, and algorithm C takes \`O(N^2)\` extra space.
+
+Which algorithm is better from space complexity perspective? Definitely algorithm A is the best, algorithm B is the second and algorithm C is the worst.
+
+But if we take the answer space into account, all these three algorithms have the same \`O(N^2)\` space complexity overall.
+
+So, only estimating the **extra** space **excluding** the answer space helps us better understand the algorithm's overhead.
+
 # License
 
 All rights reserved by [github.com/lzl124631x](https://github.com/lzl124631x). Contact me if you want to redistribute the code. No commercial use." >> $file
