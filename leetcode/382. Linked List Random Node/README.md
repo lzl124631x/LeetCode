@@ -1,25 +1,56 @@
 # [382. Linked List Random Node (Medium)](https://leetcode.com/problems/linked-list-random-node/)
 
-<p>Given a singly linked list, return a random node's value from the linked list. Each node must have the <b>same probability</b> of being chosen.</p>
+<p>Given a singly linked list, return a random node's value from the linked list. Each node must have the <strong>same probability</strong> of being chosen.</p>
 
-<p><b>Follow up:</b><br>
-What if the linked list is extremely large and its length is unknown to you? Could you solve this efficiently without using extra space?
-</p>
+<p>Implement the <code>Solution</code> class:</p>
 
-<p><b>Example:</b>
-</p><pre>// Init a singly linked list [1,2,3].
-ListNode head = new ListNode(1);
-head.next = new ListNode(2);
-head.next.next = new ListNode(3);
-Solution solution = new Solution(head);
+<ul>
+	<li><code>Solution(ListNode head)</code> Initializes the object with the integer array nums.</li>
+	<li><code>int getRandom()</code> Chooses a node randomly from the list and returns its value. All the nodes of the list should be equally likely to be choosen.</li>
+</ul>
 
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/03/16/getrand-linked-list.jpg" style="width: 302px; height: 62px;">
+<pre><strong>Input</strong>
+["Solution", "getRandom", "getRandom", "getRandom", "getRandom", "getRandom"]
+[[[1, 2, 3]], [], [], [], [], []]
+<strong>Output</strong>
+[null, 1, 3, 2, 2, 3]
+
+<strong>Explanation</strong>
+Solution solution = new Solution([1, 2, 3]);
+solution.getRandom(); // return 1
+solution.getRandom(); // return 3
+solution.getRandom(); // return 2
+solution.getRandom(); // return 2
+solution.getRandom(); // return 3
 // getRandom() should return either 1, 2, or 3 randomly. Each element should have equal probability of returning.
-solution.getRandom();
 </pre>
-<p></p>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li>The number of nodes in the linked list will be in the range <code>[1, 10<sup>4</sup>]</code>.</li>
+	<li><code>-10<sup>4</sup> &lt;= Node.val &lt;= 10<sup>4</sup></code></li>
+	<li>At most <code>10<sup>4</sup></code> calls will be made to <code>getRandom</code>.</li>
+</ul>
+
+<p>&nbsp;</p>
+<p><strong>Follow up:</strong></p>
+
+<ul>
+	<li>What if the linked list is extremely large and its length is unknown to you?</li>
+	<li>Could you solve this efficiently without using extra space?</li>
+</ul>
+
+
+**Companies**:  
+[Google](https://leetcode.com/company/google), [Facebook](https://leetcode.com/company/facebook), [Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
-[Reservoir Sampling](https://leetcode.com/tag/reservoir-sampling/)
+[Linked List](https://leetcode.com/tag/linked-list/), [Math](https://leetcode.com/tag/math/), [Reservoir Sampling](https://leetcode.com/tag/reservoir-sampling/), [Randomized](https://leetcode.com/tag/randomized/)
 
 **Similar Questions**:
 * [Random Pick Index (Medium)](https://leetcode.com/problems/random-pick-index/)
