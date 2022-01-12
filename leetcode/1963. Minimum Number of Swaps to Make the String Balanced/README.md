@@ -28,7 +28,7 @@ The resulting string is "[[]]".
 <pre><strong>Input:</strong> s = "]]][[["
 <strong>Output:</strong> 2
 <strong>Explanation:</strong> You can do the following to make the string balanced:
-- Swap index 0 with index 4. s = "[]][[]".
+- Swap index 0 with index 4. s = "[]][][".
 - Swap index 1 with index 5. s = "[[][]]".
 The resulting string is "[[][]]".
 </pre>
@@ -51,6 +51,12 @@ The resulting string is "[[][]]".
 	<li>The number of opening brackets <code>'['</code> equals <code>n / 2</code>, and the number of closing brackets <code>']'</code> equals <code>n / 2</code>.</li>
 </ul>
 
+
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon)
+
+**Related Topics**:  
+[Two Pointers](https://leetcode.com/tag/two-pointers/), [String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/)
 
 **Similar Questions**:
 * [Remove Invalid Parentheses (Hard)](https://leetcode.com/problems/remove-invalid-parentheses/)
@@ -96,7 +102,7 @@ public:
 
 ## Solution 2. Two Pointers
 
-Find the first unmatched `[` from the left, and swap it with the first `]` from the right.
+Find the first unmatched `]` from the left, and swap it with the first `[` from the right.
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/
@@ -109,8 +115,8 @@ public:
         int N = s.size(), cnt = 0, i = 0, j = N - 1, ans = 0;
         for (int i = 0; i < j; ++i) {
             cnt += s[i] == '[' ? 1 : -1;
-            if (cnt == -1) {
-                while (s[j] == ']') --j;
+            if (cnt == -1) { // found an unmatched `]`
+                while (s[j] == ']') --j; // swap with the rightmost `[`
                 cnt = 1;
                 ++ans;
             }
