@@ -29,18 +29,6 @@
 <strong>Output:</strong> 3
 </pre>
 
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input:</strong> s = "()"
-<strong>Output:</strong> 0
-</pre>
-
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input:</strong> s = "()))(("
-<strong>Output:</strong> 4
-</pre>
-
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
@@ -51,7 +39,7 @@
 
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook)
+[Facebook](https://leetcode.com/company/facebook), [Twitter](https://leetcode.com/company/twitter), [Amazon](https://leetcode.com/company/amazon), [Visa](https://leetcode.com/company/visa)
 
 **Related Topics**:  
 [String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/)
@@ -68,14 +56,14 @@
 // Space: O(1)
 class Solution {
 public:
-    int minAddToMakeValid(string S) {
+    int minAddToMakeValid(string s) {
         int left = 0, invalidRight = 0;
-        for (char c : S) {
-            if (c == '(') left++;
-            else if (!left) invalidRight++;
-            else --left;
+        for (char c : s) {
+            if (c == '(') ++left;
+            else if (left) --left;
+            else ++invalidRight;
         }
-        return left + invalidRight;
+        return invalidRight + left;
     }
 };
 ```
