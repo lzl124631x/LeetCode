@@ -1,15 +1,15 @@
 # [1249. Minimum Remove to Make Valid Parentheses (Medium)](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)
 
-<p>Given a string <font face="monospace">s</font>&nbsp;of&nbsp;<code>'('</code>&nbsp;,&nbsp;<code>')'</code>&nbsp;and lowercase English characters.&nbsp;</p>
+<p>Given a string <font face="monospace">s</font> of <code>'('</code> , <code>')'</code> and lowercase English characters.</p>
 
-<p>Your task is to remove the minimum number of parentheses (&nbsp;<code>'('</code>&nbsp;or&nbsp;<code>')'</code>,&nbsp;in any positions ) so that the resulting <em>parentheses string</em> is valid and return <strong>any</strong> valid string.</p>
+<p>Your task is to remove the minimum number of parentheses ( <code>'('</code> or <code>')'</code>, in any positions ) so that the resulting <em>parentheses string</em> is valid and return <strong>any</strong> valid string.</p>
 
 <p>Formally, a <em>parentheses string</em> is valid if and only if:</p>
 
 <ul>
 	<li>It is the empty string, contains only lowercase characters, or</li>
-	<li>It can be written as&nbsp;<code>AB</code>&nbsp;(<code>A</code>&nbsp;concatenated with&nbsp;<code>B</code>), where&nbsp;<code>A</code>&nbsp;and&nbsp;<code>B</code>&nbsp;are valid strings, or</li>
-	<li>It can be written as&nbsp;<code>(A)</code>, where&nbsp;<code>A</code>&nbsp;is a valid string.</li>
+	<li>It can be written as <code>AB</code> (<code>A</code> concatenated with <code>B</code>), where <code>A</code> and <code>B</code> are valid strings, or</li>
+	<li>It can be written as <code>(A)</code>, where <code>A</code> is a valid string.</li>
 </ul>
 
 <p>&nbsp;</p>
@@ -33,22 +33,24 @@
 <strong>Explanation:</strong> An empty string is also valid.
 </pre>
 
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input:</strong> s = "(a(b(c)d)"
-<strong>Output:</strong> "a(b(c)d)"
-</pre>
-
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= s.length &lt;= 10^5</code></li>
-	<li><code>s[i]</code>&nbsp;is one&nbsp;of&nbsp;&nbsp;<code>'('</code> , <code>')'</code> and&nbsp;lowercase English letters<code>.</code></li>
+	<li><code>1 &lt;= s.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>s[i]</code> is either<code>'('</code> , <code>')'</code>, or lowercase English letter<code>.</code></li>
 </ul>
+
+
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Bloomberg](https://leetcode.com/company/bloomberg), [Amazon](https://leetcode.com/company/amazon), [tiktok](https://leetcode.com/company/tiktok), [Microsoft](https://leetcode.com/company/microsoft), [Snapchat](https://leetcode.com/company/snapchat)
 
 **Related Topics**:  
 [String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/)
+
+**Similar Questions**:
+* [Minimum Number of Swaps to Make the String Balanced (Medium)](https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/)
+* [Check if a Parentheses String Can Be Valid (Medium)](https://leetcode.com/problems/check-if-a-parentheses-string-can-be-valid/)
 
 ## Solution 1. Scan Left to Right then Right to Left
 
@@ -56,7 +58,7 @@
 // OJ: https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(1)
+// Space: O(1) if changing input string is allowed; otherwise O(N)
 class Solution {
 public:
     string minRemoveToMakeValid(string s) {
@@ -93,7 +95,7 @@ Or
 // OJ: https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(1)
+// Space: O(1) if changing input string is allowed; otherwise O(N)
 class Solution {
 public:
     string minRemoveToMakeValid(string s) {
