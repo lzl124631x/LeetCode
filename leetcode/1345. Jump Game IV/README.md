@@ -26,7 +26,7 @@
 
 <pre><strong>Input:</strong> arr = [7]
 <strong>Output:</strong> 0
-<strong>Explanation:</strong> Start index is the last index. You don't need to jump.
+<strong>Explanation:</strong> Start index is the last index. You do not need to jump.
 </pre>
 
 <p><strong>Example 3:</strong></p>
@@ -36,28 +36,23 @@
 <strong>Explanation:</strong> You can jump directly from index 0 to index 7 which is last index of the array.
 </pre>
 
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input:</strong> arr = [6,1,9]
-<strong>Output:</strong> 2
-</pre>
-
-<p><strong>Example 5:</strong></p>
-
-<pre><strong>Input:</strong> arr = [11,22,7,7,7,7,7,7,7,22,13]
-<strong>Output:</strong> 3
-</pre>
-
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= arr.length &lt;= 5 * 10^4</code></li>
-	<li><code>-10^8 &lt;= arr[i] &lt;= 10^8</code></li>
+	<li><code>1 &lt;= arr.length &lt;= 5 * 10<sup>4</sup></code></li>
+	<li><code>-10<sup>8</sup> &lt;= arr[i] &lt;= 10<sup>8</sup></code></li>
 </ul>
 
+
+**Companies**:  
+[Google](https://leetcode.com/company/google), [tiktok](https://leetcode.com/company/tiktok)
+
 **Related Topics**:  
-[Breadth-first Search](https://leetcode.com/tag/breadth-first-search/)
+[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/)
+
+**Similar Questions**:
+* [Jump Game VII (Medium)](https://leetcode.com/problems/jump-game-vii/)
 
 ## Solution 1. BFS
 
@@ -72,38 +67,37 @@ class Solution {
 public:
     int minJumps(vector<int>& A) {
         unordered_map<int, vector<int>> m;
-        int N = A.size(), d = 0;
+        int N = A.size(), step = 0;
         for (int i = 0; i < N; ++i) m[A[i]].push_back(i);
-        queue<int> q;
-        vector<int> dist(N, N);
-        q.emplace(0);
+        vector<bool> seen(N);
+        seen[0] = true;
+        queue<int> q{{0}};
         while (q.size()) {
             int cnt = q.size();
             while (cnt--) {
-                int i = q.front();
+                int u = q.front();
                 q.pop();
-                if (i - 1 >= 0 && dist[i - 1] == N) {
-                    q.push(i - 1);
-                    dist[i - 1] = d + 1;
+                if (u == N - 1) return step;
+                if (u - 1 >= 0 && !seen[u - 1]) {
+                    q.push(u - 1);
+                    seen[u - 1] = true;
                 }
-                if (i + 1 < N && dist[i + 1] == N) {
-                    if (i + 1 == N - 1) return d + 1;
-                    q.push(i + 1);
-                    dist[i + 1] = d + 1;
+                if (u + 1 < N && !seen[u + 1]) {
+                    q.push(u + 1);
+                    seen[u + 1] = true;
                 }
-                if (m.count(A[i])) {
-                    for (int j : m[A[i]]) {
-                        if (i == j || dist[j] != N) continue;
-                        if (j == N - 1) return d + 1;
-                        q.push(j);
-                        dist[j] = d + 1;
+                if (m.count(A[u])) {
+                    for (int v : m[A[u]]) {
+                        if (seen[v]) continue;
+                        seen[v] = true;
+                        q.push(v);
                     }
-                    m.erase(A[i]);
+                    m.erase(A[u]);
                 }
             }
-            ++d;
+            ++step;
         }
-        return 0;
+        return -1;
     }
 };
 ```
