@@ -32,13 +32,14 @@
 
 
 **Companies**:  
-[Apple](https://leetcode.com/company/apple), [Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Facebook](https://leetcode.com/company/facebook)
+[LinkedIn](https://leetcode.com/company/linkedin), [Rubrik](https://leetcode.com/company/rubrik), [Apple](https://leetcode.com/company/apple), [Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook), [Oracle](https://leetcode.com/company/oracle)
 
 **Related Topics**:  
 [String](https://leetcode.com/tag/string/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/)
 
 **Similar Questions**:
 * [Special Binary String (Hard)](https://leetcode.com/problems/special-binary-string/)
+* [Check if a Parentheses String Can Be Valid (Medium)](https://leetcode.com/problems/check-if-a-parentheses-string-can-be-valid/)
 
 ## TLE Version
 
