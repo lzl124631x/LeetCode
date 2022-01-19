@@ -85,13 +85,10 @@ public:
         sort(begin(starts), end(starts));
         sort(begin(ends), end(ends));
         int N = A.size(), ans = 0;
-        for (int i = 0, j = 0; i < N;) {
-            if (starts[i] >= ends[j]) {
-                --ans;
-                ++j;
-            }
-            ++ans;
-            ++i;
+        for (int i = 0, j = 0; i < N; ++ans, ++i) {
+            if (starts[i] < ends[j]) continue;
+            --ans;
+            ++j;
         }
         return ans;
     }
