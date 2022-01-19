@@ -67,7 +67,38 @@ public:
 };
 ```
 
-## Solution 2. Heap
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/meeting-rooms-ii/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class Solution {
+public:
+    int minMeetingRooms(vector<vector<int>>& A) {
+        vector<int> starts, ends;
+        for (auto &v : A) {
+            starts.push_back(v[0]);
+            ends.push_back(v[1]);
+        }
+        sort(begin(starts), end(starts));
+        sort(begin(ends), end(ends));
+        int N = A.size(), ans = 0;
+        for (int i = 0, j = 0; i < N;) {
+            if (starts[i] >= ends[j]) {
+                --ans;
+                ++j;
+            }
+            ++ans;
+            ++i;
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3. Heap
 
 ```cpp
 // OJ: https://leetcode.com/problems/meeting-rooms-ii/
