@@ -1,33 +1,51 @@
 # [875. Koko Eating Bananas (Medium)](https://leetcode.com/problems/koko-eating-bananas/)
 
-Koko loves to eat bananas.  There are `N` piles of bananas, the `i`\-th pile has `piles[i]` bananas.  The guards have gone and will come back in `H` hours.
+<p>Koko loves to eat bananas. There are <code>n</code> piles of bananas, the <code>i<sup>th</sup></code> pile has <code>piles[i]</code> bananas. The guards have gone and will come back in <code>h</code> hours.</p>
 
-Koko can decide her bananas-per-hour eating speed of `K`.  Each hour, she chooses some pile of bananas, and eats K bananas from that pile.  If the pile has less than `K` bananas, she eats all of them instead, and won't eat any more bananas during this hour.
+<p>Koko can decide her bananas-per-hour eating speed of <code>k</code>. Each hour, she chooses some pile of bananas and eats <code>k</code> bananas from that pile. If the pile has less than <code>k</code> bananas, she eats all of them instead and will not eat any more bananas during this hour.</p>
 
-Koko likes to eat slowly, but still wants to finish eating all the bananas before the guards come back.
+<p>Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.</p>
 
-Return the minimum integer `K` such that she can eat all the bananas within `H` hours.
+<p>Return <em>the minimum integer</em> <code>k</code> <em>such that she can eat all the bananas within</em> <code>h</code> <em>hours</em>.</p>
 
-**Example 1:**
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-**Input:** piles = \[3,6,7,11\], H = 8  
-**Output:** 4
+<pre><strong>Input:</strong> piles = [3,6,7,11], h = 8
+<strong>Output:</strong> 4
+</pre>
 
-**Example 2:**
+<p><strong>Example 2:</strong></p>
 
-**Input:** piles = \[30,11,23,4,20\], H = 5  
-**Output:** 30
+<pre><strong>Input:</strong> piles = [30,11,23,4,20], h = 5
+<strong>Output:</strong> 30
+</pre>
 
-**Example 3:**
+<p><strong>Example 3:</strong></p>
 
-**Input:** piles = \[30,11,23,4,20\], H = 6  
-**Output:** 23
+<pre><strong>Input:</strong> piles = [30,11,23,4,20], h = 6
+<strong>Output:</strong> 23
+</pre>
 
-**Note:**
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-*   `1 <= piles.length <= 10^4`
-*   `piles.length <= H <= 10^9`
-*   `1 <= piles[i] <= 10^9`
+<ul>
+	<li><code>1 &lt;= piles.length &lt;= 10<sup>4</sup></code></li>
+	<li><code>piles.length &lt;= h &lt;= 10<sup>9</sup></code></li>
+	<li><code>1 &lt;= piles[i] &lt;= 10<sup>9</sup></code></li>
+</ul>
+
+
+**Companies**:  
+[Airbnb](https://leetcode.com/company/airbnb), [Facebook](https://leetcode.com/company/facebook), [DoorDash](https://leetcode.com/company/doordash)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/)
+
+**Similar Questions**:
+* [Minimize Max Distance to Gas Station (Hard)](https://leetcode.com/problems/minimize-max-distance-to-gas-station/)
+* [Minimized Maximum of Products Distributed to Any Store (Medium)](https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/)
 
 ## Solution 1. Binary Search
 
@@ -39,20 +57,20 @@ Search a eating speed `K` between `[1, P_max]` where `P_max` is the max pile siz
 // Time: O(P*log(P_max)) where P is count of piles, P_max is max pile size.
 // Space: O(K)
 class Solution {
-private:
-    int countH(vector<int> &piles, int K) {
-        int cnt = 0;
-        for (int p : piles) cnt += (p + K - 1) / K;
-        return cnt;
-    }
 public:
-    int minEatingSpeed(vector<int>& piles, int H) {
-        int L = 1, R = *max_element(piles.begin(), piles.end());
+    int minEatingSpeed(vector<int>& A, int h) {
+        long L = 1, R = *max_element(begin(A), end(A)), N = A.size();
+        auto valid = [&](long k) {
+            int i = 0, tmp = h; 
+            for (; i < N && h > 0; ++i) {
+                tmp -= (A[i] + k - 1) / k;
+            }
+            return i == N && tmp >= 0;
+        };
         while (L <= R) {
-            int M = L + (R - L) / 2;
-            int h = countH(piles, M);
-            if (h > H) L = M + 1;
-            else R = M - 1;
+            long M = (L + R) / 2;
+            if (valid(M)) R = M - 1;
+            else L = M + 1;
         }
         return L;
     }
