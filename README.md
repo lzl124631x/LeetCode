@@ -1418,6 +1418,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1679 | Max Number of K-Sum Pairs | Medium | [Solution](leetcode/1679.%20Max%20Number%20of%20K-Sum%20Pairs)
 1680 | Concatenation of Consecutive Binary Numbers | Medium | [Solution](leetcode/1680.%20Concatenation%20of%20Consecutive%20Binary%20Numbers)
 1681 | Minimum Incompatibility | Hard | [Solution](leetcode/1681.%20Minimum%20Incompatibility)
+1685 | Sum of Absolute Differences in a Sorted Array | Medium | [Solution](leetcode/1685.%20Sum%20of%20Absolute%20Differences%20in%20a%20Sorted%20Array)
 1687 | Delivering Boxes from Storage to Ports | Hard | [Solution](leetcode/1687.%20Delivering%20Boxes%20from%20Storage%20to%20Ports)
 1688 | Count of Matches in Tournament | Easy | [Solution](leetcode/1688.%20Count%20of%20Matches%20in%20Tournament)
 1689 | Partitioning Into Minimum Number Of Deci-Binary Numbers | Medium | [Solution](leetcode/1689.%20Partitioning%20Into%20Minimum%20Number%20Of%20Deci-Binary%20Numbers)
