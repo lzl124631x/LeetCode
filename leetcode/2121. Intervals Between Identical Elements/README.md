@@ -169,3 +169,31 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+Similar to [1685. Sum of Absolute Differences in a Sorted Array (Medium)](https://leetcode.com/problems/sum-of-absolute-differences-in-a-sorted-array/)
+
+```cpp
+// OJ: https://leetcode.com/problems/intervals-between-identical-elements/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    vector<long long> getDistances(vector<int>& A) {
+        unordered_map<int, vector<int>> m;
+        int N = A.size();
+        vector<long long> ans(N);
+        for (int i = 0; i < N; ++i) m[A[i]].push_back(i);
+        for (auto &[n, v] : m) {
+            long total = accumulate(begin(v), end(v), 0L), right = total;
+            for (long i = 0; i < v.size(); ++i) {
+                ans[v[i]] = right - (v.size() - i) * v[i] + i * v[i] - (total - right);
+                right -= v[i];
+            }
+        }
+        return ans;
+    }
+};
+```
