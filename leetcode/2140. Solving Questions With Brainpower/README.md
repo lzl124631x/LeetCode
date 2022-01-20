@@ -67,15 +67,15 @@ Total points earned: 2 + 5 = 7. There is no other way to earn 7 or more points.
 class Solution {
 public:
     long long mostPoints(vector<vector<int>>& A) {
-        long long N = A.size(), ans = 0;
+        long long N = A.size();
         vector<long long> dp(N + 2);
         for (int i = 0; i < N; ++i) {
             int next = i + A[i][1] + 2;
             if (next > N) next = N + 1;
-            ans = dp[i + 1] = max(dp[i + 1], ans);
+            dp[i + 1] = max(dp[i + 1], dp[i]);
             dp[next] = max(dp[next], dp[i + 1] + A[i][0]);
         }
-        return max(ans, dp[N + 1]);
+        return *max_element(begin(dp), end(dp));
     }
 };
 ```
