@@ -1750,6 +1750,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2127 | Maximum Employees to Be Invited to a Meeting | Hard | [Solution](leetcode/2127.%20Maximum%20Employees%20to%20Be%20Invited%20to%20a%20Meeting)
 2138 | Divide a String Into Groups of Size k | Easy | [Solution](leetcode/2138.%20Divide%20a%20String%20Into%20Groups%20of%20Size%20k)
 2139 | Minimum Moves to Reach Target Score | Medium | [Solution](leetcode/2139.%20Minimum%20Moves%20to%20Reach%20Target%20Score)
+2140 | Solving Questions With Brainpower | Medium | [Solution](leetcode/2140.%20Solving%20Questions%20With%20Brainpower)
 
 
 # FAQ
