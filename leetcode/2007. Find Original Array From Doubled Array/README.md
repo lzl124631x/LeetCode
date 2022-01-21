@@ -39,12 +39,21 @@ Other original arrays could be [4,3,1] or [3,1,4].
 </ul>
 
 
+**Companies**:  
+[Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Greedy](https://leetcode.com/tag/greedy/), [Sorting](https://leetcode.com/tag/sorting/)
+
 **Similar Questions**:
 * [Array of Doubled Pairs (Medium)](https://leetcode.com/problems/array-of-doubled-pairs/)
+* [Recover the Original Array (Hard)](https://leetcode.com/problems/recover-the-original-array/)
 
-## Solution 1. Frequency Map
+## Solution 1. Multiset 
 
 Sort the array `A`. Keep removing the smallest element `n` and `2 * n` from the array, and put `n` into the answer until `A` becomes empty. Anytime we can't do the removal, we return empty array.
+
+Note: Don't use `s.count(2 * n) == 0` to test if `2 * n` is in the `multiset` since it's an `O(N)` operation for `multiset`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-original-array-from-doubled-array/
@@ -57,19 +66,24 @@ public:
         if (A.size() % 2) return {};
         multiset<int> s(begin(A), end(A));
         vector<int> ans;
-        for (int i = 0; i < N; i += 2) {
+        while (s.size()) {
             int n = *s.begin();
-            ans.push_back(n);
             s.erase(s.begin());
-            if (s.find(2 * n) == s.end()) return {}; // Don't use `s.count(2 * n) == 0` here since it's an `O(N)` operation for `multiset`.
-            s.erase(s.find(2 * n));
+            auto it = s.find(2 * n);
+            if (it == end(s)) return {};
+            s.erase(it);
+            ans.push_back(n);
         }
         return ans;
     }
 };
 ```
 
+## Solution 2. Frequency Map
+
 We can keep a frequency map in `map<int, int> m`, and remove elements of the same value in batch.
+
+Note: need some caution for `0` because `2 * 0 == 0`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-original-array-from-doubled-array/
@@ -80,21 +94,19 @@ class Solution {
 public:
     vector<int> findOriginalArray(vector<int>& A) {
         if (A.size() % 2) return {};
-        map<int, int> m; // a frequency map
+        map<int, int> m;
         for (int n : A) m[n]++;
         vector<int> ans;
         while (m.size()) {
             auto [n, cnt] = *m.begin();
+            m.erase(n);
             if (n == 0) {
                 if (cnt % 2) return {}; // count of `0` is odd.
-                for (int j = 0; j < cnt / 2; ++j) ans.push_back(0);
-                m.erase(0);
+                for (; cnt; cnt -= 2) ans.push_back(n);
             } else {
                 if (m[2 * n] < cnt) return {}; // not enough `2n` available.
-                m.erase(n);
-                for (int j = 0; j < cnt; ++j) ans.push_back(n);
-                m[2 * n] -= cnt;
-                if (m[2 * n] == 0) m.erase(2 * n);
+                if ((m[2 * n] -= cnt) == 0) m.erase(2 * n);
+                while (cnt--) ans.push_back(n);
             }
         }
         return ans;
@@ -115,10 +127,9 @@ public:
         if (A.size() % 2) return {};
         unordered_map<int, int> m;
         for (int n : A) m[n]++;
-        vector<int> nums;
+        vector<int> nums, ans;
         for (auto [n, cnt] : m) nums.push_back(n);
         sort(begin(nums), end(nums));
-        vector<int> ans;
         for (int n : nums) {
             if (m[2 * n] < m[n]) return {};
             for (int i = 0; i < m[n]; ++i, --m[2 * n]) ans.push_back(n);
