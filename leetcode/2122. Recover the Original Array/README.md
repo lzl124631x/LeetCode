@@ -72,7 +72,8 @@ The idea is to simply use `A[0]` as the smallest element in `lower` and try each
 
 But the implementation can easily get TLE. We need to use tricks to speed it up.
 
-The following implementation uses `A.back()` and `A[i]` to reduce the possible `k`s we need to test.
+1. We might many duplicate `k`s. Use set to dedup them.
+2. To further narrow down, we use `A.back()` as the largest element in `higher` and try each `A[i] (N-1 <= i < A.size()-1)` as the corresponding element in `lower`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/recover-the-original-array/
@@ -84,29 +85,65 @@ public:
     vector<int> recoverArray(vector<int>& A) {
         sort(begin(A), end(A));
         int N = A.size() / 2;
-        unordered_set<int> k1, k2;
-        for (int i = 1; i <= N; ++i) { // Use A[0] as the smallest element in lower. Try each A[i] (1 <= i <= N) as the corresponding element in higher.
+        unordered_set<int> ks, ks2; // Dedup `k`s using set.
+        for (int i = 1; i <= N; ++i) { // Generate possible `k`s: Use A[0] as the smallest element in lower. Try each A[i] (1 <= i <= N) as the corresponding element in higher.
             int d = A[i] - A[0];
-            if (d % 2 == 0) k1.insert(d / 2);
+            if (d && d % 2 == 0) ks.insert(d / 2);
         }
-        for (int i = N - 1; i + 1 < A.size(); ++i) { // Use A.back() as the largest element in higher. Try each A[i] (N-1 <= i < A.size()-1) as the corresponding element in lower.
+        for (int i = N - 1; i < A.size() - 1; ++i) { // Narrow down: Use A.back() as the largest element in higher. Try each A[i] (N-1 <= i < A.size()-1) as the corresponding element in lower.
             int d = A.back() - A[i];
-            if (d % 2 == 0 && k1.count(d / 2)) k2.insert(d / 2);
+            if (d % 2 == 0 && ks.count(d / 2)) ks2.insert(d / 2);
         }
-        k2.erase(0);
-        for (int k : k2) {
-            vector<int> ans;
-            ans.reserve(N);
+        vector<int> ans;
+        ans.reserve(N);
+        for (int k : ks2) {
             multiset<int> s(begin(A), end(A));
+            ans.clear();
             while (s.size()) {
-                int a = *s.begin(), b = a + 2 * k;
-                auto it = s.find(b);
-                if (it == s.end()) break;
+                int a = *s.begin();
                 s.erase(s.begin());
+                auto it = s.find(a + 2 * k);
+                if (it == s.end()) break;
                 s.erase(it);
                 ans.push_back(a + k);
             }
             if (s.empty()) return ans;
+        }
+        return {};
+    }
+};
+```
+
+## Solution 2. 
+
+```cpp
+// OJ: https://leetcode.com/problems/recover-the-original-array/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N)
+class Solution {
+public:
+    vector<int> recoverArray(vector<int>& A) {
+        sort(begin(A), end(A));
+        int N = A.size() / 2;
+        vector<int> ans;
+        ans.reserve(N);
+        for (int i = 1; i <= N + 1; ++i) {
+            int k = A[i] - A[0];
+            if (k == 0 || k % 2) continue;
+            k /= 2;
+            ans.clear();
+            int pos = 0;
+            for (int j = 0; j < A.size(); ++j) {
+                if (pos == ans.size()) ans.push_back(A[j] + k);
+                else {
+                    int d = A[j] - ans[pos];
+                    if (d == k) ++pos;
+                    else if (d < k) ans.push_back(A[j] + k);
+                    else break;
+                }
+            }
+            if (pos == N) return ans;
         }
         return {};
     }
