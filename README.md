@@ -1362,6 +1362,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1599 | Maximum Profit of Operating a Centennial Wheel | Medium | [Solution](leetcode/1599.%20Maximum%20Profit%20of%20Operating%20a%20Centennial%20Wheel)
 1600 | Throne Inheritance | Medium | [Solution](leetcode/1600.%20Throne%20Inheritance)
 1601 | Maximum Number of Achievable Transfer Requests | Hard | [Solution](leetcode/1601.%20Maximum%20Number%20of%20Achievable%20Transfer%20Requests)
+1602 | Find Nearest Right Node in Binary Tree | Medium | [Solution](leetcode/1602.%20Find%20Nearest%20Right%20Node%20in%20Binary%20Tree)
 1603 | Design Parking System | Easy | [Solution](leetcode/1603.%20Design%20Parking%20System)
 1604 | Alert Using Same Key-Card Three or More Times in a One Hour Period | Medium | [Solution](leetcode/1604.%20Alert%20Using%20Same%20Key-Card%20Three%20or%20More%20Times%20in%20a%20One%20Hour%20Period)
 1605 | Find Valid Matrix Given Row and Column Sums | Medium | [Solution](leetcode/1605.%20Find%20Valid%20Matrix%20Given%20Row%20and%20Column%20Sums)
