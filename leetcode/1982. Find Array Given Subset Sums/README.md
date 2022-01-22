@@ -131,3 +131,42 @@ public:
     }
 };
 ```
+
+Anthor way to recover the original array without using `multiset`.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-array-given-subset-sums/
+// Author: github.com/lzl124631x
+// Time: O(2^N * N)
+// Space: O(2^N)
+class Solution {
+public:
+    vector<int> recoverArray(int n, vector<int>& A) {
+        sort(begin(A), end(A));
+        int mn = A[0];
+        for (int &n : A) n -= mn;
+        vector<int> ans, next;
+        while (n--) {
+            int num = A[1], j = 0;
+            next.clear();
+            for (int i = 0; i < A.size(); ++i) {
+                if (j < next.size() && A[i] == next[j] + num) ++j;
+                else next.push_back(A[i]);
+            }
+            ans.push_back(num);
+            swap(next, A);
+        }
+        function<bool(int, int)> dfs = [&](int sum, int i) {
+            if (sum == 0) return true;
+            if (i == ans.size()) return false;
+            int num = ans[i];
+            ans[i] = -num;
+            if (dfs(sum - num, i + 1)) return true;
+            ans[i] = num;
+            return dfs(sum, i + 1);
+        };
+        dfs(-mn, 0);
+        return ans;
+    }
+};
+```
