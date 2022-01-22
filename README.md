@@ -1752,6 +1752,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2138 | Divide a String Into Groups of Size k | Easy | [Solution](leetcode/2138.%20Divide%20a%20String%20Into%20Groups%20of%20Size%20k)
 2139 | Minimum Moves to Reach Target Score | Medium | [Solution](leetcode/2139.%20Minimum%20Moves%20to%20Reach%20Target%20Score)
 2140 | Solving Questions With Brainpower | Medium | [Solution](leetcode/2140.%20Solving%20Questions%20With%20Brainpower)
+2144 | Minimum Cost of Buying Candies With Discount | Easy | [Solution](leetcode/2144.%20Minimum%20Cost%20of%20Buying%20Candies%20With%20Discount)
+2145 | Count the Hidden Sequences | Medium | [Solution](leetcode/2145.%20Count%20the%20Hidden%20Sequences)
+2146 | K Highest Ranked Items Within a Price Range | Medium | [Solution](leetcode/2146.%20K%20Highest%20Ranked%20Items%20Within%20a%20Price%20Range)
+2147 | Number of Ways to Divide a Long Corridor | Hard | [Solution](leetcode/2147.%20Number%20of%20Ways%20to%20Divide%20a%20Long%20Corridor)
 
 
 # FAQ
