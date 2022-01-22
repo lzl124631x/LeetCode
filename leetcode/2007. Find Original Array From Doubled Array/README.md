@@ -138,3 +138,29 @@ public:
     }
 };
 ```
+
+## Solution 3.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-original-array-from-doubled-array/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1) extra space
+class Solution {
+public:
+    vector<int> findOriginalArray(vector<int>& A) {
+        if (A.size() % 2) return {};
+        sort(begin(A), end(A));
+        int N = A.size(), j = 0; // `j` is the write pointer in `ans` array
+        vector<int> ans;
+        ans.reserve(N / 2);
+        for (int i = 0; i < N; ++i) {
+            if (j == ans.size()) ans.push_back(A[i]); // If `j` is at the end of `ans`, this `A[i]` must be in the `ans`.
+            else if (A[i] == ans[j] * 2) ++j; // If this `A[i] == ans[j] * 2`, we've found the doubled number correponding to `ans[j]`, so we move `j` forward.
+            else ans.push_back(A[i]); // Otherwise, this has to be in the `ans`.
+            if (ans.size() > N / 2) return {};
+        }
+        return ans;
+    }
+};
+```
