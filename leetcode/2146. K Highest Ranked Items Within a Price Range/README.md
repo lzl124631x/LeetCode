@@ -179,3 +179,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/k-highest-ranked-items-within-a-price-range/discuss/1709689/C%2B%2B-BFS-%2B-Sorting-O(MNlog(MN))-or-Heap-O(MNlogK)
