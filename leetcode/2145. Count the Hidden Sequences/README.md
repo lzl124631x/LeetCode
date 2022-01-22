@@ -70,6 +70,8 @@ By changing `hidden[0]`, we can shift this range up or down.
 
 If we snap `max` to `upper`, we move up by `upper - max` steps. Then the number of possible of hidden sequences is `min + (upper - max) - lower + 1`.
 
+![](./2145.png)
+
 ```cpp
 // OJ: https://leetcode.com/problems/count-the-hidden-sequences/
 // Author: github.com/lzl124631x
