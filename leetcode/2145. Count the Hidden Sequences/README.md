@@ -72,6 +72,10 @@ If we snap `max` to `upper`, we move up by `upper - max` steps. Then the number 
 
 ![](./2145.png)
 
+Another way to think about it:
+
+![](./2145-2.png)
+
 ```cpp
 // OJ: https://leetcode.com/problems/count-the-hidden-sequences/
 // Author: github.com/lzl124631x
