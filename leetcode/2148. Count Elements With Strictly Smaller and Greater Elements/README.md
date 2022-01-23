@@ -72,6 +72,51 @@ public:
 };
 ```
 
+## Solution 2. Exclude Smallest and Greatest Elements
+
+```cpp
+// OJ: https://leetcode.com/problems/count-elements-with-strictly-smaller-and-greater-elements/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int countElements(vector<int>& A) {
+        sort(begin(A), end(A));
+        int i = 0, j = A.size() - 1;
+        while (i <= j && A[i] == A[0]) ++i;
+        while (i <= j && A[j] == A.back()) --j;
+        return j - i + 1;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/count-elements-with-strictly-smaller-and-greater-elements/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int countElements(vector<int>& A) {
+        int mn = A[0], mx = A[0], ans = A.size(), minCnt = 0, maxCnt = 0;
+        for (int n : A) {
+            if (n < mn) {
+                minCnt = 1;
+                mn = n;
+            } else if (n == mn) ++minCnt;
+            if (n > mx) {
+                maxCnt = 1;
+                mx = n;
+            } else if (n == mx) ++maxCnt;
+        }
+        return max(0, (int)A.size() - minCnt - maxCnt);
+    }
+};
+```
+
 ## Discuss 
 
 https://leetcode.com/problems/count-elements-with-strictly-smaller-and-greater-elements/discuss/1711250/C%2B%2B-Binary-Search-O(NlogN)
