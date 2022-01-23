@@ -1756,6 +1756,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2145 | Count the Hidden Sequences | Medium | [Solution](leetcode/2145.%20Count%20the%20Hidden%20Sequences)
 2146 | K Highest Ranked Items Within a Price Range | Medium | [Solution](leetcode/2146.%20K%20Highest%20Ranked%20Items%20Within%20a%20Price%20Range)
 2147 | Number of Ways to Divide a Long Corridor | Hard | [Solution](leetcode/2147.%20Number%20of%20Ways%20to%20Divide%20a%20Long%20Corridor)
+2148 | Count Elements With Strictly Smaller and Greater Elements | Easy | [Solution](leetcode/2148.%20Count%20Elements%20With%20Strictly%20Smaller%20and%20Greater%20Elements)
+2149 | Rearrange Array Elements by Sign | Medium | [Solution](leetcode/2149.%20Rearrange%20Array%20Elements%20by%20Sign)
+2150 | Find All Lonely Numbers in the Array | Medium | [Solution](leetcode/2150.%20Find%20All%20Lonely%20Numbers%20in%20the%20Array)
+2151 | Maximum Good People Based on Statements | Hard | [Solution](leetcode/2151.%20Maximum%20Good%20People%20Based%20on%20Statements)
 
 
 # FAQ
