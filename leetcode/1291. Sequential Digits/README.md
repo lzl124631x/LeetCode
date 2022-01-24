@@ -25,6 +25,10 @@
 
 ## Solution 1.
 
+`get` function: Given length and first digit, generate the number.
+
+Get the length of `low`, and start creating numbers from this length. Keep only the numbers in range.
+
 ```cpp
 // OJ: https://leetcode.com/problems/sequential-digits/
 // Author: github.com/lzl124631x
@@ -42,11 +46,8 @@ class Solution {
 public:
     vector<int> sequentialDigits(int low, int high) {
         vector<int> ans;
-        int len = 0, tmp = len;
-        while (tmp) {
-            tmp /= 10;
-            ++len;
-        }
+        int len = 0;
+        for (int tmp = low; tmp; tmp /= 10) ++len;
         while (len <= 9) {
             for (int i = 1; i <= 9 - len + 1; ++i) {
                 long long n = get(i, len);
@@ -55,6 +56,37 @@ public:
                 ans.push_back(n);
             }
             ++len;
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/sequential-digits/
+// Author: github.com/lzl124631x
+// Time: O(1) since there are limited number of valid integers
+// Space: O(1)
+class Solution {
+    int next(int n, int increment = 1) {
+        int len = log10(n), first = n / pow(10, len) + increment;
+        if (first > 9 - len) {
+            first = 1;
+            ++len;
+        }
+        int ans = first;
+        while (len--) ans = 10 * ans + ++first;
+        return ans;
+    }
+public:
+    vector<int> sequentialDigits(int low, int high) {
+        vector<int> ans;
+        int n = next(low, 0);
+        while (n < low) n = next(low);
+        for (; n <= high; n = next(n)) {
+            ans.push_back(n);
         }
         return ans;
     }
