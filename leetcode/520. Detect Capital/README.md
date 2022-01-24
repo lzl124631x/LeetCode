@@ -1,39 +1,40 @@
 # [520. Detect Capital (Easy)](https://leetcode.com/problems/detect-capital/)
 
-<p>Given a word, you need to judge whether the usage of capitals in it is right or not.</p>
-
 <p>We define the usage of capitals in a word to be right when one of the following cases holds:</p>
 
-<ol>
-	<li>All letters in this word are capitals, like "USA".</li>
-	<li>All letters in this word are not capitals, like "leetcode".</li>
-	<li>Only the first letter in this word is capital, like "Google".</li>
-</ol>
-Otherwise, we define that this word doesn't use capitals in a right way.
+<ul>
+	<li>All letters in this word are capitals, like <code>"USA"</code>.</li>
+	<li>All letters in this word are not capitals, like <code>"leetcode"</code>.</li>
+	<li>Only the first letter in this word is capital, like <code>"Google"</code>.</li>
+</ul>
+
+<p>Given a string <code>word</code>, return <code>true</code> if the usage of capitals in it is right.</p>
 
 <p>&nbsp;</p>
-
-<p><b>Example 1:</b></p>
-
-<pre><b>Input:</b> "USA"
-<b>Output:</b> True
+<p><strong>Example 1:</strong></p>
+<pre><strong>Input:</strong> word = "USA"
+<strong>Output:</strong> true
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> word = "FlaG"
+<strong>Output:</strong> false
 </pre>
-
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><b>Example 2:</b></p>
+<ul>
+	<li><code>1 &lt;= word.length &lt;= 100</code></li>
+	<li><code>word</code> consists of lowercase and uppercase English letters.</li>
+</ul>
 
-<pre><b>Input:</b> "FlaG"
-<b>Output:</b> False
-</pre>
 
-<p>&nbsp;</p>
-
-<p><b>Note:</b> The input will be a non-empty word consisting of uppercase and lowercase latin letters.</p>
-
+**Companies**:  
+[Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
 [String](https://leetcode.com/tag/string/)
+
+**Similar Questions**:
+* [Capitalize the Title (Easy)](https://leetcode.com/problems/capitalize-the-title/)
 
 ## Solution 1.
 
