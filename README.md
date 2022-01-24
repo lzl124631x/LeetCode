@@ -1402,6 +1402,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1657 | Determine if Two Strings Are Close | Medium | [Solution](leetcode/1657.%20Determine%20if%20Two%20Strings%20Are%20Close)
 1658 | Minimum Operations to Reduce X to Zero | Medium | [Solution](leetcode/1658.%20Minimum%20Operations%20to%20Reduce%20X%20to%20Zero)
 1659 | Maximize Grid Happiness | Hard | [Solution](leetcode/1659.%20Maximize%20Grid%20Happiness)
+1660 | Correct a Binary Tree | Medium | [Solution](leetcode/1660.%20Correct%20a%20Binary%20Tree)
 1662 | Check If Two String Arrays are Equivalent | Easy | [Solution](leetcode/1662.%20Check%20If%20Two%20String%20Arrays%20are%20Equivalent)
 1663 | Smallest String With A Given Numeric Value | Medium | [Solution](leetcode/1663.%20Smallest%20String%20With%20A%20Given%20Numeric%20Value)
 1664 | Ways to Make a Fair Array | Medium | [Solution](leetcode/1664.%20Ways%20to%20Make%20a%20Fair%20Array)
