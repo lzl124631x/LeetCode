@@ -65,13 +65,15 @@ Another possible matrix is: [[1,2],
 **Similar Questions**:
 * [Reconstruct a 2-Row Binary Matrix (Medium)](https://leetcode.com/problems/reconstruct-a-2-row-binary-matrix/)
 
-## Solution 1.
+## Solution 1. Greedy
+
+Fill row by row and column by column. For each cell `(i, j)`, we fill `ans[i][j] = min(rowSum[i], colSum[j])` and deduct `ans[i][j]` from `rowSum[i]` and `colSum[j]`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-valid-matrix-given-row-and-column-sums/
 // Author: github.com/lzl124631x
 // Time: O(MN)
-// Space: O(1)
+// Space: O(1) extra space
 class Solution {
 public:
     vector<vector<int>> restoreMatrix(vector<int>& R, vector<int>& C) {
@@ -89,7 +91,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Greedy
 
 We just need to go from the top-left to the bottom-right. Once `R[i]` or `C[j]` becomes `0`, the rest of the elements in row `i` or column `j` must be `0`s, so we can increment `i` or `j`.
 
@@ -97,7 +99,7 @@ We just need to go from the top-left to the bottom-right. Once `R[i]` or `C[j]` 
 // OJ: https://leetcode.com/problems/find-valid-matrix-given-row-and-column-sums/
 // Author: github.com/lzl124631x
 // Time: O(MN) for initialization, O(M + N) for processing
-// Space: O(MN)
+// Space: O(1) extra space
 // Ref: https://leetcode.com/problems/find-valid-matrix-given-row-and-column-sums/discuss/876845/JavaC%2B%2BPython-Easy-and-Concise-with-Prove
 class Solution {
 public:
