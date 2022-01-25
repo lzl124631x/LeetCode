@@ -1097,6 +1097,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1254 | Number of Closed Islands | Medium | [Solution](leetcode/1254.%20Number%20of%20Closed%20Islands)
 1255 | Maximum Score Words Formed by Letters | Hard | [Solution](leetcode/1255.%20Maximum%20Score%20Words%20Formed%20by%20Letters)
 1256 | Encode Number | Medium | [Solution](leetcode/1256.%20Encode%20Number)
+1258 | Synonymous Sentences | Medium | [Solution](leetcode/1258.%20Synonymous%20Sentences)
 1260 | Shift 2D Grid | Easy | [Solution](leetcode/1260.%20Shift%202D%20Grid)
 1261 | Find Elements in a Contaminated Binary Tree | Medium | [Solution](leetcode/1261.%20Find%20Elements%20in%20a%20Contaminated%20Binary%20Tree)
 1262 | Greatest Sum Divisible by Three | Medium | [Solution](leetcode/1262.%20Greatest%20Sum%20Divisible%20by%20Three)
