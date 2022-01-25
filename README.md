@@ -1667,6 +1667,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2017 | Grid Game | Medium | [Solution](leetcode/2017.%20Grid%20Game)
 2018 | Check if Word Can Be Placed In Crossword | Medium | [Solution](leetcode/2018.%20Check%20if%20Word%20Can%20Be%20Placed%20In%20Crossword)
 2019 | The Score of Students Solving Math Expression | Hard | [Solution](leetcode/2019.%20The%20Score%20of%20Students%20Solving%20Math%20Expression)
+2021 | Brightest Position on Street | Medium | [Solution](leetcode/2021.%20Brightest%20Position%20on%20Street)
 2022 | Convert 1D Array Into 2D Array | Easy | [Solution](leetcode/2022.%20Convert%201D%20Array%20Into%202D%20Array)
 2023 | Number of Pairs of Strings With Concatenation Equal to Target | Medium | [Solution](leetcode/2023.%20Number%20of%20Pairs%20of%20Strings%20With%20Concatenation%20Equal%20to%20Target)
 2024 | Maximize the Confusion of an Exam | Medium | [Solution](leetcode/2024.%20Maximize%20the%20Confusion%20of%20an%20Exam)
