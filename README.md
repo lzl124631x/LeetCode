@@ -1076,6 +1076,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1226 | The Dining Philosophers | Medium | [Solution](leetcode/1226.%20The%20Dining%20Philosophers)
 1227 | Airplane Seat Assignment Probability | Medium | [Solution](leetcode/1227.%20Airplane%20Seat%20Assignment%20Probability)
 1228 | Missing Number In Arithmetic Progression | Easy | [Solution](leetcode/1228.%20Missing%20Number%20In%20Arithmetic%20Progression)
+1230 | Toss Strange Coins | Medium | [Solution](leetcode/1230.%20Toss%20Strange%20Coins)
 1231 | Divide Chocolate | Hard | [Solution](leetcode/1231.%20Divide%20Chocolate)
 1232 | Check If It Is a Straight Line | Easy | [Solution](leetcode/1232.%20Check%20If%20It%20Is%20a%20Straight%20Line)
 1233 | Remove Sub-Folders from the Filesystem | Medium | [Solution](leetcode/1233.%20Remove%20Sub-Folders%20from%20the%20Filesystem)
