@@ -78,3 +78,26 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+A single for loop
+
+```cpp
+// OJ: https://leetcode.com/problems/valid-mountain-array/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    bool validMountainArray(vector<int>& A) {
+        int i = 1, N = A.size(), inc = 1;
+        for (; i < N; ++i) {
+            if (A[i] == A[i - 1] || (!inc && A[i] > A[i - 1])) return false;
+            inc = A[i] > A[i - 1];
+            if (!inc && i == 1) return false;
+        }
+        return !inc;
+    }
+};
+```
