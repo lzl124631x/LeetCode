@@ -76,25 +76,25 @@ This implementation uses BIT.
 // Space: O(N)
 // Ref: https://leetcode.com/problems/count-subarrays-with-more-ones-than-zeros/discuss/1512961/BIT-vs.-O(n)
 const int N = 200000, mod = 1e9 + 7;
-int bit[N + 1] = {};
+int bt[N + 1] = {};
 class Solution {
     int sum(int i) {
         int ans = 0;
-        for (++i; i > 0; i -= i & -i) ans += bit[i];
+        for (++i; i > 0; i -= i & -i) ans += bt[i];
         return ans;
     }
     void update(int i, int val) {
-        for (++i; i <= N; i += i & -i) bit[i] += val;
+        for (++i; i <= N; i += i & -i) bt[i] += val;
     }
 public:
     int subarraysWithMoreZerosThanOnes(vector<int>& A) {
         int ans = 0, diff = 0;
-        memset(bit, 0, sizeof(bit));
+        memset(bt, 0, sizeof(bt));
         update(N / 2, 1);
         for (int n : A) {
             diff += n ? 1 : -1;
-            update(diff + N / 2, 1);
-            ans = (ans + sum(diff + N / 2 - 1)) % mod;
+            update(N / 2 + diff, 1);
+            ans = (ans + sum(N / 2 + diff - 1)) % mod;
         }
         return ans;
     }
@@ -133,3 +133,34 @@ public:
     }
 };
 ```
+
+## Solution 3.
+
+```cpp
+// OJ: https://leetcode.com/problems/count-subarrays-with-more-ones-than-zeros/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/count-subarrays-with-more-ones-than-zeros/discuss/1512961/BIT-vs.-O(n)
+const int N = 200000, mod = 1e9 + 7;
+int bt[N + 1] = {};
+class Solution {
+public:
+    int subarraysWithMoreZerosThanOnes(vector<int>& A) {
+        int ans = 0, diff = 0, cnt = 0;
+        memset(bt, 0, sizeof(bt));
+        bt[N / 2] = 1;
+        for (int n : A) {
+            diff += n ? 1 : -1;
+            cnt += n ? bt[N / 2 + diff - 1] : -bt[N / 2 + diff];
+            ans = (ans + cnt) % mod;
+            ++bt[N / 2 + diff];
+        }
+        return ans;
+    }
+};
+```
+
+## TODO
+
+Add notes to Solution 1 and 3.
