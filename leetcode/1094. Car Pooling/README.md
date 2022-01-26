@@ -64,3 +64,27 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/car-pooling/
+// Author: github.com/lzl124631x
+// Time: O(T + P)
+// Space: O(P)
+class Solution {
+public:
+    bool carPooling(vector<vector<int>>& trips, int capacity) {
+        int diff[1001] = {};
+        for (auto &v : trips) {
+            diff[v[1]] += v[0];
+            diff[v[2]] -= v[0];
+        }
+        int cnt = 0;
+        for (int d : diff) {
+            if ((cnt += d) > capacity) return false;
+        }
+        return true;
+    }
+};
+```
