@@ -56,7 +56,7 @@ public:
         if (!hasNext()) return;
         auto n = s.top();
         s.pop();
-        if (n->right) pushNodes(n->right);
+        pushNodes(n->right);
     }
 };
 class Solution {
@@ -72,6 +72,35 @@ public:
                 ans.push_back(j.peek());
                 j.next();
             }
+        }
+        return ans;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/all-elements-in-two-binary-search-trees/
+// Author: github.com/lzl124631x
+// Time: O(A + B)
+// Space: O(HA + HB)
+class Solution {
+    void pushNodes(stack<TreeNode*> &s, TreeNode *node) {
+        for (; node; node = node->left) s.push(node);
+    }
+public:
+    vector<int> getAllElements(TreeNode* a, TreeNode* b) {
+        vector<int> ans;
+        stack<TreeNode*> sa, sb;
+        pushNodes(sa, a);
+        pushNodes(sb, b);
+        while (sa.size() || sb.size()) {
+            auto &s = sb.empty() || (sa.size() && sa.top()->val <= sb.top()->val) ? sa : sb;
+            ans.push_back(s.top()->val);
+            auto n = s.top();
+            s.pop();
+            pushNodes(s, n->right);
         }
         return ans;
     }
