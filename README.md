@@ -247,6 +247,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 247 | Strobogrammatic Number II | Medium | [Solution](leetcode/247.%20Strobogrammatic%20Number%20II)
 249 | Group Shifted Strings | Medium | [Solution](leetcode/249.%20Group%20Shifted%20Strings)
 250 | Count Univalue Subtrees | Medium | [Solution](leetcode/250.%20Count%20Univalue%20Subtrees)
+251 | Flatten 2D Vector | Medium | [Solution](leetcode/251.%20Flatten%202D%20Vector)
 252 | Meeting Rooms | Easy | [Solution](leetcode/252.%20Meeting%20Rooms)
 253 | Meeting Rooms II | Medium | [Solution](leetcode/253.%20Meeting%20Rooms%20II)
 255 | Verify Preorder Sequence in Binary Search Tree | Medium | [Solution](leetcode/255.%20Verify%20Preorder%20Sequence%20in%20Binary%20Search%20Tree)
