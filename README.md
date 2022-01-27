@@ -1507,6 +1507,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1806 | Minimum Number of Operations to Reinitialize a Permutation | Medium | [Solution](leetcode/1806.%20Minimum%20Number%20of%20Operations%20to%20Reinitialize%20a%20Permutation)
 1807 | Evaluate the Bracket Pairs of a String | Medium | [Solution](leetcode/1807.%20Evaluate%20the%20Bracket%20Pairs%20of%20a%20String)
 1808 | Maximize Number of Nice Divisors | Hard | [Solution](leetcode/1808.%20Maximize%20Number%20of%20Nice%20Divisors)
+1810 | Minimum Path Cost in a Hidden Grid | Medium | [Solution](leetcode/1810.%20Minimum%20Path%20Cost%20in%20a%20Hidden%20Grid)
 1812 | Determine Color of a Chessboard Square | Easy | [Solution](leetcode/1812.%20Determine%20Color%20of%20a%20Chessboard%20Square)
 1813 | Sentence Similarity III | Medium | [Solution](leetcode/1813.%20Sentence%20Similarity%20III)
 1814 | Count Nice Pairs in an Array | Medium | [Solution](leetcode/1814.%20Count%20Nice%20Pairs%20in%20an%20Array)
