@@ -1764,6 +1764,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2125 | Number of Laser Beams in a Bank | Medium | [Solution](leetcode/2125.%20Number%20of%20Laser%20Beams%20in%20a%20Bank)
 2126 | Destroying Asteroids | Medium | [Solution](leetcode/2126.%20Destroying%20Asteroids)
 2127 | Maximum Employees to Be Invited to a Meeting | Hard | [Solution](leetcode/2127.%20Maximum%20Employees%20to%20Be%20Invited%20to%20a%20Meeting)
+2128 | Remove All Ones With Row and Column Flips | Medium | [Solution](leetcode/2128.%20Remove%20All%20Ones%20With%20Row%20and%20Column%20Flips)
 2129 | Capitalize the Title | Easy | [Solution](leetcode/2129.%20Capitalize%20the%20Title)
 2130 | Maximum Twin Sum of a Linked List | Medium | [Solution](leetcode/2130.%20Maximum%20Twin%20Sum%20of%20a%20Linked%20List)
 2138 | Divide a String Into Groups of Size k | Easy | [Solution](leetcode/2138.%20Divide%20a%20String%20Into%20Groups%20of%20Size%20k)
