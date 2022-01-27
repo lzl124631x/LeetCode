@@ -1275,6 +1275,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1481 | Least Number of Unique Integers after K Removals | Medium | [Solution](leetcode/1481.%20Least%20Number%20of%20Unique%20Integers%20after%20K%20Removals)
 1482 | Minimum Number of Days to Make m Bouquets | Medium | [Solution](leetcode/1482.%20Minimum%20Number%20of%20Days%20to%20Make%20m%20Bouquets)
 1483 | Kth Ancestor of a Tree Node | Hard | [Solution](leetcode/1483.%20Kth%20Ancestor%20of%20a%20Tree%20Node)
+1485 | Clone Binary Tree With Random Pointer | Medium | [Solution](leetcode/1485.%20Clone%20Binary%20Tree%20With%20Random%20Pointer)
 1486 | XOR Operation in an Array | Easy | [Solution](leetcode/1486.%20XOR%20Operation%20in%20an%20Array)
 1487 | Making File Names Unique | Medium | [Solution](leetcode/1487.%20Making%20File%20Names%20Unique)
 1488 | Avoid Flood in The City | Medium | [Solution](leetcode/1488.%20Avoid%20Flood%20in%20The%20City)
