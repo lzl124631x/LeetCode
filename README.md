@@ -1609,6 +1609,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1936 | Add Minimum Number of Rungs | Medium | [Solution](leetcode/1936.%20Add%20Minimum%20Number%20of%20Rungs)
 1937 | Maximum Number of Points with Cost | Medium | [Solution](leetcode/1937.%20Maximum%20Number%20of%20Points%20with%20Cost)
 1938 | Maximum Genetic Difference Query | Hard | [Solution](leetcode/1938.%20Maximum%20Genetic%20Difference%20Query)
+1940 | Longest Common Subsequence Between Sorted Arrays | Medium | [Solution](leetcode/1940.%20Longest%20Common%20Subsequence%20Between%20Sorted%20Arrays)
 1941 | Check if All Characters Have Equal Number of Occurrences | Easy | [Solution](leetcode/1941.%20Check%20if%20All%20Characters%20Have%20Equal%20Number%20of%20Occurrences)
 1942 | The Number of the Smallest Unoccupied Chair | Medium | [Solution](leetcode/1942.%20The%20Number%20of%20the%20Smallest%20Unoccupied%20Chair)
 1943 | Describe the Painting | Medium | [Solution](leetcode/1943.%20Describe%20the%20Painting)
