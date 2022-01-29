@@ -37,7 +37,7 @@
 
 
 **Companies**:  
-[Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon), [Twitter](https://leetcode.com/company/twitter), [Apple](https://leetcode.com/company/apple), [Bloomberg](https://leetcode.com/company/bloomberg), [Splunk](https://leetcode.com/company/splunk), [MakeMyTrip](https://leetcode.com/company/makemytrip), [ServiceNow](https://leetcode.com/company/servicenow), [Samsung](https://leetcode.com/company/samsung)
+[Google](https://leetcode.com/company/google), [Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Facebook](https://leetcode.com/company/facebook), [ByteDance](https://leetcode.com/company/bytedance), [VMware](https://leetcode.com/company/vmware), [Apple](https://leetcode.com/company/apple), [Adobe](https://leetcode.com/company/adobe), [Bloomberg](https://leetcode.com/company/bloomberg), [Walmart Labs](https://leetcode.com/company/walmart-labs), [tiktok](https://leetcode.com/company/tiktok), [HRT](https://leetcode.com/company/hrt), [TuSimple](https://leetcode.com/company/tusimple)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
@@ -50,6 +50,7 @@
 * [Minimum ASCII Delete Sum for Two Strings (Medium)](https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/)
 * [Minimum Number of Removals to Make Mountain Array (Hard)](https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/)
 * [Find the Longest Valid Obstacle Course at Each Position (Hard)](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/)
+* [Minimum Operations to Make the Array K-Increasing (Hard)](https://leetcode.com/problems/minimum-operations-to-make-the-array-k-increasing/)
 
 ## Solution 1. DP
 
@@ -108,6 +109,27 @@ public:
             else *i = n;
         }
         return v.size();
+    }
+};
+```
+
+or doing it in-place
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-increasing-subsequence/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1) extra space
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& A) {
+        int len = 0;
+        for (int i = 0; i < A.size(); ++i) {
+            int j = lower_bound(begin(A), begin(A) + len, A[i]) - begin(A);
+            if (j == len) ++len;
+            A[j] = A[i];
+        }
+        return len;
     }
 };
 ```
