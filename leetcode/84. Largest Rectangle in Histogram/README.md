@@ -27,7 +27,7 @@ The largest rectangle is shown in the red area, which has an area = 10 units.
 
 
 **Companies**:  
-[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Google](https://leetcode.com/company/google), [Facebook](https://leetcode.com/company/facebook), [Adobe](https://leetcode.com/company/adobe), [Apple](https://leetcode.com/company/apple), [eBay](https://leetcode.com/company/ebay), [Snapchat](https://leetcode.com/company/snapchat), [HBO](https://leetcode.com/company/hbo)
+[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Adobe](https://leetcode.com/company/adobe), [Google](https://leetcode.com/company/google), [Facebook](https://leetcode.com/company/facebook), [Uber](https://leetcode.com/company/uber), [Snapchat](https://leetcode.com/company/snapchat), [HBO](https://leetcode.com/company/hbo), [ByteDance](https://leetcode.com/company/bytedance)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Stack](https://leetcode.com/tag/stack/), [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/)
@@ -58,10 +58,10 @@ public:
     int largestRectangleArea(vector<int>& A) {
         int N = A.size(), ans = 0;
         vector<int> nextSmaller(N);
-        stack<int> s;
+        stack<int> s; // strictly-increasing mono-stack
         for (int i = N - 1; i >= 0; --i) {
             while (s.size() && A[i] <= A[s.top()]) s.pop();
-            nextSmaller[i] = s.size() ? s.top() : N;
+            nextSmaller[i] = s.size() ? s.top() : N; // log nextSmaller for the current `i` on push
             s.push(i);
         }
         s = {};
@@ -70,6 +70,42 @@ public:
             int prevSmaller = s.size() ? s.top() : -1;
             ans = max(ans, (nextSmaller[i] - prevSmaller - 1) * A[i]);
             s.push(i);
+        }
+        return ans;
+    }
+};
+```
+
+Another variant:
+
+```cpp
+// OJ: https://leetcode.com/problems/largest-rectangle-in-histogram/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& A) {
+        int N = A.size(), ans = 0;
+        vector<int> prev(N, -1), next(N, N);
+        stack<int> s; // non-decreasing mono-stack
+        for (int i = 0; i < N; ++i) {
+            while (s.size() && A[i] < A[s.top()]) {
+                next[s.top()] = i; // log `next` of elements in stack on pop
+                s.pop();
+            }
+            s.push(i);
+        }
+        s = {};
+        for (int i = N - 1; i >= 0; --i) {
+            while (s.size() && A[i] < A[s.top()]) {
+                prev[s.top()] = i;
+                s.pop();
+            }
+            s.push(i);
+        }
+        for (int i = 0; i < N; ++i) {
+            ans = max(ans, A[i] * (next[i] - prev[i] - 1));
         }
         return ans;
     }
@@ -92,14 +128,14 @@ If we use the current `A[i]` as the right edge, when `A[i] <= A[s.top()]`:
 class Solution {
 public:
     int largestRectangleArea(vector<int>& A) {
-        A.push_back(0);
+        A.push_back(0); // append a zero at the end so that we can pop all elements from the stack and calculate the corresponding areas
         int N = A.size(), ans = 0;
-        stack<int> s;
+        stack<int> s; // strictly-increasing mono-stack
         for (int i = 0; i < N; ++i) {
-            while (s.size() && A[i] <= A[s.top()]) {
-                int height = A[s.top()];
+            while (s.size() && A[i] <= A[s.top()]) { // Take `A[i]` as the right edge
+                int height = A[s.top()]; // Take the popped element as the height
                 s.pop();
-                int left = s.size() ? s.top() : -1;
+                int left = s.size() ? s.top() : -1; // Take the element left on the stack as the left edge
                 ans = max(ans, (i - left - 1) * height);
             }
             s.push(i);
