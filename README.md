@@ -1780,6 +1780,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2149 | Rearrange Array Elements by Sign | Medium | [Solution](leetcode/2149.%20Rearrange%20Array%20Elements%20by%20Sign)
 2150 | Find All Lonely Numbers in the Array | Medium | [Solution](leetcode/2150.%20Find%20All%20Lonely%20Numbers%20in%20the%20Array)
 2151 | Maximum Good People Based on Statements | Hard | [Solution](leetcode/2151.%20Maximum%20Good%20People%20Based%20on%20Statements)
+2154 | Keep Multiplying Found Values by Two | Easy | [Solution](leetcode/2154.%20Keep%20Multiplying%20Found%20Values%20by%20Two)
+2155 | All Divisions With the Highest Score of a Binary Array | Medium | [Solution](leetcode/2155.%20All%20Divisions%20With%20the%20Highest%20Score%20of%20a%20Binary%20Array)
+2156 | Find Substring With Given Hash Value | Medium | [Solution](leetcode/2156.%20Find%20Substring%20With%20Given%20Hash%20Value)
+2157 | Groups of Strings | Hard | [Solution](leetcode/2157.%20Groups%20of%20Strings)
 
 
 # FAQ
