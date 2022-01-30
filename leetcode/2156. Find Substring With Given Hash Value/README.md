@@ -90,7 +90,7 @@ public:
 
 Because when we do division to a modulo-ed number, we might get the wrong answer.
 
-Assume `mod = 100`, a hash `h`'s real value is `123` and we want to divide it by `3`. So the expected result should be `31`. But in fact we need to do `123 % 100 / 3` which incorrectly returns `7`.
+Assume `mod = 100`, a hash `h`'s real value is `123` and we want to divide it by `3`. So the expected result should be `41`. But in fact we need to do `123 % 100 / 3` which incorrectly returns `7`.
 
 **2. Why do we need division if we calculate from left to right?**
 
