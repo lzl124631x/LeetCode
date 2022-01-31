@@ -42,8 +42,11 @@ The 2nd customer is the richest with a wealth of 10.</pre>
 </ul>
 
 
+**Companies**:  
+[Adobe](https://leetcode.com/company/adobe), [Apple](https://leetcode.com/company/apple)
+
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/)
+[Array](https://leetcode.com/tag/array/), [Matrix](https://leetcode.com/tag/matrix/)
 
 ## Solution 1.
 
