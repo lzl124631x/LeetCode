@@ -2,6 +2,8 @@
 
 <p>Given two strings <code>s</code> and <code>p</code>, return <em>an array of all the start indices of </em><code>p</code><em>'s anagrams in </em><code>s</code>. You may return the answer in <strong>any order</strong>.</p>
 
+<p>An <strong>Anagram</strong> is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.</p>
+
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
 
@@ -32,7 +34,7 @@ The substring with start index = 2 is "ab", which is an anagram of "ab".
 
 
 **Companies**:  
-[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Bloomberg](https://leetcode.com/company/bloomberg), [Snapchat](https://leetcode.com/company/snapchat), [Facebook](https://leetcode.com/company/facebook), [Paypal](https://leetcode.com/company/paypal), [Yandex](https://leetcode.com/company/yandex), [Apple](https://leetcode.com/company/apple)
+[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Bloomberg](https://leetcode.com/company/bloomberg), [Snapchat](https://leetcode.com/company/snapchat), [Google](https://leetcode.com/company/google), [Expedia](https://leetcode.com/company/expedia), [Facebook](https://leetcode.com/company/facebook), [Yandex](https://leetcode.com/company/yandex), [Oracle](https://leetcode.com/company/oracle), [Redfin](https://leetcode.com/company/redfin)
 
 **Related Topics**:  
 [Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/), [Sliding Window](https://leetcode.com/tag/sliding-window/)
@@ -46,8 +48,8 @@ The substring with start index = 2 is "ab", which is an anagram of "ab".
 ```cpp
 // OJ: https://leetcode.com/problems/find-all-anagrams-in-a-string/
 // Author: github.com/lzl124631x
-// Time: O(M + N)
-// Space: O(1)
+// Time: O(M + RN) where `R` is the range of characters
+// Space: O(R)
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
@@ -66,13 +68,38 @@ public:
 };
 ```
 
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/find-all-anagrams-in-a-string/
+// Author: github.com/lzl124631x
+// Time: O(M + RN) where `R` is the range of characters
+// Space: O(1)
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        int cnt[26] = {};
+        for (char c : p) cnt[c - 'a']++;
+        vector<int> ans;
+        for (int i = 0, N = s.size(), M = p.size(); i < N; ++i) {
+            cnt[s[i] - 'a']--;
+            if (i - M >= 0) cnt[s[i - M] - 'a']++;
+            int j = 0;
+            while (j < 26 && cnt[j] == 0) ++j;
+            if (j == 26) ans.push_back(i - M + 1);
+        }
+        return ans;
+    }
+};
+```
+
 ## Solution 2.
 
 ```cpp
 // OJ: https://leetcode.com/explore/challenge/card/may-leetcoding-challenge/536/week-3-may-15th-may-21st/3332/
 // Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
+// Time: O(M + N)
+// Space: O(R) where `R` is the range of characters
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
