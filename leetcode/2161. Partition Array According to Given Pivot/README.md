@@ -51,7 +51,7 @@ The relative ordering of the elements less than and greater than pivot is also m
 
 ## Solution 1. Two Pointers
 
-This problem looks similar to the partitioning process in Quick Sort, but since the efficient partition algorithms ([Lomuto's and Hoare's](https://www.geeksforgeeks.org/hoares-vs-lomuto-partition-scheme-quicksort/)) are not stable, you can't use it here.
+This problem looks similar to the partitioning process in Quick Sort, but since the efficient partition algorithms (Lomuto's and Hoare's) are not stable, you can't use it here.
 
 ```cpp
 // OJ: https://leetcode.com/problems/partition-array-according-to-given-pivot/
@@ -78,3 +78,7 @@ public:
 ## Discuss
 
 https://leetcode.com/problems/partition-array-according-to-given-pivot/discuss/1746999
+
+The above post was hidden for no reason...
+
+https://leetcode.com/problems/partition-array-according-to-given-pivot/discuss/1747363

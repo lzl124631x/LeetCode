@@ -1786,6 +1786,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2155 | All Divisions With the Highest Score of a Binary Array | Medium | [Solution](leetcode/2155.%20All%20Divisions%20With%20the%20Highest%20Score%20of%20a%20Binary%20Array)
 2156 | Find Substring With Given Hash Value | Medium | [Solution](leetcode/2156.%20Find%20Substring%20With%20Given%20Hash%20Value)
 2157 | Groups of Strings | Hard | [Solution](leetcode/2157.%20Groups%20of%20Strings)
+2160 | Minimum Sum of Four Digit Number After Splitting Digits | Easy | [Solution](leetcode/2160.%20Minimum%20Sum%20of%20Four%20Digit%20Number%20After%20Splitting%20Digits)
+2161 | Partition Array According to Given Pivot | Medium | [Solution](leetcode/2161.%20Partition%20Array%20According%20to%20Given%20Pivot)
+2162 | Minimum Cost to Set Cooking Time | Medium | [Solution](leetcode/2162.%20Minimum%20Cost%20to%20Set%20Cooking%20Time)
+2163 | Minimum Difference in Sums After Removal of Elements | Hard | [Solution](leetcode/2163.%20Minimum%20Difference%20in%20Sums%20After%20Removal%20of%20Elements)
 
 
 # FAQ
