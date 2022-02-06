@@ -1793,6 +1793,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2164 | Sort Even and Odd Indices Independently | Easy | [Solution](leetcode/2164.%20Sort%20Even%20and%20Odd%20Indices%20Independently)
 2165 | Smallest Value of the Rearranged Number | Medium | [Solution](leetcode/2165.%20Smallest%20Value%20of%20the%20Rearranged%20Number)
 2166 | Design Bitset | Medium | [Solution](leetcode/2166.%20Design%20Bitset)
+2167 | Minimum Time to Remove All Cars Containing Illegal Goods | Hard | [Solution](leetcode/2167.%20Minimum%20Time%20to%20Remove%20All%20Cars%20Containing%20Illegal%20Goods)
 
 
 # FAQ
