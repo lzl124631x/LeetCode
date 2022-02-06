@@ -112,3 +112,37 @@ public:
     }
 };
 ```
+
+## Solution 2. DP
+
+`right[i]` is the min cost to remove `1`s in `s[i:]` using operation 2 and 3.
+
+* If `s[i] == '0'`, `right[i] = right[i + 1]`.
+* If `s[i] == '1'`:
+  * If we use operation 3, `right[i] = right[i + 1] + 2`.
+  * If we use operation 2, `right[i] = N - i`.
+  * So, `right[i] = min( right[i + 1] + 2, N - i )`
+
+Now scan from left to right. For each `s[i]`, we remove `s[0..(i-1)]` using operation 1 with cost `i`. Since `right[i]` is the min cost to remove `1`s in `s[i:]` using operation 2 and 3. The optimal total cost for this index `i` is `i + right[i]`. The answer is the global min `i + right[i]`.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-time-to-remove-all-cars-containing-illegal-goods/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int minimumTime(string s) {
+        int cnt = 0, N = s.size(), ans = INT_MAX;
+        vector<int> right(N + 1);
+        for (int i = N - 1; i >= 0; --i) {
+            if (s[i] == '0') right[i] = right[i + 1];
+            else right[i] = min(right[i + 1] + 2, N - i);
+        }
+        for (int i = 0; i < N; ++i) {
+            ans = min(ans, i + right[i]);
+        }
+        return ans;
+    }
+};
+```
