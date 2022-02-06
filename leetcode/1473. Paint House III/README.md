@@ -1,17 +1,21 @@
 # [1473. Paint House III (Hard)](https://leetcode.com/problems/paint-house-iii/)
 
-<p>There is&nbsp;a row of&nbsp;<code>m</code>&nbsp;houses in a small city, each house must be painted with one of the&nbsp;<code>n</code>&nbsp;colors (labeled from 1 to <code>n</code>), some houses that has been painted last summer should not be painted again.</p>
+<p>There is a row of <code>m</code> houses in a small city, each house must be painted with one of the <code>n</code> colors (labeled from <code>1</code> to <code>n</code>), some houses that have been painted last summer should not be painted again.</p>
 
-<p>A neighborhood is a maximal group of continuous houses that are painted with the same color. (For example: houses = [1,2,2,3,3,2,1,1] contains 5 neighborhoods&nbsp; [{1}, {2,2}, {3,3}, {2}, {1,1}]).</p>
-
-<p>Given an array <code>houses</code>, an&nbsp;<code>m * n</code>&nbsp;matrix <code>cost</code> and&nbsp;an integer <code><font face="monospace">target</font></code>&nbsp;where:</p>
+<p>A neighborhood is a maximal group of continuous houses that are painted with the same color.</p>
 
 <ul>
-	<li><code>houses[i]</code>:&nbsp;is the color of the house <code>i</code>, <strong>0</strong> if the house is not painted yet.</li>
-	<li><code>cost[i][j]</code>: is the cost of paint the house <code>i</code> with the color <code>j+1</code>.</li>
+	<li>For example: <code>houses = [1,2,2,3,3,2,1,1]</code> contains <code>5</code> neighborhoods <code>[{1}, {2,2}, {3,3}, {2}, {1,1}]</code>.</li>
 </ul>
 
-<p>Return the minimum cost of painting all the&nbsp;remaining houses in such a way that there are exactly <code>target</code> neighborhoods, if&nbsp;not possible return <strong>-1</strong>.</p>
+<p>Given an array <code>houses</code>, an <code>m x n</code> matrix <code>cost</code> and an integer <code>target</code> where:</p>
+
+<ul>
+	<li><code>houses[i]</code>: is the color of the house <code>i</code>, and <code>0</code> if the house is not painted yet.</li>
+	<li><code>cost[i][j]</code>: is the cost of paint the house <code>i</code> with the color <code>j + 1</code>.</li>
+</ul>
+
+<p>Return <em>the minimum cost of painting all the remaining houses in such a way that there are exactly</em> <code>target</code> <em>neighborhoods</em>. If it is not possible, return <code>-1</code>.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -34,12 +38,6 @@ Cost of paint the first and last house (10 + 1) = 11.
 
 <p><strong>Example 3:</strong></p>
 
-<pre><strong>Input:</strong> houses = [0,0,0,0,0], cost = [[1,10],[10,1],[1,10],[10,1],[1,10]], m = 5, n = 2, target = 5
-<strong>Output:</strong> 5
-</pre>
-
-<p><strong>Example 4:</strong></p>
-
 <pre><strong>Input:</strong> houses = [3,1,2,3], cost = [[1,1,1],[1,1,1],[1,1,1],[1,1,1]], m = 4, n = 3, target = 3
 <strong>Output:</strong> -1
 <strong>Explanation:</strong> Houses are already painted with a total of 4 neighborhoods [{3},{1},{2},{3}] different of target = 3.
@@ -53,15 +51,19 @@ Cost of paint the first and last house (10 + 1) = 11.
 	<li><code>n == cost[i].length</code></li>
 	<li><code>1 &lt;= m &lt;= 100</code></li>
 	<li><code>1 &lt;= n &lt;= 20</code></li>
-	<li><code>1 &lt;= target&nbsp;&lt;= m</code></li>
-	<li><code>0 &lt;= houses[i]&nbsp;&lt;= n</code></li>
-	<li><code>1 &lt;= cost[i][j] &lt;= 10^4</code></li>
+	<li><code>1 &lt;= target &lt;= m</code></li>
+	<li><code>0 &lt;= houses[i] &lt;= n</code></li>
+	<li><code>1 &lt;= cost[i][j] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
-**Related Topics**:  
-[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
-## Solution 1. DP Top-down
+**Companies**:  
+[Apple](https://leetcode.com/company/apple)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+
+## Solution 1. Top-down DP
 
 This looks like a DP problem because:
 1. it involves searching
@@ -78,12 +80,12 @@ So we can represent the state using `dp[i][last][cnt]`
 
 Now we need to think about the transition between the states. It's quite straight forward:
 
-* If `house[i]` is already painted, we just skip it so `dp[i][last][cnt] = dp[i + 1][H[i]][H[i] == last ? cnt : (cnt + 1)]`.
+* If `house[i]` is already painted, we just skip it so `dp[i][last][cnt] = dp[i + 1][H[i]][cnt + (H[i] != last)]`.
 * Otherwise, we just try colors from `1` to `N`, and store the best option in `dp[i][last][cnt]`.
 
 ```
-dp[i][last][cnt] = dp[i + 1][H[i]][H[i] == last ? cnt : (cnt + 1)]                                     // If house[i] > 0
-                 = min( cost[i][j] + dp[i + 1][j + 1][j + 1 == last ? cnt : (cnt + 1)] | 0 <= j < N )  // If house[i] == 0
+dp[i][last][cnt] = dp[i + 1][H[i]][cnt + (H[i] != last)]                                     // If house[i] > 0
+                 = min( cost[i][j] + dp[i + 1][j + 1][cnt + (j + 1 != last)] | 0 <= j < N )  // If house[i] == 0
 ```
 
 We initialize `dp` array using `-1` which means unvisited.
@@ -98,44 +100,54 @@ The answer is `dp[0][0][0]`.
 // Time: O(N^2 * MT)
 // Space: O(MNT)
 class Solution {
-    vector<int> H;
-    vector<vector<int>> C;
-    int M, N, T, INF = 1e6;
-    vector<vector<vector<int>>> memo;
-    int dp(int i, int last, int cnt) {
-        if (cnt > T) return INF;
-        if (i == M) return cnt == T ? 0 : INF;
-        if (memo[i][last][cnt] != -1) return memo[i][last][cnt];
-        if (H[i]) return memo[i][last][cnt] = dp(i + 1, H[i], H[i] == last ? cnt : (cnt + 1));
-        int ans = INF;
-        for (int j = 0; j < N; ++j) ans = min(ans, C[i][j] + dp(i + 1, j + 1, j + 1 == last ? cnt : (cnt + 1)));
-        return memo[i][last][cnt] = ans;
-    }
 public:
-    int minCost(vector<int>& houses, vector<vector<int>>& cost, int m, int n, int target) {
-        H = houses, C = cost, M = m, N = n, T = target;
-        memo.assign(M, vector<vector<int>>(N + 1, vector<int>(T + 1, -1)));
+    int minCost(vector<int>& H, vector<vector<int>>& C, int m, int n, int target) {
+        vector<vector<vector<int>>> memo(m, vector<vector<int>>(n + 1, vector<int>(target + 1, -1)));
+        function<int(int, int, int)> dp = [&](int i, int j, int k) {
+            if (k > target) return INT_MAX;
+            if (i == m) return k == target ? 0 : INT_MAX;
+            if (memo[i][j][k] != -1) return memo[i][j][k];
+            if (H[i]) return memo[i][j][k] = dp(i + 1, H[i], k + (j != H[i]));
+            int ans = INT_MAX;
+            for (int t = 1; t <= n; ++t) {
+                int next = dp(i + 1, t, k + (j != t));
+                if (next != INT_MAX) ans = min(ans, next + C[i][t - 1]);
+            }
+            return memo[i][j][k] = ans;
+        };
         int ans = dp(0, 0, 0);
-        return ans == INF ? -1 : ans;
+        return ans == INT_MAX ? -1 : ans;
     }
 };
 ```
 
 ## Solution 2. Bottom-up DP
 
-Let `dp[i][last][cnt]` be the answer to the sub-problem on the houses in range `[i, M)` and `last` is the color of the `i - 1`-th house, and `cnt` is the number of neighbors existed before `i - 1`-th house. `0 <= i < M`, `1 <= last <= N`, `0 <= cnt <= M`.
+Let `dp[i+1][j][k]` be the min cost if we paint `houses[0]~houses[i]`, `j` is the painted color of the last house (i.e. `houses[i]`), and `k` is the number of neighborhoods. (`0 <= i < m, 0 <= j <= n, 0 <= k <= target`).
 
-For `dp[i][last][cnt]`, we have the following options:
-* If `houses[i] > 0`, `dp[i][last][cnt] = dp[i + 1][houses[i]][ houses[i] == last ? cnt : (cnt + 1) ]`.
-* Otherwise, we try different colors for the `i`-th house, `dp[i][last][cnt] = min( dp[i + 1][j][ j == last ? cnt : (cnt + 1) ] + cost[i][j - 1] | 1 <= j <= N )`.
+For `dp[i+1][j][k]`, we try different colors `t` for the previous house.
+
+If `houses[i] == 0`:
 
 ```
-dp[i][last][cnt] = dp[i + 1][houses[i]][ houses[i] == last ? cnt : (cnt + 1) ]         // If houses[i] > 0
-                 = min( dp[i + 1][j][ j == last ? cnt : (cnt + 1) ] + cost[i][j - 1] | 1 <= j <= N )    // If houses[i] == 0
-dp[M][last][target] = 0  where 0 < last <= N
+dp[i+1][j][k] = min( dp[i][t][k-(t!=j)] + cost[i][j] | 0 <= t < n ) 
 ```
 
-The `dp` array are initialized with value `Infinity`.
+If `houses[i] != 0`:
+
+```
+dp[i+1][j][k] = min( dp[i][t][k-(t!=j)] | 0 <= t < n ) // if j == houses[i] 
+              = Infinity                               // if j != houses[i]
+```
+
+Initialization / Trivial case:
+
+```
+dp[0][0][0] = 0
+// other values are initialized as Infinity
+```
+
+The answer is `min( dp[m][j][target] | 1 <= j <= n )`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/paint-house-iii/
@@ -144,21 +156,57 @@ The `dp` array are initialized with value `Infinity`.
 // Space: O(MNT)
 class Solution {
 public:
-    int minCost(vector<int>& houses, vector<vector<int>>& cost, int m, int n, int target) {
-        int INF = 1e6;
-        vector<vector<vector<int>>> dp(m + 1, vector<vector<int>>(n + 1, vector<int>(target + 2, INF)));
-        for (int last = 0; last <= n; ++last) dp[m][last][target] = 0;
-        for (int i = m - 1; i >= 0; --i) {
-            for (int last = 0; last <= n; ++last) {
-                for (int cnt = 0; cnt <= target; ++cnt) {
-                    if (houses[i]) dp[i][last][cnt] = dp[i + 1][houses[i]][houses[i] == last ? cnt : (cnt + 1)];
-                    else {
-                        for (int j = 1; j <= n; ++j) dp[i][last][cnt] = min(dp[i][last][cnt], dp[i + 1][j][j == last ? cnt : (cnt + 1)] + cost[i][j - 1]);
+    int minCost(vector<int>& H, vector<vector<int>>& C, int m, int n, int target) {
+        vector<vector<vector<int>>> dp(m + 1, vector<vector<int>>(n + 1, vector<int>(target + 1, INT_MAX)));
+        dp[0][0][0] = 0;
+        for (int i = 0; i < m; ++i) { // i-th house
+            for (int j = 1; j <= n; ++j) { // painting i-th house with color `j`
+                if (H[i] && j != H[i]) continue; // If `house[i]` has color already and it's different from color `j`, skip
+                for (int k = 1; k <= target; ++k) { // we have `k` neighborhoods
+                    for (int t = 0; t <= n; ++t) { // try different colors for houses[i-1]
+                        if (dp[i][t][k - (j != t)] == INT_MAX) continue;
+                        dp[i + 1][j][k] = min(dp[i + 1][j][k], dp[i][t][k - (j != t)] + (H[i] ? 0 : C[i][j - 1]));
                     }
                 }
             }
         }
-        return dp[0][0][0] == INF ? -1 : dp[0][0][0];
+        int ans = INT_MAX;
+        for (int j = 1; j <= n; ++j) ans = min(ans, dp[m][j][target]);
+        return ans == INT_MAX ? -1 : ans;
+    }
+};
+```
+
+## Solution 3. Bottom-up DP with Space Optimization
+
+Since `dp[i+1][?][?]` only depends on `dp[i][?][?]`, we can reduce the space complexity from `O(MNT)` to `O(NT)`.
+
+```cpp
+// OJ: https://leetcode.com/problems/paint-house-iii/
+// Author: github.com/lzl124631x
+// Time: O(N^2 * MT)
+// Space: O(NT)
+class Solution {
+public:
+    int minCost(vector<int>& H, vector<vector<int>>& C, int m, int n, int target) {
+        vector<vector<int>> dp(n + 1, vector<int>(target + 1, INT_MAX));
+        dp[0][0] = 0;
+        for (int i = 0; i < m; ++i) {
+            vector<vector<int>> next(n + 1, vector<int>(target + 1, INT_MAX));
+            for (int j = 1; j <= n; ++j) {
+                if (H[i] && j != H[i]) continue;
+                for (int k = 1; k <= target; ++k) {
+                    for (int t = 0; t <= n; ++t) {
+                        if (dp[t][k - (j != t)] == INT_MAX) continue;
+                        next[j][k] = min(next[j][k], dp[t][k - (j != t)] + (H[i] ? 0 : C[i][j - 1]));
+                    }
+                }
+            }
+            swap(next, dp);
+        }
+        int ans = INT_MAX;
+        for (int j = 1; j <= n; ++j) ans = min(ans, dp[j][target]);
+        return ans == INT_MAX ? -1 : ans;
     }
 };
 ```
