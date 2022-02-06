@@ -70,8 +70,7 @@ public:
         }
         sort(begin(odd), end(odd), greater<>());
         sort(begin(even), end(even));
-        int j = 0, k = 0;
-        for (int i = 0; i < A.size(); ++i) {
+        for (int i = 0, j = 0, k = 0; i < A.size(); ++i) {
             if (i % 2) ans.push_back(odd[j++]);
             else ans.push_back(even[k++]);
         }
