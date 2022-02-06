@@ -1790,6 +1790,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2161 | Partition Array According to Given Pivot | Medium | [Solution](leetcode/2161.%20Partition%20Array%20According%20to%20Given%20Pivot)
 2162 | Minimum Cost to Set Cooking Time | Medium | [Solution](leetcode/2162.%20Minimum%20Cost%20to%20Set%20Cooking%20Time)
 2163 | Minimum Difference in Sums After Removal of Elements | Hard | [Solution](leetcode/2163.%20Minimum%20Difference%20in%20Sums%20After%20Removal%20of%20Elements)
+2164 | Sort Even and Odd Indices Independently | Easy | [Solution](leetcode/2164.%20Sort%20Even%20and%20Odd%20Indices%20Independently)
+2165 | Smallest Value of the Rearranged Number | Medium | [Solution](leetcode/2165.%20Smallest%20Value%20of%20the%20Rearranged%20Number)
+2166 | Design Bitset | Medium | [Solution](leetcode/2166.%20Design%20Bitset)
 
 
 # FAQ
