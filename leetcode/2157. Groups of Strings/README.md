@@ -163,12 +163,12 @@ public:
         int x = find(a), y = find(b);
         if (x == y) return;
         if (rank[x] > rank[y]) {
-            id[x] = y;
-            size[y] += size[x];
-        } else {
             id[y] = x;
             size[x] += size[y];
-            if (rank[x] == rank[y]) rank[x]++;
+        } else {
+            id[x] = y;
+            size[y] += size[x];
+            if (rank[x] == rank[y]) rank[y]++;
         }
         --cnt;
     }
