@@ -1117,6 +1117,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1269 | Number of Ways to Stay in the Same Place After Some Steps | Hard | [Solution](leetcode/1269.%20Number%20of%20Ways%20to%20Stay%20in%20the%20Same%20Place%20After%20Some%20Steps)
 1271 | Hexspeak | Easy | [Solution](leetcode/1271.%20Hexspeak)
 1273 | Delete Tree Nodes | Medium | [Solution](leetcode/1273.%20Delete%20Tree%20Nodes)
+1274 | Number of Ships in a Rectangle | Hard | [Solution](leetcode/1274.%20Number%20of%20Ships%20in%20a%20Rectangle)
 1275 | Find Winner on a Tic Tac Toe Game | Easy | [Solution](leetcode/1275.%20Find%20Winner%20on%20a%20Tic%20Tac%20Toe%20Game)
 1276 | Number of Burgers with No Waste of Ingredients | Medium | [Solution](leetcode/1276.%20Number%20of%20Burgers%20with%20No%20Waste%20of%20Ingredients)
 1277 | Count Square Submatrices with All Ones | Medium | [Solution](leetcode/1277.%20Count%20Square%20Submatrices%20with%20All%20Ones)

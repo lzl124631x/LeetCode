@@ -1,0 +1,74 @@
+# [1274. Number of Ships in a Rectangle (Hard)](https://leetcode.com/problems/number-of-ships-in-a-rectangle/)
+
+<p><em>(This problem is an <strong>interactive problem</strong>.)</em></p>
+
+<p>Each ship is located at an integer point on the sea represented by a cartesian plane, and each integer point may contain at most 1 ship.</p>
+
+<p>You have a function <code>Sea.hasShips(topRight, bottomLeft)</code> which takes two points as arguments and returns <code>true</code> If there is at least one ship in the rectangle represented by the two points, including on the boundary.</p>
+
+<p>Given two points: the top right and bottom left corners of a rectangle, return the number of ships present in that rectangle. It is guaranteed that there are <strong>at most 10 ships</strong> in that rectangle.</p>
+
+<p>Submissions making <strong>more than 400 calls</strong> to <code>hasShips</code> will be judged <em>Wrong Answer</em>. Also, any solutions that attempt to circumvent the judge will result in disqualification.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example :</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2019/07/26/1445_example_1.PNG" style="width: 496px; height: 500px;">
+<pre><strong>Input:</strong> 
+ships = [[1,1],[2,2],[3,3],[5,5]], topRight = [4,4], bottomLeft = [0,0]
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> From [0,0] to [4,4] we can count 3 ships within the range.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> ans = [[1,1],[2,2],[3,3]], topRight = [1000,1000], bottomLeft = [0,0]
+<strong>Output:</strong> 3
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li>On the input <code>ships</code> is only given to initialize the map internally. You must solve this problem "blindfolded". In other words, you must find the answer using the given <code>hasShips</code> API, without knowing the <code>ships</code> position.</li>
+	<li><code>0 &lt;= bottomLeft[0] &lt;= topRight[0] &lt;= 1000</code></li>
+	<li><code>0 &lt;= bottomLeft[1] &lt;= topRight[1] &lt;= 1000</code></li>
+	<li><code>topRight != bottomLeft</code></li>
+</ul>
+
+
+**Companies**:  
+[Bloomberg](https://leetcode.com/company/bloomberg)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Divide and Conquer](https://leetcode.com/tag/divide-and-conquer/), [Interactive](https://leetcode.com/tag/interactive/)
+
+## Solution 1. Divide and Conquer
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-ships-in-a-rectangle/
+// Author: github.com/lzl124631x
+// Time: O(log_4^M) where `M` is the maximum number of possible integer points
+// Space: O(log_4^M)
+class Solution {
+    int ans = 0;
+public:
+    int countShips(Sea sea, vector<int> topRight, vector<int> bottomLeft) {
+        function<void(vector<int>, vector<int>)> dfs = [&](vector<int> tr, vector<int> bl) {
+            if (ans == 10 || tr[1] < bl[1] || tr[0] < bl[0]) return;
+            bool hasShips = sea.hasShips(tr, bl);
+            if (!hasShips) return;
+            if (tr == bl) {
+                ans += hasShips;
+                return;
+            }
+            int mx = (tr[0] + bl[0]) / 2, my = (tr[1] + bl[1]) / 2;
+            dfs({mx, my}, bl);
+            dfs({tr[0], my}, {mx + 1, bl[1]});
+            dfs({mx, tr[1]}, {bl[0], my + 1});
+            dfs(tr, {mx + 1, my + 1});
+        };
+        dfs(topRight, bottomLeft);
+        return ans;
+    }
+};
+```
