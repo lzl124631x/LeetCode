@@ -20,20 +20,14 @@
 
 <pre><strong>Input:</strong> mat = [[0]]
 <strong>Output:</strong> 0
-<strong>Explanation:</strong> Given matrix is a zero matrix. We don't need to change it.
+<strong>Explanation:</strong> Given matrix is a zero matrix. We do not need to change it.
 </pre>
 
 <p><strong>Example 3:</strong></p>
 
-<pre><strong>Input:</strong> mat = [[1,1,1],[1,0,1],[0,0,0]]
-<strong>Output:</strong> 6
-</pre>
-
-<p><strong>Example 4:</strong></p>
-
 <pre><strong>Input:</strong> mat = [[1,0,0],[1,0,0]]
 <strong>Output:</strong> -1
-<strong>Explanation:</strong> Given matrix can't be a zero matrix
+<strong>Explanation:</strong> Given matrix cannot be a zero matrix.
 </pre>
 
 <p>&nbsp;</p>
@@ -48,10 +42,14 @@
 
 
 **Companies**:  
-[Google](https://leetcode.com/company/google), [Airbnb](https://leetcode.com/company/airbnb)
+[Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Matrix](https://leetcode.com/tag/matrix/)
+
+**Similar Questions**:
+* [Minimum Operations to Remove Adjacent Ones in Matrix (Hard)](https://leetcode.com/problems/minimum-operations-to-remove-adjacent-ones-in-matrix/)
+* [Remove All Ones With Row and Column Flips (Medium)](https://leetcode.com/problems/remove-all-ones-with-row-and-column-flips/)
 
 ## Solution 1. Bit Mask + BFS
 
@@ -63,30 +61,32 @@
 class Solution {
 public:
     int minFlips(vector<vector<int>>& A) {
-        int M = A.size(), N = A[0].size(), step = 0, mask = 0, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        int M = A.size(), N = A[0].size(), init = 0, step = 0, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
         for (int i = 0; i < M; ++i) {
-            for (int j = 0; j < N; ++j) {
-                if (A[i][j]) mask |= (1 << (N * i + j));
-            }
+            for (int j = 0; j < N; ++j) init |= A[i][j] << (i * N + j);
         }
-        queue<int> q{{mask}};
-        unordered_set<int> seen{mask};
+        queue<int> q{{init}};
+        unordered_set<int> seen{init};
+        auto flip = [&](int &state, int x, int y) { state ^= 1 << (x * N + y); };
         while (q.size()) {
             int cnt = q.size();
             while (cnt--) {
-                mask = q.front();
+                int u = q.front();
                 q.pop();
-                if (mask == 0) return step;
-                for (int i = 0; i < M * N; ++i) {
-                    int next = mask ^ (1 << i), x = i / N, y = i % N;
-                    for (auto &[dx, dy] : dirs) {
-                        int a = x + dx, b = y + dy;
-                        if (a < 0 || a >= M || b < 0 || b >= N) continue;
-                        next ^= 1 << (a * N + b);
+                if (u == 0) return step;
+                for (int i = 0; i < M; ++i) {
+                    for (int j = 0; j < N; ++j) {
+                        int v = u;
+                        flip(v, i, j);
+                        for (auto &[dx, dy] : dirs) {
+                            int a = i + dx, b = j + dy;
+                            if (a < 0 || b < 0 || a >= M || b >= N) continue;
+                            flip(v, a, b);
+                        }
+                        if (seen.count(v)) continue;
+                        seen.insert(v);
+                        q.push(v);
                     }
-                    if (seen.count(next)) continue;
-                    seen.insert(next);
-                    q.push(next);
                 }
             }
             ++step;
