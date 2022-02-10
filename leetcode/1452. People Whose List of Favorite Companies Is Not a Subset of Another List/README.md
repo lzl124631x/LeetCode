@@ -47,7 +47,48 @@ Other lists of favorite companies are not a subset of another list, therefore, t
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/)
 
-## Solution 1.
+## Solution 1. Two Pointers
+
+For `A[i]`, check if it's a subset of `A[j]` (`0 <= j < N and j != i`). For the check method `isSubset`, we can use two pointers.
+
+```cpp
+// OJ: https://leetcode.com/problems/people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/
+// Author: github.com/lzl124631x
+// Time: O(NMlogM + N^2 * MW)  where `N` is the length of `A`, `M` is the maximum length of `A[i]`, and `W` is the maximum length of a company name.
+// Space: O(N)
+class Solution {
+public:
+    vector<int> peopleIndexes(vector<vector<string>>& A) {
+        int N = A.size();
+        for (auto &v : A) sort(begin(v), end(v));
+        vector<int> sub(N), ans; // sub[i] = 1 if A[i] is a subset of another element. Otherwise = 0
+        auto isSubset = [&](int i, int j) {
+            auto &a = A[i], &b = A[j];
+            if (a.size() > b.size()) return false;
+            for (int p = 0, q = 0; p < a.size(); ++p) {
+                while (q < b.size() && b[q] < a[p]) ++q;
+                if (q == b.size() || b[q] != a[p]) return false;
+                ++q;
+            }
+            return true;
+        };
+        for (int i = 0; i < N; ++i) {
+            int j = 0;
+            for (; j < N; ++j) {
+                if (i == j || sub[j]) continue; // If we know `A[j]` is a subset of another element already, we can skip checking it. We only need to check `A[j]`'s superset element.
+                if (isSubset(i, j)) {
+                    sub[i] = 1;
+                    break;
+                }
+            }
+            if (j == N) ans.push_back(i);
+        }
+        return ans;
+    }
+};
+```
+
+To save time on string comparison, we can map strings to index IDs.
 
 ```cpp
 // OJ: https://leetcode.com/problems/people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/
