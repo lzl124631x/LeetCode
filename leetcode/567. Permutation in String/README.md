@@ -126,3 +126,28 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/permutation-in-string/
+// Author: github.com/lzl124631x
+// Time: O(B)
+// Space: O(1)
+class Solution {
+public:
+    bool checkInclusion(string a, string b) {
+        if (a.size() > b.size()) return false;
+        int cnt[26] = {};
+        for (char c : a) cnt[c - 'a']++;
+        for (int i = 0, j = 0; j < b.size(); ++j) {
+            if (--cnt[b[j] - 'a'] < 0) { // We can't have this `b[j]` in the window
+                while (b[i] != b[j]) cnt[b[i++] - 'a']++; // keep skipping until `b[i] == b[j]`
+                cnt[b[i++] - 'a']++; // remove `b[i]` from the window
+            }
+            if (j - i + 1 == a.size()) return true; // If the window has the same length as `a`, return true
+        }
+        return false;
+    }
+};
+```
