@@ -50,8 +50,11 @@ We can achieve all the requests. </pre>
 </ul>
 
 
+**Companies**:  
+[Adobe](https://leetcode.com/company/adobe), [Amazon](https://leetcode.com/company/amazon)
+
 **Related Topics**:  
-[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array/), [Backtracking](https://leetcode.com/tag/backtracking/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/), [Enumeration](https://leetcode.com/tag/enumeration/)
 
 ## Solution 1. Bitmask
 
@@ -63,24 +66,23 @@ Check all the different combinations of the requests by enumerating bitmasks.
 // Time: O(2^M * (M + N))
 // Space: O(N)
 class Solution {
-    bool valid(vector<vector<int>> &A, int n, int m) {
-        int cnt[20] = {};
-        for (int i = 0; i < A.size(); ++i) {
-            if (m >> i & 1) {
-                cnt[A[i][0]]++;
-                cnt[A[i][1]]--;
-            }
-        }
-        for (int i = 0; i < n; ++i) {
-            if (cnt[i]) return false;
-        }
-        return true;
-    }
 public:
     int maximumRequests(int n, vector<vector<int>>& A) {
-        int ans = 0;
-        for (int m = 1; m < 1 << A.size(); ++m) {
-            if (valid(A, n, m)) ans = max(ans, __builtin_popcount(m));
+        int M = A.size(), ans = 0, cnt[20] = {};
+        auto valid = [&](int m) {
+            memset(cnt, 0, sizeof(cnt));
+            for (int i = 0; i < M; ++i) {
+                if ((m >> i & 1) == 0) continue;
+                --cnt[A[i][0]];
+                ++cnt[A[i][1]];
+            }
+            for (int i = 0; i < n; ++i) {
+                if (cnt[i]) return false;
+            }
+            return true;
+        };
+        for (int m = 1; m < (1 << M); ++m) {
+            if (valid(m)) ans = max(ans, __builtin_popcount(m));
         }
         return ans;
     }
@@ -95,28 +97,24 @@ public:
 // Time: O(2^M * N)
 // Space: O(N)
 class Solution {
-    int ans = 0;
-    vector<int> g;
-    void dfs(vector<vector<int>> &R, int i, int cnt) {
-        if (i == R.size()) {
-            for (int n : g) {
-                if (n) return;
-            }
-            ans = max(ans, cnt);
-            return;
-        }
-        int u = R[i][0], v = R[i][1];
-        g[u]++;
-        g[v]--;
-        dfs(R, i + 1, cnt + 1);
-        g[u]--;
-        g[v]++;
-        dfs(R, i + 1, cnt);
-    }
 public:
-    int maximumRequests(int n, vector<vector<int>>& R) {
-        g.assign(n, 0);
-        dfs(R, 0, 0);
+    int maximumRequests(int n, vector<vector<int>>& A) {
+        int cnt[20] = {}, ans = 0;
+        function<void(int, int)> dfs = [&](int i, int used) {
+            if (i == A.size()) {
+                for (int j = 0; j < n; ++j) {
+                    if (cnt[j]) return;
+                }
+                ans = max(ans, used);
+                return;
+            }
+            int u = A[i][0], v = A[i][1];
+            cnt[u]++, cnt[v]--; 
+            dfs(i + 1, used + 1); // use this edge
+            cnt[u]--, cnt[v]++;
+            dfs(i + 1, used); // don't use this edge
+        };
+        dfs(0, 0);
         return ans;
     }
 };
