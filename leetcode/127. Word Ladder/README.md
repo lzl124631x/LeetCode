@@ -65,36 +65,32 @@ Thus, overall it takes `O(N * W^2)` time
 // Time: O(N * W^2)
 // Space: O(NW)
 class Solution {
-    void addNeighbors(string &w, queue<string> &q, unordered_set<string> &s) {
-        for (int i = 0; i < w.size(); ++i) {
-            char c = w[i];
-            for (char j = 'a'; j <= 'z'; ++j) {
-                if (w[i] == j) continue;
-                w[i] = j;
-                if (s.count(w)) {
-                    q.push(w);
-                    s.erase(w);
-                }
-            }
-            w[i] = c;
-        }
-    }
 public:
-    int ladderLength(string B, string E, vector<string>& A) {
-        unordered_set<string> s(begin(A), end(A));
-        if (s.count(E) == 0) return 0;
-        queue<string> q;
-        q.push(B);
-        int ans = 1;
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_set<string> s(begin(wordList), end(wordList));
+        if (s.count(endWord) == 0) return 0;
+        queue<string> q{{beginWord}};
+        s.erase(beginWord);
+        int step = 1;
         while (q.size()) {
             int cnt = q.size();
             while (cnt--) {
-                auto w = q.front();
+                auto u = q.front();
                 q.pop();
-                if (w == E) return ans;
-                addNeighbors(w, q, s);
+                if (u == endWord) return step;
+                for (char &c : u) { // add unvisited neighbors of `u`
+                    char tmp = c;
+                    for (char ch = 'a'; ch <= 'z'; ++ch) {
+                        if (tmp == ch) continue;
+                        c = ch;
+                        if (s.count(u) == 0) continue;
+                        s.erase(u);
+                        q.push(u);
+                    }
+                    c = tmp;
+                }
             }
-            ++ans;
+            ++step;
         }
         return 0;
     }
@@ -120,23 +116,22 @@ public:
         int ans = 2;
         while (head.size() && tail.size()) {
             if (head.size() > tail.size()) swap(head, tail);
-            unordered_set<string> tmp;
+            unordered_set<string> next;
             for (auto w : head) {
-                for (int i = 0; i < w.size(); ++i) {
-                    char c = w[i];
-                    for (char j = 'a'; j <= 'z'; ++j) {
-                        w[i] = j;
+                for (char &c : w) {
+                    char tmp = c;
+                    for (char ch = 'a'; ch <= 'z'; ++ch) {
+                        c = ch;
                         if (tail.count(w)) return ans;
-                        if (s.count(w)) {
-                            tmp.insert(w);
-                            s.erase(w);
-                        }
+                        if (s.count(w) == 0) continue;
+                        next.insert(w);
+                        s.erase(w);
                     }
-                    w[i] = c;
+                    c = tmp;
                 }
             }
             ++ans;
-            head = tmp;
+            swap(head, next);
         }
         return 0;
     }
