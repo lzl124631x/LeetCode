@@ -40,6 +40,12 @@ The product of their lengths is: 5 * 5 = 25.
 </ul>
 
 
+**Companies**:  
+[Ascend](https://leetcode.com/company/ascend)
+
+**Related Topics**:  
+[String](https://leetcode.com/tag/string/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Backtracking](https://leetcode.com/tag/backtracking/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/), [Bitmask](https://leetcode.com/tag/bitmask/)
+
 **Similar Questions**:
 * [Valid Palindrome (Easy)](https://leetcode.com/problems/valid-palindrome/)
 * [Longest Palindromic Subsequence (Medium)](https://leetcode.com/problems/longest-palindromic-subsequence/)
@@ -94,7 +100,7 @@ public:
 };
 ```
 
-## Solution 2. Bitmask DP
+## Solution 2. Bitmask DP + Bitmask Traversal
 
 In Solution 1, filling the `pal` array takes `O(N * 2^N)` time. We can reduce the time to `O(2^N)` using DP.
 
@@ -120,11 +126,8 @@ Using the same DP idea, we can reduce the time complexity for filling the `dp` a
 dp[m] = 1 
 
 // otherwise
-dp[m] = max( 
-                dp[m - (1 << lb)], // if we exclude `s[lb]`
-                dp[m - (1 << hb)], // if we exclude `s[hb]`
-                dp[m - (1 << lb) - (1 << hb)] + (s[lb] == s[hb] ? 2 : 0) // If we exclude both `s[lb]` and `s[hb]` and plus 2 if `s[lb] == s[hb]`
-            )
+dp[m] = 2 + dp[m - (1 << lb) - (1 << hb)]           // if lb == hb
+      = max( dp[m - (1 << lb)], dp[m - (1 << hb)] ) // if lb != hb
 ```
 
 ```cpp
@@ -135,18 +138,16 @@ dp[m] = max(
 class Solution {
 public:
     int maxProduct(string s) {
-        int N = s.size();
+        int N = s.size(), ans = 0;
         vector<int> dp(1 << N);
         for (int m = 1; m < 1 << N; ++m) {
-            if (__builtin_popcount(m) == 1) dp[m] = 1; 
-            else {
-                int lb = __builtin_ctz(m & -m), hb = 31 - __builtin_clz(m);
-                dp[m] = max({ dp[m - (1 << lb)], dp[m - (1 << hb)], dp[m - (1 << lb) - (1 << hb)] + (s[lb] == s[hb] ? 2 : 0) });
-            }
+            int lb = __builtin_ctz(m), hb = 31 - __builtin_clz(m);
+            if (lb == hb) dp[m] = 1;
+            else if (s[lb] == s[hb]) dp[m] = 2 + dp[m - (1 << lb) - (1 << hb)];
+            else dp[m] = max(dp[m - (1 << lb)], dp[m - (1 << hb)]);
         }
-        int ans = 0;
-        for (int m = 1; m < 1 << N; ++m) {
-            ans = max(ans, dp[m] * dp[(1 << N) - 1 - m]);
+        for (int m = 1; m < (1 << N) - 1; ++m) {
+            ans = max(ans, dp[m] * dp[((1 << N) - 1) ^ m]);
         }
         return ans;
     }
