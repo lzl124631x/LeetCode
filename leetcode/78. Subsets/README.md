@@ -1,24 +1,44 @@
 # [78. Subsets (Medium)](https://leetcode.com/problems/subsets/)
 
-<p>Given a set of <strong>distinct</strong> integers, <em>nums</em>, return all possible subsets (the power set).</p>
+<p>Given an integer array <code>nums</code> of <strong>unique</strong> elements, return <em>all possible subsets (the power set)</em>.</p>
 
-<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
+<p>The solution set <strong>must not</strong> contain duplicate subsets. Return the solution in <strong>any order</strong>.</p>
 
-<p><strong>Example:</strong></p>
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
 <pre><strong>Input:</strong> nums = [1,2,3]
-<strong>Output:</strong>
-[
-  [3],
-&nbsp; [1],
-&nbsp; [2],
-&nbsp; [1,2,3],
-&nbsp; [1,3],
-&nbsp; [2,3],
-&nbsp; [1,2],
-&nbsp; []
-]</pre>
+<strong>Output:</strong> [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+</pre>
 
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums = [0]
+<strong>Output:</strong> [[],[0]]
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 10</code></li>
+	<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
+	<li>All the numbers of&nbsp;<code>nums</code> are <strong>unique</strong>.</li>
+</ul>
+
+
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google), [Twitter](https://leetcode.com/company/twitter), [Bloomberg](https://leetcode.com/company/bloomberg), [Goldman Sachs](https://leetcode.com/company/goldman-sachs), [Paypal](https://leetcode.com/company/paypal)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Backtracking](https://leetcode.com/tag/backtracking/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/)
+
+**Similar Questions**:
+* [Subsets II (Medium)](https://leetcode.com/problems/subsets-ii/)
+* [Generalized Abbreviation (Medium)](https://leetcode.com/problems/generalized-abbreviation/)
+* [Letter Case Permutation (Medium)](https://leetcode.com/problems/letter-case-permutation/)
+* [Find Array Given Subset Sums (Hard)](https://leetcode.com/problems/find-array-given-subset-sums/)
+* [Count Number of Maximum Bitwise-OR Subsets (Medium)](https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/)
 
 ## Solution 1. DFS
 
@@ -28,21 +48,21 @@
 // Time: O(N * 2^N)
 // Space: O(N)
 class Solution {
-    vector<vector<int>> ans;
-    void dfs(vector<int> &A, int i, vector<int> &s) {
-        if (i == A.size()) {
-            ans.push_back(s);
-            return;
-        }
-        s.push_back(A[i]); // Pick A[i]
-        dfs(A, i + 1, s);
-        s.pop_back(); // Skip A[i]
-        dfs(A, i + 1, s);
-    }
 public:
     vector<vector<int>> subsets(vector<int>& A) {
-        vector<int> s;
-        dfs(A, 0, s);
+        vector<vector<int>> ans;
+        vector<int> tmp;
+        function<void(int)> dfs = [&](int i) {
+            if (i == A.size()) {
+                ans.push_back(tmp);
+                return;
+            }
+            tmp.push_back(A[i]);
+            dfs(i + 1); // Pick A[i]
+            tmp.pop_back();
+            dfs(i + 1); // Skip A[i]
+        };
+        dfs(0);
         return ans;
     }
 };
