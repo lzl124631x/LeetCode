@@ -80,7 +80,7 @@ Assume `A  = [1,5,10]`. If we pick a number that is not in `A`, say `3`, `A` bec
 * If we pick `A[3] = 6`, the result array is `[0,0,0,6]`, # of removals is `16 - (4 - 3) * 6 = 10`.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-280/problems/removing-minimum-number-of-magic-beans/
+// OJ: https://leetcode.com/problems/removing-minimum-number-of-magic-beans/
 // Author: github.com/lzl124631x
 // Time: O(NlogN)
 // Space: O(1)
