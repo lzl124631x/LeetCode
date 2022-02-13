@@ -494,7 +494,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 528 | Random Pick with Weight | Medium | [Solution](leetcode/528.%20Random%20Pick%20with%20Weight)
 529 | Minesweeper |  | [Solution](leetcode/529.%20Minesweeper)
 530 | Minimum Absolute Difference in BST |  | [Solution](leetcode/530.%20Minimum%20Absolute%20Difference%20in%20BST)
-532 | K-diff Pairs in an Array | Easy | [Solution](leetcode/532.%20K-diff%20Pairs%20in%20an%20Array)
+532 | K-diff Pairs in an Array | Medium | [Solution](leetcode/532.%20K-diff%20Pairs%20in%20an%20Array)
 535 | Encode and Decode TinyURL |  | [Solution](leetcode/535.%20Encode%20and%20Decode%20TinyURL)
 536 | Construct Binary Tree from String |  | [Solution](leetcode/536.%20Construct%20Binary%20Tree%20from%20String)
 537 | Complex Number Multiplication | Medium | [Solution](leetcode/537.%20Complex%20Number%20Multiplication)
@@ -1795,6 +1795,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2165 | Smallest Value of the Rearranged Number | Medium | [Solution](leetcode/2165.%20Smallest%20Value%20of%20the%20Rearranged%20Number)
 2166 | Design Bitset | Medium | [Solution](leetcode/2166.%20Design%20Bitset)
 2167 | Minimum Time to Remove All Cars Containing Illegal Goods | Hard | [Solution](leetcode/2167.%20Minimum%20Time%20to%20Remove%20All%20Cars%20Containing%20Illegal%20Goods)
+2169 | Count Operations to Obtain Zero | Easy | [Solution](leetcode/2169.%20Count%20Operations%20to%20Obtain%20Zero)
+2170 | Minimum Operations to Make the Array Alternating | Medium | [Solution](leetcode/2170.%20Minimum%20Operations%20to%20Make%20the%20Array%20Alternating)
+2171 | Removing Minimum Number of Magic Beans | Medium | [Solution](leetcode/2171.%20Removing%20Minimum%20Number%20of%20Magic%20Beans)
+2172 | Maximum AND Sum of Array | Hard | [Solution](leetcode/2172.%20Maximum%20AND%20Sum%20of%20Array)
 
 
 # FAQ
