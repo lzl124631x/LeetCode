@@ -68,7 +68,7 @@ public:
 };
 ```
 
-## Solution 2. Backtrack
+## Solution 2. Backtracking
 
 ```cpp
 // OJ: https://leetcode.com/problems/subsets
@@ -97,7 +97,7 @@ public:
 };
 ```
 
-## Solution 3. Bit Mask
+## Solution 3. Bitmask
 
 ```cpp
 // OJ: https://leetcode.com/problems/subsets
