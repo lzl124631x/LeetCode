@@ -57,7 +57,7 @@ dp[m] = max( dp[m - (1 << i)] + (slotNumber & A[i]) | m's i-th bit is 1 )
 
 The key is that we always assign this picked `A[i]` to `slotNumber`-th slot, and `slotNumber` is a constant given `m`.
 
-The final answer is the maximum of all `dp` values.
+The final answer is `dp[(1 << N) - 1]`.
 
 Example:
 
@@ -76,7 +76,7 @@ class Solution {
 public:
     int maximumANDSum(vector<int>& A, int numSlots) {
         while (A.size() < 2 * numSlots) A.push_back(0); // append 0s to make sure the length of `A` is `2 * numSlots`
-        int N = A.size(), ans = 0;
+        int N = A.size();
         vector<int> dp(1 << N);
         for (int m = 1; m < 1 << N; ++m) {
             int cnt = __builtin_popcount(m), slot = (cnt + 1) / 2; 
@@ -85,9 +85,8 @@ public:
                     dp[m] = max(dp[m], dp[m ^ (1 << i)] + (slot & A[i]));
                 }
             }
-            ans = max(ans, dp[m]);
         }
-        return ans;
+        return dp[(1 << N) - 1];
     }
 };
 ```
