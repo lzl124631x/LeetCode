@@ -67,15 +67,36 @@ Total points earned: 2 + 5 = 7. There is no other way to earn 7 or more points.
 class Solution {
 public:
     long long mostPoints(vector<vector<int>>& A) {
-        long long N = A.size();
-        vector<long long> dp(N + 2);
+        int N = A.size();
+        vector<long> dp(N + 2);
         for (int i = 0; i < N; ++i) {
-            int next = i + A[i][1] + 2;
-            if (next > N) next = N + 1;
             dp[i + 1] = max(dp[i + 1], dp[i]);
+            int next = min(i + A[i][1] + 2, N + 1);
             dp[next] = max(dp[next], dp[i + 1] + A[i][0]);
         }
-        return *max_element(begin(dp), end(dp));
+        return dp[N + 1];
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/solving-questions-with-brainpower/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    long long mostPoints(vector<vector<int>>& A) {
+        int N = A.size();
+        vector<long> dp(N + 1);
+        for (int i = N - 1; i >= 0; --i) {
+            dp[i] = max(dp[i], dp[i + 1]);
+            int next = min(i + A[i][1] + 1, N);
+            dp[i] = max(dp[i], dp[next] + A[i][0]);
+        }
+        return dp[0];
     }
 };
 ```
