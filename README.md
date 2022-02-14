@@ -45,7 +45,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 27 | Remove Element | Easy | [Solution](leetcode/27.%20Remove%20Element)
 28 | Implement strStr() | Easy | [Solution](leetcode/28.%20Implement%20strStr%28%29)
 29 | Divide Two Integers | Medium | [Solution](leetcode/29.%20Divide%20Two%20Integers)
-30 | Substring with Concatenation of All Words |  | [Solution](leetcode/30.%20Substring%20with%20Concatenation%20of%20All%20Words)
+30 | Substring with Concatenation of All Words | Hard | [Solution](leetcode/30.%20Substring%20with%20Concatenation%20of%20All%20Words)
 31 | Next Permutation | Medium | [Solution](leetcode/31.%20Next%20Permutation)
 32 | Longest Valid Parentheses | Hard | [Solution](leetcode/32.%20Longest%20Valid%20Parentheses)
 33 | Search in Rotated Sorted Array | Medium | [Solution](leetcode/33.%20Search%20in%20Rotated%20Sorted%20Array)
