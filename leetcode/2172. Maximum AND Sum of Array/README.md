@@ -44,28 +44,47 @@ Note that slots 2, 5, 6, and 8 are empty which is permitted.
 
 ## Solution 1. Bitmask DP
 
+**Intuition**:
+
+If we permuate the numbers and assign them to the slots sequentially (`A[0]` and `A[1]` into slot `1`, `A[2]` and `A[3]` into slot `2`, ...), we need to go over at most `18!` permutations which will result in TLE.
+
+It's wasting computation because it computes the same subproblem over and over again. For example, assume we assigned `A[0] to A[9]` 10 elements to the first `5` slots. For the first element in slot `6`, we have `A[10] to A[17]` 8 options. But no matter which one we choose, the best arrangment for the first 10 elements is fixed. Instead of computing it `8` times, we can just compute it once and reuse it later. This leads to a DP solution.
+
+The DP idea is that we use bitmask `m` to represent which elements are selected, and try picking each one of them as the last element and assign it to `(bitCount(m) + 1) / 2`-th slot. The state transition is `dp[m - (1 << i)] -> dp[m]` where `m`'s `i`-th bit is `1`.
+
+![](./intuition.png)
+
+![](./bitmask-dp.png)
+
+**Algorithm**:
+
 Append `0`s to make sure the length of `A` is `2 * numSlots`.
 
-Let `dp[m]` be the maximum score given a bitmask `m` representing the selected numbers.
+Let `dp[m]` be the maximum score given a bitmask `m` representing the selected numbers. The final answer is `dp[(1 << N) - 1]`.
 
 Assume `m`'s `i`-th bit is `1`, we have the following formula:
 
 ```
 dp[m] = max( dp[m - (1 << i)] + (slotNumber & A[i]) | m's i-th bit is 1 )
-                        where slotNumber = (bitCount(m) + 1) / 2
+                        where slotNumber = (cnt + 1) / 2 and cnt = bitCount(m)
 ```
 
-The key is that we always assign this picked `A[i]` to `slotNumber`-th slot, and `slotNumber` is a constant given `m`.
+The key is that we always make this picked `A[i]` as the last element of all elements in `m` and assign it to `slotNumber`-th slot, and `slotNumber` is a constant given `m`.
 
-The final answer is `dp[(1 << N) - 1]`.
+**Why `slotNumber = (cnt + 1) / 2`?**
+* If `cnt = 1`, we put this first element at slot `1`.
+* If `cnt = 2` meaning two elements are selected, we pick one of them as the last element and put it in slot `1`.
+* If `cnt = 3` meaning three elements are seledted, we pick one of them as the last element and put it in slot `2`.
+* ans so on...
 
-Example:
+So the `cnt` to `slotNumber` mapping is `1 or 2 -> 1`, `3 or 4 -> 2`, ... i.e. `slotNumber = (cnt + 1) / 2`.
+
+**Example of State Transition**:
 
 Assume `m = 1101`, we'll assign `A[i]` to slot `(bitCount(m) + 1) / 2 = (3 + 1) / 2 = 2`:
 * If `i = 0`, `dp[1101] = dp[1100] + (2 & A[0])`
 * If `i = 2`, `dp[1101] = dp[1001] + (2 & A[2])`
 * If `i = 3`, `dp[1101] = dp[0101] + (2 & A[3])`.
-
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-and-sum-of-array/
