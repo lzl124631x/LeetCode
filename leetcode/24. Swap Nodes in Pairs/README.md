@@ -1,8 +1,6 @@
 # [24. Swap Nodes in Pairs (Medium)](https://leetcode.com/problems/swap-nodes-in-pairs/)
 
-<p>Given a&nbsp;linked list, swap every two adjacent nodes and return its head.</p>
-
-<p>You may <strong>not</strong> modify the values in the list's nodes. Only nodes itself may be changed.</p>
+<p>Given a&nbsp;linked list, swap every two adjacent nodes and return its head. You must solve the problem without&nbsp;modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -32,11 +30,15 @@
 </ul>
 
 
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Bloomberg](https://leetcode.com/company/bloomberg)
+
 **Related Topics**:  
-[Linked List](https://leetcode.com/tag/linked-list/)
+[Linked List](https://leetcode.com/tag/linked-list/), [Recursion](https://leetcode.com/tag/recursion/)
 
 **Similar Questions**:
 * [Reverse Nodes in k-Group (Hard)](https://leetcode.com/problems/reverse-nodes-in-k-group/)
+* [Swapping Nodes in a Linked List (Medium)](https://leetcode.com/problems/swapping-nodes-in-a-linked-list/)
 
 ## Solution 1.
 
@@ -58,6 +60,30 @@ public:
         } 
         tail->next = head;
         return h.next;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/swap-nodes-in-pairs/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        ListNode dummy, *p = &dummy;
+        dummy.next = head;
+        while (p->next && p->next->next) {
+            auto next = p->next;
+            p->next = next->next;
+            next->next = p->next->next;
+            p->next->next = next;
+            p = next;
+        }
+        return dummy.next;
     }
 };
 ```
