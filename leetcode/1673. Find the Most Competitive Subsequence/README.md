@@ -47,9 +47,8 @@ This problem is very similar to [402. Remove K Digits (Medium)](https://leetcode
 Since we are looking for the lexicographically **smallest** subsequence, we use mono-**increasing** stack.
 
 For each `A[i]`, we pop back of `ans` if:
-* `ans.size()`: There are elements in `ans`.
-* `i - ans.size() < N - k`: `i - ans.size()` is the number of elements that we've already popped, and `N - k` is the number of elements that we need to remove. So if `i - ans < N - k`, we can continue popping.
-* `A[i] < ans.back()`: We always only pop greater elements from the stack.
+* There is delete allowance, i.e. `i - ans.size() < N - k`: `i - ans.size()` is the number of elements that we've already popped, and `N - k` is the number of elements that we need to remove. So if `i - ans < N - k`, we can continue popping.
+* `ans.back()` is strictly greater than `A[i]`, i.e. `ans.size() && ans.back() > A[i]`.
 
 We only push `A[i]` into `ans` when `ans.size() < k` i.e. there are not yet `k` elements selected.
 
@@ -63,7 +62,7 @@ public:
     vector<int> mostCompetitive(vector<int>& A, int k) {
         vector<int> ans;
         for (int i = 0, N = A.size(); i < N; ++i) {
-            while (ans.size() && i - ans.size() < N - k && A[i] < ans.back()) ans.pop_back();
+            while (i - ans.size() < N - k && ans.size() && A[i] < ans.back()) ans.pop_back();
             if (ans.size() < k) ans.push_back(A[i]);
         }
         return ans;
