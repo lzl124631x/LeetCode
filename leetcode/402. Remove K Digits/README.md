@@ -1,39 +1,44 @@
 # [402. Remove K Digits (Medium)](https://leetcode.com/problems/remove-k-digits/)
 
-<p>Given a non-negative integer <i>num</i> represented as a string, remove <i>k</i> digits from the number so that the new number is the smallest possible.
-</p>
+<p>Given string num representing a non-negative integer <code>num</code>, and an integer <code>k</code>, return <em>the smallest possible integer after removing</em> <code>k</code> <em>digits from</em> <code>num</code>.</p>
 
-<p><b>Note:</b><br>
-</p><ul>
-<li>The length of <i>num</i> is less than 10002 and will be ≥ <i>k</i>.</li>
-<li>The given <i>num</i> does not contain any leading zero.</li>
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> num = "1432219", k = 3
+<strong>Output:</strong> "1219"
+<strong>Explanation:</strong> Remove the three digits 4, 3, and 2 to form the new number 1219 which is the smallest.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> num = "10200", k = 1
+<strong>Output:</strong> "200"
+<strong>Explanation:</strong> Remove the leading 1 and the number is 200. Note that the output must not contain leading zeroes.
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> num = "10", k = 2
+<strong>Output:</strong> "0"
+<strong>Explanation:</strong> Remove all the digits from the number and it is left with nothing which is 0.
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= k &lt;= num.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>num</code> consists of only digits.</li>
+	<li><code>num</code> does not have any leading zeros except for the zero itself.</li>
 </ul>
 
-<p></p>
 
-<p><b>Example 1:</b>
-</p><pre>Input: num = "1432219", k = 3
-Output: "1219"
-Explanation: Remove the three digits 4, 3, and 2 to form the new number 1219 which is the smallest.
-</pre>
-<p></p>
-
-<p><b>Example 2:</b>
-</p><pre>Input: num = "10200", k = 1
-Output: "200"
-Explanation: Remove the leading 1 and the number is 200. Note that the output must not contain leading zeroes.
-</pre>
-<p></p>
-
-<p><b>Example 3:</b>
-</p><pre>Input: num = "10", k = 2
-Output: "0"
-Explanation: Remove all the digits from the number and it is left with nothing which is 0.
-</pre>
-<p></p>
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Adobe](https://leetcode.com/company/adobe), [MakeMyTrip](https://leetcode.com/company/makemytrip)
 
 **Related Topics**:  
-[Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/)
+[String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/), [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/)
 
 **Similar Questions**:
 * [Create Maximum Number (Hard)](https://leetcode.com/problems/create-maximum-number/)
@@ -50,11 +55,13 @@ We want the answer as lexigraphically **smaller** as possible, so we should use 
 
 Use a `string ans` as a mono-increasing stack.
 
-For each character `s[i]`, we push it into `ans`. And before pushing, we need to pop greater characters in `ans` first.
+For each character `s[i]`, we push it into `ans`. And before pushing, we need to pop `ans.back()` if 
+1. we have delete allowance -- `del < k`
+2. `ans.back() > s[i]`
 
-For each character we popped, we need to decrement `k`. And we only keep popping if `k > 0`.
+**Only pop _strictly greater_ characters**. Consider example `s = "112", k = 1` and `s = "110", k = 1`. We need to keep both `1`s, and determine whether we want to pop the `1`s when we look at the character(s) after them.
 
-After traversing all characters in `s`, if `k` is still not exhausted, we pop back from `ans` until `k == 0`.
+**Don't put characters beyond `N - k` window**: Any characters that lands beyond window `N - k` should be deleted right away because they are no better than those within the window.
 
 Lastly, removing leading zeros.
 
@@ -66,42 +73,19 @@ Lastly, removing leading zeros.
 class Solution {
 public:
     string removeKdigits(string s, int k) {
-        if (k == s.size()) return "0";
+        if (s.size() == k) return "0";
+        int N = s.size(), del = 0;
         string ans;
-        for (int i = 0, N = s.size(); i < N; ++i) {
-            while (k > 0 && ans.size() && s[i] < ans.back()) {
+        for (int i = 0; i < N; ++i) {
+            while (del < k && ans.size() && ans.back() > s[i]) { // if we have delete allowance and `ans.back()` is greater than `s[i]`, we pop `ans.back()`
                 ans.pop_back();
-                --k;
+                ++del;
             }
-            ans.push_back(s[i]);
+            if (ans.size() < N - k) ans.push_back(s[i]); // any character that was ever left beyond the valid window should be deleted.
+            else ++del;
         }
-        while (k > 0) {
-            ans.pop_back();
-            --k;
-        }
-        auto begin = ans.find_first_not_of('0');
-        return begin == string::npos ? "0" : ans.substr(begin);
-    }
-};
-```
-
-Or
-
-```cpp
-// OJ: https://leetcode.com/problems/remove-k-digits/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(N)
-class Solution {
-public:
-    string removeKdigits(string s, int k) {
-        string ans;
-        for (int i = 0, N = s.size(); i < N; ++i) {
-            while (ans.size() && i - ans.size() < k && s[i] < ans.back()) ans.pop_back(); // We've visited `i` elements (`s[0..i-1]`) and kept `ans.size()` elements, so we've removed `i - ans.size()` elements. If `i - ans.size() < k`, we can continue popping; otherwise, we should stop popping because that will result in excessive popping.
-            if (ans.size() < N - k) ans.push_back(s[i]); // We can only keep exactly `N - k` elements in `ans`, so we only push if `ans.size < N - k`.
-        }
-        auto begin = ans.find_first_not_of('0');
-        return begin == string::npos ? "0" : ans.substr(begin);
+        auto i = ans.find_first_not_of('0'); // remove leading `0`s
+        return i == string::npos ? "0" : ans.substr(i);
     }
 };
 ```
