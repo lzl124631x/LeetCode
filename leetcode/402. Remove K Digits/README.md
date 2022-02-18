@@ -56,7 +56,7 @@ We want the answer as lexigraphically **smaller** as possible, so we should use 
 Use a `string ans` as a mono-increasing stack.
 
 For each character `s[i]`, we push it into `ans`. And before pushing, we need to pop `ans.back()` if 
-1. we have delete allowance -- `del < k`
+1. we have delete allowance -- `i - ans.size() < k` where `i - ans.size()` is the number of deleted characters.
 2. `ans.back() > s[i]`
 
 **Only pop _strictly greater_ characters**. Consider example `s = "112", k = 1` and `s = "110", k = 1`. We need to keep both `1`s, and determine whether we want to pop the `1`s when we look at the character(s) after them.
@@ -74,15 +74,10 @@ class Solution {
 public:
     string removeKdigits(string s, int k) {
         if (s.size() == k) return "0";
-        int N = s.size(), del = 0;
         string ans;
-        for (int i = 0; i < N; ++i) {
-            while (del < k && ans.size() && ans.back() > s[i]) { // if we have delete allowance and `ans.back()` is greater than `s[i]`, we pop `ans.back()`
-                ans.pop_back();
-                ++del;
-            }
+        for (int i = 0, N = s.size(); i < N; ++i) {
+            while (i - ans.size() < k && ans.size() && ans.back() > s[i]) ans.pop_back(); // if we have delete allowance and `ans.back()` is greater than `s[i]`, we pop `ans.back()`
             if (ans.size() < N - k) ans.push_back(s[i]); // any character that was ever left beyond the valid window should be deleted.
-            else ++del;
         }
         auto i = ans.find_first_not_of('0'); // remove leading `0`s
         return i == string::npos ? "0" : ans.substr(i);
