@@ -31,7 +31,7 @@
 
 ## Solution 1. Math
 
-Let `x` be the first number of the 3 consecutive numbers. Then `num = x + x + 1 + x + 2 = 3 * x + 3`. So `x = num / 3 - 1`. To ensure `x` exists, `num` must be divisible by `3`.
+Let `x` be the first number of the 3 consecutive numbers. Then `num = x + x + 1 + x + 2 = 3 * x + 3`. Since `x` is an integer, `num` must be multiple of `3`, and `x = num / 3 - 1`. 
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-three-consecutive-integers-that-sum-to-a-given-number/
@@ -62,3 +62,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/find-three-consecutive-integers-that-sum-to-a-given-number/discuss/1783380/C%2B%2B-Math-one-liner
