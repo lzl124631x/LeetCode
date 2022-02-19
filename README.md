@@ -1802,6 +1802,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2170 | Minimum Operations to Make the Array Alternating | Medium | [Solution](leetcode/2170.%20Minimum%20Operations%20to%20Make%20the%20Array%20Alternating)
 2171 | Removing Minimum Number of Magic Beans | Medium | [Solution](leetcode/2171.%20Removing%20Minimum%20Number%20of%20Magic%20Beans)
 2172 | Maximum AND Sum of Array | Hard | [Solution](leetcode/2172.%20Maximum%20AND%20Sum%20of%20Array)
+2176 | Count Equal and Divisible Pairs in an Array | Easy | [Solution](leetcode/2176.%20Count%20Equal%20and%20Divisible%20Pairs%20in%20an%20Array)
+2177 | Find Three Consecutive Integers That Sum to a Given Number | Medium | [Solution](leetcode/2177.%20Find%20Three%20Consecutive%20Integers%20That%20Sum%20to%20a%20Given%20Number)
+2178 | Maximum Split of Positive Even Integers | Medium | [Solution](leetcode/2178.%20Maximum%20Split%20of%20Positive%20Even%20Integers)
+2179 | Count Good Triplets in an Array | Hard | [Solution](leetcode/2179.%20Count%20Good%20Triplets%20in%20an%20Array)
 
 
 # FAQ
