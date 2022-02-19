@@ -101,7 +101,7 @@ public:
 };
 ```
 
-## Solution 2. Merge Sort
+## Solution 2. Divide and Conquer (Merge Sort)
 
 ```cpp
 // OJ: https://leetcode.com/problems/count-subarrays-with-more-ones-than-zeros/

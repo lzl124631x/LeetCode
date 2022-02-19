@@ -31,7 +31,7 @@
 * [Count of Smaller Numbers After Self (Hard)](https://leetcode.com/problems/count-of-smaller-numbers-after-self/)
 * [Count of Range Sum (Hard)](https://leetcode.com/problems/count-of-range-sum/)
 
-## Solution 1. Divide and Conquer
+## Solution 1. Divide and Conquer (Merge Sort)
 
 ```cpp
 // OJ: https://leetcode.com/problems/reverse-pairs/

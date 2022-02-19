@@ -79,7 +79,7 @@ B = [0,2,1,4,3]
 
 For the number `1`, we trivially know that in `A`, there is one number `0` before it and 3 numbers `2,3,4` after it. So, we just need to look at `B`. The problem now becomes counting the numbers smaller than `1` before `1` and numbers greater than `1` after `1`.
 
-Let `lt[i]` be the count of numbers smaller than `B[i]`. The count of common numbers before `B[i]` is `min(B[i], lt[i])`. The count of common numbers after `B[i]` in `A` is `N - B[i] - 1`. The count of common numbers after `B[i]` in `B` is `N - i - 1 - (B[i] - lt[i]) = N - B[i] - 1 - i + lt[i]`. Since `i >= lt[i]`, `-i + lt[i] <= 0`, the count of common numbers after `B[i]` in both arrays is `N - B[i] - 1 - i + lt[i]`.
+Let `lt[i]` be the count of numbers smaller than `B[i]`. The count of common numbers before `B[i]` is `min(B[i], lt[i]) = lt[i]`. The count of common numbers after `B[i]` in `A` is `N - B[i] - 1`. The count of common numbers after `B[i]` in `B` is `N - i - 1 - (B[i] - lt[i]) = N - B[i] - 1 - i + lt[i]`. Since `i >= lt[i]`, `-i + lt[i] <= 0`, the count of common numbers after `B[i]` in both arrays is `N - B[i] - 1 - i + lt[i]`.
 
 So, the count of triplets with `B[i]` as the middle number is `min(B[i], lt[i]) * (N - B[i] - 1 - i + lt[i])`
 
@@ -122,7 +122,34 @@ public:
         };
         merge(0, N);
         for (int i = 0; i < N; ++i) {
-            ans += (long)min(B[i], lt[i]) * (N - B[i] - 1 - index[B[i]] + lt[i]);
+            ans += (long)lt[i] * (N - B[i] - 1 - index[B[i]] + lt[i]);
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2. Binary Index Tree
+
+```cpp
+// OJ: https://leetcode.com/problems/count-good-triplets-in-an-array/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+// Ref: https://leetcode-cn.com/problems/count-good-triplets-in-an-array/solution/deng-jie-zhuan-huan-shu-zhuang-shu-zu-by-xmyd/
+class Solution {
+public:
+    long long goodTriplets(vector<int> &A, vector<int> &B) {
+        int N = A.size();
+        vector<int> m(N);
+        for (int i = 0; i < N; ++i) m[A[i]] = i;
+        long long ans = 0;
+        vector<int> tree(N + 1);
+        for (int i = 1; i < N - 1; ++i) {
+            for (int j = m[B[i - 1]] + 1; j <= N; j += j & -j) ++tree[j]; // add m[B[i-1]]+1 to the BIT
+            int y = m[B[i]], less = 0;
+            for (int j = y; j; j &= j - 1) less += tree[j]; // compute less
+            ans += (long)less * (N - 1 - y - (i - less));
         }
         return ans;
     }
