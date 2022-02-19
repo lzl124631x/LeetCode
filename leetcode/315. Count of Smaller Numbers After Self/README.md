@@ -32,7 +32,7 @@ To the right of 1 there is <b>0</b> smaller element.
 * [Reverse Pairs (Hard)](https://leetcode.com/problems/reverse-pairs/)
 * [How Many Numbers Are Smaller Than the Current Number (Easy)](https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/)
 
-## Solution 1. Divide and Conquer
+## Solution 1. Divide and Conquer (Merge Sort)
 
 The idea is similar to Merge Sort.
 
