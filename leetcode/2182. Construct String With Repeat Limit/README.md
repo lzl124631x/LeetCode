@@ -85,3 +85,17 @@ public:
 ## Discuss
 
 https://leetcode.com/problems/construct-string-with-repeat-limit/discuss/1784718
+
+## Note
+
+I saw some code with the following loops
+
+```cpp
+for (int i = 1; i <= 100000; ++i) {
+    for (int j = i; j <= 100000; j += i) {
+        // Some O(1) operation
+    }
+}
+```
+
+The time complexity of these loops is roughly `O(NlogN)`. Because `1/1+1/2+...+1/N` is roughly `logN`. See https://math.stackexchange.com/questions/3367037/sum-of-1-1-2-1-3-1-n
