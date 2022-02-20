@@ -43,35 +43,35 @@ Other pairs such as (0, 2) and (2, 4) have products 3 and 15 respectively, which
 ```cpp
 // OJ: https://leetcode.com/problems/count-array-pairs-divisible-by-k/
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(N * log(M, K) + K * sqrt(K)) where `M` is the max number in `A`.
+// Space: O(K)
 // Ref: https://www.hackerearth.com/zh/problem/algorithm/pair-count-5/editorial/
 const int maxN = 1e5+1;
-int freq[maxN] = {}, cnt[maxN] = {};
+int cnt[maxN] = {}, sum[maxN] = {};
 class Solution {
 public:
-    long long coutPairs(vector<int>& A, int k) {
-        memset(freq, 0, sizeof(freq));
-        memset(cnt, 0, sizeof(cnt));
+    long long countPairs(vector<int>& A, int k) {
+        memset(cnt, 0, (k + 1) * sizeof(int));
         int N = A.size();
         for (int &n : A) {
-            n = __gcd(n, k); // remove factors that `k` doesn't have
-            freq[n]++;
+            n = gcd(n, k); // remove factors that `k` doesn't have. Now `A[i] <= k` 
+            cnt[n]++;
         }
         vector<int> div; // all the divisors of `k`
         for (int i = 1; i <= k; ++i) {
             if (k % i == 0) div.push_back(i);
         }
         for (int d : div) {
-            for (int i = d; i < maxN; i += d) {
-                cnt[d] += freq[i]; // `cnt[d]` is the sum of frequencies of A[i] that are multiple of `d`.
+            sum[d] = 0;
+            for (int i = d; i <= k; i += d) {
+                sum[d] += cnt[i]; // `sum[d]` is the sum of `cnt[i]` where `cnt[i]` is multiple of `d`.
             }
         }
         long ans = 0;
-        for (int i = 0; i < N; ++i) {
-            int r = k / A[i];
-            ans += cnt[r];
-            if (A[i] % r == 0) --ans; // If `A[i]` is divisible by `r`, `cnt[r]` counts `A[i]` in so we need to minus one.
+        for (int n : A) {
+            int r = k / n;
+            ans += sum[r];
+            if (n % r == 0) --ans; // If `A[i]` is divisible by `r`, `cnt[r]` counts `A[i]` in so we need to minus one.
         }
         return ans / 2;
     }
@@ -83,23 +83,24 @@ public:
 ```cpp
 // OJ: https://leetcode.com/problems/count-array-pairs-divisible-by-k/
 // Author: github.com/lzl124631x
-// Time: O(N * sqrt(N))
-// Space: O(maxNumber)
+// Time: O(K + N * (log(min(M, K)) + sqrt(K))) where `M` is the max number in `A`.
+//          It can be reduced to `O(log(min(M, K)) + sqrt(K))` if we take `O(sqrt(K))` time to compute all the divisors.
+// Space: O(K)
 class Solution {
 public:
     long long countPairs(vector<int>& A, int k) {
         long long ans = 0;
         int cnt[100001] = {};
-        vector<int> divs; // `divs` are all the divisors of `k`. E.g. `k = 12, divs = [1,12,2,6,3,4]` or `k = 30, divs = [1,30,2,14,3,10,5,6]1
-        for (int i = 1; i * i <= k; ++i) {
-            if (k % i == 0) {
-                divs.push_back(i);
-                if (i * i < k) divs.push_back(k / i);
-            }
+        vector<int> divs; // `divs` are all the divisors of `k`. E.g. `k = 12`, `divs = [1,12,2,6,3,4]`
+        for (int i = 1; i <= k; ++i) {
+            if (k % i == 0) divs.push_back(i);
         }
         for (int n : A) {
-            ans += cnt[k / gcd(k, n)]; // As `n` covers `gcd(k, n)` of `k`, the other number needs to cover `k / gcd(k, n)`
-            for (int d : divs) cnt[d] += n % d == 0;
+            n = gcd(n, k); // `n` covers `gcd(n, k)`, the other number must cover `k / gcd(n, k)`.
+            for (int d : divs) {
+                if (d % (k / n) == 0) ans += cnt[d]; // If `d` is multiple of `k / gcd(n, k)`, add `cnt[d]` to answer
+            }
+            cnt[n]++;
         }
         return ans;
     }
