@@ -36,7 +36,7 @@ The 14 integers less than or equal to 30 whose digit sums are even are
 ## Solution 1. Brute Force
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-281/problems/count-integers-with-even-digit-sum/
+// OJ: https://leetcode.com/problems/count-integers-with-even-digit-sum/
 // Author: github.com/lzl124631x
 // Time: O(NlgN)
 // Space: O(1)

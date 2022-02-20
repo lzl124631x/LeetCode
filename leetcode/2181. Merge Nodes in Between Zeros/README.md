@@ -68,3 +68,73 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+If we are asked to do it in-place.
+
+```cpp
+// OJ: https://leetcode.com/problems/merge-nodes-in-between-zeros/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1) as it's done in-place
+class Solution {
+public:
+    ListNode* mergeNodes(ListNode* head) {
+        ListNode dummy, *tail = &dummy;
+        while (head) {
+            if (head->val == 0) head = head->next;
+            if (!head) break;
+            auto node = head;
+            head = head->next;
+            while (head->val != 0) {
+                node->val += head->val;
+                head = head->next;
+            }
+            tail->next = node;
+            tail = tail->next;
+            node->next = nullptr;
+        }
+        return dummy.next;
+    }
+};
+```
+
+If you are asked to add the code to free node:
+
+```cpp
+// OJ: https://leetcode.com/problems/merge-nodes-in-between-zeros/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1) as it's done in-place
+class Solution {
+public:
+    ListNode* mergeNodes(ListNode* head) {
+        ListNode dummy, *tail = &dummy;
+        while (head) {
+            if (head->val == 0) {
+                auto p = head;
+                head = head->next;
+                delete p;
+            }
+            if (!head) break;
+            auto node = head;
+            head = head->next;
+            while (head->val != 0) {
+                node->val += head->val;
+                auto p = head;
+                head = head->next;
+                delete p;
+            }
+            tail->next = node;
+            tail = tail->next;
+            node->next = nullptr;
+        }
+        return dummy.next;
+    }
+};
+```
+
+## Discuss
+
+https://leetcode.com/problems/merge-nodes-in-between-zeros/discuss/1784739/
