@@ -83,3 +83,101 @@ public:
     }
 };
 ```
+
+## Solution 2. Bucket Sort
+
+Note that this problem is not asking an assignment with which the total Manhattan distance is minimized. It asked us to go through the pairs from shortest distance to longest distance, and choose the pairs in ascending order of worker index then in ascending order of bike index.
+
+Take the example testcase for example, 
+
+```
+[[0,0],[2,1]]
+[[1,2],[3,3]]
+```
+
+The total Manhattan distance of the answer is `2 + 6 = 8`, but assignment `0->0, 1->1` has total distance of `3 + 3 = 6`.
+
+So, we can put the pairs in buckets where each bucket is the distance. Since we loop in ascending order of worker index then in ascending order of bike index, so everything is already sorted in the required way.
+
+```cpp
+// OJ: https://leetcode.com/problems/campus-bikes/
+// Author: github.com/lzl124631x
+// Time: O(NM + K) where `K` is the maximum Manhattan distance. It's 1998 in this problem
+// Space: O(NM + K)
+class Solution {
+public:
+    vector<int> assignBikes(vector<vector<int>>& W, vector<vector<int>>& B) {
+        int N = W.size(), M = B.size(), minDist = INT_MAX, cnt = 0;
+        vector<array<int, 2>> v[1999];
+        auto dist = [](auto &a, auto &b) {
+            return abs(a[0] - b[0]) + abs(a[1] - b[1]);
+        };
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < M; ++j) {
+                int d = dist(W[i], B[j]);
+                v[d].push_back({i, j});
+                minDist = min(minDist, d);
+            }
+        }
+        vector<bool> used(M);
+        vector<int> ans(N, - 1);
+        for (int d = minDist; d < 1999 && cnt < N; ++d) {
+            for (auto &[w, b] : v[d]) {
+                if (ans[w] != -1 || used[b]) continue;
+                used[b] = true;
+                ans[w] = b;
+                ++cnt;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3. Priority Queue
+
+The idea is similar to the priority queue solution to merging K sorted list.
+
+For each worker, we maintain a list of bike indexes in ascending order of distance.
+
+We maintain a priority queue of `N` elements each of which is a current bike index corresponding to a worker.
+
+```cpp
+// OJ: https://leetcode.com/problems/campus-bikes/
+// Author: github.com/lzl124631x
+// Time: O(MNlogN)
+// Space: O(MN)
+class Solution {
+public:
+    vector<int> assignBikes(vector<vector<int>>& W, vector<vector<int>>& B) {
+        int N = W.size(), M = B.size();
+        vector<vector<array<int, 2>>> v(N, vector<array<int, 2>>(M));
+        auto dist = [](auto &a, auto &b) {
+            return abs(a[0] - b[0]) + abs(a[1] - b[1]);
+        };
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < M; ++j) {
+                v[i][j] = { dist(W[i], B[j]), j };
+            }
+            sort(begin(v[i]), end(v[i]));
+        }
+        priority_queue<array<int, 4>, vector<array<int, 4>>, greater<>> pq;
+        for (int i = 0; i < N; ++i) pq.push({ v[i][0][0], i, v[i][0][1], 0 });
+        vector<bool> used(M);
+        vector<int> ans(N, -1);
+        for (int i = 0; i < N; ) {
+            auto [d, w, b, j] = pq.top();
+            pq.pop();
+            if (used[b]) {
+                int nb = v[w][j + 1][1], nd = dist(W[w], B[nb]);
+                pq.push({nd, w, nb, j + 1});
+                continue;
+            }
+            used[b] = true;
+            ans[w] = b;
+            ++i;
+        }
+        return ans;
+    }
+};
+```
