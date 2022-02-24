@@ -51,7 +51,7 @@
 // Time: O(NlogN)
 // Space: O(logN)
 class Solution {
-    pair<ListNode*, ListNode*> splitList(ListNode *head) {
+    ListNode* splitList(ListNode *head) {
         ListNode dummy, *p = &dummy, *q = &dummy;
         dummy.next = head;
         while (q && q->next) {
@@ -60,7 +60,7 @@ class Solution {
         }
         auto next = p->next;
         p->next = NULL;
-        return {head, next};
+        return next;
     }
     ListNode *mergeList(ListNode *a, ListNode *b) {
         ListNode head, *tail = &head;
@@ -83,8 +83,8 @@ class Solution {
 public:
     ListNode* sortList(ListNode* head) {
         if (!head || !head->next) return head;
-        auto [a, b] = splitList(head);
-        return mergeList(sortList(a), sortList(b));
+        auto b = splitList(head);
+        return mergeList(sortList(head), sortList(b));
     }
 };
 ```
