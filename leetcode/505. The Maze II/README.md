@@ -111,7 +111,9 @@ public:
 
 Solution 1 has lots of intermediate states that are not valid because the ball is still rolling. Here we can only keep track of those valid states, and log their distance.
 
-We use a min heap to prioritize the states with shorter distance. This is in fact a Dijkstra algorithm.
+We need to use a min heap to prioritize the states with shorter distance. This is in fact a Dijkstra algorithm.
+
+Note that we might visit the same cell multiple times, we should only push the state into the heap if the distance is shorter.
 
 **Time complexity**:
 
@@ -138,11 +140,12 @@ public:
             auto [d, x, y] = pq.top();
             pq.pop();
             if (x == E[0] && y == E[1]) return d;
+            if (d > dist[x][y]) continue; // this state is no longer optimial, skip
             for (auto &[dx, dy] : dirs) { // probe 4 directions
                 int nx = x + dx, ny = y + dy, step = 1;
                 while (nx >= 0 && nx < M && ny >= 0 && ny < N && A[nx][ny] == 0) nx += dx, ny += dy, ++step;
                 nx -= dx, ny -= dy, --step; // once hit wall, step back
-                if ((nx != x || ny != y) && d + step < dist[nx][ny]) {
+                if ((nx != x || ny != y) && d + step < dist[nx][ny]) { // we only push this new state if the new cell is not the same as the starting cell and this move yields shorter distance for the new cell.
                     dist[nx][ny] = d + step;
                     pq.push({dist[nx][ny], nx, ny});
                 }
