@@ -48,16 +48,20 @@ The length of the path is 1 + 1 + 3 + 1 + 2 + 2 + 2 = 12.
 
 
 **Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google), [Snapchat](https://leetcode.com/company/snapchat), [Oracle](https://leetcode.com/company/oracle)
+[Google](https://leetcode.com/company/google), [ByteDance](https://leetcode.com/company/bytedance)
 
 **Related Topics**:  
-[Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Breadth-first Search](https://leetcode.com/tag/breadth-first-search/)
+[Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Graph](https://leetcode.com/tag/graph/), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue/), [Shortest Path](https://leetcode.com/tag/shortest-path/)
 
 **Similar Questions**:
 * [The Maze (Medium)](https://leetcode.com/problems/the-maze/)
 * [The Maze III (Hard)](https://leetcode.com/problems/the-maze-iii/)
 
 ## Solution 1. BFS
+
+We BFS the matrix step by step. Each state is `(x, y, direction)` and we visit them at most once.
+
+The time complexity is `O(4MN) = O(MN)`  because each state `(x, y, direction)` is visited at most once.
 
 ```cpp
 // OJ: https://leetcode.com/problems/the-maze-ii/
@@ -67,37 +71,82 @@ The length of the path is 1 + 1 + 3 + 1 + 2 + 2 + 2 = 12.
 class Solution {
 public:
     int shortestDistance(vector<vector<int>>& A, vector<int>& S, vector<int>& E) {
-        int M = A.size(), N = A[0].size();
-        vector<vector<vector<int>>> dp(M, vector<vector<int>>(N, vector<int>(4, -1)));
-        queue<tuple<int, int, int>> q;
-        int step = 0, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        int M = A.size(), N = A[0].size(), step = 0, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        vector<vector<vector<bool>>> seen(M, vector<vector<bool>>(N, vector<bool>(4))); // (x, y, direction)
+        queue<array<int, 3>> q;
         for (int i = 0; i < 4; ++i) {
-            q.emplace(S[0], S[1], i);
-            dp[S[0]][S[1]][i] = 0;
+            seen[S[0]][S[1]][i] = true;
+            q.push({S[0], S[1], i});
         }
         while (q.size()) {
             int cnt = q.size();
             while (cnt--) {
                 auto [x, y, dir] = q.front();
                 q.pop();
-                auto [dx, dy] = dirs[dir];
+                auto &[dx, dy] = dirs[dir];
                 int nx = x + dx, ny = y + dy;
-                if (nx < 0 || nx >= M || ny < 0 || ny >= N || A[nx][ny] == 1) {
-                    if (x == E[0] && y == E[1]) return step;
+                if (nx < 0 || nx >= M || ny < 0 || ny >= N || A[nx][ny]) { // The ball hits a wall. We can probe 4 directions
+                    if (x == E[0] && y == E[1]) return step; // we can only check (x, y) if we are by a wall
                     for (int d = 0; d < 4; ++d) {
                         if (d == dir) continue;
-                        auto [dx2, dy2] = dirs[d];
-                        nx = x + dx2, ny = y + dy2;
-                        if (nx < 0 || nx >= M || ny < 0 || ny >= N || A[nx][ny] == 1 || dp[nx][ny][d] != -1) continue;
-                        dp[nx][ny][d] = step;
-                        q.emplace(nx, ny, d);
+                        auto &[dx, dy] = dirs[d];
+                        int nx = x + dx, ny = y + dy;
+                        if (nx < 0 || nx >= M || ny < 0 || ny >= N || A[nx][ny] || seen[nx][ny][d]) continue;
+                        seen[nx][ny][d] = true;
+                        q.push({nx, ny, d});
                     }
-                } else if (dp[nx][ny][dir] == -1) {
-                    dp[nx][ny][dir] = step;
-                    q.emplace(nx, ny, dir);
+                } else if (!seen[nx][ny][dir]) { // The ball doesn't hit a wall. We can only move in the same direction.
+                    seen[nx][ny][dir] = true;
+                    q.push({nx, ny, dir});
                 }
             }
             ++step;
+        }
+        return -1;
+    }
+};
+```
+
+## Solution 2. Dijkstra (BFS + Heap)
+
+Solution 1 has lots of intermediate states that are not valid because the ball is still rolling. Here we can only keep track of those valid states, and log their distance.
+
+We use a min heap to prioritize the states with shorter distance. This is in fact a Dijkstra algorithm.
+
+**Time complexity**:
+
+In the worst case we visit each node (`O(MN)`), and for each node we probe 4 directions taking `O(max(M, N))` time, and pushing into / popping from the heap takes `O(log(MN))` time (assuming there are at most `O(MN)` elements in the heap). So, the overall time complexity is `O(MN * max(M, N) * log(MN))`.
+
+But this is a loose upper bound because the more nodes visitable, the less steps we do during 4-directional probing.
+
+This is more efficient than Solution 1 because we prioritize shorter distance and thus reach the end point earlier.
+
+```cpp
+// OJ: https://leetcode.com/problems/the-maze-ii/
+// Author: github.com/lzl124631x
+// Time: O(MN * max(M, N) * log(MN))
+// Space: O(MN)
+class Solution {
+public:
+    int shortestDistance(vector<vector<int>>& A, vector<int>& S, vector<int>& E) {
+        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        vector<vector<int>> dist(M, vector<int>(N, INT_MAX));
+        priority_queue<array<int, 3>, vector<array<int, 3>>, greater<>> pq; // min heap of (distance, x, y)
+        pq.push({0, S[0], S[1]});
+        dist[S[0]][S[1]] = 0;
+        while (pq.size()) {
+            auto [d, x, y] = pq.top();
+            pq.pop();
+            if (x == E[0] && y == E[1]) return d;
+            for (auto &[dx, dy] : dirs) { // probe 4 directions
+                int nx = x + dx, ny = y + dy, step = 1;
+                while (nx >= 0 && nx < M && ny >= 0 && ny < N && A[nx][ny] == 0) nx += dx, ny += dy, ++step;
+                nx -= dx, ny -= dy, --step; // once hit wall, step back
+                if ((nx != x || ny != y) && d + step < dist[nx][ny]) {
+                    dist[nx][ny] = d + step;
+                    pq.push({dist[nx][ny], nx, ny});
+                }
+            }
         }
         return -1;
     }
