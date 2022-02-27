@@ -969,6 +969,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1054 | Distant Barcodes | Medium | [Solution](leetcode/1054.%20Distant%20Barcodes)
 1055 | Shortest Way to Form String | Medium | [Solution](leetcode/1055.%20Shortest%20Way%20to%20Form%20String)
 1056 | Confusing Number | Easy | [Solution](leetcode/1056.%20Confusing%20Number)
+1057 | Campus Bikes | Medium | [Solution](leetcode/1057.%20Campus%20Bikes)
 1059 | All Paths from Source Lead to Destination | Medium | [Solution](leetcode/1059.%20All%20Paths%20from%20Source%20Lead%20to%20Destination)
 1062 | Longest Repeating Substring | Medium | [Solution](leetcode/1062.%20Longest%20Repeating%20Substring)
 1064 | Fixed Point | Easy | [Solution](leetcode/1064.%20Fixed%20Point)
@@ -1810,6 +1811,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2181 | Merge Nodes in Between Zeros | Medium | [Solution](leetcode/2181.%20Merge%20Nodes%20in%20Between%20Zeros)
 2182 | Construct String With Repeat Limit | Medium | [Solution](leetcode/2182.%20Construct%20String%20With%20Repeat%20Limit)
 2183 | Count Array Pairs Divisible by K | Hard | [Solution](leetcode/2183.%20Count%20Array%20Pairs%20Divisible%20by%20K)
+2185 | Counting Words With a Given Prefix | Easy | [Solution](leetcode/2185.%20Counting%20Words%20With%20a%20Given%20Prefix)
+2186 | Minimum Number of Steps to Make Two Strings Anagram II | Medium | [Solution](leetcode/2186.%20Minimum%20Number%20of%20Steps%20to%20Make%20Two%20Strings%20Anagram%20II)
+2187 | Minimum Time to Complete Trips | Medium | [Solution](leetcode/2187.%20Minimum%20Time%20to%20Complete%20Trips)
+2188 | Minimum Time to Finish the Race | Hard | [Solution](leetcode/2188.%20Minimum%20Time%20to%20Finish%20the%20Race)
 
 
 # FAQ
