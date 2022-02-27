@@ -52,19 +52,18 @@ class Solution {
 public:
     long long countPairs(vector<int>& A, int k) {
         memset(cnt, 0, (k + 1) * sizeof(int));
-        int N = A.size();
-        for (int &n : A) {
-            n = gcd(n, k); // remove factors that `k` doesn't have. Now `A[i] <= k` 
-            cnt[n]++;
-        }
         vector<int> div; // all the divisors of `k`
         for (int i = 1; i <= k; ++i) {
             if (k % i == 0) div.push_back(i);
         }
+        for (int &n : A) {
+            n = gcd(n, k); // remove factors that `k` doesn't have. Now `A[i] <= k` 
+            cnt[n]++;
+        }
         for (int d : div) {
             sum[d] = 0;
             for (int i = d; i <= k; i += d) {
-                sum[d] += cnt[i]; // `sum[d]` is the sum of `cnt[i]` where `cnt[i]` is multiple of `d`.
+                sum[d] += cnt[i]; // `sum[d]` is the sum of `cnt[i]` where `i` is multiple of `d`.
             }
         }
         long ans = 0;
@@ -79,6 +78,30 @@ public:
 ```
 
 ## Solution 2.
+
+Step 1. For each `n` in `A`, we only care the `gcd(n, k)` part of it. So, we convert all `n` to `gcd(n, k)`.
+
+Step 2. If `n * m` is divisible by `k`, then `m` must be multiple of `r = k / gcd(n, k)`. If we sum `cnt[r], cnt[2r], cnt[3r]...`, it will get TLE.
+
+```cpp
+// NOTE: This solution gets TLE!
+class Solution {
+public:
+    long long countPairs(vector<int>& A, int k) {
+        int cnt[100001] = {};
+        long ans = 0;
+        for (int n : A) {
+            n = gcd(n, k);
+            int r = k / n;
+            for (int i = r; i <= k; i += r) ans += cnt[i]; // This part is inefficient. Lots of `i` are not divisors of `k`.
+            cnt[n]++;
+        }
+        return ans;
+    }
+};
+```
+
+It's because some multiple `d` of `r` is not divisor of `k` (`gcd(d, k) != d` or `k % d != 0`), so the count of the multiple is always `0` due to Step 1. We should only focus on those `r`s that are divisors of `k`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/count-array-pairs-divisible-by-k/
@@ -96,9 +119,10 @@ public:
             if (k % i == 0) divs.push_back(i);
         }
         for (int n : A) {
-            n = gcd(n, k); // `n` covers `gcd(n, k)`, the other number must cover `k / gcd(n, k)`.
+            n = gcd(n, k); // `n` covers `gcd(n, k)`, the other number must cover `r = k / gcd(n, k)`.
+            int r = k / n;
             for (int d : divs) {
-                if (d % (k / n) == 0) ans += cnt[d]; // If `d` is multiple of `k / gcd(n, k)`, add `cnt[d]` to answer
+                if (d % r == 0) ans += cnt[d]; // If `d` is multiple of `k / r`, add `cnt[d]` to answer
             }
             cnt[n]++;
         }
