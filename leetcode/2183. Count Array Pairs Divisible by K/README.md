@@ -38,6 +38,20 @@ Other pairs such as (0, 2) and (2, 4) have products 3 and 15 respectively, which
 **Similar Questions**:
 * [Check If Array Pairs Are Divisible by k (Medium)](https://leetcode.com/problems/check-if-array-pairs-are-divisible-by-k/)
 
+## Note
+
+`k` is as large as `1e5`. Going over it is slow. We should only go over `k`'s divisors whose count is at most `128`.
+
+
+83160 and 98280 have the greatest number of diviors, which is 128.
+
+```
+83160 = 11*7*5*3*3*3*2*2*2
+98280 = 13*7*5*3*3*3*2*2*2
+```
+
+Maximum number of divisors of any `n`-digit number. https://oeis.org/A066150
+
 ## Solution 1.
 
 ```cpp
@@ -127,6 +141,32 @@ public:
             cnt[n]++;
         }
         return ans;
+    }
+};
+```
+
+## Solution 3.
+
+```cpp
+// OJ: https://leetcode.com/problems/count-array-pairs-divisible-by-k/
+// Author: github.com/lzl124631x
+// Time: O(Nlog1e5 + D^2)
+// Space: O(D) where `D` is the number of divisors of `k`
+// Ref: https://leetcode.com/problems/count-array-pairs-divisible-by-k/discuss/1785027/
+class Solution {
+public:
+    long long countPairs(vector<int>& A, int k) {
+        unordered_map<int, int> cnt;
+        for (int n : A) cnt[gcd(n, k)]++;
+        long long ans = 0;
+        for (auto &[a, c1]: cnt) {
+            for (auto &[b, c2]: cnt) {
+                if (a <= b && (long)a * b % k == 0) {
+                    ans += a < b ? (long)c1 * c2 : (long)c1 * (c1 - 1) / 2;
+                }
+            }
+        }
+        return ans;    
     }
 };
 ```
