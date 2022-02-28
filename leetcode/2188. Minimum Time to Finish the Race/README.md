@@ -72,7 +72,7 @@ public:
         int N = A.size(), len = 0;
         vector<long> best(numLaps, LONG_MAX), dp(numLaps + 1, INT_MAX);
         for (int i = 0; i < N; ++i) {
-            long f = A[i][0], r = A[i][1], sum = change, p = 1; // We assume we also need `change` time to use the first tire so that we don't need to care the first tire as a special case
+            long f = A[i][0], r = A[i][1], sum = change, p = 1; // We assume we also need `change` time to use the first tire so that we don't need to treat the first tire as a special case
             for (int j = 0; j < numLaps; ++j) {
                 sum += f * p;
                 if (f * p >= f + change) break; // If using the same tire takes no less time than changing the tire, stop further using the current tire

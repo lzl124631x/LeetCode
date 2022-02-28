@@ -33,24 +33,6 @@
 [8,9] --&gt; "8-&gt;9"
 </pre>
 
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input:</strong> nums = []
-<strong>Output:</strong> []
-</pre>
-
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input:</strong> nums = [-1]
-<strong>Output:</strong> ["-1"]
-</pre>
-
-<p><strong>Example 5:</strong></p>
-
-<pre><strong>Input:</strong> nums = [0]
-<strong>Output:</strong> ["0"]
-</pre>
-
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
@@ -58,8 +40,12 @@
 	<li><code>0 &lt;= nums.length &lt;= 20</code></li>
 	<li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>
 	<li>All the values of <code>nums</code> are <strong>unique</strong>.</li>
+	<li><code>nums</code> is sorted in ascending order.</li>
 </ul>
 
+
+**Companies**:  
+[Yandex](https://leetcode.com/company/yandex), [Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/)
@@ -84,6 +70,28 @@ public:
             if (i + 1 < N && A[i + 1] == A[i] + 1) continue;
             ans.push_back(to_string(A[start]) + (i == start ? "" : ("->" + to_string(A[i]))));
             start = i + 1;
+        }
+        return ans;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/summary-ranges/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    vector<string> summaryRanges(vector<int>& A) {
+        vector<string> ans;
+        int N = A.size();
+        for (int i = 0; i < N; ++i) {
+            int start = A[i];
+            while (i + 1 < N && A[i + 1] == A[i] + 1) ++i;
+            ans.push_back(to_string(start) + (A[i] == start ? "" : ("->" + to_string(A[i]))));
         }
         return ans;
     }
