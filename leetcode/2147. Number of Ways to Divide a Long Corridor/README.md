@@ -43,6 +43,12 @@ Installing any would create some section that does not have exactly two seats.
 </ul>
 
 
+**Companies**:  
+[Zomato](https://leetcode.com/company/zomato)
+
+**Related Topics**:  
+[Math](https://leetcode.com/tag/math/), [String](https://leetcode.com/tag/string/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+
 **Similar Questions**:
 * [Decode Ways II (Hard)](https://leetcode.com/problems/decode-ways-ii/)
 * [Minimum Cost to Cut a Stick (Hard)](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/)
@@ -77,7 +83,31 @@ public:
             total += seat;
         }
         return total % 2 == 0 && total ? ans : 0; // if the total number of seats is not a positive even number, return 0
-        
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-ways-to-divide-a-long-corridor/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int numberOfWays(string s) {
+        long N = s.size(), mod = 1e9 + 7, prev = 0, cnt = 0, plant = 0, ans = 1;
+        for (int i = 0; i < N; ++i) {
+            if (prev == cnt) plant += s[i] == 'P'; // count leading plants in each section.
+            cnt += s[i] == 'S';
+            if (cnt == prev + 2) {
+                if (prev) ans = ans * (plant + 1) % mod;
+                prev = cnt;
+                plant = 0;
+            }
+        }
+        return prev == cnt && cnt ? ans : 0;
     }
 };
 ```
