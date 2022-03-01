@@ -62,9 +62,9 @@ class Solution {
 public:
     Node* cloneTree(Node* root) {
         if (!root) return nullptr;
-        vector<Node*> children;
-        for (auto ch : root->children) children.push_back(cloneTree(ch));
-        return new Node(root->val, children);
+        auto cpy = new Node(root->val);
+        for (auto &c : root->children) cpy->children.push_back(cloneTree(c));
+        return cpy;
     }
 };
 ```
