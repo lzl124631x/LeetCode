@@ -1,25 +1,49 @@
-# [338. Counting Bits (Medium)](https://leetcode.com/problems/counting-bits/)
+# [338. Counting Bits (Easy)](https://leetcode.com/problems/counting-bits/)
 
-<p>Given a non negative integer number <b>num</b>. For every numbers <b>i</b> in the range <b>0 ≤ i ≤ num</b> calculate the number of 1's in their binary representation and return them as an array.</p>
+<p>Given an integer <code>n</code>, return <em>an array </em><code>ans</code><em> of length </em><code>n + 1</code><em> such that for each </em><code>i</code><em> </em>(<code>0 &lt;= i &lt;= n</code>)<em>, </em><code>ans[i]</code><em> is the <strong>number of </strong></em><code>1</code><em><strong>'s</strong> in the binary representation of </em><code>i</code>.</p>
 
+<p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-1-1">2</span>
-<strong>Output: </strong><span id="example-output-1">[0,1,1]</span></pre>
+<pre><strong>Input:</strong> n = 2
+<strong>Output:</strong> [0,1,1]
+<strong>Explanation:</strong>
+0 --&gt; 0
+1 --&gt; 1
+2 --&gt; 10
+</pre>
 
 <p><strong>Example 2:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-1-1">5</span>
-<strong>Output: </strong><code>[0,1,1,2,1,2]</code>
+<pre><strong>Input:</strong> n = 5
+<strong>Output:</strong> [0,1,1,2,1,2]
+<strong>Explanation:</strong>
+0 --&gt; 0
+1 --&gt; 1
+2 --&gt; 10
+3 --&gt; 11
+4 --&gt; 100
+5 --&gt; 101
 </pre>
 
-<p><b>Follow up:</b></p>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
 <ul>
-	<li>It is very easy to come up with a solution with run time <b>O(n*sizeof(integer))</b>. But can you do it in linear time <b>O(n)</b> /possibly in a single pass?</li>
-	<li>Space complexity should be <b>O(n)</b>.</li>
-	<li>Can you do it like a boss? Do it without using any builtin function like <b>__builtin_popcount</b> in c++ or in any other language.</li>
+	<li><code>0 &lt;= n &lt;= 10<sup>5</sup></code></li>
 </ul>
+
+<p>&nbsp;</p>
+<p><strong>Follow up:</strong></p>
+
+<ul>
+	<li>It is very easy to come up with a solution with a runtime of <code>O(n log n)</code>. Can you do it in linear time <code>O(n)</code> and possibly in a single pass?</li>
+	<li>Can you do it without using any built-in function (i.e., like <code>__builtin_popcount</code> in C++)?</li>
+</ul>
+
+
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google), [Apple](https://leetcode.com/company/apple)
 
 **Related Topics**:  
 [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/)
@@ -42,14 +66,14 @@ And `1, 2, 3, ..., 2^k - 1` doesn't have bit overlap with `2^k`.
 // Space: O(1)
 class Solution {
 public:
-  vector<int> countBits(int num) {
-    vector<int> ans(num + 1);
-    for (int i = 1; i <= num; i *= 2) {
-      ans[i] = 1;
-      for (int j = 1; j < i && i + j <= num; ++j) ans[i + j] = ans[i] + ans[j];
+    vector<int> countBits(int n) {
+        vector<int> ans(n + 1);
+        for (int i = 1; i <= n; i *= 2) {
+            ans[i] = 1;
+            for (int j = 1; j < i && i + j <= n; ++j) ans[i + j] = ans[i] + ans[j];
+        }
+        return ans;
     }
-    return ans;
-  }
 };
 ```
 
@@ -68,9 +92,9 @@ dp[i] = 1 + dp[i - (i & -i)]
 // Space: O(1)
 class Solution {
 public:
-    vector<int> countBits(int num) {
-        vector<int> ans(num + 1);
-        for (int i = 1; i <= num; ++i) ans[i] = 1 + ans[i - (i & -i)];
+    vector<int> countBits(int n) {
+        vector<int> ans(n + 1);
+        for (int i = 1; i <= n; ++i) ans[i] = 1 + ans[i - (i & -i)];
         return ans;
     }
 };
@@ -85,10 +109,32 @@ public:
 // Space: O(1)
 class Solution {
 public:
-  vector<int> countBits(int num) {
-    vector<int> ans(num + 1, 0);
-    for (int i = 1; i <= num; ++i) ans[i] = ans[i / 2] + (i % 2);
-    return ans;
-  }
+    vector<int> countBits(int n) {
+        vector<int> ans(n + 1);
+        for (int i = 1; i <= n; ++i) ans[i] = ans[i / 2] + (i % 2);
+        return ans;
+    }
+};
+```
+
+## Solution 4. DP
+
+DP based on highest bit
+
+```cpp
+// OJ: https://leetcode.com/problems/counting-bits/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    vector<int> countBits(int n) {
+        vector<int> ans(n + 1);
+        for (int i = 1, hb = 1; i <= n; ++i) {
+            if ((hb & i) == 0) hb <<= 1;
+            ans[i] = 1 + ans[i - hb];
+        }
+        return ans;
+    }
 };
 ```
