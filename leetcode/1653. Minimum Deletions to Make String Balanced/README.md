@@ -41,7 +41,7 @@ Delete the characters at 0-indexed positions 3 and 6 ("aab<u>a</u>bb<u>a</u>b" -
 **Similar Questions**:
 * [Check if All A's Appears Before All B's (Easy)](https://leetcode.com/problems/check-if-all-as-appears-before-all-bs/)
 
-## Solution 1. Left and Right
+## Solution 1. Left-to-Right State Transition
 
 Scan `s` and try using each point as a breakpoint. Keep track of the number of `a`s to the left and number of `b`s to the right. For each breackpoint, the longest string we can form is of length `a + b`. We find the global maximum of such length, and the answer is `N` minus this maximum value.
 

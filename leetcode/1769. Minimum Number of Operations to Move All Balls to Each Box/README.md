@@ -34,8 +34,11 @@
 </ul>
 
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon)
+
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Greedy](https://leetcode.com/tag/greedy/)
+[Array](https://leetcode.com/tag/array/), [String](https://leetcode.com/tag/string/)
 
 **Similar Questions**:
 * [Minimum Cost to Move Chips to The Same Position (Easy)](https://leetcode.com/problems/minimum-cost-to-move-chips-to-the-same-position/)
@@ -62,7 +65,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Left-to-Right State Transition
 
 Assume we are at `s[i]` and the corresponding operations needed is `sum`. When we move from `s[i]` to `s[i + 1]`, if there are `left` balls that have indexes `<= i` and `right` balls that have indexes `> i`, then the number of operations needed for `s[i + 1]` will be `sum + left - right`.
 
