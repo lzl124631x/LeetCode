@@ -50,10 +50,13 @@ There is 1 index that you can remove to make nums fair.
 </ul>
 
 
-**Related Topics**:  
-[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Greedy](https://leetcode.com/tag/greedy/)
+**Companies**:  
+[Microsoft](https://leetcode.com/company/microsoft), [Dunzo](https://leetcode.com/company/dunzo)
 
-## Solution 1. Suffix Sum
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+
+## Solution 1. Left-to-Right State Transition (Prefix + Suffix)
 
 **Intuition**: 
 
@@ -101,8 +104,7 @@ public:
 };
 ```
 
-## Solution 2.
-
+## Solution 2. Left-to-right State Transition (Prefix + Suffix)
 
 We can compute the suffix sums on the fly as well to save the extra space
 
@@ -130,3 +132,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/ways-to-make-a-fair-array/discuss/944355/
