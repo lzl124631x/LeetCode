@@ -39,8 +39,16 @@
 	<li><code>0 &lt;= query_glass &lt;= query_row&nbsp;&lt; 100</code></li>
 </ul>
 
+**Companies**:  
+[Google](https://leetcode.com/company/google)
 
-## Solution 1.
+**Related Topics**:  
+[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+
+**Similar Questions**:
+* [Number of Ways to Build House of Cards (Medium)](https://leetcode.com/problems/number-of-ways-to-build-house-of-cards/)
+
+## Solution 1. Simulation
 
 ```cpp
 // OJ: https://leetcode.com/problems/champagne-tower/
