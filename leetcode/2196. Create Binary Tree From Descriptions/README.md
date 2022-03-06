@@ -74,3 +74,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/create-binary-tree-from-descriptions/discuss/1823606/
