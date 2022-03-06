@@ -70,3 +70,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/append-k-integers-with-minimal-sum/discuss/1823619/
