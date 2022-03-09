@@ -41,14 +41,17 @@
 <p><strong>Follow up:</strong> Can you solve it using <code>O(1)</code> (i.e. constant) memory?</p>
 
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Visa](https://leetcode.com/company/visa), [Nvidia](https://leetcode.com/company/nvidia), [Apple](https://leetcode.com/company/apple), [Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg), [Goldman Sachs](https://leetcode.com/company/goldman-sachs), [Oracle](https://leetcode.com/company/oracle), [Spotify](https://leetcode.com/company/spotify), [Splunk](https://leetcode.com/company/splunk)
+
 **Related Topics**:  
-[Linked List](https://leetcode.com/tag/linked-list/), [Two Pointers](https://leetcode.com/tag/two-pointers/)
+[Hash Table](https://leetcode.com/tag/hash-table/), [Linked List](https://leetcode.com/tag/linked-list/), [Two Pointers](https://leetcode.com/tag/two-pointers/)
 
 **Similar Questions**:
 * [Linked List Cycle II (Medium)](https://leetcode.com/problems/linked-list-cycle-ii/)
 * [Happy Number (Easy)](https://leetcode.com/problems/happy-number/)
 
-## Solution 1.
+## Solution 1. Floyd's Tortoise and Hare
 
 ```cpp
 // OJ: https://leetcode.com/problems/linked-list-cycle/
