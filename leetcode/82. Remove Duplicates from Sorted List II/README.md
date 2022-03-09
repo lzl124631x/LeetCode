@@ -25,11 +25,15 @@
 </ul>
 
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [ByteDance](https://leetcode.com/company/bytedance), [Facebook](https://leetcode.com/company/facebook)
+
 **Related Topics**:  
-[Linked List](https://leetcode.com/tag/linked-list/)
+[Linked List](https://leetcode.com/tag/linked-list/), [Two Pointers](https://leetcode.com/tag/two-pointers/)
 
 **Similar Questions**:
 * [Remove Duplicates from Sorted List (Easy)](https://leetcode.com/problems/remove-duplicates-from-sorted-list/)
+* [Remove Duplicates From an Unsorted Linked List (Medium)](https://leetcode.com/problems/remove-duplicates-from-an-unsorted-linked-list/)
 
 ## Solution 1.
 
@@ -41,19 +45,19 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        ListNode h, *tail = &h;
+        ListNode dummy, *tail = &dummy;
         while (head) {
-            if (head->next == NULL || head->next->val != head->val) {
+            int val = head->val;
+            if (head->next && head->next->val == val) {
+                while (head && head->val == val) head = head->next;
+            } else {
                 tail->next = head;
                 tail = head;
                 head = head->next;
-            } else {
-                int val = head->val;
-                while (head && head->val == val) head = head->next;
             }
         }
-        tail->next = NULL;
-        return h.next;
+        tail->next = nullptr;
+        return dummy.next;
     }
 };
 ```
