@@ -28,17 +28,31 @@
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= nums.length &lt;= 5 * 10<sup>5</sup></code></li>
 	<li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
 
 <p>&nbsp;</p>
 <strong>Follow up:</strong> Could you implement a solution that runs in <code>O(n)</code> time complexity and <code>O(1)</code> space complexity?
 
+**Companies**:  
+[Google](https://leetcode.com/company/google), [Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Greedy](https://leetcode.com/tag/greedy/)
+
 **Similar Questions**:
 * [Longest Increasing Subsequence (Medium)](https://leetcode.com/problems/longest-increasing-subsequence/)
+* [Count Special Quadruplets (Easy)](https://leetcode.com/problems/count-special-quadruplets/)
+* [Count Good Triplets in an Array (Hard)](https://leetcode.com/problems/count-good-triplets-in-an-array/)
 
-## Solution 1.
+## Solution 1. Longest Increasing Subsequence
+
+This is a simplified version of [300. Longest Increasing Subsequence (Medium)](https://leetcode.com/problems/longest-increasing-subsequence/).
+
+It's a regret greedy algorithm. We maintain a mono-increasing subsequence. For each `A[i]`, we use it to replace the first number in the subsequence that is `>= A[i]`. 
+
+It's simplified compared to LIS because we only need to keep a subsequence of length 3.
 
 ```cpp
 // OJ: https://leetcode.com/problems/increasing-triplet-subsequence/
