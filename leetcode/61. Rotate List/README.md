@@ -1,32 +1,38 @@
 # [61. Rotate List (Medium)](https://leetcode.com/problems/rotate-list/)
 
-<p>Given a linked&nbsp;list, rotate the list to the right by <em>k</em> places, where <em>k</em> is non-negative.</p>
+<p>Given the <code>head</code> of a linked&nbsp;list, rotate the list to the right by <code>k</code> places.</p>
 
+<p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
-
-<pre><strong>Input:</strong> 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2
-<strong>Output:</strong> 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL
-<strong>Explanation:</strong>
-rotate 1 steps to the right: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL
-rotate 2 steps to the right: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL
+<img alt="" src="https://assets.leetcode.com/uploads/2020/11/13/rotate1.jpg" style="width: 450px; height: 191px;">
+<pre><strong>Input:</strong> head = [1,2,3,4,5], k = 2
+<strong>Output:</strong> [4,5,1,2,3]
 </pre>
 
 <p><strong>Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/11/13/roate2.jpg" style="width: 305px; height: 350px;">
+<pre><strong>Input:</strong> head = [0,1,2], k = 4
+<strong>Output:</strong> [2,0,1]
+</pre>
 
-<pre><strong>Input:</strong> 0-&gt;1-&gt;2-&gt;NULL, k = 4
-<strong>Output:</strong> <code>2-&gt;0-&gt;1-&gt;NULL</code>
-<strong>Explanation:</strong>
-rotate 1 steps to the right: 2-&gt;0-&gt;1-&gt;NULL
-rotate 2 steps to the right: 1-&gt;2-&gt;0-&gt;NULL
-rotate 3 steps to the right:&nbsp;<code>0-&gt;1-&gt;2-&gt;NULL</code>
-rotate 4 steps to the right:&nbsp;<code>2-&gt;0-&gt;1-&gt;NULL</code></pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
+<ul>
+	<li>The number of nodes in the list is in the range <code>[0, 500]</code>.</li>
+	<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+	<li><code>0 &lt;= k &lt;= 2 * 10<sup>9</sup></code></li>
+</ul>
+
+
+**Companies**:  
+[Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon), [Bloomberg](https://leetcode.com/company/bloomberg)
 
 **Related Topics**:  
 [Linked List](https://leetcode.com/tag/linked-list/), [Two Pointers](https://leetcode.com/tag/two-pointers/)
 
 **Similar Questions**:
-* [Rotate Array (Easy)](https://leetcode.com/problems/rotate-array/)
+* [Rotate Array (Medium)](https://leetcode.com/problems/rotate-array/)
 * [Split Linked List in Parts (Medium)](https://leetcode.com/problems/split-linked-list-in-parts/)
 
 ## Solution 1.
@@ -38,26 +44,23 @@ rotate 4 steps to the right:&nbsp;<code>2-&gt;0-&gt;1-&gt;NULL</code></pre>
 // Space: O(1)
 class Solution {
     int getLength(ListNode *head) {
-        int len = 0;
-        for (; head; head = head->next, ++len);
-        return len;
+        int ans = 0;
+        for (; head; head = head->next) ++ans;
+        return ans;
     }
 public:
     ListNode* rotateRight(ListNode* head, int k) {
-        if (!head) return NULL;
+        if (!head) return nullptr;
         int len = getLength(head);
         k %= len;
         if (k == 0) return head;
         auto p = head, q = head;
         while (k--) q = q->next;
-        while (q->next) {
-            p = p->next;
-            q = q->next;
-        }
-        auto h = p->next;
+        while (q->next) p = p->next, q = q->next;
+        auto ans = p->next;
+        p->next = nullptr;
         q->next = head;
-        p->next = NULL;
-        return h;
+        return ans;
     }
 };
 ```
@@ -72,16 +75,16 @@ public:
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
-        if (!head) return NULL;
+        if (!head) return nullptr;
         int len = 1;
         auto p = head;
-        for (; p->next; ++len, p = p->next);
+        while (p->next) p = p->next, ++len;
         p->next = head;
         k = len - k % len;
         while (k--) p = p->next;
-        head = p->next;
-        p->next = NULL;
-        return head;
+        auto ans = p->next;
+        p->next = nullptr;
+        return ans;
     }
 };
 ```
