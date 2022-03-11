@@ -117,29 +117,13 @@ public:
 
 ## Solution 3. Two Pointers
 
-Consider using two pointers `i = 0, j = N-1`, and `left`/`right` is the maximum height to the left/right of `A[i]`/`A[j]` inclusive (`left = max(A[0], ..., A[i]), right = max(A[j], ..., A[N-1])`).
+Can we save the `O(N)` space in solution 1? The space is taken by the `right` array storing the maximum heights. We can try using a single pointer instead.
 
-We want to move the pointers inwards. Assume `A[i] <= A[j]`, which pointer should we move first?
+Let's traverse `i` from `0` rightwards. For each `A[i]`, instead of using `right[i]` -- the tallest height to the right of `A[i]`, we use a pointer `j = N-1`. As long as `A[j] >= A[i]`, the height of the water filled at index `i` is determined only by `left` -- `left - A[i]`.
 
-Based on the following observation:
-1. the water we can fill at `A[i]` is determined -- `min(left, A[j]) - A[i]`
-2. `A[i]` won't be used as the boundary any more because for `A[k]` (`i < k < j`), it can use `left >= A[i]` as the left boundary and `A[j] >= A[i]` as the right boundary.
+So, we keep incrementing `i` and fill `left - A[i]` at index `i`, until `A[i] > A[j]`.
 
-We should move `i` rightwards. That is, we always move the smaller one between `A[i]` and `A[j]`.
-
-**Simplifying `min(left - A[j]) - A{i]`**:
-
-In fact, when `A[i] <= A[j]`, `left` must be `<= A[j]`. We can prove by contradition.
-
-Assume `left > A[j]` and `A[L] = left` (`0 <= L <= i`).
-
-Because we always move the shorter side, one of `A[i]` and `A[j]` must be the tallest among the visited elements (`A[0], ..., A[i], A[j], ..., A[N-1]`).
-
-Since `left > A[j]`, `A[j]` can't be the tallest one, so `A[i]` must be the tallest one, and `A[i] = left`.
-
-`A[i] = left > A[j]` contradicts with `A[i] <= A[j]`. So the assumption is wrong.
-
-So, when `A[i] <= A[j]`, instead of filling `min(left, A[j]) - A[i]` at `A[i]`, we can simply fill `left - A[i]`.
+Now, the setup is reversed. Due to symmetry, now we should keep decrementing `j` and fill `right - A[j]` at index `j`, until `A[j] >= A[i]`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/trapping-rain-water/
