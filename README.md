@@ -1816,6 +1816,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2186 | Minimum Number of Steps to Make Two Strings Anagram II | Medium | [Solution](leetcode/2186.%20Minimum%20Number%20of%20Steps%20to%20Make%20Two%20Strings%20Anagram%20II)
 2187 | Minimum Time to Complete Trips | Medium | [Solution](leetcode/2187.%20Minimum%20Time%20to%20Complete%20Trips)
 2188 | Minimum Time to Finish the Race | Hard | [Solution](leetcode/2188.%20Minimum%20Time%20to%20Finish%20the%20Race)
+2190 | Most Frequent Number Following Key In an Array | Easy | [Solution](leetcode/2190.%20Most%20Frequent%20Number%20Following%20Key%20In%20an%20Array)
 2194 | Cells in a Range on an Excel Sheet | Easy | [Solution](leetcode/2194.%20Cells%20in%20a%20Range%20on%20an%20Excel%20Sheet)
 2195 | Append K Integers With Minimal Sum | Medium | [Solution](leetcode/2195.%20Append%20K%20Integers%20With%20Minimal%20Sum)
 2196 | Create Binary Tree From Descriptions | Medium | [Solution](leetcode/2196.%20Create%20Binary%20Tree%20From%20Descriptions)
