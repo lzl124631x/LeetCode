@@ -21,13 +21,13 @@
 
 <ul>
 	<li><code>n == height.length</code></li>
-	<li><code>0 &lt;= n &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>1 &lt;= n &lt;= 2 * 10<sup>4</sup></code></li>
 	<li><code>0 &lt;= height[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
 
 **Companies**:  
-[Amazon](https://leetcode.com/company/amazon), [Goldman Sachs](https://leetcode.com/company/goldman-sachs), [Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg), [Microsoft](https://leetcode.com/company/microsoft), [Adobe](https://leetcode.com/company/adobe), [Apple](https://leetcode.com/company/apple), [Yandex](https://leetcode.com/company/yandex), [Rubrik](https://leetcode.com/company/rubrik), [Snapchat](https://leetcode.com/company/snapchat), [Lyft](https://leetcode.com/company/lyft), [Grab](https://leetcode.com/company/grab), [C3 IoT](https://leetcode.com/company/c3-iot)
+[Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook), [Goldman Sachs](https://leetcode.com/company/goldman-sachs), [Bloomberg](https://leetcode.com/company/bloomberg), [Microsoft](https://leetcode.com/company/microsoft), [Google](https://leetcode.com/company/google), [Apple](https://leetcode.com/company/apple), [Adobe](https://leetcode.com/company/adobe), [Intel](https://leetcode.com/company/intel), [Rubrik](https://leetcode.com/company/rubrik), [Uber](https://leetcode.com/company/uber), [Citadel](https://leetcode.com/company/citadel), [Snapchat](https://leetcode.com/company/snapchat), [VMware](https://leetcode.com/company/vmware), [Qualtrics](https://leetcode.com/company/qualtrics), [Paypal](https://leetcode.com/company/paypal), [Tesla](https://leetcode.com/company/tesla), [Zoho](https://leetcode.com/company/zoho), [Intuit](https://leetcode.com/company/intuit), [Oracle](https://leetcode.com/company/oracle)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Stack](https://leetcode.com/tag/stack/), [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/)
@@ -82,7 +82,15 @@ public:
 };
 ```
 
-Or use a mono-increasing stack which potentially saves some space because it only push new elements into the stack if the element is greater than the element at the stack top.
+## Solution 2. Monotonic stack
+
+This solution is similar to the Monotonic Stack solution to [84. Largest Rectangle in Histogram (Hard)](https://leetcode.com/problems/largest-rectangle-in-histogram/).
+
+The intuition is that once we see a taller `A[i]`, all `A[j] <= A[i]` (`j < i`) are no longer relevant because we will at most use `A[i]` as the left edge.
+
+So, we maintain a monotonic stack `s` storing the relevant indices.
+
+For each `A[i]`, we pop indices `<= A[i]` from `s`. For each popped index `mid`, the index triple `s.top(), mid, i` forms a rectangle of water. The width is `i - s.top() - 1`, the height is `min(A[s.top()], A[i]) - A[mid]`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/trapping-rain-water/
@@ -92,54 +100,46 @@ Or use a mono-increasing stack which potentially saves some space because it onl
 class Solution {
 public:
     int trap(vector<int>& A) {
-        stack<int> right;
-        int N = A.size(), ans = 0, left = 0;
-        for (int i = N - 1; i >= 0; --i) {
-            if (right.empty() || A[i] > A[right.top()]) right.push(i);
-        }
+        int N = A.size(), ans = 0;
+        stack<int> s;
         for (int i = 0; i < N; ++i) {
-            if (right.top() == i) right.pop();
-            int h = min(left, right.size() ? A[right.top()] : 0);
-            ans += max(h - A[i], 0);
-            left = max(left, A[i]);
-        }
-        return ans;
-    }
-};
-```
-
-## Solution 2. Two Pointers
-
-```cpp
-// OJ: https://leetcode.com/problems/trapping-rain-water/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
-class Solution {
-public:
-    int trap(vector<int>& A) {
-        int i = 0, j = A.size() - 1, ans = 0;
-        while (i < j) {
-            if (A[i] < A[j]) {
-                int h = A[i];
-                while (i < j && A[i] <= h) {
-                    ans += h - A[i];
-                    ++i;
-                }
-            } else {
-                int h = A[j];
-                while (i < j && A[j] <= h) {
-                    ans += h - A[j];
-                    --j;
-                }
+            while (s.size() && A[i] >= A[s.top()]) {
+                int mid = s.top();
+                s.pop();
+                if (s.size()) ans += (i - s.top() - 1) * (min(A[i], A[s.top()]) - A[mid]);
             }
+            s.push(i);
         }
         return ans;
     }
 };
 ```
 
-Or
+## Solution 3. Two Pointers
+
+Consider using two pointers `i = 0, j = N-1`, and `left`/`right` is the maximum height to the left/right of `A[i]`/`A[j]` inclusive (`left = max(A[0], ..., A[i]), right = max(A[j], ..., A[N-1])`).
+
+We want to move the pointers inwards. Assume `A[i] <= A[j]`, which pointer should we move first?
+
+Based on the following observation:
+1. the water we can fill at `A[i]` is determined -- `min(left, A[j]) - A[i]`
+2. `A[i]` won't be used as the boundary any more because for `A[k]` (`i < k < j`), it can use `left >= A[i]` as the left boundary and `A[j] >= A[i]` as the right boundary.
+
+We should move `i` rightwards. That is, we always move the smaller one between `A[i]` and `A[j]`.
+
+**Simplifying `min(left - A[j]) - A{i]`**:
+
+In fact, when `A[i] <= A[j]`, `left` must be `<= A[j]`. We can prove by contradition.
+
+Assume `left > A[j]` and `A[L] = left` (`0 <= L <= i`).
+
+Because we always move the shorter side, one of `A[i]` and `A[j]` must be the tallest among the visited elements (`A[0], ..., A[i], A[j], ..., A[N-1]`).
+
+Since `left > A[j]`, `A[j]` can't be the tallest one, so `A[i]` must be the tallest one, and `A[i] = left`.
+
+`A[i] = left > A[j]` contradicts with `A[i] <= A[j]`. So the assumption is wrong.
+
+So, when `A[i] <= A[j]`, instead of filling `min(left, A[j]) - A[i]` at `A[i]`, we can simply fill `left - A[i]`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/trapping-rain-water/
@@ -149,8 +149,7 @@ Or
 class Solution {
 public:
     int trap(vector<int>& A) {
-        if (A.empty()) return 0;
-        int N = A.size(), ans = 0, i = 0, j = N - 1, left = 0, right = 0;
+        int i = 0, j = A.size() - 1, left = 0, right = 0, ans = 0;
         while (i < j) {
             if (A[i] < A[j]) {
                 left = max(left, A[i]);
