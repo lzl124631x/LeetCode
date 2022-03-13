@@ -1822,6 +1822,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2195 | Append K Integers With Minimal Sum | Medium | [Solution](leetcode/2195.%20Append%20K%20Integers%20With%20Minimal%20Sum)
 2196 | Create Binary Tree From Descriptions | Medium | [Solution](leetcode/2196.%20Create%20Binary%20Tree%20From%20Descriptions)
 2197 | Replace Non-Coprime Numbers in Array | Hard | [Solution](leetcode/2197.%20Replace%20Non-Coprime%20Numbers%20in%20Array)
+2200 | Find All K-Distant Indices in an Array | Easy | [Solution](leetcode/2200.%20Find%20All%20K-Distant%20Indices%20in%20an%20Array)
+2201 | Count Artifacts That Can Be Extracted | Medium | [Solution](leetcode/2201.%20Count%20Artifacts%20That%20Can%20Be%20Extracted)
+2202 | Maximize the Topmost Element After K Moves | Medium | [Solution](leetcode/2202.%20Maximize%20the%20Topmost%20Element%20After%20K%20Moves)
+2203 | Minimum Weighted Subgraph With the Required Paths | Hard | [Solution](leetcode/2203.%20Minimum%20Weighted%20Subgraph%20With%20the%20Required%20Paths)
 
 
 # FAQ
