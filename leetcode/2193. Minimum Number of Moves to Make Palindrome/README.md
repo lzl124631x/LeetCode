@@ -91,15 +91,13 @@ Step 2. Move `c` 2 steps.
 
 Step 3. No move needed for `b`.
 
-If we do the moving instead of removal.
+If we do the moving instead of removal, we need to do it in the reversed order.
 
-This step 1 is wrong. `"bbcca" -> "bbcac" -> "bbacc"`. This must take us more than 4 steps in total.
+Step 1. no move needed for `b` `"bbcca"`
 
-The correct step 1 is `"bbcca" -> "bbcac"`, taking 1 move.
+Step 2. Move `c` 2 steps `"bbcca" -> "bcbca" -> "cbbca"`
 
-Step 2. Move the first `c` leftwards. `"bbcac" -> "bcbac" -> "cbbac"`, taking 2 moves
-
-Step 3. Move the second `b` rightwards. `"cbbac" -> "cbabc"`, taking 1 move.
+Step 3. Move `a` 2 steps `"cbbca" -> "cbbac" -> "cbabc"`
 
 ## TODO
 
