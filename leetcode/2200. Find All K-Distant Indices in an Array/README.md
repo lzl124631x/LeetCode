@@ -46,7 +46,7 @@ Hence, we return [0,1,2,3,4].
 ## Solution 1. Two Pointers
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-284/problems/find-all-k-distant-indices-in-an-array/
+// OJ: https://leetcode.com/problems/find-all-k-distant-indices-in-an-array/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
@@ -56,12 +56,12 @@ public:
         int N = A.size();
         vector<int> ans, idx;
         for (int i = 0; i < N; ++i){
-            if (A[i] == key) idx.push_back(i);
+            if (A[i] == key) idx.push_back(i); // `idx` is a list of indices whose corresponding value is `key`.
         }
         for (int i = 0, j = 0; i < N && j < idx.size(); ++i) {
-            if (i < idx[j] - k) continue;
-            while (j < idx.size() && i > idx[j] + k) ++j;
-            if (j < idx.size() && i <= idx[j] + k && i >= idx[j] - k) ans.push_back(i);
+            if (i < idx[j] - k) continue; // If `i` is not yet in range of the next `key` element at `idx[j]`, skip.
+            while (j < idx.size() && i > idx[j] + k) ++j; // While `i > idx[j] + k`, keep incrementing `j` to bring `idx[j]` in range of `i`.
+            if (j < idx.size() && i <= idx[j] + k && i >= idx[j] - k) ans.push_back(i); // add `i` to the answer if `idx[j] - k <= i <= idx[j] + k`.
         }
         return ans;
     }
@@ -81,11 +81,15 @@ public:
         int N = A.size(), j = 0;
         vector<int> ans;
         for (int i = 0, j = 0; i < N; ++i) {
-            while (j < N && (A[j] != key || j < i - k)) ++j;
+            while (j < N && (A[j] != key || j < i - k)) ++j; // Find the first index `j` that `A[j] == key` and `j >= i - k`.
             if (j == N) break;
-            if (i <= j + k && i >= j - k) ans.push_back(i);
+            if (i <= j + k && i >= j - k) ans.push_back(i); // add `i` to answer if `j - k <= i <= j + k`.
         }
         return ans;
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/find-all-k-distant-indices-in-an-array/discuss/1845499
