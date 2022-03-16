@@ -1,35 +1,51 @@
 # [743. Network Delay Time (Medium)](https://leetcode.com/problems/network-delay-time/)
 
-<p>There are <code>N</code> network nodes, labelled <code>1</code> to <code>N</code>.</p>
+<p>You are given a network of <code>n</code> nodes, labeled from <code>1</code> to <code>n</code>. You are also given <code>times</code>, a list of travel times as directed edges <code>times[i] = (u<sub>i</sub>, v<sub>i</sub>, w<sub>i</sub>)</code>, where <code>u<sub>i</sub></code> is the source node, <code>v<sub>i</sub></code> is the target node, and <code>w<sub>i</sub></code> is the time it takes for a signal to travel from source to target.</p>
 
-<p>Given <code>times</code>, a list of travel times as <b>directed</b> edges <code>times[i] = (u, v, w)</code>, where <code>u</code> is the source node, <code>v</code> is the target node, and <code>w</code> is the time it takes for a signal to travel from source to target.</p>
-
-<p>Now, we send a signal from a certain node <code>K</code>. How long will it take for all nodes to receive the signal? If it is impossible, return <code>-1</code>.</p>
+<p>We will send a signal from a given node <code>k</code>. Return the time it takes for all the <code>n</code> nodes to receive the signal. If it is impossible for all the <code>n</code> nodes to receive the signal, return <code>-1</code>.</p>
 
 <p>&nbsp;</p>
-
 <p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2019/05/23/931_example_1.png" style="width: 217px; height: 239px;">
+<pre><strong>Input:</strong> times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
+<strong>Output:</strong> 2
+</pre>
 
-<p><img alt="" src="https://assets.leetcode.com/uploads/2019/05/23/931_example_1.png" style="width: 200px; height: 220px;"></p>
+<p><strong>Example 2:</strong></p>
 
-<pre><strong>Input: </strong>times = <span id="example-input-1-1">[[2,1,1],[2,3,1],[3,4,1]]</span>, N = <span id="example-input-1-2">4</span>, K = <span id="example-input-1-3">2</span>
-<strong>Output: </strong><span id="example-output-1">2</span>
+<pre><strong>Input:</strong> times = [[1,2,1]], n = 2, k = 1
+<strong>Output:</strong> 1
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> times = [[1,2,1]], n = 2, k = 2
+<strong>Output:</strong> -1
 </pre>
 
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><b>Note:</b></p>
+<ul>
+	<li><code>1 &lt;= k &lt;= n &lt;= 100</code></li>
+	<li><code>1 &lt;= times.length &lt;= 6000</code></li>
+	<li><code>times[i].length == 3</code></li>
+	<li><code>1 &lt;= u<sub>i</sub>, v<sub>i</sub> &lt;= n</code></li>
+	<li><code>u<sub>i</sub> != v<sub>i</sub></code></li>
+	<li><code>0 &lt;= w<sub>i</sub> &lt;= 100</code></li>
+	<li>All the pairs <code>(u<sub>i</sub>, v<sub>i</sub>)</code> are <strong>unique</strong>. (i.e., no multiple edges.)</li>
+</ul>
 
-<ol>
-	<li><code>N</code> will be in the range <code>[1, 100]</code>.</li>
-	<li><code>K</code> will be in the range <code>[1, N]</code>.</li>
-	<li>The length of <code>times</code> will be in the range <code>[1, 6000]</code>.</li>
-	<li>All edges <code>times[i] = (u, v, w)</code> will have <code>1 &lt;= u, v &lt;= N</code> and <code>0 &lt;= w &lt;= 100</code>.</li>
-</ol>
 
+**Companies**:  
+[Google](https://leetcode.com/company/google), [Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
-[Heap](https://leetcode.com/tag/heap/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Breadth-first Search](https://leetcode.com/tag/breadth-first-search/), [Graph](https://leetcode.com/tag/graph/)
+[Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Graph](https://leetcode.com/tag/graph/), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue/), [Shortest Path](https://leetcode.com/tag/shortest-path/)
+
+**Similar Questions**:
+* [The Time When the Network Becomes Idle (Medium)](https://leetcode.com/problems/the-time-when-the-network-becomes-idle/)
+* [Second Minimum Time to Reach Destination (Hard)](https://leetcode.com/problems/second-minimum-time-to-reach-destination/)
 
 ## Solution 1. Dijkstra
 
@@ -39,33 +55,28 @@
 // Time: O(E + VlogV)
 // Space: O(E)
 class Solution {
-    typedef pair<int, int> iPair;
-    typedef unordered_map<int, vector<iPair>> Graph;
-    vector<int> dijkstra(Graph &graph, int N, int source) {
-        priority_queue<iPair, vector<iPair>, greater<>> pq;
-        vector<int> dist(N, INT_MAX);
-        pq.emplace(0, source);
-        dist[source] = 0;
+    typedef pair<int, int> ipair;
+public:
+    int networkDelayTime(vector<vector<int>>& E, int n, int k) {
+        vector<vector<ipair>> G(n);
+        for (auto &e : E) G[e[0] - 1].emplace_back(e[1] - 1, e[2]);
+        vector<int> dist(n, INT_MAX);
+        dist[k - 1] = 0;
+        priority_queue<ipair, vector<ipair>, greater<>> pq;
+        pq.emplace(0, k - 1);
         while (pq.size()) {
-            auto [w, u] = pq.top();
+            auto [cost, u] = pq.top();
             pq.pop();
-            if (w > dist[u]) continue;
-            for (auto &[v, c] : graph[u]) {
-                if (dist[v] > w + c) {
-                    dist[v] = w + c;
+            if (dist[u] > cost) continue; 
+            for (auto &[v, w] : G[u]) {
+                if (dist[v] > dist[u] + w) {
+                    dist[v] = dist[u] + w;
                     pq.emplace(dist[v], v);
                 }
             }
         }
-        return dist;
-    }
-public:
-    int networkDelayTime(vector<vector<int>>& times, int N, int K) {
-        Graph graph;
-        for (auto e : times) graph[e[0] - 1].emplace_back(e[1] - 1, e[2]);
-        auto dist = dijkstra(graph, N, K - 1);
-        int mx = *max_element(begin(dist), end(dist)); 
-        return mx == INT_MAX ? -1 : mx;
+        int ans = *max_element(begin(dist), end(dist));
+        return ans == INT_MAX ? -1 : ans;
     }
 };
 ```
@@ -78,22 +89,18 @@ public:
 // Time: O(VE)
 // Space: O(V)
 class Solution {
-    vector<int> bellmanFord(vector<vector<int>>& edges, int V, int src) {
-        vector<int> dist(V, INT_MAX);
-        dist[src - 1] = 0;
-        for (int i = 1; i < V; ++i) {
-            for (auto &e : edges) {
+public:
+    int networkDelayTime(vector<vector<int>>& E, int n, int k) {
+        vector<int> dist(n, INT_MAX);
+        dist[k - 1] = 0;
+        for (int i = 1; i < n; ++i) {
+            for (auto &e : E) {
                 int u = e[0] - 1, v = e[1] - 1, w = e[2];
                 if (dist[u] == INT_MAX) continue;
                 dist[v] = min(dist[v], dist[u] + w);
             }
         }
-        return dist;
-    }
-public:
-    int networkDelayTime(vector<vector<int>>& times, int N, int K) {
-        auto dist = bellmanFord(times, N, K);
-        int ans = *max_element(dist.begin(), dist.end());
+        int ans = *max_element(begin(dist), end(dist));
         return ans == INT_MAX ? -1 : ans;
     }
 };
