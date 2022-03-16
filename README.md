@@ -268,6 +268,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 274 | H-Index | Medium | [Solution](leetcode/274.%20H-Index)
 275 | H-Index II | Medium | [Solution](leetcode/275.%20H-Index%20II)
 276 | Paint Fence | Medium | [Solution](leetcode/276.%20Paint%20Fence)
+277 | Find the Celebrity | Medium | [Solution](leetcode/277.%20Find%20the%20Celebrity)
 278 | First Bad Version | Easy | [Solution](leetcode/278.%20First%20Bad%20Version)
 279 | Perfect Squares | Medium | [Solution](leetcode/279.%20Perfect%20Squares)
 280 | Wiggle Sort | Medium | [Solution](leetcode/280.%20Wiggle%20Sort)
