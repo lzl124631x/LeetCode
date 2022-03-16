@@ -8,7 +8,7 @@
 	<li><code>z &gt; threshold</code>.</li>
 </ul>
 
-<p>Given the two integers, <code>n</code> and <code>threshold</code>, and an array of <code>queries</code>, you must determine for each <code>queries[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> if cities <code>a<sub>i</sub></code> and <code>b<sub>i</sub></code> are connected (i.e. there is some path between them).</p>
+<p>Given the two integers, <code>n</code> and <code>threshold</code>, and an array of <code>queries</code>, you must determine for each <code>queries[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> if cities <code>a<sub>i</sub></code> and <code>b<sub>i</sub></code> are connected directly or indirectly.&nbsp;(i.e. there is some path between them).</p>
 
 <p>Return <em>an array </em><code>answer</code><em>, where </em><code>answer.length == queries.length</code><em> and </em><code>answer[i]</code><em> is </em><code>true</code><em> if for the </em><code>i<sup>th</sup></code><em> query, there is a path between </em><code>a<sub>i</sub></code><em> and </em><code>b<sub>i</sub></code><em>, or </em><code>answer[i]</code><em> is </em><code>false</code><em> if there is no path.</em></p>
 
@@ -60,21 +60,30 @@ Please notice that there can be multiple queries for the same pair of nodes [x, 
 </ul>
 
 
+**Companies**:  
+[Trexquant](https://leetcode.com/company/trexquant)
+
 **Related Topics**:  
-[Math](https://leetcode.com/tag/math/), [Union Find](https://leetcode.com/tag/union-find/)
+[Array](https://leetcode.com/tag/array/), [Math](https://leetcode.com/tag/math/), [Union Find](https://leetcode.com/tag/union-find/)
 
 ## Solution 1. Union Find
 
 Intuition:
 
-1. If two numbers share the same factor, use union find to connect them.
+1. If the GCD of two numbers is greater than `threshold`, use union find to connect these two numbers.
 1. For each query, use union find to check if they are connected.
 
-For #1, the brute force way is to check all combination pairs of cities which is `O(N^2)` time complexity and will get TLE.
+The brute force way is to check all the `O(N^2)` pairs of cities.
 
-A more efficient way is to use similar idea as in [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes). 
+We need to find a way to reduce the number of pairs we need to check. 
 
-For each number `i` in `[1 + threshold, n]`, we connect `i` with multiples of `i` (i.e. `2 * i, 3 * i, 4 * i, ...`).
+Think about the `threshold` value. What if `threshold` is very small? Then there will be lots of possible pairs. What if `threshold` is very large? Then there will be very few possible pairs.
+
+Because for the minimal possible divisor `d = threshold + 1`, it defines a group of numbers `d, 2d, 3d, 4d, ...` which are inter-connected; the greater the `threshold` value is, the smaller such group is.
+
+So, we can traverse all the possible divisors `d = [threshold + 1, n / 2]`, and for each of these divisors, we connect the numbers in the same group `d, 2d, 3d, 4d, ...`.
+
+This is similar to [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes). 
 
 In the worst case where `threshold = 0`, iterating all the city pairs cost `N + N / 2 + N / 3 + ... + 1 = N * (1 + 1 / 2 + 1 / 3 + ... + 1 / N)`. `1 + 1 / 2 + 1 / 3 + ... + 1 / N` is a [Harmonic series (调和级数)](https://en.wikipedia.org/wiki/Harmonic_series_(mathematics)) and bounded by `logN`. So the iteration takes `O(NlogN)`.
 
@@ -83,7 +92,7 @@ In the worst case where `threshold = 0`, iterating all the city pairs cost `N + 
 // Author: github.com/lzl124631x
 // Time: O(NlogN + Q)
 // Space: O(N)
-// Ref: https://leetcode.com/problems/graph-connectivity-with-threshold/discuss/899595/C%2B%2BJavaPython-Union-Find-O(N-*-logN-%2B-q)
+// Ref: https://leetcode.com/problems/graph-connectivity-with-threshold/discuss/899595
 class UnionFind {
     vector<int> id;
 public:
@@ -104,7 +113,7 @@ class Solution {
 public:
     vector<bool> areConnected(int n, int threshold, vector<vector<int>>& Q) {
         UnionFind uf(n + 1);
-        for (int d = threshold + 1; d <= n; ++d) { // Enumerate all possible common divisors
+        for (int d = threshold + 1; d <= n / 2; ++d) { // Enumerate all possible common divisors
             for (int i = 2 * d; i <= n; i += d) { // Union all the numbers sharing the same divisors together
                 uf.connect(d, i);
             }
