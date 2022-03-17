@@ -66,9 +66,7 @@ public:
 };
 ```
 
-## Solution 2. Divide and Conquer
-
-Same idea as Solution 1, but more space efficient.
+Or
 
 ```cpp
 // OJ: https://leetcode.com/problems/score-of-parentheses/
@@ -93,7 +91,7 @@ public:
 };
 ```
 
-## Solution 3. DFS
+## Solution 2. DFS
 
 ```cpp
 // OJ: https://leetcode.com/problems/score-of-parentheses/solution/
@@ -123,7 +121,7 @@ public:
 };
 ```
 
-## Soltuion 4. Stack
+## Soltuion 3. Stack
 
 ```cpp
 // OJ: https://leetcode.com/problems/score-of-parentheses/
@@ -175,7 +173,7 @@ public:
 };
 ```
 
-## Solution 5.
+## Solution 4.
 
 We only add to the answer when we see `()`. Assume it's at `depth` depth, we add `2^depth` to the answer.
 
