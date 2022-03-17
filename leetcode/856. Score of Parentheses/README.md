@@ -1,56 +1,46 @@
 # [856. Score of Parentheses (Medium)](https://leetcode.com/problems/score-of-parentheses/)
 
-<p>Given a balanced parentheses string <code>S</code>, compute the score of the string based on the following rule:</p>
+<p>Given a balanced parentheses string <code>s</code>, return <em>the <strong>score</strong> of the string</em>.</p>
+
+<p>The <strong>score</strong> of a balanced parentheses string is based on the following rule:</p>
 
 <ul>
-	<li><code>()</code> has score 1</li>
-	<li><code>AB</code> has score <code>A + B</code>, where A and B are balanced parentheses strings.</li>
-	<li><code>(A)</code> has score <code>2 * A</code>, where A is a balanced parentheses string.</li>
+	<li><code>"()"</code> has score <code>1</code>.</li>
+	<li><code>AB</code> has score <code>A + B</code>, where <code>A</code> and <code>B</code> are balanced parentheses strings.</li>
+	<li><code>(A)</code> has score <code>2 * A</code>, where <code>A</code> is a balanced parentheses string.</li>
 </ul>
 
 <p>&nbsp;</p>
-
-<div>
 <p><strong>Example 1:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-1-1">"()"</span>
-<strong>Output: </strong><span id="example-output-1">1</span>
+<pre><strong>Input:</strong> s = "()"
+<strong>Output:</strong> 1
 </pre>
 
-<div>
 <p><strong>Example 2:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-2-1">"(())"</span>
-<strong>Output: </strong><span id="example-output-2">2</span>
+<pre><strong>Input:</strong> s = "(())"
+<strong>Output:</strong> 2
 </pre>
 
-<div>
 <p><strong>Example 3:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-3-1">"()()"</span>
-<strong>Output: </strong><span id="example-output-3">2</span>
-</pre>
-
-<div>
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input: </strong><span id="example-input-4-1">"(()(()))"</span>
-<strong>Output: </strong><span id="example-output-4">6</span>
+<pre><strong>Input:</strong> s = "()()"
+<strong>Output:</strong> 2
 </pre>
 
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><strong>Note:</strong></p>
+<ul>
+	<li><code>2 &lt;= s.length &lt;= 50</code></li>
+	<li><code>s</code> consists of only <code>'('</code> and <code>')'</code>.</li>
+	<li><code>s</code> is a balanced parentheses string.</li>
+</ul>
 
-<ol>
-	<li><code>S</code> is a balanced parentheses string, containing only <code>(</code> and <code>)</code>.</li>
-	<li><code>2 &lt;= S.length &lt;= 50</code></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
 
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
 [String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/)
@@ -111,24 +101,24 @@ public:
 // Time: O(N)
 // Space: O(N)
 class Solution {
-    int dfs(string &s, int &i) {
-        int ans = 0;
-        while (i < s.size() && s[i] == '(') { 
-            if (i + 1 < s.size() && s[i + 1] == ')') {
-                i += 2;
-                ++ans;
-            } else {
-                ++i;
-                ans += 2 * dfs(s, i);
-                ++i;
-            }
-        }
-        return ans;
-    }
 public:
     int scoreOfParentheses(string s) {
-        int i = 0;
-        return dfs(s, i);
+        int i = 0, N = s.size();
+        function<int()> dfs = [&]() {
+            int ans = 0;
+            while (i < N && s[i] == '(') {
+                if (s[i + 1] == ')') {
+                    ans++;
+                    i += 2;
+                } else {
+                    ++i;
+                    ans += 2 * dfs();
+                    ++i;
+                }
+            }
+            return ans;
+        };
+        return dfs();
     }
 };
 ```
@@ -143,11 +133,10 @@ public:
 class Solution {
 public:
     int scoreOfParentheses(string s) {
-        stack<int> st;
-        st.push(0);
+        stack<int> st{{0}};
         for (int i = 0; i < s.size(); ++i) {
             if (s[i] == '(') {
-                if (i + 1 < s.size() && s[i + 1] == ')') {
+                if (s[i + 1] == ')') {
                     ++i;
                     st.top()++;
                 } else st.push(0);
@@ -172,8 +161,7 @@ Or
 class Solution {
 public:
     int scoreOfParentheses(string s) {
-        stack<int> st;
-        st.push(0);
+        stack<int> st{{0}};
         for (int i = 0; i < s.size(); ++i) {
             if (s[i] == '(') st.push(0);
             else {
@@ -189,6 +177,8 @@ public:
 
 ## Solution 5.
 
+We only add to the answer when we see `()`. Assume it's at `depth` depth, we add `2^depth` to the answer.
+
 ```cpp
 // OJ: https://leetcode.com/problems/score-of-parentheses/
 // Author: github.com/lzl124631x
@@ -197,14 +187,13 @@ public:
 // Ref: https://leetcode.com/problems/score-of-parentheses/solution/
 class Solution {
 public:
-    int scoreOfParentheses(string S) {
+    int scoreOfParentheses(string s) {
         int ans = 0, depth = 0;
-        for (int i = 0; i < S.size(); ++i) {
-            if (S[i] == '(') ++depth;
-            else {
-                --depth;
-                if (i - 1 >= 0 && S[i - 1] == '(') ans += 1 << depth;
-            }
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == '(') {
+                if (s[i + 1] == ')') ans += (1 << depth), ++i;
+                else ++depth;
+            } else --depth;
         }
         return ans;
     }
