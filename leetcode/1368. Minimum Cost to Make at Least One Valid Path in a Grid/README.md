@@ -73,17 +73,16 @@ public:
         int M = G.size(), N = G[0].size(), dp[100][100] = {}, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
         memset(dp, 0x3f, sizeof(dp));
         dp[0][0] = 0;
-        queue<pair<int, int>> q;
-        q.emplace(0, 0);
+        queue<pair<int, int>> q{{{0, 0}}};
         while (q.size()) {
             auto [x, y] = q.front();
             q.pop();
             for (int i = 0; i < 4; ++i) {
-                auto &[dx, dy] = dirs[i];
-                int a = x + dx, b = y + dy;
+                int a = x + dirs[i][0], b = y + dirs[i][1];
                 if (a < 0 || b < 0 || a >= M || b >= N) continue;
-                if (dp[x][y] + (G[x][y] - 1 != i) < dp[a][b]) {
-                    dp[a][b] = dp[x][y] + (G[x][y] - 1 != i);
+                int cost = dp[x][y] + (G[x][y] - 1 != i);
+                if (dp[a][b] > cost) {
+                    dp[a][b] = cost;
                     q.emplace(a, b);
                 }
             }
@@ -103,8 +102,8 @@ public:
 class Solution {
 public:
     int minCost(vector<vector<int>>& G) {
-        int M = G.size(), N = G[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
-        vector<vector<int>> dist(M, vector<int>(N, INT_MAX));
+        int M = G.size(), N = G[0].size(), dist[100][100] = {}, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        memset(dist, 0x3f, sizeof(dist));
         dist[0][0] = 0;
         priority_queue<array<int, 3>, vector<array<int, 3>>, greater<>> pq;
         pq.push({ 0, 0, 0 });
