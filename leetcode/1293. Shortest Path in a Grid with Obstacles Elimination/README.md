@@ -6,32 +6,19 @@
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
-
-<pre><strong>Input:</strong> 
-grid = 
-[[0,0,0],
-&nbsp;[1,1,0],
- [0,0,0],
-&nbsp;[0,1,1],
- [0,0,0]], 
-k = 1
+<img alt="" src="https://assets.leetcode.com/uploads/2021/09/30/short1-grid.jpg" style="width: 244px; height: 405px;">
+<pre><strong>Input:</strong> grid = [[0,0,0],[1,1,0],[0,0,0],[0,1,1],[0,0,0]], k = 1
 <strong>Output:</strong> 6
-<strong>Explanation: 
-</strong>The shortest path without eliminating any obstacle is 10.&nbsp;
-The shortest path with one obstacle elimination at position (3,2) is 6. Such path is <code>(0,0) -&gt; (0,1) -&gt; (0,2) -&gt; (1,2) -&gt; (2,2) -&gt; <strong>(3,2)</strong> -&gt; (4,2)</code>.
+<strong>Explanation:</strong> 
+The shortest path without eliminating any obstacle is 10.
+The shortest path with one obstacle elimination at position (3,2) is 6. Such path is (0,0) -&gt; (0,1) -&gt; (0,2) -&gt; (1,2) -&gt; (2,2) -&gt; <strong>(3,2)</strong> -&gt; (4,2).
 </pre>
 
 <p><strong>Example 2:</strong></p>
-
-<pre><strong>Input:</strong> 
-grid = 
-[[0,1,1],
-&nbsp;[1,1,1],
-&nbsp;[1,0,0]], 
-k = 1
+<img alt="" src="https://assets.leetcode.com/uploads/2021/09/30/short2-grid.jpg" style="width: 244px; height: 245px;">
+<pre><strong>Input:</strong> grid = [[0,1,1],[1,1,1],[1,0,0]], k = 1
 <strong>Output:</strong> -1
-<strong>Explanation: 
-</strong>We need to eliminate at least two obstacles to find such a walk.
+<strong>Explanation:</strong> We need to eliminate at least two obstacles to find such a walk.
 </pre>
 
 <p>&nbsp;</p>
@@ -42,13 +29,13 @@ k = 1
 	<li><code>n == grid[i].length</code></li>
 	<li><code>1 &lt;= m, n &lt;= 40</code></li>
 	<li><code>1 &lt;= k &lt;= m * n</code></li>
-	<li><code>grid[i][j] == 0 <strong>or</strong> 1</code></li>
+	<li><code>grid[i][j]</code> is either <code>0</code> <strong>or</strong> <code>1</code>.</li>
 	<li><code>grid[0][0] == grid[m - 1][n - 1] == 0</code></li>
 </ul>
 
 
 **Companies**:  
-[Google](https://leetcode.com/company/google)
+[Google](https://leetcode.com/company/google), [Facebook](https://leetcode.com/company/facebook), [Uber](https://leetcode.com/company/uber), [Amazon](https://leetcode.com/company/amazon), [Pinterest](https://leetcode.com/company/pinterest)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Matrix](https://leetcode.com/tag/matrix/)
@@ -287,7 +274,7 @@ We should use BFS instead of DFS when searching for the shortest path. Just for 
 // OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
 // Author: github.com/lzl124631x
 // Time: O(MN * min(K, M + N))
-// Space: O(MNK)
+// Space: O(MN * min(K, M + N))
 class Solution {
     int M, N, dp[40][40][80] = {}, dirs[4][2] = {{0,1}, {0,-1},{1,0},{-1,0}}, ans = INT_MAX;
     void dfs(vector<vector<int>> &G, int x, int y, int k, int step) {
@@ -307,6 +294,40 @@ public:
         for (int i = 0; i < k; ++i) dp[0][0][k] = 0;
         dfs(G, 0, 0, k, 0);
         return ans == INT_MAX ? -1 : ans;
+    }
+};
+```
+
+## Solution 4. BFS + DP
+
+```cpp
+// OJ: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
+// Author: github.com/lzl124631x
+// Time: O(MN * min(K, M + N))
+// Space: O(MN * min(K, M + N))
+class Solution {
+public:
+    int shortestPath(vector<vector<int>>& G, int k) {
+        int M = G.size(), N = G[0].size(), dp[40][40][80] = {}, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        k = min(k, M + N - 2);
+        memset(dp, 0x3f, sizeof(dp));
+        queue<array<int, 3>> q{{{0, 0, 0}}}; // x, y, bomb
+        dp[0][0][0] = 0; // dp[x][y][b] is the minimum distance to get to (x, y) with `b` bombs
+        while (q.size()) {
+            auto [x, y, bomb] = q.front();
+            q.pop();
+            for (auto &[dx, dy] : dirs) {
+                int a = x + dx, b = y + dy;
+                if (a < 0 || b < 0 || a >= M || b >= N) continue;
+                int newBomb = bomb + G[a][b], dist = dp[x][y][bomb] + 1;
+                if (bomb <= k && dp[a][b][newBomb] > dist) {
+                    dp[a][b][newBomb] = dist;
+                    q.push({a, b, newBomb});
+                }
+            }
+        }
+        int ans = *min_element(begin(dp[M - 1][N - 1]), end(dp[M - 1][N - 1]));
+        return ans == 0x3f3f3f3f ? -1 : ans;
     }
 };
 ```
