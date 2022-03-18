@@ -44,9 +44,11 @@ It can be seen that there does not exist any path from node 1 to node 2, hence t
 </ul>
 
 
+**Related Topics**:  
+[Graph](https://leetcode.com/tag/graph/), [Shortest Path](https://leetcode.com/tag/shortest-path/)
+
 **Similar Questions**:
 * [Minimum Cost to Make at Least One Valid Path in a Grid (Hard)](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/)
-
 ## Solution 1. Dijkstra
 
 Do Dijkstra 3 times.
@@ -72,30 +74,30 @@ public:
     long long minimumWeight(int n, vector<vector<int>>& E, int a, int b, int dest) {
         vector<vector<ipair>> G(n), R(n); // `G` is the original graph. `R` is the reversed graph
         for (auto &e : E) {
-            long u = e[0], v = e[1], w = e[2];
+            int u = e[0], v = e[1], w = e[2];
             G[u].emplace_back(v, w);
             R[v].emplace_back(u, w);
         }
         vector<long> da(n, LONG_MAX), db(n, LONG_MAX), dd(n, LONG_MAX);
-        auto solve = [&](vector<vector<ipair>> &G, int a, vector<long> &dist) {
-            priority_queue<ipair, vector<ipair>, greater<ipair>> pq;
-            dist[a] = 0;
-            pq.emplace(0, a);
+        auto dijkstra = [&](vector<vector<ipair>> &G, int src, vector<long> &dist) {
+            priority_queue<ipair, vector<ipair>, greater<>> pq;
+            pq.emplace(0, src);
+            dist[src] = 0;
             while (pq.size()) {
                 auto [cost, u] = pq.top();
                 pq.pop();
                 if (cost > dist[u]) continue;
-                for (auto &[v, c] : G[u]) {
-                    if (dist[v] > dist[u] + c) {
-                        dist[v] = dist[u] + c;
+                for (auto &[v, w] : G[u]) {
+                    if (dist[v] > dist[u] + w) {
+                        dist[v] = dist[u] + w;
                         pq.emplace(dist[v], v);
                     }
                 }
             }
         };
-        solve(G, a, da);
-        solve(G, b, db);
-        solve(R, dest, dd);
+        dijkstra(G, a, da);
+        dijkstra(G, b, db);
+        dijkstra(R, dest, dd);
         long ans = LONG_MAX;
         for (int i = 0; i < n; ++i) {
             if (da[i] == LONG_MAX || db[i] == LONG_MAX || dd[i] == LONG_MAX) continue;
