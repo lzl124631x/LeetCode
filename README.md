@@ -1827,6 +1827,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2201 | Count Artifacts That Can Be Extracted | Medium | [Solution](leetcode/2201.%20Count%20Artifacts%20That%20Can%20Be%20Extracted)
 2202 | Maximize the Topmost Element After K Moves | Medium | [Solution](leetcode/2202.%20Maximize%20the%20Topmost%20Element%20After%20K%20Moves)
 2203 | Minimum Weighted Subgraph With the Required Paths | Hard | [Solution](leetcode/2203.%20Minimum%20Weighted%20Subgraph%20With%20the%20Required%20Paths)
+2206 | Divide Array Into Equal Pairs | Easy | [Solution](leetcode/2206.%20Divide%20Array%20Into%20Equal%20Pairs)
+2207 | Maximize Number of Subsequences in a String | Medium | [Solution](leetcode/2207.%20Maximize%20Number%20of%20Subsequences%20in%20a%20String)
+2208 | Minimum Operations to Halve Array Sum | Medium | [Solution](leetcode/2208.%20Minimum%20Operations%20to%20Halve%20Array%20Sum)
+2209 | Minimum White Tiles After Covering With Carpets | Hard | [Solution](leetcode/2209.%20Minimum%20White%20Tiles%20After%20Covering%20With%20Carpets)
 
 
 # FAQ
