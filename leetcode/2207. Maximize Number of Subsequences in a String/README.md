@@ -92,14 +92,12 @@ class Solution {
 public:
     long long maximumSubsequenceCount(string s, string p) {
         long a = 0, b = 0, sum = 0;
-        for (char c : s) b += c == p[1];
-        long mx = b;
         for (char c : s) {
+            if (c == p[1]) sum += a;
             a += c == p[0];
-            b -= c == p[1];
-            if (c == p[0]) sum += b;
+            b += c == p[1];
         }
-        return sum + max(a, mx);
+        return sum + max(a, b);
     }
 };
 ```
