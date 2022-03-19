@@ -74,3 +74,36 @@ public:
     }
 };
 ```
+
+In fact, we can see that, we just need the global maximum of all `a` and `b` values. This leads to solution 2.
+
+## Solution 2. Prefix Sum and Suffix Sum
+
+If we add `p[0]`, the best option is to prepend it at the beginning.
+
+If we add `p[1]`, the best option is to append it at the end.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximize-number-of-subsequences-in-a-string/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    long long maximumSubsequenceCount(string s, string p) {
+        long a = 0, b = 0, sum = 0;
+        for (char c : s) b += c == p[1];
+        long mx = b;
+        for (char c : s) {
+            a += c == p[0];
+            b -= c == p[1];
+            if (c == p[0]) sum += b;
+        }
+        return sum + max(a, mx);
+    }
+};
+```
+
+## Discuss
+
+https://leetcode.com/problems/maximize-number-of-subsequences-in-a-string/discuss/1863963
