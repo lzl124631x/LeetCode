@@ -47,8 +47,14 @@
 	<li>There is at most one edge between every two nodes.</li>
 </ul>
 
+**Companies**:  
+[Google](https://leetcode.com/company/google)
+
 **Related Topics**:  
-[Graph](https://leetcode.com/tag/graph/)
+[Graph](https://leetcode.com/tag/graph/), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue/), [Shortest Path](https://leetcode.com/tag/shortest-path/)
+
+**Similar Questions**:
+* [Number of Ways to Arrive at Destination (Medium)](https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/)
 
 ## Solution 1. Dijkstra
 
@@ -70,19 +76,20 @@ public:
         }
         priority_queue<pair<double, int>> pq;
         pq.emplace(1, start);
-        vector<double> dist(n, 0);
+        vector<double> dist(n);
         dist[start] = 1;
         while (pq.size()) {
             auto [p, u] = pq.top();
             pq.pop();
             if (p < dist[u]) continue;
+            if (u == end) return p;
             for (auto &[v, w] : G[u]) {
-                if (dist[v] >= dist[u] * w) continue;
-                dist[v] = dist[u] * w;
+                if (dist[v] >= p * w) continue;
+                dist[v] = p * w;
                 pq.emplace(dist[v], v);
             }
         }
-        return dist[end];
+        return 0;
     }
 };
 ```
