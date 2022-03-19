@@ -77,8 +77,8 @@ When popping elements, we pop the 3rd stack first, then the 2nd, then the 1st.
 // Time: O(1) for all
 // Space: O(N)
 class FreqStack {
-    unordered_map<int, int> freq;
-    vector<vector<int>> v;
+    unordered_map<int, int> freq; // number -> frequency
+    vector<vector<int>> v; // frequency -> stack of numbers
 public:
     FreqStack() {}
     void push(int val) {
