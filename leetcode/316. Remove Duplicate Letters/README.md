@@ -28,7 +28,7 @@
 
 
 **Companies**:  
-[Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook), [Apple](https://leetcode.com/company/apple), [Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg)
+[Facebook](https://leetcode.com/company/facebook), [Apple](https://leetcode.com/company/apple), [Microsoft](https://leetcode.com/company/microsoft)
 
 **Related Topics**:  
 [String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/), [Greedy](https://leetcode.com/tag/greedy/), [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/)
@@ -36,22 +36,26 @@
 **Similar Questions**:
 * [Smallest K-Length Subsequence With Occurrences of a Letter (Hard)](https://leetcode.com/problems/smallest-k-length-subsequence-with-occurrences-of-a-letter/)
 
-## Solution 1. Greedy
+## Solution 1. Greedy + Recursion
 
-The first idea shall be greedy, namely picking the smallest letter whenever possible.
+Which character can be placed at the first index?
 
-However we can easily give some counter example, e.g. `za`. We can't pick `a` since if we pick it, we don't have any `z` left to pick.
+The characters that have all the unique characters to their right (including themselves). We pick the smallest one from this set.
 
-So if the count of a letter drop to `0`, we have to pick the current smallest letter we've seen.
+For example, `s = "cbca"`, character `b` and `c` has all `abc` to its right, but `a` only have `a` to its right. So we must pick the smallest from `bc`, i.e. `b`.
 
-Assume the index of it is `i`, then we should continue our greedy search from `i + 1`. (consider `abcab`)
+If we scan from left to right, we need to stop the search when the count of the current character drops to `0` because that's when we have one less unique character (the current one) to the right.
+
+We pick the smallest character when we stop the search at put it at the beginning.
+
+Assume the index of this smallest character is `i`, then we should continue our greedy search from `i + 1`.
 
 Consider the following input whose result is `"bcda"`.
 
 ```
 2 2 1 1 0 0 0 0
 c b c b d a b c
-  ^ ^   ^ ^
+  ^ ^   ^ ^        <- selected characters
 ```
 
 The number above each letter is the count of the same letters to its right.
@@ -73,12 +77,12 @@ class Solution {
 public:
     string removeDuplicateLetters(string s) {
         if (s.empty()) return s;
-        unordered_map<char, int> cnt;
-        for (char c : s) cnt[c]++;
+        int cnt[26] = {};
+        for (char c : s) cnt[c - 'a']++;
         int best = 0;
         for (int i = 0; i < s.size(); ++i) {
             if (s[i] < s[best]) best = i;
-            if (--cnt[s[i]] == 0) break;
+            if (--cnt[s[i] - 'a'] == 0) break;
         }
         string t = s.substr(best + 1);
         t.erase(remove(t.begin(), t.end(), s[best]), t.end());
@@ -95,28 +99,27 @@ Same idea as Solution 1, use iterative method instead of recursive.
 // OJ: https://leetcode.com/problems/remove-duplicate-letters/
 // Author: github.com/lzl124631x
 // Time: O(NC) where `N` is the length of `s`, and `C` is the range of the letters
-// Space: O(NC)
+// Space: O(N + C)
 class Solution {
 public:
     string removeDuplicateLetters(string s) {
         if (s.empty()) return s;
-        vector<int> rightCnt(s.size(), 0);
-        unordered_map<char, int> cnt;
-        unordered_set<char> added;
+        int N = s.size(), cnt[26] = {}, added[26] = {}, unique = 0;
+        vector<int> rightCnt(N); // `rightCnt[i]` is the count of `s[i]` to the right of `s[i]`
         string ans;
-        int N = s.size(), i = 0;
-        for (int j = N - 1; j >= 0; --j) rightCnt[j] = cnt[s[j]]++;
-        while (i < N) {
+        for (int i = N - 1; i >= 0; --i) {
+            unique += cnt[s[i] - 'a'] == 0; // `unique` is the count of unique characters in `s`
+            rightCnt[i] = cnt[s[i] - 'a']++;
+        }
+        for (int i = 0; i < N && ans.size() < unique;) {
             int best = -1;
             for (; i < N; ++i) {
-                if (added.find(s[i]) != added.end()) continue;
+                if (added[s[i] - 'a']) continue;
                 if (best == -1 || s[i] < s[best]) best = i;
                 if (!rightCnt[i]) break;
             }
-            if (best == -1) best = i;
-            if (best >= N) break;
             ans += s[best];
-            added.insert(s[best]);
+            added[s[best] - 'a'] = 1;
             i = best + 1;
         }
         return ans;
@@ -124,7 +127,11 @@ public:
 };
 ```
 
-## Solution 3. Mono-stack + Greedy
+## Solution 3. Monotonic stack + Greedy
+
+We only keep a monotonic increasing sequence.
+
+One key is that, when we scan to `s[i]`, if `s[i]` has been used, we should skip it because if `s[i]` can be selected earlier and now, selecting it now is no better than selecting it earlier.
 
 ```cpp
 // OJ: https://leetcode.com/problems/remove-duplicate-letters/
