@@ -134,25 +134,24 @@ We only keep a monotonic increasing sequence.
 One key is that, when we scan to `s[i]`, if `s[i]` has been used, we should skip it because if `s[i]` can be selected earlier and now, selecting it now is no better than selecting it earlier.
 
 ```cpp
-// OJ: https://leetcode.com/problems/remove-duplicate-letters/
+// OJ: https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/
 // Author: github.com/lzl124631x
 // Time: O(N) where `N` is the length of `s`, and `C` is the range of the letters
 // Space: O(C)
 class Solution {
 public:
-    string removeDuplicateLetters(string s) {
-        int cnt[26] = {}, used[26] = {};
-        for (char c : s) cnt[c - 'a']++;
+    string smallestSubsequence(string s) {
+        int last[26] = {}, used[26] = {}, N = s.size();
+        for (int i = 0; i < N; ++i) last[s[i] - 'a'] = i;
         string ans;
-        for (char c : s) {
-            --cnt[c - 'a'];
-            if (used[c - 'a']) continue; // once used, don't use it again.
-            while (ans.size() && ans.back() > c && cnt[ans.back() - 'a']) { // If the stack top `x` is greater than the current letter, and there are more letters `x` available, we pop `x`
+        for (int i = 0; i < N; ++i) {
+            if (used[s[i] - 'a']) continue; // once used, don't use it again.
+            while (ans.size() && ans.back() > s[i] && i < last[ans.back() - 'a']) { // If the stack top `x` is greater than the current letter, and there are more letters `x` available, we pop `x`
                 used[ans.back() - 'a'] = 0;
                 ans.pop_back();
             }
-            ans.push_back(c);
-            used[c - 'a'] = 1;
+            ans.push_back(s[i]);
+            used[s[i] - 'a'] = 1;
         }
         return ans;
     }
