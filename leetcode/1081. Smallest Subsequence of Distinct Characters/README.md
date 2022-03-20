@@ -35,30 +35,6 @@
 **Similar Questions**:
 * [Find the Most Competitive Subsequence (Medium)](https://leetcode.com/problems/find-the-most-competitive-subsequence/)
 
-## Solution 1. Mono-stack + Greedy
+## Note
 
-```cpp
-// OJ: https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/
-// Author: github.com/lzl124631x
-// Time: O(N) where `N` is the length of `s`, and `C` is the range of the letters
-// Space: O(C)
-class Solution {
-public:
-    string smallestSubsequence(string text) {
-        int cnts[26] = {0}, used[26] = {0};
-        for (char c : text) ++cnts[c - 'a'];
-        string ans;
-        for (char c : text) {
-            cnts[c - 'a']--;
-            if (used[c - 'a']) continue;
-            while (ans.size() && cnts[ans.back() - 'a'] && c < ans.back()) {
-                used[ans.back() - 'a'] = 0;
-                ans.pop_back();
-            }
-            ans.push_back(c);
-            used[c - 'a'] = 1;
-        }
-        return ans;
-    }
-};
-```
+See [316. Remove Duplicate Letters (Medium)](../316.%20Remove%20Duplicate%20Letters)
