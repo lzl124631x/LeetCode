@@ -1831,6 +1831,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2207 | Maximize Number of Subsequences in a String | Medium | [Solution](leetcode/2207.%20Maximize%20Number%20of%20Subsequences%20in%20a%20String)
 2208 | Minimum Operations to Halve Array Sum | Medium | [Solution](leetcode/2208.%20Minimum%20Operations%20to%20Halve%20Array%20Sum)
 2209 | Minimum White Tiles After Covering With Carpets | Hard | [Solution](leetcode/2209.%20Minimum%20White%20Tiles%20After%20Covering%20With%20Carpets)
+2210 | Count Hills and Valleys in an Array | Easy | [Solution](leetcode/2210.%20Count%20Hills%20and%20Valleys%20in%20an%20Array)
+2211 | Count Collisions on a Road | Medium | [Solution](leetcode/2211.%20Count%20Collisions%20on%20a%20Road)
+2212 | Maximum Points in an Archery Competition | Medium | [Solution](leetcode/2212.%20Maximum%20Points%20in%20an%20Archery%20Competition)
 
 
 # FAQ
