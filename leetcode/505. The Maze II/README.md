@@ -130,24 +130,24 @@ This is more efficient than Solution 1 because we prioritize shorter distance an
 // Space: O(MN)
 class Solution {
 public:
-    int shortestDistance(vector<vector<int>>& A, vector<int>& S, vector<int>& E) {
+    int shortestDistance(vector<vector<int>>& A, vector<int>& start, vector<int>& dest) {
         int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
         vector<vector<int>> dist(M, vector<int>(N, INT_MAX));
+        dist[start[0]][start[1]] = 0;
         priority_queue<array<int, 3>, vector<array<int, 3>>, greater<>> pq; // min heap of (distance, x, y)
-        pq.push({0, S[0], S[1]});
-        dist[S[0]][S[1]] = 0;
+        pq.push({0, start[0], start[1]});
         while (pq.size()) {
-            auto [d, x, y] = pq.top();
+            auto [cost, x, y] = pq.top();
             pq.pop();
-            if (x == E[0] && y == E[1]) return d;
-            if (d > dist[x][y]) continue; // this state is no longer optimial, skip
+            if (cost > dist[x][y]) continue; // this state is no longer optimial, skip
+            if (x == dest[0] && y == dest[1]) return cost;
             for (auto &[dx, dy] : dirs) { // probe 4 directions
-                int nx = x + dx, ny = y + dy, step = 1;
-                while (nx >= 0 && nx < M && ny >= 0 && ny < N && A[nx][ny] == 0) nx += dx, ny += dy, ++step;
-                nx -= dx, ny -= dy, --step; // once hit wall, step back
-                if ((nx != x || ny != y) && d + step < dist[nx][ny]) { // we only push this new state if the new cell is not the same as the starting cell and this move yields shorter distance for the new cell.
-                    dist[nx][ny] = d + step;
-                    pq.push({dist[nx][ny], nx, ny});
+                int a = x + dx, b = y + dy, step = 0;
+                while (a >= 0 && a < M && b >= 0 && b < N && A[a][b] == 0) a += dx, b += dy, ++step;
+                a -= dx, b -= dy; // once hit wall, step back
+                if (dist[a][b] > cost + step) {
+                    dist[a][b] = cost + step;
+                    pq.push({ dist[a][b], a, b });
                 }
             }
         }
