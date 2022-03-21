@@ -41,9 +41,16 @@ The four ways to get there in 7 minutes are:
 </ul>
 
 
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook)
+
+**Related Topics**:  
+[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Graph](https://leetcode.com/tag/graph/), [Topological Sort](https://leetcode.com/tag/topological-sort/), [Shortest Path](https://leetcode.com/tag/shortest-path/)
+
 **Similar Questions**:
 * [All Paths From Source to Target (Medium)](https://leetcode.com/problems/all-paths-from-source-to-target/)
 * [Path with Maximum Probability (Medium)](https://leetcode.com/problems/path-with-maximum-probability/)
+* [Second Minimum Time to Reach Destination (Hard)](https://leetcode.com/problems/second-minimum-time-to-reach-destination/)
 
 ## Solution 1. Dijkstra
 
