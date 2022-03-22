@@ -41,8 +41,14 @@
 </ul>
 
 
+**Companies**:  
+[Google](https://leetcode.com/company/google)
+
 **Related Topics**:  
-[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Graph](https://leetcode.com/tag/graph/)
+[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Graph](https://leetcode.com/tag/graph/), [Topological Sort](https://leetcode.com/tag/topological-sort/), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue/), [Shortest Path](https://leetcode.com/tag/shortest-path/)
+
+**Similar Questions**:
+* [All Ancestors of a Node in a Directed Acyclic Graph (Medium)](https://leetcode.com/problems/all-ancestors-of-a-node-in-a-directed-acyclic-graph/)
 
 ## Solution 1. Dijkstra + DP
 
@@ -66,7 +72,7 @@ class Solution {
 public:
     int countRestrictedPaths(int n, vector<vector<int>>& E) {
         long mod = 1e9 + 7;
-        vector<vector<pair<long, int>>> G(n);
+        vector<vector<PII>> G(n);
         for (auto &e : E) {
             int u = e[0] - 1, v = e[1] - 1, w = e[2];
             G[u].emplace_back(v, w);
@@ -78,17 +84,15 @@ public:
         cnt[n - 1] = 1;
         pq.emplace(0, n - 1);
         while (pq.size()) {
-            auto [w, u] = pq.top();
+            auto [cost, u] = pq.top();
             pq.pop();
-            if (w > dist[u]) continue;
-            for (auto &[v, d] : G[u]) {
-                if (dist[v] > w + d) {
-                    dist[v] = w + d;
+            if (cost > dist[u]) continue;
+            for (auto &[v, w] : G[u]) {
+                if (dist[v] > cost + w) {
+                    dist[v] = cost + w;
                     pq.emplace(dist[v], v);
                 }
-                if (w > dist[v]) {
-                    cnt[u] = (cnt[u] + cnt[v]) % mod;
-                }
+                if (cost > dist[v]) cnt[u] = (cnt[u] + cnt[v]) % mod;
             }
         }
         return cnt[0];
