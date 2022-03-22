@@ -294,6 +294,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 307 | Range Sum Query - Mutable | Medium | [Solution](leetcode/307.%20Range%20Sum%20Query%20-%20Mutable)
 309 | Best Time to Buy and Sell Stock with Cooldown | Medium | [Solution](leetcode/309.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Cooldown)
 310 | Minimum Height Trees | Medium | [Solution](leetcode/310.%20Minimum%20Height%20Trees)
+311 | Sparse Matrix Multiplication | Medium | [Solution](leetcode/311.%20Sparse%20Matrix%20Multiplication)
 312 | Burst Balloons | Hard | [Solution](leetcode/312.%20Burst%20Balloons)
 313 | Super Ugly Number |  | [Solution](leetcode/313.%20Super%20Ugly%20Number)
 314 | Binary Tree Vertical Order Traversal | Medium | [Solution](leetcode/314.%20Binary%20Tree%20Vertical%20Order%20Traversal)
