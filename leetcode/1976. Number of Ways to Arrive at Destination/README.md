@@ -80,7 +80,7 @@ public:
         }
         long mod = 1e9 + 7;
         vector<long> dist(n, LONG_MAX), cnt(n);
-        priority_queue<ipair, vector<ipair>, greater<>> pq; // time, index
+        priority_queue<ipair, vector<ipair>, greater<>> pq; // time, city
         dist[0] = 0;
         cnt[0] = 1;
         pq.emplace(0, 0);

@@ -31,8 +31,11 @@
 </ul>
 
 
+**Companies**:  
+[Lendingkart](https://leetcode.com/company/lendingkart)
+
 **Related Topics**:  
-[Greedy](https://leetcode.com/tag/greedy/)
+[String](https://leetcode.com/tag/string/), [Greedy](https://leetcode.com/tag/greedy/)
 
 ## Solution 1. Greedy
 
@@ -74,7 +77,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Greedy
 
 Starts with all `'a'`, fill the `k` value from the end of the array backwards.
 
@@ -94,6 +97,31 @@ public:
             k -= d;
         }
         return s;
+    }
+};
+```
+
+## Solution 3. Greedy
+
+Initialize `ans` as all `z`s. Try filling `a` from the left. If we fill `a` at and before index `i`, we have `k - i - 1` values left which should be `<= 26 * (n - i - 1)` i.e. the value of all the `z`s to the right of `i`. So, we keep filling `a` when `k - i - 1 <= 26 * (n - i - 1)`.
+
+When we exit the loop, `ans[i]` might not be `z`. The value left for `ans[i]` is `k` minus the values created by the `a`s to the left, i.e. `i`, and minus the values created by the `z`s to the right, i.e. `26 * (n - i - 1)`. So, the value for `ans[i]` is `k - i - (n - i - 1) * 26`.
+
+```cpp
+// OJ: https://leetcode.com/problems/smallest-string-with-a-given-numeric-value/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    string getSmallestString(int n, int k) {
+        string ans(n, 'z');
+        int i = 0;
+        for (; i < n && k - i - 1 <= 26 * (n - i - 1); ++i) {
+            ans[i] = 'a';
+        }
+        ans[i] = 'a' + k - i - 1 - (n - i - 1) * 26;
+        return ans;
     }
 };
 ```
