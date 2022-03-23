@@ -57,7 +57,11 @@ We can get the following intuition if we think in the reverse order, get `X` fro
 **Intuition**:
 
 * If `Y < X`, we can only keep adding `1`s, so it takes `X - Y` steps.
-* If `Y > X`, we have the two options but we can greedily pick one. If `Y` is even, we know that dividing by `2` is better. Otherwise, we should add `1`.
+* If `Y > X`, we have the two options but we can greedily pick one. It's deterministic.
+  * If `Y` is even, dividing by `2` first is always better than adding `1` first.  
+  For example, to reach `target / 2 + 1`, one division and one addition is better than 2 additions and one division.  
+  After trying more examples, we can see that doing division first then addition is always better than doing addition first than division.
+  * If `Y` is odd, we can only add `1`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/broken-calculator/
