@@ -1,54 +1,46 @@
 # [991. Broken Calculator (Medium)](https://leetcode.com/problems/broken-calculator/)
 
-<p>On a broken calculator that has a number showing on its display, we can perform two operations:</p>
+<p>There is a broken calculator that has the integer <code>startValue</code> on its display initially. In one operation, you can:</p>
 
 <ul>
-	<li><strong>Double</strong>: Multiply the number on the display by 2, or;</li>
-	<li><strong>Decrement</strong>: Subtract 1 from the number on the display.</li>
+	<li>multiply the number on display by <code>2</code>, or</li>
+	<li>subtract <code>1</code> from the number on display.</li>
 </ul>
 
-<p>Initially, the calculator is displaying the number <code>X</code>.</p>
-
-<p>Return the minimum number of operations needed to display the number <code>Y</code>.</p>
+<p>Given two integers <code>startValue</code> and <code>target</code>, return <em>the minimum number of operations needed to display </em><code>target</code><em> on the calculator</em>.</p>
 
 <p>&nbsp;</p>
-
 <p><strong>Example 1:</strong></p>
 
-<pre><strong>Input: </strong>X = <span id="example-input-1-1">2</span>, Y = <span id="example-input-1-2">3</span>
-<strong>Output: </strong><span id="example-output-1">2</span>
-<strong>Explanation: </strong>Use double operation and then decrement operation {2 -&gt; 4 -&gt; 3}.
+<pre><strong>Input:</strong> startValue = 2, target = 3
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> Use double operation and then decrement operation {2 -&gt; 4 -&gt; 3}.
 </pre>
 
 <p><strong>Example 2:</strong></p>
 
-<pre><strong>Input: </strong>X = <span id="example-input-2-1">5</span>, Y = <span id="example-input-2-2">8</span>
-<strong>Output: </strong><span id="example-output-2">2</span>
-<strong>Explanation: </strong>Use decrement and then double {5 -&gt; 4 -&gt; 8}.
+<pre><strong>Input:</strong> startValue = 5, target = 8
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> Use decrement and then double {5 -&gt; 4 -&gt; 8}.
 </pre>
 
 <p><strong>Example 3:</strong></p>
 
-<pre><strong>Input: </strong>X = <span id="example-input-3-1">3</span>, Y = <span id="example-input-3-2">10</span>
-<strong>Output: </strong><span id="example-output-3">3</span>
-<strong>Explanation: </strong> Use double, decrement and double {3 -&gt; 6 -&gt; 5 -&gt; 10}.
-</pre>
-
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input: </strong>X = <span id="example-input-4-1">1024</span>, Y = <span id="example-input-4-2">1</span>
-<strong>Output: </strong><span id="example-output-4">1023</span>
-<strong>Explanation: </strong>Use decrement operations 1023 times.
+<pre><strong>Input:</strong> startValue = 3, target = 10
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> Use double, decrement and double {3 -&gt; 6 -&gt; 5 -&gt; 10}.
 </pre>
 
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><strong>Note:</strong></p>
+<ul>
+	<li><code>1 &lt;= x, y &lt;= 10<sup>9</sup></code></li>
+</ul>
 
-<ol>
-	<li><code>1 &lt;= X &lt;= 10^9</code></li>
-	<li><code>1 &lt;= Y &lt;= 10^9</code></li>
-</ol>
+
+**Companies**:  
+[Bloomberg](https://leetcode.com/company/bloomberg), [Arcesium](https://leetcode.com/company/arcesium), [Nutanix](https://leetcode.com/company/nutanix)
 
 **Related Topics**:  
 [Math](https://leetcode.com/tag/math/), [Greedy](https://leetcode.com/tag/greedy/)
@@ -56,7 +48,16 @@
 **Similar Questions**:
 * [2 Keys Keyboard (Medium)](https://leetcode.com/problems/2-keys-keyboard/)
 
-## Solution 1.
+## Solution 1. Greedy
+
+Since we are looking for the shortest path, BFS is the first option. But this will create too many states.
+
+We can get the following intuition if we think in the reverse order, get `X` from `Y` by dividing by `2` or adding `1`.
+
+**Intuition**:
+
+* If `Y < X`, we can only keep adding `1`s, so it takes `X - Y` steps.
+* If `Y > X`, we have the two options but we can greedily pick one. If `Y` is even, we know that dividing by `2` is better. Otherwise, we should add `1`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/broken-calculator/
