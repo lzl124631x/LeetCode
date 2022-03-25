@@ -119,7 +119,7 @@ So we can sort the array in ascending order of `cost[i][0] - cost[i][1]`. The fi
 // OJ: https://leetcode.com/problems/two-city-scheduling/
 // Author: github.com/lzl124631x
 // Time: O(NlogN)
-// Space: O(N)
+// Space: O(1)
 class Solution {
 public:
     int twoCitySchedCost(vector<vector<int>>& A) {
