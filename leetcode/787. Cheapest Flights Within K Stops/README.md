@@ -69,3 +69,39 @@ public:
     }
 };
 ```
+
+## Solution 2. Dijkstra
+
+```cpp
+// OJ: https://leetcode.com/problems/cheapest-flights-within-k-stops/
+// Author: github.com/lzl124631x
+// Time: O(KElogE)
+// Space: O(KN + E)
+class Solution {
+    typedef array<int, 3> item; // distance, cityId, # stops left
+public:
+    int findCheapestPrice(int n, vector<vector<int>>& E, int src, int dst, int k) {
+        vector<vector<pair<int, int>>> G(n);
+        for (auto &e : E) G[e[0]].emplace_back(e[1], e[2]);
+        priority_queue<item, vector<item>, greater<>> pq;
+        ++k;
+        pq.push({0, src, k});
+        vector<vector<int>> dist(k + 1, vector<int>(n, INT_MAX));
+        for (int i = 0; i <= k; ++i) dist[i][src] = 0;
+        while (pq.size()) {
+            auto [cost, u, stop] = pq.top();
+            pq.pop();
+            if (cost > dist[stop][u]) continue;
+            if (u == dst) return cost;
+            if (stop == 0) continue;
+            for (auto &[v, w] : G[u]) {
+                if (dist[stop - 1][v] > cost + w) {
+                    dist[stop - 1][v] = cost + w;
+                    pq.push({dist[stop - 1][v], v, stop - 1});
+                }
+            }
+        }
+        return -1;
+    }
+};
+```

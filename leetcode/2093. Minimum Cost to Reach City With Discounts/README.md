@@ -135,7 +135,7 @@ public:
         vector<vector<int>> dist(discounts + 1, vector<int>(n, INT_MAX));
         priority_queue<item, vector<item>, greater<>> pq;
         pq.push({0, 0, discounts});
-        dist[0][0] = 0;
+        for (int i = 0; i <= discounts; ++i) dist[i][0] = 0;
         while (pq.size()) {
             auto [cost, u, d] = pq.top();
             pq.pop();
