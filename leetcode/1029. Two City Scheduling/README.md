@@ -1,15 +1,14 @@
-# [1029. Two City Scheduling (Easy)](https://leetcode.com/problems/two-city-scheduling/)
+# [1029. Two City Scheduling (Medium)](https://leetcode.com/problems/two-city-scheduling/)
 
-<p>There are <code>2N</code> people a company is planning to interview. The cost of flying the <code>i</code>-th person to city <code>A</code> is <code>costs[i][0]</code>, and the cost of flying the <code>i</code>-th person to city <code>B</code> is <code>costs[i][1]</code>.</p>
+<p>A company is planning to interview <code>2n</code> people. Given the array <code>costs</code> where <code>costs[i] = [aCost<sub>i</sub>, bCost<sub>i</sub>]</code>,&nbsp;the cost of flying the <code>i<sup>th</sup></code> person to city <code>a</code> is <code>aCost<sub>i</sub></code>, and the cost of flying the <code>i<sup>th</sup></code> person to city <code>b</code> is <code>bCost<sub>i</sub></code>.</p>
 
-<p>Return the minimum cost to fly every person to a city such that exactly <code>N</code> people arrive in each city.</p>
+<p>Return <em>the minimum cost to fly every person to a city</em> such that exactly <code>n</code> people arrive in each city.</p>
 
 <p>&nbsp;</p>
-
 <p><strong>Example 1:</strong></p>
 
-<pre><strong>Input: </strong><span id="example-input-1-1">[[10,20],[30,200],[400,50],[30,20]]</span>
-<strong>Output: </strong><span id="example-output-1">110</span>
+<pre><strong>Input:</strong> costs = [[10,20],[30,200],[400,50],[30,20]]
+<strong>Output:</strong> 110
 <strong>Explanation: </strong>
 The first person goes to city A for a cost of 10.
 The second person goes to city A for a cost of 30.
@@ -19,34 +18,52 @@ The fourth person goes to city B for a cost of 20.
 The total minimum cost is 10 + 30 + 50 + 20 = 110 to have half the people interviewing in each city.
 </pre>
 
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> costs = [[259,770],[448,54],[926,667],[184,139],[840,118],[577,469]]
+<strong>Output:</strong> 1859
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> costs = [[515,563],[451,713],[537,709],[343,819],[855,779],[457,60],[650,359],[631,42]]
+<strong>Output:</strong> 3086
+</pre>
+
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><strong>Note:</strong></p>
+<ul>
+	<li><code>2 * n == costs.length</code></li>
+	<li><code>2 &lt;= costs.length &lt;= 100</code></li>
+	<li><code>costs.length</code> is even.</li>
+	<li><code>1 &lt;= aCost<sub>i</sub>, bCost<sub>i</sub> &lt;= 1000</code></li>
+</ul>
 
-<ol>
-	<li><code>1 &lt;= costs.length &lt;= 100</code></li>
-	<li>It is guaranteed that <code>costs.length</code> is even.</li>
-	<li><code>1 &lt;= costs[i][0], costs[i][1] &lt;= 1000</code></li>
-</ol>
+
+**Companies**:  
+[Bloomberg](https://leetcode.com/company/bloomberg)
 
 **Related Topics**:  
-[Greedy](https://leetcode.com/tag/greedy/)
+[Array](https://leetcode.com/tag/array/), [Greedy](https://leetcode.com/tag/greedy/), [Sorting](https://leetcode.com/tag/sorting/)
 
-## Solution 1. DP
+## Solution 1. Bottom-up DP
 
-Let `dp[i + 1][j]` be the min cost arranging the first `i + 1` people and when `j` people go to city A, `0 <= i < N, 0 <= j <= i + 1`.
+Let `dp[i + 1][j]` be the min cost arranging the first `i + 1` people and when `j` of them go to city A, `0 <= i < N, 0 <= j <= i + 1`.
 
 For `dp[i + 1][j]`, we have two options:
-* The `i`-th person goes to city A. We get `dp[i][j - 1] + A[i][0]`.
-* The `i`-th person goes to city B. We get `dp[i][j] + A[i][1]`. Note that `i + 1 > j` because otherwise we don't have the spot for the `i`-th person to go to city B.
+* The `i`-th person goes to city A. We get `dp[i][j - 1] + A[i][0]` (`j - 1 >= 0`).
+* The `i`-th person goes to city B. We get `dp[i][j] + A[i][1]` (`j <= i`).
 
 ```
 dp[i + 1][j] = min(
-                    dp[i][j - 1] + A[i][0],                     // the i-th person goes to city A
-                    i + 1> j  ? dp[i][j] + A[i][1] : INF        // the i-th person goes to city B
+                    j - 1 >= 0 ? dp[i][j - 1] + A[i][0] : INF,       // the i-th person goes to city A
+                    j <= i ? dp[i][j] + A[i][1] : INF                // the i-th person goes to city B
                   )
-dp[i + 1][0] = sum( A[k][1] | 0 <= k <= i )
+dp[0][0] = 0
 ```
+
+The answer is `dp[2N][N]`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/two-city-scheduling/
@@ -56,15 +73,15 @@ dp[i + 1][0] = sum( A[k][1] | 0 <= k <= i )
 class Solution {
 public:
     int twoCitySchedCost(vector<vector<int>>& A) {
-        int N = A.size();
-        vector<vector<int>> dp(N + 1, vector<int>(N / 2 + 1));
-        for (int i = 0; i < N; ++i) {
-            dp[i + 1][0] = dp[i][0] + A[i][1];
-            for (int j = 1; j <= min(i + 1, N / 2); ++j) {
-                dp[i + 1][j] = min((i + 1 > j ? dp[i][j] + A[i][1] : INT_MAX), dp[i][j - 1] + A[i][0]);
+        int N = A.size() / 2;
+        vector<vector<int>> dp(2 * N + 1, vector<int>(N + 1, INT_MAX));
+        dp[0][0] = 0;
+        for (int i = 0; i < 2 * N; ++i) {
+            for (int j = 0; j <= min(i + 1, N); ++j) {
+                dp[i + 1][j] = min(j - 1 >= 0 ? dp[i][j - 1] + A[i][0] : INT_MAX, j <= i ? dp[i][j] + A[i][1] : INT_MAX);
             }
         }
-        return dp[N][N / 2];
+        return dp[2 * N][N];
     }
 };
 ```
@@ -79,15 +96,15 @@ public:
 class Solution {
 public:
     int twoCitySchedCost(vector<vector<int>>& A) {
-        int N = A.size();
-        vector<int> dp(N / 2 + 1);
-        for (int i = 0; i < N; ++i) {
-            for (int j = min(i + 1, N / 2); j >= 1; --j) {
-                dp[j] = min((i + 1 > j ? dp[j] + A[i][1] : INT_MAX), dp[j - 1] + A[i][0]);
+        int N = A.size() / 2;
+        vector<int> dp(N + 1, INT_MAX);
+        dp[0] = 0;
+        for (int i = 0; i < 2 * N; ++i) {
+            for (int j = min(i + 1, N); j >= 0; --j) {
+                dp[j] = min(j - 1 >= 0 ? dp[j - 1] + A[i][0] : INT_MAX, j <= i ? dp[j] + A[i][1] : INT_MAX);
             }
-            dp[0] += A[i][1];
         }
-        return dp[N / 2];
+        return dp[N];
     }
 };
 ```
@@ -96,7 +113,7 @@ public:
 
 The smaller `cost[i][0] - cost[i][1]` is, the more likely `i`-th person should go to city A.
 
-So we can sort the pairs `<cost[i][0] - cost[i][1], i>` in ascending order. The first half goes to city A, the second half goes to city B.
+So we can sort the array in ascending order of `cost[i][0] - cost[i][1]`. The first half goes to city A, the second half goes to city B.
 
 ```cpp
 // OJ: https://leetcode.com/problems/two-city-scheduling/
@@ -106,12 +123,9 @@ So we can sort the pairs `<cost[i][0] - cost[i][1], i>` in ascending order. The 
 class Solution {
 public:
     int twoCitySchedCost(vector<vector<int>>& A) {
-        int N = A.size(), ans = 0;
-        vector<pair<int, int>> v;
-        for (int i = 0; i < N; ++i) v.emplace_back(A[i][0] - A[i][1], i);
-        sort(begin(v), end(v));
-        for (int i = 0; i < N / 2; ++i) ans += A[v[i].second][0];
-        for (int i = N / 2; i < N; ++i) ans += A[v[i].second][1];
+        int N = A.size() / 2, ans = 0;
+        sort(begin(A), end(A), [](auto &a, auto &b) { return (a[0] - a[1]) < (b[0] - b[1]); });
+        for (int i = 0; i < 2 * N; ++i) ans += A[i][i >= N];
         return ans;
     }
 };
