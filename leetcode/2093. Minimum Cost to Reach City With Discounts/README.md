@@ -114,3 +114,45 @@ public:
     }
 };
 ```
+
+## Solution 2. Dijkstra
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-cost-to-reach-city-with-discounts/
+// Author: github.com/lzl124631x
+// Time: O(DElogE)
+// Space: O(DN + E)
+class Solution {
+    typedef array<int, 3> item; // distance, cityId, # of discount left
+public:
+    int minimumCost(int n, vector<vector<int>>& E, int discounts) {
+        vector<unordered_map<int, int>> G(n);
+        for (auto &e : E) {
+            int u = e[0], v = e[1], w = e[2];
+            G[u][v] = w;
+            G[v][u] = w;
+        }
+        vector<vector<int>> dist(discounts + 1, vector<int>(n, INT_MAX));
+        priority_queue<item, vector<item>, greater<>> pq;
+        pq.push({0, 0, discounts});
+        dist[0][0] = 0;
+        while (pq.size()) {
+            auto [cost, u, d] = pq.top();
+            pq.pop();
+            if (cost > dist[d][u]) continue;
+            if (u == n - 1) return cost;
+            for (auto &[v, w] : G[u]) {
+                if (dist[d][v] > cost + w) {
+                    dist[d][v] = cost + w;
+                    pq.push({ dist[d][v], v, d });
+                }
+                if (d > 0 && dist[d - 1][v] > cost + w / 2) {
+                    dist[d - 1][v] = cost + w / 2;
+                    pq.push({ dist[d - 1][v], v, d - 1 });
+                }
+            }
+        }
+        return -1;
+    }
+};
+```
