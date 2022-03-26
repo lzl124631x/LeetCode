@@ -477,7 +477,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 505 | The Maze II | Medium | [Solution](leetcode/505.%20The%20Maze%20II)
 506 | Relative Ranks |  | [Solution](leetcode/506.%20Relative%20Ranks)
 507 | Perfect Number | Easy | [Solution](leetcode/507.%20Perfect%20Number)
-508 | Most Frequent Subtree Sum |  | [Solution](leetcode/508.%20Most%20Frequent%20Subtree%20Sum)
+508 | Most Frequent Subtree Sum | Medium | [Solution](leetcode/508.%20Most%20Frequent%20Subtree%20Sum)
 509 | Fibonacci Number | Easy | [Solution](leetcode/509.%20Fibonacci%20Number)
 510 | Inorder Successor in BST II | Medium | [Solution](leetcode/510.%20Inorder%20Successor%20in%20BST%20II)
 513 | Find Bottom Left Tree Value | Medium | [Solution](leetcode/513.%20Find%20Bottom%20Left%20Tree%20Value)
