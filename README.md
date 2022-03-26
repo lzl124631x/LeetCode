@@ -495,7 +495,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 525 | Contiguous Array | Medium | [Solution](leetcode/525.%20Contiguous%20Array)
 526 | Beautiful Arrangement | Medium | [Solution](leetcode/526.%20Beautiful%20Arrangement)
 528 | Random Pick with Weight | Medium | [Solution](leetcode/528.%20Random%20Pick%20with%20Weight)
-529 | Minesweeper |  | [Solution](leetcode/529.%20Minesweeper)
+529 | Minesweeper | Medium | [Solution](leetcode/529.%20Minesweeper)
 530 | Minimum Absolute Difference in BST |  | [Solution](leetcode/530.%20Minimum%20Absolute%20Difference%20in%20BST)
 532 | K-diff Pairs in an Array | Medium | [Solution](leetcode/532.%20K-diff%20Pairs%20in%20an%20Array)
 535 | Encode and Decode TinyURL |  | [Solution](leetcode/535.%20Encode%20and%20Decode%20TinyURL)
