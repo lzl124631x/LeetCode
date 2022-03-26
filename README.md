@@ -469,7 +469,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 497 | Random Point in Non-overlapping Rectangles | Medium | [Solution](leetcode/497.%20Random%20Point%20in%20Non-overlapping%20Rectangles)
 498 | Diagonal Traverse |  | [Solution](leetcode/498.%20Diagonal%20Traverse)
 499 | The Maze III | Hard | [Solution](leetcode/499.%20The%20Maze%20III)
-500 | Keyboard Row |  | [Solution](leetcode/500.%20Keyboard%20Row)
+500 | Keyboard Row | Easy | [Solution](leetcode/500.%20Keyboard%20Row)
 501 | Find Mode in Binary Search Tree | Easy | [Solution](leetcode/501.%20Find%20Mode%20in%20Binary%20Search%20Tree)
 502 | IPO | Hard | [Solution](leetcode/502.%20IPO)
 503 | Next Greater Element II | Medium | [Solution](leetcode/503.%20Next%20Greater%20Element%20II)
