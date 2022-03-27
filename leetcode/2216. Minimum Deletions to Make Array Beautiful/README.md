@@ -51,6 +51,8 @@
 
 We can greedily find the even and odd pairs from left to right.
 
+**Why greedy**? Think if the first two elements, if they are equal, we have to delete one of them -- deleting the rest of the numbers won't change anything to these first two equal numbers. So, when we see two equal numbers, we have to delete one of them, until we find two non-equal numbers.
+
 Use two pointers `i` the write pointer and `j` the read pointer.
 
 We keep the following process until `j` exhausts the array.
@@ -103,3 +105,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/minimum-deletions-to-make-array-beautiful/discuss/1886930
