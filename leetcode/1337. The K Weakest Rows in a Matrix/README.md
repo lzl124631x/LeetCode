@@ -68,7 +68,7 @@ The rows ordered from weakest to strongest are [0,2,3,1].
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/), [Sorting](https://leetcode.com/tag/sorting/), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue/), [Matrix](https://leetcode.com/tag/matrix/)
 
-## Solution 1. Binary Search + Sorting
+## Solution 1. Binary Search (L <= R) + Sorting
 
 ```cpp
 // OJ: https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/
@@ -86,6 +86,35 @@ public:
                 int M = (L + R) / 2;
                 if (A[i][M] == 1) L = M + 1;
                 else R = M - 1;
+            }
+            B.emplace_back(R, i);
+        }
+        sort(begin(B), end(B));
+        vector<int> ans;
+        for (int i = 0; i < k; ++i) ans.push_back(B[i].second);
+        return ans;
+    }
+};
+```
+
+## Solution 2. Binary Search (L < R) + Sorting
+
+```cpp
+// OJ: https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/
+// Author: github.com/lzl124631x
+// Time: O(MlogN + MlogM)
+// Space: O(M)
+class Solution {
+public:
+    vector<int> kWeakestRows(vector<vector<int>>& A, int k) {
+        vector<pair<int, int>> B;
+        int M = A.size(), N = A[0].size();
+        for (int i = 0; i < M; ++i) {
+            int L = 0, R = N; // Note that since we are looking for the first index of `0`, the `R` should be initialized as `N`.
+            while (L < R) {
+                int M = (L + R) / 2;
+                if (A[i][M] == 1) L = M + 1;
+                else R = M;
             }
             B.emplace_back(R, i);
         }
