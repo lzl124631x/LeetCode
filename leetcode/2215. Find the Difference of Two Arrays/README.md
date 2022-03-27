@@ -68,3 +68,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/find-the-difference-of-two-arrays/discuss/1886960/
