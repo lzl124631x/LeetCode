@@ -1175,6 +1175,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1333 | Filter Restaurants by Vegan-Friendly, Price and Distance | Medium | [Solution](leetcode/1333.%20Filter%20Restaurants%20by%20Vegan-Friendly%2C%20Price%20and%20Distance)
 1334 | Find the City With the Smallest Number of Neighbors at a Threshold Distance | Medium | [Solution](leetcode/1334.%20Find%20the%20City%20With%20the%20Smallest%20Number%20of%20Neighbors%20at%20a%20Threshold%20Distance)
 1335 | Minimum Difficulty of a Job Schedule | Hard | [Solution](leetcode/1335.%20Minimum%20Difficulty%20of%20a%20Job%20Schedule)
+1337 | The K Weakest Rows in a Matrix | Easy | [Solution](leetcode/1337.%20The%20K%20Weakest%20Rows%20in%20a%20Matrix)
 1338 | Reduce Array Size to The Half | Medium | [Solution](leetcode/1338.%20Reduce%20Array%20Size%20to%20The%20Half)
 1339 | Maximum Product of Splitted Binary Tree | Medium | [Solution](leetcode/1339.%20Maximum%20Product%20of%20Splitted%20Binary%20Tree)
 1340 | Jump Game V | Hard | [Solution](leetcode/1340.%20Jump%20Game%20V)
