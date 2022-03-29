@@ -1,30 +1,48 @@
 # [287. Find the Duplicate Number (Medium)](https://leetcode.com/problems/find-the-duplicate-number/)
 
-<p>Given an array <i>nums</i> containing <i>n</i> + 1 integers where each integer is between 1 and <i>n</i> (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.</p>
+<p>Given an array of integers <code>nums</code> containing&nbsp;<code>n + 1</code> integers where each integer is in the range <code>[1, n]</code> inclusive.</p>
 
-<p><b>Example 1:</b></p>
+<p>There is only <strong>one repeated number</strong> in <code>nums</code>, return <em>this&nbsp;repeated&nbsp;number</em>.</p>
 
-<pre><b>Input:</b> <code>[1,3,4,2,2]</code>
-<b>Output:</b> 2
+<p>You must solve the problem <strong>without</strong> modifying the array <code>nums</code>&nbsp;and uses only constant extra space.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> nums = [1,3,4,2,2]
+<strong>Output:</strong> 2
 </pre>
 
-<p><b>Example 2:</b></p>
+<p><strong>Example 2:</strong></p>
 
-<pre><b>Input:</b> [3,1,3,4,2]
-<b>Output:</b> 3</pre>
+<pre><strong>Input:</strong> nums = [3,1,3,4,2]
+<strong>Output:</strong> 3
+</pre>
 
-<p><b>Note:</b></p>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<ol>
-	<li>You <b>must not</b> modify the array (assume the array is read only).</li>
-	<li>You must use only constant, <i>O</i>(1) extra space.</li>
-	<li>Your runtime complexity should be less than <em>O</em>(<em>n</em><sup>2</sup>).</li>
-	<li>There is only one duplicate number in the array, but it could be repeated more than once.</li>
-</ol>
+<ul>
+	<li><code>1 &lt;= n &lt;= 10<sup>5</sup></code></li>
+	<li><code>nums.length == n + 1</code></li>
+	<li><code>1 &lt;= nums[i] &lt;= n</code></li>
+	<li>All the integers in <code>nums</code> appear only <strong>once</strong> except for <strong>precisely one integer</strong> which appears <strong>two or more</strong> times.</li>
+</ul>
 
+<p>&nbsp;</p>
+<p><b>Follow up:</b></p>
+
+<ul>
+	<li>How can we prove that at least one duplicate number must exist in <code>nums</code>?</li>
+	<li>Can you solve the problem in linear runtime complexity?</li>
+</ul>
+
+
+**Companies**:  
+[Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook), [Apple](https://leetcode.com/company/apple), [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Binary Search](https://leetcode.com/tag/binary-search/)
+[Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Binary Search](https://leetcode.com/tag/binary-search/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/)
 
 **Similar Questions**:
 * [First Missing Positive (Hard)](https://leetcode.com/problems/first-missing-positive/)
@@ -34,6 +52,18 @@
 * [Set Mismatch (Easy)](https://leetcode.com/problems/set-mismatch/)
 
 ## Solution 1. Binary Search
+
+Numbers less than the duplicate number must have frequencies less than or equal to themselves.
+
+Examples:
+
+* `A = [1 2 3 3 4]`, `1,2` have frequencies (`1,2`) less than or equal to themselves.
+* `A = [3 2 3 3 4]`, `1,2` have frequencies (`0,1`) less than or equal to themselves. 
+
+`L < R` template:
+
+* Range: `[1, A.size()-1]` 
+* Let `cnt` be the count of numbers less than or equal to `M`. If `cnt <= M`, the duplicate number is greater than `M`, so `L = M + 1`; otherwise, `R = M`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-the-duplicate-number/
@@ -49,6 +79,31 @@ public:
             for (int n : A) cnt += n <= M;
             if (cnt <= M) L = M + 1;
             else R = M;
+        }
+        return L;
+    }
+};
+```
+
+`L <= R` template:
+
+* Range: `[1, A.size()-1]`.
+* Let `cnt` be the count of numbers less than or equal to `M`. The answer is the first number that `cnt > ` itself. So, we return `L` in the end.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-the-duplicate-number/
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int findDuplicate(vector<int>& A) {
+        int L = 1, R = A.size() - 1;
+        while (L <= R) {
+            int M = (L + R) / 2, cnt = 0;
+            for (int n : A) cnt += n <= M;
+            if (cnt <= M) L = M + 1;
+            else R = M - 1;
         }
         return L;
     }
