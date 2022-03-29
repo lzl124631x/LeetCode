@@ -40,6 +40,12 @@ Note that the carpets are able to overlap one another.
 </ul>
 
 
+**Companies**:  
+[Google](https://leetcode.com/company/google)
+
+**Related Topics**:  
+[String](https://leetcode.com/tag/string/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
+
 **Similar Questions**:
 * [Edit Distance (Hard)](https://leetcode.com/problems/edit-distance/)
 
@@ -47,7 +53,7 @@ Note that the carpets are able to overlap one another.
 
 **Intuition**:
 
-1. Use a sliding window of length `carpetLen` to compute a `cover` array where `cover[i]` is the number of white tiles covered by a carpet placed on floor `[i, i + carpetLen)`.
+1. Use a sliding window of length `carpetLen` to compute a `cover` array where `cover[i]` is the number of white tiles covered by a carpet placed ending at `floor[i]`.
 2. Use DP to calculate the maximum coverable white tiles using `numCarpets` carpets.
 
 **Algorithm**:
@@ -56,10 +62,10 @@ Note that the carpets are able to overlap one another.
 
 Keep a rolling sum `white` as the number of white tiles within the sliding window.
 
-For each `i` in range `[0, N + len - 1)`, we:
+For each `i` in range `[0, N)`, we:
 * increment `white` if `s[i] == '1'`
 * decrement `white` if `s[i - len] == '1'`
-* Set `cover[i - len + 1] = white`.
+* Set `cover[i] = white`.
 
 **DP**:
 
@@ -69,16 +75,16 @@ All `dp` values are initialized as `0`s.
 
 For each `dp[i][j + 1]`, we have two options:
 1. Don't place carpet at index `j`. `dp[i][j+1] = dp[i][j]`
-2. Place carpet at index `j` covering `cover[j]` white tiles. And we can place `i-1` carpets at or before `j-carpetLen`. So, `dp[i][j+1] = dp[i-1][j-carpetLen+1] + cover[j]`.
+2. Place carpet ending at index `j` covering `cover[j]` white tiles. And we can place `i-1` carpets at or before `j-carpetLen`. So, `dp[i][j+1] = dp[i-1][j-carpetLen+1] + cover[j]`.
 
 ```
 dp[i][j + 1] = max(
-                    dp[i][j],                                                                  // don't place carpet at index `j`
+                    dp[i][j],                                                                   // don't place carpet at index `j`
                     (j - carpetLen + 1 >= 0 ? dp[i - 1][j - carpetLen + 1] : 0) + cover[j]      // place carpet at index `j`
                   )
 ```
 
-The global maximum `dp` value is the maximum number of white titles coverable. The answer is the number of total white tiles minus this global maximum.
+`dp[numCarpet][N]` is the maximum number of white titles coverable. The answer is the number of total white tiles minus `dp[numCarpet][N]`. 
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-white-tiles-after-covering-with-carpets/
@@ -88,22 +94,21 @@ The global maximum `dp` value is the maximum number of white titles coverable. T
 class Solution {
 public:
     int minimumWhiteTiles(string floor, int numCarpet, int carpetLen) {
-        int N = floor.size(), ans = 0, sum = 0;
-        for (char c : floor) sum += c - '0';
+        int N = floor.size(), sum = 0;
         vector<int> cover(N);
-        for (int i = 0, white = 0; i < N + carpetLen - 1; ++i) {
-            if (i < N) white += floor[i] - '0';
+        for (int i = 0, white = 0; i < N; ++i) {
+            sum += floor[i] - '0';
+            white += floor[i] - '0';
             if (i - carpetLen >= 0) white -= floor[i - carpetLen] - '0'; 
-            if (i - carpetLen + 1 >= 0) cover[i - carpetLen + 1] = white;
+            cover[i] = white;
         }
         vector<vector<int>> dp(numCarpet + 1, vector<int>(N + 1));
         for (int i = 1; i <= numCarpet; ++i) {
             for (int j = 0; j < N; ++j) {
                 dp[i][j + 1] = max(dp[i][j], (j - carpetLen + 1 >= 0 ? dp[i - 1][j - carpetLen + 1] : 0) + cover[j]);
-                ans = max(ans, dp[i][j + 1]);
             }
         }
-        return sum - ans;
+        return sum - dp[numCarpet][N];
     }
 };
 ```
@@ -118,24 +123,23 @@ We can reduce the space complexity to `O(N)` by using rolling arrays.
 class Solution {
 public:
     int minimumWhiteTiles(string floor, int numCarpet, int carpetLen) {
-        int N = floor.size(), ans = 0, sum = 0;
-        for (char c : floor) sum += c - '0';
+        int N = floor.size(), sum = 0;
         vector<int> cover(N);
-        for (int i = 0, white = 0; i < N + carpetLen - 1; ++i) {
-            if (i < N) white += floor[i] - '0';
+        for (int i = 0, white = 0; i < N; ++i) {
+            sum += floor[i] - '0';
+            white += floor[i] - '0';
             if (i - carpetLen >= 0) white -= floor[i - carpetLen] - '0'; 
-            if (i - carpetLen + 1 >= 0) cover[i - carpetLen + 1] = white;
+            cover[i] = white;
         }
         vector<int> dp(N + 1);
         for (int i = 1; i <= numCarpet; ++i) {
             vector<int> next(N + 1);
             for (int j = 0; j < N; ++j) {
                 next[j + 1] = max(next[j], (j - carpetLen + 1 >= 0 ? dp[j - carpetLen + 1] : 0) + cover[j]);
-                ans = max(ans, next[j + 1]);
             }
             swap(dp, next);
         }
-        return sum - ans;
+        return sum - dp[N];
     }
 };
 ```
