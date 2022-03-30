@@ -39,7 +39,7 @@ The maximum total we can obtain is 101.
 [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
 
 **Similar Questions**:
 * [Coin Change (Medium)](https://leetcode.com/problems/coin-change/)
@@ -79,6 +79,55 @@ public:
             return m[i][j] = ans;
         };
         return dp(0, k);
+    }
+};
+```
+
+## Solution 2. Bottom-up DP
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-value-of-k-coins-from-piles/
+// Author: github.com/lzl124631x
+// Time: O(NK)
+// Space: O(NK)
+class Solution {
+public:
+    int maxValueOfCoins(vector<vector<int>>& A, int k) {
+        int dp[1001][2001] = {}, N = A.size();
+        for (int i = 0; i < N; ++i) {
+            for (int j = 1; j <= k; ++j) {
+                dp[i + 1][j] = dp[i][j];
+                for (int t = 1, sum = 0; t <= j && t <= A[i].size(); ++t) {
+                    sum += A[i][t - 1];
+                    dp[i + 1][j] = max(dp[i + 1][j], dp[i][j - t] + sum);
+                }
+            }
+        }
+        return dp[N][k];
+    }
+};
+```
+
+The space complexity can be reduced to `O(K)`.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-value-of-k-coins-from-piles/
+// Author: github.com/lzl124631x
+// Time: O(NK)
+// Space: O(K)
+class Solution {
+public:
+    int maxValueOfCoins(vector<vector<int>>& A, int k) {
+        int dp[2001] = {}, N = A.size();
+        for (int i = 0; i < N; ++i) {
+            for (int j = k; j >= 1; --j) {
+                for (int t = 1, sum = 0; t <= j && t <= A[i].size(); ++t) {
+                    sum += A[i][t - 1];
+                    dp[j] = max(dp[j], dp[j - t] + sum);
+                }
+            }
+        }
+        return dp[k];
     }
 };
 ```
