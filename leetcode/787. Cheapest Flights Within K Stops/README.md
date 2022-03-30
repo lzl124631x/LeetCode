@@ -105,3 +105,41 @@ public:
     }
 };
 ```
+
+## Solution 3. BFS
+
+A plain BFS also works, but it doesn't prioritize low cost paths first so it might be less efficient.
+
+```cpp
+// OJ: https://leetcode.com/problems/cheapest-flights-within-k-stops/
+// Author: github.com/lzl124631x
+// Time: O(KE)
+// Space: O(N + E)
+class Solution {
+public:
+    int findCheapestPrice(int n, vector<vector<int>>& E, int src, int dst, int k) {
+        vector<vector<pair<int, int>>> G(n);
+        for (auto &e : E) G[e[0]].emplace_back(e[1], e[2]);
+        queue<pair<int, int>> q; // cityId, cost
+        q.emplace(src, 0);
+        vector<int> dist(n, INT_MAX);
+        dist[src] = 0;
+        int step = 0;
+        while (step <= k) {
+            int cnt = q.size();
+            while (cnt--) {
+                auto [u, cost] = q.front();
+                q.pop();
+                for (auto &[v, w] : G[u]) {
+                    if (dist[v] > cost + w) { // Note that we shouldn't use `dist[u]` here. Because `dist[u]` might get updated using two jumps but the `cost` here corresponds to one jump.
+                        dist[v] = cost + w;
+                        q.emplace(v, dist[v]);
+                    }
+                }
+            }
+            ++step;
+        }
+        return dist[dst] == INT_MAX ? -1 : dist[dst];
+    }
+};
+```
