@@ -48,6 +48,10 @@ The cheapest price from city <code>0</code> to city <code>2</code> with at most 
 
 ## Solution 1. Bellman ford
 
+With `k` stops, the longest path has `k + 1` edges. So, using Bellman-ford algorithm, we should relax `k + 1` times.
+
+The relaxation happens from layer to layer. This is to prevent using distance in layer `i` when relaxing from layer `i-1` to layer `i`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/cheapest-flights-within-k-stops/
 // Author: github.com/lzl124631x
