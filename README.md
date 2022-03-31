@@ -1520,6 +1520,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1801 | Number of Orders in the Backlog | Medium | [Solution](leetcode/1801.%20Number%20of%20Orders%20in%20the%20Backlog)
 1802 | Maximum Value at a Given Index in a Bounded Array | Medium | [Solution](leetcode/1802.%20Maximum%20Value%20at%20a%20Given%20Index%20in%20a%20Bounded%20Array)
 1803 | Count Pairs With XOR in a Range | Hard | [Solution](leetcode/1803.%20Count%20Pairs%20With%20XOR%20in%20a%20Range)
+1804 | Implement Trie II (Prefix Tree) | Medium | [Solution](leetcode/1804.%20Implement%20Trie%20II%20%28Prefix%20Tree%29)
 1806 | Minimum Number of Operations to Reinitialize a Permutation | Medium | [Solution](leetcode/1806.%20Minimum%20Number%20of%20Operations%20to%20Reinitialize%20a%20Permutation)
 1807 | Evaluate the Bracket Pairs of a String | Medium | [Solution](leetcode/1807.%20Evaluate%20the%20Bracket%20Pairs%20of%20a%20String)
 1808 | Maximize Number of Nice Divisors | Hard | [Solution](leetcode/1808.%20Maximize%20Number%20of%20Nice%20Divisors)
