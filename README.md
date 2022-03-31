@@ -1821,6 +1821,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2186 | Minimum Number of Steps to Make Two Strings Anagram II | Medium | [Solution](leetcode/2186.%20Minimum%20Number%20of%20Steps%20to%20Make%20Two%20Strings%20Anagram%20II)
 2187 | Minimum Time to Complete Trips | Medium | [Solution](leetcode/2187.%20Minimum%20Time%20to%20Complete%20Trips)
 2188 | Minimum Time to Finish the Race | Hard | [Solution](leetcode/2188.%20Minimum%20Time%20to%20Finish%20the%20Race)
+2189 | Number of Ways to Build House of Cards | Medium | [Solution](leetcode/2189.%20Number%20of%20Ways%20to%20Build%20House%20of%20Cards)
 2190 | Most Frequent Number Following Key In an Array | Easy | [Solution](leetcode/2190.%20Most%20Frequent%20Number%20Following%20Key%20In%20an%20Array)
 2193 | Minimum Number of Moves to Make Palindrome | Hard | [Solution](leetcode/2193.%20Minimum%20Number%20of%20Moves%20to%20Make%20Palindrome)
 2194 | Cells in a Range on an Excel Sheet | Easy | [Solution](leetcode/2194.%20Cells%20in%20a%20Range%20on%20an%20Excel%20Sheet)
