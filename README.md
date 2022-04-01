@@ -1843,7 +1843,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2214 | Minimum Health to Beat Game | Medium | [Solution](leetcode/2214.%20Minimum%20Health%20to%20Beat%20Game)
 2215 | Find the Difference of Two Arrays | Easy | [Solution](leetcode/2215.%20Find%20the%20Difference%20of%20Two%20Arrays)
 2216 | Minimum Deletions to Make Array Beautiful | Medium | [Solution](leetcode/2216.%20Minimum%20Deletions%20to%20Make%20Array%20Beautiful)
-2217 | Find Palindrome With Fixed Length |  | [Solution](leetcode/2217.%20Find%20Palindrome%20With%20Fixed%20Length)
+2217 | Find Palindrome With Fixed Length | Medium | [Solution](leetcode/2217.%20Find%20Palindrome%20With%20Fixed%20Length)
 2218 | Maximum Value of K Coins From Piles | Hard | [Solution](leetcode/2218.%20Maximum%20Value%20of%20K%20Coins%20From%20Piles)
 
 
