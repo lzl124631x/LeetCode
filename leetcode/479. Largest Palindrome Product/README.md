@@ -167,6 +167,39 @@ public:
 };
 ```
 
+## Solution 4.
+
+TODO: add explanation
+
+```cpp
+// OJ: https://leetcode.com/problems/largest-palindrome-product/
+// Author: github.com/lzl124631x
+// Time: O(?)
+// Space: O(?)
+// Ref: https://leetcode-cn.com/problems/largest-palindrome-product/solution/mei-ju-shu-xue-by-megurine-p1bn/
+typedef long long ll;
+class Solution {
+public:
+    int largestPalindrome(int n) {
+        if (n == 1) return 9;
+        ll m = (int) pow(10, n);
+        for (ll x = 2; x < m; ++x) {
+            ll upper = m - x;
+            string s = to_string(upper);
+            reverse(s.begin(), s.end());
+            ll lower = stoi(s);
+            ll tmp = x * x - 4 * lower;
+            if (tmp < 0) continue;
+            ll sq = (ll) sqrt(tmp);
+            if (sq * sq == tmp) {
+                return (int) ((upper * m + lower) % 1337);
+            }
+        }
+        return -1;
+    }
+};
+```
+
 ## NOTE
 
 Good article: https://leetcode.com/problems/largest-palindrome-product/discuss/96306/Java-solutions-with-two-different-approaches
