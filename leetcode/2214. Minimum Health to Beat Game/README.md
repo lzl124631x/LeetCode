@@ -62,7 +62,7 @@ Note that you did not use your armor ability.
 * [Dungeon Game (Hard)](https://leetcode.com/problems/dungeon-game/)
 * [Eliminate Maximum Number of Monsters (Medium)](https://leetcode.com/problems/eliminate-maximum-number-of-monsters/)
 
-## Solution 1.
+## Solution 1. DP
 
 Let `yes` be the min health needed if we do use armor once.
 
@@ -94,6 +94,23 @@ public:
             yes = newYes, no = newNo;
         }
         return min(yes, no);
+    }
+};
+```
+
+## Solution 2. Greedy
+
+We greedily use the armor at the level with the greatest damage. Without armor, we need `1 + sum(A)` min health. The armor can take damange of `min(max(A), armor)`, saving us this amount of health. So in total, we just need `1 + sum(A) - min(max(A), armor)`.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-health-to-beat-game/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    long long minimumHealth(vector<int>& A, int armor) {
+        return 1 + accumulate(begin(A), end(A), 0L) - min(*max_element(begin(A), end(A)), armor);
     }
 };
 ```
