@@ -1840,6 +1840,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2210 | Count Hills and Valleys in an Array | Easy | [Solution](leetcode/2210.%20Count%20Hills%20and%20Valleys%20in%20an%20Array)
 2211 | Count Collisions on a Road | Medium | [Solution](leetcode/2211.%20Count%20Collisions%20on%20a%20Road)
 2212 | Maximum Points in an Archery Competition | Medium | [Solution](leetcode/2212.%20Maximum%20Points%20in%20an%20Archery%20Competition)
+2214 | Minimum Health to Beat Game | Medium | [Solution](leetcode/2214.%20Minimum%20Health%20to%20Beat%20Game)
 2215 | Find the Difference of Two Arrays | Easy | [Solution](leetcode/2215.%20Find%20the%20Difference%20of%20Two%20Arrays)
 2216 | Minimum Deletions to Make Array Beautiful | Medium | [Solution](leetcode/2216.%20Minimum%20Deletions%20to%20Make%20Array%20Beautiful)
 2217 | Find Palindrome With Fixed Length |  | [Solution](leetcode/2217.%20Find%20Palindrome%20With%20Fixed%20Length)
