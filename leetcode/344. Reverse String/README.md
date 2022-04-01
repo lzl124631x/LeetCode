@@ -1,34 +1,31 @@
 # [344. Reverse String (Easy)](https://leetcode.com/problems/reverse-string/)
 
-<p>Write a function that reverses a string. The input string is given as an array of characters <code>char[]</code>.</p>
+<p>Write a function that reverses a string. The input string is given as an array of characters <code>s</code>.</p>
 
-<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array&nbsp;<a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank">in-place</a></strong> with O(1) extra memory.</p>
-
-<p>You may assume all the characters consist of <a href="https://en.wikipedia.org/wiki/ASCII#Printable_characters" target="_blank">printable ascii characters</a>.</p>
+<p>You must do this by modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank">in-place</a> with <code>O(1)</code> extra memory.</p>
 
 <p>&nbsp;</p>
-
-<div>
 <p><strong>Example 1:</strong></p>
-
-<pre><strong>Input: </strong><span id="example-input-1-1">["h","e","l","l","o"]</span>
-<strong>Output: </strong><span id="example-output-1">["o","l","l","e","h"]</span>
+<pre><strong>Input:</strong> s = ["h","e","l","l","o"]
+<strong>Output:</strong> ["o","l","l","e","h"]
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> s = ["H","a","n","n","a","h"]
+<strong>Output:</strong> ["h","a","n","n","a","H"]
 </pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<div>
-<p><strong>Example 2:</strong></p>
+<ul>
+	<li><code>1 &lt;= s.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>s[i]</code> is a <a href="https://en.wikipedia.org/wiki/ASCII#Printable_characters" target="_blank">printable ascii character</a>.</li>
+</ul>
 
-<pre><strong>Input: </strong><span id="example-input-2-1">["H","a","n","n","a","h"]</span>
-<strong>Output: </strong><span id="example-output-2">["h","a","n","n","a","H"]</span>
-</pre>
-</div>
-</div>
 
 **Companies**:  
-[Microsoft](https://leetcode.com/company/microsoft), [Apple](https://leetcode.com/company/apple), [Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook), [Adobe](https://leetcode.com/company/adobe), [GoDaddy](https://leetcode.com/company/godaddy), [Bloomberg](https://leetcode.com/company/bloomberg)
+[Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook), [Apple](https://leetcode.com/company/apple), [Oracle](https://leetcode.com/company/oracle), [tcs](https://leetcode.com/company/tcs)
 
 **Related Topics**:  
-[Two Pointers](https://leetcode.com/tag/two-pointers/), [String](https://leetcode.com/tag/string/)
+[Two Pointers](https://leetcode.com/tag/two-pointers/), [String](https://leetcode.com/tag/string/), [Recursion](https://leetcode.com/tag/recursion/)
 
 **Similar Questions**:
 * [Reverse Vowels of a String (Easy)](https://leetcode.com/problems/reverse-vowels-of-a-string/)
