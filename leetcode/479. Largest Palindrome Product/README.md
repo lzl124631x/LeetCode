@@ -30,7 +30,11 @@ Explanation: 99 x 91 = 9009, 9009 % 1337 = 987
 **Related Topics**:  
 [Math](https://leetcode.com/tag/math/)
 
-## Solution 1.
+## Solution 1. Generating palindromic products
+
+**Intuition**: Generate palindromic numbers of length `2n` in descending order. For each number, test if it can be divided into two integers of length `n`.
+
+**Algorithm**: 
 
 Traverse from greatest to smallest palindromic numbers that might be products of two `n`-digit integers. We do so by enumerating the first half of the palindromic number. 
 
@@ -38,7 +42,7 @@ For example, if `n = 2`, we enumerate `half` as `99, 98, 97, ...` and the corres
 
 The maximum value of `half` is `mx = 10^n - 1`.
 
-Unproven: The minimum value of `half` we need to check is `mn = 10^(n-1)`. `n = 1` is the only exception and we should return `9` directly.
+For `n >= 2`, we can always find the greatest palindromic product of length `2n`. So, the minimum value of `half` we need to check is `mn = 10^(n-1)`. `n = 1` is the only exception and we should return `9` directly.
 
 To check if a palindrome number `pal` is a product of two `n`-digit integers, a brute force way is to enumerate `mn <= x <= mx` and check if `pal` is divisible by `x` and `pal / x` is a `n`-digit integer. This takes `O(10^N * N)` time.
 
@@ -65,8 +69,8 @@ public:
         if (n == 1) return 9;
         int mod = 1337, mx = pow(10, n) - 1, mn = pow(10, n - 1);
         auto valid = [&](long pal) {
-            for (long i = mx; i * i >= pal; --i) {
-                if (pal % i == 0) return true;
+            for (long div = mx; div * div >= pal; --div) {
+                if (pal % div == 0) return true;
             }
             return false;
         };
@@ -80,6 +84,89 @@ public:
 };
 ```
 
-## TODO
+## Solution 2. Start from two multipliers
 
-read https://leetcode.com/problems/largest-palindrome-product/discuss/96306/Java-solutions-with-two-different-approaches
+Use a max heap of `(a * b, a, b)` where `a, b` starts from `9..9` and `a >= b`. Each time a new item popped from the heap, we test if `a * b` is a palindrome. If not, we extend `((a-1) * b, a-1, b)` if `a-1 >= b`, and `(a * (b-1), a, b-1)` if `a == 9..9`. This turns to get TLE. We need to further prune the entries in the heap.
+
+Since the product starts and ends with digit `9`, the two numbers must end with digits `1, 3, 7, 9`. 
+
+```cpp
+// OJ: https://leetcode.com/problems/largest-palindrome-product/
+// Author: github.com/lzl124631x
+// Time: O(?)
+// Space: O(?)
+class Solution {
+public:
+    int largestPalindrome(int n) {
+        if (n == 1) return 9;
+        auto cmp = [](auto &a, auto &b) {
+            return a[0] * a[1] < b[0] * b[1];
+        };
+        priority_queue<array<long, 2>, vector<array<long, 2>>, decltype(cmp)> pq(cmp);
+        long mod = 1337, mx = pow(10L, n) - 1, mn = pow(10L, n - 1);
+        pq.push({mx, mx - 8}); // 9 x 1
+        pq.push({mx - 2, mx - 2}); // 7 x 7 
+        pq.push({mx - 6, mx - 6}); // 3 x 3
+        pq.push({mx - 8, mx - 11}); // 1 x 9
+        auto isPalindrome = [](long prod) {
+            long r = 0, tmp = prod;
+            for (; tmp; tmp /= 10) r = 10 * r + tmp % 10;
+            return r == prod;
+        };
+        while (pq.size()) {
+            auto [a, b] = pq.top();
+            pq.pop();
+            if (isPalindrome(a * b)) return a * b % mod;
+            if (a - 10 >= b) pq.push({a - 10, b});
+            if (a == mx || a == mx - 2 || a == mx - 6 || a == mx - 8) pq.push({a, b - 10});
+        }
+        return 0;
+    }
+};
+```
+
+## Solution 3.
+
+pow10|maxPal|mx|t
+---|---|---|---
+2|100|9009|90|9
+3|1000|968407|968|89
+4|10000|99000099|9900|909
+5|100000|9968377538|99683|9089
+6|1000000|999000000999|999000|90909
+7|10000000|99968377226559|9996837|909089
+8|100000000|9999000000010000|99990000|9090909
+
+TODO: add explanation
+
+```cpp
+// OJ: https://leetcode.com/problems/largest-palindrome-product/
+// Author: github.com/lzl124631x
+// Time: O(?)
+// Space: O(?)
+class Solution {
+    long getPalindrome(long half) {
+        long ans = half;
+        for (; half; half /= 10) ans = 10 * ans + half % 10;
+        return ans;
+    }
+public:
+    int largestPalindrome(int n) {
+        if (n == 1) return 9;
+        long pow10 = pow(10L, n);
+        long maxPal = (pow10 - 1) * (pow10 - sqrt(pow10) + 1); // maximum possible palindrome
+        long mx = maxPal / pow10, t = pow10 / 11; // `mx` is the maximum possible first half. `t` is the maximum divisor.
+        t -= ~t & 1; // if `t` is even, decrement `t`.
+        for (long half = mx; half > 0; --half) {
+            for (long div = t, pal = getPalindrome(half); div >= half / 11; div -= 2) {
+                if (pal %  div == 0) return pal % 1337;
+            }
+        }
+        return 0;
+    }
+};
+```
+
+## NOTE
+
+Good article: https://leetcode.com/problems/largest-palindrome-product/discuss/96306/Java-solutions-with-two-different-approaches
