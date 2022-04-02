@@ -90,28 +90,28 @@ Or
 // Space: O(1)
 class Solution {
     int getPalindrome(int half, bool odd) {
-        int pal = half;
+        int ans = half;
         if (odd) half /= 10;
-        for (; half; half /= 10) pal = pal * 10 + half % 10;
-        return pal;
+        for (; half; half /= 10) ans = ans * 10 + half % 10;
+        return ans;
     }
     bool isPrime(int n) {
-        if (n < 2) return false;
-        for (int d = 2; d * d <= n; ++d) {
-            if (n % d == 0) return false;
+        if (n == 1) return false;
+        for (int i = 2; i * i <= n; ++i) {
+            if (n % i == 0) return false;
         }
         return true;
     }
 public:
     int primePalindrome(int n) {
-        for (int len = 1; true; ++len) {
-            int begin = pow(10, (len - 1) / 2), end = pow(10, (len + 1) / 2);
-            for (int half = begin; half < end; ++half) {
+        for (int len = log10(n) + 1; true; ++len) {
+            int half = pow(10, (len - 1) / 2), end = half * 10;
+            for (; half < end; ++half) {
                 int pal = getPalindrome(half, len % 2);
                 if (pal >= n && isPrime(pal)) return pal;
             }
         }
-        return -1;
+        return 0;
     }
 };
 ```
