@@ -1281,7 +1281,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1474 | Delete N Nodes After M Nodes of a Linked List | Easy | [Solution](leetcode/1474.%20Delete%20N%20Nodes%20After%20M%20Nodes%20of%20a%20Linked%20List)
 1475 | Final Prices With a Special Discount in a Shop | Easy | [Solution](leetcode/1475.%20Final%20Prices%20With%20a%20Special%20Discount%20in%20a%20Shop)
 1476 | Subrectangle Queries | Medium | [Solution](leetcode/1476.%20Subrectangle%20Queries)
-1477 | Find Two Non-overlapping Sub-arrays Each With Target Sum |  | [Solution](leetcode/1477.%20Find%20Two%20Non-overlapping%20Sub-arrays%20Each%20With%20Target%20Sum)
+1477 | Find Two Non-overlapping Sub-arrays Each With Target Sum | Medium | [Solution](leetcode/1477.%20Find%20Two%20Non-overlapping%20Sub-arrays%20Each%20With%20Target%20Sum)
 1478 | Allocate Mailboxes | Hard | [Solution](leetcode/1478.%20Allocate%20Mailboxes)
 1480 | Running Sum of 1d Array | Easy | [Solution](leetcode/1480.%20Running%20Sum%20of%201d%20Array)
 1481 | Least Number of Unique Integers after K Removals | Medium | [Solution](leetcode/1481.%20Least%20Number%20of%20Unique%20Integers%20after%20K%20Removals)
@@ -1845,6 +1845,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2216 | Minimum Deletions to Make Array Beautiful | Medium | [Solution](leetcode/2216.%20Minimum%20Deletions%20to%20Make%20Array%20Beautiful)
 2217 | Find Palindrome With Fixed Length | Medium | [Solution](leetcode/2217.%20Find%20Palindrome%20With%20Fixed%20Length)
 2218 | Maximum Value of K Coins From Piles | Hard | [Solution](leetcode/2218.%20Maximum%20Value%20of%20K%20Coins%20From%20Piles)
+2220 | Minimum Bit Flips to Convert Number | Easy | [Solution](leetcode/2220.%20Minimum%20Bit%20Flips%20to%20Convert%20Number)
+2221 | Find Triangular Sum of an Array | Medium | [Solution](leetcode/2221.%20Find%20Triangular%20Sum%20of%20an%20Array)
+2222 | Number of Ways to Select Buildings | Medium | [Solution](leetcode/2222.%20Number%20of%20Ways%20to%20Select%20Buildings)
 
 
 # FAQ
