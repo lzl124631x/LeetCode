@@ -39,7 +39,7 @@ Note that 676 is not a superpalindrome: 26 * 26 = 676, but 26 is not a palindrom
 
 ## Solution 1.
 
-The basic idea was to generate palindromes in range, and test if its square root is also a palindrome. Since getting the square root for a string is difficult, we can think in the other direction.
+The basic idea was to generate palindromes in range, and test if its square root is also a palindrome. But since the palindromes in range is still a large number, we will get TLE.
 
 Generate the square root palindrome first, then see if its square is also a palindrome in range.
 
@@ -49,25 +49,23 @@ Generate the square root palindrome first, then see if its square is also a pali
 // Time: O(W^(1/4)*logW)
 // Space: O(logW)
 class Solution {
-    bool isPalindrome(long n) {
-        long r = 0;
-        for (long tmp = n; tmp; tmp /= 10) r = r * 10 + tmp % 10;
-        return r == n;
-    }
     long getPalindrome(long half, bool odd) {
-        long pal = half;
+        long ans = half;
         if (odd) half /= 10;
-        for (; half; half /= 10) pal = pal * 10 + half % 10;
-        return pal;
+        for (; half; half /= 10) ans = ans * 10 + half % 10;
+        return ans;
+    }
+    bool isPalindrome(long n) {
+        long tmp = n, r = 0;
+        for (; tmp; tmp /= 10) r = r * 10 + tmp % 10;
+        return r == n;
     }
 public:
     int superpalindromesInRange(string left, string right) {
-        long L = stol(left), R = stol(right);
-        int ans = 0;
+        long L = stoll(left), R = stoll(right), ans = 0;
         for (int len = 1; true; ++len) {
-            long begin = pow(10, (len - 1) / 2), end = pow(10, (len + 1) / 2);
-            for (long half = begin; half < end; ++half) {
-                long n = getPalindrome(half, len % 2), sq = n * n;
+            for (long half = pow(10L, (len - 1) / 2), end = half * 10; half < end; ++half) {
+                long pal = getPalindrome(half, len % 2), sq = pal * pal;
                 if (sq < L) continue;
                 if (sq > R) return ans;
                 ans += isPalindrome(sq);
