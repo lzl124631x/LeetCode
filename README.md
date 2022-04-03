@@ -1848,6 +1848,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2220 | Minimum Bit Flips to Convert Number | Easy | [Solution](leetcode/2220.%20Minimum%20Bit%20Flips%20to%20Convert%20Number)
 2221 | Find Triangular Sum of an Array | Medium | [Solution](leetcode/2221.%20Find%20Triangular%20Sum%20of%20an%20Array)
 2222 | Number of Ways to Select Buildings | Medium | [Solution](leetcode/2222.%20Number%20of%20Ways%20to%20Select%20Buildings)
+2224 | Minimum Number of Operations to Convert Time | Easy | [Solution](leetcode/2224.%20Minimum%20Number%20of%20Operations%20to%20Convert%20Time)
+2225 | Find Players With Zero or One Losses | Medium | [Solution](leetcode/2225.%20Find%20Players%20With%20Zero%20or%20One%20Losses)
+2226 | Maximum Candies Allocated to K Children | Medium | [Solution](leetcode/2226.%20Maximum%20Candies%20Allocated%20to%20K%20Children)
+2227 | Encrypt and Decrypt Strings | Hard | [Solution](leetcode/2227.%20Encrypt%20and%20Decrypt%20Strings)
 
 
 # FAQ
