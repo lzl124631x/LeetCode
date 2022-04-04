@@ -6,7 +6,7 @@
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/09/21/linked1.jpg" style="width: 722px; height: 202px;">
+<img alt="" src="https://assets.leetcode.com/uploads/2020/09/21/linked1.jpg" style="width: 400px; height: 112px;">
 <pre><strong>Input:</strong> head = [1,2,3,4,5], k = 2
 <strong>Output:</strong> [1,4,3,2,5]
 </pre>
@@ -15,24 +15,6 @@
 
 <pre><strong>Input:</strong> head = [7,9,6,6,7,8,3,0,9,5], k = 5
 <strong>Output:</strong> [7,9,6,6,8,7,3,0,9,5]
-</pre>
-
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input:</strong> head = [1], k = 1
-<strong>Output:</strong> [1]
-</pre>
-
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input:</strong> head = [1,2], k = 1
-<strong>Output:</strong> [2,1]
-</pre>
-
-<p><strong>Example 5:</strong></p>
-
-<pre><strong>Input:</strong> head = [1,2,3], k = 2
-<strong>Output:</strong> [1,2,3]
 </pre>
 
 <p>&nbsp;</p>
@@ -45,8 +27,11 @@
 </ul>
 
 
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon)
+
 **Related Topics**:  
-[Linked List](https://leetcode.com/tag/linked-list/)
+[Linked List](https://leetcode.com/tag/linked-list/), [Two Pointers](https://leetcode.com/tag/two-pointers/)
 
 **Similar Questions**:
 * [Remove Nth Node From End of List (Medium)](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
@@ -62,19 +47,20 @@
 // Space: O(1)
 class Solution {
     int getLength(ListNode *head) {
-        int len = 0;
-        for (; head; head = head->next) ++len;
-        return len;
+        int ans = 0;
+        for (; head; head = head->next) ++ans;
+        return ans;
+    }
+    ListNode *getNode(ListNode *head, int k) {
+        while (--k) head = head->next;
+        return head;
     }
 public:
     ListNode* swapNodes(ListNode* head, int k) {
         int len = getLength(head), r = len - k + 1;
         if (r == k) return head;
-        if (r < k) swap(r, k);
-        auto p = head, q = head;
-        while (--k) p = p->next;
-        while (--r) q = q->next;
-        swap(p->val, q->val);
+        ListNode *a = getNode(head, k), *b = getNode(head, r);
+        swap(a->val, b->val);
         return head;
     }
 };
