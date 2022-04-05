@@ -340,6 +340,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 359 | Logger Rate Limiter | Easy | [Solution](leetcode/359.%20Logger%20Rate%20Limiter)
 360 | Sort Transformed Array | Medium | [Solution](leetcode/360.%20Sort%20Transformed%20Array)
 361 | Bomb Enemy | Medium | [Solution](leetcode/361.%20Bomb%20Enemy)
+362 | Design Hit Counter | Medium | [Solution](leetcode/362.%20Design%20Hit%20Counter)
 363 | Max Sum of Rectangle No Larger Than K | Hard | [Solution](leetcode/363.%20Max%20Sum%20of%20Rectangle%20No%20Larger%20Than%20K)
 364 | Nested List Weight Sum II | Medium | [Solution](leetcode/364.%20Nested%20List%20Weight%20Sum%20II)
 365 | Water and Jug Problem |  | [Solution](leetcode/365.%20Water%20and%20Jug%20Problem)
