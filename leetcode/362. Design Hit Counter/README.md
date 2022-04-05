@@ -60,20 +60,57 @@ hitCounter.getHits(301); // get hits at timestamp 301, return 3.
 // OJ: https://leetcode.com/problems/design-hit-counter/
 // Author: github.com/lzl124631x
 // Time:
-//      HitCounter, hit: O(1)
-//      getHits: amortized O(1)
+//      HitCounter: O(1)
+//      hit, getHits: amortized O(1)
 // Space: O(N)
 class HitCounter {
     queue<int> q;
+    void clear(int timestamp) {
+        int start = timestamp - 300;
+        while (q.size() && q.front() <= start) q.pop();
+    }
 public:
     HitCounter() {}
     void hit(int timestamp) {
+        clear(timestamp);
         q.push(timestamp);
     }
     int getHits(int timestamp) {
-        int start = timestamp - 300;
-        while (q.size() && q.front() <= start) q.pop();
+        clear(timestamp);
         return q.size();
+    }
+};
+```
+
+## Solution 2. Queue
+
+```cpp
+// OJ: https://leetcode.com/problems/design-hit-counter/
+// Author: github.com/lzl124631x
+// Time: O(1) for all
+// Space: O(300)
+class HitCounter {
+    queue<pair<int, int>> q;
+    int cnt = 0;
+    void clear(int timestamp) {
+        int start = timestamp - 300;
+        while (q.size() && q.front().first <= start) {
+            cnt -= q.front().second;
+            q.pop();
+        }
+    }
+public:
+    HitCounter() {}
+    void hit(int timestamp) {
+        clear(timestamp);
+        if (q.size() && q.front().first == timestamp) q.front().second++;
+        else q.emplace(timestamp, 1);
+        ++cnt;
+    }
+    
+    int getHits(int timestamp) {
+        clear(timestamp);
+        return cnt;
     }
 };
 ```
