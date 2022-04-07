@@ -1306,6 +1306,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1503 | Last Moment Before All Ants Fall Out of a Plank | Medium | [Solution](leetcode/1503.%20Last%20Moment%20Before%20All%20Ants%20Fall%20Out%20of%20a%20Plank)
 1504 | Count Submatrices With All Ones | Medium | [Solution](leetcode/1504.%20Count%20Submatrices%20With%20All%20Ones)
 1505 | Minimum Possible Integer After at Most K Adjacent Swaps On Digits | Hard | [Solution](leetcode/1505.%20Minimum%20Possible%20Integer%20After%20at%20Most%20K%20Adjacent%20Swaps%20On%20Digits)
+1506 | Find Root of N-Ary Tree | Medium | [Solution](leetcode/1506.%20Find%20Root%20of%20N-Ary%20Tree)
 1507 | Reformat Date | Easy | [Solution](leetcode/1507.%20Reformat%20Date)
 1508 | Range Sum of Sorted Subarray Sums | Medium | [Solution](leetcode/1508.%20Range%20Sum%20of%20Sorted%20Subarray%20Sums)
 1509 | Minimum Difference Between Largest and Smallest Value in Three Moves | Medium | [Solution](leetcode/1509.%20Minimum%20Difference%20Between%20Largest%20and%20Smallest%20Value%20in%20Three%20Moves)
