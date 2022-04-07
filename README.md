@@ -1807,6 +1807,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2165 | Smallest Value of the Rearranged Number | Medium | [Solution](leetcode/2165.%20Smallest%20Value%20of%20the%20Rearranged%20Number)
 2166 | Design Bitset | Medium | [Solution](leetcode/2166.%20Design%20Bitset)
 2167 | Minimum Time to Remove All Cars Containing Illegal Goods | Hard | [Solution](leetcode/2167.%20Minimum%20Time%20to%20Remove%20All%20Cars%20Containing%20Illegal%20Goods)
+2168 | Unique Substrings With Equal Digit Frequency | Medium | [Solution](leetcode/2168.%20Unique%20Substrings%20With%20Equal%20Digit%20Frequency)
 2169 | Count Operations to Obtain Zero | Easy | [Solution](leetcode/2169.%20Count%20Operations%20to%20Obtain%20Zero)
 2170 | Minimum Operations to Make the Array Alternating | Medium | [Solution](leetcode/2170.%20Minimum%20Operations%20to%20Make%20the%20Array%20Alternating)
 2171 | Removing Minimum Number of Magic Beans | Medium | [Solution](leetcode/2171.%20Removing%20Minimum%20Number%20of%20Magic%20Beans)
