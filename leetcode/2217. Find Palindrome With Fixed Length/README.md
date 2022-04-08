@@ -53,7 +53,7 @@ For a given `rank = Q[i]`, `half = begin + Q[i] - 1`. We can use `getPalindrome`
 ```cpp
 // OJ: https://leetcode.com/problems/find-palindrome-with-fixed-length/
 // Author: github.com/lzl124631x
-// Time: O(QlogL)
+// Time: O(QL)
 // Space: O(1) extra space
 class Solution {
     long getPalindrome(long half, bool odd) {
