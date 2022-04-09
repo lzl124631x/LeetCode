@@ -101,6 +101,30 @@ If we calculate from left to right, `hash("abc") = a * p^0 + b * p^1 + c * p^2`.
 
 If we calculate from right to left, we can leverage the Rabin-Karp algorithm which only requires multiplication. We get `hash("dcb") = d * p^2 + c * p^1 + b * p^0` first. To get `hash("abc")`, we just need to multiply by `p` then add `a` then subtract `d * p^3`.
 
+## Solution 2.
+
+Same as Solution 1, but we calculate the hashes backward and only save the last matched index.
+
+```cpp
+// OJ: https://leetcode.com/problems/find-substring-with-given-hash-value/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    string subStrHash(string s, int p, int mod, int k, int target) {
+        long h = 0, N = s.size(), pp = 1, start = -1; // `pp` = p^k
+        for (int i = N - 1; i >= 0; --i) {
+            h = (h * p + (s[i] - 'a' + 1)) % mod; // push r[i] into the window
+            if (i + k >= N) pp = pp * p % mod;
+            else h = (h - (s[i + k] - 'a' + 1) * pp % mod + mod) % mod; // pop r[i-k] out of the window
+            if (i <= N - k && h == target) start = i; 
+        }
+        return s.substr(start, k);
+    }
+};
+```
+
 
 ## Discuss
 
