@@ -59,3 +59,30 @@ public:
     }
 };
 ```
+
+## Solution 2. Bucket Sort
+
+```cpp
+// OJ: https://leetcode.com/problems/minimize-product-sum-of-two-arrays/
+// Author: github.com/lzl124631x
+// Time: O(N + K) where `K` is the range of values in `A` and `B`.
+// Space: O(K)
+class Solution {
+public:
+    int minProductSum(vector<int>& A, vector<int>& B) {
+        int ca[101] = {}, cb[101] = {}, ans = 0;
+        for (int n : A) ca[n]++;
+        for (int n : B) cb[n]++;
+        for (int i = 1, j = 100, cnt = 0; cnt < A.size();) {
+            while (i < 101 && ca[i] == 0) ++i;
+            while (j > 0 && cb[j] == 0) --j;
+            int d = min(ca[i], cb[j]);
+            ans += i * j * d;
+            ca[i] -= d;
+            cb[j] -= d;
+            cnt += d;
+        }
+        return ans;
+    }
+};
+```
