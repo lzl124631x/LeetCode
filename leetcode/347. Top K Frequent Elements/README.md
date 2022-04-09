@@ -113,7 +113,7 @@ public:
         vector<int> ans;
         for (auto &[n, c] : cnt) ans.push_back(n);
         if (ans.size() == k) return ans;
-        function<int(int, int)> partition = [&](int L, int R) {
+        auto partition = [&](int L, int R) {
             int i = L, j = L, pivotIndex = L + rand() % (R - L + 1), pivot = cnt[ans[pivotIndex]];
             swap(ans[pivotIndex], ans[R]);
             for (; i < R; ++i) {
