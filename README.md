@@ -1580,6 +1580,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1870 | Minimum Speed to Arrive on Time | Medium | [Solution](leetcode/1870.%20Minimum%20Speed%20to%20Arrive%20on%20Time)
 1871 | Jump Game VII | Medium | [Solution](leetcode/1871.%20Jump%20Game%20VII)
 1872 | Stone Game VIII | Hard | [Solution](leetcode/1872.%20Stone%20Game%20VIII)
+1874 | Minimize Product Sum of Two Arrays | Medium | [Solution](leetcode/1874.%20Minimize%20Product%20Sum%20of%20Two%20Arrays)
 1876 | Substrings of Size Three with Distinct Characters | Easy | [Solution](leetcode/1876.%20Substrings%20of%20Size%20Three%20with%20Distinct%20Characters)
 1877 | Minimize Maximum Pair Sum in Array | Medium | [Solution](leetcode/1877.%20Minimize%20Maximum%20Pair%20Sum%20in%20Array)
 1878 | Get Biggest Three Rhombus Sums in a Grid | Medium | [Solution](leetcode/1878.%20Get%20Biggest%20Three%20Rhombus%20Sums%20in%20a%20Grid)
