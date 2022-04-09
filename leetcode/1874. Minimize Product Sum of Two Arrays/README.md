@@ -60,7 +60,7 @@ public:
 };
 ```
 
-## Solution 2. Bucket Sort
+## Solution 2. Counting Sort
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimize-product-sum-of-two-arrays/
