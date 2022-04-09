@@ -1,4 +1,4 @@
-# [2156. Find Substring With Given Hash Value (Medium)](https://leetcode.com/problems/find-substring-with-given-hash-value/)
+# [2156. Find Substring With Given Hash Value (Hard)](https://leetcode.com/problems/find-substring-with-given-hash-value/)
 
 <p>The hash of a <strong>0-indexed</strong> string <code>s</code> of length <code>k</code>, given integers <code>p</code> and <code>m</code>, is computed using the following function:</p>
 
@@ -45,6 +45,9 @@ Note that "bxz" also has a hash of 32 but it appears later than "fbx".
 </ul>
 
 
+**Related Topics**:  
+[String](https://leetcode.com/tag/string/), [Sliding Window](https://leetcode.com/tag/sliding-window/), [Rolling Hash](https://leetcode.com/tag/rolling-hash/), [Hash Function](https://leetcode.com/tag/hash-function/)
+
 **Similar Questions**:
 * [Distinct Echo Substrings (Hard)](https://leetcode.com/problems/distinct-echo-substrings/)
 
@@ -68,16 +71,14 @@ public:
         vector<long> hash(N);
         string r(rbegin(s), rend(s));
         for (int i = 0; i < N; ++i) {
-            if (i < k) pp = pp * p % mod;
             h = (h * p + (r[i] - 'a' + 1)) % mod; // push r[i] into the window
-            if (i - k >= 0) { // pop r[i-k] out of the window
-                h = (h - (r[i - k] - 'a' + 1) * pp % mod + mod) % mod;
-            }
+            if (i < k) pp = pp * p % mod;
+            else h = (h - (r[i - k] - 'a' + 1) * pp % mod + mod) % mod; // pop r[i-k] out of the window
             if (i >= k - 1) hash[i] = h;
         }
         reverse(begin(hash), end(hash));
         for (int i = 0; i < N; ++i) {
-            if (hash[i] == target) return s.substr(i, k); // hash[i] is the hash of `s[i .. (i+k-1)]`
+            if (hash[i] == target) return s.substr(i, k);
         }
         return "";
     }
