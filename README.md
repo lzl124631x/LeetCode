@@ -1860,6 +1860,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2227 | Encrypt and Decrypt Strings | Hard | [Solution](leetcode/2227.%20Encrypt%20and%20Decrypt%20Strings)
 2231 | Largest Number After Digit Swaps by Parity | Easy | [Solution](leetcode/2231.%20Largest%20Number%20After%20Digit%20Swaps%20by%20Parity)
 2232 | Minimize Result by Adding Parentheses to Expression | Medium | [Solution](leetcode/2232.%20Minimize%20Result%20by%20Adding%20Parentheses%20to%20Expression)
+2233 | Maximum Product After K Increments | Medium | [Solution](leetcode/2233.%20Maximum%20Product%20After%20K%20Increments)
 
 
 # FAQ
