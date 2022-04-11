@@ -49,20 +49,19 @@ Note that there may be other sequences of swaps but it can be shown that 87655 i
 class Solution {
 public:
     int largestInteger(int n) {
-        vector<int> v, odd, even;
-        for (; n; n /= 10) v.push_back(n % 10);
-        reverse(begin(v), end(v));
-        for (int i = 0; i < v.size(); ++i) {
-            if (v[i] % 2) odd.push_back(i);
+        vector<int> odd, even;
+        auto s = to_string(n);
+        for (int i = 0; i < s.size(); ++i) {
+            if ((s[i] - '0') % 2) odd.push_back(i);
             else even.push_back(i);
         }
-        auto cmp = [&](int a, int b) { return v[a] > v[b]; };
+        auto cmp = [&](int a, int b) { return s[a] > s[b]; };
         sort(begin(odd), end(odd), cmp);
         sort(begin(even), end(even), cmp);
         int ans = 0;
-        for (int i = 0, j = 0, k = 0; i < v.size(); ++i) {
-            if (v[i] % 2) ans = ans * 10 + v[odd[j++]];
-            else ans = ans * 10 + v[even[k++]];
+        for (int i = 0, j = 0, k = 0; i < s.size(); ++i) {
+            if ((s[i] - '0') % 2) ans = ans * 10 + (s[odd[j++]] - '0');
+            else ans = ans * 10 + (s[even[k++]] - '0');
         }
         return ans;
     }
