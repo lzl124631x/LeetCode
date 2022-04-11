@@ -1799,7 +1799,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2151 | Maximum Good People Based on Statements | Hard | [Solution](leetcode/2151.%20Maximum%20Good%20People%20Based%20on%20Statements)
 2154 | Keep Multiplying Found Values by Two | Easy | [Solution](leetcode/2154.%20Keep%20Multiplying%20Found%20Values%20by%20Two)
 2155 | All Divisions With the Highest Score of a Binary Array | Medium | [Solution](leetcode/2155.%20All%20Divisions%20With%20the%20Highest%20Score%20of%20a%20Binary%20Array)
-2156 | Find Substring With Given Hash Value | Medium | [Solution](leetcode/2156.%20Find%20Substring%20With%20Given%20Hash%20Value)
+2156 | Find Substring With Given Hash Value | Hard | [Solution](leetcode/2156.%20Find%20Substring%20With%20Given%20Hash%20Value)
 2157 | Groups of Strings | Hard | [Solution](leetcode/2157.%20Groups%20of%20Strings)
 2160 | Minimum Sum of Four Digit Number After Splitting Digits | Easy | [Solution](leetcode/2160.%20Minimum%20Sum%20of%20Four%20Digit%20Number%20After%20Splitting%20Digits)
 2161 | Partition Array According to Given Pivot | Medium | [Solution](leetcode/2161.%20Partition%20Array%20According%20to%20Given%20Pivot)
@@ -1856,6 +1856,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2225 | Find Players With Zero or One Losses | Medium | [Solution](leetcode/2225.%20Find%20Players%20With%20Zero%20or%20One%20Losses)
 2226 | Maximum Candies Allocated to K Children | Medium | [Solution](leetcode/2226.%20Maximum%20Candies%20Allocated%20to%20K%20Children)
 2227 | Encrypt and Decrypt Strings | Hard | [Solution](leetcode/2227.%20Encrypt%20and%20Decrypt%20Strings)
+2231 | Largest Number After Digit Swaps by Parity | Easy | [Solution](leetcode/2231.%20Largest%20Number%20After%20Digit%20Swaps%20by%20Parity)
 
 
 # FAQ
