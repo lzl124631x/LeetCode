@@ -1829,6 +1829,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2189 | Number of Ways to Build House of Cards | Medium | [Solution](leetcode/2189.%20Number%20of%20Ways%20to%20Build%20House%20of%20Cards)
 2190 | Most Frequent Number Following Key In an Array | Easy | [Solution](leetcode/2190.%20Most%20Frequent%20Number%20Following%20Key%20In%20an%20Array)
 2191 | Sort the Jumbled Numbers | Medium | [Solution](leetcode/2191.%20Sort%20the%20Jumbled%20Numbers)
+2192 | All Ancestors of a Node in a Directed Acyclic Graph | Medium | [Solution](leetcode/2192.%20All%20Ancestors%20of%20a%20Node%20in%20a%20Directed%20Acyclic%20Graph)
 2193 | Minimum Number of Moves to Make Palindrome | Hard | [Solution](leetcode/2193.%20Minimum%20Number%20of%20Moves%20to%20Make%20Palindrome)
 2194 | Cells in a Range on an Excel Sheet | Easy | [Solution](leetcode/2194.%20Cells%20in%20a%20Range%20on%20an%20Excel%20Sheet)
 2195 | Append K Integers With Minimal Sum | Medium | [Solution](leetcode/2195.%20Append%20K%20Integers%20With%20Minimal%20Sum)
