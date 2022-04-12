@@ -77,3 +77,32 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/shift-2d-grid/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(1)
+class Solution {
+public:
+    vector<vector<int>> shiftGrid(vector<vector<int>>& A, int k) {
+        int M = A.size(), N = A[0].size(), len = M * N;
+        k %= len;
+        if (k == 0) return A;
+        for (int i = 0, cnt = 0; cnt < len; ++i) {
+            int j = i, next = (j - k + len) % len, tmp = A[j / N][j % N]; 
+            while (next != i) {
+                A[j / N][j % N] = A[next / N][next % N];
+                j = next;
+                next = (j - k + len) % len;
+                ++cnt;
+            } 
+            A[j / N][j % N] = tmp;
+            ++cnt;
+        }
+        return A;
+    }
+};
+```
