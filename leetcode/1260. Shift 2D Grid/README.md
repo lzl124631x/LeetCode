@@ -78,7 +78,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. In-place Rotation
 
 ```cpp
 // OJ: https://leetcode.com/problems/shift-2d-grid/
@@ -92,15 +92,14 @@ public:
         k %= len;
         if (k == 0) return A;
         for (int i = 0, cnt = 0; cnt < len; ++i) {
-            int j = i, next = (j - k + len) % len, tmp = A[j / N][j % N]; 
-            while (next != i) {
-                A[j / N][j % N] = A[next / N][next % N];
+            int j = i, tmp = A[j / N][j % N]; 
+            do {
+                int next = (j + k) % len, nextVal = A[next / N][next % N];
+                A[next / N][next % N] = tmp;
+                tmp = nextVal;
                 j = next;
-                next = (j - k + len) % len;
                 ++cnt;
-            } 
-            A[j / N][j % N] = tmp;
-            ++cnt;
+            } while (j != i);
         }
         return A;
     }
