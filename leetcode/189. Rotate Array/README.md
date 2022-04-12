@@ -71,7 +71,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. In-place Rotation
 
 ```cpp
 // OJ: https://leetcode.com/problems/rotate-array/
@@ -93,6 +93,34 @@ public:
                 j = t;
                 ++cnt;
             } while (j != i);
+        }
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/rotate-array/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    void rotate(vector<int>& A, int k) {
+        int N = A.size(), cnt = 0;
+        k %= N;
+        if (k == 0) return;
+        for (int i = 0; cnt < N; ++i) {
+            int j = i, next = (j - k + N) % N, tmp = A[j];
+            ++cnt;
+            while (next != i) {
+                A[j] = A[next];
+                j = next;
+                next = (j - k + N) % N;
+                ++cnt;
+            }
+            A[j] = tmp;
         }
     }
 };
