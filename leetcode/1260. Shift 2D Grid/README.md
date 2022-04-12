@@ -44,8 +44,11 @@
 </ul>
 
 
+**Companies**:  
+[Amazon](https://leetcode.com/company/amazon)
+
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/)
+[Array](https://leetcode.com/tag/array/), [Matrix](https://leetcode.com/tag/matrix/), [Simulation](https://leetcode.com/tag/simulation/)
 
 ## Solution 1.
 
@@ -57,8 +60,10 @@
 class Solution {
 public:
     vector<vector<int>> shiftGrid(vector<vector<int>>& A, int k) {
-        queue<int> q;
         int M = A.size(), N = A[0].size();
+        k %= M * N;
+        if (k == 0) return A;
+        queue<int> q;
         for (int i = 0; i < M * N + k; ++i) {
             int j = i % (M * N), x = j / N, y = j % N;
             if (i < k) q.push(A[x][y]);
