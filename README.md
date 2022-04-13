@@ -686,6 +686,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 755 | Pour Water | Medium | [Solution](leetcode/755.%20Pour%20Water)
 756 | Pyramid Transition Matrix | Medium | [Solution](leetcode/756.%20Pyramid%20Transition%20Matrix)
 757 | Set Intersection Size At Least Two | Hard | [Solution](leetcode/757.%20Set%20Intersection%20Size%20At%20Least%20Two)
+758 | Bold Words in String | Medium | [Solution](leetcode/758.%20Bold%20Words%20in%20String)
 759 | Employee Free Time | Hard | [Solution](leetcode/759.%20Employee%20Free%20Time)
 760 | Find Anagram Mappings | Easy | [Solution](leetcode/760.%20Find%20Anagram%20Mappings)
 761 | Special Binary String | Hard | [Solution](leetcode/761.%20Special%20Binary%20String)
