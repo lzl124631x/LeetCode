@@ -1858,6 +1858,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2225 | Find Players With Zero or One Losses | Medium | [Solution](leetcode/2225.%20Find%20Players%20With%20Zero%20or%20One%20Losses)
 2226 | Maximum Candies Allocated to K Children | Medium | [Solution](leetcode/2226.%20Maximum%20Candies%20Allocated%20to%20K%20Children)
 2227 | Encrypt and Decrypt Strings | Hard | [Solution](leetcode/2227.%20Encrypt%20and%20Decrypt%20Strings)
+2229 | Check if an Array Is Consecutive | Easy | [Solution](leetcode/2229.%20Check%20if%20an%20Array%20Is%20Consecutive)
 2231 | Largest Number After Digit Swaps by Parity | Easy | [Solution](leetcode/2231.%20Largest%20Number%20After%20Digit%20Swaps%20by%20Parity)
 2232 | Minimize Result by Adding Parentheses to Expression | Medium | [Solution](leetcode/2232.%20Minimize%20Result%20by%20Adding%20Parentheses%20to%20Expression)
 2233 | Maximum Product After K Increments | Medium | [Solution](leetcode/2233.%20Maximum%20Product%20After%20K%20Increments)
