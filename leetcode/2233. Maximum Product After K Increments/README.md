@@ -108,15 +108,11 @@ public:
 // Space: O(1)
 class Solution {
     void fillK(vector<int> &A, int k) {
-        int N = A.size(), sum = 0, next = 0, i = 0; // `sum` is the sum of increments we used.
-        for (; i < N - 1; ++i) {
-            next = sum + (i + 1) * (A[i + 1] - A[i]); // if we bump all `A[0]~A[i]` to be `A[i+1]`, it takes `(i+1) * (A[i+1] - A[i])` additional increments
-            if (next > k) break;
-            sum = next;
-        }
-        int d = (k - sum) / (i + 1), r = (k - sum) % (i + 1); // After we bump all `A[0]~A[i-1]` to be `A[i]`, there are still `k-sum` increments left. We share these increments across `A[0]~A[i]` `i+1` elements, each of which get `d` increments, and `r` of which get one additional increment.
-        for (int j = 0; j <= i; ++j) {
-            A[j] = A[i] + d;
+        long N = A.size(), sum = 0, i = 0; 
+        while (i < N && A[i] * i - sum <= k) sum += A[i++]; // If we bump `A[0]~A[i-1]` to be `A[i]`, we need `A[i] * i - (A[0]+...+A[i-1])` increments which should be no more than `k`
+        int h = (sum + k) / i, r = (sum + k) % i;  // We split `sum + k` heights among `A[0]~A[i-1]` `i` elements.
+        for (int j = 0; j < i; ++j) {
+            A[j] = h; 
             if (j < r) A[j]++;
         }
     }
@@ -130,3 +126,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/maximum-product-after-k-increments/discuss/1937658
