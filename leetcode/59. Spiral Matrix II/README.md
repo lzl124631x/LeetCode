@@ -23,8 +23,11 @@
 </ul>
 
 
+**Companies**:  
+[tiktok](https://leetcode.com/company/tiktok), [Apple](https://leetcode.com/company/apple), [Amazon](https://leetcode.com/company/amazon)
+
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/)
+[Array](https://leetcode.com/tag/array/), [Matrix](https://leetcode.com/tag/matrix/), [Simulation](https://leetcode.com/tag/simulation/)
 
 **Similar Questions**:
 * [Spiral Matrix (Medium)](https://leetcode.com/problems/spiral-matrix/)
@@ -36,7 +39,7 @@
 // OJ: https://leetcode.com/problems/spiral-matrix-ii/
 // Author: github.com/lzl124631x
 // Time: O(N^2)
-// Space: O(1)
+// Space: O(1) extra space
 class Solution {
 public:
     vector<vector<int>> generateMatrix(int n) {
@@ -49,6 +52,30 @@ public:
             for (int j = 0; j < len; ++j) ans[n - i - j - 1][i] = d++;
         }
         if (n % 2) ans[n / 2][n / 2] = n * n;
+        return ans;
+    }
+};
+```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/spiral-matrix-ii/
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(1) extra space
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>> ans(n, vector<int>(n));
+        int i = 0, j = 0, d = 0, dirs[4][2] = {{0,1},{1,0},{0,-1},{-1,0}};
+        for (int val = 1; val <= n * n; ++val) {
+            ans[i][j] = val;
+            int x = i + dirs[d][0], y = j + dirs[d][1];
+            if (x < 0 || x >= n || y < 0 || y >= n || ans[x][y]) d = (d + 1) % 4;
+            i += dirs[d][0];
+            j += dirs[d][1];
+        }
         return ans;
     }
 };
