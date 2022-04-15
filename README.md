@@ -1371,6 +1371,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1583 | Count Unhappy Friends | Medium | [Solution](leetcode/1583.%20Count%20Unhappy%20Friends)
 1584 | Min Cost to Connect All Points | Medium | [Solution](leetcode/1584.%20Min%20Cost%20to%20Connect%20All%20Points)
 1585 | Check If String Is Transformable With Substring Sort Operations | Hard | [Solution](leetcode/1585.%20Check%20If%20String%20Is%20Transformable%20With%20Substring%20Sort%20Operations)
+1586 | Binary Search Tree Iterator II | Medium | [Solution](leetcode/1586.%20Binary%20Search%20Tree%20Iterator%20II)
 1588 | Sum of All Odd Length Subarrays | Easy | [Solution](leetcode/1588.%20Sum%20of%20All%20Odd%20Length%20Subarrays)
 1589 | Maximum Sum Obtained of Any Permutation | Medium | [Solution](leetcode/1589.%20Maximum%20Sum%20Obtained%20of%20Any%20Permutation)
 1590 | Make Sum Divisible by P | Medium | [Solution](leetcode/1590.%20Make%20Sum%20Divisible%20by%20P)
