@@ -17,24 +17,6 @@
 <strong>Output:</strong> [3,2,null,1]
 </pre>
 
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input:</strong> root = [1], low = 1, high = 2
-<strong>Output:</strong> [1]
-</pre>
-
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input:</strong> root = [1,null,2], low = 1, high = 3
-<strong>Output:</strong> [1,null,2]
-</pre>
-
-<p><strong>Example 5:</strong></p>
-
-<pre><strong>Input:</strong> root = [1,null,2], low = 2, high = 4
-<strong>Output:</strong> [2]
-</pre>
-
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
@@ -46,11 +28,12 @@
 	<li><code>0 &lt;= low &lt;= high &lt;= 10<sup>4</sup></code></li>
 </ul>
 
-**Related Topics**:  
-[Tree](https://leetcode.com/tag/tree/), [Recursion](https://leetcode.com/tag/recursion/)
 
 **Companies**:  
-[Microsoft](https://leetcode.com/company/microsoft)
+[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [Facebook](https://leetcode.com/company/facebook)
+
+**Related Topics**:  
+[Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Binary Search Tree](https://leetcode.com/tag/binary-search-tree/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
 
 ## Solution 1.
 
@@ -62,7 +45,7 @@
 class Solution {
 public:
     TreeNode* trimBST(TreeNode* root, int L, int R) {
-        if (!root) return NULL;
+        if (!root) return nullptr;
         if (root->val < L) return trimBST(root->right, L, R);
         if (root->val > R) return trimBST(root->left, L, R);
         root->left = trimBST(root->left, L, R);
