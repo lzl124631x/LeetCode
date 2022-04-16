@@ -1868,6 +1868,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2235 | Add Two Integers | Easy | [Solution](leetcode/2235.%20Add%20Two%20Integers)
 2236 | Root Equals Sum of Children | Easy | [Solution](leetcode/2236.%20Root%20Equals%20Sum%20of%20Children)
 2239 | Find Closest Number to Zero | Easy | [Solution](leetcode/2239.%20Find%20Closest%20Number%20to%20Zero)
+2240 | Number of Ways to Buy Pens and Pencils | Medium | [Solution](leetcode/2240.%20Number%20of%20Ways%20to%20Buy%20Pens%20and%20Pencils)
 
 
 # FAQ
