@@ -23,8 +23,11 @@
 	<li><code>0 &lt;= Node.val &lt;= 1000</code></li>
 </ul>
 
+**Companies**:  
+[Facebook](https://leetcode.com/company/facebook)
+
 **Related Topics**:  
-[Tree](https://leetcode.com/tag/tree/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Recursion](https://leetcode.com/tag/recursion/)
+[Stack](https://leetcode.com/tag/stack/), [Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Binary Search Tree](https://leetcode.com/tag/binary-search-tree/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
 
 ## Solution 1. In-order Traversal
 
@@ -34,22 +37,16 @@
 // Time: O(N)
 // Space: O(H)
 class Solution {
-private:
-    TreeNode *prev;
-    void inorder(TreeNode *root) {
-        if (!root) return;
-        inorder(root->left);
-        root->left = NULL;
-        prev->right = root;
-        prev = root; 
-        inorder(root->right);
-    }
+    TreeNode *prev = nullptr;
 public:
     TreeNode* increasingBST(TreeNode* root) {
-        TreeNode head;
-        prev = &head;
-        inorder(root);
-        return head.right;
+        if (!root) return nullptr;
+        auto head = increasingBST(root->left);
+        root->left = nullptr;
+        if (prev) prev->right = root;
+        prev = root;
+        root->right = increasingBST(root->right);
+        return head ? head : root;
     }
 };
 ```
@@ -68,7 +65,7 @@ class Solution {
             auto [leftHead, leftTail] = dfs(root->left);
             head = leftHead;
             leftTail->right = root;
-            root->left = NULL;
+            root->left = nullptr;
         }
         if (root->right) {
             auto [rightHead, rightTail] = dfs(root->right);
