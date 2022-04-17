@@ -60,3 +60,25 @@ public:
     }
 };
 ```
+
+Or 
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(U) where `U` is the count of distinct numbers in `A`.
+class Solution {
+public:
+    int minimumRounds(vector<int>& A) {
+        unordered_map<int, int> m;
+        for (int n : A) m[n]++;
+        int ans = 0;
+        for (auto &[n, cnt] : m) {
+            if (cnt == 1) return -1;
+            ans += (cnt + 2) / 3;
+        }
+        return ans;
+    }
+};
+```
