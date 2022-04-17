@@ -1871,6 +1871,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2240 | Number of Ways to Buy Pens and Pencils | Medium | [Solution](leetcode/2240.%20Number%20of%20Ways%20to%20Buy%20Pens%20and%20Pencils)
 2241 | Design an ATM Machine | Medium | [Solution](leetcode/2241.%20Design%20an%20ATM%20Machine)
 2243 | Calculate Digit Sum of a String | Easy | [Solution](leetcode/2243.%20Calculate%20Digit%20Sum%20of%20a%20String)
+2244 | Minimum Rounds to Complete All Tasks | Medium | [Solution](leetcode/2244.%20Minimum%20Rounds%20to%20Complete%20All%20Tasks)
 
 
 # FAQ
