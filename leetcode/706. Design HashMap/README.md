@@ -42,7 +42,7 @@ myHashMap.get(2);    // return -1 (i.e., not found), The map is now [[1,1]]
 
 
 **Companies**:  
-[Microsoft](https://leetcode.com/company/microsoft), [Goldman Sachs](https://leetcode.com/company/goldman-sachs), [LinkedIn](https://leetcode.com/company/linkedin), [Amazon](https://leetcode.com/company/amazon), [Apple](https://leetcode.com/company/apple), [Twitter](https://leetcode.com/company/twitter), [ServiceNow](https://leetcode.com/company/servicenow), [Adobe](https://leetcode.com/company/adobe)
+[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft), [LinkedIn](https://leetcode.com/company/linkedin), [Salesforce](https://leetcode.com/company/salesforce), [Oracle](https://leetcode.com/company/oracle), [Apple](https://leetcode.com/company/apple), [ServiceNow](https://leetcode.com/company/servicenow), [Goldman Sachs](https://leetcode.com/company/goldman-sachs), [Walmart Global Tech](https://leetcode.com/company/walmart-labs), [Bloomberg](https://leetcode.com/company/bloomberg)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Linked List](https://leetcode.com/tag/linked-list/), [Design](https://leetcode.com/tag/design/), [Hash Function](https://leetcode.com/tag/hash-function/)
@@ -73,6 +73,57 @@ public:
     }
     void remove(int key) {
         m[key] = -1;
+    }
+};
+```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/design-hashmap/
+// Author: github.com/lzl124631x
+// Time:
+//		MyHashMap: O(1)
+//		put, get, remove: O(logN) on average, O(N) in the worst case.
+// Space: O(N)
+const int keyRange = 769;
+class Bucket {
+    list<pair<int, int>> items;
+    list<pair<int, int>>::iterator find(int key) {
+        auto it = begin(items);
+        while (it != end(items) && it->first != key) ++it;
+        return it;
+    }
+public:
+    Bucket() {}
+    void put(int key, int val) {
+        auto it = find(key);
+        if (it == end(items)) items.emplace_front(key, val);
+        else it->second = val;
+    }
+    int get(int key) {
+        auto it = find(key);
+        return it != end(items) ? it->second : -1;
+    }
+    void remove(int key) {
+        auto it = find(key);
+        if (it != end(items)) items.erase(it);
+    }
+};
+class MyHashMap {
+    Bucket buckets[keyRange] = {};
+    int hash(int key) { return key % keyRange; };
+public:
+    MyHashMap() {
+    }
+    void put(int key, int value) {
+        buckets[hash(key)].put(key, value);
+    }
+    int get(int key) {
+        return buckets[hash(key)].get(key);
+    }
+    void remove(int key) {
+        buckets[hash(key)].remove(key);
     }
 };
 ```
