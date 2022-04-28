@@ -1,22 +1,54 @@
 # [284. Peeking Iterator (Medium)](https://leetcode.com/problems/peeking-iterator/)
 
-<p>Given an Iterator class interface with methods: <code>next()</code> and <code>hasNext()</code>, design and implement a PeekingIterator that support the <code>peek()</code> operation -- it essentially peek() at the element that will be returned by the next call to next().</p>
+<p>Design an iterator that supports the <code>peek</code> operation on an existing iterator in addition to the <code>hasNext</code> and the <code>next</code> operations.</p>
 
-<p><strong>Example:</strong></p>
+<p>Implement the <code>PeekingIterator</code> class:</p>
 
-<pre>Assume that the iterator is initialized to the beginning of the list: <strong><code>[1,2,3]</code></strong>.
+<ul>
+	<li><code>PeekingIterator(Iterator&lt;int&gt; nums)</code> Initializes the object with the given integer iterator <code>iterator</code>.</li>
+	<li><code>int next()</code> Returns the next element in the array and moves the pointer to the next element.</li>
+	<li><code>boolean hasNext()</code> Returns <code>true</code> if there are still elements in the array.</li>
+	<li><code>int peek()</code> Returns the next element in the array <strong>without</strong> moving the pointer.</li>
+</ul>
 
-Call <strong><code>next()</code></strong> gets you <strong>1</strong>, the first element in the list.
-Now you call <strong><code>peek()</code></strong> and it returns <strong>2</strong>, the next element. Calling <strong><code>next()</code></strong> after that <i><b>still</b></i> return <strong>2</strong>. 
-You call <strong><code>next()</code></strong> the final time and it returns <strong>3</strong>, the last element. 
-Calling <strong><code>hasNext()</code></strong> after that should return <strong>false</strong>.
+<p><strong>Note:</strong> Each language may have a different implementation of the constructor and <code>Iterator</code>, but they all support the <code>int next()</code> and <code>boolean hasNext()</code> functions.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input</strong>
+["PeekingIterator", "next", "peek", "next", "next", "hasNext"]
+[[[1, 2, 3]], [], [], [], [], []]
+<strong>Output</strong>
+[null, 1, 2, 2, 3, false]
+
+<strong>Explanation</strong>
+PeekingIterator peekingIterator = new PeekingIterator([1, 2, 3]); // [<u><strong>1</strong></u>,2,3]
+peekingIterator.next();    // return 1, the pointer moves to the next element [1,<u><strong>2</strong></u>,3].
+peekingIterator.peek();    // return 2, the pointer does not move [1,<u><strong>2</strong></u>,3].
+peekingIterator.next();    // return 2, the pointer moves to the next element [1,2,<u><strong>3</strong></u>]
+peekingIterator.next();    // return 3, the pointer moves to the next element [1,2,3]
+peekingIterator.hasNext(); // return False
 </pre>
 
-<p><b>Follow up</b>: How would you extend your design to be generic and work with all types, not just integer?</p>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 1000</code></li>
+	<li><code>1 &lt;= nums[i] &lt;= 1000</code></li>
+	<li>All the calls to <code>next</code> and <code>peek</code> are valid.</li>
+	<li>At most <code>1000</code> calls will be made to <code>next</code>, <code>hasNext</code>, and <code>peek</code>.</li>
+</ul>
+
+<p>&nbsp;</p>
+<strong>Follow up:</strong> How would you extend your design to be generic and work with all types, not just integer?
+
+**Companies**:  
+[Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[Design](https://leetcode.com/tag/design/)
+[Array](https://leetcode.com/tag/array/), [Design](https://leetcode.com/tag/design/), [Iterator](https://leetcode.com/tag/iterator/)
 
 **Similar Questions**:
 * [Binary Search Tree Iterator (Medium)](https://leetcode.com/problems/binary-search-tree-iterator/)
@@ -30,7 +62,6 @@ Calling <strong><code>hasNext()</code></strong> after that should return <strong
 // Author: github.com/lzl124631x
 // Time: all in O(1)
 // Space: O(1) ignoring the `nums` copy in Iterator
-};
 class PeekingIterator : public Iterator {
     int _next;
     bool _hasNext = false;
@@ -51,4 +82,7 @@ public:
         return val;
     }
     bool hasNext() const {
+        return _hasNext;
+    }
+};
 ```
