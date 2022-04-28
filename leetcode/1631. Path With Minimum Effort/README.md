@@ -43,11 +43,14 @@ This is better than the route of [1,2,2,2,5], where the maximum absolute differe
 	<li><code>1 &lt;= heights[i][j] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+**Companies**:  
+[Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[Binary Search](https://leetcode.com/tag/binary-search/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Union Find](https://leetcode.com/tag/union-find/), [Graph](https://leetcode.com/tag/graph/)
+[Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Union Find](https://leetcode.com/tag/union-find/), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue/), [Matrix](https://leetcode.com/tag/matrix/)
 
 **Similar Questions**:
+* [Swim in Rising Water (Hard)](https://leetcode.com/problems/swim-in-rising-water/)
 * [Path With Maximum Minimum Value (Medium)](https://leetcode.com/problems/path-with-maximum-minimum-value/)
 
 ## Solution 1. Dijkstra
@@ -66,18 +69,17 @@ public:
         dist[0][0] = 0;
         pq.push({ 0, 0, 0 });
         while (pq.size()) {
-            auto [w, x, y] = pq.top();
+            auto [e, x, y] = pq.top();
             pq.pop();
+            if (e > dist[x][y]) continue;
             if (x == M - 1 && y == N - 1) return dist[x][y];
-            if (w > dist[x][y]) continue;
             for (auto &[dx, dy] : dirs) {
                 int a = x + dx, b = y + dy;
                 if (a < 0 || b < 0 || a >= M || b >= N) continue;
-                int d = abs(A[x][y] - A[a][b]);
-                if (dist[a][b] > max(dist[x][y], d)) {
-                    dist[a][b] = max(dist[x][y], d);
-                    pq.push({ dist[a][b], a, b });
-                }
+                int effort = max(e, abs(A[x][y] - A[a][b]));
+                if (effort >= dist[a][b]) continue;
+                dist[a][b] = effort;
+                pq.push({ effort, a, b });
             }
         }
         return -1;
