@@ -35,10 +35,11 @@ There are no more pairs that sum up to 6, hence a total of 1 operation.</pre>
 
 
 **Related Topics**:  
-[Hash Table](https://leetcode.com/tag/hash-table/)
+[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Sorting](https://leetcode.com/tag/sorting/)
 
 **Similar Questions**:
 * [Two Sum (Easy)](https://leetcode.com/problems/two-sum/)
+* [Count Good Meals (Medium)](https://leetcode.com/problems/count-good-meals/)
 
 ## Solution 1.
 
@@ -49,7 +50,7 @@ For each pair `[n, cnt]` in `m`:
 * Otherwise, add `c = min(cnt, m[k - n])` to the answer, and deduct `c` from `m[n]` and `m[k - n]`.
 
 ```cpp
-// OJ: https://leetcode.com/contest/weekly-contest-218/problems/max-number-of-k-sum-pairs/
+// OJ: https://leetcode.com/problems/max-number-of-k-sum-pairs/
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
