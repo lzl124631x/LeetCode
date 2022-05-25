@@ -44,6 +44,26 @@
 
 ## Solution 1. LIS
 
+Since there are two dimensions, we can sort one of the dimensions, say width `w`, to simplify the problem. When we scan from left to right, the width dimension is already sorted so we can ignore this dimension.
+
+```
+[[5,4],[6,4],[6,7],[2,3]]
+// after sorting by `w`
+[[2,3],[5,4],[6,4],[6,7]]
+// Ignoring the `w` dimension
+[3,4,4,7]
+```
+
+This problem becomes finding the longest increasing subsequence (LIS). But one caveat is that `[3,4,7]` might implies `[[2,3],[6,4],[6,7]]` which is invalid. To avoid this issue, we can sort by height after sorting by width first.
+
+```
+[[5,4],[6,4],[6,7],[2,3]]
+// after sorting by `w`, then by `h`
+[[2,3],[5,4],[6,7],[6,4]]
+// Ignoring the `w` dimension
+[3,4,7,4] // Now we can't use [6,4] with [6,7]
+```
+
 ```cpp
 // OJ: https://leetcode.com/problems/russian-doll-envelopes/
 // Author: github.com/lzl124631x
@@ -55,12 +75,12 @@ public:
     int maxEnvelopes(vector<vector<int>>& A) {
         sort(begin(A), end(A), [](auto &a, auto &b) { return a[0] != b[0] ? a[0] < b[0] : a[1] > b[1]; });
         vector<int> dp;
-        for (int i = 0; i < A.size(); ++i) {
-            auto it = lower_bound(begin(dp), end(dp), A[i][1]);
-            if (it == end(dp)) dp.push_back(A[i][1]);
-            else *it = A[i][1];
+        for (auto &v : A) {
+            auto it = lower_bound(begin(dp), end(dp), v[1]);
+            if (it == end(dp)) dp.push_back(v[1]);
+            else *it = v[1];
         }
         return dp.size();
-  }
+    }
 };
 ```
