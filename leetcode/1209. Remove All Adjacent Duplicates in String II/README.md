@@ -1,12 +1,10 @@
 # [1209. Remove All Adjacent Duplicates in String II (Medium)](https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/)
 
-<p>Given a string&nbsp;<code>s</code>, a <em>k</em>&nbsp;<em>duplicate removal</em>&nbsp;consists of choosing <code>k</code>&nbsp;adjacent and equal letters from&nbsp;<code>s</code> and removing&nbsp;them causing the left and the right side of the deleted substring to concatenate together.</p>
+<p>You are given a string <code>s</code> and an integer <code>k</code>, a <code>k</code> <strong>duplicate removal</strong> consists of choosing <code>k</code> adjacent and equal letters from <code>s</code> and removing them, causing the left and the right side of the deleted substring to concatenate together.</p>
 
-<p>We repeatedly make <code>k</code> duplicate removals on <code>s</code> until we no longer can.</p>
+<p>We repeatedly make <code>k</code> <strong>duplicate removals</strong> on <code>s</code> until we no longer can.</p>
 
-<p>Return the final string after all such duplicate removals have been made.</p>
-
-<p>It is guaranteed that the answer is unique.</p>
+<p>Return the final string after all such duplicate removals have been made. It is guaranteed that the answer is unique.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -34,17 +32,18 @@ Finally delete "ddd", get "aa"</pre>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= s.length &lt;= 10^5</code></li>
-	<li><code>2 &lt;= k &lt;= 10^4</code></li>
+	<li><code>1 &lt;= s.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>2 &lt;= k &lt;= 10<sup>4</sup></code></li>
 	<li><code>s</code> only contains lower case English letters.</li>
 </ul>
 
 
 **Related Topics**:  
-[Stack](https://leetcode.com/tag/stack/)
+[String](https://leetcode.com/tag/string/), [Stack](https://leetcode.com/tag/stack/)
 
 **Similar Questions**:
 * [Remove All Adjacent Duplicates In String (Easy)](https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/)
+* [Replace Non-Coprime Numbers in Array (Hard)](https://leetcode.com/problems/replace-non-coprime-numbers-in-array/)
 
 ## Solution 1. Stack
 
@@ -62,8 +61,8 @@ public:
             else if (++st.back().second == k) st.pop_back();
         }
         string ans;
-        for (int i = 0; i < st.size(); ++i) {
-            for (int j = 0; j < st[i].second; ++j) ans += st[i].first;
+        for (auto &[c, cnt] : st) {
+            while (cnt--) ans += c;
         }
         return ans;
     }

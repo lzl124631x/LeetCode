@@ -55,14 +55,14 @@
 // Time: O(E + VlogV)
 // Space: O(E)
 class Solution {
-    typedef pair<int, int> ipair;
+    typedef pair<int, int> PII;
 public:
     int networkDelayTime(vector<vector<int>>& E, int n, int k) {
-        vector<vector<ipair>> G(n);
+        vector<vector<PII>> G(n);
         for (auto &e : E) G[e[0] - 1].emplace_back(e[1] - 1, e[2]);
         vector<int> dist(n, INT_MAX);
         dist[k - 1] = 0;
-        priority_queue<ipair, vector<ipair>, greater<>> pq;
+        priority_queue<PII, vector<PII>, greater<>> pq;
         pq.emplace(0, k - 1);
         while (pq.size()) {
             auto [cost, u] = pq.top();
@@ -96,8 +96,7 @@ public:
         for (int i = 1; i < n; ++i) {
             for (auto &e : E) {
                 int u = e[0] - 1, v = e[1] - 1, w = e[2];
-                if (dist[u] == INT_MAX) continue;
-                dist[v] = min(dist[v], dist[u] + w);
+                if (dist[u] != INT_MAX) dist[v] = min(dist[v], dist[u] + w);
             }
         }
         int ans = *max_element(begin(dist), end(dist));

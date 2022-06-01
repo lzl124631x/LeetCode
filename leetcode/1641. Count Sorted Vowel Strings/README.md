@@ -36,9 +36,9 @@ Note that "ea" is not a valid string since 'e' comes after 'a' in the alphabet.
 
 
 **Related Topics**:  
-[Math](https://leetcode.com/tag/math/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Backtracking](https://leetcode.com/tag/backtracking/)
+[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
 
-## Solution 1.
+## Solution 1. DP
 
 We use `cnt[5]` to store the count of strings ending with `aeiou` respectively.
 
