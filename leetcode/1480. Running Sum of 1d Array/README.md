@@ -32,7 +32,7 @@
 </ul>
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/)
+[Array](https://leetcode.com/tag/array/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
 
 ## Solution 1.
 
