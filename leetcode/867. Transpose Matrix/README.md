@@ -1,23 +1,38 @@
 # [867. Transpose Matrix (Easy)](https://leetcode.com/problems/transpose-matrix/)
 
-Given a matrix `A`, return the transpose of `A`.
+<p>Given a 2D integer array <code>matrix</code>, return <em>the <strong>transpose</strong> of</em> <code>matrix</code>.</p>
 
-The transpose of a matrix is the matrix flipped over it's main diagonal, switching the row and column indices of the matrix.
+<p>The <strong>transpose</strong> of a matrix is the matrix flipped over its main diagonal, switching the matrix's row and column indices.</p>
 
-**Example 1:**
+<p><img alt="" src="https://assets.leetcode.com/uploads/2021/02/10/hint_transpose.png" style="width: 600px; height: 197px;"></p>
 
-**Input:** \[\[1,2,3\],\[4,5,6\],\[7,8,9\]\]  
-**Output:** \[\[1,4,7\],\[2,5,8\],\[3,6,9\]\]
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-**Example 2:**
+<pre><strong>Input:</strong> matrix = [[1,2,3],[4,5,6],[7,8,9]]
+<strong>Output:</strong> [[1,4,7],[2,5,8],[3,6,9]]
+</pre>
 
-**Input:** \[\[1,2,3\],\[4,5,6\]\]  
-**Output:** \[\[1,4\],\[2,5\],\[3,6\]\]
+<p><strong>Example 2:</strong></p>
 
-**Note:**
+<pre><strong>Input:</strong> matrix = [[1,2,3],[4,5,6]]
+<strong>Output:</strong> [[1,4],[2,5],[3,6]]
+</pre>
 
-1.  `1 <= A.length <= 1000`
-2.  `1 <= A[0].length <= 1000`
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>m == matrix.length</code></li>
+	<li><code>n == matrix[i].length</code></li>
+	<li><code>1 &lt;= m, n &lt;= 1000</code></li>
+	<li><code>1 &lt;= m * n &lt;= 10<sup>5</sup></code></li>
+	<li><code>-10<sup>9</sup> &lt;= matrix[i][j] &lt;= 10<sup>9</sup></code></li>
+</ul>
+
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Matrix](https://leetcode.com/tag/matrix/), [Simulation](https://leetcode.com/tag/simulation/)
 
 ## Solution 1.
 
@@ -25,19 +40,18 @@ The transpose of a matrix is the matrix flipped over it's main diagonal, switchi
 // OJ: https://leetcode.com/problems/transpose-matrix/
 // Author: github.com/lzl124631x
 // Time: O(MN)
-// Space: O(1)
+// Space: O(1) extra space
 class Solution {
 public:
     vector<vector<int>> transpose(vector<vector<int>>& A) {
-        if (A.empty() || A[0].empty()) return {};
         int M = A.size(), N = A[0].size();
-        vector<vector<int>> v(N, vector<int>(M));
+        vector<vector<int>> ans(N, vector<int>(M));
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                v[j][i] = A[i][j];
+                ans[j][i] = A[i][j];
             }
         }
-        return v;
+        return ans;
     }
 };
 ```
