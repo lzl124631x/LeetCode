@@ -72,14 +72,13 @@ public:
 class Solution {
 public:
     int countSubstrings(string s) {
-        int N = s.size();
         string t = "^*";
         for (char c : s) {
             t += c;
             t += '*';
         }
         t += '$';
-        int M = t.size();
+        int N = s.size(), M = t.size();
         vector<int> r(M);
         r[1] = 1;
         int j = 1, ans = 0;
