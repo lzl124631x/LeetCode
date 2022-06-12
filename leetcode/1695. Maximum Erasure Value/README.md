@@ -39,7 +39,7 @@
 **Similar Questions**:
 * [Longest Substring Without Repeating Characters (Medium)](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 
-## Solution 1. Shrinkable Sliding Window
+## Solution 1. Shrinkable Sliding Window + Hash Map
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-erasure-value/
@@ -49,7 +49,7 @@
 class Solution {
 public:
     int maximumUniqueSubarray(vector<int>& A) {
-        int i = 0, ans = 0, N = A.size();
+        int i = 0, ans = 0, N = A.size(); // window [i, j] is a window which only contains unique elements.
         unordered_map<int, int> m; // number -> index of last occurrence.
         vector<int> sum(N + 1);
         partial_sum(begin(A), end(A), begin(sum) + 1);
@@ -63,7 +63,7 @@ public:
 };
 ```
 
-## Solution 2. Shrinkable Sliding Window
+## Solution 2. Shrinkable Sliding Window + Hash Set
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-erasure-value/
@@ -89,7 +89,9 @@ public:
 };
 ```
 
-## Solution 3. Shrinkable Sliding Window
+## Solution 3. Shrinkable Sliding Window + Prefix State Map
+
+Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)"
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-erasure-value/
@@ -114,3 +116,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/maximum-erasure-value/discuss/1504271
