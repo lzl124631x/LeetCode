@@ -20,7 +20,6 @@
 	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
-
 **Companies**:  
 [Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [LinkedIn](https://leetcode.com/company/linkedin), [Microsoft](https://leetcode.com/company/microsoft), [Goldman Sachs](https://leetcode.com/company/goldman-sachs), [Google](https://leetcode.com/company/google), [Apple](https://leetcode.com/company/apple), [Adobe](https://leetcode.com/company/adobe), [Spotify](https://leetcode.com/company/spotify), [Shopee](https://leetcode.com/company/shopee), [ServiceNow](https://leetcode.com/company/servicenow), [eBay](https://leetcode.com/company/ebay), [Walmart Labs](https://leetcode.com/company/walmart-labs)
 
@@ -34,6 +33,8 @@
 * [Kth Largest Element in a Stream (Easy)](https://leetcode.com/problems/kth-largest-element-in-a-stream/)
 * [K Closest Points to Origin (Medium)](https://leetcode.com/problems/k-closest-points-to-origin/)
 * [Find the Kth Largest Integer in the Array (Medium)](https://leetcode.com/problems/find-the-kth-largest-integer-in-the-array/)
+* [Find Subsequence of Length K With the Largest Sum (Easy)](https://leetcode.com/problems/find-subsequence-of-length-k-with-the-largest-sum/)
+* [K Highest Ranked Items Within a Price Range (Medium)](https://leetcode.com/problems/k-highest-ranked-items-within-a-price-range/)
 
 ## Solution 1. Heap Sort
 
@@ -247,6 +248,22 @@ class Solution {
 public:
     int findKthLargest(vector<int>& A, int k) {
         nth_element(begin(A), begin(A) + k - 1, end(A), greater<>());
+        return A[k - 1];
+    }
+};
+```
+
+Or use `partial_sort`
+
+```cpp
+// OJ: https://leetcode.com/problems/kth-largest-element-in-an-array/
+// Author: github.com/lzl124631x
+// Time: O(N) on average, O(N^2) in the worst case
+// Space: O(1)
+class Solution {
+public:
+    int findKthLargest(vector<int>& A, int k) {
+        partial_sort(begin(A), begin(A) + k, end(A), greater<>());
         return A[k - 1];
     }
 };
