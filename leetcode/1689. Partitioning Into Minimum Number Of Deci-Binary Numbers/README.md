@@ -34,7 +34,7 @@
 </ul>
 
 **Related Topics**:  
-[Greedy](https://leetcode.com/tag/greedy/)
+[String](https://leetcode.com/tag/string/), [Greedy](https://leetcode.com/tag/greedy/)
 
 ## Solution 1.
 
