@@ -101,7 +101,7 @@ If the array has even number of elements, any numbers between (including) the tw
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/
 // Author: github.com/lzl124631x
-// Time: O(NlogN)
+// Time: O(N) on average, O(N^2) in the worst case
 // Space: O(1)
 class Solution {
 public:
