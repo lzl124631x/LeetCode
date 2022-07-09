@@ -74,8 +74,8 @@ public:
         dp[0] = A[0];
         deque<int> q{0};
         for (int i = 1; i < N; ++i) {
+            if (q.front() < i - k) q.pop_front(); // pop the front element if it goes out of range
             dp[i] = A[i] + dp[q.front()]; // dp[q.front()] is the maximum dp value in range.
-            if (q.size() && q.front() <= i - k) q.pop_front(); // pop the front element because it goes out of range.
             while (q.size() && dp[q.back()] <= dp[i]) q.pop_back(); // pop the elements that are smaller than or equal to dp[i] out of the queue.
             q.push_back(i);
         }
