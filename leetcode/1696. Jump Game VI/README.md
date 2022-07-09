@@ -33,25 +33,27 @@
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li>&nbsp;<code>1 &lt;= nums.length, k &lt;= 10<sup>5</sup></code></li>
-	<li><code>-10<sup>4</sup>&nbsp;&lt;= nums[i]&nbsp;&lt;= 10<sup>4</sup></code></li>
+	<li><code>1 &lt;= nums.length, k &lt;= 10<sup>5</sup></code></li>
+	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
 
 **Related Topics**:  
-[Dequeue](https://leetcode.com/tag/dequeue/)
+[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Queue](https://leetcode.com/tag/queue/), [Sliding Window](https://leetcode.com/tag/sliding-window/), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue/), [Monotonic Queue](https://leetcode.com/tag/monotonic-queue/)
 
 **Similar Questions**:
 * [Sliding Window Maximum (Hard)](https://leetcode.com/problems/sliding-window-maximum/)
+* [Jump Game VII (Medium)](https://leetcode.com/problems/jump-game-vii/)
+* [Jump Game VIII (Medium)](https://leetcode.com/problems/jump-game-viii/)
 
 ## Solution 1. Mono-queue + DP
 
-For `A[i]`, we can choose the greatest value we can get among `A[j]` where `max(0, i - k) <= j < i`. 
+Let `dp[i]` be the greatest score we can get using `A[0 .. i]`.
 
-So we can memoize the results using a `dp` array where `dp[i]` is the maximum score we can get jumping from `A[0]` to `A[i]`.
+To get `dp[i]`, we pick the greatest `dp[j]` (`i - k <= j < i`) and add `A[i]` to it.
 
 ```
-dp[i] = A[i] + max( dp[j] | max(0, i - k) <= j < i )
+dp[i] = A[i] + max( dp[j] | max(0, i - k) <= j < i ) 
 dp[0] = A[0]
 ```
 
@@ -68,10 +70,9 @@ class Solution {
 public:
     int maxResult(vector<int>& A, int k) {
         int N = A.size();
-        vector<long> dp(N, INT_MIN);
+        vector<int> dp(N);
         dp[0] = A[0];
-        deque<int> q;
-        q.push_back(0);
+        deque<int> q{0};
         for (int i = 1; i < N; ++i) {
             dp[i] = A[i] + dp[q.front()]; // dp[q.front()] is the maximum dp value in range.
             if (q.size() && q.front() <= i - k) q.pop_front(); // pop the front element because it goes out of range.
