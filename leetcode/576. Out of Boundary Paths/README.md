@@ -35,6 +35,7 @@
 
 **Similar Questions**:
 * [Knight Probability in Chessboard (Medium)](https://leetcode.com/problems/knight-probability-in-chessboard/)
+* [Execution of All Suffix Instructions Staying in a Grid (Medium)](https://leetcode.com/problems/execution-of-all-suffix-instructions-staying-in-a-grid/)
 
 ## Solution 1. DP Top-down
 
