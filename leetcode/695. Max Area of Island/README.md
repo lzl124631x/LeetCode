@@ -73,3 +73,89 @@ public:
     }
 };
 ```
+
+## Solution 2. BFS
+
+```cpp
+// OJ: https://leetcode.com/problems/max-area-of-island/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(M + N)
+class Solution {
+public:
+    int maxAreaOfIsland(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{-1,0},{1,0}}, ans = 0;
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (A[i][j] == 0) continue;
+                queue<pair<int, int>> q{{{i, j}}};
+                A[i][j] = 0;
+                int cnt = 0;
+                while (q.size()) {
+                    auto [x, y] = q.front();
+                    q.pop();
+                    for (auto &[dx, dy] : dirs) {
+                        int a = x + dx, b = y + dy;
+                        if (a < 0 || a >= M || b < 0 || b >= N || A[a][b] == 0) continue;
+                        A[a][b] = 0;
+                        q.emplace(a, b);
+                    }
+                    ++cnt;
+                }
+                ans = max(ans, cnt);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 3. Union Find
+
+```cpp
+// OJ: https://leetcode.com/problems/max-area-of-island/
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(MN)
+class UnionFind {
+    vector<int> id, size;
+public:
+    UnionFind(int N) : id(N), size(N, 1) {
+        iota(begin(id), end(id), 0);
+    }
+    int find(int x) {
+        return id[x] == x ? x : (id[x] = find(id[x]));
+    }
+    void connect(int x, int y) {
+        int p = find(x), q = find(y);
+        if (p == q) return;
+        id[p] = q;
+        size[q] += size[p];
+    }
+    int getSize(int x) { return size[x]; }
+};
+class Solution {
+public:
+    int maxAreaOfIsland(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{-1,0},{1,0}}, ans = 0;
+        UnionFind uf(M * N);
+        auto key = [&](int x, int y) { return x * N + y; };
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (A[i][j] == 0) continue;
+                for (auto &[dx, dy] : dirs) {
+                    int a = i + dx, b = j + dy;
+                    if (a < 0 || a >= M || b < 0 || b >= N || A[a][b] == 0) continue;
+                    uf.connect(key(i, j), key(a, b));
+                }
+            }
+        }
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (A[i][j] == 1) ans = max(ans, uf.getSize(key(i, j)));
+            }
+        }
+        return ans;
+    }
+};
+```
