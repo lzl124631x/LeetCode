@@ -41,13 +41,13 @@
 [Facebook](https://leetcode.com/company/facebook), [Microsoft](https://leetcode.com/company/microsoft), [Bloomberg](https://leetcode.com/company/bloomberg), [Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
-[Tree](https://leetcode.com/tag/tree/), [Depth-first Search](https://leetcode.com/tag/depth-first-search/)
+[Linked List](https://leetcode.com/tag/linked-list/), [Stack](https://leetcode.com/tag/stack/), [Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
 
 **Similar Questions**:
 * [Flatten a Multilevel Doubly Linked List (Medium)](https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/)
 * [Correct a Binary Tree (Medium)](https://leetcode.com/problems/correct-a-binary-tree/)
 
-## Solution 1.
+## Solution 1. DFS
 
 ```cpp
 // OJ: https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
@@ -55,14 +55,13 @@
 // Time: O(N)
 // Space: O(H)
 class Solution {
-    TreeNode *dfs(TreeNode *root) {
-        if (!root) return NULL;
-        if (!root->left && !root->right) return root;
-        auto left = root->left, right = root->right, leftLast = dfs(left), rightLast = dfs(right);
-        root->left = NULL;
+    TreeNode* dfs(TreeNode* root) { // returns a pointer to the last node after flattening
+        if (!root || (!root->left && !root->right)) return root;
+        auto leftLast = dfs(root->left), rightLast = dfs(root->right), left = root->left, right = root->right;
+        root->left = nullptr;
         root->right = left ? left : right;
-        if (leftLast) leftLast->right = right;
-        return rightLast ? rightLast : leftLast;
+        if (left) leftLast->right = right;
+        return right ? rightLast : leftLast;
     }
 public:
     void flatten(TreeNode* root) {
@@ -71,7 +70,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Stack
 
 ```cpp
 // OJ: https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
@@ -82,9 +81,8 @@ class Solution {
 public:
     void flatten(TreeNode* root) {
         if (!root) return;
-        stack<TreeNode*> s;
-        s.push(root);
-        TreeNode *prev = NULL;
+        stack<TreeNode*> s{{root}};
+        TreeNode *prev = nullptr;
         while (s.size()) {
             auto node = s.top();
             s.pop();
@@ -92,13 +90,13 @@ public:
             prev = node;
             if (node->right) s.push(node->right);
             if (node->left) s.push(node->left);
-            node->left = node->right = NULL;
+            node->left = node->right = nullptr;
         }
     }
 };
 ```
 
-## Solution 3.
+## Solution 3. Left-to-right Pre-order Traversal
 
 ```cpp
 // OJ: https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
@@ -106,7 +104,7 @@ public:
 // Time: O(N)
 // Space: O(H)
 class Solution {
-    TreeNode *prev = NULL;
+    TreeNode *prev = nullptr;
 public:
     void flatten(TreeNode* root) {
         if (!root) return;
@@ -114,13 +112,13 @@ public:
         if (prev) prev->right = root;
         prev = root;
         flatten(root->left);
-        root->left = NULL;
+        root->left = nullptr;
         flatten(right);
     }
 };
 ```
 
-## Solution 4.
+## Solution 4. Right-to-left Post-order Traversal
 
 Note: Left-to-right pre-order traversal has the reverse result of right-to-left post-order traversal.
 
@@ -130,14 +128,14 @@ Note: Left-to-right pre-order traversal has the reverse result of right-to-left 
 // Time: O(N)
 // Space: O(H)
 class Solution {
-    TreeNode *prev = NULL;
+    TreeNode *prev = nullptr;
 public:
     void flatten(TreeNode* root) {
         if (!root) return;
         flatten(root->right);
         flatten(root->left);
         root->right = prev;
-        root->left = NULL;
+        root->left = nullptr;
         prev = root;
     }
 };
