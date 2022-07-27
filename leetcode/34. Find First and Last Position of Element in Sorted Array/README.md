@@ -1,6 +1,6 @@
 # [34. Find First and Last Position of Element in Sorted Array (Medium)](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 
-<p>Given an array of integers <code>nums</code> sorted in ascending order, find the starting and ending position of a given <code>target</code> value.</p>
+<p>Given an array of integers <code>nums</code> sorted in non-decreasing order, find the starting and ending position of a given <code>target</code> value.</p>
 
 <p>If <code>target</code> is not found in the array, return <code>[-1, -1]</code>.</p>
 
@@ -27,7 +27,6 @@
 	<li><code>-10<sup>9</sup>&nbsp;&lt;= target&nbsp;&lt;= 10<sup>9</sup></code></li>
 </ul>
 
-
 **Companies**:  
 [Facebook](https://leetcode.com/company/facebook), [LinkedIn](https://leetcode.com/company/linkedin), [Amazon](https://leetcode.com/company/amazon), [Uber](https://leetcode.com/company/uber), [Bloomberg](https://leetcode.com/company/bloomberg), [Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft), [Apple](https://leetcode.com/company/apple), [Twitter](https://leetcode.com/company/twitter), [Oracle](https://leetcode.com/company/oracle), [Intuit](https://leetcode.com/company/intuit)
 
@@ -36,6 +35,8 @@
 
 **Similar Questions**:
 * [First Bad Version (Easy)](https://leetcode.com/problems/first-bad-version/)
+* [Plates Between Candles (Medium)](https://leetcode.com/problems/plates-between-candles/)
+* [Find Target Indices After Sorting Array (Easy)](https://leetcode.com/problems/find-target-indices-after-sorting-array/)
 
 ## Solution 1. Binary Search (L <= R)
 
