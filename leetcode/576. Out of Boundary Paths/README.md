@@ -35,6 +35,7 @@
 
 **Similar Questions**:
 * [Knight Probability in Chessboard (Medium)](https://leetcode.com/problems/knight-probability-in-chessboard/)
+* [Execution of All Suffix Instructions Staying in a Grid (Medium)](https://leetcode.com/problems/execution-of-all-suffix-instructions-staying-in-a-grid/)
 
 ## Solution 1. DP Top-down
 
@@ -185,10 +186,10 @@ class Solution {
 public:
     int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
         if (maxMove == 0) return 0;
-        int dp[50][50][2] = {}, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}}, mod = 1e9 + 7;
+        long dp[50][50][2] = {}, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}}, mod = 1e9 + 7;
         for (int i = 0; i < m; ++i) dp[i][0][1]++, dp[i][n - 1][1]++;
         for (int i = 0; i < n; ++i) dp[0][i][1]++, dp[m - 1][i][1]++;
-        int ans = dp[startRow][startColumn][1];
+        long ans = dp[startRow][startColumn][1];
         for (int k = 2; k <= maxMove; ++k) {
             for (int i = 0; i < m; ++i) {
                 for (int j = 0; j < n; ++j) {

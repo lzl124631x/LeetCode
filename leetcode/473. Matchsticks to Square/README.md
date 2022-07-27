@@ -1,34 +1,35 @@
 # [473. Matchsticks to Square (Medium)](https://leetcode.com/problems/matchsticks-to-square/)
 
-<p>Remember the story of Little Match Girl? By now, you know exactly what matchsticks the little match girl has, please find out a way you can make one square by using up all those matchsticks. You should not break any stick, but you can link them up, and each matchstick must be used <b>exactly</b> one time.</p>
+<p>You are given an integer array <code>matchsticks</code> where <code>matchsticks[i]</code> is the length of the <code>i<sup>th</sup></code> matchstick. You want to use <strong>all the matchsticks</strong> to make one square. You <strong>should not break</strong> any stick, but you can link them up, and each matchstick must be used <strong>exactly one time</strong>.</p>
 
-<p> Your input will be several matchsticks the girl has, represented with their stick length. Your output will either be true or false, to represent whether you could make one square using all the matchsticks the little match girl has.</p>
+<p>Return <code>true</code> if you can make this square and <code>false</code> otherwise.</p>
 
-<p><b>Example 1:</b><br>
-</p><pre><b>Input:</b> [1,1,2,2,2]
-<b>Output:</b> true
-
-<b>Explanation:</b> You can form a square with length 2, one side of the square came two sticks with length 1.
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/04/09/matchsticks1-grid.jpg" style="width: 253px; height: 253px;">
+<pre><strong>Input:</strong> matchsticks = [1,1,2,2,2]
+<strong>Output:</strong> true
+<strong>Explanation:</strong> You can form a square with length 2, one side of the square came two sticks with length 1.
 </pre>
-<p></p>
 
-<p><b>Example 2:</b><br>
-</p><pre><b>Input:</b> [3,3,3,3,4]
-<b>Output:</b> false
+<p><strong>Example 2:</strong></p>
 
-<b>Explanation:</b> You cannot find a way to form a square with all the matchsticks.
+<pre><strong>Input:</strong> matchsticks = [3,3,3,3,4]
+<strong>Output:</strong> false
+<strong>Explanation:</strong> You cannot find a way to form a square with all the matchsticks.
 </pre>
-<p></p>
 
-<p><b>Note:</b><br>
-</p><ol>
-<li>The length sum of the given matchsticks is in the range of <code>0</code> to <code>10^9</code>.
-</li><li>The length of the given matchstick array will not exceed <code>15</code>.</li>
-</ol>
-<p></p>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= matchsticks.length &lt;= 15</code></li>
+	<li><code>1 &lt;= matchsticks[i] &lt;= 10<sup>8</sup></code></li>
+</ul>
+
 
 **Related Topics**:  
-[Depth-first Search](https://leetcode.com/tag/depth-first-search/)
+[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Backtracking](https://leetcode.com/tag/backtracking/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/), [Bitmask](https://leetcode.com/tag/bitmask/)
 
 ## Solution 1. Bitmask DP on Subsets
 
@@ -80,14 +81,13 @@ Two optimizations here:
 class Solution {
 public:
     bool makesquare(vector<int>& A) {
-        vector<int> v(4);
-        int sum = accumulate(begin(A), end(A), 0);
+        long v[4] = {}, sum = accumulate(begin(A), end(A), 0L);
         if (sum % 4 || *max_element(begin(A), end(A)) > sum / 4) return false;
         sum /= 4;
         sort(begin(A), end(A), greater<>()); // Try rocks before sands
         function<bool(int)> dfs = [&](int i) {
             if (i == A.size()) return true;
-            unordered_set<int> seen;
+            unordered_set<long> seen;
             for (int j = 0; j < 4; ++j) {
                 if (A[i] + v[j] > sum || seen.count(v[j])) continue;
                 seen.insert(v[j]);
@@ -112,19 +112,18 @@ Or
 class Solution {
 public:
     bool makesquare(vector<int>& A) {
-        vector<int> v(4);
-        int sum = accumulate(begin(A), end(A), 0);
-        if (sum % 4 || *max_element(begin(A), end(A)) > sum / 4) return false;
+        long v[4] = {}, sum = accumulate(begin(A), end(A), 0L), N = A.size();
+        if (sum % 4) return false;
         sum /= 4;
         sort(begin(A), end(A), greater<>()); // Try rocks before sands
         function<bool(int)> dfs = [&](int i) {
-            if (i == A.size()) return true;
+            if (i == N) return true;
             for (int j = 0; j < 4; ++j) {
                 if (A[i] + v[j] > sum) continue;
                 v[j] += A[i];
                 if (dfs(i + 1)) return true;
                 v[j] -= A[i];
-                if (v[j] == 0) continue; // Simply don't visit empty bucket again. This takes less space but longer time.
+                if (v[j] == 0) break; // Simply don't visit empty bucket again. This takes less space but longer time.
             }
             return false;
         };
