@@ -1877,6 +1877,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2243 | Calculate Digit Sum of a String | Easy | [Solution](leetcode/2243.%20Calculate%20Digit%20Sum%20of%20a%20String)
 2244 | Minimum Rounds to Complete All Tasks | Medium | [Solution](leetcode/2244.%20Minimum%20Rounds%20to%20Complete%20All%20Tasks)
 2255 | Count Prefixes of a Given String | Easy | [Solution](leetcode/2255.%20Count%20Prefixes%20of%20a%20Given%20String)
+2305 | Fair Distribution of Cookies | Medium | [Solution](leetcode/2305.%20Fair%20Distribution%20of%20Cookies)
 
 
 # FAQ
