@@ -1,69 +1,62 @@
 # [890. Find and Replace Pattern (Medium)](https://leetcode.com/problems/find-and-replace-pattern/)
 
-<p>You have a list of&nbsp;<code>words</code> and a <code>pattern</code>, and you want to know which words in <code>words</code> matches the pattern.</p>
+<p>Given a list of strings <code>words</code> and a string <code>pattern</code>, return <em>a list of</em> <code>words[i]</code> <em>that match</em> <code>pattern</code>. You may return the answer in <strong>any order</strong>.</p>
 
 <p>A word matches the pattern if there exists a permutation of letters <code>p</code> so that after replacing every letter <code>x</code> in the pattern with <code>p(x)</code>, we get the desired word.</p>
 
-<p>(<em>Recall that a permutation of letters is a bijection from letters to letters: every letter maps to another letter, and no two letters map to the same letter.</em>)</p>
-
-<p>Return a list of the words in <code>words</code>&nbsp;that match the given pattern.&nbsp;</p>
-
-<p>You may return the answer in any order.</p>
+<p>Recall that a permutation of letters is a bijection from letters to letters: every letter maps to another letter, and no two letters map to the same letter.</p>
 
 <p>&nbsp;</p>
-
-<div>
 <p><strong>Example 1:</strong></p>
 
-<pre><strong>Input: </strong>words = <span id="example-input-1-1">["abc","deq","mee","aqq","dkd","ccc"]</span>, pattern = <span id="example-input-1-2">"abb"</span>
-<strong>Output: </strong><span id="example-output-1">["mee","aqq"]</span>
-<strong><span>Explanation: </span></strong>"mee" matches the pattern because there is a permutation {a -&gt; m, b -&gt; e, ...}. 
-"ccc" does not match the pattern because {a -&gt; c, b -&gt; c, ...} is not a permutation,
-since a and b map to the same letter.</pre>
+<pre><strong>Input:</strong> words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"
+<strong>Output:</strong> ["mee","aqq"]
+<strong>Explanation:</strong> "mee" matches the pattern because there is a permutation {a -&gt; m, b -&gt; e, ...}. 
+"ccc" does not match the pattern because {a -&gt; c, b -&gt; c, ...} is not a permutation, since a and b map to the same letter.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> words = ["a","b","c"], pattern = "a"
+<strong>Output:</strong> ["a","b","c"]
+</pre>
 
 <p>&nbsp;</p>
-
-<p><strong>Note:</strong></p>
+<p><strong>Constraints:</strong></p>
 
 <ul>
+	<li><code>1 &lt;= pattern.length &lt;= 20</code></li>
 	<li><code>1 &lt;= words.length &lt;= 50</code></li>
-	<li><code>1 &lt;= pattern.length = words[i].length&nbsp;&lt;= 20</code></li>
+	<li><code>words[i].length == pattern.length</code></li>
+	<li><code>pattern</code> and <code>words[i]</code> are lowercase English letters.</li>
 </ul>
-</div>
-
 
 **Companies**:  
 [Google](https://leetcode.com/company/google), [Apple](https://leetcode.com/company/apple)
 
 **Related Topics**:  
-[String](https://leetcode.com/tag/string/)
+[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/)
 
 ## Solution 1.
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-and-replace-pattern/
 // Author: github.com/lzl124631x
-// Time: O(CW) where C is count of words and W is word length
-// Space: O(W)
+// Time: O(NW) where N is the length of `A` and `W` is word length
+// Space: O(1)
 class Solution {
-private:
-    bool match(string &word, string &pattern) {
-        unordered_map<char, char> m;
-        unordered_set<char> used;
-        for (int i = 0; i < word.size(); ++i) {
-            if (m.find(word[i]) == m.end()) {
-                if (used.find(pattern[i]) != used.end()) return false;
-                m[word[i]] = pattern[i];
-                used.insert(pattern[i]);                                            
-            } else if (m[word[i]] != pattern[i]) return false;
-        }
-        return true;
-    }
 public:
-    vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
+    vector<string> findAndReplacePattern(vector<string>& A, string p) {
         vector<string> ans;
-        for (auto word : words) {
-            if (match(word, pattern)) ans.push_back(word);
+        for (auto &s : A) {
+            int m[26] = {[0 ... 25] = -1}, r[26] = {[0 ... 25] = -1}, i = 0;
+            for (; i < p.size(); ++i) {
+                int from = s[i] - 'a', to = p[i] - 'a';
+                if ((m[from] != -1 && m[from] != to) || (r[to] != -1 && r[to] != from)) break;
+                m[from] = to;
+                r[to] = from;
+            }
+            if (i == p.size()) ans.push_back(s);
         }
         return ans;
     }
