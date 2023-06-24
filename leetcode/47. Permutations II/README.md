@@ -28,7 +28,7 @@
 
 
 **Related Topics**:  
-[Backtracking](https://leetcode.com/tag/backtracking/)
+[Array](https://leetcode.com/tag/array/), [Backtracking](https://leetcode.com/tag/backtracking/)
 
 **Similar Questions**:
 * [Next Permutation (Medium)](https://leetcode.com/problems/next-permutation/)
@@ -38,16 +38,13 @@
 
 ## Solution 1.
 
-Similar idea as the DFS solution to [46. Permutations (Medium)](../46.%20Permutations).
+Similar idea as the DFS solution to [46. Permutations (Medium)](../46.%20Permutations). We pick a number after `A[i]` and swap it with `A[i]` and don't swap back. So this new `A[i]` is the number we last
 
-But since there are duplicates, we shouldn't swap the `nums[start]` with the same digit twice.
+But since there are duplicates, we shouldn't swap the `A[i]` with the same digit twice.
 
-To prevent this from happening, we need to do several modifications:
-1. Sort the array at the beginning
-1. If `nums[i] == nums[start] (i != start)` then should skip the swap, because this swap won't make any change to the array. In other words, the `nums[start]` represents the digit we tried last time, so we shouldn't try its duplicate again.
-1. We can't pass `nums` by reference. We have to copy the array in each DFS step. Because the previous point is based on the assumption that the numbers after `nums[i]` are sorted so that the duplicates following `nums[i]` are skipped. If we pass by reference, the numbers after `nums[i]` might be unsorted, which breaks the assumption.
+The first idea is sorting the array and only swapping numbers `A[j] != A[j-1]` with `A[i]`. But this only works when the array after `A[i]` is sorted. After some swap, this might not be true.
 
-The drawback of this solution is that we need to keep copying the `nums` array during DFS, which adds time and space complexity.
+To resolve this issue, one brute force way is to simply keep copying the array during DFS, which adds time and space complexity.
 
 ```cpp
 // OJ: https://leetcode.com/problems/permutations-ii
@@ -143,27 +140,28 @@ The logic of this code is way simpler. It's just that the set takes extra space.
 // Time: O(N!)
 // Space: O(N^2)
 class Solution {
-private:
-  vector<vector<int>> ans;
-  void permute(vector<int> &nums, int start) {
-    if (start == nums.size()) {
-      ans.push_back(nums);
-      return;
-    }
-    unordered_set<int> s;
-    for (int i = start; i < nums.size(); ++i) {
-      if (s.count(nums[i])) continue;
-      swap(nums[i], nums[start]);
-      permute(nums, start + 1);
-      swap(nums[i], nums[start]);
-      s.insert(nums[i]);
-    }
-  }
 public:
-  vector<vector<int>> permuteUnique(vector<int>& nums) {
-    permute(nums, 0);
-    return ans;
-  }
+    vector<vector<int>> permuteUnique(vector<int>& A) {
+        vector<vector<int>> ans;
+        int N = A.size();
+        sort(begin(A), end(A));
+        function<void(int)> permute = [&](int i) {
+            if (i == N) {
+                ans.push_back(A);
+                return;
+            }
+            bool seen[21] = {};
+            for (int j = i; j < N; ++j) {
+                if (seen[A[j] + 10]) continue;
+                seen[A[j] + 10] = true;
+                swap(A[i], A[j]);
+                dfs(i + 1);
+                swap(A[i], A[j]);
+            }
+        };
+        dfs(0);
+        return ans;
+    }
 };
 ```
 
