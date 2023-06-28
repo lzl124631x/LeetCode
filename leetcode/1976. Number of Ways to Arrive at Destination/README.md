@@ -69,7 +69,7 @@ If we find a new path from `u` to `v` with a total cost `c` that is:
 // Time: O(ElogE)
 // Space: O(V + E)
 class Solution {
-    typedef pair<long, long> ipair;
+    typedef pair<long, long> PII;
 public:
     int countPaths(int n, vector<vector<int>>& E) {
         vector<vector<pair<int, int>>> G(n);
@@ -80,7 +80,7 @@ public:
         }
         long mod = 1e9 + 7;
         vector<long> dist(n, LONG_MAX), cnt(n);
-        priority_queue<ipair, vector<ipair>, greater<>> pq; // time, city
+        priority_queue<PII, vector<PII>, greater<>> pq; // time, city
         dist[0] = 0;
         cnt[0] = 1;
         pq.emplace(0, 0);
