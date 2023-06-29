@@ -73,19 +73,19 @@ public:
 class Solution {
 public:
     bool canPartitionKSubsets(vector<int>& A, int k) {
-        int sum = accumulate(begin(A), end(A), 0);
+        int sum = accumulate(begin(A), end(A), 0), N = A.size();
         if (sum % k) return false;
         sum /= k;
-        vector<int> v(k);
-        sort(begin(A), end(A), greater<>()); // Try the rocks earlier than sands
+        sort(begin(A), end(A), greater<>()); // try rocks before sands
+        vector<int> s(k);
         function<bool(int)> dfs = [&](int i) {
-            if (i == A.size()) return true;
+            if (i == N) return true;
             for (int j = 0; j < k; ++j) {
-                if (v[j] + A[i] > sum) continue;
-                v[j] += A[i];
+                if (s[j] + A[i] > sum) continue;
+                s[j] += A[i];
                 if (dfs(i + 1)) return true;
-                v[j] -= A[i];
-                if (v[j] == 0) break; // don't try empty buckets multiple times.
+                s[j] -= A[i];
+                if (s[j] == 0) break; // don't try empty buckets multiple times
             }
             return false;
         };
