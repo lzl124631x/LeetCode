@@ -66,49 +66,42 @@
 // Time: O(MN)
 // Space: O(MN)
 class Solution {
-    int getKey(int x, int y, int keys) {
-        return 10000 * x + 100 * y + keys;
-    }
-    tuple<int, int, int> parseKey(int key) {
-        return { key / 10000, key % 10000 / 100, key % 100 };
+    int getState(int x, int y, int keys) {
+        return x * 10000 + y * 100 + keys;
     }
 public:
     int shortestPathAllKeys(vector<string>& A) {
-        int M = A.size(), N = A[0].size(), keys = 0, step = 0, dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}}, sx = 0, sy = 0;
+        int M = A.size(), N = A[0].size(), startX, startY, allLocks = 0, dirs[4][2] = {{0,1}, {0,-1}, {1,0}, {-1,0}}, step = 0;
+        queue<int> q;
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                if (A[i][j] >= 'a' && A[i][j] <= 'f') keys |= 1 << (A[i][j] - 'a');
-                else if (A[i][j] == '@') sx = i, sy = j;
+                if (A[i][j] == '@') startX = i, startY = j;
+                else if (A[i][j] >= 'A' && A[i][j] <= 'F') allLocks |= (1 << (A[i][j] - 'A'));
             }
         }
-        int init = getKey(sx, sy, keys);
-        queue<int> q{{init}};
-        unordered_set<int> seen{init};
+        int initState = getState(startX, startY, 0);
+        q.emplace(initState);
+        unordered_set<int> seen{initState};
         while (q.size()) {
             int cnt = q.size();
             while (cnt--) {
-                auto [x, y, keys] = parseKey(q.front());
+                int state = q.front();
                 q.pop();
-                if (keys == 0) return step;
+                int x = state / 10000, y = state % 10000 / 100, keys = state % 100;
+                if (keys == allLocks) return step;
                 for (auto &[dx, dy] : dirs) {
-                    int a = x + dx, b = y + dy, next = 0;
-                    if (a < 0 || a >= M || b < 0 || b >= N || A[a][b] == '#') continue;
-                    if (A[a][b] >= 'A' && A[a][b] <= 'F') {
-                        int k = A[a][b] - 'A';
-                        if (keys >> k & 1) continue; // we don't have to corresponding key yet.
-                        next = getKey(a, b, keys);
-                    } else if (A[a][b] >= 'a' && A[a][b] <= 'f') {
-                        int k = A[a][b] - 'a';
-                        next = getKey(a, b, keys & ~(1 << k));
-                    } else {
-                        next = getKey(a, b, keys);
-                    }
-                    if (seen.count(next)) continue;
-                    seen.insert(next);
-                    q.push(next);
+                    int a = x + dx, b = y + dy;
+                    if (a < 0 || a >= M || b < 0 || b >= N || A[a][b] == '#' || (isupper(A[a][b]) && (keys & (1 << (A[a][b] - 'A'))) == 
+0)) continue;
+                    int newKeys = keys;
+                    if (islower(A[a][b])) newKeys |= (1 << (A[a][b] - 'a'));
+                    int newState = getState(a, b, newKeys);
+                    if (seen.count(newState)) continue;
+                    seen.insert(newState);
+                    q.emplace(newState);
                 }
             }
-            step++;
+            ++step;
         }
         return -1;
     }
