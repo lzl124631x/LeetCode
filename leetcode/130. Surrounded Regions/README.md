@@ -129,13 +129,13 @@ public:
 class Solution {
 public:
     void solve(vector<vector<char>>& A) {
-        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}}, edge = M * N;
         auto key = [&](int x, int y) { return x * N + y; };
         UnionFind uf(M * N + 1);
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
                 if (A[i][j] != 'O') continue;
-                if (i == 0 || i == M - 1 || j == 0 || j == N - 1) uf.connect(key(i, j), M * N);
+                if (i == 0 || i == M - 1 || j == 0 || j == N - 1) uf.connect(key(i, j), edge);
                 for (auto &[dx, dy] : dirs) {
                     int a = i + dx, b = j + dy;
                     if (a < 0 || a >= M || b < 0 || b >= N || A[a][b] != 'O') continue;
@@ -145,7 +145,7 @@ public:
         }
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                A[i][j] = uf.connected(key(i, j), M * N) ? 'O' : 'X';
+                A[i][j] = uf.connected(key(i, j), edge) ? 'O' : 'X';
             }
         }
     }
