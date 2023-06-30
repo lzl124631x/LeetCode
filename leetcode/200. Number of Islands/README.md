@@ -40,47 +40,43 @@
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-islands/
 // Author: github.com/lzl124631x
-// Time: O(MN)
+// Time: O(MNlog(MN))
 // Space: O(MN)
 class UnionFind {
     vector<int> id;
 public:
-    UnionFind(int N) : id(N) {
+    UnionFind(int n) : id(n) {
         iota(begin(id), end(id), 0);
     }
-    void connect(int x, int y) {
-        int a = find(x), b = find(y);
-        if (a == b) return;
-        id[a] = b;
+    int find(int a) {
+        return id[a] == a ? a : (id[a] = find(id[a]));
     }
-    int find(int x) {
-        return id[x] == x ? x : (id[x] = find(id[x]));
+    bool connected(int a, int b) {
+        return find(a) == find(b);
+    }
+    void connect(int a, int b) {
+        id[find(a)] = find(b);
     }
 };
 class Solution {
-    int M, N;
-    int key(int x, int y) { return x * N + y; }
-    int dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
 public:
     int numIslands(vector<vector<char>>& A) {
-        if (A.empty() || A[0].empty()) return 0;
-        M = A.size(), N = A[0].size();
+        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
         UnionFind uf(M * N);
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
                 if (A[i][j] == '0') continue;
-                for (auto &dir : dirs) {
-                    int x = i + dir[0], y = j + dir[1];
-                    if (x < 0 || y < 0 || x >= M || y >= N || A[x][y] == '0') continue;
-                    uf.connect(key(i, j), key(x, y));
+                for (auto &[dx, dy] : dirs) {
+                    int a = i + dx, b = j + dy;
+                    if (a < 0 || a >= M || b < 0 || b >= N || A[a][b] == '0') continue;
+                    uf.connect(i * N + j, a * N + b);
                 }
             }
         }
         unordered_set<int> s;
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
-                if (A[i][j] == '0') continue;
-                s.insert(uf.find(key(i, j)));
+                if (A[i][j] == '1') s.insert(uf.find(i * N + j));
             }
         }
         return s.size();
