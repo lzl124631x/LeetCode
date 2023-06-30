@@ -91,8 +91,7 @@ public:
                 if (keys == allLocks) return step;
                 for (auto &[dx, dy] : dirs) {
                     int a = x + dx, b = y + dy;
-                    if (a < 0 || a >= M || b < 0 || b >= N || A[a][b] == '#' || (isupper(A[a][b]) && (keys & (1 << (A[a][b] - 'A'))) == 
-0)) continue;
+                    if (a < 0 || a >= M || b < 0 || b >= N || A[a][b] == '#' || (isupper(A[a][b]) && (keys & (1 << (A[a][b] - 'A'))) == 0)) continue;
                     int newKeys = keys;
                     if (islower(A[a][b])) newKeys |= (1 << (A[a][b] - 'a'));
                     int newState = getState(a, b, newKeys);
