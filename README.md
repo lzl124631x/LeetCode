@@ -1868,6 +1868,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2255 | Count Prefixes of a Given String | Easy | [Solution](leetcode/2255.%20Count%20Prefixes%20of%20a%20Given%20String)
 2290 | Minimum Obstacle Removal to Reach Corner | Hard | [Solution](leetcode/2290.%20Minimum%20Obstacle%20Removal%20to%20Reach%20Corner)
 2305 | Fair Distribution of Cookies | Medium | [Solution](leetcode/2305.%20Fair%20Distribution%20of%20Cookies)
+2385 | Amount of Time for Binary Tree to Be Infected | Medium | [Solution](leetcode/2385.%20Amount%20of%20Time%20for%20Binary%20Tree%20to%20Be%20Infected)
 2415 | Reverse Odd Levels of Binary Tree | Medium | [Solution](leetcode/2415.%20Reverse%20Odd%20Levels%20of%20Binary%20Tree)
 2529 | Maximum Count of Positive Integer and Negative Integer | Easy | [Solution](leetcode/2529.%20Maximum%20Count%20of%20Positive%20Integer%20and%20Negative%20Integer)
 2597 | The Number of Beautiful Subsets | Medium | [Solution](leetcode/2597.%20The%20Number%20of%20Beautiful%20Subsets)
