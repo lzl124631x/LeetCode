@@ -51,33 +51,39 @@
 
 ### Thought
 For each rod `x`, we have 3 options:
-1. use it in one post
-1. use it in another post
+1. use it in left post
+1. use it in right post
 1. don't use it.
 
-If we turn all the numbers used in the first post to negative (turn `x` to `-x`), leave the numbers used in the second post as-is (`x` to `+x`), and turn all the numbers that are not used to `0`, this question turns into: 
+If we leave the numbers used in the left post as-is (`x` to +`x`), turn all the numbers used in the right post to negative (turn `x` to `-x`), and turn all numbers that are not used to `0`, this problem becomes:
 
 Find the max score we can get after doing the above operations. The "score" is the sum of all the positive numbers. For example, `+1 +2 +3 -6` has a score of `6`.
 
-Since `sum(rods)` is bounded, it suggests us to use this fact in some way.
+Since `sum(A)` is bounded, it suggests us to use this fact in some way.
 
 A fact we should consider is that for a given `sum`, it doesn't matter how we get the `sum`.
 
-For example, with `rods = [1,2,2,3]`, we could get sum `3` in 3 different ways. If we just consider `sum = 3`, we actually covered all those three cases.
+For example, with `A = [1,2,2,3]`, we could get sum `3` in 3 different ways. If we just consider `sum = 3`, we actually covered all those three cases.
 
 Since `sum` is in range `[-5000, 5000]`, we just have `10001` numbers to consider.
 
 ### Algorithm
 
-Let `dp[i][s]` be the largest score we can get using `rods[(i+1)..(N-1)]` to get sum `s`.
+Let `dp[i][s]` be the largest score we can get after rewriting `A[0..i]` to get sum `s`. Our goal is get `dp[N-1][0]`. Note that in the implementation, we offset all the sums by `5000` for simplicity to avoid using negative sum as index. So, `sum = 5000` actually means `sum = 0`.
 
-For example, for `rods = [1,2,3,6]`, we have `dp[1][1] = 5`, because after writing `1`, we could write `+2 +3 -6` to get sum `1`, and the corresponding score is `5`.
+For example, for `A = [1,2,3,6]`, we have `dp[2][2] = 4`, because the highest score we can get after rewriting `A[0..2]` is 4 (`sum = 2 = 1 - 2 + 3`, `score = 1 + 3 = 4`).
 
-For the base case, `dp[rods.length][s]` is `0` when `s == 0`, and `-infinity` everywhere else.
+For the base case, `dp[-1][s]` is `0` when `s == 0`, and `-infinity` everywhere else.
 
-The recursion is `dp[i][s] = max(dp[i+1][s], dp[i+1][s-rods[i]], rods[i] + dp[i+1][s+rods[i]])`.
+The recursion is:
 
-NOTE: in the following implementation we use `sum = 5000` as `sum = 0` to simply code.
+```
+dp[i][s] = max(
+    dp[i-1][s], // write A[i] as 0
+    A[i] + dp[i+1][s-A[i]], // write A[i] as +A[i]
+    dp[i+1][s-A[i]]) // write A[i] as -A[i]
+)
+```
 
 ```cpp
 // OJ: https://leetcode.com/problems/tallest-billboard
@@ -87,21 +93,20 @@ NOTE: in the following implementation we use `sum = 5000` as `sum = 0` to simply
 // Space: O(NS)
 // Ref: https://leetcode.com/articles/tallest-billboard/
 class Solution {
-private:
     vector<vector<int>> dp;
-    int dfs(vector<int>& rods, int i, int s) {
-        if (i == rods.size()) return s == 5000 ? 0 : INT_MIN;
+    int dfs(vector<int> &A, int i, int s) {
+        if (i == -1) return s == 5000 ? 0 : INT_MIN;
         if (dp[i][s] != INT_MIN) return dp[i][s];
-        int ans = dfs(rods, i + 1, s);
-        ans = max(ans, dfs(rods, i + 1, s - rods[i]));
-        ans = max(ans, rods[i] + dfs(rods, i + 1, s + rods[i]));
+        int ans = dfs(A, i - 1, s); // Write A[i] as 0
+        ans = max(ans, A[i] + dfs(A, i - 1, s - A[i])); // Write A[i] as A[i]
+        ans = max(ans, dfs(A, i - 1, s + A[i])); // Write A[i] as -A[i]
         return dp[i][s] = ans;
     }
 public:
-    int tallestBillboard(vector<int>& rods) {
-        int N = rods.size();
+    int tallestBillboard(vector<int>& A) {
+        int N = A.size();
         dp = vector<vector<int>>(N, vector<int>(10001, INT_MIN));
-        return dfs(rods, 0, 5000);
+        return dfs(A, N - 1, 5000);
     }
 };
 ```
