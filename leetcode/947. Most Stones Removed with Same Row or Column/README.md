@@ -1,49 +1,58 @@
-# [947. Most Stones Removed with Same Row or Column (Medium)](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/)
+# [947. Most Stones Removed with Same Row or Column (Medium)](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column)
 
-<p>On a 2D plane, we place stones at some integer coordinate points.&nbsp; Each coordinate point may have at most one stone.</p>
+<p>On a 2D plane, we place <code>n</code> stones at some integer coordinate points. Each coordinate point may have at most one stone.</p>
 
-<p>Now, a <em>move</em> consists of removing a stone&nbsp;that shares a column or row with another stone on the grid.</p>
+<p>A stone can be removed if it shares either <strong>the same row or the same column</strong> as another stone that has not been removed.</p>
 
-<p>What is the largest possible number of moves we can make?</p>
-
-<p>&nbsp;</p>
-
-<div>
-<p><strong>Example 1:</strong></p>
-
-<pre><strong>Input: </strong>stones = <span id="example-input-1-2">[[0,0],[0,1],[1,0],[1,2],[2,1],[2,2]]</span>
-<strong>Output: </strong>5
-</pre>
-
-<div>
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input: </strong>stones = <span id="example-input-2-2">[[0,0],[0,2],[1,1],[2,0],[2,2]]</span>
-<strong>Output: </strong>3
-</pre>
-
-<div>
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input: </strong>stones = <span id="example-input-3-2">[[0,0]]</span>
-<strong>Output: </strong>0
-</pre>
+<p>Given an array <code>stones</code> of length <code>n</code> where <code>stones[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> represents the location of the <code>i<sup>th</sup></code> stone, return <em>the largest possible number of stones that can be removed</em>.</p>
 
 <p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
 
-<p><strong><span>Note:</span></strong></p>
+<pre><strong>Input:</strong> stones = [[0,0],[0,1],[1,0],[1,2],[2,1],[2,2]]
+<strong>Output:</strong> 5
+<strong>Explanation:</strong> One way to remove 5 stones is as follows:
+1. Remove stone [2,2] because it shares the same row as [2,1].
+2. Remove stone [2,1] because it shares the same column as [0,1].
+3. Remove stone [1,2] because it shares the same row as [1,0].
+4. Remove stone [1,0] because it shares the same column as [0,0].
+5. Remove stone [0,1] because it shares the same row as [0,0].
+Stone [0,0] cannot be removed since it does not share a row/column with another stone still on the plane.
+</pre>
 
-<ol>
+<p><strong class="example">Example 2:</strong></p>
+
+<pre><strong>Input:</strong> stones = [[0,0],[0,2],[1,1],[2,0],[2,2]]
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> One way to make 3 moves is as follows:
+1. Remove stone [2,2] because it shares the same row as [2,0].
+2. Remove stone [2,0] because it shares the same column as [0,0].
+3. Remove stone [0,2] because it shares the same row as [0,0].
+Stones [0,0] and [1,1] cannot be removed since they do not share a row/column with another stone still on the plane.
+</pre>
+
+<p><strong class="example">Example 3:</strong></p>
+
+<pre><strong>Input:</strong> stones = [[0,0]]
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> [0,0] is the only stone on the plane, so you cannot remove it.
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
 	<li><code>1 &lt;= stones.length &lt;= 1000</code></li>
-	<li><code>0 &lt;= stones[i][j] &lt; 10000</code></li>
-</ol>
-</div>
-</div>
-</div>
+	<li><code>0 &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
+	<li>No two stones are at the same coordinate point.</li>
+</ul>
 
+
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google), [TikTok](https://leetcode.com/company/tiktok)
 
 **Related Topics**:  
-[Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Union Find](https://leetcode.com/tag/union-find/)
+[Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Union Find](https://leetcode.com/tag/union-find/), [Graph](https://leetcode.com/tag/graph/)
 
 ## Solution 1. DFS Iterative
 
@@ -197,14 +206,14 @@ public:
 ```cpp
 // OJ: https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
 // Author: github.com/lzl124631x
-// Time: O(N^2)
+// Time: O(N^2 * logN)
 // Space: O(N)
 class UnionFind {
-    vector<int> id, rank;
+    vector<int> id;
     int cnt;
 public:
-    UnionFind(int n) : cnt(n), id(n), rank(n, 1) {
-        for (int i = 0; i < n; ++i) id[i] = i;
+    UnionFind(int n) : cnt(n), id(n) {
+        iota(begin(id), end(id), 0);
     }
     int find(int a) {
         return id[a] == a ? a : (id[a] = find(id[a]));
@@ -212,27 +221,67 @@ public:
     void connect(int a, int b) {
         int x = find(a), y = find(b);
         if (x == y) return;
-        if (rank[x] <= rank[y]) {
-            id[x] = y;
-            if (rank[x] == rank[y]) rank[y]++;
-        } else id[y] = x;
+        id[x] = y;
         --cnt;
     }
     int getCount() { return cnt; }
 };
 class Solution {
 public:
-    int removeStones(vector<vector<int>>& stones) {
-        int N = stones.size();
+    int removeStones(vector<vector<int>>& A) {
+        int N = A.size();
         UnionFind uf(N);
         for (int i = 0; i < N; ++i) {
-            for (int j = i; j < N; ++j) {
-                if (stones[i][0] == stones[j][0] || stones[i][1] == stones[j][1]) {
+            for (int j = i + 1; j < N; ++j) {
+                if (A[i][0] == A[j][0] || A[i][1] == A[j][1]) {
                     uf.connect(i, j);
                 }
             }
         }
-        return stones.size() - uf.getCount();
+        return N - uf.getCount();
+    }
+};
+```
+
+## Solution 5. Union Find
+
+```cpp
+// OJ: https://leetcode.com/problems/most-stones-removed-with-same-row-or-column
+// Author: github.com/lzl124631x
+// Time: O(N * logN)
+// Space: O(N)
+class UnionFind {
+    vector<int> id;
+    int cnt;
+public:
+    UnionFind(int n) : id(n), cnt(n) {
+        iota(begin(id), end(id), 0);
+    }
+    int find(int a) {
+        return id[a] == a ? a : (id[a] = find(id[a]));
+    }
+    void connect(int a, int b) {
+        int x = find(a), y = find(b);
+        if (x == y) return;
+        id[x] = y;
+        --cnt;
+    }
+    int getCount() { return cnt; }
+};
+class Solution {
+public:
+    int removeStones(vector<vector<int>>& A) {
+        int N = A.size();
+        unordered_map<int, int> row, col; // row/col number -> index of the first stone exists on row/col
+        UnionFind uf(N);
+        for (int i = 0; i < N; ++i) {
+            int x = A[i][0], y = A[i][1];
+            if (row.count(x) == 0) row[x] = i;
+            else uf.connect(i, row[x]);
+            if (col.count(y) == 0) col[y] = i;
+            else uf.connect(i, col[y]);
+        }
+        return N - uf.getCount();
     }
 };
 ```
