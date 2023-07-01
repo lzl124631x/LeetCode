@@ -61,31 +61,31 @@ trie.search("app");     // return True
 // Time: O(W) for insert/search/startsWith
 // Space: O(1) extra space for all
 struct TrieNode {
-    TrieNode *next[26] = {};
-    bool word = false;
+    TrieNode* next[26] = {};
+    bool end = false;
 };
 class Trie {
     TrieNode root;
     TrieNode *find(string &word) {
-        auto node = &root;
+        auto n = &root;
         for (char c : word) {
-            if (!node->next[c - 'a']) return NULL;
-            node = node->next[c - 'a'];
+            if (!n->next[c - 'a']) return nullptr;
+            n = n->next[c - 'a'];
         }
-        return node;
+        return n;
     }
 public:
     void insert(string word) {
-        auto node = &root;
+        auto n = &root;
         for (char c : word) {
-            if (!node->next[c - 'a']) node->next[c - 'a'] = new TrieNode();
-            node = node->next[c - 'a'];
+            if (!n->next[c - 'a']) n->next[c - 'a'] = new TrieNode();
+            n = n->next[c - 'a'];
         }
-        node->word = true;
+        n->end = true;
     }
     bool search(string word) {
-        auto node = find(word);
-        return node && node->word;
+        auto n = find(word);
+        return n && n->end;
     }
     bool startsWith(string prefix) {
         return find(prefix);
