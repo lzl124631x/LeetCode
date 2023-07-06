@@ -65,3 +65,28 @@ public:
     }
 };
 ```
+
+## Solution 2. Find Maximum Sliding Window
+
+This problem is equivalent to "finding the longest subarray that sums to `sum(A) - target`."
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int minOperations(vector<int>& A, int x) {
+        int N = A.size(), i = 0, j = 0, sum = 0, target = accumulate(begin(A), end(A)
+, 0) - x, maxLen = -1;
+        if (target < 0) return -1;
+        for (; j < N; ++j) {
+            sum += A[j];
+            while (sum > target) sum -= A[i++];
+            if (sum == target) maxLen = max(maxLen, j - i + 1);
+        }
+        return maxLen == -1 ? -1 : (N - maxLen);
+    }
+};
+```
