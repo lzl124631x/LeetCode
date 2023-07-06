@@ -36,11 +36,32 @@
 
 ## Solution 1. DP
 
-Let `dp[i + 1][j + 1]` be the lenght of the maximum subarray that appears in both the tail of `A` and `B`.
+Let `dp[i + 1][j + 1]` be the length of the maximum subarray that appears in both the tail of `A[0..i]` and `B[0..j]`.
 
 ```
 dp[i + 1][j + 1] = 1 + dp[i][j]     // A[i] == B[j]
                  = 0                // A[i] != B[j]
+```
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-length-of-repeated-subarray
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(MN)
+class Solution {
+public:
+    int findLength(vector<int>& A, vector<int>& B) {
+        int M = A.size(), N = B.size(), ans = 0;
+        vector<vector<int>> dp(M + 1, vector<int>(N + 1));
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                dp[i + 1][j + 1] = A[i] == B[j] ? (1 + dp[i][j]) : 0;
+                ans = max(ans, dp[i + 1][j + 1]);
+            }
+        }
+        return ans;
+    }
+};
 ```
 
 Since `dp[i + 1][j + 1]` only depends on `dp[i][j]`, we can use 1D array to store the `dp` array.
