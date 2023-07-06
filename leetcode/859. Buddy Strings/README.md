@@ -1,65 +1,51 @@
-# [859. Buddy Strings (Easy)](https://leetcode.com/problems/buddy-strings/)
+# [859. Buddy Strings (Easy)](https://leetcode.com/problems/buddy-strings)
 
-<p>Given two strings <code>A</code> and <code>B</code>&nbsp;of lowercase letters, return <code>true</code> if and only if we&nbsp;can swap two letters in <code>A</code> so that the result equals <code>B</code>.</p>
+<p>Given two strings <code>s</code> and <code>goal</code>, return <code>true</code><em> if you can swap two letters in </em><code>s</code><em> so the result is equal to </em><code>goal</code><em>, otherwise, return </em><code>false</code><em>.</em></p>
+
+<p>Swapping letters is defined as taking two indices <code>i</code> and <code>j</code> (0-indexed) such that <code>i != j</code> and swapping the characters at <code>s[i]</code> and <code>s[j]</code>.</p>
+
+<ul>
+	<li>For example, swapping at indices <code>0</code> and <code>2</code> in <code>"abcd"</code> results in <code>"cbad"</code>.</li>
+</ul>
 
 <p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
 
-<p><strong>Example 1:</strong></p>
-
-<div>
-<pre><strong>Input: </strong>A = <span id="example-input-1-1">"ab"</span>, B = <span id="example-input-1-2">"ba"</span>
-<strong>Output: </strong><span id="example-output-1">true</span>
+<pre><strong>Input:</strong> s = "ab", goal = "ba"
+<strong>Output:</strong> true
+<strong>Explanation:</strong> You can swap s[0] = 'a' and s[1] = 'b' to get "ba", which is equal to goal.
 </pre>
 
-<div>
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input: </strong>A = <span id="example-input-2-1">"ab"</span>, B = <span id="example-input-2-2">"ab"</span>
-<strong>Output: </strong><span id="example-output-2">false</span>
+<pre><strong>Input:</strong> s = "ab", goal = "ab"
+<strong>Output:</strong> false
+<strong>Explanation:</strong> The only letters you can swap are s[0] = 'a' and s[1] = 'b', which results in "ba" != goal.
 </pre>
 
-<div>
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input: </strong>A = <span id="example-input-3-1">"aa"</span>, B = <span id="example-input-3-2">"aa"</span>
-<strong>Output: </strong><span id="example-output-3">true</span>
-</pre>
-
-<div>
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input: </strong>A = <span id="example-input-4-1">"aaaaaaabc"</span>, B = <span id="example-input-4-2">"aaaaaaacb"</span>
-<strong>Output: </strong><span id="example-output-4">true</span>
-</pre>
-
-<div>
-<p><strong>Example 5:</strong></p>
-
-<pre><strong>Input: </strong>A = <span id="example-input-5-1">""</span>, B = <span id="example-input-5-2">"aa"</span>
-<strong>Output: </strong><span id="example-output-5">false</span>
+<pre><strong>Input:</strong> s = "aa", goal = "aa"
+<strong>Output:</strong> true
+<strong>Explanation:</strong> You can swap s[0] = 'a' and s[1] = 'a' to get "aa", which is equal to goal.
 </pre>
 
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><strong><span>Note:</span></strong></p>
+<ul>
+	<li><code>1 &lt;= s.length, goal.length &lt;= 2 * 10<sup>4</sup></code></li>
+	<li><code>s</code> and <code>goal</code> consist of lowercase letters.</li>
+</ul>
 
-<ol>
-	<li><code>0 &lt;= A.length &lt;= 20000</code></li>
-	<li><code>0 &lt;= B.length &lt;= 20000</code></li>
-	<li><code>A</code> and&nbsp;<code>B</code> consist only of lowercase letters.</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-**Companies**:  
-[Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[String](https://leetcode.com/tag/string/)
+[Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/)
+
+**Similar Questions**:
+* [Determine if Two Strings Are Close (Medium)](https://leetcode.com/problems/determine-if-two-strings-are-close/)
+* [Check if One String Swap Can Make Strings Equal (Medium)](https://leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/)
+* [Make Number of Distinct Characters Equal (Medium)](https://leetcode.com/problems/make-number-of-distinct-characters-equal/)
 
 ## Solution 1.
 

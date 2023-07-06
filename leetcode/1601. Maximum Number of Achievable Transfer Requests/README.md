@@ -58,12 +58,16 @@ We can achieve all the requests. </pre>
 
 ## Solution 1. Bitmask
 
-Check all the different combinations of the requests by enumerating bitmasks.
+The number of buildings is at most 20, and the number of requests is at most 16. This implies that we can consider using bitmask.
+
+We want to find the largest combination of the requests that is valid. There are `2^16 = 65536` combinations at most.
+
+For each combination, we need to traverse the edges in this combination, log the balance at each building, and check if all the buildings have zero balances. These takes `O(M + N)` time.
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-number-of-achievable-transfer-requests/
 // Author: github.com/lzl124631x
-// Time: O(2^M * (M + N))
+// Time: O(2^M * (M + N)) where M is the number of requests.
 // Space: O(N)
 class Solution {
 public:
@@ -91,6 +95,8 @@ public:
 
 ## Solution 2. DFS
 
+Since we need to generate different combinations of `M` edges, we can use DFS to generate such combinations.
+
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-number-of-achievable-transfer-requests/
 // Author: github.com/lzl124631x
@@ -99,22 +105,22 @@ public:
 class Solution {
 public:
     int maximumRequests(int n, vector<vector<int>>& A) {
-        int cnt[20] = {}, ans = 0;
+        int cnt[20] = {}, ans = 0; // cnt[i] is available spots at building `i`
         function<void(int, int)> dfs = [&](int i, int used) {
             if (i == A.size()) {
                 for (int j = 0; j < n; ++j) {
-                    if (cnt[j]) return;
+                    if (cnt[j]) return; // if any building has non-zero available spots, this combination is not valid, skip.
                 }
-                ans = max(ans, used);
+                ans = max(ans, used); // otherwise, this combination is valid. 
                 return;
             }
             int u = A[i][0], v = A[i][1];
             cnt[u]++, cnt[v]--; 
-            dfs(i + 1, used + 1); // use this edge
+            dfs(i + 1, used + 1); // use this edge A[i]. Available spot at building u increments, and that of building v decrements.
             cnt[u]--, cnt[v]++;
-            dfs(i + 1, used); // don't use this edge
+            dfs(i + 1, used); // don't use this edge A[i]
         };
-        dfs(0, 0);
+        dfs(0, 0); // dfs from A[0] with 0 used edges.
         return ans;
     }
 };
