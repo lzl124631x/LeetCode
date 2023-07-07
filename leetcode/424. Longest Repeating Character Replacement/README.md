@@ -86,6 +86,59 @@ public:
 };
 ```
 
+## Solution 2. Sliding Window
+
+Shrinkable Sliding Window:
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-repeating-character-replacement
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int characterReplacement(string s, int k) {
+        int ans = 0, N = s.size();
+        auto count = [&](char c) {
+            int i = 0, j = 0, cnt = 0, ans = 0;
+            for (; j < N; ++j) {
+                cnt += s[j] != c;
+                while (cnt > k) cnt -= s[i++] != c;
+                ans = max(ans, j - i + 1);
+            }
+            return ans;
+        };
+        for (char c = 'A'; c <= 'Z'; ++c) ans = max(ans, count(c));
+        return ans;
+    }
+};
+```
+
+Non-shrinkable sliding window:
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-repeating-character-replacement
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int characterReplacement(string s, int k) {
+        int ans = 0, N = s.size();
+        auto count = [&](char c) {
+            int i = 0, j = 0, cnt = 0, ans = 0;
+            for (; j < N; ++j) {
+                cnt += s[j] != c;
+                if (cnt > k) cnt -= s[i++] != c;
+            }
+            return j - i;
+        };
+        for (char c = 'A'; c <= 'Z'; ++c) ans = max(ans, count(c));
+        return ans;
+    }
+};
+```
+
 ## Discuss
 
 https://leetcode.com/problems/longest-repeating-character-replacement/discuss/1499834/C%2B%2B-Sliding-Window-(%2B-Cheat-Sheet)
