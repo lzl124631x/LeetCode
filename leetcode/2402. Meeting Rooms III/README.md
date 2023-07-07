@@ -95,9 +95,9 @@ public:
     int mostBooked(int n, vector<vector<int>>& A) {
         sort(begin(A), end(A), [](auto &a, auto &b) { return a[0] < b[0]; });
         auto cmp = [](auto &a, auto &b) { return a[0] > b[0]; };
-        priority_queue<vector<long>, vector<vector<long>>, decltype(cmp)> roomsInUse(cmp); // end time, room number
+        priority_queue<vector<long>, vector<vector<long>>, decltype(cmp)> roomsInUse(cmp); // end time, room number. The room with the smallest end time is at the top
         vector<int> usage(n);
-        long maxUsage = 0, prevStartTime = -1;
+        long prevStartTime = -1;
         set<int> availableRooms;
         for (int i = 0; i < n; ++i) availableRooms.insert(i);
         for (auto &m : A) {
@@ -116,14 +116,49 @@ public:
             }
             prevStartTime = start;
             int room = *availableRooms.begin();
-            if (++usage[room] > maxUsage) maxUsage = usage[room];
+            ++usage[room];
             availableRooms.erase(room);
             roomsInUse.push({end, room});
         }
-        for (int i = 0; i < n; ++i) {
-            if (usage[i] == maxUsage) return i;
+        return max_element(begin(usage), end(usage)) - begin(usage);
+    }
+};
+```
+
+## Solution 2. Heap
+
+```cpp
+// OJ: https://leetcode.com/problems/meeting-rooms-iii
+// Author: github.com/lzl124631x
+// Time: O(MlogN)
+// Space: O(N)
+class Solution {
+public:
+    int mostBooked(int n, vector<vector<int>>& A) {
+        sort(begin(A), end(A), [](auto &a, auto &b) { return a[0] < b[0]; });
+        priority_queue<vector<long>, vector<vector<long>>, greater<>> roomsInUse; // end time, room number. The room with the smallest end time, or the smallest room number when there are multiple rooms with the same smallest end time, is at the top.
+        vector<int> usage(n);
+        set<int> availableRooms;
+        for (int i = 0; i < n; ++i) availableRooms.insert(i);
+        for (auto &m : A) {
+            long start = m[0], end = m[1], room;
+            while (roomsInUse.size() && roomsInUse.top()[0] <= start) {
+                availableRooms.insert(roomsInUse.top()[1]);
+                roomsInUse.pop();
+            }
+            if (availableRooms.size()) {
+                room = *availableRooms.begin();
+                availableRooms.erase(room);
+                roomsInUse.push({end, room});
+            } else {
+                long time = roomsInUse.top()[0];
+                room = roomsInUse.top()[1];
+                roomsInUse.pop();
+                roomsInUse.push({ time + end - start, room });
+            }
+            ++usage[room];
         }
-        return -1;
+        return max_element(begin(usage), end(usage)) - begin(usage);
     }
 };
 ```
