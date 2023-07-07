@@ -45,7 +45,13 @@ When i = 4, arr[4] = 0 because there is no other index with value 2.
 * [Find All Duplicates in an Array (Easy)](https://leetcode.com/problems/find-all-duplicates-in-an-array/)
 * [Minimum Operations to Make All Array Elements Equal (Easy)](https://leetcode.com/problems/minimum-operations-to-make-all-array-elements-equal/)
 
-## Solution 1.
+## Solution 1. Left-to-right State Transition
+
+Group the indices of the same numbers together using an `unordered_map<int, vector<int>> m`.
+
+For the index numbers in each of the group, we keep `rightSum` as sum of all index numbers greater than the current index number, and `leftSum` as the sum of all index numbers smaller than or equal to the current index number. Initially `rightSum` is the sum of all index numbers in the group.
+
+Then, we visit the index numbers one by one. For index number `v[i]`, we deduct it from `rightSum` and add it to `leftSum`. `ans[v[i]]` is `rightSum - (N - i - 1) * v[i] + (i + 1) * v[i] - leftSum = rightSum - leftSum + (2 * (i + 1) - N) * v[i]`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/sum-of-distances
