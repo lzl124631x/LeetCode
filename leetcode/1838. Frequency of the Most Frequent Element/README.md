@@ -50,6 +50,8 @@ Explanation:</strong> Increment the first element three times and the second ele
 
 Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)"
 
+Since we only care about the frequency, we can sort the array first to simplify the problem.
+
 Let two pointers `i, j` form a window `[i, j]`. The window is valid if `(j - i + 1) * A[j] - sum <= k` where `sum` is the sum of the numbers in window `[i, j]`.
 
 We increment `j` and update `sum`, then shrink the window by incrementing `i` until the window become valid again.
