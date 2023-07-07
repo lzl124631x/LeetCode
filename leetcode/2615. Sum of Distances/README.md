@@ -35,7 +35,7 @@ When i = 4, arr[4] = 0 because there is no other index with value 2.
 
 
 **Companies**:
-[BNY Mellon](https://leetcode.com/company/bny mellon)
+[BNY Mellon](https://leetcode.com/company/bny-mellon)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
