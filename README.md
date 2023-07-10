@@ -1907,6 +1907,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2710 | Remove Trailing Zeros From a String | Easy | [Solution](leetcode/2710.%20Remove%20Trailing%20Zeros%20From%20a%20String)
 2713 | Maximum Strictly Increasing Cells in a Matrix | Hard | [Solution](leetcode/2713.%20Maximum%20Strictly%20Increasing%20Cells%20in%20a%20Matrix)
 2729 | Check if The Number is Fascinating | Easy | [Solution](leetcode/2729.%20Check%20if%20The%20Number%20is%20Fascinating)
+2770 | Maximum Number of Jumps to Reach the Last Index | Medium | [Solution](leetcode/2770.%20Maximum%20Number%20of%20Jumps%20to%20Reach%20the%20Last%20Index)
 
 
 # FAQ
