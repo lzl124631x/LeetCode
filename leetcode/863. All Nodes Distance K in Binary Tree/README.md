@@ -111,46 +111,45 @@ public:
 };
 ```
 
-## Solution 2. BFS
+## Solution 2. DFS + BFS
 
-Keep track of the mapping between node and its parent. BFS from `target` node.
+DFS to build the graph of the tree, then BFS to find the nodes at level `k`.
 
 ```cpp
-// OJ: https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
+// OJ: https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(N)
 class Solution {
-private:
-    unordered_map<TreeNode*, TreeNode*> parent;
-    void dfs(TreeNode *node, TreeNode *par) {
-        if (!node) return;
-        parent[node] = par;
-        if (node->left) dfs(node->left, node);
-        if (node->right) dfs(node->right, node);
-    }
 public:
-    vector<int> distanceK(TreeNode* root, TreeNode* target, int K) {
-        dfs(root, NULL);
-        unordered_set<TreeNode*> seen;
-        seen.insert(NULL);
-        queue<TreeNode*> q;
-        vector<int> ans;
-        q.push(target);
-        while (q.size()) {
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+        unordered_map<int, vector<int>> G;
+        function<void(TreeNode*, TreeNode*)> dfs = [&](TreeNode *node, TreeNode *parent) {
+            if (!node) return;
+            if (parent) {
+                G[parent->val].push_back(node->val);
+                G[node->val].push_back(parent->val);
+            }
+            dfs(node->left, node);
+            dfs(node->right, node);
+        };
+        dfs(root, nullptr);
+        queue<int> q{{target->val}};
+        while (q.size() && k--) {
             int cnt = q.size();
             while (cnt--) {
-                root = q.front();
-                seen.insert(root);
+                int u = q.front();
                 q.pop();
-                if (!K) ans.push_back(root->val);
-                else {
-                    if (seen.find(root->left) == seen.end()) q.push(root->left);
-                    if (seen.find(root->right) == seen.end()) q.push(root->right);
-                    if (seen.find(parent[root]) == seen.end()) q.push(parent[root]);
+                for (int v : G[u]) {
+                    if (G.count(v)) q.push(v);
                 }
+                G.erase(u);
             }
-            --K;
+        }
+        vector<int> ans;
+        while (q.size()) {
+            ans.push_back(q.front());
+            q.pop();
         }
         return ans;
     }
