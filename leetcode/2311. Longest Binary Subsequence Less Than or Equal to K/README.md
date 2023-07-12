@@ -79,3 +79,31 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+The key is to realize that we need to take all zeros.
+
+Then, we take as many 1 from the right as we can, before exceeding `k`. It can be shown that greedily using 1 from the right is always better than to skip it.
+
+```cpp
+// OJ: https://leetcode.com/problems/longest-binary-subsequence-less-than-or-equal-to-k
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+// Ref: https://leetcode.com/problems/longest-binary-subsequence-less-than-or-equal-to-k/solutions/2168423/o-n/
+class Solution {
+public:
+    int longestSubsequence(string s, int k) {
+        int val = 0, one = 0, p = 1;
+        for (int i = s.size() - 1; i >= 0 && val + p <= k; --i) {
+            if (s[i] == '1') {
+                ++one;
+                val += p;
+            }
+            p <<= 1;
+        }
+        return count(begin(s), end(s), '0') + one;
+    }
+};
+```
