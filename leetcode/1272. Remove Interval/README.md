@@ -43,15 +43,13 @@ public:
     vector<vector<int>> removeInterval(vector<vector<int>>& A, vector<int>& rm) {
         int N = A.size(), i = 0;
         vector<vector<int>> ans;
-        while (i < N && A[i][1] <= rm[0]) {
-            ans.push_back(A[i++]);
+        for (auto &r : A) {
+            if (r[0] > rm[1] || r[1] <= rm[0]) ans.push_back(r);
+            else {
+                if (r[0] < rm[0]) ans.push_back({r[0], rm[0]});
+                if (r[1] > rm[1]) ans.push_back({rm[1], r[1]});
+            }
         }
-        if (i == N) return ans;
-        if (A[i][0] < rm[0]) ans.push_back({A[i][0], rm[0]});
-        while (i < N && A[i][1] <= rm[1]) ++i;
-        if (i == N) return ans;
-        if (A[i][0] <= rm[1]) ans.push_back({rm[1], A[i++][1]});
-        while (i < N) ans.push_back(A[i++]);
         return ans;
     }
 };
