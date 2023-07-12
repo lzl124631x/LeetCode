@@ -49,7 +49,7 @@ The length of this subsequence is 6, so 6 is returned.
 class Solution {
 public:
     int longestSubsequence(string s, int k) {
-        long long i = s.size() - 1, bits = 32 - __builtin_clz(k), n = 0, ans = 0;
+        int i = s.size() - 1, bits = 32 - __builtin_clz(k), n = 0, ans = 0;
         while (i >= 0 && bits-- > 0) { // turn the last `bits` digits to a binary number `n`.
             n += ((s[i] - '0') << ans);
             --i;
