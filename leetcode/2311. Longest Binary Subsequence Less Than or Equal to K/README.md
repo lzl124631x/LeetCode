@@ -41,6 +41,18 @@ The length of this subsequence is 6, so 6 is returned.
 
 ## Solution 1. Greedy
 
+The brute force solution would be generating all `2^N` subsequences and use `O(N)` time to check each of them, taking `O(2^N * N)` time.
+
+There are lots of unnecessary checks. For example, `s = "00001", k = 1`, when we know `binary("1") <= k`, for all the leading zeros, we can just greedily use them. So, we need to find a subsequence to the right as much as possible that is `<= k`, and use all leading zeros.
+
+Assume `k` has `bits` bits, if the last `bits` digits of `s` is `<= k`, we can use them directly and use all leading zeros.
+
+If the last `bits` digits of `s` is `> k`, we must use another leading `0` to replace the leading `1` of the current subsequence. For example `s = "0010111101", k = 4 (100)`, the last 3 digits of `s` forms `"101" > 100`, and using any `1`s in the front won't reduce the value; we must find a leading zero to make the subsequence `"001"`.
+
+If we can't find such leading zero, we have to match one less digit.
+
+Otherwise, we use this leading zero, and use up all other leading zeros.
+
 ```cpp
 // OJ: https://leetcode.com/problems/longest-binary-subsequence-less-than-or-equal-to-k
 // Author: github.com/lzl124631x
