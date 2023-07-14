@@ -29,7 +29,7 @@
 </ul>
 
 **Companies**:
-[Hudson River Trading](https://leetcode.com/company/hudson-river trading)
+[Hudson River Trading](https://leetcode.com/company/hudson-river-trading)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
