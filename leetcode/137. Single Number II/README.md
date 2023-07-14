@@ -1,22 +1,38 @@
-# [137. Single Number II (Medium)](https://leetcode.com/problems/single-number-ii/)
+# [137. Single Number II (Medium)](https://leetcode.com/problems/single-number-ii)
 
-<p>Given a <strong>non-empty</strong>&nbsp;array of integers, every element appears <em>three</em> times except for one, which appears exactly once. Find that single one.</p>
+<p>Given an integer array <code>nums</code> where&nbsp;every element appears <strong>three times</strong> except for one, which appears <strong>exactly once</strong>. <em>Find the single element and return it</em>.</p>
 
-<p><strong>Note:</strong></p>
+<p>You must&nbsp;implement a solution with a linear runtime complexity and use&nbsp;only constant&nbsp;extra space.</p>
 
-<p>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
-
-<p><strong>Example 1:</strong></p>
-
-<pre><strong>Input:</strong> [2,2,3,2]
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<pre><strong>Input:</strong> nums = [2,2,3,2]
 <strong>Output:</strong> 3
+</pre><p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [0,1,0,1,0,1,99]
+<strong>Output:</strong> 99
 </pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-<p><strong>Example 2:</strong></p>
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>
+	<li>Each element in <code>nums</code> appears exactly <strong>three times</strong> except for one element which appears <strong>once</strong>.</li>
+</ul>
 
-<pre><strong>Input:</strong> [0,1,0,1,0,1,99]
-<strong>Output:</strong> 99</pre>
 
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/)
+
+**Similar Questions**:
+* [Single Number (Easy)](https://leetcode.com/problems/single-number/)
+* [Single Number III (Easy)](https://leetcode.com/problems/single-number-iii/)
+
+
+## Note
+
+Basically this problem asks us to implement a ternary system that when a digit reaches 3, this digit should be reset to 0.
 
 ## Solution 1. Bit Manipulation
 
@@ -43,7 +59,28 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Bit Manipulation
+
+Instead of counting each bit separately, we compute all the bits together.
+
+Since we are simulating a ternary system, we need two binary bits to represent each ternary digit. 
+
+$(00)_2 = (0)_3$
+
+$(01)_2 = (1)_3$
+
+$(10)_2 = (2)_3$
+
+$(11)_2 = (0)_3$ When the ternary digit becomes 3, we reset it to 0 instead of carrying it over to the higher digit
+
+We use `high`/`low` to represent all the left-/right-most bits of each ternary digit.
+
+`high` and `low` won't have 1 at the same bit index, because it means that the ternary digit is 3 and should be reset to 0.
+
+For each number `n` in `nums` array:
+1. For the bit 1s that `n` and `low` DO NOT share in common (i.e. `n ^ low`), they are left as the new `low`. So, `newLow = low ^ n`
+2. For the bit 1s that `n` and `low` share in common (i.e. `n & low`), they become new `high` digits. Together with the old `high` digits, `newHigh = high | (n & low)`.
+3. If `newLow` and `newHigh` share any digit 1s in common, they should be reset to 0. So we should remove `newLow & newHigh` from `newLow` and `newHigh`
 
 ```cpp
 // OJ: https://leetcode.com/problems/single-number-ii/

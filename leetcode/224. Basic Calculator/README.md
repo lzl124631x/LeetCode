@@ -24,6 +24,69 @@ The expression string may contain open `(` and closing parentheses `)`, the plus
 *   You may assume that the given expression is always valid.
 *   **Do not** use the `eval` built-in library function.
 
+## Solution 1. Stack
+
+```cpp
+// OJ: https://leetcode.com/problems/basic-calculator/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(P) where P is the maximum level of nested parenthesis
+class Solution {
+public:
+    int calculate(string s) {
+        stack<long> st;
+        long ans = 0, sign = 1;
+        for (int i = 0, N = s.size(); i < N; ++i) {
+            if (isdigit(s[i])) {
+                long num = 0;
+                while (i < N && isdigit(s[i])) num = num * 10 + s[i++] - '0';
+                --i;
+                ans += sign * num;
+            } else if (s[i] == '+') sign = 1;
+            else if (s[i] == '-') sign = -1;
+            else if (s[i] == '(') {
+                st.push(ans);
+                st.push(sign);
+                ans = 0;
+                sign = 1;
+            } else if (s[i] == ')') {
+                ans *= st.top(); st.pop();
+                ans += st.top(); st.pop();
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/basic-calculator/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int calculate(string s) {
+        stack<int> signs;
+        int n = 0, ans = 0, sign = 1;
+        signs.push(sign);
+        for (char c : s) {
+            if (isdigit(c)) n = 10 * n + (c - '0');
+            else if (c == '(') signs.push(sign);
+            else if (c == ')') signs.pop();
+            else if (c == '+' || c == '-') {
+                ans += sign * n;
+                n = 0;
+                sign = signs.top() * (c == '+' ? 1 : -1);
+            }
+        }
+        return ans + sign * n;
+    }
+};
+```
+
 ## Solution 1. Reverse Polish Notation (RPN)
 
 1. Tokenize the string
@@ -245,34 +308,6 @@ public:
             }
         }
         return ans;
-    }
-};
-```
-
-## Solution 5.
-
-```cpp
-// OJ: https://leetcode.com/problems/basic-calculator/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(N)
-class Solution {
-public:
-    int calculate(string s) {
-        stack<int> signs;
-        int n = 0, ans = 0, sign = 1;
-        signs.push(sign);
-        for (char c : s) {
-            if (isdigit(c)) n = 10 * n + (c - '0');
-            else if (c == '(') signs.push(sign);
-            else if (c == ')') signs.pop();
-            else if (c == '+' || c == '-') {
-                ans += sign * n;
-                n = 0;
-                sign = signs.top() * (c == '+' ? 1 : -1);
-            }
-        }
-        return ans + sign * n;
     }
 };
 ```
