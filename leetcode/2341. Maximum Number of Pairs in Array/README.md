@@ -52,7 +52,7 @@ No more pairs can be formed. A total of 1 pair has been formed, and there are 0 
 // OJ: https://leetcode.com/problems/maximum-number-of-pairs-in-array
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(N)
+// Space: O(D) where D is the range of the numbers
 class Solution {
 public:
     vector<int> numberOfPairs(vector<int>& A) {
