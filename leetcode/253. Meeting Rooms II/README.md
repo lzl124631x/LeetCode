@@ -48,42 +48,6 @@ public:
         }
         sort(begin(starts), end(starts));
         sort(begin(ends), end(ends));
-        int N = A.size(), ans = 0, cnt = 0;
-        for (int i = 0, j = 0; i < N;) {
-            if (starts[i] < ends[j]) {
-                ++cnt;
-                ++i;
-                ans = max(ans, cnt);
-            } else if (starts[i] > ends[j]) {
-                --cnt;
-                ++j;
-            } else {
-                ++i;
-                ++j;
-            }
-        }
-        return ans;
-    }
-};
-```
-
-## Solution 2.
-
-```cpp
-// OJ: https://leetcode.com/problems/meeting-rooms-ii/
-// Author: github.com/lzl124631x
-// Time: O(NlogN)
-// Space: O(N)
-class Solution {
-public:
-    int minMeetingRooms(vector<vector<int>>& A) {
-        vector<int> starts, ends;
-        for (auto &v : A) {
-            starts.push_back(v[0]);
-            ends.push_back(v[1]);
-        }
-        sort(begin(starts), end(starts));
-        sort(begin(ends), end(ends));
         int N = A.size(), ans = 0;
         for (int i = 0, j = 0; i < N; ++ans, ++i) {
             if (starts[i] < ends[j]) continue;
@@ -95,7 +59,7 @@ public:
 };
 ```
 
-## Solution 3. Heap
+## Solution 2. Heap
 
 ```cpp
 // OJ: https://leetcode.com/problems/meeting-rooms-ii/
@@ -105,14 +69,13 @@ public:
 class Solution {
 public:
     int minMeetingRooms(vector<vector<int>>& A) {
-        int N = A.size(), ans = 0;
-        sort(begin(A), end(A));
-        auto cmp = [&](int a, int b) { return A[a][1] > A[b][1]; };
-        priority_queue<int, vector<int>, decltype(cmp)> pq(cmp); 
-        for (int i = 0; i < N; ++i) {
-            int start = A[i][0];
-            while (pq.size() && A[pq.top()][1] <= start) pq.pop();
-            pq.push(i);
+        sort(begin(A), end(A), [](auto &a, auto &b) { return a[0] != b[0] ? a[0] < b[0] : a[1] < b[1]; });
+        int ans = 0;
+        priority_queue<int, vector<int>, greater<>> pq; // min heap of end times
+        for (auto &v : A) {
+            int s = v[0], e = v[1];
+            while (pq.size() && pq.top() <= s) pq.pop();
+            pq.push(e);
             ans = max(ans, (int)pq.size());
         }
         return ans;
