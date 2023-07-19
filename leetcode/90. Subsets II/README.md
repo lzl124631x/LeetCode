@@ -28,38 +28,7 @@
 * [Subsets (Medium)](https://leetcode.com/problems/subsets/)
 * [Find Array Given Subset Sums (Hard)](https://leetcode.com/problems/find-array-given-subset-sums/)
 
-## Solution 1. Brute Force
-
-There are at most `2^N` subsets in the `set`. Each insertion into the `set` takes `O(log(2^N) * N) = O(N^2)` time. So overall the time complexity is `O(2^N * N^2)`.
-
-```cpp
-// OJ: https://leetcode.com/problems/subsets-ii/
-// Author: github.com/lzl124631x
-// Time: O(2^N * N^2)
-// Space: O(2^N * N)
-class Solution {
-    set<vector<int>> s;
-    vector<int> tmp;
-    void dfs(vector<int> &A, int i) {
-        if (i == A.size()) {
-            s.insert(tmp);
-            return;
-        }
-        dfs(A, i + 1);
-        tmp.push_back(A[i]);
-        dfs(A, i + 1);
-        tmp.pop_back();
-    }
-public:
-    vector<vector<int>> subsetsWithDup(vector<int>& A) {
-        sort(begin(A), end(A));
-        dfs(A, 0);
-        return vector<vector<int>>(begin(s), end(s));
-    }
-};
-```
-
-## Solution 2. DFS
+## Solution 1. DFS
 
 Consider how duplicates are generated.
 
@@ -101,7 +70,7 @@ public:
 };
 ```
 
-## Solution 3.
+## Solution 2.
 
 ```cpp
 // OJ: https://leetcode.com/problems/subsets-ii/
@@ -134,7 +103,7 @@ public:
 };
 ```
 
-## Solution 4.
+## Solution 3.
 
 ```cpp
 // OJ: https://leetcode.com/problems/subsets-ii/
