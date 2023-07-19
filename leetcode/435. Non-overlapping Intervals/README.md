@@ -1,48 +1,39 @@
-# [435. Non-overlapping Intervals (Medium)](https://leetcode.com/problems/non-overlapping-intervals/)
+# [435. Non-overlapping Intervals (Medium)](https://leetcode.com/problems/non-overlapping-intervals)
 
-<p>Given a collection of intervals, find the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.</p>
-
-<ol>
-</ol>
-
+<p>Given an array of intervals <code>intervals</code> where <code>intervals[i] = [start<sub>i</sub>, end<sub>i</sub>]</code>, return <em>the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping</em>.</p>
 <p>&nbsp;</p>
-
-<p><b>Example 1:</b></p>
-
-<pre><b>Input:</b> [[1,2],[2,3],[3,4],[1,3]]
-<b>Output:</b> 1
-<b>Explanation:</b> [1,3] can be removed and the rest of intervals are non-overlapping.
+<p><strong class="example">Example 1:</strong></p>
+<pre><strong>Input:</strong> intervals = [[1,2],[2,3],[3,4],[1,3]]
+<strong>Output:</strong> 1
+<strong>Explanation:</strong> [1,3] can be removed and the rest of the intervals are non-overlapping.
 </pre>
-
-<p><b>Example 2:</b></p>
-
-<pre><b>Input:</b> [[1,2],[1,2],[1,2]]
-<b>Output:</b> 2
-<b>Explanation:</b> You need to remove two [1,2] to make the rest of intervals non-overlapping.
+<p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> intervals = [[1,2],[1,2],[1,2]]
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> You need to remove two [1,2] to make the rest of the intervals non-overlapping.
 </pre>
-
-<p><b>Example 3:</b></p>
-
-<pre><b>Input:</b> [[1,2],[2,3]]
-<b>Output:</b> 0
-<b>Explanation:</b> You don't need to remove any of the intervals since they're already non-overlapping.
+<p><strong class="example">Example 3:</strong></p>
+<pre><strong>Input:</strong> intervals = [[1,2],[2,3]]
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> You don't need to remove any of the intervals since they're already non-overlapping.
 </pre>
-
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+	<li><code>1 &lt;= intervals.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>intervals[i].length == 2</code></li>
+	<li><code>-5 * 10<sup>4</sup> &lt;= start<sub>i</sub> &lt; end<sub>i</sub> &lt;= 5 * 10<sup>4</sup></code></li>
+</ul>
 
-<p><b>Note:</b></p>
-
-<ol>
-	<li>You may assume the interval's end point is always bigger than its start point.</li>
-	<li>Intervals like [1,2] and [2,3] have borders "touching" but they don't overlap each other.</li>
-</ol>
-
+**Companies**:
+[JPMorgan](https://leetcode.com/company/jpmorgan), [Amazon](https://leetcode.com/company/amazon), [Salesforce](https://leetcode.com/company/salesforce)
 
 **Related Topics**:  
-[Greedy](https://leetcode.com/tag/greedy/)
+[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Greedy](https://leetcode.com/tag/greedy/), [Sorting](https://leetcode.com/tag/sorting/)
 
 **Similar Questions**:
 * [Minimum Number of Arrows to Burst Balloons (Medium)](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/)
+* [Determine if Two Events Have Conflict (Easy)](https://leetcode.com/problems/determine-if-two-events-have-conflict/)
 
 ## Solution 1. Interval Scheduling Maximization Problem
 
