@@ -67,3 +67,24 @@ public:
     }
 };
 ```
+
+# Solution 2. Sliding Window
+
+```cpp
+// OJ: https://leetcode.com/problems/count-subarrays-with-score-less-than-k
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    long long countSubarrays(vector<int>& A, long long k) {
+        long long N = A.size(), ans = 0, sum = 0;
+        for (int i = 0, j = 0; j < N; ++j) {
+            sum += A[j];
+            while (sum * (j - i + 1) >= k) sum -= A[i++];
+            ans += j - i + 1;
+        }
+        return ans;
+    }
+};
+```
