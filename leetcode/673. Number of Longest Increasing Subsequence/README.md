@@ -1,33 +1,35 @@
-# [673. Number of Longest Increasing Subsequence (Medium)](https://leetcode.com/problems/number-of-longest-increasing-subsequence/)
+# [673. Number of Longest Increasing Subsequence (Medium)](https://leetcode.com/problems/number-of-longest-increasing-subsequence)
 
-<p>
-Given an unsorted array of integers, find the number of longest increasing subsequence.
-</p>
-
-<p><b>Example 1:</b><br>
-</p><pre><b>Input:</b> [1,3,5,4,7]
-<b>Output:</b> 2
-<b>Explanation:</b> The two longest increasing subsequence are [1, 3, 4, 7] and [1, 3, 5, 7].
+<p>Given an integer array&nbsp;<code>nums</code>, return <em>the number of longest increasing subsequences.</em></p>
+<p><strong>Notice</strong> that the sequence has to be <strong>strictly</strong> increasing.</p>
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<pre><strong>Input:</strong> nums = [1,3,5,4,7]
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> The two longest increasing subsequences are [1, 3, 4, 7] and [1, 3, 5, 7].
 </pre>
-<p></p>
-
-<p><b>Example 2:</b><br>
-</p><pre><b>Input:</b> [2,2,2,2,2]
-<b>Output:</b> 5
-<b>Explanation:</b> The length of longest continuous increasing subsequence is 1, and there are 5 subsequences' length is 1, so output 5.
+<p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [2,2,2,2,2]
+<strong>Output:</strong> 5
+<strong>Explanation:</strong> The length of the longest increasing subsequence is 1, and there are 5 increasing subsequences of length 1, so output 5.
 </pre>
-<p></p>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 2000</code></li>
+	<li><code>-10<sup>6</sup> &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
+</ul>
 
-<p><b>Note:</b>
-Length of the given array will be not exceed 2000 and the answer is guaranteed to be fit in 32-bit signed int.
-</p>
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg)
 
 **Related Topics**:  
-[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Binary Indexed Tree](https://leetcode.com/tag/binary-indexed-tree/), [Segment Tree](https://leetcode.com/tag/segment-tree/)
 
 **Similar Questions**:
 * [Longest Increasing Subsequence (Medium)](https://leetcode.com/problems/longest-increasing-subsequence/)
 * [Longest Continuous Increasing Subsequence (Easy)](https://leetcode.com/problems/longest-continuous-increasing-subsequence/)
+* [Longest Increasing Subsequence II (Hard)](https://leetcode.com/problems/longest-increasing-subsequence-ii/)
 
 ## Solution 1. DP
 
