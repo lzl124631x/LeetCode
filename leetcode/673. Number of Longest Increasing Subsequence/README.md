@@ -75,3 +75,36 @@ public:
     }
 };
 ```
+
+## Solution 2. Top-down DP
+
+```cpp
+// OJ: https://leetcode.com/problems/number-of-longest-increasing-subsequence
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N)
+class Solution {
+public:
+    int findNumberOfLIS(vector<int>& A) {
+        int N = A.size(), maxLen = 0, ans = 0;
+        vector<int> len(N), cnt(N);
+        function<void(int)> dp = [&](int i) {
+            if (i == N || len[i]) return;
+            len[i] = 1;
+            cnt[i] = 1;
+            for (int j = 0; j < i; ++j) {
+                if (A[j] >= A[i]) continue;
+                dp(j);
+                if (len[i] < 1 + len[j]) len[i] = 1 + len[j], cnt[i] = cnt[j];
+                else if (len[i] == 1 + len[j]) cnt[i] += cnt[j];
+            }
+        };
+        for (int i = 0; i < N; ++i) {
+            dp(i);
+            if (len[i] > maxLen) maxLen = len[i], ans = cnt[i];
+            else if (len[i] == maxLen) ans += cnt[i];
+        }
+        return ans;
+    }
+};
+```
