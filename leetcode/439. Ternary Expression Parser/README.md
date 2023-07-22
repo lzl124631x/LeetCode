@@ -74,3 +74,30 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/ternary-expression-parser
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(L) where L is the level of nesting
+class Solution {
+public:
+    string parseTernary(string s) {
+        int i = 0, N = s.size();
+        function<string()> parse = [&]() {
+            if (i == N - 1 || s[i + 1] == ':') {
+                return s.substr(i++, 1);
+            }
+            bool b = s[i] == 'T';
+            i += 2;
+            auto left = parse();
+            ++i;
+            auto right = parse();
+            return b ? left : right;
+        };
+        return parse();
+    }
+};
+```
