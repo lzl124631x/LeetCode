@@ -53,6 +53,63 @@ It can be proven that 3 is the minimum number of operations needed.
 
 ## Solution 1.
 
+We collect the node values at each level. For a specific level, we count the minimum swaps to make that level ordered.
+
+Assume the values at current level is `A = [7,6,8,5]`, we create an index array `id = [0,1,2,3]` initially, and sort it based on the corresponding value in `A`.
+
+After sorting, `id = [3,1,0,2]`, meaning `A[3]=5` is the smallest element, `A[1]=6` is the next element, and so on.
+
+Then we can rewrite `A` by setting `A[id[i]] = i`. Then, `A = [2,1,3,0]` and this normalizes the `A` to range `[0, N-1]`.
+
+Then, we just need to do swaps to make `A[i] = i`. 
+
+* For `i = 0`, `A[0] = 2 != 0`, so we should swap `A[0] = 2` to its final index `2`. Then, `A = [3,1,2,0]`.
+* For `i = 0`, `A[0] = 3 != 0`, so we should swap `A[0] = 3` to its final index `3`. Then, `A = [0,1,2,3]`.
+* Now, `A[i] = i` for all indices.
+
+Now we just need to do swaps to make `id[i] = i` for each `i`.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class Solution {
+public:
+    int minimumOperations(TreeNode* root) {
+        queue<TreeNode*> q{{root}};
+        int ans = 0;
+        while (q.size()) {
+            int cnt = q.size();
+            vector<int> v, id(cnt);
+            iota(begin(id), end(id), 0);
+            while (cnt--) {
+                auto n = q.front();
+                q.pop();
+                v.push_back(n->val);
+                if (n->left) q.push(n->left);
+                if (n->right) q.push(n->right);
+            }
+            sort(begin(id), end(id), [&](int a, int b) { return v[a] < v[b]; });
+            for (int i = 0; i < id.size(); ++i) v[id[i]] = i;
+            for (int i = 0; i < id.size(); ++i) {
+                while (v[i] != i) {
+                    swap(v[v[i]], v[i]);
+                    ++ans;
+                } 
+            }
+        }
+        return ans;
+    }
+};
+```
+
+[This solution](https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level/solutions/2808869/index-array/) shows that we can also do this operation directly on `id` array. (But its explanation is wrong. `A=[7,11,3,5,2]`'s index array after sorting should be `id=[4,2,3,0,1]`).
+
+Again, consider `A=[7,6,8,5]` and sorted index array `id=[3,1,0,2]`. `id[3] = 2` means that `A[2] = 8`'s correct index is `3`. So, we should swap `A[2]` and `A[3]`. It is `id[0] = 3` that represents `A[3]`, so we should swap `id[0]` with `id[2]`.
+
+In this solution, instead of finding which `id[i] = 3`, it scans from the left `id[0] = 3`, find `id[id[0]] = id[3] = 2`, and swap `id[0]=3` with `id[3]=2`, which effectively swaps `A[3]` with `A[2]`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level
 // Author: github.com/lzl124631x
