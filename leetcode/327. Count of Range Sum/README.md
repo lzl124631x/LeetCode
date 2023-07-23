@@ -1,31 +1,36 @@
-# [327. Count of Range Sum (Hard)](https://leetcode.com/problems/count-of-range-sum/)
+# [327. Count of Range Sum (Hard)](https://leetcode.com/problems/count-of-range-sum)
 
-<p>Given an integer array <code>nums</code>, return the number of range sums that lie in <code>[lower, upper]</code> inclusive.<br>
-Range sum <code>S(i, j)</code> is defined as the sum of the elements in <code>nums</code> between indices <code>i</code> and <code>j</code> (<code>i</code> ≤ <code>j</code>), inclusive.</p>
-
-<p><b>Note:</b><br>
-A naive algorithm of <i>O</i>(<i>n</i><sup>2</sup>) is trivial. You MUST do better than that.</p>
-
-<p><b>Example:</b></p>
-
-<pre><strong>Input: </strong><i>nums</i> = <code>[-2,5,-1]</code>, <i>lower</i> = <code>-2</code>, <i>upper</i> = <code>2</code>,
-<strong>Output: </strong>3 
-<strong>Explanation: </strong>The three ranges are : <code>[0,0]</code>, <code>[2,2]</code>, <code>[0,2]</code> and their respective sums are: <code>-2, -1, 2</code>.
+<p>Given an integer array <code>nums</code> and two integers <code>lower</code> and <code>upper</code>, return <em>the number of range sums that lie in</em> <code>[lower, upper]</code> <em>inclusive</em>.</p>
+<p>Range sum <code>S(i, j)</code> is defined as the sum of the elements in <code>nums</code> between indices <code>i</code> and <code>j</code> inclusive, where <code>i &lt;= j</code>.</p>
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<pre><strong>Input:</strong> nums = [-2,5,-1], lower = -2, upper = 2
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> The three ranges are: [0,0], [2,2], and [0,2] and their respective sums are: -2, -1, 2.
+</pre>
+<p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [0], lower = 0, upper = 0
+<strong>Output:</strong> 1
 </pre>
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
-
 <ul>
-	<li><code>0 &lt;= nums.length &lt;= 10^4</code></li>
+	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>
+	<li><code>-10<sup>5</sup> &lt;= lower &lt;= upper &lt;= 10<sup>5</sup></code></li>
+	<li>The answer is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</li>
 </ul>
 
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[Binary Search](https://leetcode.com/tag/binary-search/), [Divide and Conquer](https://leetcode.com/tag/divide-and-conquer/), [Sort](https://leetcode.com/tag/sort/), [Binary Indexed Tree](https://leetcode.com/tag/binary-indexed-tree/), [Segment Tree](https://leetcode.com/tag/segment-tree/)
+[Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/), [Divide and Conquer](https://leetcode.com/tag/divide-and-conquer/), [Binary Indexed Tree](https://leetcode.com/tag/binary-indexed-tree/), [Segment Tree](https://leetcode.com/tag/segment-tree/), [Merge Sort](https://leetcode.com/tag/merge-sort/), [Ordered Set](https://leetcode.com/tag/ordered-set/)
 
 **Similar Questions**:
 * [Count of Smaller Numbers After Self (Hard)](https://leetcode.com/problems/count-of-smaller-numbers-after-self/)
 * [Reverse Pairs (Hard)](https://leetcode.com/problems/reverse-pairs/)
+* [Count the Number of Fair Pairs (Medium)](https://leetcode.com/problems/count-the-number-of-fair-pairs/)
 
 ## Solution 1. Divide and Conquer (Merge Sort)
 
@@ -81,6 +86,59 @@ public:
         int N = nums.size();
         for (int i = 0; i < N; ++i) sums[i + 1] = sums[i] + nums[i];
         return countMergeSort(0, N + 1, lower, upper);
+    }
+};
+```
+
+## Solution 2. Binary Indexed Tree
+
+```cpp
+// OJ: https://leetcode.com/problems/count-of-range-sum
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/count-of-range-sum/solutions/1462057
+class BIT {
+    vector<int> node;
+    static inline int lb(int x) { return x & -x; }
+public:
+    BIT(int N) : node(N + 1) {}
+    int query(int i) { // query(i) returns the count of numbers <= i
+        int ans = 0;
+        for (++i; i; i -= lb(i)) ans += node[i];
+        return ans;
+    }
+    void update(int i, int delta) {
+        for (++i; i < node.size(); i += lb(i)) node[i] += delta;
+    }
+};
+class Solution {
+public:
+    int countRangeSum(vector<int>& A, int lower, int upper) {
+        int N = A.size();
+        vector<long long> sum(N + 1);
+        map<long long, int> rank; // compress the range of numbers using rank.
+        rank[0] = 0;
+        for (int i = 0; i < N; ++i) {
+            sum[i + 1] = sum[i] + A[i];
+            rank[sum[i + 1]] = 0;
+        }
+        int k = 0;
+        for (auto &[_, r] : rank) r = k++;
+        BIT bit(k);
+        bit.update(rank[0], 1);
+        long long ans = 0;
+        for (int i = 0; i < N; ++i) {
+            long long R = sum[i + 1] - lower;
+            long long L = sum[i + 1] - upper;
+            auto rit = rank.upper_bound(R);
+            int ri = rit == rank.end() ? k : rit->second;
+            auto lit = rank.lower_bound(L);
+            int li = lit == rank.end() ? k : lit->second;
+            ans += bit.query(ri - 1) - bit.query(li - 1); // count the numbers in range [li, ri - 1]
+            bit.update(rank[sum[i + 1]], 1);
+        }
+        return ans;
     }
 };
 ```
