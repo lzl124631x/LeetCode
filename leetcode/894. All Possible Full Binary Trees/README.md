@@ -30,27 +30,27 @@
 ```cpp
 // OJ: https://leetcode.com/problems/all-possible-full-binary-trees/
 // Author: github.com/lzl124631x
-// Time: O(2^N)
-// Space: O(2^N)
+// Time: O(2^(N/2))
+// Space: O(N * 2^N)
 class Solution {
+    unordered_map<int, vector<TreeNode*>> m;
 public:
-    vector<TreeNode*> allPossibleFBT(int N) {
-        if (N % 2 == 0) return {};
-        if (N == 1) return { new TreeNode() };
+    vector<TreeNode*> allPossibleFBT(int n) {
+        if (n % 2 == 0) return {};
+        if (n == 1) return { new TreeNode() };
+        if (m.count(n)) return m[n];
         vector<TreeNode*> ans;
-        for (int i = 1; i < N; i += 2) {
-            auto lefts = allPossibleFBT(i);
-            auto rights = allPossibleFBT(N - i - 1);
-            for (auto left : lefts) {
-                for (auto right : rights) {
-                    auto root = new TreeNode();
-                    root->left = left;
-                    root->right = right;
+        for (int i = 1; i < n; i += 2) {
+            auto left = allPossibleFBT(i);
+            auto right = allPossibleFBT(n - i - 1);
+            for (auto L : left) {
+                for (auto R : right) {
+                    auto root = new TreeNode(0, L, R);
                     ans.push_back(root);
                 }
             }
         }
-        return ans;
+        return m[n] = ans;
     }
 };
 ```
