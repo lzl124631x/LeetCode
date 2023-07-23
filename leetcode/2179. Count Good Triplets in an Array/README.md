@@ -53,7 +53,7 @@ B = [4,1,0,2,3]
 
 For number `1`, there is a single common number (`4`) in front of `1` and two common numbers (`3,4`) after `1`, so the count of triplets with `1` in the middle is `1 * 2 = 2`.
 
-But counting the common numbers is not easy. **Since the numbers are permutations of `[0, N-1]`, we can simplify the problem by mapping on of the array to `[0, N-1]`.**
+But counting the common numbers is not easy. **Since the numbers are permutations of `[0, N-1]`, we can simplify the problem by mapping one of the array to `[0, N-1]`.**
 
 For example, if we map `A` to `[0, N-1]`.
 
@@ -77,11 +77,11 @@ A = [0,1,2,3,4]
 B = [0,2,1,4,3]
 ```
 
-For the number `1`, we trivially know that in `A`, there is one number `0` before it and 3 numbers `2,3,4` after it. So, we just need to look at `B`. The problem now becomes counting the numbers smaller than `1` before `1` and numbers greater than `1` after `1`.
+For the number `1`, we trivially know that in `A`, there is one number `0` before it and 3 numbers `2,3,4` after it. So, we just need to look at `B`. The problem now becomes counting in `B` the numbers smaller than `1` before `1` and numbers greater than `1` after `1`.
 
-Let `lt[i]` be the count of numbers smaller than `B[i]`. The count of common numbers before `B[i]` is `min(B[i], lt[i]) = lt[i]`. The count of common numbers after `B[i]` in `A` is `N - B[i] - 1`. The count of common numbers after `B[i]` in `B` is `N - i - 1 - (B[i] - lt[i]) = N - B[i] - 1 - i + lt[i]`. Since `i >= lt[i]`, `-i + lt[i] <= 0`, the count of common numbers after `B[i]` in both arrays is `N - B[i] - 1 - i + lt[i]`.
+Let `lt[i]` be the count of numbers smaller than `B[i]`. The count of common numbers less than `B[i]` in both arrays is `min(B[i], lt[i]) = lt[i]`. The count of common numbers after `B[i]` in `A` is `N - B[i] - 1`. The count of common numbers after `B[i]` in `B` is `N - i - 1 - (B[i] - lt[i]) = N - B[i] - 1 - i + lt[i]`. Since `i >= lt[i]`, `-i + lt[i] <= 0`, the count of common numbers after `B[i]` in both arrays is `N - B[i] - 1 - i + lt[i]`.
 
-So, the count of triplets with `B[i]` as the middle number is `min(B[i], lt[i]) * (N - B[i] - 1 - i + lt[i])`
+So, the count of triplets with `B[i]` as the middle number is `lt[i] * (N - B[i] - 1 - i + lt[i])`
 
 ```cpp
 // OJ: https://leetcode.com/problems/count-good-triplets-in-an-array/
