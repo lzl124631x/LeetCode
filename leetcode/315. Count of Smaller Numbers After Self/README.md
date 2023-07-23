@@ -70,3 +70,40 @@ public:
     }
 };
 ```
+
+## Solution 2. Binary Indexed Tree
+
+```cpp
+// OJ: https://leetcode.com/problems/count-of-smaller-numbers-after-self
+// Author: github.com/lzl124631x
+// Time: O(NlogM) where M is the range of A[i]
+// Space: O(M)
+class BIT {
+    vector<int> node;
+    static inline int lb(int x) { return x & -x; }
+public:
+    BIT(int N) : node(N + 1) {}
+    int query(int i) { // query range is [-1, N-1]. [0,N-1] are valid external indices. -1 is a special index meaning 
+empty set
+        int ans = 0;
+        for (++i; i; i -= lb(i)) ans += node[i];
+        return ans;
+    }
+    void update(int i, int delta) {
+        for (++i; i < node.size(); i += lb(i)) node[i] += delta;
+    }
+};
+class Solution {
+public:
+    vector<int> countSmaller(vector<int>& A) {
+        long N = A.size(), offset = 1e4; 
+        vector<int> ans(N);
+        BIT bit(2 * 1e4 + 1); // query(i) is the number of elements <= i
+        for (int i = N - 1; i >= 0; --i) {
+            ans[i] = bit.query(offset + A[i] - 1);
+            bit.update(offset + A[i], 1);
+        }
+        return ans;
+    }
+};
+```
