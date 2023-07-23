@@ -79,7 +79,19 @@ B = [0,2,1,4,3]
 
 For the number `1`, we trivially know that in `A`, there is one number `0` before it and 3 numbers `2,3,4` after it. So, we just need to look at `B`. The problem now becomes counting in `B` the numbers smaller than `1` before `1` and numbers greater than `1` after `1`.
 
-Let `lt[i]` be the count of numbers smaller than `B[i]`. The count of common numbers less than `B[i]` in both arrays is `min(B[i], lt[i]) = lt[i]`. The count of common numbers after `B[i]` in `A` is `N - B[i] - 1`. The count of common numbers after `B[i]` in `B` is `N - i - 1 - (B[i] - lt[i]) = N - B[i] - 1 - i + lt[i]`. Since `i >= lt[i]`, `-i + lt[i] <= 0`, the count of common numbers after `B[i]` in both arrays is `N - B[i] - 1 - i + lt[i]`.
+Count the common numbers before `B[i]` that are smaller than `B[i]` (`i` is 0-indexed): 
+* In `A`, there are `B[i]` such numbers. 
+* In `B`, let's say there are `lt[i]` such numbers. `lt[i] <= B[i]` and `lt[i] <= i`. 
+* So, there are `min(B[i], lt[i]) = lt[i]` such numbers in both arrays.
+
+Take `B[1] = 2` for example, there are `2` such numbers in `A`, and `lt[1] = 1` such number in `B`, so there is `1` such numbers in both arrays.
+
+Count the common numbers after `B[i]` that are greater than `B[i]`:
+* In `A`, there are `N - B[i] - 1` such numbers in `A`.
+* In `B`, there are `N - B[i] - 1` numbers in `B` that are greater than `B[i]`. Among these numbers, `i - lt[i]` numbers are used before `B[i]`. So, there are `N - B[i] - 1 - (i - lt[i]) = N - B[i] - 1 - i + lt[i]` such numbers.
+* So, there are `N - B[i] - 1 - i + lt[i]` such numbers in both arrays.
+
+Take `B[2] = 1` for example, there are `5 - 1 - 1 = 3` such numbers in `A`. Among these 3 numbers (`2,3,4`), `i - lt[i] = 2 - 1 = 1` number (`2`) is used before `B[2]`, so there are `N - B[i] - 1 - i + lt[i] = 5 - 1 - 1 - 2 + 1 = 2` such numbers in `B` and in both arrays.
 
 So, the count of triplets with `B[i]` as the middle number is `lt[i] * (N - B[i] - 1 - i + lt[i])`
 
@@ -150,6 +162,45 @@ public:
             int y = m[B[i]], less = 0;
             for (int j = y; j; j &= j - 1) less += tree[j]; // count all the numbers less than m[B[i]]
             ans += (long)less * (N - 1 - y - (i - less));
+        }
+        return ans;
+    }
+};
+```
+
+In OOD fashion.
+
+```cpp
+// OJ: https://leetcode.com/problems/count-good-triplets-in-an-array
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+class BIT {
+    vector<int> node; // node[i] is the count of numbers `<=` i (1-based)
+    static inline int lb(int x) { return x & -x; }
+public:
+    BIT(int N) : node(N + 1) {}
+    int query(int i) { // externally `i` is 0-based
+        int ans = 0;
+        for (i++; i; i -= lb(i)) ans += node[i];
+        return ans;
+    }
+    void update(int i) {
+        for (i++; i < node.size(); i += lb(i)) node[i]++;
+    }
+};
+class Solution {
+public:
+    long long goodTriplets(vector<int>& A, vector<int>& B) {
+        long long N = A.size(), ans = 0;
+        vector<int> m(N);
+        for (int i = 0; i < N; ++i) m[A[i]] = i;
+        BIT tree(N);
+        for (int i = 0; i < N; ++i) {
+            int n = m[B[i]]; // B[i] is mapped to `n` (0-indexed)
+            int lt = tree.query(n - 1); // `lt` is count of numbers less than `n`
+            ans += (long)lt * (N - n - 1 - i + lt);
+            tree.update(n); // update the presence of `n`
         }
         return ans;
     }
