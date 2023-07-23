@@ -1,32 +1,51 @@
-# [307. Range Sum Query - Mutable (Medium)](https://leetcode.com/problems/range-sum-query-mutable/)
+# [307. Range Sum Query - Mutable (Medium)](https://leetcode.com/problems/range-sum-query-mutable)
 
-<p>Given an integer array <i>nums</i>, find the sum of the elements between indices <i>i</i> and <i>j</i> (<i>i</i> ≤ <i>j</i>), inclusive.</p>
-
-<p>The <i>update(i, val)</i> function modifies <i>nums</i> by updating the element at index <i>i</i> to <i>val</i>.</p>
-
-<p><b>Example:</b></p>
-
-<pre>Given nums = [1, 3, 5]
-
-sumRange(0, 2) -&gt; 9
-update(1, 2)
-sumRange(0, 2) -&gt; 8
-</pre>
-
-<p><b>Note:</b></p>
-
+<p>Given an integer array <code>nums</code>, handle multiple queries of the following types:</p>
 <ol>
-	<li>The array is only modifiable by the <i>update</i> function.</li>
-	<li>You may assume the number of calls to <i>update</i> and <i>sumRange</i> function is distributed evenly.</li>
+	<li><strong>Update</strong> the value of an element in <code>nums</code>.</li>
+	<li>Calculate the <strong>sum</strong> of the elements of <code>nums</code> between indices <code>left</code> and <code>right</code> <strong>inclusive</strong> where <code>left &lt;= right</code>.</li>
 </ol>
+<p>Implement the <code>NumArray</code> class:</p>
+<ul>
+	<li><code>NumArray(int[] nums)</code> Initializes the object with the integer array <code>nums</code>.</li>
+	<li><code>void update(int index, int val)</code> <strong>Updates</strong> the value of <code>nums[index]</code> to be <code>val</code>.</li>
+	<li><code>int sumRange(int left, int right)</code> Returns the <strong>sum</strong> of the elements of <code>nums</code> between indices <code>left</code> and <code>right</code> <strong>inclusive</strong> (i.e. <code>nums[left] + nums[left + 1] + ... + nums[right]</code>).</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<pre><strong>Input</strong>
+["NumArray", "sumRange", "update", "sumRange"]
+[[[1, 3, 5]], [0, 2], [1, 2], [0, 2]]
+<strong>Output</strong>
+[null, 9, null, 8]
 
+<strong>Explanation</strong>
+NumArray numArray = new NumArray([1, 3, 5]);
+numArray.sumRange(0, 2); // return 1 + 3 + 5 = 9
+numArray.update(1, 2);   // nums = [1, 2, 5]
+numArray.sumRange(0, 2); // return 1 + 2 + 5 = 8
+</pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>-100 &lt;= nums[i] &lt;= 100</code></li>
+	<li><code>0 &lt;= index &lt; nums.length</code></li>
+	<li><code>-100 &lt;= val &lt;= 100</code></li>
+	<li><code>0 &lt;= left &lt;= right &lt; nums.length</code></li>
+	<li>At most <code>3 * 10<sup>4</sup></code> calls will be made to <code>update</code> and <code>sumRange</code>.</li>
+</ul>
+
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[Binary Indexed Tree](https://leetcode.com/tag/binary-indexed-tree/), [Segment Tree](https://leetcode.com/tag/segment-tree/)
+[Array](https://leetcode.com/tag/array/), [Design](https://leetcode.com/tag/design/), [Binary Indexed Tree](https://leetcode.com/tag/binary-indexed-tree/), [Segment Tree](https://leetcode.com/tag/segment-tree/)
 
 **Similar Questions**:
 * [Range Sum Query - Immutable (Easy)](https://leetcode.com/problems/range-sum-query-immutable/)
 * [Range Sum Query 2D - Mutable (Hard)](https://leetcode.com/problems/range-sum-query-2d-mutable/)
+* [Shifting Letters II (Medium)](https://leetcode.com/problems/shifting-letters-ii/)
 
 ## Solution 1. Prefix Sum + Dirty Bit
 
@@ -239,37 +258,37 @@ public:
 //      sumRange: O(logN)
 // Ref: https://www.youtube.com/watch?v=WbafSgetDDk
 class BIT {
-    vector<int> sum;
-    static inline int lowbit(int x) { return x & -x; }
+    vector<int> A;
+    static inline int lb(int x) { return x & -x; }
 public:
-    BIT(int N) : sum(N + 1) {};
-    void update(int i, int delta) {
-        for (; i < sum.size(); i += lowbit(i)) sum[i] += delta;
+    BIT(vector<int> nums) : A(nums.size() + 1) {
+        for (int i = 0; i < nums.size(); ++i) {
+            update(i + 1, nums[i]);
+        }
     }
     int query(int i) {
         int ans = 0;
-        for (; i; i -= lowbit(i)) ans += sum[i];
+        for (; i; i -= lb(i)) ans += A[i];
         return ans;
     }
-    int rangeQuery(int i, int j) {
+    int rangeQuery(int i, int j) { // i, j are inclusive
         return query(j) - query(i - 1);
+    }
+    void update(int i, int delta) {
+        for (; i < A.size(); i += lb(i)) A[i] += delta;
     }
 };
 class NumArray {
     BIT tree;
-    vector<int> nums;
+    vector<int> A;
 public:
-    NumArray(vector<int>& nums) : nums(nums), tree(nums.size()) {
-        for (int i = 0; i < nums.size(); ++i) tree.update(i + 1, nums[i]);
+    NumArray(vector<int>& A) : A(A), tree(A) {}
+    void update(int index, int val) {
+        tree.update(index + 1, val - A[index]);
+        A[index] = val;
     }
-    
-    void update(int i, int val) {
-        tree.update(i + 1, val - nums[i]);
-        nums[i] = val;
-    }
-    
-    int sumRange(int i, int j) {
-        return tree.rangeQuery(i + 1, j + 1);
+    int sumRange(int left, int right) {
+        return tree.rangeQuery(left + 1, right + 1);
     }
 };
 ```
