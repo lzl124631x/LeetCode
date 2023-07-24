@@ -56,7 +56,7 @@ The total hiring cost is 4.
 ```cpp
 // OJ: https://leetcode.com/problems/total-cost-to-hire-k-workers
 // Author: github.com/lzl124631x
-// Time: O(NlogC)
+// Time: O((K + C) * logC)
 // Space: O(C)
 class Solution {
 public:
