@@ -1,21 +1,16 @@
-# [755. Pour Water (Medium)](https://leetcode.com/problems/pour-water/)
+# [755. Pour Water (Medium)](https://leetcode.com/problems/pour-water)
 
 <p>You are given an elevation map represents as an integer array <code>heights</code> where <code>heights[i]</code> representing the height of the terrain at index <code>i</code>. The width at each index is <code>1</code>. You are also given two integers <code>volume</code> and <code>k</code>. <code>volume</code> units of water will fall at index <code>k</code>.</p>
-
 <p>Water first drops at the index <code>k</code> and rests on top of the highest terrain or water at that index. Then, it flows according to the following rules:</p>
-
 <ul>
 	<li>If the droplet would eventually fall by moving left, then move left.</li>
 	<li>Otherwise, if the droplet would eventually fall by moving right, then move right.</li>
 	<li>Otherwise, rise to its current position.</li>
 </ul>
-
 <p>Here, <strong>"eventually fall"</strong> means that the droplet will eventually be at a lower level if it moves in that direction. Also, level means the height of the terrain plus any water in that column.</p>
-
 <p>We can assume there is infinitely high terrain on the two sides out of bounds of the array. Also, there could not be partial water being spread out evenly on more than one grid block, and each unit of water has to be in exactly one block.</p>
-
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2021/06/12/pour11-grid.jpg" style="width: 450px; height: 303px;">
 <pre><strong>Input:</strong> heights = [2,1,1,2,1,2,2], volume = 4, k = 3
 <strong>Output:</strong> [2,2,2,3,2,2,2]
@@ -30,23 +25,17 @@ The third droplet falls at index k = 3. Since moving left would not eventually m
 Finally, the fourth droplet falls at index k = 3. Since moving left would not eventually make it fall, it tries to move right. Since moving right would not eventually make it fall, it stays in place.
 <img alt="" src="https://assets.leetcode.com/uploads/2021/06/12/pour15-grid.jpg" style="width: 400px; height: 269px;">
 </pre>
-
-<p><strong>Example 2:</strong></p>
-
+<p><strong class="example">Example 2:</strong></p>
 <pre><strong>Input:</strong> heights = [1,2,3,4], volume = 2, k = 2
 <strong>Output:</strong> [2,3,3,4]
 <strong>Explanation:</strong> The last droplet settles at index 1, since moving further left would not cause it to eventually fall to a lower height.
 </pre>
-
-<p><strong>Example 3:</strong></p>
-
+<p><strong class="example">Example 3:</strong></p>
 <pre><strong>Input:</strong> heights = [3,1,3], volume = 5, k = 1
 <strong>Output:</strong> [4,4,4]
 </pre>
-
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
-
 <ul>
 	<li><code>1 &lt;= heights.length &lt;= 100</code></li>
 	<li><code>0 &lt;= heights[i] &lt;= 99</code></li>
@@ -54,8 +43,7 @@ Finally, the fourth droplet falls at index k = 3. Since moving left would not ev
 	<li><code>0 &lt;= k &lt; heights.length</code></li>
 </ul>
 
-
-**Companies**:  
+**Companies**:
 [Airbnb](https://leetcode.com/company/airbnb)
 
 **Related Topics**:  
