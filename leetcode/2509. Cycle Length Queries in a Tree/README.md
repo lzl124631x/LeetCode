@@ -59,7 +59,7 @@
 
 ## Solution 1.
 
-1. Find the common ancestors `C` of `A` and `B`
+1. Find the lowest common ancestors `C` of `A` and `B`
 2. `{distance from A to C} + {distance from B to C} + 1`
 
 ```cpp
