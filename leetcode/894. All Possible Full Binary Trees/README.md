@@ -1,64 +1,56 @@
-# [894. All Possible Full Binary Trees (Medium)](https://leetcode.com/problems/all-possible-full-binary-trees/)
+# [894. All Possible Full Binary Trees (Medium)](https://leetcode.com/problems/all-possible-full-binary-trees)
 
-<p>A <em>full binary tree</em>&nbsp;is a binary tree where each node has exactly 0 or 2&nbsp;children.</p>
-
-<p>Return a list of all possible full binary trees with <code>N</code> nodes.&nbsp; Each element of the answer is the root node of one possible tree.</p>
-
-<p>Each <code>node</code> of each&nbsp;tree in the answer <strong>must</strong> have <code>node.val = 0</code>.</p>
-
-<p>You may return the final list of trees in any order.</p>
-
+<p>Given an integer <code>n</code>, return <em>a list of all possible <strong>full binary trees</strong> with</em> <code>n</code> <em>nodes</em>. Each node of each tree in the answer must have <code>Node.val == 0</code>.</p>
+<p>Each element of the answer is the root node of one possible tree. You may return the final list of trees in <strong>any order</strong>.</p>
+<p>A <strong>full binary tree</strong> is a binary tree where each node has exactly <code>0</code> or <code>2</code> children.</p>
 <p>&nbsp;</p>
-
-<p><strong>Example 1:</strong></p>
-
-<pre><strong>Input: </strong><span id="example-input-1-1">7</span>
-<strong>Output: </strong><span id="example-output-1">[[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]</span>
-<strong>Explanation:</strong>
+<p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/08/22/fivetrees.png" style="width: 700px; height: 400px;">
+<pre><strong>Input:</strong> n = 7
+<strong>Output:</strong> [[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]
 </pre>
-
+<p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> n = 3
+<strong>Output:</strong> [[0,0,0]]
+</pre>
 <p>&nbsp;</p>
-
-<p><strong>Note:</strong></p>
-
+<p><strong>Constraints:</strong></p>
 <ul>
-	<li><code>1 &lt;= N &lt;= 20</code></li>
+	<li><code>1 &lt;= n &lt;= 20</code></li>
 </ul>
 
-
-**Companies**:  
-[Google](https://leetcode.com/company/google)
+**Companies**:
+[Adobe](https://leetcode.com/company/adobe), [Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[Tree](https://leetcode.com/tag/tree/), [Recursion](https://leetcode.com/tag/recursion/)
+[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Tree](https://leetcode.com/tag/tree/), [Recursion](https://leetcode.com/tag/recursion/), [Memoization](https://leetcode.com/tag/memoization/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
 
 ## Solution 1.
 
 ```cpp
 // OJ: https://leetcode.com/problems/all-possible-full-binary-trees/
 // Author: github.com/lzl124631x
-// Time: O(2^N)
-// Space: O(2^N)
+// Time: O(2^(N/2))
+// Space: O(N * 2^N)
 class Solution {
+    unordered_map<int, vector<TreeNode*>> m;
 public:
-    vector<TreeNode*> allPossibleFBT(int N) {
-        if (N % 2 == 0) return {};
-        if (N == 1) return { new TreeNode(0) };
+    vector<TreeNode*> allPossibleFBT(int n) {
+        if (n % 2 == 0) return {};
+        if (n == 1) return { new TreeNode() };
+        if (m.count(n)) return m[n];
         vector<TreeNode*> ans;
-        for (int i = 1; i <= N - 2; i += 2) {
-            auto lefts = allPossibleFBT(i);
-            auto rights = allPossibleFBT(N - i - 1);
-            for (auto left : lefts) {
-                for (auto right : rights) {
-                    auto root = new TreeNode(0);
-                    root->left = left;
-                    root->right = right;
+        for (int i = 1; i < n; i += 2) {
+            auto left = allPossibleFBT(i);
+            auto right = allPossibleFBT(n - i - 1);
+            for (auto L : left) {
+                for (auto R : right) {
+                    auto root = new TreeNode(0, L, R);
                     ans.push_back(root);
                 }
             }
         }
-        return ans;
+        return m[n] = ans;
     }
 };
 ```
