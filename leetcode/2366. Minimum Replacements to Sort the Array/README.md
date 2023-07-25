@@ -115,7 +115,7 @@ public:
         long long ans = 0, N = A.size();
         for (int i = N - 2; i >= 0; --i) {
             if (A[i] <= A[i + 1]) continue;
-            long long cnt = ceil(A[i] + A[i + 1] - 1LL) / A[i + 1];
+            long long cnt = (A[i] + A[i + 1] - 1LL) / A[i + 1];
             ans += cnt - 1;
             A[i] /= cnt;
         }
