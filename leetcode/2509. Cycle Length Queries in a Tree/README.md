@@ -90,3 +90,28 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/cycle-length-queries-in-a-tree
+// Author: github.com/lzl124631x
+// Time: O(QlogN)
+// Space: O(1)
+class Solution {
+public:
+    vector<int> cycleLengthQueries(int n, vector<vector<int>>& Q) {
+        vector<int> ans;
+        for (auto &q : Q) {
+            int len = 1, a = q[0], b = q[1];
+            while (a != b) {
+                if (a > b) a /= 2;
+                else b /= 2;
+                ++len;
+            }
+            ans.push_back(len);
+        }
+        return ans;
+    }
+};
+```
