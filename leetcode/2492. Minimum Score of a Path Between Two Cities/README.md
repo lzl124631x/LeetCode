@@ -46,7 +46,7 @@ It can be shown that no other path has less score.
 * [Checking Existence of Edge Length Limited Paths (Hard)](https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths/)
 * [Checking Existence of Edge Length Limited Paths II (Hard)](https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths-ii/)
 
-## Solution 1.
+## Solution 1. DFS
 
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities
@@ -74,6 +74,35 @@ public:
         };
         dfs(0);
         return ans;
+    }
+};
+```
+
+## Solution 2. Union Find
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities
+// Author: github.com/lzl124631x
+// Time: O(N + ElogN). This can be reduced to O(N + E) if we use union-by-rank.
+// Space: O(N)
+class Solution {
+public:
+    int minScore(int n, vector<vector<int>>& E) {
+        vector<int> id(n), score(n, INT_MAX);
+        iota(begin(id), end(id), 0);
+        function<int(int)> find = [&](int a) {
+            return id[a] == a ? a : (id[a] = find(id[a]));
+        };
+        auto connect = [&](int u, int v, int dist) {
+            int p = find(u), q = find(v);
+            id[q] = p;
+            score[p] = min({score[p], score[q], dist});
+        };
+        for (auto &e : E) {
+            int u = e[0] - 1, v = e[1] - 1, dist = e[2];
+            connect(u, v, dist);
+        }
+        return score[find(0)];
     }
 };
 ```
