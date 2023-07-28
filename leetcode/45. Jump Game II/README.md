@@ -105,7 +105,7 @@ public:
 };
 ```
 
-## Solution 2. BFS + Greedy
+## Solution 3. BFS + Greedy
 
 In essense, this solution is BFS. It's separating the points into groups that can be reached given different steps.
 
@@ -159,3 +159,11 @@ public:
     }
 };
 ```
+
+Assume `A = [0,2,4,...]`. Starting from `A[0]`, we can only visit `A[1], A[2]`. Which one should we pick? Must be the one that allows us to travel the furthest.
+
+Since `A[1]` can take us to `1+2=3` at most, and `A[2]` can take us to `2+4=6` at most, picking `A[2]` is always better than picking `A[1]` because the range of `A[2]`'s reach covers the range of `A[1]`'s reach.
+
+So we can define our strategy as follows:
+
+Assume we are currently at `A[i]` and the furthest reach is `A[end]`, we greedily pick the `A[j] (i < j <= end)` with the furthest reach `j + A[j]`.
