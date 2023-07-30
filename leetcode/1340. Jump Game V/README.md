@@ -1,20 +1,15 @@
-# [1340. Jump Game V (Hard)](https://leetcode.com/problems/jump-game-v/)
+# [1340. Jump Game V (Hard)](https://leetcode.com/problems/jump-game-v)
 
 <p>Given an array of&nbsp;integers <code>arr</code> and an integer <code>d</code>. In one step you can jump from index <code>i</code> to index:</p>
-
 <ul>
 	<li><code>i + x</code> where:&nbsp;<code>i + x &lt; arr.length</code> and <code> 0 &lt;&nbsp;x &lt;= d</code>.</li>
 	<li><code>i - x</code> where:&nbsp;<code>i - x &gt;= 0</code> and <code> 0 &lt;&nbsp;x &lt;= d</code>.</li>
 </ul>
-
 <p>In addition, you can only jump from index <code>i</code> to index <code>j</code>&nbsp;if <code>arr[i] &gt; arr[j]</code> and <code>arr[i] &gt; arr[k]</code> for all indices <code>k</code> between <code>i</code> and <code>j</code> (More formally <code>min(i,&nbsp;j) &lt; k &lt; max(i, j)</code>).</p>
-
 <p>You can choose any index of the array and start jumping. Return <em>the maximum number of indices</em>&nbsp;you can visit.</p>
-
 <p>Notice that you can not jump outside of the array at any time.</p>
-
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2020/01/23/meta-chart.jpeg" style="width: 633px; height: 419px;">
 <pre><strong>Input:</strong> arr = [6,4,14,6,8,13,9,7,10,6,12], d = 2
 <strong>Output:</strong> 4
@@ -22,44 +17,33 @@
 Note that if you start at index 6 you can only jump to index 7. You cannot jump to index 5 because 13 &gt; 9. You cannot jump to index 4 because index 5 is between index 4 and 6 and 13 &gt; 9.
 Similarly You cannot jump from index 3 to index 2 or index 1.
 </pre>
-
-<p><strong>Example 2:</strong></p>
-
+<p><strong class="example">Example 2:</strong></p>
 <pre><strong>Input:</strong> arr = [3,3,3,3,3], d = 3
 <strong>Output:</strong> 1
 <strong>Explanation:</strong> You can start at any index. You always cannot jump to any index.
 </pre>
-
-<p><strong>Example 3:</strong></p>
-
+<p><strong class="example">Example 3:</strong></p>
 <pre><strong>Input:</strong> arr = [7,6,5,4,3,2,1], d = 1
 <strong>Output:</strong> 7
 <strong>Explanation:</strong> Start at index 0. You can visit all the indicies. 
 </pre>
-
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input:</strong> arr = [7,1,7,1,7,1], d = 2
-<strong>Output:</strong> 2
-</pre>
-
-<p><strong>Example 5:</strong></p>
-
-<pre><strong>Input:</strong> arr = [66], d = 1
-<strong>Output:</strong> 1
-</pre>
-
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
-
 <ul>
 	<li><code>1 &lt;= arr.length &lt;= 1000</code></li>
-	<li><code>1 &lt;= arr[i] &lt;= 10^5</code></li>
+	<li><code>1 &lt;= arr[i] &lt;= 10<sup>5</sup></code></li>
 	<li><code>1 &lt;= d &lt;= arr.length</code></li>
 </ul>
 
+**Companies**:
+[Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon)
+
 **Related Topics**:  
-[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Sorting](https://leetcode.com/tag/sorting/)
+
+**Similar Questions**:
+* [Jump Game VII (Medium)](https://leetcode.com/problems/jump-game-vii/)
+* [Jump Game VIII (Medium)](https://leetcode.com/problems/jump-game-viii/)
 
 ## Solution 1. DFS + Memo
 
@@ -69,61 +53,23 @@ Similarly You cannot jump from index 3 to index 2 or index 1.
 // Time: O(ND)
 // Space: O(N)
 class Solution {
-    int N, D;
-    vector<int> v;
-    int dfs(vector<int>& arr, int start) {
-        if (v[start] > 0) return v[start];
-        int left = 0, right = 0;
-        for (int d = 1; d <= D && start - d >= 0 && arr[start - d] < arr[start]; ++d)
-            left = max(left, dfs(arr, start - d));
-        for (int d = 1; d <= D && start + d < N && arr[start + d] < arr[start]; ++d)
-            right = max(right, dfs(arr, start + d));
-        return v[start] = 1 + max(left, right);
-    }
-public:
-    int maxJumps(vector<int>& arr, int d) {
-        N = arr.size(), D = d;
-        v = vector<int>(N, 0);
-        for (int i = 0; i < N; ++i) dfs(arr, i);
-        int ans = 0;
-        for (int i = 0; i < N; ++i) ans = max(ans, v[i]);
-        return ans;
-    }
-};
-```
-
-Or
-
-```cpp
-// OJ: https://leetcode.com/problems/jump-game-v/
-// Author: github.com/lzl124631x
-// Time: O(ND)
-// Space: O(N)
-class Solution {
-    vector<int> m;
-    int N;
-    int dp(vector<int> &A, int d, int i) {
-        if (m[i]) return m[i];
-        int ans = 1;
-        for (int k = 0; k < 2; ++k) {
-            int maxVal = INT_MIN;
-            for (int j = 1; j <= d; ++j) {
-                int t = k == 0 ? i + j : i - j;
-                if (t >= N || t < 0 || A[t] >= A[i]) break;
-                maxVal = max(maxVal, A[t]);
-                if (A[t] != maxVal) continue;
-                ans = max(ans, 1 + dp(A, d, t));
-            }
-        }
-        return m[i] = ans;
-    }
 public:
     int maxJumps(vector<int>& A, int d) {
-        N = A.size();
-        m.assign(N, 0);
-        int ans = 0;
-        for (int i = 0; i < N; ++i) ans = max(ans, dp(A, d, i));
-        return ans;
+        int N = A.size();
+        vector<int> cnt(N);
+        function<int(int)> dp = [&](int i) {
+            if (cnt[i]) return cnt[i];
+            int mx = 0;
+            for (int j = i - 1, step = 1; step <= d && j >= 0 && A[j] < A[i]; ++step, --j) {
+                mx = max(mx, dp(j));
+            }
+            for (int j = i + 1, step = 1; step <= d && j < N && A[j] < A[i]; ++step, ++j) {
+                mx = max(mx, dp(j));
+            }
+            return cnt[i] = 1 + mx;
+        };
+        for (int i = 0; i < N; ++i) dp(i);
+        return *max_element(begin(cnt), end(cnt));
     }
 };
 ```
