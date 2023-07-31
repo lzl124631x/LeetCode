@@ -26,7 +26,9 @@ Note that [10, 5, 2] is not included as the product of 100 is not strictly less 
 * [Subarray Sum Equals K (Medium)](https://leetcode.com/problems/subarray-sum-equals-k/)
 * [Two Sum Less Than K (Easy)](https://leetcode.com/problems/two-sum-less-than-k/)
 
-## Solution 1. Sliding Window (Shrinkable)
+## Solution 1. Shrinkable Sliding Window 
+
+Check out "[C++ Maximum Sliding Window Cheatsheet Template!](https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1175088/C%2B%2B-Maximum-Sliding-Window-Cheatsheet-Template!)".
 
 * `state`: `prod` is the product of the numbers in window
 * `invalid`: `prod >= k` is invalid. 
@@ -54,3 +56,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/subarray-product-less-than-k/solutions/1501834/c-sliding-window-cheat-sheet/
