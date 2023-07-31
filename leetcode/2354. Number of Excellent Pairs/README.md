@@ -42,7 +42,12 @@ So the number of excellent pairs is 5.</pre>
 
 ## Solution 1.
 
+The inclusion-exclusion principle: $n(A\cup B) = n(A) + n(B) – n(A\cap B)$
+
+So, $n(A⋃B) + n(A⋂B) = n(A) + n(B)$
+
 The sum of the number of set bits in (num1 OR num2) and (num1 AND num2) is equal to the sum of the number of set bits in num1 and num2.
+
 
 ```cpp
 // OJ: https://leetcode.com/problems/number-of-excellent-pairs
