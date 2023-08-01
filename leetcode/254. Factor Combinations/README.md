@@ -47,7 +47,6 @@ public:
         vector<vector<int>> ans;
         vector<int> tmp;
         function<void(int, int)> dfs = [&](int n, int d) {
-            if (n == 1) return;
             for (int i = d; i * i <= n; ++i) {
                 if (n % i) continue;
                 tmp.push_back(i);
