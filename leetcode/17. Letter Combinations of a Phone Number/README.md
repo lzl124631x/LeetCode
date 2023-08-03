@@ -1,29 +1,39 @@
-# [17. Letter Combinations of a Phone Number (Medium)](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
+# [17. Letter Combinations of a Phone Number (Medium)](https://leetcode.com/problems/letter-combinations-of-a-phone-number)
 
-<p>Given a string containing digits from <code>2-9</code> inclusive, return all possible letter combinations that the number could represent.</p>
-
-<p>A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.</p>
-
-<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png"></p>
-
-<p><strong>Example:</strong></p>
-
-<pre><strong>Input: </strong>"23"
-<strong>Output:</strong> ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+<p>Given a string containing digits from <code>2-9</code> inclusive, return all possible letter combinations that the number could represent. Return the answer in <strong>any order</strong>.</p>
+<p>A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.</p>
+<img alt="" src="https://assets.leetcode.com/uploads/2022/03/15/1200px-telephone-keypad2svg.png" style="width: 300px; height: 243px;">
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<pre><strong>Input:</strong> digits = "23"
+<strong>Output:</strong> ["ad","ae","af","bd","be","bf","cd","ce","cf"]
 </pre>
+<p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> digits = ""
+<strong>Output:</strong> []
+</pre>
+<p><strong class="example">Example 3:</strong></p>
+<pre><strong>Input:</strong> digits = "2"
+<strong>Output:</strong> ["a","b","c"]
+</pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+	<li><code>0 &lt;= digits.length &lt;= 4</code></li>
+	<li><code>digits[i]</code> is a digit in the range <code>['2', '9']</code>.</li>
+</ul>
 
-<p><strong>Note:</strong></p>
-
-<p>Although the above answer is in lexicographical order, your answer could be in any order you want.</p>
-
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Apple](https://leetcode.com/company/apple), [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[String](https://leetcode.com/tag/string/), [Backtracking](https://leetcode.com/tag/backtracking/)
+[Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/), [Backtracking](https://leetcode.com/tag/backtracking/)
 
 **Similar Questions**:
 * [Generate Parentheses (Medium)](https://leetcode.com/problems/generate-parentheses/)
 * [Combination Sum (Medium)](https://leetcode.com/problems/combination-sum/)
 * [Binary Watch (Easy)](https://leetcode.com/problems/binary-watch/)
+* [Count Number of Texts (Medium)](https://leetcode.com/problems/count-number-of-texts/)
 
 ## Solution 1. DFS
 
@@ -33,24 +43,23 @@
 // Time: O(4^N)
 // Space: O(N)
 class Solution {
-    vector<string> m{"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-    vector<string> ans;
-    void dfs(string &digits, int start, string &str) {
-        if (start == digits.size()) {
-            ans.push_back(str);
-            return;
-        }
-        for (char c : m[digits[start] - '2']) {
-            str.push_back(c);
-            dfs(digits, start + 1, str);
-            str.pop_back();
-        }
-    }
 public:
-    vector<string> letterCombinations(string digits) {
-        if (digits.empty()) return {};
-        string str;
-        dfs(digits, 0, str);
+    vector<string> letterCombinations(string s) {
+        if (s.empty()) return {};
+        vector<string> ans;
+        string tmp, m[8] = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        function<void(int)> dfs = [&](int i) {
+            if (i == s.size()) {
+                ans.push_back(tmp);
+                return;
+            }
+            for (char c : m[s[i] - '2']) {
+                tmp.push_back(c);
+                dfs(i + 1);
+                tmp.pop_back();
+            }
+        };
+        dfs(0);
         return ans;
     }
 };
