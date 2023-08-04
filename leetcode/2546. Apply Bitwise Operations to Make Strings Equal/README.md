@@ -55,8 +55,8 @@ So, we just need to cound the number of `1`s in both strings. If they are both z
 ```cpp
 // OJ: https://leetcode.com/problems/apply-bitwise-operations-to-make-strings-equal
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(M + N)
+// Space: O(1)
 class Solution {
 public:
     bool makeStringsEqual(string s, string target) {
@@ -64,6 +64,21 @@ public:
         for (char c : s) a += c == '1';
         for (char c : target) b += c == '1';
         return (a == 0 && b == 0) || (a && b);
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/apply-bitwise-operations-to-make-strings-equal
+// Author: github.com/lzl124631x
+// Time: O(M + N)
+// Space: O(1)
+class Solution {
+public:
+    bool makeStringsEqual(string s, string target) {
+        return (s.find('1') != string::npos) == (target.find('1') != string::npos);
     }
 };
 ```
