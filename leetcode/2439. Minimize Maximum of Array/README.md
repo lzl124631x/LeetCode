@@ -74,3 +74,27 @@ public:
     }
 };
 ```
+
+## Solution 2. Prefix Sum + Greedy
+
+Since the value can only flow forward (left), for `A[0..i]`, assume its prefix sum is `sum[i]`, the best we can do is to distribute this `sum[i]` evenly into these `i+1` elements. So, the maximum is `ceil(sum[i] / (i+1))`.
+
+We compute from left to right, and return the maximum of `ceil(sum[i] / (i+1))` as the answer.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimize-maximum-of-array
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int minimizeArrayValue(vector<int>& A) {
+        long long N = A.size(), ans = 0, sum = 0;
+        for (int i = 0; i < N; ++i) {
+            sum += A[i];
+            ans = max(ans, (sum + i) / (i + 1));
+        }
+        return ans;
+    }
+};
+```
