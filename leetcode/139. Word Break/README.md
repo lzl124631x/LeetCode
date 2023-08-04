@@ -1,50 +1,51 @@
-# [139. Word Break (Medium)](https://leetcode.com/problems/word-break/)
+# [139. Word Break (Medium)](https://leetcode.com/problems/word-break)
 
-<p>Given a <strong>non-empty</strong> string <em>s</em> and a dictionary <em>wordDict</em> containing a list of <strong>non-empty</strong> words, determine if <em>s</em> can be segmented into a space-separated sequence of one or more dictionary words.</p>
-
-<p><strong>Note:</strong></p>
-
-<ul>
-	<li>The same word in the dictionary may be reused multiple times in the segmentation.</li>
-	<li>You may assume the dictionary does not contain duplicate words.</li>
-</ul>
-
-<p><strong>Example 1:</strong></p>
-
-<pre><strong>Input:</strong> s = "leetcode", wordDict = ["leet", "code"]
+<p>Given a string <code>s</code> and a dictionary of strings <code>wordDict</code>, return <code>true</code> if <code>s</code> can be segmented into a space-separated sequence of one or more dictionary words.</p>
+<p><strong>Note</strong> that the same word in the dictionary may be reused multiple times in the segmentation.</p>
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<pre><strong>Input:</strong> s = "leetcode", wordDict = ["leet","code"]
 <strong>Output:</strong> true
-<strong>Explanation:</strong> Return true because <code>"leetcode"</code> can be segmented as <code>"leet code"</code>.
+<strong>Explanation:</strong> Return true because "leetcode" can be segmented as "leet code".
 </pre>
-
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input:</strong> s = "applepenapple", wordDict = ["apple", "pen"]
+<p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> s = "applepenapple", wordDict = ["apple","pen"]
 <strong>Output:</strong> true
-<strong>Explanation:</strong> Return true because <code>"</code>applepenapple<code>"</code> can be segmented as <code>"</code>apple pen apple<code>"</code>.
-&nbsp;            Note that you are allowed to reuse a dictionary word.
+<strong>Explanation:</strong> Return true because "applepenapple" can be segmented as "apple pen apple".
+Note that you are allowed to reuse a dictionary word.
 </pre>
-
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input:</strong> s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+<p><strong class="example">Example 3:</strong></p>
+<pre><strong>Input:</strong> s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
 <strong>Output:</strong> false
 </pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+	<li><code>1 &lt;= s.length &lt;= 300</code></li>
+	<li><code>1 &lt;= wordDict.length &lt;= 1000</code></li>
+	<li><code>1 &lt;= wordDict[i].length &lt;= 20</code></li>
+	<li><code>s</code> and <code>wordDict[i]</code> consist of only lowercase English letters.</li>
+	<li>All the strings of <code>wordDict</code> are <strong>unique</strong>.</li>
+</ul>
 
+**Companies**:
+[Salesforce](https://leetcode.com/company/salesforce), [Apple](https://leetcode.com/company/apple), [Bloomberg](https://leetcode.com/company/bloomberg)
 
 **Related Topics**:  
-[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Trie](https://leetcode.com/tag/trie/), [Memoization](https://leetcode.com/tag/memoization/)
 
 **Similar Questions**:
 * [Word Break II (Hard)](https://leetcode.com/problems/word-break-ii/)
+* [Extra Characters in a String (Medium)](https://leetcode.com/problems/extra-characters-in-a-string/)
 
 ## Solution 1. DP Bottom-up
 
-Let `dp[i]` be true if `s[0..(i-1)]` can be segmented using `wordDict`.
+Let `dp[i+1]` be true if `s[0..i)]` can be segmented using `wordDict`.
 
 ```
 dp[0] = true
-dp[i] = true if dp[j] && s[j..i] is in dict
-        where 1 <= i <= N, 0 <= j < i
+dp[i+1] = true if dp[j] && s[j..i] is in dict
+          where 0 <= i < N, 0 <= j <= i
 ```
 
 ```cpp
@@ -156,6 +157,50 @@ public:
             minLen = min(minLen, (int)w.size());
         }
         return dp(s, 0);
+    }
+};
+```
+
+## Solution 3. DP Bottom-up + Trie
+
+Let `dp[i]` be whether `s[i..N-1]` can be formed by dictionary `A`.
+
+`dp[i] = dp[j+1] (i <= j)` if `s[i..j]` is in dictionary.
+
+We can use Trie to check if a substring `s[i..j]` is in dictionary.
+
+```cpp
+// OJ: https://leetcode.com/problems/word-break
+// Author: github.com/lzl124631x
+// Time: O()
+// Space: O()
+class Solution {
+    void addWord(TrieNode *node, string &s) {
+        for (char c : s) {
+            if (!node->next[c - 'a']) node->next[c - 'a'] = new TrieNode();
+            node = node->next[c - 'a'];
+        }
+        node->end = true;
+    }
+public:
+    bool wordBreak(string s, vector<string>& A) {
+        TrieNode root;
+        for (auto &w : A) addWord(&root, w);
+        int N = s.size();
+        vector<int> dp(N + 1, -1);
+        dp[N] = 1;
+        function<bool(int)> dfs = [&](int i) {
+            if (dp[i] != -1) return dp[i];
+            auto node = &root;
+            dp[i] = 0;
+            for (int j = i; j < N && node->next[s[j] - 'a']; ++j) {
+                node = node->next[s[j] - 'a'];
+                if (node->end) dp[i] = dfs(j + 1);
+                if (dp[i]) break;
+            }
+            return dp[i];
+        };
+        return dfs(0);
     }
 };
 ```
