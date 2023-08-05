@@ -57,7 +57,7 @@ Therefore, we return 2.
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-rows-covered-by-columns
 // Author: github.com/lzl124631x
-// Time: O(2^N * MN)
+// Time: O(C(N, K) * MN)
 // Space: O(1)
 class Solution {
 public:
