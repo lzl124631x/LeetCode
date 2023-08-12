@@ -52,7 +52,7 @@ public:
                 if (A[M] < target && target <= A[R]) L = M + 1;
                 else R = M - 1;
             } else {
-                if (A[M] > target && target >= A[L]) R = M - 1;
+                if (A[L] <= target && target < A[M]) R = M - 1;
                 else L = M + 1;
             }
         }
