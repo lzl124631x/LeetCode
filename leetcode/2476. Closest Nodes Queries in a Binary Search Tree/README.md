@@ -50,7 +50,7 @@
 // OJ: https://leetcode.com/problems/closest-nodes-queries-in-a-binary-search-tree
 // Author: github.com/lzl124631x
 // Time: O(QlogQ + N)
-// Space: O(Q + N)
+// Space: O(Q + H)
 class Solution {
 public:
     vector<vector<int>> closestNodes(TreeNode* root, vector<int>& Q) {
