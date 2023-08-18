@@ -62,8 +62,8 @@ It can be shown that the tasks cannot be completed in less than 6 days.
 ```cpp
 // OJ: https://leetcode.com/problems/task-scheduler-ii
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(N)
+// Space: O(T) where T is the number of unique tasks
 class Solution {
 public:
     long long taskSchedulerII(vector<int>& A, int space) {
