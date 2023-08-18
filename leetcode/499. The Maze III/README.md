@@ -66,7 +66,7 @@ Both ways have shortest distance 6, but the first way is lexicographically small
 ```cpp
 // OJ: https://leetcode.com/problems/the-maze-iii/
 // Author: github.com/lzl124631x
-// Time: O((MN)^2log(MN))
+// Time: O((MN)^2 * log(MN))
 // Space: O((MN)^2)
 class Solution {
 public:
