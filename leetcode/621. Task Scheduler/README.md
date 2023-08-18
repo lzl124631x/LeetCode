@@ -60,7 +60,7 @@ A -&gt; B -&gt; C -&gt; A -&gt; D -&gt; E -&gt; A -&gt; F -&gt; G -&gt; A -&gt; 
 
 ## Solution 1. Greedy
 
-Use a queue to simulate the cooldown process. Use a max heap to pich the character with the greatest count left.
+Use a queue to simulate the cooldown process. Use a max heap to pick the character with the greatest count left.
 
 ```cpp
 // OJ: https://leetcode.com/problems/task-scheduler/
@@ -70,27 +70,26 @@ Use a queue to simulate the cooldown process. Use a max heap to pich the charact
 class Solution {
 public:
     int leastInterval(vector<char>& A, int n) {
-        int total = 0, used = 0, cnt[26] = {}, ans = 0;
+        if (n == 0) return A.size();
+        int used = 0, cnt[26] = {}, ans = 0;
         auto cmp = [&](int a, int b) { return cnt[a] < cnt[b]; };
-        priority_queue<int, vector<int>, decltype(cmp)> pq(cmp);
+        priority_queue<int, vector<int>, decltype(cmp)> pq(cmp); // max-cnt heap of tasks available to be executed.
         for (char c : A) cnt[c - 'A']++;
         for (int i = 0; i < 26; ++i) {
             if (cnt[i]) pq.push(i);
-            total += cnt[i];
         }
-        if (n == 0) return total;
-        queue<int> q;
-        for (int i = 0; i <= n; ++i) q.push(-1);
-        while (used < total) {
+        queue<int> q; // `q` is a cool down queue of length n+1.
+        for (int i = 0; i <= n; ++i) q.push(-1); // -1s in the cooldown queue are just placeholders, meaning no task was executed at that particular moment
+        while (used < A.size()) {
             int c = q.front();
             q.pop();
-            if (c != -1) pq.emplace(c);
-            if (pq.size()) {
-                c = pq.top();
+            if (c != -1) pq.emplace(c); // if a task is popped from cooldown queue, this task can be used now.
+            if (pq.size()) { // we have tasks available
+                c = pq.top(); // greedily pick the task `c` with the max cnt
                 pq.pop();
-                q.push(--cnt[c] > 0 ? c : -1);
-                ++used;
-            } else q.push(-1);
+                ++used; // execute task `c`
+                q.push(--cnt[c] > 0 ? c : -1); // push task `c` into cooldown queue if it still have remaining quota. Otherwise put a placeholder -1 into cooldown queue
+            } else q.push(-1); // no tasks available. Put a placeholder into the cooldown queue.
             ++ans;
         }
         return ans;
