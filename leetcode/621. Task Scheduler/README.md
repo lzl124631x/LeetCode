@@ -229,3 +229,46 @@ public:
     }
 };
 ```
+
+## Solution 4. Greedy
+
+Similar to solution 3, here we directly calculate the number of units of times.
+
+Let `mxCnt` be the maximum frequency of `A[i]`. `mxCntFreq` be the number of unique tasks with `mxCnt` frequency.
+
+We always greedily place the tasks with `mxCnt` frequency first.
+
+For example, `A = "AAABBBC", n = 2`. `mxCnt = 3` and `mxCntFreq = 2`. We place `A` and `B` first.
+
+```
+A B - A B - A B
+```
+
+Then we place other tasks. In this case, we just need to place `C`.
+
+```
+A B C A B - A B
+```
+
+If `mxCntFreq >= n + 1`, it means that we can fill all the sections of length `n + 1` with `mxCnt` frequency tasks. We can place the other tasks between the sections without leaving any idle item.
+
+If `mxCntFreq < n + 1`, we need to fill the `gap = (mxCnt - 1) * (n + 1 - mxCntFreq)` gaps with the other `otherFreq = A.size() - mxCntFreq * mxCnt` tasks. The answer is `mxCntFreq * mxCnt + max(otherFreq, gap)`.
+
+```cpp
+// OJ: https://leetcode.com/problems/task-scheduler/
+// Author: github.com/lzl124631x
+// Time: O(M) where M is the length of `tasks`
+// Space: O(C)
+class Solution {
+public:
+    int leastInterval(vector<char>& A, int n) {
+        int cnt[26] = {};
+        for (char c : A) cnt[c - 'A']++;
+        int mxCnt = *max_element(begin(cnt), end(cnt)), mxCntFreq = 0;
+        for (int n : cnt) mxCntFreq += n == mxCnt;
+        if (mxCntFreq >= n + 1) return A.size();
+        int ans = mxCntFreq * mxCnt, otherFreq = A.size() - ans, gap = (mxCnt - 1) * (n + 1 - mxCntFreq);
+        return ans + max(otherFreq, gap);
+    }
+};
+```
