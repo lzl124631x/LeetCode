@@ -1,26 +1,34 @@
-# [33. Search in Rotated Sorted Array (Medium)](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+# [33. Search in Rotated Sorted Array (Medium)](https://leetcode.com/problems/search-in-rotated-sorted-array)
 
-<p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
-
-<p>(i.e., <code>[0,1,2,4,5,6,7]</code> might become <code>[4,5,6,7,0,1,2]</code>).</p>
-
-<p>You are given a target value to search. If found in the array return its index, otherwise return <code>-1</code>.</p>
-
-<p>You may assume no duplicate exists in the array.</p>
-
-<p>Your algorithm's runtime complexity must be in the order of&nbsp;<em>O</em>(log&nbsp;<em>n</em>).</p>
-
-<p><strong>Example 1:</strong></p>
-
-<pre><strong>Input:</strong> nums = [<code>4,5,6,7,0,1,2]</code>, target = 0
+<p>There is an integer array <code>nums</code> sorted in ascending order (with <strong>distinct</strong> values).</p>
+<p>Prior to being passed to your function, <code>nums</code> is <strong>possibly rotated</strong> at an unknown pivot index <code>k</code> (<code>1 &lt;= k &lt; nums.length</code>) such that the resulting array is <code>[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]</code> (<strong>0-indexed</strong>). For example, <code>[0,1,2,4,5,6,7]</code> might be rotated at pivot index <code>3</code> and become <code>[4,5,6,7,0,1,2]</code>.</p>
+<p>Given the array <code>nums</code> <strong>after</strong> the possible rotation and an integer <code>target</code>, return <em>the index of </em><code>target</code><em> if it is in </em><code>nums</code><em>, or </em><code>-1</code><em> if it is not in </em><code>nums</code>.</p>
+<p>You must write an algorithm with <code>O(log n)</code> runtime complexity.</p>
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<pre><strong>Input:</strong> nums = [4,5,6,7,0,1,2], target = 0
 <strong>Output:</strong> 4
 </pre>
+<p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [4,5,6,7,0,1,2], target = 3
+<strong>Output:</strong> -1
+</pre>
+<p><strong class="example">Example 3:</strong></p>
+<pre><strong>Input:</strong> nums = [1], target = 0
+<strong>Output:</strong> -1
+</pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 5000</code></li>
+	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
+	<li>All values of <code>nums</code> are <strong>unique</strong>.</li>
+	<li><code>nums</code> is an ascending array that is possibly rotated.</li>
+	<li><code>-10<sup>4</sup> &lt;= target &lt;= 10<sup>4</sup></code></li>
+</ul>
 
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input:</strong> nums = [<code>4,5,6,7,0,1,2]</code>, target = 3
-<strong>Output:</strong> -1</pre>
-
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Apple](https://leetcode.com/company/apple), [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/)
@@ -28,6 +36,7 @@
 **Similar Questions**:
 * [Search in Rotated Sorted Array II (Medium)](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
 * [Find Minimum in Rotated Sorted Array (Medium)](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+* [Pour Water Between Buckets to Make Water Levels Equal (Medium)](https://leetcode.com/problems/pour-water-between-buckets-to-make-water-levels-equal/)
 
 ## Solution 1.
 
@@ -114,20 +123,16 @@ Let `L = 0, R = N - 1, M = (L + R) / 2`.
 class Solution {
 public:
     int search(vector<int>& A, int target) {
-        if (A.empty()) return -1;
-        int L = 0, R = A.size() - 1;
+        int N = A.size(), L = 0, R = N - 1;
         while (L <= R) {
             int M = (L + R) / 2;
             if (A[M] == target) return M;
             if (A[M] > A[R]) {
-                if (target > A[M]) L = M + 1;
-                else if (target >= A[L]) R = M - 1;
+                if (target >= A[L] && target < A[M]) R = M - 1;
                 else L = M + 1;
             } else {
-                if (target > A[M]) {
-                    if (target <= A[R]) L = M + 1;
-                    else R = M - 1;
-                } else R = M - 1;
+                if (target > A[M] && target <= A[R]) L = M + 1;
+                else R = M - 1;
             }
         }
         return -1;
@@ -151,56 +156,6 @@ public:
             if (A[M] == target) return M;
             if ((A[M] > A[R] && (target > A[M] || target < A[L]))
                || (A[M] <= A[R] && (target > A[M] && target <= A[R]))) L = M + 1;
-            else R = M - 1;
-        }
-        return -1;
-    }
-};
-```
-
-## Solution 4.
-
-```cpp
-// OJ: https://leetcode.com/problems/search-in-rotated-sorted-array/
-// Author: github.com/lzl124631x
-// Time: O(logN)
-// Space: O(1)
-class Solution {
-public:
-    int search(vector<int>& A, int target) {
-        int L = 0, R = A.size() - 1;
-        while (L <= R) {
-            int M = (L + R) / 2;
-            if (A[M] == target) return M;
-            if (A[0] <= A[M]) {
-                if (A[M] < target || target < A[0]) L = M + 1;
-                else R = M - 1;
-            } else {
-                if (target < A[M] || target >= A[0]) R = M - 1;
-                else L = M + 1;
-            }
-        }
-        return -1;
-    }
-};
-```
-
-Or simplify the code by combining the cases:
-
-```cpp
-// OJ: https://leetcode.com/problems/search-in-rotated-sorted-array/
-// Author: github.com/lzl124631x
-// Time: O(logN)
-// Space: O(1)
-class Solution {
-public:
-    int search(vector<int>& A, int target) {
-        int L = 0, R = A.size() - 1;
-        while (L <= R) {
-            int M = (L + R) / 2;
-            if (A[M] == target) return M;
-            if ((A[0] <= A[M] && (A[M] < target || target < A[0]))
-               || (A[0] > A[M] && target > A[M] && target < A[0])) L = M + 1;
             else R = M - 1;
         }
         return -1;
