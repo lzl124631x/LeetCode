@@ -74,16 +74,13 @@ public:
             int mid = (start + end) / 2;
             merge(start, mid);
             merge(mid, end);
-            for (int i = start, j = mid, k = start; k < end; ++k) {
-                if (j == end || (i < mid && A[i] <= A[j] + diff)) ++i;
-                else {
-                    ++j;
-                    ans += i - start;
-                }
-            }
-            for (int i = start, j = mid, k = start; k < end; ++k) {
+            for (int i = start, j = mid, k = start, t = start; k < end; ++k) {
                 if (j == end || (i < mid && A[i] <= A[j])) B[k] = A[i++];
-                else B[k] = A[j++];
+                else {
+                    while (t < mid && A[t] <= A[j] + diff) ++t;
+                    ans += t - start;
+                    B[k] = A[j++];
+                }
             }
             for (int i = start; i < end; ++i) A[i] = B[i];
         };
