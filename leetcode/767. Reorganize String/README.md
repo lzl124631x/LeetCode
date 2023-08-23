@@ -1,41 +1,37 @@
-# [767. Reorganize String (Medium)](https://leetcode.com/problems/reorganize-string/)
+# [767. Reorganize String (Medium)](https://leetcode.com/problems/reorganize-string)
 
-<p>Given a string <code>S</code>, check if the letters can be rearranged so that two characters that are adjacent to each other are not the same.</p>
-
-<p>If possible, output any possible result.&nbsp; If not possible, return the empty string.</p>
-
-<p><strong>Example 1:</strong></p>
-
-<pre><strong>Input:</strong> S = "aab"
+<p>Given a string <code>s</code>, rearrange the characters of <code>s</code> so that any two adjacent characters are not the same.</p>
+<p>Return <em>any possible rearrangement of</em> <code>s</code> <em>or return</em> <code>""</code> <em>if not possible</em>.</p>
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<pre><strong>Input:</strong> s = "aab"
 <strong>Output:</strong> "aba"
 </pre>
-
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input:</strong> S = "aaab"
+<p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> s = "aaab"
 <strong>Output:</strong> ""
 </pre>
-
-<p><strong>Note:</strong></p>
-
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 <ul>
-	<li><code>S</code> will consist of lowercase letters and have length in range <code>[1, 500]</code>.</li>
+	<li><code>1 &lt;= s.length &lt;= 500</code></li>
+	<li><code>s</code> consists of lowercase English letters.</li>
 </ul>
 
-<p>&nbsp;</p>
-
-
-**Companies**:  
-[Google](https://leetcode.com/company/google), [Facebook](https://leetcode.com/company/facebook), [Amazon](https://leetcode.com/company/amazon), [Twitter](https://leetcode.com/company/twitter)
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Pinterest](https://leetcode.com/company/pinterest), [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[String](https://leetcode.com/tag/string/), [Heap](https://leetcode.com/tag/heap/), [Greedy](https://leetcode.com/tag/greedy/), [Sort](https://leetcode.com/tag/sort/)
+[Hash Table](https://leetcode.com/tag/hash-table/), [String](https://leetcode.com/tag/string/), [Greedy](https://leetcode.com/tag/greedy/), [Sorting](https://leetcode.com/tag/sorting/), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue/), [Counting](https://leetcode.com/tag/counting/)
 
 **Similar Questions**:
 * [Rearrange String k Distance Apart (Hard)](https://leetcode.com/problems/rearrange-string-k-distance-apart/)
 * [Task Scheduler (Medium)](https://leetcode.com/problems/task-scheduler/)
+* [Longest Happy String (Medium)](https://leetcode.com/problems/longest-happy-string/)
 
-## Solution 1.
+## Solution 1. Sequential Placing (Greedy)
+
+We place the letters from left to right. We always pick the letter that has the maximum count and is not the previously placed letter.
 
 ```cpp
 // OJ: https://leetcode.com/problems/reorganize-string/
@@ -44,57 +40,30 @@
 // Space: O(A)
 class Solution {
 public:
-    string reorganizeString(string S) {
-        int cnts[26] = {};
-        for (char c : S) cnts[c - 'a']++;
-        string ans(S.size(), '\0');
-        for (int i = 0; i < S.size(); ++i) {
-            int maxIndex = -1;
-            for (int j = 0; j < 26; ++j) {
-                if (!cnts[j] || (i > 0 && ans[i - 1] == j + 'a')) continue;
-                if (maxIndex == -1 || cnts[j] > cnts[maxIndex]) maxIndex = j;
+    string reorganizeString(string s) {
+        int cnt[26] = {}, mxCnt = 0;
+        for (char c : s) mxCnt = max(mxCnt, ++cnt[c - 'a']);
+        if (mxCnt > (s.size() + 1) / 2) return "";
+        string ans;
+        for (int i = 0; i < s.size(); ++i) {
+            int mxIndex = -1;
+            for (int c = 0; c < 26; ++c) {
+                if (cnt[c] == 0 || (ans.size() && ans.back() == 'a' + c) || (mxIndex != -1 && cnt[c] <= cnt[mxIndex])) continue;
+                mxIndex = c;
             }
-            if (maxIndex == -1) return "";
-            cnts[maxIndex]--;
-            ans[i] = maxIndex + 'a';
+            cnt[mxIndex]--;
+            ans.push_back('a' + mxIndex);
         }
         return ans;
     }
 };
 ```
 
-## Solution 2. Interleaving Placement
+## Solution 2. Sequential Placing (Greedy + Heap)
 
-```cpp
-// OJ: https://leetcode.com/problems/reorganize-string/
-// Author: github.com/lzl124631x
-// Time: O(AlogA + N) where A is the size of the alphabet 
-// Space: O(A)
-// Ref: https://leetcode.com/problems/reorganize-string/solution/
-class Solution {
-public:
-    string reorganizeString(string S) {
-        int N = S.size(), cnt[26] = {}, j = 1;
-        for (char c : S) cnt[c - 'a'] += 100;
-        for (int i = 0; i < 26; ++i) cnt[i] += i;
-        sort(begin(cnt), end(cnt));
-        string ans(N, ' ');
-        for (int n : cnt) {
-            int ct = n / 100, ch = n % 100;
-            if (ct == 0) continue;
-            if (ct > (N + 1) / 2) return "";
-            while (ct--) {
-                ans[j] = ch + 'a';
-                j = (j + 2) % N;
-                if (j == 1) j = 0;
-            }
-        }
-        return ans;
-    }
-};
-```
+Similar to solution 1, but instead of traversing all the letters, we use a priority queue to pick the one with the maximum count. 
 
-## Solution 3. Greedy + Heap
+Since we can't place the letter we just placed again, we store the letter we just placed in a temp variable `prev`, and push it back into the priority queue one round later.
 
 ```cpp
 // OJ: https://leetcode.com/problems/reorganize-string/
@@ -123,3 +92,72 @@ public:
     }
 };
 ```
+
+## Solution 3. Interleaving Placement
+
+We fill the even indices first, then the odd indices.
+
+```cpp
+// OJ: https://leetcode.com/problems/reorganize-string/
+// Author: github.com/lzl124631x
+// Time: O(AlogA + N) where A is the size of the alphabet 
+// Space: O(A)
+// Ref: https://leetcode.com/problems/reorganize-string/solution/
+class Solution {
+public:
+    string reorganizeString(string s) {
+        int N = s.size(), cnt[26] = {}, j = 0;
+        for (char c : s) cnt[c - 'a'] += 100;
+        for (int i = 0; i < 26; ++i) cnt[i] += i;
+        sort(begin(cnt), end(cnt), greater<>());
+        string ans(N, 0);
+        for (int n : cnt) {
+            int ct = n / 100, ch = n % 100;
+            if (ct == 0) continue;
+            if (ct > (N + 1) / 2) return "";
+            while (ct--) {
+                ans[j] = ch + 'a';
+                j = (j + 2) % N;
+                if (j == 0) j = 1;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+We don't even need to sort the `cnt` array. We just need to place the letter with the maximum count first, and then place the rest in any order.
+
+```cpp
+// OJ: https://leetcode.com/problems/reorganize-string
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(A)
+class Solution {
+public:
+    string reorganizeString(string s) {
+        int cnt[26] = {}, mxIndex = -1, N = s.size(), j = 0;
+        for (char c : s) ++cnt[c - 'a'];
+        for (int i = 0; i < 26; ++i) {
+            if (mxIndex == -1 || cnt[i] > cnt[mxIndex]) mxIndex = i;
+        }
+        if (cnt[mxIndex] > (N + 1) / 2) return "";
+        string ans(N, 0);
+        // Place the most frequent letter
+        while (cnt[mxIndex]--) {
+            ans[j] = 'a' + mxIndex;
+            j += 2;
+        }
+        // Place rest of the letters in any order
+        for (int i = 0; i < 26; ++i) {
+            while (cnt[i]-- > 0) {
+                if (j >= N) j = 1;
+                ans[j] = 'a' + i;
+                j += 2;
+            }
+        }
+        return ans;
+    }
+};
+```
+
