@@ -1,36 +1,24 @@
-# [94. Binary Tree Inorder Traversal (Easy)](https://leetcode.com/problems/binary-tree-inorder-traversal/)
+# [94. Binary Tree Inorder Traversal (Easy)](https://leetcode.com/problems/binary-tree-inorder-traversal)
 
 <p>Given the <code>root</code> of a binary tree, return <em>the inorder traversal of its nodes' values</em>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/09/15/inorder_1.jpg" style="width: 202px; height: 324px;">
+<p><strong class="example">Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/09/15/inorder_1.jpg" style="width: 125px; height: 200px;">
 <pre><strong>Input:</strong> root = [1,null,2,3]
 <strong>Output:</strong> [1,3,2]
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
 <pre><strong>Input:</strong> root = []
 <strong>Output:</strong> []
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
 <pre><strong>Input:</strong> root = [1]
 <strong>Output:</strong> [1]
-</pre>
-
-<p><strong>Example 4:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/09/15/inorder_5.jpg" style="width: 202px; height: 202px;">
-<pre><strong>Input:</strong> root = [1,2]
-<strong>Output:</strong> [2,1]
-</pre>
-
-<p><strong>Example 5:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/09/15/inorder_4.jpg" style="width: 202px; height: 202px;">
-<pre><strong>Input:</strong> root = [1,null,2]
-<strong>Output:</strong> [1,2]
 </pre>
 
 <p>&nbsp;</p>
@@ -44,8 +32,8 @@
 <p>&nbsp;</p>
 <strong>Follow up:</strong> Recursive solution is trivial, could you do it iteratively?
 
-**Companies**:  
-[Microsoft](https://leetcode.com/company/microsoft), [Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg), [Facebook](https://leetcode.com/company/facebook), [Goldman Sachs](https://leetcode.com/company/goldman-sachs)
+**Companies**:
+[Adobe](https://leetcode.com/company/adobe), [Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook)
 
 **Related Topics**:  
 [Stack](https://leetcode.com/tag/stack/), [Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
