@@ -80,3 +80,91 @@ public:
     }
 };
 ```
+
+## Solution 2. Convert to Graph
+
+```cpp
+// OJ: https://leetcode.com/problems/closest-leaf-in-a-binary-tree
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    int findClosestLeaf(TreeNode* root, int k) {
+        unordered_map<int, vector<int>> G;
+        unordered_set<int> leaf, seen;
+        function<void(TreeNode*, TreeNode*)> convertGraph = [&](TreeNode *root, TreeNode *parent) {
+            if (!root) return;
+            if (parent) {
+                G[parent->val].push_back(root->val);
+                G[root->val].push_back(parent->val);
+            }
+            if (!root->left && !root->right) leaf.insert(root->val);
+            convertGraph(root->left, root);
+            convertGraph(root->right, root);
+        };
+        convertGraph(root, nullptr);
+        queue<int> q{{k}};
+        seen.insert(k);
+        while (q.size()) {
+            int cnt = q.front();
+            while (cnt--) {
+                int u = q.front();
+                q.pop();
+                if (leaf.count(u)) return u;
+                for (int v : G[u]) {
+                    if (seen.count(v)) continue;
+                    seen.insert(v);
+                    q.push(v);
+                }
+            }
+        }
+        return -1;
+    }
+};
+```
+
+## Solution 3.
+
+* Get the path from root to the target node.
+* For each node in this path, find the `r.node` with the minimum `distFromTarget + r.dist`. Here `distFromTarget` is the distance from the target node to the current node. `r.node` is the closest leaf node to the current node, and `r.dist` is the corresponding distance between these two nodes.
+
+```cpp
+// OJ: https://leetcode.com/problems/closest-leaf-in-a-binary-tree
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+public:
+    int findClosestLeaf(TreeNode* root, int k) {
+        vector<TreeNode*> path;
+        unordered_map<TreeNode*, LeafResult> annotation;
+        function<bool(TreeNode*)> getPath = [&](TreeNode *root) {
+            if (!root) return false;
+            path.push_back(root);
+            if (root->val == k) return true;
+            if (getPath(root->left) || getPath(root->right)) return true;
+            path.pop_back();
+            return false;
+        };
+        getPath(root);
+        function<LeafResult(TreeNode *root)> closestLeaf = [&](TreeNode *root) {
+            if (!root) return LeafResult(nullptr, INT_MAX);
+            if (!root->left && !root->right) return LeafResult(root, 0);
+            if (annotation.count(root)) return annotation[root];
+            auto L = closestLeaf(root->left);
+            auto R = closestLeaf(root->right);
+            return annotation[root] = LeafResult(L.dist < R.dist ? L.node : R.node, min(L.dist, R.dist) + 1);
+        };
+        int distFromTarget = path.size() - 1, dist = INT_MAX, ans = -1;
+        for (auto n : path) {
+            auto r = closestLeaf(n);
+            if (r.dist + distFromTarget < dist) {
+                dist = r.dist + distFromTarget;
+                ans = r.node->val;
+            }
+            distFromTarget--;
+        }
+        return ans;
+    }
+};
+```
