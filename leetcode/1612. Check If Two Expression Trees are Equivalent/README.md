@@ -66,3 +66,31 @@ public:
     }
 };
 ```
+
+For the follow up question, we add a `sign` to the DFS calls.
+
+```cpp
+// OJ: https://leetcode.com/problems/check-if-two-expression-trees-are-equivalent
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+public:
+    bool checkEquivalence(Node* a, Node* b) {
+        int ca[26] = {}, cb[26] = {};
+        function<void(Node*, int[26], int)> dfs = [&](Node *root, int cnt[26], int sign) {
+            if (!root) return;
+            if (root->val != '+' && root->val != '-') cnt[root->val - 'a'] += sign;
+            dfs(root->left, cnt, sign);
+            if (root->val == '-') sign *= -1;
+            dfs(root->right, cnt, sign);
+        };
+        dfs(a, ca, 1);
+        dfs(b, cb, 1);
+        for (int i = 0; i < 26; ++i) {
+            if (ca[i] != cb[i]) return false;
+        }
+        return true;
+    }
+};
+```
