@@ -1,29 +1,34 @@
-# [590. N-ary Tree Postorder Traversal (Easy)](https://leetcode.com/problems/n-ary-tree-postorder-traversal/)
+# [590. N-ary Tree Postorder Traversal (Easy)](https://leetcode.com/problems/n-ary-tree-postorder-traversal)
 
-<p>Given an n-ary tree, return the <i>postorder</i> traversal of its nodes' values.</p>
-
-<p>For example, given a <code>3-ary</code> tree:</p>
-
+<p>Given the <code>root</code> of an n-ary tree, return <em>the postorder traversal of its nodes' values</em>.</p>
+<p>Nary-Tree input serialization is represented in their level order traversal. Each group of children is separated by the null value (See examples)</p>
 <p>&nbsp;</p>
-
-<p><img src="https://assets.leetcode.com/uploads/2018/10/12/narytreeexample.png" style="width: 100%; max-width: 300px;"></p>
-
+<p><strong class="example">Example 1:</strong></p>
+<img src="https://assets.leetcode.com/uploads/2018/10/12/narytreeexample.png" style="width: 100%; max-width: 300px;">
+<pre><strong>Input:</strong> root = [1,null,3,2,4,null,5,6]
+<strong>Output:</strong> [5,6,3,2,4,1]
+</pre>
+<p><strong class="example">Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2019/11/08/sample_4_964.png" style="width: 296px; height: 241px;">
+<pre><strong>Input:</strong> root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+<strong>Output:</strong> [2,6,14,11,7,3,12,8,4,13,9,10,5,1]
+</pre>
 <p>&nbsp;</p>
-
-<p>Return its postorder traversal as: <code>[5,6,3,2,4,1]</code>.</p>
-&nbsp;
-
-<p><b>Note:</b></p>
-
-<p>Recursive solution is trivial, could you do it iteratively?</p>
-
+<p><strong>Constraints:</strong></p>
+<ul>
+	<li>The number of nodes in the tree is in the range <code>[0, 10<sup>4</sup>]</code>.</li>
+	<li><code>0 &lt;= Node.val &lt;= 10<sup>4</sup></code></li>
+	<li>The height of the n-ary tree is less than or equal to <code>1000</code>.</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Follow up:</strong> Recursive solution is trivial, could you do it iteratively?</p>
 
 **Related Topics**:  
-[Tree](https://leetcode.com/tag/tree/)
+[Stack](https://leetcode.com/tag/stack/), [Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/)
 
 **Similar Questions**:
-* [Binary Tree Postorder Traversal (Hard)](https://leetcode.com/problems/binary-tree-postorder-traversal/)
-* [N-ary Tree Level Order Traversal (Easy)](https://leetcode.com/problems/n-ary-tree-level-order-traversal/)
+* [Binary Tree Postorder Traversal (Easy)](https://leetcode.com/problems/binary-tree-postorder-traversal/)
+* [N-ary Tree Level Order Traversal (Medium)](https://leetcode.com/problems/n-ary-tree-level-order-traversal/)
 * [N-ary Tree Preorder Traversal (Easy)](https://leetcode.com/problems/n-ary-tree-preorder-traversal/)
 
 ## Solution 1. Recursive
@@ -34,16 +39,15 @@
 // Time: O(N)
 // Space: O(logN)
 class Solution {
-private:
-    vector<int> ans;
-    void rec(Node *root) {
-        if (!root) return;
-        for (auto ch : root->children) rec(ch);
-        ans.push_back(root->val);
-    }
 public:
     vector<int> postorder(Node* root) {
-        rec(root);
+        vector<int> ans;
+        function<void(Node*)> dfs = [&](Node *root) {
+            if (!root) return;
+            for (auto n : root->children) dfs(n);
+            ans.push_back(root->val);
+        };
+        dfs(root);
         return ans;
     }
 };
@@ -62,16 +66,15 @@ class Solution {
 public:
     vector<int> postorder(Node* root) {
         if (!root) return {};
-        stack<Node*> s;
-        s.push(root);
         vector<int> ans;
+        stack<Node*> s{{root}};
         while (s.size()) {
             root = s.top();
             s.pop();
             ans.push_back(root->val);
-            for (auto c : root->children) s.push(c);
+            for (auto n : root->children) s.push(n);
         }
-        reverse(ans.begin(), ans.end());
+        reverse(begin(ans), end(ans));
         return ans;
     }
 };
