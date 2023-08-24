@@ -42,7 +42,7 @@
 // OJ: https://leetcode.com/problems/closest-leaf-in-a-binary-tree
 // Author: github.com/lzl124631x
 // Time: O(N)
-// Space: O(N)
+// Space: O(H)
 class Solution {
 public:
     int findClosestLeaf(TreeNode* root, int k) {
