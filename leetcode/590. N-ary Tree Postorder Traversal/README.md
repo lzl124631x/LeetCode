@@ -79,3 +79,30 @@ public:
     }
 };
 ```
+
+## Solution 3. Iterative
+
+```cpp
+// OJ: https://leetcode.com/problems/n-ary-tree-postorder-traversal
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    vector<int> postorder(Node* root) {
+        if (!root) return {};
+        vector<int> ans;
+        stack<pair<Node*, int>> s{{{root, 0}}};
+        while (s.size()) {
+            auto [n, i] = s.top();
+            s.pop();
+            if (i == n->children.size()) ans.push_back(n->val);
+            else {
+                s.emplace(n, i + 1);
+                s.emplace(n->children[i], 0);
+            }
+        }
+        return ans;
+    }
+};
+```
