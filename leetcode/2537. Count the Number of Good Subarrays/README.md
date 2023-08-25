@@ -54,3 +54,28 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/count-the-number-of-good-subarrays
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    long long countGood(vector<int>& A, int k) {
+        unordered_map<int, int> cnt;
+        long long N = A.size(), ans = 0, sum = 0;
+        for (int i = 0, j = 0; i < N; ++i) {
+            while (j < N && sum < k) {
+                sum += cnt[A[j++]]++;
+            }
+            if (sum < k) break;
+            ans += N - j + 1;
+            sum -= --cnt[A[i]];
+        }
+        return ans;
+    }
+};
+```
