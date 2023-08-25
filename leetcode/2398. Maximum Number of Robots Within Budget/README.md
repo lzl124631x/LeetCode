@@ -41,6 +41,8 @@ It can be shown that it is not possible to run more than 3 consecutive robots wi
 
 ## Solution 1. Find Maximum Sliding Window + Monotonic Dequeue
 
+Shrinkable template:
+
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-number-of-robots-within-budget
 // Author: github.com/lzl124631x
@@ -63,6 +65,33 @@ public:
             ans = max(ans, j - i + 1);
         }
         return ans;
+    }
+};
+```
+
+Or Non-shrinkable template:
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-number-of-robots-within-budget
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int maximumRobots(vector<int>& C, vector<int>& R, long long budget) {
+        long long ans = 0, N = C.size(), i = 0, j = 0, sum = 0;
+        deque<int> q;
+        for (; j < N; ++j) {
+            sum += R[j];
+            while (q.size() && C[q.back()] <= C[j]) q.pop_back();
+            q.push_back(j);
+            if (i <= j && C[q.front()] + (j - i + 1) * sum > budget) {
+                sum -= R[i];
+                if (q.front() == i) q.pop_front();
+                ++i;
+            }
+        }
+        return j - i;
     }
 };
 ```
