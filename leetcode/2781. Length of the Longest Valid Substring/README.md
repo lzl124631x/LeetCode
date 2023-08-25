@@ -71,3 +71,30 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+We use `unordered_set` instead of `Trie` to check forbidden words.
+
+```cpp
+// OJ: https://leetcode.com/problems/length-of-the-longest-valid-substring
+// Author: github.com/lzl124631x
+// Time: O(F + NK)
+// Space: O(F)
+class Solution {
+public:
+    int longestValidSubstring(string s, vector<string>& forbidden) {
+        unordered_set<string> F(begin(forbidden), end(forbidden));
+        int left = 0, ans = 0, N = s.size();
+        for (int i = 0; i < N; ++i) {
+            int j = 0;
+            for (; j < 10 && i - j >= 0; ++j) {
+                if (F.count(s.substr(i - j, j + 1))) break;
+            }
+            if (j < 10) left = max(left, i - j + 1);
+            ans = max(ans, i - left + 1);
+        }
+        return ans;
+    }
+};
+```
