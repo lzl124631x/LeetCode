@@ -72,3 +72,28 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/count-subarrays-with-fixed-bounds
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    long long countSubarrays(vector<int>& A, int minK, int maxK) {
+        long long N = A.size(), ans = 0, left = -1, mnPos = -1, mxPos = -1;
+        for (int i = 0; i < N; ++i) {
+            if (A[i] < minK || A[i] > maxK) {
+                left = i;
+                continue;
+            }
+            if (A[i] == minK) mnPos = i;
+            if (A[i] == maxK) mxPos = i;
+            ans += max(0LL, min(mxPos, mnPos) - left);
+        }
+        return ans;
+    }
+};
+```
