@@ -51,7 +51,7 @@ It can be proved that we cannot make the minimum power of a city greater than 4.
 ```cpp
 // OJ: https://leetcode.com/problems/maximize-the-minimum-powered-city
 // Author: github.com/lzl124631x
-// Time: O(NlogN)
+// Time: O(N * log(SUM(A) + k))
 // Space: O(N)
 class Solution {
 public:
