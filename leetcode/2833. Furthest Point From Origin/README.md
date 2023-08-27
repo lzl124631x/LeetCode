@@ -52,3 +52,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/furthest-point-from-origin/solutions/3965241
