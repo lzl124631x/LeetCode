@@ -32,6 +32,8 @@
 
 ## Solution 1.
 
+Similar to [678. Valid Parenthesis String (Medium)](https://leetcode.com/problems/valid-parenthesis-string/), we keep track of the left and right bound we can reach.
+
 ```cpp
 // OJ: https://leetcode.com/problems/furthest-point-from-origin
 // Author: github.com/lzl124631x
