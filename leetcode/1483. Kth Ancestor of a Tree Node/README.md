@@ -130,6 +130,10 @@ We can calculate `P` array using the following equation.
 P[i][node] = P[i-1][ P[i-1][node] ]
 ```
 
+What's the size of the first dimension of `P`? It means the maximum order of a parent + 1, i.e. the depth of the tree `h`. For example, a node in a tree of depth 3 can have at most 2nd parent, so the size of the first dimension of `P` is at least `3`.
+
+We know that `n <= 5 * 10^4`. Given number of nodes in tree as `n`, what's the maximum height `h`? For a tree of height `h`, it at most have `2^h - 1` nodes. For a tree of height `h-1`, it at most have `2^(h-1) - 1` nodes. So, `2^(h-1) - 1 < n <= 2^h - 1`, `log(n+1) <= h < log(n+1) + 1`, `h = ceil(log(n+1))`. So, `h` is at most `ceil(log(5 * 10^4)) = ceil(15.6097) = 16`.
+
 ```cpp
 // OJ: https://leetcode.com/problems/kth-ancestor-of-a-tree-node/
 // Author: github.com/lzl124631x
@@ -140,19 +144,21 @@ P[i][node] = P[i-1][ P[i-1][node] ]
 // Ref: https://leetcode.com/problems/kth-ancestor-of-a-tree-node/discuss/686268/Explanation-for-this-question-c%2B%2B-sample-code
 class TreeAncestor {
     vector<vector<int>> P;
+    int len; // len is at most `16` if `n <= 5e4`
 public:
-    TreeAncestor(int n, vector<int>& parent) : P(20, vector<int>(parent.size(), -1)) {
+    TreeAncestor(int n, vector<int>& parent) {
+        len = ceil(log(n + 1) / log(2));
+        P.assign(len, vector<int>(parent.size(), -1));
         for (int node = 1; node < n; ++node) P[0][node] = parent[node]; // 2^0 = 1st parent
-        for (int i = 1; i < 20; ++i) { 
+        for (int i = 1; i < len; ++i) { 
             for (int node = 0; node < n; ++node) {
                 int p = P[i - 1][node];
-                if (p != -1) P[i][node] = P[i - 1][p]; // 2^i-th parent is the 2^(i-1)-th 
-parent of the 2^(i-1)-th parent.
+                if (p != -1) P[i][node] = P[i - 1][p]; // 2^i-th parent is the 2^(i-1)-th  parent of the 2^(i-1)-th parent.
             }
         }
     }
     int getKthAncestor(int node, int k) {
-        for (int i = 0; i < 20 && node != -1; ++i) {
+        for (int i = 0; i < len && node != -1; ++i) {
             if ((k >> i & 1) == 0) continue; // If `k` has `0` at `i`th bit, skip.
             node = P[i][node];
         }
