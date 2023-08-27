@@ -39,9 +39,16 @@
 Let `dp[i][k]` be whether we can reach `A[N-1]` from `A[i]` with `k` as the units of the last jump
 
 ```
-dp[i][k] = dp[f(i, k-1)][k-1] || dp[f(i, k)][k] || dp[f(i, k+1)][k+1]
+dp[i][k] = OR( dp[f(i, k+j)][k+j] )
+        where j = -1,0,1 for i > 0; j = 0 for i == 0
         where f(i, k) is the index that satisfies A[f(i,k)] = A[i] + k
+
+dp[N-1][k] = true
 ```
+
+The answer is `dp[0][1]`.
+
+We just need to memoize the unreachable states.
 
 ```cpp
 // OJ: https://leetcode.com/problems/frog-jump/
