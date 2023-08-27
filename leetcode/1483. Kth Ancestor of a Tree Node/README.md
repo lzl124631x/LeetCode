@@ -82,30 +82,27 @@ Then we use the id to find the corresponding node, `2`.
 // Space: O(N)
 class TreeAncestor {
     vector<int> nodeToId, idToNode, idToLevel;
-    vector<vector<int>> tree, G;
-    void preorder(int node, int &id, int level) {
-        if (level >= tree.size()) tree.emplace_back();
-        tree[level].push_back(id);
-        nodeToId[node] = id;
-        idToNode[id] = node;
-        idToLevel[id] = level;
-        ++id;
-        for (int child : G[node]) preorder(child, id, level + 1);
-    }
+    vector<vector<int>> G, ids;
 public:
-    TreeAncestor(int n, vector<int>& parent) {
-        nodeToId.assign(n, 0);
-        idToNode.assign(n, 0);
-        idToLevel.assign(n, 0);
-        G.assign(n, {});
+    TreeAncestor(int n, vector<int>& parent) : nodeToId(n), idToNode(n), idToLevel(n), G(n) {
         for (int i = 1; i < n; ++i) G[parent[i]].push_back(i);
         int id = 0;
-        preorder(0, id, 0);
+        function<void(int, int)> preorder = [&](int u, int level) {
+            nodeToId[u] = id;
+            idToNode[id] = u;
+            idToLevel[id] = level;
+            if (level == ids.size()) ids.emplace_back();
+            ids[level].push_back(id);
+            id++;
+            for (int v : G[u]) preorder(v, level + 1);
+        };
+        preorder(0, 0);
     }
     int getKthAncestor(int node, int k) {
-        int id = nodeToId[node], level = idToLevel[id] - k;
-        if (level < 0) return -1;
-        return idToNode[*(upper_bound(begin(tree[level]), end(tree[level]), id) - 1)];
+        int id = nodeToId[node], level = idToLevel[id];
+        if (level - k < 0) return -1;
+        auto &v = ids[level - k];
+        return idToNode[*prev(lower_bound(begin(v), end(v), id))];
     }
 };
 ```
@@ -126,11 +123,12 @@ For example, a `6`th (`110` in base 2) parent is the same as the `4`th (`100` in
 
 Let `P[i][node]` be the `node`'s `2^i`th parent.
 
+The `6`th parent of `node` can be expressed as `P[2][ P[1][node] ]`.
+
+We can calculate `P` array using the following equation.
 ```
 P[i][node] = P[i-1][ P[i-1][node] ]
 ```
-
-The `6`th parent of `node` can be expressed as `P[2][ P[1][node] ]`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/kth-ancestor-of-a-tree-node/
@@ -143,21 +141,20 @@ The `6`th parent of `node` can be expressed as `P[2][ P[1][node] ]`.
 class TreeAncestor {
     vector<vector<int>> P;
 public:
-    TreeAncestor(int n, vector<int>& parent) {
-        P.assign(20, vector<int>(parent.size(), -1));
-        for (int i = 0; i < parent.size(); ++i) P[0][i] = parent[i]; // 2^0
-        for (int i = 1; i < 20; ++i) { // 2^i
-            for (int node = 0; node < parent.size(); ++node) {
+    TreeAncestor(int n, vector<int>& parent) : P(20, vector<int>(parent.size(), -1)) {
+        for (int node = 1; node < n; ++node) P[0][node] = parent[node]; // 2^0 = 1st parent
+        for (int i = 1; i < 20; ++i) { 
+            for (int node = 0; node < n; ++node) {
                 int p = P[i - 1][node];
-                if (p != -1) P[i][node] = P[i - 1][p]; // P[i][node] = P[i - 1][ P[i - 1][node] ]
+                if (p != -1) P[i][node] = P[i - 1][p]; // 2^i-th parent is the 2^(i-1)-th 
+parent of the 2^(i-1)-th parent.
             }
         }
     }
     int getKthAncestor(int node, int k) {
-        for (int i = 0; i < 20; ++i) {
-            if ((k & (1 << i)) == 0) continue; // If `k` has `0` at `i`th bit, skip.
+        for (int i = 0; i < 20 && node != -1; ++i) {
+            if ((k >> i & 1) == 0) continue; // If `k` has `0` at `i`th bit, skip.
             node = P[i][node];
-            if (node == -1) return -1;
         }
         return node;
     }
