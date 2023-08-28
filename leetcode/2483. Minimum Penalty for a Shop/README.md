@@ -56,13 +56,13 @@ The penalty at `s[i]` is the count of Y's to the right (excluding `s[i]`) plus t
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-penalty-for-a-shop
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(N)
+// Space: O(1)
 class Solution {
 public:
     int bestClosingTime(string s) {
         int N = s.size(), y = 0, n = 0;
-        for (int i = N - 1; i >= 0; --i) y += s[i] == 'Y';
+        for (char c : s) y += c == 'Y';
         int minPenalty = y, ans = 0;
         for (int i = 0; i < N; ++i) {
             y -= s[i] == 'Y';
