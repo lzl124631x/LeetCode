@@ -30,7 +30,7 @@
 **Similar Questions**:
 * [Word Break (Medium)](https://leetcode.com/problems/word-break/)
 
-## Solution 1. Trie
+## Solution 1. Trie + Bottom-up DP
 
 ```cpp
 // OJ: https://leetcode.com/problems/extra-characters-in-a-string
@@ -68,6 +68,34 @@ public:
             if (dp[i] == INT_MAX) dp[i] = dp[i + 1] + 1;
         }
         return dp[0];
+    }
+};
+```
+
+## Solution 2. Unordered Set + Top-down DP
+
+```cpp
+// OJ: https://leetcode.com/problems/extra-characters-in-a-string
+// Author: github.com/lzl124631x
+// Time: O(DL + N^2)
+// Space: O(DL + N)
+class Solution {
+public:
+    int minExtraChar(string s, vector<string>& A) {
+        unordered_set<string> dict(begin(A), end(A));
+        int N = s.size();
+        vector<int> m(N, INT_MAX);
+        function<int(int)> dfs = [&](int start) {
+            if (start == N) return 0;
+            if (m[start] != INT_MAX) return m[start];
+            m[start] = 1 + dfs(start + 1);
+            for (int i = start; i < N; ++i) {
+                auto sub = s.substr(start, i - start + 1);
+                if (dict.count(sub)) m[start] = min(m[start], dfs(i + 1));
+            }
+            return m[start];
+        };
+        return dfs(0);
     }
 };
 ```
