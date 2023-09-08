@@ -1,33 +1,25 @@
-# [1871. Jump Game VII (Medium)](https://leetcode.com/problems/jump-game-vii/)
+# [ (Medium)](https://leetcode.com/problems/jump-game-vii)
 
 <p>You are given a <strong>0-indexed</strong> binary string <code>s</code> and two integers <code>minJump</code> and <code>maxJump</code>. In the beginning, you are standing at index <code>0</code>, which is equal to <code>'0'</code>. You can move from index <code>i</code> to index <code>j</code> if the following conditions are fulfilled:</p>
-
 <ul>
 	<li><code>i + minJump &lt;= j &lt;= min(i + maxJump, s.length - 1)</code>, and</li>
 	<li><code>s[j] == '0'</code>.</li>
 </ul>
-
 <p>Return <code>true</code><i> if you can reach index </i><code>s.length - 1</code><i> in </i><code>s</code><em>, or </em><code>false</code><em> otherwise.</em></p>
-
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
-
+<p><strong class="example">Example 1:</strong></p>
 <pre><strong>Input:</strong> s = "<u>0</u>11<u>0</u>1<u>0</u>", minJump = 2, maxJump = 3
 <strong>Output:</strong> true
 <strong>Explanation:</strong>
 In the first step, move from index 0 to index 3. 
 In the second step, move from index 3 to index 5.
 </pre>
-
-<p><strong>Example 2:</strong></p>
-
+<p><strong class="example">Example 2:</strong></p>
 <pre><strong>Input:</strong> s = "01101110", minJump = 2, maxJump = 3
 <strong>Output:</strong> false
 </pre>
-
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
-
 <ul>
 	<li><code>2 &lt;= s.length &lt;= 10<sup>5</sup></code></li>
 	<li><code>s[i]</code> is either <code>'0'</code> or <code>'1'</code>.</li>
@@ -35,12 +27,11 @@ In the second step, move from index 3 to index 5.
 	<li><code>1 &lt;= minJump &lt;= maxJump &lt; s.length</code></li>
 </ul>
 
-
-**Companies**:  
-[Google](https://leetcode.com/company/google)
+**Companies**:
+[Google](https://leetcode.com/company/google), [Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
-[Greedy](https://leetcode.com/tag/greedy/), [Breadth-first Search](https://leetcode.com/tag/breadth-first-search/), [Line Sweep](https://leetcode.com/tag/line-sweep/)
+[Two Pointers](https://leetcode.com/tag/two-pointers/), [String](https://leetcode.com/tag/string/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
 
 **Similar Questions**:
 * [Jump Game II (Medium)](https://leetcode.com/problems/jump-game-ii/)
@@ -50,6 +41,9 @@ In the second step, move from index 3 to index 5.
 * [Jump Game V (Hard)](https://leetcode.com/problems/jump-game-v/)
 * [Jump Game VI (Medium)](https://leetcode.com/problems/jump-game-vi/)
 * [Jump Game VII (Medium)](https://leetcode.com/problems/jump-game-vii/)
+* [Jump Game VIII (Medium)](https://leetcode.com/problems/jump-game-viii/)
+* [Count Vowel Strings in Ranges (Medium)](https://leetcode.com/problems/count-vowel-strings-in-ranges/)
+* [Maximum Number of Jumps to Reach the Last Index (Medium)](https://leetcode.com/problems/maximum-number-of-jumps-to-reach-the-last-index/)
 
 ## Solution 1.
 
