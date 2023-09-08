@@ -1,68 +1,45 @@
-# [490. The Maze (Medium)](https://leetcode.com/problems/the-maze/)
+# [490. The Maze (Medium)](https://leetcode.com/problems/the-maze)
 
-<p>There is a <b>ball</b> in a maze with empty spaces and walls. The ball can go through empty spaces by rolling <b>up</b>, <b>down</b>, <b>left</b> or <b>right</b>, but it won't stop rolling until hitting a wall. When the ball stops, it could choose the next direction.</p>
-
-<p>Given the ball's <b>start position</b>, the <b>destination</b> and the <b>maze</b>, determine whether the ball could stop at the destination.</p>
-
-<p>The maze is represented by a binary 2D array. 1 means the wall and 0 means the empty space. You may assume that the borders of the maze are all walls. The start and destination coordinates are represented by row and column indexes.</p>
-
+<p>There is a ball in a <code>maze</code> with empty spaces (represented as <code>0</code>) and walls (represented as <code>1</code>). The ball can go through the empty spaces by rolling <strong>up, down, left or right</strong>, but it won't stop rolling until hitting a wall. When the ball stops, it could choose the next direction.</p>
+<p>Given the <code>m x n</code> <code>maze</code>, the ball's <code>start</code> position and the <code>destination</code>, where <code>start = [start<sub>row</sub>, start<sub>col</sub>]</code> and <code>destination = [destination<sub>row</sub>, destination<sub>col</sub>]</code>, return <code>true</code> if the ball can stop at the destination, otherwise return <code>false</code>.</p>
+<p>You may assume that <strong>the borders of the maze are all walls</strong> (see examples).</p>
 <p>&nbsp;</p>
-
-<p><b>Example 1:</b></p>
-
-<pre><b>Input 1:</b> a maze represented by a 2D array
-
-0 0 1 0 0
-0 0 0 0 0
-0 0 0 1 0
-1 1 0 1 1
-0 0 0 0 0
-
-<b>Input 2:</b> start coordinate (rowStart, colStart) = (0, 4)
-<b>Input 3:</b> destination coordinate (rowDest, colDest) = (4, 4)
-
-<b>Output:</b> true
-
-<b>Explanation:</b> One possible way is : left -&gt; down -&gt; left -&gt; down -&gt; right -&gt; down -&gt; right.
-<img src="https://assets.leetcode.com/uploads/2018/10/12/maze_1_example_1.png" style="width: 100%; max-width:350px;">
+<p><strong class="example">Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/03/31/maze1-1-grid.jpg" style="width: 573px; height: 573px;">
+<pre><strong>Input:</strong> maze = [[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]], start = [0,4], destination = [4,4]
+<strong>Output:</strong> true
+<strong>Explanation:</strong> One possible way is : left -&gt; down -&gt; left -&gt; down -&gt; right -&gt; down -&gt; right.
 </pre>
-
-<p><b>Example 2:</b></p>
-
-<pre><b>Input 1:</b> a maze represented by a 2D array
-
-0 0 1 0 0
-0 0 0 0 0
-0 0 0 1 0
-1 1 0 1 1
-0 0 0 0 0
-
-<b>Input 2:</b> start coordinate (rowStart, colStart) = (0, 4)
-<b>Input 3:</b> destination coordinate (rowDest, colDest) = (3, 2)
-
-<b>Output:</b> false
-
-<b>Explanation:</b> There is no way for the ball to stop at the destination.
-<img src="https://assets.leetcode.com/uploads/2018/10/13/maze_1_example_2.png" style="width: 100%; max-width:350px;">
+<p><strong class="example">Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/03/31/maze1-2-grid.jpg" style="width: 573px; height: 573px;">
+<pre><strong>Input:</strong> maze = [[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]], start = [0,4], destination = [3,2]
+<strong>Output:</strong> false
+<strong>Explanation:</strong> There is no way for the ball to stop at the destination. Notice that you can pass through the destination but you cannot stop there.
 </pre>
-
+<p><strong class="example">Example 3:</strong></p>
+<pre><strong>Input:</strong> maze = [[0,0,0,0,0],[1,1,0,0,1],[0,0,0,0,0],[0,1,0,0,1],[0,1,0,0,0]], start = [4,3], destination = [0,1]
+<strong>Output:</strong> false
+</pre>
 <p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+	<li><code>m == maze.length</code></li>
+	<li><code>n == maze[i].length</code></li>
+	<li><code>1 &lt;= m, n &lt;= 100</code></li>
+	<li><code>maze[i][j]</code> is <code>0</code> or <code>1</code>.</li>
+	<li><code>start.length == 2</code></li>
+	<li><code>destination.length == 2</code></li>
+	<li><code>0 &lt;= start<sub>row</sub>, destination<sub>row</sub> &lt;= m</code></li>
+	<li><code>0 &lt;= start<sub>col</sub>, destination<sub>col</sub> &lt;= n</code></li>
+	<li>Both the ball and the destination exist in an empty space, and they will not be in the same position initially.</li>
+	<li>The maze contains <strong>at least 2 empty spaces</strong>.</li>
+</ul>
 
-<p><b>Note:</b></p>
-
-<ol>
-	<li>There is only one ball and one destination in the maze.</li>
-	<li>Both the ball and the destination exist on an empty space, and they will not be at the same position initially.</li>
-	<li>The given maze does not contain border (like the red rectangle in the example pictures), but you could assume the border of the maze are all walls.</li>
-	<li>The maze contains at least 2 empty spaces, and both the width and height of the maze won't exceed 100.</li>
-</ol>
-
-
-**Companies**:  
-[Google](https://leetcode.com/company/google), [Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook)
+**Companies**:
+[Facebook](https://leetcode.com/company/facebook), [TikTok](https://leetcode.com/company/tiktok), [Square](https://leetcode.com/company/square)
 
 **Related Topics**:  
-[Depth-first Search](https://leetcode.com/tag/depth-first-search/), [Breadth-first Search](https://leetcode.com/tag/breadth-first-search/)
+[Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Graph](https://leetcode.com/tag/graph/)
 
 **Similar Questions**:
 * [The Maze III (Hard)](https://leetcode.com/problems/the-maze-iii/)
@@ -76,33 +53,23 @@
 // Time: O(MN)
 // Space: O(MN)
 class Solution {
-private:
-    int hash(vector<int> &p) { return p[0] * 1000 + p[1]; }
-    vector<int> go(vector<vector<int>>& maze, int x, int y, int d[2]) {
-        int M = maze.size(), N = maze[0].size();
-        do {
-            x += d[0];
-            y += d[1];
-        } while (x >= 0 && x < M && y >= 0 && y < N && !maze[x][y]);
-        return { x - d[0], y - d[1] };
-    }
 public:
-    bool hasPath(vector<vector<int>>& maze, vector<int>& start, vector<int>& destination) {
-        queue<int> q;
-        unordered_set<int> seen;
-        int s = hash(start), dirs[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-        q.push(s);
-        seen.insert(s);
+    bool hasPath(vector<vector<int>>& A, vector<int>& start, vector<int>& dest) {
+        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        vector<vector<bool>> seen(M, vector<bool>(N));
+        queue<pair<int, int>> q{{{start[0], start[1]}}};
+        seen[start[0]][start[1]] = true;
         while (q.size()) {
-            int val = q.front(), x = val / 1000, y = val % 1000;
+            auto [x, y] = q.front();
             q.pop();
-            if (x == destination[0] && y == destination[1]) return true;
-            for (auto &dir : dirs) {
-                auto to = go(maze, x, y, dir);
-                int h = hash(to);
-                if (seen.count(h)) continue;
-                seen.insert(h);
-                q.push(h);
+            if (x == dest[0] && y == dest[1]) return true;
+            for (auto &[dx, dy] : dirs) {
+                int a = x, b = y;
+                while (a >= 0 && a < M && b >= 0 && b < N && A[a][b] != 1) a += dx, b += dy;
+                a -= dx, b -= dy;
+                if ((a == x && b == y) || seen[a][b]) continue;
+                seen[a][b] = true;
+                q.emplace(a, b);
             }
         }
         return false;

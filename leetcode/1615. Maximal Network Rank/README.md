@@ -59,19 +59,16 @@
 // Space: O(N^2)
 class Solution {
 public:
-    int maximalNetworkRank(int n, vector<vector<int>>& A) {
-        vector<vector<int>> G(n, vector<int>(n));
-        vector<int> degree(n);
-        for (auto &r : A) {
-            int u = r[0], v = r[1];
-            G[u][v] = G[v][u] = 1;
-            degree[u]++;
-            degree[v]++;
+    int maximalNetworkRank(int n, vector<vector<int>>& E) {
+        vector<unordered_set<int>> G(n);
+        for (auto &e : E) {
+            G[e[0]].insert(e[1]);
+            G[e[1]].insert(e[0]);
         }
         int ans = 0;
         for (int i = 0; i < n; ++i) {
             for (int j = i + 1; j < n; ++j) {
-                ans = max(ans, degree[i] + degree[j] - G[i][j]);
+                ans = max(ans, (int)(G[i].size() + G[j].size() - G[i].count(j)));
             }
         }
         return ans;
@@ -157,38 +154,35 @@ public:
 // Ref: https://leetcode.com/problems/maximal-network-rank/discuss/889206/Java-2ms-O(m)
 class Solution {
 public:
-    int maximalNetworkRank(int n, vector<vector<int>>& A) {
-        if (A.empty()) return 0;
+    int maximalNetworkRank(int n, vector<vector<int>>& E) {
         vector<int> deg(n);
-        for (auto &e : A) {
-            int u = e[0], v = e[1];
-            deg[u]++;
-            deg[v]++;
+        for (auto &e : E) {
+            deg[e[0]]++;
+            deg[e[1]]++;
         }
         int first = 0, second = 0, firstCnt = 0, secondCnt = 0, cnt = 0;
-        for (int d : deg) {
-            if (d > first) {
+        for (int i = 0; i < n; ++i) {
+            if (deg[i] > first) {
                 second = first;
-                first = d;
-            } else if (d == first) continue;
-            else if (d > second) second = d;
+                first = deg[i];
+            } else if (deg[i] > second) second = deg[i];
         }
-        for (int d : deg) {
-            if (d == first) ++firstCnt;
-            else if (d == second) ++secondCnt;
+        for (int i = 0; i < n; ++i) {
+            firstCnt += deg[i] == first;
+            secondCnt += deg[i] == second;
         }
         if (firstCnt == 1) {
-            for (auto &e : A) {
+            for (auto &e : E) {
                 int u = e[0], v = e[1];
                 cnt += (deg[u] == first && deg[v] == second) || (deg[u] == second && deg[v] == first);
             }
-            return first + second - (secondCnt <= cnt);
+            return first + second - (secondCnt <= cnt); // cnt is the number of edges connecting the single `first`-tier node and all `second`-tier nodes. If `secondCnt <= cnt`, all `second`-tier nodes are connected with the `first`-tier node, and we need to subtract the answer by 1.
         } else {
-            for (auto &e : A) {
+            for (auto &e : E) {
                 int u = e[0], v = e[1];
                 cnt += deg[u] == first && deg[v] == first;
             }
-            return first * 2 - (firstCnt * (firstCnt - 1) / 2 <= cnt);
+            return first * 2 - ((firstCnt - 1) * firstCnt / 2 == cnt); // cnt is the number of edges connecting `first`-tier nodes. Only when all the `first`-tier nodes are interconnected ((firstCnt - 1) * firstCnt / 2 == cnt), we need to subtract the answer by 1
         }
     }
 };

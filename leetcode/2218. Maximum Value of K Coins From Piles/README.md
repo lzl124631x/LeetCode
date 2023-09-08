@@ -92,18 +92,18 @@ public:
 // Space: O(NK)
 class Solution {
 public:
-    int maxValueOfCoins(vector<vector<int>>& A, int k) {
-        int dp[1001][2001] = {}, N = A.size();
+    int maxValueOfCoins(vector<vector<int>>& A, int K) {
+        int N = A.size(), dp[1001][2001] = {};
         for (int i = 0; i < N; ++i) {
-            for (int j = 1; j <= k; ++j) {
-                dp[i + 1][j] = dp[i][j];
-                for (int t = 1, sum = 0; t <= j && t <= A[i].size(); ++t) {
-                    sum += A[i][t - 1];
-                    dp[i + 1][j] = max(dp[i + 1][j], dp[i][j - t] + sum);
+            for (int k = 1; k <= K; ++k) {
+                dp[i + 1][k] = dp[i][k];
+                for (int j = 0, sum = 0; j < k && j < A[i].size(); ++j) {
+                    sum += A[i][j];
+                    dp[i + 1][k] = max(dp[i + 1][k], sum + dp[i][k - j - 1]);
                 }
             }
         }
-        return dp[N][k];
+        return dp[N][K];
     }
 };
 ```

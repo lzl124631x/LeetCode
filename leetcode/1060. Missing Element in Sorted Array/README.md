@@ -1,0 +1,60 @@
+# [1060. Missing Element in Sorted Array (Medium)](https://leetcode.com/problems/missing-element-in-sorted-array)
+
+<p>Given an integer array <code>nums</code> which is sorted in <strong>ascending order</strong> and all of its elements are <strong>unique</strong> and given also an integer <code>k</code>, return the <code>k<sup>th</sup></code> missing number starting from the leftmost number of the array.</p>
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<pre><strong>Input:</strong> nums = [4,7,9,10], k = 1
+<strong>Output:</strong> 5
+<strong>Explanation:</strong> The first missing number is 5.
+</pre>
+<p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [4,7,9,10], k = 3
+<strong>Output:</strong> 8
+<strong>Explanation:</strong> The missing numbers are [5,6,8,...], hence the third missing number is 8.
+</pre>
+<p><strong class="example">Example 3:</strong></p>
+<pre><strong>Input:</strong> nums = [1,2,4], k = 3
+<strong>Output:</strong> 6
+<strong>Explanation:</strong> The missing numbers are [3,5,6,7,...], hence the third missing number is 6.
+</pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 5 * 10<sup>4</sup></code></li>
+	<li><code>1 &lt;= nums[i] &lt;= 10<sup>7</sup></code></li>
+	<li><code>nums</code> is sorted in <strong>ascending order,</strong> and all the elements are <strong>unique</strong>.</li>
+	<li><code>1 &lt;= k &lt;= 10<sup>8</sup></code></li>
+</ul>
+<p>&nbsp;</p>
+<strong>Follow up:</strong>
+<code>O(log(n))</code>
+
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook), [Apple](https://leetcode.com/company/apple)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/)
+
+## Solution 1. Binary Search
+
+```cpp
+// OJ: https://leetcode.com/problems/missing-element-in-sorted-array
+// Author: github.com/lzl124631x
+// Time: O(logN)
+// Space: O(1)
+class Solution {
+public:
+    int missingElement(vector<int>& A, int k) {
+        int L = 0, R = A.size() - 1;
+        auto valid = [&](int i) {
+            return A[i] - A[0] - i < k;
+        };
+        while (L <= R) {
+            int M = (L + R) / 2;
+            if (valid(M)) L = M + 1;
+            else R = M - 1;
+        }
+        return A[R] + k - (A[R] - A[0] - R);
+    }
+};
+```

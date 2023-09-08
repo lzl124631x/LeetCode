@@ -1,38 +1,29 @@
-# [505. The Maze II (Medium)](https://leetcode.com/problems/the-maze-ii/)
+# [505. The Maze II (Medium)](https://leetcode.com/problems/the-maze-ii)
 
 <p>There is a ball in a <code>maze</code> with empty spaces (represented as <code>0</code>) and walls (represented as <code>1</code>). The ball can go through the empty spaces by rolling <strong>up, down, left or right</strong>, but it won't stop rolling until hitting a wall. When the ball stops, it could choose the next direction.</p>
-
 <p>Given the <code>m x n</code> <code>maze</code>, the ball's <code>start</code> position and the <code>destination</code>, where <code>start = [start<sub>row</sub>, start<sub>col</sub>]</code> and <code>destination = [destination<sub>row</sub>, destination<sub>col</sub>]</code>, return <em>the shortest <strong>distance</strong> for the ball to stop at the destination</em>. If the ball cannot stop at <code>destination</code>, return <code>-1</code>.</p>
-
 <p>The <strong>distance</strong> is the number of <strong>empty spaces</strong> traveled by the ball from the start position (excluded) to the destination (included).</p>
-
 <p>You may assume that <strong>the borders of the maze are all walls</strong> (see examples).</p>
-
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2021/03/31/maze1-1-grid.jpg" style="width: 573px; height: 573px;">
 <pre><strong>Input:</strong> maze = [[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]], start = [0,4], destination = [4,4]
 <strong>Output:</strong> 12
 <strong>Explanation:</strong> One possible way is : left -&gt; down -&gt; left -&gt; down -&gt; right -&gt; down -&gt; right.
 The length of the path is 1 + 1 + 3 + 1 + 2 + 2 + 2 = 12.
 </pre>
-
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2021/03/31/maze1-2-grid.jpg" style="width: 573px; height: 573px;">
 <pre><strong>Input:</strong> maze = [[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]], start = [0,4], destination = [3,2]
 <strong>Output:</strong> -1
 <strong>Explanation:</strong> There is no way for the ball to stop at the destination. Notice that you can pass through the destination but you cannot stop there.
 </pre>
-
-<p><strong>Example 3:</strong></p>
-
+<p><strong class="example">Example 3:</strong></p>
 <pre><strong>Input:</strong> maze = [[0,0,0,0,0],[1,1,0,0,1],[0,0,0,0,0],[0,1,0,0,1],[0,1,0,0,0]], start = [4,3], destination = [0,1]
 <strong>Output:</strong> -1
 </pre>
-
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
-
 <ul>
 	<li><code>m == maze.length</code></li>
 	<li><code>n == maze[i].length</code></li>
@@ -40,15 +31,14 @@ The length of the path is 1 + 1 + 3 + 1 + 2 + 2 + 2 = 12.
 	<li><code>maze[i][j]</code> is <code>0</code> or <code>1</code>.</li>
 	<li><code>start.length == 2</code></li>
 	<li><code>destination.length == 2</code></li>
-	<li><code>0 &lt;= start<sub>row</sub>, destination<sub>row</sub> &lt;= m</code></li>
-	<li><code>0 &lt;= start<sub>col</sub>, destination<sub>col</sub> &lt;= n</code></li>
+	<li><code>0 &lt;= start<sub>row</sub>, destination<sub>row</sub> &lt; m</code></li>
+	<li><code>0 &lt;= start<sub>col</sub>, destination<sub>col</sub> &lt; n</code></li>
 	<li>Both the ball and the destination exist in an empty space, and they will not be in the same position initially.</li>
 	<li>The maze contains <strong>at least 2 empty spaces</strong>.</li>
 </ul>
 
-
-**Companies**:  
-[Google](https://leetcode.com/company/google), [ByteDance](https://leetcode.com/company/bytedance)
+**Companies**:
+[Google](https://leetcode.com/company/google), [ByteDance](https://leetcode.com/company/bytedance), [Microsoft](https://leetcode.com/company/microsoft)
 
 **Related Topics**:  
 [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Graph](https://leetcode.com/tag/graph/), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue/), [Shortest Path](https://leetcode.com/tag/shortest-path/)
@@ -61,7 +51,7 @@ The length of the path is 1 + 1 + 3 + 1 + 2 + 2 + 2 = 12.
 
 We BFS the matrix step by step. Each state is `(x, y, direction)` and we visit them at most once.
 
-The time complexity is `O(4MN) = O(MN)`  because each state `(x, y, direction)` is visited at most once.
+The time complexity is `O(4MN) = O(MN)` because each state `(x, y, direction)` is visited at most once.
 
 ```cpp
 // OJ: https://leetcode.com/problems/the-maze-ii/
@@ -142,9 +132,9 @@ public:
             if (cost > dist[x][y]) continue; // this state is no longer optimial, skip
             if (x == dest[0] && y == dest[1]) return cost;
             for (auto &[dx, dy] : dirs) { // probe 4 directions
-                int a = x + dx, b = y + dy, step = 0;
+                int a = x, b = y, step = 0;
                 while (a >= 0 && a < M && b >= 0 && b < N && A[a][b] == 0) a += dx, b += dy, ++step;
-                a -= dx, b -= dy; // once hit wall, step back
+                a -= dx, b -= dy, --step; // once hit wall, step back
                 if (dist[a][b] > cost + step) {
                     dist[a][b] = cost + step;
                     pq.push({ dist[a][b], a, b });

@@ -1,22 +1,45 @@
-# [97. Interleaving String (Hard)](https://leetcode.com/problems/interleaving-string/)
+# [97. Interleaving String (Medium)](https://leetcode.com/problems/interleaving-string)
 
-<p>Given <em>s1</em>, <em>s2</em>, <em>s3</em>, find whether <em>s3</em> is formed by the interleaving of <em>s1</em> and <em>s2</em>.</p>
-
-<p><strong>Example 1:</strong></p>
-
-<pre><strong>Input:</strong> s1 = "aabcc", s2 = "dbbca", <em>s3</em> = "aadbbcbcac"
+<p>Given strings <code>s1</code>, <code>s2</code>, and <code>s3</code>, find whether <code>s3</code> is formed by an <strong>interleaving</strong> of <code>s1</code> and <code>s2</code>.</p>
+<p>An <strong>interleaving</strong> of two strings <code>s</code> and <code>t</code> is a configuration where <code>s</code> and <code>t</code> are divided into <code>n</code> and <code>m</code> <span data-keyword="substring-nonempty" datakeyword="substring-nonempty" class=" cursor-pointer relative text-dark-blue-s text-sm"><div class="popover-wrapper inline-block" data-headlessui-state=""><div><div id="headlessui-popover-button-:r61:" aria-expanded="false" data-headlessui-state=""><div>substrings</div></div><div style="position: fixed; z-index: 9999; inset: 0px auto auto 0px; transform: translate(62px, 279px);"></div></div></div></span> respectively, such that:</p>
+<ul>
+	<li><code>s = s<sub>1</sub> + s<sub>2</sub> + ... + s<sub>n</sub></code></li>
+	<li><code>t = t<sub>1</sub> + t<sub>2</sub> + ... + t<sub>m</sub></code></li>
+	<li><code>|n - m| &lt;= 1</code></li>
+	<li>The <strong>interleaving</strong> is <code>s<sub>1</sub> + t<sub>1</sub> + s<sub>2</sub> + t<sub>2</sub> + s<sub>3</sub> + t<sub>3</sub> + ...</code> or <code>t<sub>1</sub> + s<sub>1</sub> + t<sub>2</sub> + s<sub>2</sub> + t<sub>3</sub> + s<sub>3</sub> + ...</code></li>
+</ul>
+<p><strong>Note:</strong> <code>a + b</code> is the concatenation of strings <code>a</code> and <code>b</code>.</p>
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/09/02/interleave.jpg" style="width: 561px; height: 203px;">
+<pre><strong>Input:</strong> s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac"
+<strong>Output:</strong> true
+<strong>Explanation:</strong> One way to obtain s3 is:
+Split s1 into s1 = "aa" + "bc" + "c", and s2 into s2 = "dbbc" + "a".
+Interleaving the two splits, we get "aa" + "dbbc" + "bc" + "a" + "c" = "aadbbcbcac".
+Since s3 can be obtained by interleaving s1 and s2, we return true.
+</pre>
+<p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbaccc"
+<strong>Output:</strong> false
+<strong>Explanation:</strong> Notice how it is impossible to interleave s2 with any other string to obtain s3.
+</pre>
+<p><strong class="example">Example 3:</strong></p>
+<pre><strong>Input:</strong> s1 = "", s2 = "", s3 = ""
 <strong>Output:</strong> true
 </pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+	<li><code>0 &lt;= s1.length, s2.length &lt;= 100</code></li>
+	<li><code>0 &lt;= s3.length &lt;= 200</code></li>
+	<li><code>s1</code>, <code>s2</code>, and <code>s3</code> consist of lowercase English letters.</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Follow up:</strong> Could you solve it using only <code>O(s2.length)</code> additional memory space?</p>
 
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input:</strong> s1 = "aabcc", s2 = "dbbca", <em>s3</em> = "aadbbbaccc"
-<strong>Output:</strong> false
-</pre>
-
-
-**Companies**:  
-[Uber](https://leetcode.com/company/uber)
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Adobe](https://leetcode.com/company/adobe), [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
 [String](https://leetcode.com/tag/string/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
@@ -51,14 +74,13 @@ public:
 
 ## Solution 2. DP Bottom-up
 
-Let `dp[i][j]` be whether `a[0..i]` and `b[0..j]` can form `c[0..(i+j)]`.
+Let `dp[i][j]` be whether `a[0..(i-1)]` and `b[0..(j-1)]` can form `c[0..(i+j-1)]`.
 
 ```
-dp[i][j] =  either dp[i + 1][j] if i < M && a[i] == c[i+j]
-            or     dp[i][j + 1] if j < N && b[j] == c[i+j]
-            or     false
+dp[i][j] =    (i-1 >= 0 && a[i-1] == c[i+j-1] && dp[i-1][j])
+           || (j-1 >= 0 && b[j-1] == c[i+j-1] && dp[i][j-1])
 
-dp[M][N] = true
+dp[0][0] = true
 ```
 
 ```cpp
@@ -70,23 +92,24 @@ class Solution {
 public:
     bool isInterleave(string a, string b, string c) {
         int M = a.size(), N = b.size();
-        if (M + N != c.size()) return false;
-        vector<vector<int>> dp(M + 1, vector<int>(N + 1));
-        dp[M][N] = true;
-        for (int i = M; i >= 0; --i) {
-            for (int j = N; j >= 0; --j) {
-                if (i < M && a[i] == c[i + j]) dp[i][j] |= dp[i + 1][j];
-                if (j < N && b[j] == c[i + j]) dp[i][j] |= dp[i][j + 1];
+        if (c.size() != M + N) return false;
+        vector<vector<bool>> dp(M + 1, vector<bool>(N + 1));
+        dp[0][0] = true;
+        for (int i = 0; i <= M; ++i) {
+            for (int j = 0; j <= N; ++j) {
+                if (i == 0 && j == 0) continue;
+                dp[i][j] = (i >= 1 && a[i - 1] == c[i + j - 1] && dp[i - 1][j])
+                        || (j >= 1 && b[j - 1] == c[i + j - 1] && dp[i][j - 1]);
             }
         }
-        return dp[0][0];
+        return dp[M][N];
     }
 };
 ```
 
 ## Solution 3. DP with Space Optimization
 
-Since `dp[i][j]` is only dependent on `dp[i+1][j]` and `dp[i][j+1]`, we can reduce the `dp` array from 2D to 1D.
+Since `dp[i][j]` is only dependent on `dp[i-1][j]` and `dp[i][j-1]`, we can reduce the `dp` array from 2D to 1D.
 
 ```cpp
 // OJ: https://leetcode.com/problems/interleaving-string/
@@ -97,16 +120,16 @@ class Solution {
 public:
     bool isInterleave(string a, string b, string c) {
         int M = a.size(), N = b.size();
-        if (M + N != c.size()) return false;
-        vector<int> dp(N + 1);
-        for (int i = M; i >= 0; --i) {
-            for (int j = N; j >= 0; --j) {
-                if (i == M && j == N) dp[j] = true;
-                else dp[j] = (i < M && a[i] == c[i + j] && dp[j])
-                    || (j < N && b[j] == c[i + j] && dp[j + 1]);
+        if (c.size() != M + N) return false;
+        vector<bool> dp(N + 1);
+        dp[0] = true;
+        for (int i = 0; i <= M; ++i) {
+            for (int j = 0; j <= N; ++j) {
+                if (i == 0 && j == 0) continue;
+                dp[j] = (i >= 1 && a[i - 1] == c[i + j - 1] && dp[j]) || (j >= 1 && b[j - 1] == c[i + j - 1] && dp[j - 1]);
             }
         }
-        return dp[0];
+        return dp[N];
     }
 };
 ```

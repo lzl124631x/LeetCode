@@ -66,40 +66,33 @@ Both ways have shortest distance 6, but the first way is lexicographically small
 ```cpp
 // OJ: https://leetcode.com/problems/the-maze-iii/
 // Author: github.com/lzl124631x
-// Time: O((MN)^2log(MN))
+// Time: O((MN)^2 * log(MN))
 // Space: O((MN)^2)
 class Solution {
-    typedef tuple<int, string, int, int> item; // distance, instruction, x, y
 public:
     string findShortestWay(vector<vector<int>>& A, vector<int>& ball, vector<int>& hole) {
-        int M = A.size(), N = A[0].size(), dirs[4][2] = {{1,0},{0,-1},{0,1},{-1,0}};
-        string chars = "dlru";
+        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        string in = "rldu";
         vector<vector<int>> dist(M, vector<int>(N, INT_MAX));
+        vector<vector<string>> inst(M, vector<string>(N));
         dist[ball[0]][ball[1]] = 0;
-        vector<vector<string>> ins(M, vector<string>(N));
-        priority_queue<item, vector<item>, greater<>> pq;
+        typedef tuple<int, string, int, int> Node; // distance, instruction, x, y
+        priority_queue<Node, vector<Node>, greater<>> pq; // min heap of (distance, instruction, x, y)
         pq.push({0, "", ball[0], ball[1]});
         while (pq.size()) {
-            auto [cost, inst, x, y] = pq.top();
+            auto [cost, ins, x, y] = pq.top();
             pq.pop();
-            if (x == hole[0] && y == hole[1]) return inst;
-            if (cost > dist[x][y]) continue;
-            for (int i = 0; i < 4; ++i) {
-                auto [dx, dy] = dirs[i];
-                int a = x + dx, b = y + dy, step = 1;
+            if (cost > dist[x][y] || ins > inst[x][y]) continue; // this state is no longer optimial, skip
+            if (x == hole[0] && y == hole[1]) return inst[hole[0]][hole[1]];
+            for (int i = 0; i < 4; ++i) { // probe 4 directions
+                int dx = dirs[i][0], dy = dirs[i][1], a = x, b = y, step = 0;
                 while (a >= 0 && a < M && b >= 0 && b < N && A[a][b] == 0 && (a != hole[0] || b != hole[1])) a += dx, b += dy, ++step;
-                if (a != hole[0] || b != hole[1]) a -= dx, b -= dy, --step;
-                if (a == x && b == y) continue;
-                int newCost = cost + step;
-                auto newInst = inst + chars[i];
-                if (dist[a][b] > newCost) {
-                    dist[a][b] = newCost;
-                    ins[a][b] = newInst;
-                    pq.push({newCost, newInst, a, b});
-                } else if (dist[a][b] == newCost && (ins[a][b].empty() || newInst < ins[a][b])) {
-                    ins[a][b] = newInst;
-                    pq.push({newCost, newInst, a, b});
-                } 
+                if (a != hole[0] || b != hole[1]) a -= dx, b -= dy, --step; // once hit wall, step back
+                if (dist[a][b] > cost + step || (dist[a][b] == cost + step && inst[x][y] + in[i] < inst[a][b])) {
+                    dist[a][b] = cost + step;
+                    inst[a][b] = inst[x][y] + in[i];
+                    pq.push({ dist[a][b], inst[a][b], a, b });
+                }
             }
         }
         return "impossible";
