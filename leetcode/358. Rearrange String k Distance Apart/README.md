@@ -67,3 +67,41 @@ public:
     }
 };
 ```
+
+## Solution 2. Heap + Cooldown queue
+
+```cpp
+// OJ: https://leetcode.com/problems/rearrange-string-k-distance-apart
+// Author: github.com/lzl124631x
+// Time: O(NlogD)
+// Space: O(D)
+class Solution {
+public:
+    string rearrangeString(string s, int k) {
+        int freq[26] = {}, maxFreq = 0, maxFreqCnt = 0;
+        for (char c : s) maxFreq = max(maxFreq, ++freq[c - 'a']);
+        for (int i = 0; i < 26; ++i) maxFreqCnt += freq[i] == maxFreq;
+        int other = s.size() - maxFreqCnt * maxFreq, segment = maxFreq - 1, gap = segment * (k - maxFreqCnt);
+        if (gap > other) return ""; 
+        auto cmp = [&](int a, int b) { return freq[a] < freq[b]; };
+        priority_queue<int, vector<int>, decltype(cmp)> pq(cmp); // a max heap of available characters
+        queue<int> cd; // a cooldown queue with the index of the previous occurrence
+        for (int i = 0; i < 26; ++i) {
+            if (freq[i]) pq.push(i);
+        }
+        string ans; 
+        for (int i = 0; i < s.size(); ++i) {
+            if (cd.size() && cd.front() <= i - k) {
+                pq.push(ans[cd.front()] - 'a');
+                cd.pop();
+            }
+            int pick = pq.top();
+            pq.pop();
+            cd.push(i);
+            freq[pick]--;
+            ans += 'a' + pick;
+        }
+        return ans;
+    }
+};
+```
