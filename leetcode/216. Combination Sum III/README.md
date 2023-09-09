@@ -52,7 +52,36 @@ Using 4 different numbers in the range [1,9], the smallest sum we can get is 1+2
 **Similar Questions**:
 * [Combination Sum (Medium)](https://leetcode.com/problems/combination-sum/)
 
-## Solution 1.
+## Solution 1. Backtracking
+
+```cpp
+// OJ: https://leetcode.com/problems/combination-sum-iii
+// Author: github.com/lzl124631x
+// Time: O(2^9 * 9)
+// Space: O(9)
+class Solution {
+public:
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<vector<int>> ans;
+        vector<int> tmp;
+        function<void(int, int)> dfs = [&](int i, int n) {
+            if (tmp.size() == k) {
+                if (n == 0) ans.push_back(tmp);
+                return;
+            }
+            if (i > 9) return;
+            dfs(i + 1, n); // skip i
+            tmp.push_back(i);
+            dfs(i + 1, n - i); // use i
+            tmp.pop_back();
+        };
+        dfs(1, n);
+        return ans;
+    }
+};
+```
+
+Or
 
 ```cpp
 // OJ: https://leetcode.com/problems/combination-sum-iii/
@@ -60,22 +89,22 @@ Using 4 different numbers in the range [1,9], the smallest sum we can get is 1+2
 // Time: O(2^9 * 9)
 // Space: O(9)
 class Solution {
-    vector<vector<int>> ans;
-    vector<int> tmp;
-    void dfs(int k, int n, int start) {
-        if (!k || !n) {
-            if (!k && !n) ans.push_back(tmp);
-            return;
-        }
-        for (int i = start; i <= min(9, n); ++i) {
-            tmp.push_back(i);
-            dfs(k - 1, n - i, i + 1);
-            tmp.pop_back();
-        }
-    }
 public:
     vector<vector<int>> combinationSum3(int k, int n) {
-        dfs(k, n, 1);
+        vector<vector<int>> ans;
+        vector<int> tmp;
+        function<void(int, int)> dfs = [&](int start, int n) {
+            if (tmp.size() == k) {
+                if (n == 0) ans.push_back(tmp);
+                return;
+            }
+            for (int i = start; i <= min(9, n); ++i) {
+                tmp.push_back(i);
+                dfs(i + 1, n - i);
+                tmp.pop_back();
+            }
+        };
+        dfs(1, n);
         return ans;
     }
 };
