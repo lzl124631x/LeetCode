@@ -34,6 +34,30 @@ Other possible solutions are [[2,1,6],[5],[0,4,3]] and [[5],[0,6,2],[4,3,1]].
 
 ## Solution 1.
 
+```cpp
+// OJ: https://leetcode.com/problems/group-the-people-given-the-group-size-they-belong-to
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    vector<vector<int>> groupThePeople(vector<int>& A) {
+        unordered_map<int, vector<int>> m; // a map from group size to the group members
+        vector<vector<int>> ans;
+        for (int i = 0; i < A.size(); ++i) {
+            m[A[i]].push_back(i);
+            if (m[A[i]].size() == A[i]) { // if this group is full, add it into answer
+                ans.push_back(m[A[i]]);
+                m[A[i]].clear();
+            }
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2.
+
 The worst case for space complexity analysis is where we have the input in the form of `[1, 2, 2, 3, 3, 3, ...]`. Assume there are `k` distinct sizes, then `k * (k + 1) / 2 = N`, so the space complexity is `O(sqrt(N))`.
 
 ```cpp
@@ -44,7 +68,7 @@ The worst case for space complexity analysis is where we have the input in the f
 class Solution {
 public:
     vector<vector<int>> groupThePeople(vector<int>& A) {
-        unordered_map<int, int> m;
+        unordered_map<int, int> m; // a map from group size to the corresponding index in answer
         vector<vector<int>> ans;
         for (int i = 0; i < A.size(); ++i) {
             int sz = A[i];
