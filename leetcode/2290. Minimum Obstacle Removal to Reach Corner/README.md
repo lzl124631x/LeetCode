@@ -56,26 +56,64 @@ Note that there may be other ways to remove 2 obstacles to create a path.
 // Space: O(MN)
 class Solution {
 public:
-    int minimumObstacles(vector<vector<int>>& G) {
-        int M = G.size(), N = G[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+    int minimumObstacles(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
         vector<vector<int>> dist(M, vector<int>(N, INT_MAX));
+        typedef array<int, 3> Node; // bomb, x, y
+        priority_queue<Node, vector<Node>, greater<>> pq; // a min heap that the top element has the min bomb usage
+        pq.push({ 0, 0, 0 });
         dist[0][0] = 0;
-        typedef array<int, 3> Node;
-        priority_queue<Node, vector<Node>, greater<>> pq;
-        pq.push({0, 0, 0});
         while (pq.size()) {
-            auto [d, x, y] = pq.top();
+            auto [bomb, x, y] = pq.top();
             pq.pop();
-            if (d > dist[x][y]) continue;
-            if (x == M - 1 && y == N - 1) return d;
+            if (bomb > dist[x][y]) continue;
+            if (x == M - 1 && y == N - 1) return bomb;
             for (auto &[dx, dy] : dirs) {
                 int a = x + dx, b = y + dy;
-                if (a < 0 || a >= M || b < 0 || b >= N || d + G[x][y] >= dist[a][b]) continue;
-                dist[a][b] = d + G[x][y];
-                pq.push({dist[a][b], a, b});
+                if (a < 0 || a >= M || b < 0 || b >= N) continue;
+                int newBomb = bomb + A[a][b];
+                if (newBomb < dist[a][b]) {
+                    dist[a][b] = newBomb;
+                    pq.push({newBomb, a, b});
+                }
             }
         }
-        return 0;
+        return -1;
+    }
+};
+```
+
+## Solution 2. BFS
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-obstacle-removal-to-reach-corner
+// Author: github.com/lzl124631x
+// Time: O(MN * (M + N))
+// Space: O(MN)
+class Solution {
+public:
+    int minimumObstacles(vector<vector<int>>& A) {
+        int M = A.size(), N = A[0].size(), dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+        vector<vector<int>> dist(M, vector<int>(N, INT_MAX));
+        typedef array<int, 3> Node;
+        queue<Node> q;
+        q.push({ 0, 0, 0 });
+        dist[0][0] = 0;
+        while (q.size()) {
+            auto [x, y, bomb] = q.front();
+            q.pop();
+            if (bomb > dist[x][y]) continue;
+            for (auto &[dx, dy] : dirs) {
+                int a = x + dx, b = y + dy;
+                if (a < 0 || a >= M || b < 0 || b >= N) continue;
+                int newBomb = bomb + A[a][b];
+                if (newBomb < dist[a][b]) {
+                    dist[a][b] = newBomb;
+                    q.push({a, b, newBomb});
+                }
+            }
+        }
+        return dist[M - 1][N - 1];
     }
 };
 ```
