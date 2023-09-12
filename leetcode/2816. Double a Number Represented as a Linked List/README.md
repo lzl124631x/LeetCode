@@ -68,3 +68,33 @@ public:
     }
 };
 ```
+
+## Solution 2. 
+
+```cpp
+// OJ: https://leetcode.com/problems/double-a-number-represented-as-a-linked-list
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    ListNode* doubleIt(ListNode* head) {
+        ListNode *prev = nullptr;
+        for (auto p = head; p; ) {
+            int n = p->val * 2;
+            if (n / 10) {
+                if (prev) prev->val++;
+                else {
+                    auto h = new ListNode(1);
+                    h->next = head;
+                    head = h;
+                }
+            }
+            p->val = n % 10;
+            prev = p;
+            p = p->next;
+        }
+        return head;
+    }
+};
+```
