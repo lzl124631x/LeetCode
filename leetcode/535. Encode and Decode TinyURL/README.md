@@ -110,7 +110,7 @@ public:
 
 * The number of URLs that can be encoded is, again, dependent on the range of `int`, since, the same countcount will be generated after overflow of integers.
 
-* The length of the encoded URLs isn't necessarily short, but is to some extent dependent on the order in which the incoming `longURL`'s are encountered. For example, the codes generated will have the lengths in the following order: 1(62 times), 2(62 times) and so on.
+* The length of the encoded URLs isn't necessarily short, but is to some extent dependent on the order in which the incoming `longURL`'s are encountered. For example, the codes generated will have the lengths in the following order: 1(62 times), 2(62 * 62 times) and so on.
 
 * The performance is quite good, since the same code will be repeated only after the integer overflow limit, which is quite large.
 
