@@ -2020,6 +2020,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2444 | Count Subarrays With Fixed Bounds | Hard | [Solution](leetcode/2444)
 2445 | Number of Nodes With Value One | Medium | [Solution](leetcode/2445)
 2446 | Determine if Two Events Have Conflict | Easy | [Solution](leetcode/2446)
+2447 | Number of Subarrays With GCD Equal to K | Medium | [Solution](leetcode/2447)
 2448 | Minimum Cost to Make Array Equal | Hard | [Solution](leetcode/2448)
 2450 | Number of Distinct Binary Strings After Applying Operations | Medium | [Solution](leetcode/2450)
 2451 | Odd String Difference | Easy | [Solution](leetcode/2451)
