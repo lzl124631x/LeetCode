@@ -48,14 +48,14 @@ public:
     vector<vector<int>> combine(int n, int k) {
         vector<vector<int>> ans;
         vector<int> tmp;
-        function<void(int)> dfs = [&](int i) {
+        function<void(int)> dfs = [&](int start) {
             if (tmp.size() == k) {
                 ans.push_back(tmp);
                 return;
             }
-            for (int j = i; j <= n; ++j) {
-                tmp.push_back(j);
-                dfs(j + 1);
+            for (int i = start; i <= n - k + tmp.size() + 1; ++i) {
+                tmp.push_back(i);
+                dfs(i + 1);
                 tmp.pop_back();
             }
         };

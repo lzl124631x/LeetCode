@@ -1,29 +1,37 @@
-# [46. Permutations (Medium)](https://leetcode.com/problems/permutations/)
+# [46. Permutations (Medium)](https://leetcode.com/problems/permutations)
 
-<p>Given a collection of <strong>distinct</strong> integers, return all possible permutations.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre><strong>Input:</strong> [1,2,3]
-<strong>Output:</strong>
-[
-  [1,2,3],
-  [1,3,2],
-  [2,1,3],
-  [2,3,1],
-  [3,1,2],
-  [3,2,1]
-]
+<p>Given an array <code>nums</code> of distinct integers, return <em>all the possible permutations</em>. You can return the answer in <strong>any order</strong>.</p>
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<pre><strong>Input:</strong> nums = [1,2,3]
+<strong>Output:</strong> [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 </pre>
+<p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [0,1]
+<strong>Output:</strong> [[0,1],[1,0]]
+</pre>
+<p><strong class="example">Example 3:</strong></p>
+<pre><strong>Input:</strong> nums = [1]
+<strong>Output:</strong> [[1]]
+</pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 6</code></li>
+	<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
+	<li>All the integers of <code>nums</code> are <strong>unique</strong>.</li>
+</ul>
 
+**Companies**:
+[Bloomberg](https://leetcode.com/company/bloomberg), [Apple](https://leetcode.com/company/apple), [Goldman Sachs](https://leetcode.com/company/goldman-sachs)
 
 **Related Topics**:  
-[Backtracking](https://leetcode.com/tag/backtracking/)
+[Array](https://leetcode.com/tag/array/), [Backtracking](https://leetcode.com/tag/backtracking/)
 
 **Similar Questions**:
 * [Next Permutation (Medium)](https://leetcode.com/problems/next-permutation/)
 * [Permutations II (Medium)](https://leetcode.com/problems/permutations-ii/)
-* [Permutation Sequence (Medium)](https://leetcode.com/problems/permutation-sequence/)
+* [Permutation Sequence (Hard)](https://leetcode.com/problems/permutation-sequence/)
 * [Combinations (Medium)](https://leetcode.com/problems/combinations/)
 
 ## Solution 1. DFS
@@ -51,21 +59,22 @@ Note that:
 // Time: O(N!)
 // Space: O(N)
 class Solution {
-    vector<vector<int>> ans;
-    void dfs(vector<int> &nums, int start) {
-        if (start == nums.size() - 1) {
-            ans.push_back(nums);
-            return;
-        }
-        for (int i = start; i < nums.size(); ++i) {
-            swap(nums[i], nums[start]);
-            dfs(nums, start + 1);
-            swap(nums[i], nums[start]);
-        }
-    }
 public:
-    vector<vector<int>> permute(vector<int>& nums) {
-        dfs(nums, 0);
+    vector<vector<int>> permute(vector<int>& A) {
+        vector<vector<int>> ans;
+        int N = A.size();
+        function<void(int)> dfs = [&](int start) {
+            if (start == N) {
+                ans.push_back(A);
+                return;
+            }
+            for (int i = start; i < N; ++i) {
+                swap(A[i], A[start]);
+                dfs(start + 1);
+                swap(A[i], A[start]);
+            }
+        };
+        dfs(0);
         return ans;
     }
 };
@@ -73,21 +82,21 @@ public:
 
 ## Solution 2. Use NextPermutation
 
+Reuse the solution for [31. Next Permutation (Medium)](https://leetcode.com/problems/next-permutation).
+
 ```cpp
 // OJ: https://leetcode.com/problems/permutations/
 // Author: github.com/lzl124631x
 // Time: O(N!)
 // Space: O(1)
 class Solution {
-    bool nextPermutation(vector<int> &nums) {
-        int i = nums.size() - 2, j = nums.size() - 1;
-        while (i >= 0 && nums[i] >= nums[i + 1]) --i;
-        if (i >= 0) {
-            while (j > i && nums[j] <= nums[i]) --j;
-            swap(nums[i], nums[j]);
-        }
-        reverse(nums.begin() + i + 1, nums.end());
-        return i >= 0;
+    bool nextPermutation(vector<int>& A) {
+        int N = A.size(), i = N - 1;
+        while (i - 1 >= 0 && A[i - 1] >= A[i]) --i; // find the first element of a descending subarray from the end.
+        reverse(begin(A) + i, end(A)); // reverse this descending subarray
+        if (i == 0) return false;
+        swap(*upper_bound(begin(A) + i, end(A), A[i - 1]), A[i - 1]); // swap A[i-1] with the first element greater than `A[i-1]` in the subarray.
+        return true;
     }
 public:
     vector<vector<int>> permute(vector<int>& nums) {
