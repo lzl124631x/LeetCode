@@ -1,4 +1,4 @@
-# [ ()](https://leetcode.com/problems/minimum-score-by-changing-two-elements)
+# [2567. Minimum Score by Changing Two Elements (Medium)](https://leetcode.com/problems/minimum-score-by-changing-two-elements)
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>.</p>
 <ul>
