@@ -2000,6 +2000,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2415 | Reverse Odd Levels of Binary Tree | Medium | [Solution](leetcode/2415)
 2416 | Sum of Prefix Scores of Strings | Hard | [Solution](leetcode/2416)
 2418 | Sort the People | Easy | [Solution](leetcode/2418)
+2419 | Longest Subarray With Maximum Bitwise AND | Medium | [Solution](leetcode/2419)
 2420 | Find All Good Indices | Medium | [Solution](leetcode/2420)
 2423 | Remove Letter To Equalize Frequency | Easy | [Solution](leetcode/2423)
 2425 | Bitwise XOR of All Pairings | Medium | [Solution](leetcode/2425)
