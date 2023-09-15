@@ -2132,6 +2132,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2657 | Find the Prefix Common Array of Two Arrays | Medium | [Solution](leetcode/2657)
 2658 | Maximum Number of Fish in a Grid | Medium | [Solution](leetcode/2658)
 2660 | Determine the Winner of a Bowling Game | Easy | [Solution](leetcode/2660)
+2661 | First Completely Painted Row or Column | Medium | [Solution](leetcode/2661)
 2663 | Lexicographically Smallest Beautiful String | Hard | [Solution](leetcode/2663)
 2667 | Create Hello World Function | Easy | [Solution](leetcode/2667)
 2670 | Find the Distinct Difference Array | Easy | [Solution](leetcode/2670)
