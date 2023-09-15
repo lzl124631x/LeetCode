@@ -65,60 +65,9 @@ We have to use min heap instead so that the time complexity is `O(K * log(N^2))`
 ```cpp
 // OJ: https://leetcode.com/problems/min-cost-to-connect-all-points/
 // Author: github.com/lzl124631x
-// Time: O(K * log(N^2))
+// Time: O(K * log(N^2)) where K is the number of edged we need to scan to complete the tree
 // Space: O(N^2)
 // Ref: https://leetcode.com/problems/min-cost-to-connect-all-points/discuss/843940/C%2B%2B-Minimum-Spanning-Tree-(Kruskal)
-class UnionFind {
-    vector<int> id;
-    int size;
-public:
-    UnionFind(int N) : id(N), size(N) {
-        iota(begin(id), end(id), 0);
-    }
-    int find(int a) {
-        return id[a] == a ? a : (id[a] = find(id[a]));
-    }
-    void connect(int a, int b) {
-        int p = find(a), q = find(b);
-        if (p == q) return;
-        id[p] = q;
-        --size;
-    }
-    bool connected(int a, int b) {
-        return find(a) == find(b);
-    }
-    int getSize() { return size; }
-};
-class Solution {
-public:
-    int minCostConnectPoints(vector<vector<int>>& A) {
-        int N = A.size(), ans = 0;
-        vector<array<int, 3>> E;
-        for (int i = 0; i < N; ++i) {
-            for (int j = i + 1; j < N; ++j) E.push_back({ abs(A[i][0] - A[j][0]) + abs(A[i][1] - A[j][1]), i, j });
-        }
-        make_heap(begin(E), end(E), greater<array<int, 3>>());
-        UnionFind uf(N);
-        while (uf.getSize() > 1) {
-            pop_heap(begin(E), end(E), greater<array<int, 3>>());
-            auto [w, u, v] = E.back();
-            E.pop_back();
-            if (uf.connected(u, v)) continue;
-            uf.connect(u, v);
-            ans += w;
-        } 
-        return ans;
-    }
-};
-```
-
-We can also directly use `priority_queue`.
-
-```cpp
-// OJ: https://leetcode.com/problems/min-cost-to-connect-all-points/
-// Author: github.com/lzl124631x
-// Time: O(K * log(N^2))
-// Space: O(N^2)
 class UnionFind {
     vector<int> id;
     int size;
@@ -184,11 +133,47 @@ public:
             seen[cur] = 1;
             for (int j = 0; j < N; ++j) {
                 if (seen[j]) continue;
-                dist[j] = min(dist[j], abs(A[j][0] - x) + abs(A[j][1] - y));
+                dist[j] = min(dist[j], abs(A[j][0] - x) + abs(A[j][1] - y)); // use `cur` to relax the distance of all unconnected nodes
             }
-            cur = min_element(begin(dist), end(dist)) - begin(dist);
+            cur = min_element(begin(dist), end(dist)) - begin(dist); // greedily pick an unconnected node with the minimum distance
             ans += dist[cur];
-            dist[cur] = INT_MAX;
+            dist[cur] = INT_MAX; // mark this distance as used
+        }
+        return ans;
+    }
+};
+```
+
+Or the heap version. Note that the heap version is not more performant because all the nodes are interconnected in this graph. If the nodes are sparsely connected, the heap version is better.
+
+```cpp
+// OJ: https://leetcode.com/problems/min-cost-to-connect-all-points
+// Author: github.com/lzl124631x
+// Time: O(N^2 * log(N^2))
+// Space: O(N^2)
+class Solution {
+public:
+    int minCostConnectPoints(vector<vector<int>>& A) {
+        int N = A.size(), ans = 0;
+        typedef pair<int, int> PII;
+        priority_queue<PII, vector<PII>, greater<>> pq;
+        vector<int> dist(N, INT_MAX), seen(N);
+        dist[0] = 0;
+        pq.emplace(0, 0);
+        while (pq.size()) {
+            auto [cost, i] = pq.top();
+            pq.pop();
+            if (seen[i]) continue;
+            ans += dist[i];
+            seen[i] = 1;
+            for (int j = 0; j < N; ++j) {
+                if (seen[j]) continue;
+                int d = abs(A[j][0] - A[i][0]) + abs(A[j][1] - A[i][1]);
+                if (d < dist[j]) {
+                    dist[j] = d;
+                    pq.emplace(d, j);
+                }
+            }
         }
         return ans;
     }
