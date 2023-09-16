@@ -27,6 +27,8 @@ i=1
 for d in $(sort -n <<< $dirs); do # https://unix.stackexchange.com/questions/33909/list-files-sorted-numerically
     re="# \[([0-9]+)\.\ (.*)\ \((Easy|Medium|Hard)\)\]\((.*)\)"
     first=$(head -1 "leetcode/$d/README.md")
+    title="?"
+    difficulty="?"
     if [[ $first =~ $re ]]; then
         title=${BASH_REMATCH[2]}
         difficulty=${BASH_REMATCH[3]}
