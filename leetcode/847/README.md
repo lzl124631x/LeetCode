@@ -40,6 +40,9 @@
 
 ## Solution 1. BFS Among States
 
+Intuitions:
+* Shortest path -> BFS
+
 Let `(u, mask)` be a state where we've visited nodes represented by `mask` and the last node visited is `u`.
 
 For a neighbor node of `u`, we can transition from `(u, mask)` to `(v, mask | (1 << v))` in one step.
@@ -58,22 +61,22 @@ class Solution {
     }
 public:
     int shortestPathLength(vector<vector<int>>& G) {
-        int N = G.size(), all = (1 << N) - 1, step = 0;
+        int N = G.size(), step = 0, all = (1 << N) - 1;
         queue<int> q;
         unordered_set<int> seen;
         for (int i = 0; i < N; ++i) {
-            int k = getKey(i, 1 << i);
-            q.push(k);
-            seen.insert(k);
+            int key = getKey(i, 1 << i);
+            q.push(key);
+            seen.insert(key);
         }
         while (q.size()) {
             int cnt = q.size();
             while (cnt--) {
-                int k = q.front(), u = k >> 12, mask = k & ((1 << 12) - 1);
+                int key = q.front(), u = key >> 12, visited = key & ((1 << 12) - 1);
                 q.pop();
-                if (mask == all) return step;
+                if (visited == all) return step;
                 for (int v : G[u]) {
-                    int next = getKey(v, mask | (1 << v));
+                    int next = getKey(v, visited | (1 << v));
                     if (seen.count(next)) continue;
                     seen.insert(next);
                     q.push(next);
@@ -82,6 +85,42 @@ public:
             ++step;
         }
         return -1;
+    }
+};
+```
+
+## Solution. DFS + Memoization (Top-down DP)
+
+```cpp
+// OJ: https://leetcode.com/problems/shortest-path-visiting-all-nodes
+// Author: github.com/lzl124631x
+// Time: O(2^N * N^2)
+// Space: O(2^N * N)
+class Solution {
+    int getKey(int i, int mask) {
+        return (i << 12) + mask;
+    }
+public:
+    int shortestPathLength(vector<vector<int>>& G) {
+        int N = G.size(), ans = INT_MAX;
+        unordered_map<int, int> m;
+        function<int(int, int)> dfs = [&](int u, int visited) {
+            int key = getKey(u, visited);
+            if (m.count(key)) return m[key];
+            if (__builtin_popcount(visited) == N) return 0;
+            m[key] = INT_MAX - 1; // Upon visiting this state, we mark this state as visiting by setting its steps as `Infinity`, to prevent revisiting this state later which won't be optimal
+            for (int v : G[u]) {
+                if (visited >> v & 1) continue;
+                int a = dfs(v, visited); // we go to node `v` without marking `v` as visited so that we can revisit v later.
+                int b = dfs(v, visited | (1 << v)); // we go to node `v` and mark it as visited.
+                m[key] = min(m[key], 1 + min(a, b)); // we pick the minimum steps from the above two cases, plus 1 which is the step from `u` to `v`.
+            }
+            return m[key];
+        };
+        for (int i = 0; i < N; ++i) {
+            ans = min(ans, dfs(i, 1 << i));
+        }
+        return ans;
     }
 };
 ```
