@@ -46,6 +46,54 @@
 
 ## Solution 1.
 
+`v[i]` is the `i`-th super ugly number. `v[0] = 1`.
+
+Assume we've already computed `v[0..i]`. The next `v[i+1]` must be some `v[j] (0 <= j <= i)` multiplied by a prime number in `primes`.
+
+Let `p[i]` be the index to the next extensible number corresponding to `primes[i]`. That is, `v[p[i]] * primes[i]` is the next number extended using `primes[i]`.
+
+```
+2/7/13
+v
+1
+
+// 1 * 2 is the smallest next extension
+
+7/13  2
+v     v
+1     2
+
+// 2 * 2 is the smallest next extension
+
+7/13    2
+v       v
+1     2 4
+
+// 1 * 7 is the smallest next extension
+
+13    7 2 
+v     v v 
+1     2 4 7
+
+// 4 * 2 is the smallest next extension
+
+13    7   2
+v     v   v 
+1     2 4 7 8
+
+// 1 * 13 is the smallest next extension
+
+      7/13 2  
+      v    v 
+1     2 4  7 8 13
+
+// 2 * 7 and 7 * 2 are the smallest next extensions
+
+      13 7   2
+      v  v   v
+1     2  4 7 8 13 14
+```
+
 ```cpp
 // OJ: https://leetcode.com/problems/super-ugly-number
 // Author: github.com/lzl124631x
