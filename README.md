@@ -186,6 +186,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 169 | Majority Element | Easy | [Solution](leetcode/169)
 170 | Two Sum III - Data structure design | Easy | [Solution](leetcode/170)
 171 | Excel Sheet Column Number | Easy | [Solution](leetcode/171)
+172 | Factorial Trailing Zeroes | Medium | [Solution](leetcode/172)
 173 | Binary Search Tree Iterator | Medium | [Solution](leetcode/173)
 174 | Dungeon Game | Hard | [Solution](leetcode/174)
 175 | Combine Two Tables | Easy | [Solution](leetcode/175)
