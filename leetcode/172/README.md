@@ -51,7 +51,7 @@
 * [Abbreviating the Product of a Range (Hard)](https://leetcode.com/problems/abbreviating-the-product-of-a-range)
 * [Maximum Trailing Zeros in a Cornered Path (Medium)](https://leetcode.com/problems/maximum-trailing-zeros-in-a-cornered-path)
 
-## Solution 1.
+## Solution 1. Count Factors of 5
 
 ```cpp
 // OJ: https://leetcode.com/problems/factorial-trailing-zeroes
