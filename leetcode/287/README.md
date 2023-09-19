@@ -1,4 +1,4 @@
-# [287. Find the Duplicate Number (Medium)](https://leetcode.com/problems/find-the-duplicate-number/)
+# [287. Find the Duplicate Number (Medium)](https://leetcode.com/problems/find-the-duplicate-number)
 
 <p>Given an array of integers <code>nums</code> containing&nbsp;<code>n + 1</code> integers where each integer is in the range <code>[1, n]</code> inclusive.</p>
 
@@ -7,15 +7,17 @@
 <p>You must solve the problem <strong>without</strong> modifying the array <code>nums</code>&nbsp;and uses only constant extra space.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> nums = [1,3,4,2,2]
+<pre>
+<strong>Input:</strong> nums = [1,3,4,2,2]
 <strong>Output:</strong> 2
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> nums = [3,1,3,4,2]
+<pre>
+<strong>Input:</strong> nums = [3,1,3,4,2]
 <strong>Output:</strong> 3
 </pre>
 
@@ -38,18 +40,18 @@
 </ul>
 
 
-**Companies**:  
-[Microsoft](https://leetcode.com/company/microsoft), [Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook), [Apple](https://leetcode.com/company/apple), [Google](https://leetcode.com/company/google)
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Adobe](https://leetcode.com/company/adobe), [Yahoo](https://leetcode.com/company/yahoo), [Microsoft](https://leetcode.com/company/microsoft), [PhonePe](https://leetcode.com/company/phonepe), [Goldman Sachs](https://leetcode.com/company/goldman-sachs), [Apple](https://leetcode.com/company/apple), [Google](https://leetcode.com/company/google), [Facebook](https://leetcode.com/company/facebook), [Uber](https://leetcode.com/company/uber), [Bloomberg](https://leetcode.com/company/bloomberg), [Qualcomm](https://leetcode.com/company/qualcomm), [Cisco](https://leetcode.com/company/cisco), [Walmart Labs](https://leetcode.com/company/walmart-labs)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Binary Search](https://leetcode.com/tag/binary-search/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/)
+[Array](https://leetcode.com/tag/array), [Two Pointers](https://leetcode.com/tag/two-pointers), [Binary Search](https://leetcode.com/tag/binary-search), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation)
 
 **Similar Questions**:
-* [First Missing Positive (Hard)](https://leetcode.com/problems/first-missing-positive/)
-* [Single Number (Easy)](https://leetcode.com/problems/single-number/)
-* [Linked List Cycle II (Medium)](https://leetcode.com/problems/linked-list-cycle-ii/)
-* [Missing Number (Easy)](https://leetcode.com/problems/missing-number/)
-* [Set Mismatch (Easy)](https://leetcode.com/problems/set-mismatch/)
+* [First Missing Positive (Hard)](https://leetcode.com/problems/first-missing-positive)
+* [Single Number (Easy)](https://leetcode.com/problems/single-number)
+* [Linked List Cycle II (Medium)](https://leetcode.com/problems/linked-list-cycle-ii)
+* [Missing Number (Easy)](https://leetcode.com/problems/missing-number)
+* [Set Mismatch (Easy)](https://leetcode.com/problems/set-mismatch)
 
 ## Solution 1. Binary Search
 
@@ -124,6 +126,27 @@ public:
         for (; p != q; p = A[p], q = A[A[q]]);
         for (p = 0; p != q; p = A[p], q = A[q]);
         return p;
+    }
+};
+```
+
+## Solution 3. Cycle Sort
+
+```cpp
+// OJ: https://leetcode.com/problems/find-the-duplicate-number
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int findDuplicate(vector<int>& A) {
+        for (int i = 0, N = A.size(); i < N; ++i) {
+            while (A[i] - 1 != i) {
+                if (A[i] == A[A[i] - 1]) return A[i];
+                swap(A[i], A[A[i] - 1]);
+            }
+        }
+        return -1;
     }
 };
 ```
