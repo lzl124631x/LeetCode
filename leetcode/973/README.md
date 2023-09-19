@@ -169,25 +169,25 @@ class Solution {
     int dist(vector<int> &p) {
         return p[0] * p[0] + p[1] * p[1];
     }
-    int quickSelect(vector<vector<int>> &A, int L, int R) {
-        int i = L, j = L, pivotIndex = L + rand() % (R - L + 1), pivot = dist(A[pivotIndex]);
-        swap(A[pivotIndex], A[R]);
-        for (; i < R; ++i) {
-            if (dist(A[i]) < pivot) swap(A[i], A[j++]);
-        }
-        swap(A[j], A[R]);
-        return j;
-    }
 public:
-    vector<vector<int>> kClosest(vector<vector<int>>& A, int K) {
+    vector<vector<int>> kClosest(vector<vector<int>>& A, int k) {
         int L = 0, R = A.size() - 1;
-        while (L < R) {
-            int M = quickSelect(A, L, R);
-            if (M + 1 == K) break;
-            if (M + 1 > K) R = M - 1;
-            else L = M + 1;
+        auto partition = [&](int L, int R) {
+            int i = L, pivotIndex = L + rand() % (R - L + 1), pivot = dist(A[pivotIndex]);
+            swap(A[pivotIndex], A[R]); // swap the pivot to the end of this subarray
+            for (int j = L; j < R; ++j) { // traverse from L to R - 1. Note that we don't visit A[R] which is the pivot
+                if (dist(A[j]) < pivot) swap(A[i++], A[j]);
+            }
+            swap(A[i], A[R]);
+            return i;
+        };
+        while (true) {
+            int M = partition(L, R);
+            if (M + 1 == k) break;
+            if (M + 1 < k) L = M + 1;
+            else R = M - 1;
         }
-        return vector<vector<int>>(begin(A), begin(A) + K);
+        return vector<vector<int>>(begin(A), begin(A) + k);
     }
 };
 ```
