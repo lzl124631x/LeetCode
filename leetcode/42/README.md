@@ -70,7 +70,7 @@ Or compute `left` on the fly.
 class Solution {
 public:
     int trap(vector<int>& A) {
-        int N = A.size(), ans = 0, mx = 0, left = 0;
+        int N = A.size(), ans = 0, left = 0;
         vector<int> right(N);
         for (int i = N - 2; i >= 0; --i) right[i] = max(right[i + 1], A[i + 1]);
         for (int i = 0; i < N; ++i) {
