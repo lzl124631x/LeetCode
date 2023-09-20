@@ -132,7 +132,7 @@ public:
         if (!root) return 0;
         sum += root->val;
         int ans = m.count(sum - targetSum) ? m[sum - targetSum] : 0;
-        m[sum]++; // note that we should do this increment after accessing `m[sum - targetSum]`. Consider root=[1], targetSum=0
+        m[sum]++; // note that we should do this increment after accessing `m[sum - targetSum]`. Example case: root=[1], targetSum=0
         ans += pathSum(root->left, targetSum, sum) + pathSum(root->right, targetSum, sum);
         if (--m[sum] == 0) m.erase(sum);
         return ans;
