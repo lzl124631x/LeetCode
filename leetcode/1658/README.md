@@ -45,23 +45,23 @@
 ## Solution 1. Two pointers
 
 ```cpp
-// OJ: https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/
+// OJ: https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero
 // Author: github.com/lzl124631x
 // Time: O(N)
 // Space: O(1)
 class Solution {
 public:
     int minOperations(vector<int>& A, int x) {
-        int N = A.size(), i = 0, j = N - 1, left = 0, right = 0, ans = N + 1;
-        for (; i < N && left < x; ++i) left += A[i];
-        if (left < x) return -1;
-        if (left == x) ans = i;
+        int ans = INT_MAX, sum = 0, N = A.size(), i = 0, j = N - 1;
+        for (; i < N && sum < x; ++i) sum += A[i];
+        if (sum < x) return -1;
+        if (sum == x) ans = i;
         while (i > 0) {
-            left -= A[--i];
-            while (left + right < x) right += A[j--];
-            if (left + right == x) ans = min(ans, i + N - 1 - j);
+            sum -= A[--i];
+            while (i <= j && sum < x) sum += A[j--];
+            if (sum == x) ans = min(ans, i + N - j - 1);
         }
-        return ans == N + 1 ? -1 : ans;
+        return ans == INT_MAX ? -1 : ans;
     }
 };
 ```
@@ -78,8 +78,7 @@ This problem is equivalent to "finding the longest subarray that sums to `sum(A)
 class Solution {
 public:
     int minOperations(vector<int>& A, int x) {
-        int N = A.size(), i = 0, j = 0, sum = 0, target = accumulate(begin(A), end(A)
-, 0) - x, maxLen = -1;
+        int N = A.size(), i = 0, j = 0, sum = 0, target = accumulate(begin(A), end(A), 0) - x, maxLen = -1;
         if (target < 0) return -1;
         for (; j < N; ++j) {
             sum += A[j];
