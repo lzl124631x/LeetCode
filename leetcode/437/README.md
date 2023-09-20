@@ -115,6 +115,10 @@ public:
 
 ## Solution 3. Pre-order Traversal with Prefix State Map
 
+Note:
+* Initially the map should have an entry `m[0] = 1` so that we can count those paths starting from root.
+* `m[sum]++` should go after accessing `m[sum - targetSum]`, because `m` stores the frequencies of path sums of the **parent** paths, excluding the current path. One corner case to consider is `targetSum = 0`. In this case, `sum - targetSum == sum`, so if we do `m[sum]++` before accessing `m[sum - targetSum]`, we'll regard the path to the current node as a parent path, which is wrong.
+
 ```cpp
 // OJ: https://leetcode.com/problems/path-sum-iii/
 // Author: github.com/lzl124631x
@@ -122,13 +126,13 @@ public:
 // Space: O(N)
 // Ref: https://leetcode.com/problems/path-sum-iii/discuss/91878/17-ms-O(n)-java-Prefix-sum-method
 class Solution {
-    unordered_map<int, int> m{{0,1}}; // map from the path sum (from root to the current node) to the corresponding count
+    unordered_map<long long, int> m{{0,1}}; // map from the path sum (from root to a parent node) to the corresponding count
 public:
-    int pathSum(TreeNode* root, int targetSum, int sum = 0) {
+    int pathSum(TreeNode* root, int targetSum, long long sum = 0) {
         if (!root) return 0;
         sum += root->val;
         int ans = m.count(sum - targetSum) ? m[sum - targetSum] : 0;
-        m[sum]++;
+        m[sum]++; // note that we should do this increment after accessing `m[sum - targetSum]`. Consider root=[1], targetSum=0
         ans += pathSum(root->left, targetSum, sum) + pathSum(root->right, targetSum, sum);
         if (--m[sum] == 0) m.erase(sum);
         return ans;
