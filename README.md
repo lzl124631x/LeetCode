@@ -2069,6 +2069,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2523 | Closest Prime Numbers in Range | Medium | [Solution](leetcode/2523)
 2524 | Maximum Frequency Score of a Subarray | Hard | [Solution](leetcode/2524)
 2525 | Categorize Box According to Criteria | Easy | [Solution](leetcode/2525)
+2526 | Find Consecutive Integers from a Data Stream | Medium | [Solution](leetcode/2526)
 2527 | Find Xor-Beauty of Array | Medium | [Solution](leetcode/2527)
 2528 | Maximize the Minimum Powered City | Hard | [Solution](leetcode/2528)
 2529 | Maximum Count of Positive Integer and Negative Integer | Easy | [Solution](leetcode/2529)
