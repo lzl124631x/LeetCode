@@ -2213,6 +2213,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2843 | Count Symmetric Integers | Easy | [Solution](leetcode/2843)
 2844 | Minimum Operations to Make a Special Number | Medium | [Solution](leetcode/2844)
 2848 | Points That Intersect With Cars | Easy | [Solution](leetcode/2848)
+2849 | Determine if a Cell Is Reachable at a Given Time | Medium | [Solution](leetcode/2849)
 2850 | Minimum Moves to Spread Stones Over Grid | Medium | [Solution](leetcode/2850)
 2855 | Minimum Right Shifts to Sort the Array | Easy | [Solution](leetcode/2855)
 2859 | Sum of Values at Indices With K Set Bits | Easy | [Solution](leetcode/2859)
