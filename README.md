@@ -1928,6 +1928,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2296 | Design a Text Editor | Hard | [Solution](leetcode/2296)
 2299 | Strong Password Checker II | Easy | [Solution](leetcode/2299)
 2300 | Successful Pairs of Spells and Potions | Medium | [Solution](leetcode/2300)
+2301 | Match Substring After Replacement | Hard | [Solution](leetcode/2301)
 2302 | Count Subarrays With Score Less Than K | Hard | [Solution](leetcode/2302)
 2303 | Calculate Amount Paid in Taxes | Easy | [Solution](leetcode/2303)
 2304 | Minimum Path Cost in a Grid | Medium | [Solution](leetcode/2304)
