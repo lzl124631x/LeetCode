@@ -998,6 +998,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1060 | Missing Element in Sorted Array | Medium | [Solution](leetcode/1060)
 1061 | Lexicographically Smallest Equivalent String | Medium | [Solution](leetcode/1061)
 1062 | Longest Repeating Substring | Medium | [Solution](leetcode/1062)
+1063 | Number of Valid Subarrays | Hard | [Solution](leetcode/1063)
 1064 | Fixed Point | Easy | [Solution](leetcode/1064)
 1065 | Index Pairs of a String | Easy | [Solution](leetcode/1065)
 1071 | Greatest Common Divisor of Strings | Easy | [Solution](leetcode/1071)
