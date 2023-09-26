@@ -42,7 +42,7 @@ Which character can be placed at the first index?
 
 The characters that have all the unique characters to their right (including themselves). We pick the smallest one from this set.
 
-For example, `s = "cbca"`, character `b` and `c` has all `abc` to its right, but `a` only have `a` to its right. So we must pick the smallest from `bc`, i.e. `b`.
+For example, `s = "cbca"`, both `b` and `c` can have all of `abc` to its right, but `a` can only have `a` to its right. So we must pick the smallest from `bc`, i.e. `b`.
 
 If we scan from left to right, we need to stop the search when the count of the current character drops to `0` because that's when we have one less unique character (the current one) to the right.
 
@@ -129,18 +129,34 @@ public:
 
 ## Solution 3. Monotonic stack + Greedy
 
-We only keep a monotonic increasing sequence.
+We **try** to keep a monotonic inscreasing stack. That is, before we push `s[i]` into the stack, we pop all the elements in the stack that
+1. **non-optimal**: `s.top() >= s[i]`
+2. **poppable**: `s.top()` has more occurrences later in the string.
 
-One key is that, when we scan to `s[i]`, if `s[i]` has been used, we should skip it because if `s[i]` can be selected earlier and now, selecting it now is no better than selecting it earlier.
+To support checking if a letter is poppable, we precompute a `last[26]` array where `last[i]` is the index of the last occurrence of letter `'a' + i`. If `i < last[s.top() - 'a']`, `s.top()` is poppable.
+
+After this above stack popping, we need to push `s[i]` into the stack. Do we always push `s[i]` into the stack? No. Not when `s[i]` is still in the stack.
+
+For example, `s="aba"`, we shouldn't push the 2nd `a` into the stack because the first `a` is already in the stack.
+
+So, to support checking if a letter is already in stack, we use a `used[26]` array where `used[i] = true` if letter `'a' + i` is currently used in the stack.
+
+Now, when we pop an element `x` from the stack, we should reset `used[x - 'a']` to `false`. If `s[i]` is already used in the stack, we directy skip it because if `s[i]` can be selected earlier and now, selecting it now is no better than selecting it earlier. Directly skipping it means that we don't even pop elements from the stack, because we pop element from the stack only because we find `s[i]` is a better option; If `s[i]` is used already and can't be pushed, don't even pop any elements from stack.
+
+Cases to consider:
+|s|Expected Result|
+|---|---|
+|"abacb"|"abc"|
+|"bbcaac"|"bac"|
 
 ```cpp
-// OJ: https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/
+// OJ: https://leetcode.com/problems/remove-duplicate-letters/
 // Author: github.com/lzl124631x
 // Time: O(N) where `N` is the length of `s`, and `C` is the range of the letters
 // Space: O(C)
 class Solution {
 public:
-    string smallestSubsequence(string s) {
+    string removeDuplicateLetters(string s) {
         int last[26] = {}, used[26] = {}, N = s.size();
         for (int i = 0; i < N; ++i) last[s[i] - 'a'] = i;
         string ans;
@@ -152,6 +168,34 @@ public:
             }
             ans.push_back(s[i]);
             used[s[i] - 'a'] = 1;
+        }
+        return ans;
+    }
+};
+```
+
+Or use `cnt` array to check if an element in array is poppable.
+
+```cpp
+// OJ: https://leetcode.com/problems/remove-duplicate-letters/
+// Author: github.com/lzl124631x
+// Time: O(N) where `N` is the length of `s`, and `C` is the range of the letters
+// Space: O(C)
+class Solution {
+public:
+    string removeDuplicateLetters(string s) {
+        int cnt[26] = {}, used[26] = {}, N = s.size();
+        for (char c : s) cnt[c - 'a']++;
+        string ans;
+        for (char c : s) {
+            cnt[c - 'a']--;
+            if (used[c - 'a']) continue;
+            while (ans.size() && ans.back() > c && cnt[ans.back() - 'a']) {
+                used[ans.back() - 'a'] = 0;
+                ans.pop_back();
+            }
+            ans.push_back(c);
+            used[c - 'a'] = 1;
         }
         return ans;
     }
