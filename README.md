@@ -108,7 +108,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 90 | Subsets II | Medium | [Solution](leetcode/90)
 91 | Decode Ways | Medium | [Solution](leetcode/91)
 92 | Reverse Linked List II | Medium | [Solution](leetcode/92)
-93 | ? | ? | [Solution](leetcode/93)
+93 | Restore IP Addresses | Medium | [Solution](leetcode/93)
 94 | Binary Tree Inorder Traversal | Easy | [Solution](leetcode/94)
 95 | Unique Binary Search Trees II | Medium | [Solution](leetcode/95)
 96 | Unique Binary Search Trees | Medium | [Solution](leetcode/96)
@@ -2165,6 +2165,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2713 | Maximum Strictly Increasing Cells in a Matrix | Hard | [Solution](leetcode/2713)
 2716 | Minimize String Length | Easy | [Solution](leetcode/2716)
 2717 | Semi-Ordered Permutation | Easy | [Solution](leetcode/2717)
+2718 | Sum of Matrix After Queries | Medium | [Solution](leetcode/2718)
 2719 | Count of Integers | Hard | [Solution](leetcode/2719)
 2728 | Count Houses in a Circular Street | Easy | [Solution](leetcode/2728)
 2729 | Check if The Number is Fascinating | Easy | [Solution](leetcode/2729)
@@ -2221,6 +2222,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2850 | Minimum Moves to Spread Stones Over Grid | Medium | [Solution](leetcode/2850)
 2855 | Minimum Right Shifts to Sort the Array | Easy | [Solution](leetcode/2855)
 2859 | Sum of Values at Indices With K Set Bits | Easy | [Solution](leetcode/2859)
+2864 | Maximum Odd Binary Number | Easy | [Solution](leetcode/2864)
 
 
 # FAQ
