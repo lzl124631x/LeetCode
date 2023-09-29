@@ -2203,6 +2203,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2806 | Account Balance After Rounded Purchase | Easy | [Solution](leetcode/2806)
 2808 | Minimum Seconds to Equalize a Circular Array | Medium | [Solution](leetcode/2808)
 2810 | Faulty Keyboard | Easy | [Solution](leetcode/2810)
+2811 | Check if it is Possible to Split Array | Medium | [Solution](leetcode/2811)
 2815 | Max Pair Sum in an Array | Easy | [Solution](leetcode/2815)
 2816 | Double a Number Represented as a Linked List | Medium | [Solution](leetcode/2816)
 2824 | Count Pairs Whose Sum is Less than Target | Easy | [Solution](leetcode/2824)
