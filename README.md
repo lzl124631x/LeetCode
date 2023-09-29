@@ -1988,6 +1988,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2390 | Removing Stars From a String | Medium | [Solution](leetcode/2390)
 2391 | Minimum Amount of Time to Collect Garbage | Medium | [Solution](leetcode/2391)
 2392 | Build a Matrix With Conditions | Hard | [Solution](leetcode/2392)
+2393 | Count Strictly Increasing Subarrays | Medium | [Solution](leetcode/2393)
 2395 | Find Subarrays With Equal Sum | Easy | [Solution](leetcode/2395)
 2396 | Strictly Palindromic Number | Medium | [Solution](leetcode/2396)
 2397 | Maximum Rows Covered by Columns | Medium | [Solution](leetcode/2397)
