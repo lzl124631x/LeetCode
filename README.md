@@ -323,7 +323,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 327 | Count of Range Sum | Hard | [Solution](leetcode/327)
 328 | Reverse Linked List | Easy | [Solution](leetcode/328)
 329 | Longest Increasing Path in a Matrix | Hard | [Solution](leetcode/329)
-330 | ? | ? | [Solution](leetcode/330)
+330 | Patching Array | Hard | [Solution](leetcode/330)
 331 | Verify Preorder Serialization of a Binary Tree | Medium | [Solution](leetcode/331)
 332 | Reconstruct Itinerary | Hard | [Solution](leetcode/332)
 333 | Largest BST Subtree | Medium | [Solution](leetcode/333)
