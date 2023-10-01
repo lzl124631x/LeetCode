@@ -26,17 +26,15 @@ total_number=$(wc -l <<< $dirs)
 i=1
 for d in $(sort -n <<< $dirs); do # https://unix.stackexchange.com/questions/33909/list-files-sorted-numerically
     re="# \[([0-9]+)\.\ (.*)\ \((Easy|Medium|Hard)\)\]\((.*)\)"
-    first=$(head -1 "leetcode/$d/README.md")
+    first=""
+    read -r first < "leetcode/$d/README.md" # Using read is blazing fast compared to `head -1`!
     title="?"
     difficulty="?"
     if [[ $first =~ $re ]]; then
         title=${BASH_REMATCH[2]}
         difficulty=${BASH_REMATCH[3]}
     fi
-    if [ $(($i % 100)) -eq 0 ]
-    then
-        printf '\r%s%%' "$(($i*100/$total_number))"
-    fi
+    printf '\r%s%%' "$(($i*100/$total_number))"
     line="$d | $title | $difficulty | [Solution](leetcode/$d)"
     echo $line >> $file
     i=$(($i+1))
