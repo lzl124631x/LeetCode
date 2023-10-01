@@ -2225,6 +2225,8 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2855 | Minimum Right Shifts to Sort the Array | Easy | [Solution](leetcode/2855)
 2859 | Sum of Values at Indices With K Set Bits | Easy | [Solution](leetcode/2859)
 2864 | Maximum Odd Binary Number | Easy | [Solution](leetcode/2864)
+2869 | Minimum Operations to Collect Elements | Easy | [Solution](leetcode/2869)
+2873 | Maximum Value of an Ordered Triplet I | Easy | [Solution](leetcode/2873)
 
 
 # FAQ
