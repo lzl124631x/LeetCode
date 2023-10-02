@@ -2160,6 +2160,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2667 | Create Hello World Function | Easy | [Solution](leetcode/2667)
 2670 | Find the Distinct Difference Array | Easy | [Solution](leetcode/2670)
 2671 | Frequency Tracker | Medium | [Solution](leetcode/2671)
+2672 | Number of Adjacent Elements With the Same Color | Medium | [Solution](leetcode/2672)
 2673 | Make Costs of Paths Equal in a Binary Tree | Medium | [Solution](leetcode/2673)
 2678 | Number of Senior Citizens | Easy | [Solution](leetcode/2678)
 2680 | ? | ? | [Solution](leetcode/2680)
@@ -2237,6 +2238,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2859 | Sum of Values at Indices With K Set Bits | Easy | [Solution](leetcode/2859)
 2864 | Maximum Odd Binary Number | Easy | [Solution](leetcode/2864)
 2869 | Minimum Operations to Collect Elements | Easy | [Solution](leetcode/2869)
+2870 | Minimum Number of Operations to Make Array Empty | Medium | [Solution](leetcode/2870)
 2873 | Maximum Value of an Ordered Triplet I | Easy | [Solution](leetcode/2873)
 
 
