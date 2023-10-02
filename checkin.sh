@@ -4,14 +4,14 @@
 # -r: Update readme
 if [ -z $1 ]
   then
-    echo "Problem # not provided"
+    echo "Please provide a problem number."
     exit 1
 fi
 # https://www.aplawrence.com/Unix/getopts.html
 push=true
 readme=false
 
-problem="$1"
+num="$1"
 shift # skip the problem # in argument processing
 while getopts "dr" flag;
 do
@@ -26,8 +26,8 @@ if [ "$readme" = true ] ; then
   echo "README updated"
 fi
 git add README.md
-git add leetcode/$problem.*
-git commit -m $problem
+git add leetcode/$num
+git commit -m $num
 if [ "$push" = true ] ; then
   git push
 fi

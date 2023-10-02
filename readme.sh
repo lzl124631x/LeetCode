@@ -1,20 +1,5 @@
 #!/bin/bash
 
-# https://gist.github.com/cdown/1163649#gistcomment-1639097
-urlencode() {
-    # urlencode <string>
-
-    local LANG=C
-    local length="${#1}"
-    for (( i = 0; i < length; i++ )); do
-        local c="${1:i:1}"
-        case $c in
-            [a-zA-Z0-9.~_-]) printf "$c" ;;
-            *) printf '%%%02X' "'$c" ;; 
-        esac
-    done
-}
-
 file="README.md"
 rm $file
 echo "# LeetCode
@@ -36,24 +21,23 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 \# | Title | Difficulty | Solution
 ---|---|---|---" >> $file
 
-IFS=$'\n'; for d in $(find leetcode/ -type d -maxdepth 1 -mindepth 1 -exec basename {} \; | sort -n) ; do # https://unix.stackexchange.com/questions/33909/list-files-sorted-numerically
-    num=$(echo "$d" | cut -d "." -f1)
-    title=$(echo "$d" | cut -d " " -f2-)
-    first=$(head -1 "leetcode/$d/README.md")
-    diff=""
-    case $first in
-        *\(Easy\)*)
-            diff="Easy"
-            ;;
-        *\(Medium\)*)
-            diff="Medium"
-            ;;
-        *\(Hard\)*)
-            diff="Hard"
-            ;;
-    esac
-    line="$num | $title | $diff | [Solution](leetcode/$(urlencode $d))"
+dirs=$(cd leetcode/ && ls -d *)
+total_number=$(wc -l <<< $dirs)
+i=1
+for d in $(sort -n <<< $dirs); do # https://unix.stackexchange.com/questions/33909/list-files-sorted-numerically
+    re="# \[([0-9]+)\.\ (.*)\ \((Easy|Medium|Hard)\)\]\((.*)\)"
+    first=""
+    read -r first < "leetcode/$d/README.md" # Using read is blazing fast compared to `head -1`!
+    title="?"
+    difficulty="?"
+    if [[ $first =~ $re ]]; then
+        title=${BASH_REMATCH[2]}
+        difficulty=${BASH_REMATCH[3]}
+    fi
+    printf '\r%s%%' "$(($i*100/$total_number))"
+    line="$d | $title | $difficulty | [Solution](leetcode/$d)"
     echo $line >> $file
+    i=$(($i+1))
 done
 
 echo "
@@ -77,3 +61,5 @@ So, only estimating the **extra** space **excluding** the answer space helps us 
 # License
 
 All rights reserved by [github.com/lzl124631x](https://github.com/lzl124631x). Contact me if you want to redistribute the code. No commercial use." >> $file
+
+printf "\rDONE"

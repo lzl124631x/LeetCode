@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ -z "$1" ]
   then
-    echo "Quiz Title not provided"
+    echo "Please provide a problem number."
     exit 1
 fi
 cd leetcode/
