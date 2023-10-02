@@ -2130,6 +2130,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2596 | Check Knight Tour Configuration | Medium | [Solution](leetcode/2596)
 2597 | The Number of Beautiful Subsets | Medium | [Solution](leetcode/2597)
 2600 | K Items With the Maximum Sum | Easy | [Solution](leetcode/2600)
+2601 | Prime Subtraction Operation | Medium | [Solution](leetcode/2601)
 2602 | Minimum Operations to Make All Array Elements Equal | Medium | [Solution](leetcode/2602)
 2603 | Collect Coins in a Tree | Hard | [Solution](leetcode/2603)
 2605 | Form Smallest Number From Two Digit Arrays | Easy | [Solution](leetcode/2605)
