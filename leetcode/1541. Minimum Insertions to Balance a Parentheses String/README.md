@@ -74,7 +74,53 @@
 
 `left` and `right` represents the counts of currently unmatched left and right parenthesis respectively.
 
-* Whenever we see a `)` and we don't have `(` available, we add a `(` at this moment. This simplify the cases to consider.
+The following implementation simply discuss different cases we can meet.
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    int minInsertions(string s) {
+        int left = 0, right = 0, ans = 0;
+        for (char c : s) {
+            if (c == '(') {
+                if (right) { // when we see ( and there is still a ) left
+                    if (left) { // If we have ( balance, use it and add a )
+                        --left;
+                        ++ans; // add )
+                    } else ans += 2; // otherwise, add a ( and a )
+                    right = 0; // clear the )
+                }
+                ++left;
+            } else {
+                ++right;
+                if (left) {
+                    if (right == 2) { // if we have ( balance and 2 )s, clear this pair
+                        right = 0;
+                        --left;
+                    }
+                } else { // if there is no ( balance, we add a (
+                    ++ans;
+                    ++left;
+                }
+            }
+        }
+        if (left) { // in the end, if we still have ( balance
+            ans += 2 * left - right; // add )s
+        } else {
+            ans += 2 * right; // add one ( if there is ) balance (must be 1)
+        }
+        return ans;
+    }
+};
+```
+
+Or
+
+* Whenever we see a `)` and we don't have `(` available, we add a `(` at this moment. This simplify the cases to consider because it makes sure we always have enough `(` to cover `)`.
 * Always reset `)` whenever we have two `)`s.
 
 ```cpp
@@ -91,14 +137,14 @@ public:
                 if (right) { // Must be a single unmatched `)`. Clear it with a `(`.
                     right = 0;
                     --left;
-                    ++ans;
+                    ++ans; // add a `)`
                 }
                 ++left;
             } else {
                 ++right;
                 if (left == 0) { // We must add a `(` to match this `)`. This makes sure that if we have an unmatched `)`, there must be at least one `(`, simplifying the cases to consider.
                     left = 1;
-                    ++ans;
+                    ++ans; // add one `(`
                 }
                 if (right == 2) { // We always reset `)` whenever we have two `)`s.
                     right = 0;
@@ -137,7 +183,7 @@ public:
                 if (i < N) ++left;
             } else if (++right == 2) { // We always reset `)` whenever we have two `)`s.
                 if (left) --left;
-                else ++ans;
+                else ++ans; // add a `(`
                 right = 0;
             }
         }
@@ -161,8 +207,8 @@ public:
         int left = 0, right = 0, ans = 0, N = s.size();
         for (int i = 0; i <= N; ++i) {
             if (i == N || s[i] == '(') {
-                if (right % 2) ++ans;
-                left -= (right + 1) / 2;
+                if (right % 2) ++ans, ++right; // if we have odd `)` balance, add one `)` to make it even
+                left -= right / 2;
                 right = 0;
                 if (left < 0) {
                     ans -= left;
@@ -192,9 +238,9 @@ public:
         int right = 0, ans = 0;
         for (char c : s) {
             if (c == '(') {
-                if (right % 2) { // if there is a single `)` needed, we must clear it right now
+                if (right % 2) { // if we have odd `)` needed, we must clear  right now
                     --right;
-                    ++ans;
+                    ++ans; // add one `)`
                 }
                 right += 2;
             } else {

@@ -80,8 +80,6 @@ Output: False
 
 ## Solution 1. Automaton
 
-I did similar job before, so the first thing came into my mind is automaton. Maybe it's not neat, but the tasks in each state is quite clear.
-
 ```cpp
 // OJ: https://leetcode.com/problems/tag-validator
 // Author: github.com/lzl124631x

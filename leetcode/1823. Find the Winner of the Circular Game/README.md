@@ -74,3 +74,15 @@ public:
     }
 };
 ```
+
+## Solution 2. Think backwards
+
+Let `f(n,k)` be the 0-based index of the winning person.
+
+Assume we have `n` persons with indexes `0 ~ (n-1)`, the person got kicked out (say Alice) has index `(k - 1) % n`, and the next person (say Bob) of this kicked-out person has index `k % n`.
+
+In the next turn, there are `n - 1` persons, and we start the game from Bob. If Bob has index `0`, the winning person will have index `f(n-1,k)`.
+
+```cpp
+
+```

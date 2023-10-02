@@ -98,3 +98,7 @@ public:
     }
 };
 ```
+
+## TODO
+
+Hard to get it right. Learn https://leetcode.com/problems/range-module/discuss/108912/C%2B%2B-vector-O(n)-and-map-O(logn)-compare-two-solutions

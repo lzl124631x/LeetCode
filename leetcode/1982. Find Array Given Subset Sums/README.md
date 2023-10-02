@@ -170,3 +170,42 @@ public:
     }
 };
 ```
+
+## Solution 2.
+
+
+```cpp
+// OJ: https://leetcode.com/problems/find-array-given-subset-sums/
+// Author: github.com/lzl124631x
+// Time: O(2^N * N)
+// Space: O(2^N)
+class Solution {
+public:
+    vector<int> recoverArray(int n, vector<int>& A) {
+        sort(begin(A), end(A));
+        int len = A.size();
+        vector<int> left(len / 2), right(len / 2), ans(n);
+        for (int i = 0; i < n; ++i) {
+            int diff = A[1] - A[0], p = 0, q = 0, k = 0;
+            bool zero = false;
+            for (int j = 0; j < len; ++j) {
+                if (k < q && right[k] == A[j]) ++k;
+                else {
+                    if (A[j] == 0) zero = true;
+                    left[p++] = A[j];
+                    right[q++] = A[j] + diff;
+                }
+            }
+            if (zero) {
+                swap(left, A);
+                ans[i] = diff;
+            } else {
+                swap(right, A);
+                ans[i] = -diff;
+            }
+            len /= 2;
+        }
+        return ans;
+    }
+};
+```

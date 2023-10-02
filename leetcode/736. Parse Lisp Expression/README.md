@@ -89,7 +89,7 @@ struct Expression {
     vector<Token> tokens;
 };
 struct Token {
-    int type = -1; // 0 plaintext 1 expression
+    int type = -1; // 0 plaintext, 1 expression
     string text;
     Expression *exp;
     Token (Expression *exp) : type(1), exp(exp) {}

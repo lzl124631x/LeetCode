@@ -31,7 +31,7 @@ Sum is 17.
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array/), [Stack](https://leetcode.com/tag/stack/)
 
-## Solution 1. Mono Stack
+## Solution 1. Monotonic Stack
 
 Think from simple case to complex case.
 
@@ -43,7 +43,17 @@ Assume based on `A = [1]`, we add a number `2`. This new number will create two 
 
 Now assume based on `A = [1]`, we add a number `0`. This new number will create two new subarrays, `[1,0]` and `[0]`. For `[1,0]`, the min value becomes `0`. And if we keep adding more numbers, this leading `1` will no longer be added because of this smaller `0`.
 
-Here we can see that we need a mono stack of keep track of the small numbers in ascending order. For example, if `A = [100,1,100,2,100,3,100]`, the stack should be `[1,2,3,100]`. Then when we push a new number into the stack, we know that are the numbers that need to be replaced. Each time we pop a number, we 
+Here we can see that we need a monotonic stack of keep track of the small numbers in ascending order. For example, if `A = [100,1,100,2,100,3,100]`, the stack should be `[1,2,3,100]`. 
+
+Consider array `A = [2,3,4,3,0]`
+
+For `A[0] = 2`, we push `2` into stack and add `2` to answer.
+
+For `A[1] = 3`, we push `3` into stack and add `2+3` to answer.
+
+For `A[2] = 4`, we push `4` into stack and add `2+3+4` to answer.
+
+For `A[3] = 3`, we pop `4` from stack
 
 ```cpp
 // OJ: https://leetcode.com/problems/sum-of-subarray-minimums/

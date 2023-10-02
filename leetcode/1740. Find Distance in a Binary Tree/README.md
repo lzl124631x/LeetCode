@@ -70,3 +70,33 @@ public:
     }
 };
 ```
+
+## Solution 2. Post-order Traversal
+
+```cpp
+// OJ: https://leetcode.com/problems/find-distance-in-a-binary-tree/
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(H)
+class Solution {
+    int lcaDepth = 0;
+    vector<int> depth;
+    TreeNode* dfs(TreeNode *root, int p, int q, int d = 0) {
+        if (!root) return nullptr;
+        auto left = dfs(root->left, p, q, d + 1), right = dfs(root->right, p, q, d + 1);
+        if (root->val == p || root->val == q) {
+            depth.push_back(d);
+            lcaDepth = d;
+            return root;
+        }
+        if (left && right) lcaDepth = d;
+        return left && right ? root : (left ? left : right);
+    }
+public:
+    int findDistance(TreeNode* root, int p, int q) {
+        if (p == q) return 0;
+        dfs(root, p, q);
+        return depth[0] + depth[1] - 2 * lcaDepth;
+    }
+};
+```

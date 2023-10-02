@@ -90,3 +90,7 @@ public:
     }
 };
 ```
+
+## Discuss
+
+https://leetcode.com/problems/different-ways-to-add-parentheses/discuss/303491/C++-O(C(N))-Divide-and-Conquer-with-tipexplanation

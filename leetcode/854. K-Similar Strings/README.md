@@ -77,3 +77,100 @@ public:
     }
 };
 ```
+
+TODO:
+
+https://leetcode.com/problems/k-similar-strings/discuss/140299/C%2B%2B-6ms-Solution
+
+```cpp
+class Solution {
+public:
+  int kSimilarity(string s1, string s2) {
+    
+    if (s1 == s2) return 0;
+
+    // remove all matches
+    for (int i = 0; i < s1.size(); ++i) {
+      if (s1[i] == s2[i]) {
+	s1.erase(s1.begin()+i);
+	s2.erase(s2.begin()+i);
+--i;
+
+      }
+    }
+
+    // find all buddy pairs  (s1[i],s2[i]) == (s2[j],s1[j])
+    int buddy = 0;
+    for (int i = 0; i < s1.size()-1; ++i) {
+      if (s1[i] != ' ') {
+	char b1 = s1[i];
+	char b2 = s2[i];
+	for (int j = i+1; j < s1.size(); ++j) {
+	  if ((b1 == s2[j]) && (b2 == s1[j])) {
+
+	    s1.erase(s1.begin()+j);
+	    s2.erase(s2.begin()+j);
+	    s1.erase(s1.begin()+i);
+	    s2.erase(s2.begin()+i);
+--i;
+	    ++buddy;   // this is a swap, must add to total
+	    if (!s1.size()) return buddy;
+	    break;
+	  }
+	}
+      }
+    }
+
+    int n = s1.size();
+
+    int result = n*(n-1)/2;
+    for (int pos = 0; pos < n; ++pos) {
+      int count = calc(s1, s2, n, pos, result);
+      if (result > count) {
+	result = count;
+      }
+    }
+    return result + buddy;
+  }
+
+  int calc(std::string s1, const std::string s2, const int n, const int pos, const int result) {
+
+    int count = 0;
+    for (int x = 0; x < n; ++x) {
+      int i = (x+pos) % n;
+      char c1 = s1[i];
+      char c2 = s2[i];
+      
+      if (c1 == ' ') continue;    
+      if (c1 != c2) {
+
+	s1[i] = ' ';  // there will always be a match
+
+	// find a pair to swap, prefer a buddy pair
+	size_t j = s1.find(c2);  // save this in case no buddy pair
+
+	bool buddy = false;
+    // search if swapping c1 to index j creates a buddy
+    for (int k = 0; k < n; ++k) {
+      if ((c1 == s2[k]) && (s1[k] == s2[j])) {
+    s1[j] = s1[k] = ' ';  // it's a buddy, eliminate two characters
+    count += 2;
+
+    if (count >= result) return count;
+    buddy = true;
+    break;
+      }
+    }
+	if (!buddy) {
+	  s1[j] = c1;  // no buddies, copy c1 to this slot
+	  ++count;
+
+	  if (count >= result) return count;
+    	}
+      }
+    }
+    return count;
+  }
+
+};
+```
