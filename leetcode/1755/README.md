@@ -54,5 +54,35 @@ The absolute difference is abs(-4 - (-5)) = abs(1) = 1, which is the minimum.
 ## Solution 1.
 
 ```cpp
-
+// OJ: https://leetcode.com/problems/closest-subsequence-sum
+// Author: github.com/lzl124631x
+// Time: O()
+// Space: O()
+class Solution {
+public:
+    int minAbsDifference(vector<int>& ns, int goal) {
+        int res = abs(goal), pos = 0, neg = 0;
+        for (auto n : ns)
+            pos += max(0, n), neg += min(0, n);
+        if (goal < neg || goal > pos)
+            return min(abs(neg - goal), abs(goal - pos));
+        set<int> h1{0}, h2{0};
+        for (auto i = 0; i < ns.size() / 2; ++i)
+            for (auto n : vector<int>(begin(h1), end(h1)))
+                if (h1.insert(n + ns[i]).second)
+                    res = min(res, abs(goal - n - ns[i]));
+        for (auto i = ns.size() / 2; i < ns.size(); ++i)
+            for (auto n : vector<int>(begin(h2), end(h2)))
+                if (h2.insert(n + ns[i]).second) {
+                    auto it = h1.lower_bound(goal - n - ns[i]);
+                    if (it != end(h1))
+                        res = min(res, abs(goal - n - ns[i] - *it));
+                    if (it != begin(h1))
+                        res = min(res, abs(goal - n - ns[i] - *prev(it)));
+                    if (res == 0)
+                        return res;
+                }
+        return res;
+    }
+};
 ```

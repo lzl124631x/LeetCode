@@ -21,10 +21,11 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 \# | Title | Difficulty | Solution
 ---|---|---|---" >> $file
 
-dirs=$(cd leetcode/ && ls -d *)
-total_number=$(wc -l <<< $dirs)
+dirs=$(cd leetcode/ && ls -1d *) # list all dir names
+total_number=$(wc -l <<< "$dirs") # count number of dirs. I must wrap $dirs in double quotes otherwise the names are in the same line in macos
 i=1
-for d in $(sort -n <<< $dirs); do # https://unix.stackexchange.com/questions/33909/list-files-sorted-numerically
+dirs=$(sort -n <<< "$dirs") # sort dirs
+for d in $dirs; do # https://unix.stackexchange.com/questions/33909/list-files-sorted-numerically
     re="# \[([0-9]+)\.\ (.*)\ \((Easy|Medium|Hard)\)\]\((.*)\)"
     first=""
     read -r first < "leetcode/$d/README.md" # Using read is blazing fast compared to `head -1`!

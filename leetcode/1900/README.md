@@ -63,5 +63,63 @@ There is no way to make them compete in any other round.
 ## Solution 1.
 
 ```cpp
-
+// OJ: https://leetcode.com/problems/the-earliest-and-latest-rounds-where-players-compete
+// Author: github.com/lzl124631x
+// Time: O()
+// Space: O()
+class Solution {
+    unordered_map<int, vector<int>> m;
+    int n, first, second;
+    void dfs(int mask, int i, int j, vector<int> &ans) {
+        if (i >= j) {
+            ans.push_back(mask);
+            return;
+        }
+        while (i < j && !(mask >> i & 1) ) ++i;
+        while (i < j && !(mask >> j & 1) ) --j;
+        if (i < j) {
+            if (i != first && i != second )
+                dfs(mask & ~(1 << i), i + 1, j - 1, ans);
+            if (j != first && j != second)
+                dfs(mask & ~(1 << j), i + 1, j - 1, ans);
+            ++i;
+            --j;
+        } else {
+            ans.push_back(mask);
+        }
+    }
+    vector<int> gen(int mask) {
+        vector<int> ans;
+        dfs(mask, 0, n - 1, ans);
+        return ans;
+    }
+    vector<int> dp(int mask) {
+        if (m.count(mask)) return m[mask];
+        int L = 0, R = 0;
+        for (int i = 0; i < first; ++i) {
+            if (mask >> i & 1) ++L;
+        }
+        for (int i = n - 1; i > second; --i) {
+            if (mask >> i & 1) ++R;
+        }
+        if (L == R) return {1,1};
+        auto next = gen(mask);
+        int mn = INT_MAX, mx = 0;
+        for (int nmask : next) {
+            auto v = dp(nmask);
+            mn = min(mn, v[0]);
+            mx = max(mx, v[1]);
+        }
+        return m[mask] = {mn + 1,mx + 1};
+    }
+public:
+    vector<int> earliestAndLatest(int n, int first, int second) {
+        this->n = n;
+        this->first = first - 1;
+        this->second = second - 1;
+        int mask = 0;
+        for (int i = 0; i < n; ++i) mask |= 1 << i;
+        return dp(mask);
+    }
+};
 ```
