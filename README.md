@@ -2119,6 +2119,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2578 | Split With Minimum Sum | Easy | [Solution](leetcode/2578)
 2580 | Count Ways to Group Overlapping Ranges | Medium | [Solution](leetcode/2580)
 2582 | Pass the Pillow | Easy | [Solution](leetcode/2582)
+2583 | Kth Largest Sum in a Binary Tree | Medium | [Solution](leetcode/2583)
 2585 | Number of Ways to Earn Points | Hard | [Solution](leetcode/2585)
 2586 | Count the Number of Vowel Strings in Range | Easy | [Solution](leetcode/2586)
 2587 | Rearrange Array to Maximize Prefix Score | Medium | [Solution](leetcode/2587)
