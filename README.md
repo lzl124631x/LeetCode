@@ -2194,6 +2194,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2747 | Count Zero Request Servers | Medium | [Solution](leetcode/2747)
 2748 | Number of Beautiful Pairs | Easy | [Solution](leetcode/2748)
 2749 | Minimum Operations to Make the Integer Zero | Medium | [Solution](leetcode/2749)
+2750 | Ways to Split Array Into Good Subarrays | Medium | [Solution](leetcode/2750)
 2762 | Continuous Subarrays | Medium | [Solution](leetcode/2762)
 2764 | is Array a Preorder of Some ‌Binary Tree | Medium | [Solution](leetcode/2764)
 2765 | Longest Alternating Subarray | Easy | [Solution](leetcode/2765)
