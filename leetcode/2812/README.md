@@ -115,6 +115,7 @@ public:
         pq.push({factor[0][0], 0, 0});
         while (pq.size()) {
             auto [f, x, y] = pq.top();
+            if (x == N - 1 && y == N - 1) return f;
             pq.pop();
             for (auto &[dx, dy] : dirs) {
                 int a = x + dx, b = y + dy;
@@ -123,7 +124,7 @@ public:
                 pq.push({factor[a][b], a, b});
             }
         }
-        return factor[N - 1][N - 1];
+        return -1;
     }
 };
 ```
