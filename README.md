@@ -2224,6 +2224,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2812 | Find the Safest Path in a Grid | Medium | [Solution](leetcode/2812)
 2815 | Max Pair Sum in an Array | Easy | [Solution](leetcode/2815)
 2816 | Double a Number Represented as a Linked List | Medium | [Solution](leetcode/2816)
+2817 | Minimum Absolute Difference Between Elements With Constraint | Medium | [Solution](leetcode/2817)
 2824 | Count Pairs Whose Sum is Less than Target | Easy | [Solution](leetcode/2824)
 2825 | Make String a Subsequence Using Cyclic Increments | Medium | [Solution](leetcode/2825)
 2828 | Check if a String Is an Acronym of Words | Easy | [Solution](leetcode/2828)
