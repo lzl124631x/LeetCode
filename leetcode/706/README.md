@@ -77,7 +77,7 @@ public:
 };
 ```
 
-## Solution 2.
+## Solution 2. Modulo + Doubly Linked List
 
 ```cpp
 // OJ: https://leetcode.com/problems/design-hashmap/
@@ -112,6 +112,89 @@ public:
 };
 class MyHashMap {
     Bucket buckets[keyRange] = {};
+    int hash(int key) { return key % keyRange; };
+public:
+    MyHashMap() {
+    }
+    void put(int key, int value) {
+        buckets[hash(key)].put(key, value);
+    }
+    int get(int key) {
+        return buckets[hash(key)].get(key);
+    }
+    void remove(int key) {
+        buckets[hash(key)].remove(key);
+    }
+};
+```
+
+## Solution 3. Modulo + Binary Search Tree
+
+```cpp
+// OJ: https://leetcode.com/problems/design-hashmap
+// Author: github.com/lzl124631x
+// Time:
+//		MyHashMap: O(1)
+//		put, get, remove: O(logN) on average, O(N) in the worst case.
+// Space: O(N)
+const int keyRange = 769;
+struct BSTreeNode {
+    int key, val;
+    BSTreeNode *left = nullptr, *right = nullptr;
+    BSTreeNode(int key, int val) : key(key), val(val) {}
+};
+class BSTree {
+    BSTreeNode *root = nullptr;
+    BSTreeNode* deleteNode(BSTreeNode* root, int key) {
+        if (!root) return nullptr;
+        if (root->key < key) {
+            root->right = deleteNode(root->right, key);
+            return root;
+        } else if (root->key > key) {
+            root->left = deleteNode(root->left, key);
+            return root;
+        }
+        if (!root->left || !root->right) return root->left ? root->left : root->right;
+        auto newRoot = root->right, left = newRoot->left, node = root->left;
+        newRoot->left = root->left;
+        while (node->right) node = node->right;
+        node->right = left;
+        return newRoot;
+    }
+public:
+    BSTree() {}
+    void put(int key, int val) {
+       if (!root) {
+            root = new BSTreeNode(key, val);
+            return;
+        }
+        BSTreeNode *prev = nullptr, *n = root;
+        while (n) {
+            prev = n;
+            if (key == n->key) {
+                n->val = val;
+                return;
+            } else if (key < n->key) n = n->left;
+            else n = n->right;
+        }
+        if (key < prev->key) prev->left = new BSTreeNode(key, val);
+        else prev->right = new BSTreeNode(key, val);
+    }
+    int get(int key) {
+        auto n = root;
+        while (n) {
+            if (key == n->key) return n->val;
+            if (key < n->key) n = n->left;
+            else n = n->right;
+        }
+        return -1;
+    }
+    void remove(int key) {
+        root = deleteNode(root, key);
+    }
+};
+class MyHashMap {
+    BSTree buckets[keyRange] = {};
     int hash(int key) { return key % keyRange; };
 public:
     MyHashMap() {
