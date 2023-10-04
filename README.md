@@ -2053,6 +2053,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2465 | Number of Distinct Averages | Easy | [Solution](leetcode/2465)
 2466 | Count Ways To Build Good Strings | Medium | [Solution](leetcode/2466)
 2467 | Most Profitable Path in a Tree | Medium | [Solution](leetcode/2467)
+2468 | Split Message Based on Limit | Hard | [Solution](leetcode/2468)
 2469 | Convert the Temperature | Easy | [Solution](leetcode/2469)
 2470 | Number of Subarrays With LCM Equal to K | Medium | [Solution](leetcode/2470)
 2471 | Minimum Number of Operations to Sort a Binary Tree by Level | Medium | [Solution](leetcode/2471)
