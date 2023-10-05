@@ -2097,6 +2097,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2541 | Minimum Operations to Make Array Equal II | Medium | [Solution](leetcode/2541)
 2544 | Alternating Digit Sum | Easy | [Solution](leetcode/2544)
 2546 | Apply Bitwise Operations to Make Strings Equal | Medium | [Solution](leetcode/2546)
+2547 | Minimum Cost to Split an Array | Hard | [Solution](leetcode/2547)
 2549 | Count Distinct Numbers on Board | Easy | [Solution](leetcode/2549)
 2550 | Count Collisions of Monkeys on a Polygon | Medium | [Solution](leetcode/2550)
 2551 | Put Marbles in Bags | Hard | [Solution](leetcode/2551)
