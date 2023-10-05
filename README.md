@@ -1985,6 +1985,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2367 | Number of Arithmetic Triplets | Easy | [Solution](leetcode/2367)
 2368 | Reachable Nodes With Restrictions | Medium | [Solution](leetcode/2368)
 2369 | Check if There is a Valid Partition For The Array | Medium | [Solution](leetcode/2369)
+2370 | Longest Ideal Subsequence | Medium | [Solution](leetcode/2370)
 2371 | Minimize Maximum Value in a Grid | Hard | [Solution](leetcode/2371)
 2373 | Largest Local Values in a Matrix | Easy | [Solution](leetcode/2373)
 2374 | Node With Highest Edge Score | Medium | [Solution](leetcode/2374)
