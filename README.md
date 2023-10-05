@@ -1919,6 +1919,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2264 | Largest 3-Same-Digit Number in String | Easy | [Solution](leetcode/2264)
 2265 | Count Nodes Equal to Average of Subtree | Medium | [Solution](leetcode/2265)
 2266 | Count Number of Texts | Medium | [Solution](leetcode/2266)
+2267 | Check if There Is a Valid Parentheses String Path | Hard | [Solution](leetcode/2267)
 2268 | Minimum Number of Keypresses | Medium | [Solution](leetcode/2268)
 2269 | Find the K-Beauty of a Number | Easy | [Solution](leetcode/2269)
 2270 | Number of Ways to Split Array | Medium | [Solution](leetcode/2270)
