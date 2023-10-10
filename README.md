@@ -2189,6 +2189,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2728 | Count Houses in a Circular Street | Easy | [Solution](leetcode/2728)
 2729 | Check if The Number is Fascinating | Easy | [Solution](leetcode/2729)
 2730 | Find the Longest Semi-Repetitive Substring | Medium | [Solution](leetcode/2730)
+2731 | Movement of Robots | Medium | [Solution](leetcode/2731)
 2733 | Neither Minimum nor Maximum | Easy | [Solution](leetcode/2733)
 2734 | Lexicographically Smallest String After Substring Operation | Medium | [Solution](leetcode/2734)
 2739 | Total Distance Traveled | Easy | [Solution](leetcode/2739)

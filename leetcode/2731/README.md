@@ -1,0 +1,103 @@
+# [2731. Movement of Robots (Medium)](https://leetcode.com/problems/movement-of-robots)
+
+<p>Some robots are standing on an infinite number line with their initial coordinates given by a <strong>0-indexed</strong> integer array <code>nums</code> and will start moving once given the command to move. The robots will move a unit distance each second.</p>
+
+<p>You are given a string <code>s</code> denoting the direction in which robots will move on command. <code>&#39;L&#39;</code> means the robot will move towards the left side or negative side of the number line, whereas <code>&#39;R&#39;</code> means the robot will move towards the right side or positive side of the number line.</p>
+
+<p>If two robots collide, they will start moving in opposite directions.</p>
+
+<p>Return <em>the sum of distances between all the&nbsp;pairs of robots </em><code>d</code> <em>seconds after&nbsp;the command. </em>Since the sum can be very large, return it modulo <code>10<sup>9</sup> + 7</code>.</p>
+
+<p><b>Note: </b></p>
+
+<ul>
+	<li>For two robots at the index <code>i</code> and <code>j</code>, pair <code>(i,j)</code> and pair <code>(j,i)</code> are considered the same pair.</li>
+	<li>When robots collide, they <strong>instantly change</strong> their directions without wasting any time.</li>
+	<li>Collision happens&nbsp;when two robots share the same place in a&nbsp;moment.
+	<ul>
+		<li>For example, if a robot is positioned in 0 going to the right and another is positioned in 2 going to the left, the next second they&#39;ll be both in 1 and they will change direction and the next second the first one will be in 0, heading left, and another will be in 2, heading right.</li>
+		<li>For example,&nbsp;if a robot is positioned in 0 going to the right and another is positioned in 1&nbsp;going to the left, the next second the first one will be in 0, heading left, and another will be in 1, heading right.</li>
+	</ul>
+	</li>
+</ul>
+
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+
+<pre>
+<strong>Input:</strong> nums = [-2,0,2], s = &quot;RLL&quot;, d = 3
+<strong>Output:</strong> 8
+<strong>Explanation:</strong> 
+After 1 second, the positions are [-1,-1,1]. Now, the robot at index 0 will move left, and the robot at index 1 will move right.
+After 2 seconds, the positions are [-2,0,0]. Now, the robot at index 1 will move left, and the robot at index 2 will move right.
+After 3 seconds, the positions are [-3,-1,1].
+The distance between the robot at index 0 and 1 is abs(-3 - (-1)) = 2.
+The distance between the robot at index 0 and 2 is abs(-3 - 1) = 4.
+The distance between the robot at index 1 and 2 is abs(-1 - 1) = 2.
+The sum of the pairs of all distances = 2 + 4 + 2 = 8.
+</pre>
+
+<p><strong class="example">Example 2:</strong></p>
+
+<pre>
+<strong>Input:</strong> nums = [1,0], s = &quot;RL&quot;, d = 2
+<strong>Output:</strong> 5
+<strong>Explanation:</strong> 
+After 1 second, the positions are [2,-1].
+After 2 seconds, the positions are [3,-2].
+The distance between the two robots is abs(-2 - 3) = 5.
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>2 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>-2 * 10<sup>9</sup>&nbsp;&lt;= nums[i] &lt;= 2 * 10<sup>9</sup></code></li>
+	<li><code>0 &lt;= d &lt;= 10<sup>9</sup></code></li>
+	<li><code>nums.length == s.length&nbsp;</code></li>
+	<li><code>s</code> consists of &#39;L&#39; and &#39;R&#39; only</li>
+	<li><code>nums[i]</code>&nbsp;will be unique.</li>
+</ul>
+
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array), [Brainteaser](https://leetcode.com/tag/brainteaser), [Sorting](https://leetcode.com/tag/sorting), [Prefix Sum](https://leetcode.com/tag/prefix-sum)
+
+**Similar Questions**:
+* [Last Moment Before All Ants Fall Out of a Plank (Medium)](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank)
+
+**Hints**:
+* Observe that if you ignore collisions, the resultant positions of robots after d seconds would be the same.
+* After d seconds, sort the ending positions and use prefix sum to calculate the distance sum.
+
+## Solution 1.
+
+When collicion happens, we can treat the two robots as if they pass directly through each other, and this won't change the result.
+
+1. Calculate the end positions of the robots
+2. Sort the positions
+3. Calculate the total distance. If we've seen `i` positions, and their sum is `sum`, then the total distance from the current `i`-th robot to all previous robots is `i * A[i] - sum`.
+
+```cpp
+// OJ: https://leetcode.com/problems/movement-of-robots
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int sumDistance(vector<int>& A, string s, int d) {
+        long N = A.size(), mod = 1e9 + 7, ans = 0, sum = 0;
+        for (int i = 0; i < N; ++i) {
+            if (s[i] == 'L') A[i] -= d;
+            else A[i] += d;
+        }
+        sort(begin(A), end(A));
+        for (int i = 0; i < N; ++i) {
+            ans = (ans + (long)i * A[i] % mod - sum + mod) % mod;
+            sum = (sum + A[i] + mod) % mod;
+        }
+        return ans;
+    }
+};
+```
