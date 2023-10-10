@@ -2247,6 +2247,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2849 | Determine if a Cell Is Reachable at a Given Time | Medium | [Solution](leetcode/2849)
 2850 | Minimum Moves to Spread Stones Over Grid | Medium | [Solution](leetcode/2850)
 2855 | Minimum Right Shifts to Sort the Array | Easy | [Solution](leetcode/2855)
+2856 | Minimum Array Length After Pair Removals | Medium | [Solution](leetcode/2856)
 2859 | Sum of Values at Indices With K Set Bits | Easy | [Solution](leetcode/2859)
 2864 | Maximum Odd Binary Number | Easy | [Solution](leetcode/2864)
 2865 | Beautiful Towers I | Medium | [Solution](leetcode/2865)
