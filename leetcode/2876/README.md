@@ -66,29 +66,24 @@ class Solution {
 public:
     vector<int> countVisitedNodes(vector<int>& E) {
         int N = E.size();
-        vector<int> dist(N, -1), state(N, -1); // -1 unvisited, 0 visiting, 1 visited
+        vector<int> dist(N, INT_MIN);
         function<int(int, int)> dfs = [&](int u, int d) {
-            if (state[u] == 1) return dist[u]; // if this node has been visited, return dist[u] directly
-            if (state[u] == 0) { // if this node is being visited, we've found a cycle
-                state[u] = 1; // mark this node as visited. Later when we backtrack, if we found that the current value is already marked as visited, we know that we've done visiting the cycle
-                dist[u] = d - dist[u]; 
-                return -dist[u]; // we return negative dist to indicate that we are still in the cycle
+            if (dist[u] != INT_MIN) { // this node is of state `visiting` or `visited`
+                if (dist[u] < 0) { // this node is of state `visiting`, we've found a cycle
+                    dist[u] -= d; // calculate the length of the cycle
+                    return dist[u]; // we need to update remaining `dist[u]` elements with the length of the cycle
+                }
+                return 0;
             }
-            state[u] = 0;
-            dist[u] = d;
-            int ans = dfs(E[u], d + 1);
-            if (ans < 0) { // If the next distance is negative, it means that we are still in the cycle
-                if (state[u] == 1) return -ans; // this node is the last node of the cycle, we can start returning positive dist
-                dist[u] = -ans; // we keep logging the same distance within cycle
-                state[u] = 1;
-                return ans;
-            }
-            state[u] = 1;
-            return dist[u] = ans + 1; // we are out of cycle, dist[u] should be 1 plus next distance
+            dist[u] = d; // when visiting nodes, we mark them with negative depth
+            int remaining = dfs(E[u], d - 1);
+            if (remaining-- > 0) dist[u] = dist[E[u]]; // If remaining > 0, we are still in the cycle, the distances should be the same
+            else dist[u] = dist[E[u]] + 1; // otherwise, we are out of cycle, the distance should be 1 plus E[u]'s distance
+            return remaining;
         };
         for (int i = 0; i < N; ++i) {
-            if (dist[i] != -1) continue;
-            dfs(i, 0);
+            if (dist[i] != INT_MIN) continue;
+            dfs(i, -1);
         }
         return dist;
     }
