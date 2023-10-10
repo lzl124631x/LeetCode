@@ -1,4 +1,4 @@
-# [2009. Minimum Number of Operations to Make Array Continuous (Hard)](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/)
+# [2009. Minimum Number of Operations to Make Array Continuous (Hard)](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous)
 
 <p>You are given an integer array <code>nums</code>. In one operation, you can replace <strong>any</strong> element in <code>nums</code> with <strong>any</strong> integer.</p>
 
@@ -14,24 +14,27 @@
 <p>Return <em>the <strong>minimum</strong> number of operations to make </em><code>nums</code><em> </em><strong><em>continuous</em></strong>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> nums = [4,2,5,3]
+<pre>
+<strong>Input:</strong> nums = [4,2,5,3]
 <strong>Output:</strong> 0
 <strong>Explanation:</strong>&nbsp;nums is already continuous.
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> nums = [1,2,3,5,6]
+<pre>
+<strong>Input:</strong> nums = [1,2,3,5,6]
 <strong>Output:</strong> 1
 <strong>Explanation:</strong>&nbsp;One possible solution is to change the last element to 4.
 The resulting array is [1,2,3,5,4], which is continuous.
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> nums = [1,10,100,1000]
+<pre>
+<strong>Input:</strong> nums = [1,10,100,1000]
 <strong>Output:</strong> 3
 <strong>Explanation:</strong>&nbsp;One possible solution is to:
 - Change the second element to 2.
@@ -49,12 +52,22 @@ The resulting array is [1,2,3,4], which is continuous.
 </ul>
 
 
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Apple](https://leetcode.com/company/apple), [Uber](https://leetcode.com/company/uber)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array), [Binary Search](https://leetcode.com/tag/binary-search)
+
 **Similar Questions**:
-* [Longest Repeating Character Replacement (Medium)](https://leetcode.com/problems/longest-repeating-character-replacement/)
-* [Continuous Subarray Sum (Medium)](https://leetcode.com/problems/continuous-subarray-sum/)
-* [Moving Stones Until Consecutive II (Medium)](https://leetcode.com/problems/moving-stones-until-consecutive-ii/)
-* [Minimum One Bit Operations to Make Integers Zero (Hard)](https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/)
-* [Minimum Adjacent Swaps for K Consecutive Ones (Hard)](https://leetcode.com/problems/minimum-adjacent-swaps-for-k-consecutive-ones/)
+* [Longest Repeating Character Replacement (Medium)](https://leetcode.com/problems/longest-repeating-character-replacement)
+* [Continuous Subarray Sum (Medium)](https://leetcode.com/problems/continuous-subarray-sum)
+* [Moving Stones Until Consecutive II (Medium)](https://leetcode.com/problems/moving-stones-until-consecutive-ii)
+* [Minimum One Bit Operations to Make Integers Zero (Hard)](https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero)
+* [Minimum Adjacent Swaps for K Consecutive Ones (Hard)](https://leetcode.com/problems/minimum-adjacent-swaps-for-k-consecutive-ones)
+
+**Hints**:
+* Sort the array.
+* For every index do a binary search to get the possible right end of the window and calculate the possible answer.
 
 ## Solution 1. Sliding Window
 
