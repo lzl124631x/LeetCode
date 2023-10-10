@@ -1969,6 +1969,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2341 | Maximum Number of Pairs in Array | Easy | [Solution](leetcode/2341)
 2342 | Max Sum of a Pair With Equal Sum of Digits | Medium | [Solution](leetcode/2342)
 2343 | Query Kth Smallest Trimmed Number | Medium | [Solution](leetcode/2343)
+2344 | Minimum Deletions to Make Array Divisible | Hard | [Solution](leetcode/2344)
 2347 | Best Poker Hand | Easy | [Solution](leetcode/2347)
 2348 | Number of Zero-Filled Subarrays | Medium | [Solution](leetcode/2348)
 2351 | First Letter to Appear Twice | Easy | [Solution](leetcode/2351)
