@@ -73,7 +73,7 @@ The distance between the two robots is abs(-2 - 3) = 5.
 
 ## Solution 1.
 
-When collicion happens, we can treat the two robots as if they pass directly through each other, and this won't change the result.
+Similar to [1503. Last Moment Before All Ants Fall Out of a Plank (Medium)](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/), when collicion happens, we can treat the two robots as if they pass directly through each other, and this won't change the result.
 
 1. Calculate the end positions of the robots
 2. Sort the positions
