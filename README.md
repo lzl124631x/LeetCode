@@ -1932,6 +1932,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2276 | Count Integers in Intervals | Hard | [Solution](leetcode/2276)
 2278 | Percentage of Letter in String | Easy | [Solution](leetcode/2278)
 2279 | Maximum Bags With Full Capacity of Rocks | Medium | [Solution](leetcode/2279)
+2280 | Minimum Lines to Represent a Line Chart | Medium | [Solution](leetcode/2280)
 2283 | Check if Number Has Equal Digit Count and Digit Value | Easy | [Solution](leetcode/2283)
 2284 | Sender With Largest Word Count | Medium | [Solution](leetcode/2284)
 2285 | Maximum Total Importance of Roads | Medium | [Solution](leetcode/2285)
