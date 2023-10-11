@@ -1912,6 +1912,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2248 | Intersection of Multiple Arrays | Easy | [Solution](leetcode/2248)
 2249 | Count Lattice Points Inside a Circle | Medium | [Solution](leetcode/2249)
 2250 | Count Number of Rectangles Containing Each Point | Medium | [Solution](leetcode/2250)
+2251 | Number of Flowers in Full Bloom | Hard | [Solution](leetcode/2251)
 2255 | Count Prefixes of a Given String | Easy | [Solution](leetcode/2255)
 2256 | Minimum Average Difference | Medium | [Solution](leetcode/2256)
 2259 | Remove Digit From Number to Maximize Result | Easy | [Solution](leetcode/2259)
