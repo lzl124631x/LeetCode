@@ -177,8 +177,8 @@ If we use temp variables to store `dp[i - 1][j - 1]`, we can further reduce the 
 ```cpp
 // OJ: https://leetcode.com/problems/pizza-with-3n-slices/
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(N^2)
+// Space: O(N)
 class Solution {
     int solve(vector<int> A, int cnt) {
         int N = A.size();

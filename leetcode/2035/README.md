@@ -73,7 +73,7 @@ public:
             left[k].push_back(L);
             right[k].push_back(R);
         }
-        for (int k = 0; k <= N; ++k) sort(begin(right[k]), end(right[k])); // sort right[k] for binsary search
+        for (int k = 0; k <= N; ++k) sort(begin(right[k]), end(right[k])); // sort right[k] for binary search
         int ans = min(abs(sum - 2 * left[N][0]), abs(sum - 2 * right[N][0])); // If we pick all N elements from first half or second half
         for (int k = 1; k <= N; ++k) {
             auto &v = right[N - k];
