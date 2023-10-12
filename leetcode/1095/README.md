@@ -1,4 +1,4 @@
-# [1095. Find in Mountain Array (Hard)](https://leetcode.com/problems/find-in-mountain-array/)
+# [1095. Find in Mountain Array (Hard)](https://leetcode.com/problems/find-in-mountain-array)
 
 <p><em>(This problem is an <strong>interactive problem</strong>.)</em></p>
 
@@ -26,15 +26,17 @@
 <p>Submissions making more than <code>100</code> calls to <code>MountainArray.get</code> will be judged <em>Wrong Answer</em>. Also, any solutions that attempt to circumvent the judge will result in disqualification.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> array = [1,2,3,4,5,3,1], target = 3
+<pre>
+<strong>Input:</strong> array = [1,2,3,4,5,3,1], target = 3
 <strong>Output:</strong> 2
 <strong>Explanation:</strong> 3 exists in the array, at index=2 and index=5. Return the minimum index, which is 2.</pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> array = [0,1,2,4,2,1], target = 3
+<pre>
+<strong>Input:</strong> array = [0,1,2,4,2,1], target = 3
 <strong>Output:</strong> -1
 <strong>Explanation:</strong> 3 does not exist in <code>the array,</code> so we return -1.
 </pre>
@@ -49,17 +51,64 @@
 </ul>
 
 
-**Companies**:  
-[Bloomberg](https://leetcode.com/company/bloomberg), [Apple](https://leetcode.com/company/apple), [Quora](https://leetcode.com/company/quora)
+**Companies**:
+[Bloomberg](https://leetcode.com/company/bloomberg), [Apple](https://leetcode.com/company/apple), [Uber](https://leetcode.com/company/uber), [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/), [Interactive](https://leetcode.com/tag/interactive/)
+[Array](https://leetcode.com/tag/array), [Binary Search](https://leetcode.com/tag/binary-search), [Interactive](https://leetcode.com/tag/interactive)
 
 **Similar Questions**:
-* [Peak Index in a Mountain Array (Easy)](https://leetcode.com/problems/peak-index-in-a-mountain-array/)
-* [Minimum Number of Removals to Make Mountain Array (Hard)](https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/)
+* [Peak Index in a Mountain Array (Medium)](https://leetcode.com/problems/peak-index-in-a-mountain-array)
+* [Minimum Number of Removals to Make Mountain Array (Hard)](https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array)
+* [Find Good Days to Rob the Bank (Medium)](https://leetcode.com/problems/find-good-days-to-rob-the-bank)
+
+**Hints**:
+* Based on whether A[i-1] < A[i] < A[i+1], A[i-1] < A[i] > A[i+1], or A[i-1] > A[i] > A[i+1], we are either at the left side, peak, or right side of the mountain.  We can binary search to find the peak.
+After finding the peak, we can binary search two more times to find whether the value occurs on either side of the peak.
 
 ## Solution 1. Binary Search
+
+```cpp
+// OJ: https://leetcode.com/problems/find-in-mountain-array
+// Author: github.com/lzl124631x
+// Time: O(logN)
+// Space: O(logN)
+class Solution {
+public:
+    int findInMountainArray(int target, MountainArray &A) {
+        int len = A.length();
+        unordered_map<int, int> m;
+        auto get = [&](int i) {
+            return m.count(i) ? m[i] : (m[i] = A.get(i));
+        };
+        function<int(int, int, bool)> findInMonoArray;
+        function<int(int, int)> findInMountainArray = [&](int L, int R) {
+            if (L > R) return -1;
+            if (L == R || L == R - 1) return get(L) == target ? L : (L == R - 1 && get(R) == target ? R : -1);
+            int lv = get(L), rv = get(R), M = (L + R) / 2, a = get(M), b = get(M + 1);
+            if (a < b) {
+                int x = findInMonoArray(L, M + 1, true);
+                return x != -1 ? x : findInMountainArray(M + 2, R);
+            }
+            int x = findInMountainArray(L, M - 1);
+            return x != -1 ? x : findInMonoArray(M, R, false);
+        };
+        findInMonoArray = [&](int L, int R, bool increasing) {
+            if (L > R) return -1;
+            while (L <= R) {
+                int M = (L + R) / 2, mid = get(M);
+                if (mid == target) return M;
+                if ((increasing && mid > target) || (!increasing && mid < target)) R = M - 1;
+                else L = M + 1;
+            }
+            return -1;
+        };
+        return findInMountainArray(0, len - 1);
+    }
+};
+```
+
+## Solution 2. Binary Search
 
 ```cpp
 // OJ: https://leetcode.com/problems/find-in-mountain-array/
@@ -89,10 +138,8 @@ class Solution {
     }
 public:
     int findInMountainArray(int target, MountainArray &A) {
-        int N = A.length(), top = findTop(A, N);
-        int a = binarySearch(target, A, 0, top, 1);
-        int b = binarySearch(target, A, top + 1, N - 1, -1);
-        return a != -1 ? a : b;
+        int N = A.length(), top = findTop(A, N), a = binarySearch(target, A, 0, top, 1);
+        return a != -1 ? a : binarySearch(target, A, top + 1, N - 1, -1);
     }
 };
 ```
