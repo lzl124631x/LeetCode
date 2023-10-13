@@ -2139,6 +2139,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2595 | Number of Even and Odd Bits | Easy | [Solution](leetcode/2595)
 2596 | Check Knight Tour Configuration | Medium | [Solution](leetcode/2596)
 2597 | The Number of Beautiful Subsets | Medium | [Solution](leetcode/2597)
+2598 | Smallest Missing Non-negative Integer After Operations | Medium | [Solution](leetcode/2598)
 2600 | K Items With the Maximum Sum | Easy | [Solution](leetcode/2600)
 2601 | Prime Subtraction Operation | Medium | [Solution](leetcode/2601)
 2602 | Minimum Operations to Make All Array Elements Equal | Medium | [Solution](leetcode/2602)
