@@ -1972,6 +1972,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2341 | Maximum Number of Pairs in Array | Easy | [Solution](leetcode/2341)
 2342 | Max Sum of a Pair With Equal Sum of Digits | Medium | [Solution](leetcode/2342)
 2343 | Query Kth Smallest Trimmed Number | Medium | [Solution](leetcode/2343)
+2344 | Minimum Deletions to Make Array Divisible | Hard | [Solution](leetcode/2344)
 2347 | Best Poker Hand | Easy | [Solution](leetcode/2347)
 2348 | Number of Zero-Filled Subarrays | Medium | [Solution](leetcode/2348)
 2351 | First Letter to Appear Twice | Easy | [Solution](leetcode/2351)
@@ -2156,6 +2157,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2643 | Row With Maximum Ones | Easy | [Solution](leetcode/2643)
 2644 | Find the Maximum Divisibility Score | Easy | [Solution](leetcode/2644)
 2645 | Minimum Additions to Make Valid String | Medium | [Solution](leetcode/2645)
+2646 | Minimize the Total Price of the Trips | Hard | [Solution](leetcode/2646)
 2651 | Calculate Delayed Arrival Time | Easy | [Solution](leetcode/2651)
 2652 | Sum Multiples | Easy | [Solution](leetcode/2652)
 2653 | Sliding Subarray Beauty | Medium | [Solution](leetcode/2653)
@@ -2184,6 +2186,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2708 | Maximum Strength of a Group | Medium | [Solution](leetcode/2708)
 2709 | Greatest Common Divisor Traversal | Hard | [Solution](leetcode/2709)
 2710 | Remove Trailing Zeros From a String | Easy | [Solution](leetcode/2710)
+2711 | Difference of Number of Distinct Values on Diagonals | Medium | [Solution](leetcode/2711)
 2713 | Maximum Strictly Increasing Cells in a Matrix | Hard | [Solution](leetcode/2713)
 2716 | Minimize String Length | Easy | [Solution](leetcode/2716)
 2717 | Semi-Ordered Permutation | Easy | [Solution](leetcode/2717)
@@ -2259,6 +2262,8 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2870 | Minimum Number of Operations to Make Array Empty | Medium | [Solution](leetcode/2870)
 2873 | Maximum Value of an Ordered Triplet I | Easy | [Solution](leetcode/2873)
 2876 | Count Visited Nodes in a Directed Graph | Hard | [Solution](leetcode/2876)
+2894 | Divisible and Non-divisible Sums Difference | Easy | [Solution](leetcode/2894)
+2895 | Minimum Processing Time | Medium | [Solution](leetcode/2895)
 
 
 # FAQ
