@@ -2078,6 +2078,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2496 | Maximum Value of a String in an Array | Easy | [Solution](leetcode/2496)
 2500 | Delete Greatest Value in Each Row | Easy | [Solution](leetcode/2500)
 2501 | Longest Square Streak in an Array | Medium | [Solution](leetcode/2501)
+2503 | Maximum Number of Points From Grid Queries | Hard | [Solution](leetcode/2503)
 2506 | Count Pairs Of Similar Strings | Easy | [Solution](leetcode/2506)
 2507 | Smallest Value After Replacing With Sum of Prime Factors | Medium | [Solution](leetcode/2507)
 2509 | Cycle Length Queries in a Tree | Hard | [Solution](leetcode/2509)
