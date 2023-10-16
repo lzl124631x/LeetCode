@@ -2261,6 +2261,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2876 | Count Visited Nodes in a Directed Graph | Hard | [Solution](leetcode/2876)
 2894 | Divisible and Non-divisible Sums Difference | Easy | [Solution](leetcode/2894)
 2895 | Minimum Processing Time | Medium | [Solution](leetcode/2895)
+2903 | Find Indices With Index and Value Difference I | Easy | [Solution](leetcode/2903)
 
 
 # FAQ
