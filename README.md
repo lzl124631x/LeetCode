@@ -2085,6 +2085,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2510 | Check if There is a Path With Equal Number of 0's And 1's | Medium | [Solution](leetcode/2510)
 2511 | Maximum Enemy Forts That Can Be Captured | Easy | [Solution](leetcode/2511)
 2512 | Reward Top K Students | Medium | [Solution](leetcode/2512)
+2513 | Minimize the Maximum of Two Arrays | Medium | [Solution](leetcode/2513)
 2515 | Shortest Distance to Target String in a Circular Array | Easy | [Solution](leetcode/2515)
 2516 | Take K of Each Character From Left and Right | Medium | [Solution](leetcode/2516)
 2520 | Count the Digits That Divide a Number | Easy | [Solution](leetcode/2520)
