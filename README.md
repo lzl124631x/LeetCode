@@ -2262,6 +2262,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2894 | Divisible and Non-divisible Sums Difference | Easy | [Solution](leetcode/2894)
 2895 | Minimum Processing Time | Medium | [Solution](leetcode/2895)
 2903 | Find Indices With Index and Value Difference I | Easy | [Solution](leetcode/2903)
+2904 | Shortest and Lexicographically Smallest Beautiful String | Medium | [Solution](leetcode/2904)
+2905 | Find Indices With Index and Value Difference II | Medium | [Solution](leetcode/2905)
+2906 | Construct Product Matrix | Medium | [Solution](leetcode/2906)
 
 
 # FAQ
