@@ -1979,6 +1979,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2352 | Equal Row and Column Pairs | Medium | [Solution](leetcode/2352)
 2353 | Design a Food Rating System | Medium | [Solution](leetcode/2353)
 2354 | Number of Excellent Pairs | Hard | [Solution](leetcode/2354)
+2355 | Maximum Number of Books You Can Take | Hard | [Solution](leetcode/2355)
 2357 | Make Array Zero by Subtracting Equal Amounts | Easy | [Solution](leetcode/2357)
 2358 | Maximum Number of Groups Entering a Competition | Medium | [Solution](leetcode/2358)
 2360 | Longest Cycle in a Graph | Hard | [Solution](leetcode/2360)
