@@ -1,18 +1,20 @@
-# [416. Partition Equal Subset Sum (Medium)](https://leetcode.com/problems/partition-equal-subset-sum/)
+# [416. Partition Equal Subset Sum (Medium)](https://leetcode.com/problems/partition-equal-subset-sum)
 
-<p>Given a <strong>non-empty</strong> array <code>nums</code> containing <strong>only positive integers</strong>, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.</p>
+<p>Given an integer array <code>nums</code>, return <code>true</code> <em>if you can partition the array into two subsets such that the sum of the elements in both subsets is equal or </em><code>false</code><em> otherwise</em>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> nums = [1,5,11,5]
+<pre>
+<strong>Input:</strong> nums = [1,5,11,5]
 <strong>Output:</strong> true
 <strong>Explanation:</strong> The array can be partitioned as [1, 5, 5] and [11].
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> nums = [1,2,3,5]
+<pre>
+<strong>Input:</strong> nums = [1,2,3,5]
 <strong>Output:</strong> false
 <strong>Explanation:</strong> The array cannot be partitioned into equal sum subsets.
 </pre>
@@ -26,17 +28,20 @@
 </ul>
 
 
-**Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft), [Uber](https://leetcode.com/company/uber), [Apple](https://leetcode.com/company/apple), [Bloomberg](https://leetcode.com/company/bloomberg), [tcs](https://leetcode.com/company/tcs)
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Yahoo](https://leetcode.com/company/yahoo), [TikTok](https://leetcode.com/company/tiktok), [Expedia](https://leetcode.com/company/expedia), [Facebook](https://leetcode.com/company/facebook), [Microsoft](https://leetcode.com/company/microsoft), [Apple](https://leetcode.com/company/apple), [Google](https://leetcode.com/company/google), [Walmart Labs](https://leetcode.com/company/walmart-labs), [Uber](https://leetcode.com/company/uber), [LinkedIn](https://leetcode.com/company/linkedin), [Bloomberg](https://leetcode.com/company/bloomberg), [ByteDance](https://leetcode.com/company/bytedance), [Infosys](https://leetcode.com/company/infosys), [Hive](https://leetcode.com/company/hive), [eBay](https://leetcode.com/company/ebay)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming)
 
 **Similar Questions**:
-* [Partition to K Equal Sum Subsets (Medium)](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/)
-* [Minimize the Difference Between Target and Chosen Elements (Medium)](https://leetcode.com/problems/minimize-the-difference-between-target-and-chosen-elements/)
-* [Maximum Number of Ways to Partition an Array (Hard)](https://leetcode.com/problems/maximum-number-of-ways-to-partition-an-array/)
-* [Partition Array Into Two Arrays to Minimize Sum Difference (Hard)](https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/)
+* [Partition to K Equal Sum Subsets (Medium)](https://leetcode.com/problems/partition-to-k-equal-sum-subsets)
+* [Minimize the Difference Between Target and Chosen Elements (Medium)](https://leetcode.com/problems/minimize-the-difference-between-target-and-chosen-elements)
+* [Maximum Number of Ways to Partition an Array (Hard)](https://leetcode.com/problems/maximum-number-of-ways-to-partition-an-array)
+* [Partition Array Into Two Arrays to Minimize Sum Difference (Hard)](https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference)
+* [Find Subarrays With Equal Sum (Easy)](https://leetcode.com/problems/find-subarrays-with-equal-sum)
+* [Number of Great Partitions (Hard)](https://leetcode.com/problems/number-of-great-partitions)
+* [Split With Minimum Sum (Easy)](https://leetcode.com/problems/split-with-minimum-sum)
 
 ## Solution 1. DP
 
@@ -105,7 +110,7 @@ public:
 
 ## Solution 3. 0-1 Knapsack with Space Optimization
 
-Since `dp[i + 1][j]` is only dependent on values in the previous row, we can reduce the size of the `dp` array from `N * S` to `1 * S`.
+Since `dp[i + 1][j]` only depends on values in the previous row, we can reduce the size of the `dp` array from `N * S` to `1 * S`.
 
 ```cpp
 // OJ: https://leetcode.com/problems/partition-equal-subset-sum/
