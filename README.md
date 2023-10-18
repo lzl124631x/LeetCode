@@ -2265,6 +2265,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2869 | Minimum Operations to Collect Elements | Easy | [Solution](leetcode/2869)
 2870 | Minimum Number of Operations to Make Array Empty | Medium | [Solution](leetcode/2870)
 2873 | Maximum Value of an Ordered Triplet I | Easy | [Solution](leetcode/2873)
+2874 | Maximum Value of an Ordered Triplet II | Medium | [Solution](leetcode/2874)
 2876 | Count Visited Nodes in a Directed Graph | Hard | [Solution](leetcode/2876)
 2894 | Divisible and Non-divisible Sums Difference | Easy | [Solution](leetcode/2894)
 2895 | Minimum Processing Time | Medium | [Solution](leetcode/2895)
