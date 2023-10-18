@@ -2098,6 +2098,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2537 | Count the Number of Good Subarrays | Medium | [Solution](leetcode/2537)
 2540 | Minimum Common Value | Easy | [Solution](leetcode/2540)
 2541 | Minimum Operations to Make Array Equal II | Medium | [Solution](leetcode/2541)
+2542 | Maximum Subsequence Score | Medium | [Solution](leetcode/2542)
 2544 | Alternating Digit Sum | Easy | [Solution](leetcode/2544)
 2546 | Apply Bitwise Operations to Make Strings Equal | Medium | [Solution](leetcode/2546)
 2547 | Minimum Cost to Split an Array | Hard | [Solution](leetcode/2547)
