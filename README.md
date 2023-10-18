@@ -2195,6 +2195,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2709 | Greatest Common Divisor Traversal | Hard | [Solution](leetcode/2709)
 2710 | Remove Trailing Zeros From a String | Easy | [Solution](leetcode/2710)
 2711 | Difference of Number of Distinct Values on Diagonals | Medium | [Solution](leetcode/2711)
+2712 | Minimum Cost to Make All Characters Equal | Medium | [Solution](leetcode/2712)
 2713 | Maximum Strictly Increasing Cells in a Matrix | Hard | [Solution](leetcode/2713)
 2716 | Minimize String Length | Easy | [Solution](leetcode/2716)
 2717 | Semi-Ordered Permutation | Easy | [Solution](leetcode/2717)
