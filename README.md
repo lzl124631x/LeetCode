@@ -1976,6 +1976,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2344 | Minimum Deletions to Make Array Divisible | Hard | [Solution](leetcode/2344)
 2347 | Best Poker Hand | Easy | [Solution](leetcode/2347)
 2348 | Number of Zero-Filled Subarrays | Medium | [Solution](leetcode/2348)
+2349 | Design a Number Container System | Medium | [Solution](leetcode/2349)
 2351 | First Letter to Appear Twice | Easy | [Solution](leetcode/2351)
 2352 | Equal Row and Column Pairs | Medium | [Solution](leetcode/2352)
 2353 | Design a Food Rating System | Medium | [Solution](leetcode/2353)
