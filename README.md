@@ -2116,6 +2116,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2559 | Count Vowel Strings in Ranges | Medium | [Solution](leetcode/2559)
 2562 | Find the Array Concatenation Value | Easy | [Solution](leetcode/2562)
 2563 | Count the Number of Fair Pairs | Medium | [Solution](leetcode/2563)
+2564 | Substring XOR Queries | Medium | [Solution](leetcode/2564)
 2565 | Subsequence With the Minimum Score | Hard | [Solution](leetcode/2565)
 2566 | Maximum Difference by Remapping a Digit | Easy | [Solution](leetcode/2566)
 2567 | Minimum Score by Changing Two Elements | Medium | [Solution](leetcode/2567)
