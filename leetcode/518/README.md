@@ -1,12 +1,18 @@
 # [518. Coin Change II (Medium)](https://leetcode.com/problems/coin-change-ii)
 
 <p>You are given an integer array <code>coins</code> representing coins of different denominations and an integer <code>amount</code> representing a total amount of money.</p>
+
 <p>Return <em>the number of combinations that make up that amount</em>. If that amount of money cannot be made up by any combination of the coins, return <code>0</code>.</p>
+
 <p>You may assume that you have an infinite number of each kind of coin.</p>
+
 <p>The answer is <strong>guaranteed</strong> to fit into a signed <strong>32-bit</strong> integer.</p>
+
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
-<pre><strong>Input:</strong> amount = 5, coins = [1,2,5]
+
+<pre>
+<strong>Input:</strong> amount = 5, coins = [1,2,5]
 <strong>Output:</strong> 4
 <strong>Explanation:</strong> there are four ways to make up the amount:
 5=5
@@ -14,17 +20,25 @@
 5=2+1+1+1
 5=1+1+1+1+1
 </pre>
+
 <p><strong class="example">Example 2:</strong></p>
-<pre><strong>Input:</strong> amount = 3, coins = [2]
+
+<pre>
+<strong>Input:</strong> amount = 3, coins = [2]
 <strong>Output:</strong> 0
 <strong>Explanation:</strong> the amount of 3 cannot be made up just with coins of 2.
 </pre>
+
 <p><strong class="example">Example 3:</strong></p>
-<pre><strong>Input:</strong> amount = 10, coins = [10]
+
+<pre>
+<strong>Input:</strong> amount = 10, coins = [10]
 <strong>Output:</strong> 1
 </pre>
+
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
+
 <ul>
 	<li><code>1 &lt;= coins.length &lt;= 300</code></li>
 	<li><code>1 &lt;= coins[i] &lt;= 5000</code></li>
@@ -32,15 +46,17 @@
 	<li><code>0 &lt;= amount &lt;= 5000</code></li>
 </ul>
 
+
 **Companies**:
-[Amazon](https://leetcode.com/company/amazon), [Uber](https://leetcode.com/company/uber), [Bloomberg](https://leetcode.com/company/bloomberg)
+[Uber](https://leetcode.com/company/uber), [Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook), [Google](https://leetcode.com/company/google), [Bloomberg](https://leetcode.com/company/bloomberg), [Apple](https://leetcode.com/company/apple), [Goldman Sachs](https://leetcode.com/company/goldman-sachs), [Cisco](https://leetcode.com/company/cisco), [Microsoft](https://leetcode.com/company/microsoft), [eBay](https://leetcode.com/company/ebay), [Adobe](https://leetcode.com/company/adobe), [Citadel](https://leetcode.com/company/citadel)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming/)
+[Array](https://leetcode.com/tag/array), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming)
 
 **Similar Questions**:
-* [Maximum Value of K Coins From Piles (Hard)](https://leetcode.com/problems/maximum-value-of-k-coins-from-piles/)
-* [Number of Ways to Earn Points (Hard)](https://leetcode.com/problems/number-of-ways-to-earn-points/)
+* [Maximum Value of K Coins From Piles (Hard)](https://leetcode.com/problems/maximum-value-of-k-coins-from-piles)
+* [Number of Ways to Earn Points (Hard)](https://leetcode.com/problems/number-of-ways-to-earn-points)
+* [Count of Sub-Multisets With Bounded Sum (Hard)](https://leetcode.com/problems/count-of-sub-multisets-with-bounded-sum)
 
 ## Solution 1. DFS + Memo
 
