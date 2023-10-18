@@ -1,4 +1,4 @@
-# [2050. Parallel Courses III (Hard)](https://leetcode.com/problems/parallel-courses-iii/)
+# [2050. Parallel Courses III (Hard)](https://leetcode.com/problems/parallel-courses-iii)
 
 <p>You are given an integer <code>n</code>, which indicates that there are <code>n</code> courses labeled from <code>1</code> to <code>n</code>. You are also given a 2D integer array <code>relations</code> where <code>relations[j] = [prevCourse<sub>j</sub>, nextCourse<sub>j</sub>]</code> denotes that course <code>prevCourse<sub>j</sub></code> has to be completed <strong>before</strong> course <code>nextCourse<sub>j</sub></code> (prerequisite relationship). Furthermore, you are given a <strong>0-indexed</strong> integer array <code>time</code> where <code>time[i]</code> denotes how many <strong>months</strong> it takes to complete the <code>(i+1)<sup>th</sup></code> course.</p>
 
@@ -14,10 +14,11 @@
 <p><strong>Note:</strong> The test cases are generated such that it is possible to complete every course (i.e., the graph is a directed acyclic graph).</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
-<strong><img alt="" src="https://assets.leetcode.com/uploads/2021/10/07/ex1.png" style="width: 392px; height: 232px;"></strong>
+<p><strong class="example">Example 1:</strong></p>
+<strong><img alt="" src="https://assets.leetcode.com/uploads/2021/10/07/ex1.png" style="width: 392px; height: 232px;" /></strong>
 
-<pre><strong>Input:</strong> n = 3, relations = [[1,3],[2,3]], time = [3,2,5]
+<pre>
+<strong>Input:</strong> n = 3, relations = [[1,3],[2,3]], time = [3,2,5]
 <strong>Output:</strong> 8
 <strong>Explanation:</strong> The figure above represents the given graph and the time required to complete each course. 
 We start course 1 and course 2 simultaneously at month 0.
@@ -25,10 +26,11 @@ Course 1 takes 3 months and course 2 takes 2 months to complete respectively.
 Thus, the earliest time we can start course 3 is at month 3, and the total time required is 3 + 5 = 8 months.
 </pre>
 
-<p><strong>Example 2:</strong></p>
-<strong><img alt="" src="https://assets.leetcode.com/uploads/2021/10/07/ex2.png" style="width: 500px; height: 365px;"></strong>
+<p><strong class="example">Example 2:</strong></p>
+<strong><img alt="" src="https://assets.leetcode.com/uploads/2021/10/07/ex2.png" style="width: 500px; height: 365px;" /></strong>
 
-<pre><strong>Input:</strong> n = 5, relations = [[1,5],[2,5],[3,5],[3,4],[4,5]], time = [1,2,3,4,5]
+<pre>
+<strong>Input:</strong> n = 5, relations = [[1,5],[2,5],[3,5],[3,4],[4,5]], time = [1,2,3,4,5]
 <strong>Output:</strong> 12
 <strong>Explanation:</strong> The figure above represents the given graph and the time required to complete each course.
 You can start courses 1, 2, and 3 at month 0.
@@ -54,11 +56,23 @@ Thus, the minimum time needed to complete all the courses is 7 + 5 = 12 months.
 </ul>
 
 
+**Companies**:
+[Pinterest](https://leetcode.com/company/pinterest), [Google](https://leetcode.com/company/google)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming), [Graph](https://leetcode.com/tag/graph), [Topological Sort](https://leetcode.com/tag/topological-sort)
+
 **Similar Questions**:
-* [Course Schedule III (Hard)](https://leetcode.com/problems/course-schedule-iii/)
-* [Parallel Courses (Medium)](https://leetcode.com/problems/parallel-courses/)
-* [Single-Threaded CPU (Medium)](https://leetcode.com/problems/single-threaded-cpu/)
-* [Process Tasks Using Servers (Medium)](https://leetcode.com/problems/process-tasks-using-servers/)
+* [Course Schedule III (Hard)](https://leetcode.com/problems/course-schedule-iii)
+* [Parallel Courses (Medium)](https://leetcode.com/problems/parallel-courses)
+* [Single-Threaded CPU (Medium)](https://leetcode.com/problems/single-threaded-cpu)
+* [Process Tasks Using Servers (Medium)](https://leetcode.com/problems/process-tasks-using-servers)
+* [Maximum Employees to Be Invited to a Meeting (Hard)](https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting)
+
+**Hints**:
+* What is the earliest time a course can be taken?
+* How would you solve the problem if all courses take equal time?
+* How would you generalize this approach?
 
 ## Solution 1. Topological Sort (BFS)
 
