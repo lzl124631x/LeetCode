@@ -2222,6 +2222,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2772 | Apply Operations to Make All Array Elements Equal to Zero | Medium | [Solution](leetcode/2772)
 2778 | Sum of Squares of Special Elements | Easy | [Solution](leetcode/2778)
 2779 | Maximum Beauty of an Array After Applying Operation | Medium | [Solution](leetcode/2779)
+2780 | Minimum Index of a Valid Split | Medium | [Solution](leetcode/2780)
 2781 | Length of the Longest Valid Substring | Hard | [Solution](leetcode/2781)
 2784 | Check if Array is Good | Easy | [Solution](leetcode/2784)
 2785 | Sort Vowels in a String | Medium | [Solution](leetcode/2785)
