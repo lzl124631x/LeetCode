@@ -1,37 +1,43 @@
-# [149. Max Points on a Line (Hard)](https://leetcode.com/problems/max-points-on-a-line/)
+# [149. Max Points on a Line (Hard)](https://leetcode.com/problems/max-points-on-a-line)
 
-Given _n_ points on a 2D plane, find the maximum number of points that lie on the same straight line.
+<p>Given an array of <code>points</code> where <code>points[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> represents a point on the <strong>X-Y</strong> plane, return <em>the maximum number of points that lie on the same straight line</em>.</p>
 
-**Example 1:**
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/02/25/plane1.jpg" style="width: 300px; height: 294px;" />
+<pre>
+<strong>Input:</strong> points = [[1,1],[2,2],[3,3]]
+<strong>Output:</strong> 3
+</pre>
 
-**Input:** \[\[1,1\],\[2,2\],\[3,3\]\]  
-**Output:** 3  
-**Explanation:**
-```
-^
-|
-|        o
-|     o
-|  o  
-+------------->
-0  1  2  3  4
-```
+<p><strong class="example">Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/02/25/plane2.jpg" style="width: 300px; height: 294px;" />
+<pre>
+<strong>Input:</strong> points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
+<strong>Output:</strong> 4
+</pre>
 
-**Example 2:**
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-**Input:** \[\[1,1\],\[3,2\],\[5,3\],\[4,1\],\[2,3\],\[1,4\]\]  
-**Output:** 4  
-**Explanation:**
-```
-^
-|
-|  o
-|     o        o
-|        o
-|  o        o
-+------------------->
-0  1  2  3  4  5  6
-```
+<ul>
+	<li><code>1 &lt;= points.length &lt;= 300</code></li>
+	<li><code>points[i].length == 2</code></li>
+	<li><code>-10<sup>4</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
+	<li>All the <code>points</code> are <strong>unique</strong>.</li>
+</ul>
+
+
+**Companies**:
+[Oracle](https://leetcode.com/company/oracle), [Cisco](https://leetcode.com/company/cisco), [Amazon](https://leetcode.com/company/amazon), [Apple](https://leetcode.com/company/apple), [Sprinklr](https://leetcode.com/company/sprinklr), [tcs](https://leetcode.com/company/tcs), [LinkedIn](https://leetcode.com/company/linkedin), [Google](https://leetcode.com/company/google), [Microsoft](https://leetcode.com/company/microsoft), [MakeMyTrip](https://leetcode.com/company/makemytrip), [Adobe](https://leetcode.com/company/adobe), [Uber](https://leetcode.com/company/uber), [Bloomberg](https://leetcode.com/company/bloomberg), [Twitter](https://leetcode.com/company/twitter)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array), [Hash Table](https://leetcode.com/tag/hash-table), [Math](https://leetcode.com/tag/math), [Geometry](https://leetcode.com/tag/geometry)
+
+**Similar Questions**:
+* [Line Reflection (Medium)](https://leetcode.com/problems/line-reflection)
+* [Minimum Number of Lines to Cover Points (Medium)](https://leetcode.com/problems/minimum-number-of-lines-to-cover-points)
+* [Minimum Lines to Represent a Line Chart (Medium)](https://leetcode.com/problems/minimum-lines-to-represent-a-line-chart)
 
 ## Solution 1. 
 
@@ -122,6 +128,33 @@ public:
             int cnt = 0;
             for (auto i : line) cnt += ps[i].second;
             ans = max(ans, cnt);
+        }
+        return ans;
+    }
+};
+```
+
+## Solution 2.
+
+```cpp
+// OJ: https://leetcode.com/problems/max-points-on-a-line
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N)
+class Solution {
+public:
+    int maxPoints(vector<vector<int>>& A) {
+        int N = A.size(), ans = 0;
+        for (int i = 0; i < N; ++i) { // Use A[i] as point1
+            unordered_map<double, int> m;
+            int mx = 0;
+            for (int j = i + 1; j < N; ++j) { // Use A[j] as point2
+                int x1 = A[i][0], y1 = A[i][1];
+                int x2 = A[j][0], y2 = A[j][1];
+                if ((x1 > x2) || (x1 == x2 && y1 < y2)) swap(x1, x2), swap(y1, y2); // make sure these two points are ordered
+                mx = max(mx, ++m[atan2(x2 - x1, y2 - y1)]); // cout the frequency of angles
+            }
+            ans = max(ans, mx + 1);
         }
         return ans;
     }
