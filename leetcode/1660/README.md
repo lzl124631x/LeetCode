@@ -74,7 +74,7 @@ class Solution {
 public:
     TreeNode* correctBinaryTree(TreeNode* root) {
         queue<TreeNode*> q{{root}};
-        unordered_map<TreeNode*, TreeNode*> parent{{root, nullptr}};
+        unordered_map<TreeNode*, TreeNode*> parent;
         while (q.size()) {
             int cnt = q.size();
             while (cnt--) {
