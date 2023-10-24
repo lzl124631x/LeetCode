@@ -2092,6 +2092,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2513 | Minimize the Maximum of Two Arrays | Medium | [Solution](leetcode/2513)
 2515 | Shortest Distance to Target String in a Circular Array | Easy | [Solution](leetcode/2515)
 2516 | Take K of Each Character From Left and Right | Medium | [Solution](leetcode/2516)
+2517 | Maximum Tastiness of Candy Basket | Medium | [Solution](leetcode/2517)
 2520 | Count the Digits That Divide a Number | Easy | [Solution](leetcode/2520)
 2522 | Partition String Into Substrings With Values at Most K | Medium | [Solution](leetcode/2522)
 2523 | Closest Prime Numbers in Range | Medium | [Solution](leetcode/2523)
@@ -2280,10 +2281,12 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2899 | Last Visited Integers | Easy | [Solution](leetcode/2899)
 2900 | Longest Unequal Adjacent Groups Subsequence I | Medium | [Solution](leetcode/2900)
 2901 | Longest Unequal Adjacent Groups Subsequence II | Medium | [Solution](leetcode/2901)
+2902 | Count of Sub-Multisets With Bounded Sum | Hard | [Solution](leetcode/2902)
 2903 | Find Indices With Index and Value Difference I | Easy | [Solution](leetcode/2903)
 2904 | Shortest and Lexicographically Smallest Beautiful String | Medium | [Solution](leetcode/2904)
 2905 | Find Indices With Index and Value Difference II | Medium | [Solution](leetcode/2905)
 2906 | Construct Product Matrix | Medium | [Solution](leetcode/2906)
+2908 | Minimum Sum of Mountain Triplets I | Easy | [Solution](leetcode/2908)
 
 
 # FAQ
