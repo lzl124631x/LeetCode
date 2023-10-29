@@ -1917,6 +1917,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2256 | Minimum Average Difference | Medium | [Solution](leetcode/2256)
 2259 | Remove Digit From Number to Maximize Result | Easy | [Solution](leetcode/2259)
 2260 | Minimum Consecutive Cards to Pick Up | Medium | [Solution](leetcode/2260)
+2261 | K Divisible Elements Subarrays | Medium | [Solution](leetcode/2261)
 2264 | Largest 3-Same-Digit Number in String | Easy | [Solution](leetcode/2264)
 2265 | Count Nodes Equal to Average of Subtree | Medium | [Solution](leetcode/2265)
 2266 | Count Number of Texts | Medium | [Solution](leetcode/2266)
@@ -2185,6 +2186,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2673 | Make Costs of Paths Equal in a Binary Tree | Medium | [Solution](leetcode/2673)
 2678 | Number of Senior Citizens | Easy | [Solution](leetcode/2678)
 2680 | ? | ? | [Solution](leetcode/2680)
+2681 | Power of Heroes | Hard | [Solution](leetcode/2681)
 2682 | Find the Losers of the Circular Game | Easy | [Solution](leetcode/2682)
 2683 | Neighboring Bitwise XOR | Medium | [Solution](leetcode/2683)
 2685 | Count the Number of Complete Components | Medium | [Solution](leetcode/2685)
@@ -2287,6 +2289,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2905 | Find Indices With Index and Value Difference II | Medium | [Solution](leetcode/2905)
 2906 | Construct Product Matrix | Medium | [Solution](leetcode/2906)
 2908 | Minimum Sum of Mountain Triplets I | Easy | [Solution](leetcode/2908)
+2917 | Find the K-or of an Array | Easy | [Solution](leetcode/2917)
+2918 | Minimum Equal Sum of Two Arrays After Replacing Zeros | Medium | [Solution](leetcode/2918)
+2919 | Minimum Increment Operations to Make Array Beautiful | Medium | [Solution](leetcode/2919)
 
 
 # FAQ
