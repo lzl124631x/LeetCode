@@ -103,3 +103,7 @@ public:
     }
 };
 ```
+
+## Discussion
+
+https://leetcode.com/problems/minimum-increment-operations-to-make-array-beautiful/solutions/4220728/c-iterative-dp-o-n-time-o-1-space/
