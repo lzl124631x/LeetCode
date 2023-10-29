@@ -87,8 +87,8 @@ dp[i+1] = max(k - n, 0)       // # of operations needed on A[i]
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-increment-operations-to-make-array-beautiful
 // Author: github.com/lzl124631x
-// Time: O()
-// Space: O()
+// Time: O(N)
+// Space: O(1)
 class Solution {
 public:
     long long minIncrementOperations(vector<int>& A, int k) {
