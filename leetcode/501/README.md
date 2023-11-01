@@ -77,6 +77,7 @@ public:
 ## Solution 2. Inorder Traversal
 
 If we traverse the tree in in-order, we see the numbers in ascending order.
+
 ```cpp
 // OJ: https://leetcode.com/problems/find-mode-in-binary-search-tree
 // Author: github.com/lzl124631x
