@@ -1,17 +1,19 @@
-# [515. Find Largest Value in Each Tree Row (Medium)](https://leetcode.com/problems/find-largest-value-in-each-tree-row/)
+# [515. Find Largest Value in Each Tree Row (Medium)](https://leetcode.com/problems/find-largest-value-in-each-tree-row)
 
 <p>Given the <code>root</code> of a binary tree, return <em>an array of the largest value in each row</em> of the tree <strong>(0-indexed)</strong>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/08/21/largest_e1.jpg" style="width: 300px; height: 172px;">
-<pre><strong>Input:</strong> root = [1,3,2,5,3,null,9]
+<p><strong class="example">Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/08/21/largest_e1.jpg" style="width: 300px; height: 172px;" />
+<pre>
+<strong>Input:</strong> root = [1,3,2,5,3,null,9]
 <strong>Output:</strong> [1,3,9]
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> root = [1,2,3]
+<pre>
+<strong>Input:</strong> root = [1,2,3]
 <strong>Output:</strong> [1,3]
 </pre>
 
@@ -24,11 +26,11 @@
 </ul>
 
 
-**Companies**:  
-[Facebook](https://leetcode.com/company/facebook), [Samsung](https://leetcode.com/company/samsung)
+**Companies**:
+[Facebook](https://leetcode.com/company/facebook), [LinkedIn](https://leetcode.com/company/linkedin)
 
 **Related Topics**:  
-[Tree](https://leetcode.com/tag/tree/), [Depth-First Search](https://leetcode.com/tag/depth-first-search/), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search/), [Binary Tree](https://leetcode.com/tag/binary-tree/)
+[Tree](https://leetcode.com/tag/tree), [Depth-First Search](https://leetcode.com/tag/depth-first-search), [Breadth-First Search](https://leetcode.com/tag/breadth-first-search), [Binary Tree](https://leetcode.com/tag/binary-tree)
 
 ## Solution 1. BFS
 
@@ -69,14 +71,13 @@ public:
 class Solution {
 public:
     vector<int> largestValues(TreeNode* root) {
-        if (!root) return {};
         vector<int> ans;
-        function<void(TreeNode*, int)> dfs = [&](TreeNode *root, int d) {
-            if (!root) return;
+        function<void(TreeNode*, int)> dfs = [&](TreeNode *node, int d) {
+            if (!node) return;
             if (d == ans.size()) ans.push_back(INT_MIN);
-            ans[d] = max(ans[d], root->val);
-            dfs(root->left, d + 1);
-            dfs(root->right, d + 1);
+            ans[d] = max(ans[d], node->val);
+            dfs(node->left, d + 1);
+            dfs(node->right, d + 1);
         };
         dfs(root, 0);
         return ans;
