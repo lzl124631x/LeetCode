@@ -1,4 +1,4 @@
-# [1057. Campus Bikes (Medium)](https://leetcode.com/problems/campus-bikes/)
+# [1057. Campus Bikes (Medium)](https://leetcode.com/problems/campus-bikes)
 
 <p>On a campus represented on the X-Y plane, there are <code>n</code> workers and <code>m</code> bikes, with <code>n &lt;= m</code>.</p>
 
@@ -13,16 +13,18 @@
 <p>The <strong>Manhattan distance</strong> between two points <code>p1</code> and <code>p2</code> is <code>Manhattan(p1, p2) = |p1.x - p2.x| + |p1.y - p2.y|</code>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/03/06/1261_example_1_v2.png" style="width: 376px; height: 366px;">
-<pre><strong>Input:</strong> workers = [[0,0],[2,1]], bikes = [[1,2],[3,3]]
+<p><strong class="example">Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2019/03/06/1261_example_1_v2.png" style="width: 376px; height: 366px;" />
+<pre>
+<strong>Input:</strong> workers = [[0,0],[2,1]], bikes = [[1,2],[3,3]]
 <strong>Output:</strong> [1,0]
 <strong>Explanation:</strong> Worker 1 grabs Bike 0 as they are closest (without ties), and Worker 0 is assigned Bike 1. So the output is [1, 0].
 </pre>
 
-<p><strong>Example 2:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/03/06/1261_example_2_v2.png" style="width: 376px; height: 366px;">
-<pre><strong>Input:</strong> workers = [[0,0],[1,1],[2,0]], bikes = [[1,0],[2,2],[2,1]]
+<p><strong class="example">Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2019/03/06/1261_example_2_v2.png" style="width: 376px; height: 366px;" />
+<pre>
+<strong>Input:</strong> workers = [[0,0],[1,1],[2,0]], bikes = [[1,0],[2,2],[2,1]]
 <strong>Output:</strong> [0,2,1]
 <strong>Explanation:</strong> Worker 0 grabs Bike 0 at first. Worker 1 and Worker 2 share the same distance to Bike 2, thus Worker 1 is assigned to Bike 2, and Worker 2 will take Bike 1. So the output is [0,2,1].
 </pre>
@@ -41,14 +43,20 @@
 </ul>
 
 
-**Companies**:  
+**Companies**:
 [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Greedy](https://leetcode.com/tag/greedy/), [Sorting](https://leetcode.com/tag/sorting/)
+[Array](https://leetcode.com/tag/array), [Greedy](https://leetcode.com/tag/greedy), [Sorting](https://leetcode.com/tag/sorting)
 
 **Similar Questions**:
-* [Campus Bikes II (Medium)](https://leetcode.com/problems/campus-bikes-ii/)
+* [Campus Bikes II (Medium)](https://leetcode.com/problems/campus-bikes-ii)
+
+**Hints**:
+* <p>Sort the elements by distance. In case of a tie, sort them by the index of the worker. After that, if there are still ties, sort them by the index of the bike.</p>
+
+<p>Can you do this in less than O(nlogn) time, where n is the total number of pairs between workers and bikes?</p>
+* Loop the sorted elements and match each pair of worker and bike if the given worker and bike where not used.
 
 ## Solution 1. Sorting
 
@@ -102,7 +110,7 @@ So, we can put the pairs in buckets where each bucket is the distance. Since we 
 ```cpp
 // OJ: https://leetcode.com/problems/campus-bikes/
 // Author: github.com/lzl124631x
-// Time: O(NM + K) where `K` is the maximum Manhattan distance. It's 1998 in this problem
+// Time: O(NM + K) where `K` is the maximum Manhattan distance, which is 1998 in this problem
 // Space: O(NM + K)
 class Solution {
 public:
@@ -145,7 +153,7 @@ We maintain a priority queue of `N` elements each of which is a current bike ind
 ```cpp
 // OJ: https://leetcode.com/problems/campus-bikes/
 // Author: github.com/lzl124631x
-// Time: O(MNlogN)
+// Time: O(NMlogM + MNlogN)
 // Space: O(MN)
 class Solution {
 public:
@@ -161,7 +169,7 @@ public:
             }
             sort(begin(v[i]), end(v[i]));
         }
-        priority_queue<array<int, 4>, vector<array<int, 4>>, greater<>> pq;
+        priority_queue<array<int, 4>, vector<array<int, 4>>, greater<>> pq; // distance, workerIndex, bikeIndex, cursorIndex pointing to the next bikeIndex with greater or same distance to the current worker.
         for (int i = 0; i < N; ++i) pq.push({ v[i][0][0], i, v[i][0][1], 0 });
         vector<bool> used(M);
         vector<int> ans(N, -1);
