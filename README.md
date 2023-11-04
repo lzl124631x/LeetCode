@@ -2292,6 +2292,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2906 | Construct Product Matrix | Medium | [Solution](leetcode/2906)
 2908 | Minimum Sum of Mountain Triplets I | Easy | [Solution](leetcode/2908)
 2909 | Minimum Sum of Mountain Triplets II | Medium | [Solution](leetcode/2909)
+2911 | Minimum Changes to Make K Semi-palindromes | Hard | [Solution](leetcode/2911)
 2913 | Subarrays Distinct Element Sum of Squares I | Easy | [Solution](leetcode/2913)
 2917 | Find the K-or of an Array | Easy | [Solution](leetcode/2917)
 2918 | Minimum Equal Sum of Two Arrays After Replacing Zeros | Medium | [Solution](leetcode/2918)
