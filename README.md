@@ -1283,7 +1283,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1437 | Check If All 1's Are at Least Length K Places Away | Medium | [Solution](leetcode/1437)
 1438 | Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit | Medium | [Solution](leetcode/1438)
 1439 | Find the Kth Smallest Sum of a Matrix With Sorted Rows | Hard | [Solution](leetcode/1439)
-1441 | ? | ? | [Solution](leetcode/1441)
+1441 | Build an Array With Stack Operations | Medium | [Solution](leetcode/1441)
 1442 | Count Triplets That Can Form Two Arrays of Equal XOR | Medium | [Solution](leetcode/1442)
 1443 | Minimum Time to Collect All Apples in a Tree | Medium | [Solution](leetcode/1443)
 1444 | Number of Ways of Cutting a Pizza | Hard | [Solution](leetcode/1444)
@@ -1985,6 +1985,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2355 | Maximum Number of Books You Can Take | Hard | [Solution](leetcode/2355)
 2357 | Make Array Zero by Subtracting Equal Amounts | Easy | [Solution](leetcode/2357)
 2358 | Maximum Number of Groups Entering a Competition | Medium | [Solution](leetcode/2358)
+2359 | Find Closest Node to Given Two Nodes | Medium | [Solution](leetcode/2359)
 2360 | Longest Cycle in a Graph | Hard | [Solution](leetcode/2360)
 2361 | Minimum Costs Using the Train Line | Hard | [Solution](leetcode/2361)
 2363 | Merge Similar Items | Easy | [Solution](leetcode/2363)
@@ -2284,6 +2285,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2899 | Last Visited Integers | Easy | [Solution](leetcode/2899)
 2900 | Longest Unequal Adjacent Groups Subsequence I | Medium | [Solution](leetcode/2900)
 2901 | Longest Unequal Adjacent Groups Subsequence II | Medium | [Solution](leetcode/2901)
+2902 | Count of Sub-Multisets With Bounded Sum | Hard | [Solution](leetcode/2902)
 2903 | Find Indices With Index and Value Difference I | Easy | [Solution](leetcode/2903)
 2904 | Shortest and Lexicographically Smallest Beautiful String | Medium | [Solution](leetcode/2904)
 2905 | Find Indices With Index and Value Difference II | Medium | [Solution](leetcode/2905)
@@ -2294,6 +2296,9 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2917 | Find the K-or of an Array | Easy | [Solution](leetcode/2917)
 2918 | Minimum Equal Sum of Two Arrays After Replacing Zeros | Medium | [Solution](leetcode/2918)
 2919 | Minimum Increment Operations to Make Array Beautiful | Medium | [Solution](leetcode/2919)
+2923 | Find Champion I | Easy | [Solution](leetcode/2923)
+2924 | Find Champion II | Medium | [Solution](leetcode/2924)
+2925 | Maximum Score After Applying Operations on a Tree | Medium | [Solution](leetcode/2925)
 
 
 # FAQ
