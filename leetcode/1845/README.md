@@ -1,4 +1,4 @@
-# [1845. Seat Reservation Manager (Medium)](https://leetcode.com/problems/seat-reservation-manager/)
+# [1845. Seat Reservation Manager (Medium)](https://leetcode.com/problems/seat-reservation-manager)
 
 <p>Design a system that manages the reservation state of <code>n</code> seats that are numbered from <code>1</code> to <code>n</code>.</p>
 
@@ -11,10 +11,11 @@
 </ul>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input</strong>
-["SeatManager", "reserve", "reserve", "unreserve", "reserve", "reserve", "reserve", "reserve", "unreserve"]
+<pre>
+<strong>Input</strong>
+[&quot;SeatManager&quot;, &quot;reserve&quot;, &quot;reserve&quot;, &quot;unreserve&quot;, &quot;reserve&quot;, &quot;reserve&quot;, &quot;reserve&quot;, &quot;reserve&quot;, &quot;unreserve&quot;]
 [[5], [], [], [2], [], [], [], [], [5]]
 <strong>Output</strong>
 [null, 1, 2, null, 2, 3, 4, 5, null]
@@ -43,16 +44,49 @@ seatManager.unreserve(5); // Unreserve seat 5, so now the available seats are [5
 </ul>
 
 
-**Companies**:  
+**Companies**:
 [Dropbox](https://leetcode.com/company/dropbox)
 
 **Related Topics**:  
-[Heap](https://leetcode.com/tag/heap/), [Design](https://leetcode.com/tag/design/)
+[Design](https://leetcode.com/tag/design), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue)
 
 **Similar Questions**:
-* [Design Phone Directory (Medium)](https://leetcode.com/problems/design-phone-directory/)
+* [Design Phone Directory (Medium)](https://leetcode.com/problems/design-phone-directory)
+* [Design a Number Container System (Medium)](https://leetcode.com/problems/design-a-number-container-system)
+
+**Hints**:
+* You need a data structure that maintains the states of the seats. This data structure should also allow you to get the first available seat and flip the state of a seat in a reasonable time.
+* You can let the data structure contain the available seats. Then you want to be able to get the lowest element and erase an element, in a reasonable time.
+* Ordered sets support these operations.
 
 ## Solution 1.
+
+```cpp
+// OJ: https://leetcode.com/problems/seat-reservation-manager
+// Author: github.com/lzl124631x
+// Time:
+//      SeatManager: O(NlogN)
+//      reserve: O(1)
+//      unreserve: O(logN)
+// Space: O(N)
+class SeatManager {
+    set<int> s;
+public:
+    SeatManager(int n) {
+        for (int i = 1; i <= n; ++i) s.insert(i);
+    }
+    int reserve() {
+        int x = *s.begin();
+        s.erase(s.begin());
+        return x;
+    }
+    void unreserve(int seatNumber) {
+        s.insert(seatNumber);
+    }
+};
+```
+
+## Solution 2.
 
 ```cpp
 // OJ: https://leetcode.com/problems/seat-reservation-manager/
