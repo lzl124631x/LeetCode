@@ -2301,6 +2301,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2923 | Find Champion I | Easy | [Solution](leetcode/2923)
 2924 | Find Champion II | Medium | [Solution](leetcode/2924)
 2925 | Maximum Score After Applying Operations on a Tree | Medium | [Solution](leetcode/2925)
+2926 | Maximum Balanced Subsequence Sum | Hard | [Solution](leetcode/2926)
 
 
 # FAQ
