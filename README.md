@@ -2287,6 +2287,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2899 | Last Visited Integers | Easy | [Solution](leetcode/2899)
 2900 | Longest Unequal Adjacent Groups Subsequence I | Medium | [Solution](leetcode/2900)
 2901 | Longest Unequal Adjacent Groups Subsequence II | Medium | [Solution](leetcode/2901)
+2902 | Count of Sub-Multisets With Bounded Sum | Hard | [Solution](leetcode/2902)
 2903 | Find Indices With Index and Value Difference I | Easy | [Solution](leetcode/2903)
 2904 | Shortest and Lexicographically Smallest Beautiful String | Medium | [Solution](leetcode/2904)
 2905 | Find Indices With Index and Value Difference II | Medium | [Solution](leetcode/2905)
@@ -2298,6 +2299,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2917 | Find the K-or of an Array | Easy | [Solution](leetcode/2917)
 2918 | Minimum Equal Sum of Two Arrays After Replacing Zeros | Medium | [Solution](leetcode/2918)
 2919 | Minimum Increment Operations to Make Array Beautiful | Medium | [Solution](leetcode/2919)
+2923 | Find Champion I | Easy | [Solution](leetcode/2923)
+2924 | Find Champion II | Medium | [Solution](leetcode/2924)
+2925 | Maximum Score After Applying Operations on a Tree | Medium | [Solution](leetcode/2925)
+2926 | Maximum Balanced Subsequence Sum | Hard | [Solution](leetcode/2926)
 
 
 # FAQ

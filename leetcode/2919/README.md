@@ -64,6 +64,12 @@ Hence, the answer is 0.
 </ul>
 
 
+**Companies**:
+[Google](https://leetcode.com/company/google)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming)
+
 **Hints**:
 * There needs to be at least one value among <code>3</code> consecutive values in the array that is greater than or equal to <code>k</code>.
 * The problem can be solved using dynamic programming.

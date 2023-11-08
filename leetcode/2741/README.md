@@ -37,7 +37,22 @@
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation), [Bitmask](https://leetcode.com/tag/bitmask)
 
-## Solution 1.
+**Hints**:
+* Can we solve this problem using DP with bit masking?
+* You just need two states in DP which are last_ind in the permutation and the mask of numbers already used.
+
+## Solution 1. Bitmask DP (Top-down DP)
+
+The brute force way is to use DFS to traverse all the `14!` permutations. But there are lots of repeated compuations. For example, there are multiple ways, say `k` ways, to reach a state where we've used the first 5 numbers and the last number was `A[i]`, then the computations for the rest `N-5` numbers will repeat `k` times. We can resolve this via memoization, i.e. DP.
+
+Let `dp[i][used]` be the number of ways forming a good permuation using the numbers masked via `used` and the last number being `A[i]`. The answer is `SUM( dp[i][1 << i] | 0 <= i < N)`.
+
+For `dp[i][used]`, we have:
+
+```
+dp[i][used] = SUM( dp[j][1 << j | used] )
+            where j is unused and A[j] % A[i] == 0 || A[i] % A[j] == 0
+```
 
 ```cpp
 // OJ: https://leetcode.com/problems/special-permutations
@@ -50,16 +65,16 @@ class Solution {
     }
 public:
     int specialPerm(vector<int>& A) {
-        long N = A.size(), mod = 1e9 + 7, ans = 0;
+        long N = A.size(), mod = 1e9 + 7, ans = 0, all = (1 << N) - 1;
         unordered_map<int, long> m;
         function<long(int, int)> dp = [&](int i, int used) {
+            if (used == all) return 1L;
             long key = getKey(i, used);
             if (m.count(key)) return m[key];
-            if (__builtin_popcount(used) == N) return 1L;
             long ans = 0;
             for (int j = 0; j < N; ++j) {
                 if ((used >> j & 1) || (A[i] % A[j] && A[j] % A[i])) continue;
-                ans = (ans + dp(j, used | (1 << j)));
+                ans = (ans + dp(j, used | (1 << j))) % mod;
             }
             return m[key] = ans;
         };
