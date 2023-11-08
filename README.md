@@ -2265,6 +2265,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2836 | Maximize Value of Function in a Ball Passing Game | Hard | [Solution](leetcode/2836)
 2839 | Check if Strings Can be Made Equal With Operations I | Easy | [Solution](leetcode/2839)
 2841 | Maximum Sum of Almost Unique Subarray | Medium | [Solution](leetcode/2841)
+2842 | Count K-Subsequences of a String With Maximum Beauty | Hard | [Solution](leetcode/2842)
 2843 | Count Symmetric Integers | Easy | [Solution](leetcode/2843)
 2844 | Minimum Operations to Make a Special Number | Medium | [Solution](leetcode/2844)
 2848 | Points That Intersect With Cars | Easy | [Solution](leetcode/2848)
