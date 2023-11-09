@@ -346,6 +346,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 348 | Design Tic-Tac-Toe | Medium | [Solution](leetcode/348)
 349 | Intersection of Two Arrays | Easy | [Solution](leetcode/349)
 350 | Intersection of Two Arrays II | Easy | [Solution](leetcode/350)
+351 | Android Unlock Patterns | Medium | [Solution](leetcode/351)
 352 | ? | ? | [Solution](leetcode/352)
 354 | Russian Doll Envelopes | Hard | [Solution](leetcode/354)
 355 | Design Twitter | Medium | [Solution](leetcode/355)
