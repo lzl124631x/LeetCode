@@ -2241,6 +2241,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2781 | Length of the Longest Valid Substring | Hard | [Solution](leetcode/2781)
 2784 | Check if Array is Good | Easy | [Solution](leetcode/2784)
 2785 | Sort Vowels in a String | Medium | [Solution](leetcode/2785)
+2786 | Visit Array Positions to Maximize Score | Medium | [Solution](leetcode/2786)
 2788 | Split Strings by Separator | Easy | [Solution](leetcode/2788)
 2789 | Largest Element in an Array after Merge Operations | Medium | [Solution](leetcode/2789)
 2798 | Number of Employees Who Met the Target | Easy | [Solution](leetcode/2798)
