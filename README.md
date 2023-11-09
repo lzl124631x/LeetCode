@@ -2219,6 +2219,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2743 | Count Substrings Without Repeating Character | Medium | [Solution](leetcode/2743)
 2744 | Find Maximum Number of String Pairs | Easy | [Solution](leetcode/2744)
 2745 | Construct the Longest New String | Medium | [Solution](leetcode/2745)
+2746 | Decremental String Concatenation | Medium | [Solution](leetcode/2746)
 2747 | Count Zero Request Servers | Medium | [Solution](leetcode/2747)
 2748 | Number of Beautiful Pairs | Easy | [Solution](leetcode/2748)
 2749 | Minimum Operations to Make the Integer Zero | Medium | [Solution](leetcode/2749)
