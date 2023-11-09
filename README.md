@@ -247,6 +247,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 242 | Valid Anagram | Easy | [Solution](leetcode/242)
 243 | Shortest Word Distance | Easy | [Solution](leetcode/243)
 244 | Shortest Word Distance II | Medium | [Solution](leetcode/244)
+245 | Shortest Word Distance III | Medium | [Solution](leetcode/245)
 246 | Strobogrammatic Number | Easy | [Solution](leetcode/246)
 247 | Strobogrammatic Number II | Medium | [Solution](leetcode/247)
 249 | Group Shifted Strings | Medium | [Solution](leetcode/249)
