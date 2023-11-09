@@ -1523,6 +1523,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1751 | Maximum Number of Events That Can Be Attended II | Hard | [Solution](leetcode/1751)
 1754 | Largest Merge Of Two Strings | Medium | [Solution](leetcode/1754)
 1755 | Closest Subsequence Sum | Hard | [Solution](leetcode/1755)
+1759 | Count Number of Homogenous Substrings | Medium | [Solution](leetcode/1759)
 1762 | Buildings With an Ocean View | Medium | [Solution](leetcode/1762)
 1763 | Longest Nice Substring | Easy | [Solution](leetcode/1763)
 1764 | Form Array by Concatenating Subarrays of Another Array | Medium | [Solution](leetcode/1764)
