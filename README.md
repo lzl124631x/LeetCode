@@ -1126,6 +1126,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1233 | Remove Sub-Folders from the Filesystem | Medium | [Solution](leetcode/1233)
 1234 | Replace the Substring for Balanced String | Medium | [Solution](leetcode/1234)
 1235 | Maximum Profit in Job Scheduling | Hard | [Solution](leetcode/1235)
+1236 | Web Crawler | Medium | [Solution](leetcode/1236)
 1237 | Find Positive Integer Solution for a Given Equation | Easy | [Solution](leetcode/1237)
 1238 | Circular Permutation in Binary Representation | Medium | [Solution](leetcode/1238)
 1239 | Maximum Length of a Concatenated String with Unique Characters | Medium | [Solution](leetcode/1239)
