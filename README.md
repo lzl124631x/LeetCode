@@ -394,7 +394,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 398 | ? | ? | [Solution](leetcode/398)
 399 | Evaluate Division | Medium | [Solution](leetcode/399)
 400 | Nth Digit | Medium | [Solution](leetcode/400)
-401 | ? | ? | [Solution](leetcode/401)
+401 | Binary Watch | Easy | [Solution](leetcode/401)
 402 | Remove K Digits | Medium | [Solution](leetcode/402)
 403 | Frog Jump | Hard | [Solution](leetcode/403)
 404 | Sum of Left Leaves | Easy | [Solution](leetcode/404)
