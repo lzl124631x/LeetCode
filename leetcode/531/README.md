@@ -1,0 +1,71 @@
+# [531. Lonely Pixel I (Medium)](https://leetcode.com/problems/lonely-pixel-i)
+
+<p>Given an <code>m x n</code> <code>picture</code> consisting of black <code>&#39;B&#39;</code> and white <code>&#39;W&#39;</code> pixels, return <em>the number of <b>black</b> lonely pixels</em>.</p>
+
+<p>A black lonely pixel is a character <code>&#39;B&#39;</code> that located at a specific position where the same row and same column don&#39;t have <strong>any other</strong> black pixels.</p>
+
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/11/11/pixel1.jpg" style="width: 242px; height: 242px;" />
+<pre>
+<strong>Input:</strong> picture = [[&quot;W&quot;,&quot;W&quot;,&quot;B&quot;],[&quot;W&quot;,&quot;B&quot;,&quot;W&quot;],[&quot;B&quot;,&quot;W&quot;,&quot;W&quot;]]
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> All the three &#39;B&#39;s are black lonely pixels.
+</pre>
+
+<p><strong class="example">Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/11/11/pixel2.jpg" style="width: 242px; height: 242px;" />
+<pre>
+<strong>Input:</strong> picture = [[&quot;B&quot;,&quot;B&quot;,&quot;B&quot;],[&quot;B&quot;,&quot;B&quot;,&quot;W&quot;],[&quot;B&quot;,&quot;B&quot;,&quot;B&quot;]]
+<strong>Output:</strong> 0
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>m ==&nbsp;picture.length</code></li>
+	<li><code>n ==&nbsp;picture[i].length</code></li>
+	<li><code>1 &lt;= m, n &lt;= 500</code></li>
+	<li><code>picture[i][j]</code> is <code>&#39;W&#39;</code> or <code>&#39;B&#39;</code>.</li>
+</ul>
+
+
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google)
+
+**Related Topics**:  
+[Array](https://leetcode.com/tag/array), [Hash Table](https://leetcode.com/tag/hash-table), [Matrix](https://leetcode.com/tag/matrix)
+
+**Similar Questions**:
+* [Lonely Pixel II (Medium)](https://leetcode.com/problems/lonely-pixel-ii)
+
+## Solution 1.
+
+```cpp
+// OJ: https://leetcode.com/problems/lonely-pixel-i
+// Author: github.com/lzl124631x
+// Time: O(MN)
+// Space: O(M + N)
+class Solution {
+public:
+    int findLonelyPixel(vector<vector<char>>& A) {
+        int M = A.size(), N = A[0].size(), ans = 0;
+        vector<int> row(N), col(N);
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (A[i][j] == 'W') continue;
+                row[i]++;
+                col[j]++;
+            }
+        }
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (A[i][j] == 'W') continue;
+                if (row[i] == 1 && col[j] == 1) ++ans;
+            }
+        }
+        return ans;
+    }
+};
+```

@@ -517,6 +517,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 528 | Random Pick with Weight | Medium | [Solution](leetcode/528)
 529 | Minesweeper | Medium | [Solution](leetcode/529)
 530 | Minimum Absolute Difference in BST | Easy | [Solution](leetcode/530)
+531 | Lonely Pixel I | Medium | [Solution](leetcode/531)
 532 | K-diff Pairs in an Array | Medium | [Solution](leetcode/532)
 535 | Encode and Decode TinyURL | Medium | [Solution](leetcode/535)
 536 | ? | ? | [Solution](leetcode/536)
