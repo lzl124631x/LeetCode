@@ -68,33 +68,24 @@ class Solution {
 public:
     vector<int> restoreArray(vector<vector<int>>& A) {
         int N = A.size() + 1, first = -1;
-        unordered_map<int, int> degree;
         unordered_map<int, vector<int>> G;
-        for (auto &p : A) { // count degree and build graph
+        for (auto &p : A) { // build graph
             int u = p[0], v = p[1];
-            degree[u]++;
-            degree[v]++;
             G[u].push_back(v);
             G[v].push_back(u);
         }
-        for (auto &[n, d] : degree) { // find an edge node
-            if (d == 1) {
-                first = n;
+        vector<int> ans;
+        for (auto &[n, v] : G) { // find an edge node
+            if (v.size() == 1) {
+                ans.push_back(n);
+                ans.push_back(v[0]);
                 break;
             }
         }
-        vector<int> ans;
-        int u = first, prev = INT_MIN;
-        while (true) { // keep finding the next node
-            ans.push_back(u);
-            int next = INT_MIN;
-            for (int v : G[u]) {
-                if (v == prev) continue;
-                next = v;
-            }
-            if (next == INT_MIN) break;
-            prev = u;
-            u = next;
+        while (ans.size() < N) { // keep finding the next node
+            int n = ans.back(), prev = ans[ans.size() - 2];
+            if (G[n][0] != prev) ans.push_back(G[n][0]);
+            else ans.push_back(G[n][1]);
         }
         return ans;
     }
