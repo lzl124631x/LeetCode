@@ -1518,6 +1518,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1738 | Find Kth Largest XOR Coordinate Value | Medium | [Solution](leetcode/1738)
 1739 | Building Boxes | Hard | [Solution](leetcode/1739)
 1740 | Find Distance in a Binary Tree | Medium | [Solution](leetcode/1740)
+1743 | Restore the Array From Adjacent Pairs | Medium | [Solution](leetcode/1743)
 1744 | Can You Eat Your Favorite Candy on Your Favorite Day? | Medium | [Solution](leetcode/1744)
 1745 | Palindrome Partitioning IV | Hard | [Solution](leetcode/1745)
 1748 | Sum of Unique Elements | Easy | [Solution](leetcode/1748)
