@@ -93,7 +93,7 @@ class Solution {
     int dfs(TreeNode *root, TreeNode *p, TreeNode *q) { // returns the number of matched nodes in this subtree
         if (!root || ans) return 0; // if we've already found the LCA, we can skip all subsequent DFS.
         int left = dfs(root->left, p, q), right = dfs(root->right, p, q), cnt = left + right + (root == p || root == q);
-        if (cnt == 2 && (left == 1 || right == 1)) ans = root; // If this subtree has two matched nodes and either the left or right subtree only has exactly one matched node, this is the LCA.
+        if (cnt == 2 && !ans) ans = root; // The first node that has both nodes as chlid or self is the LCA.
         return cnt;
     }
 public:
