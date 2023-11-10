@@ -1935,6 +1935,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2274 | Maximum Consecutive Floors Without Special Floors | Medium | [Solution](leetcode/2274)
 2275 | Largest Combination With Bitwise AND Greater Than Zero | Medium | [Solution](leetcode/2275)
 2276 | Count Integers in Intervals | Hard | [Solution](leetcode/2276)
+2277 | Closest Node to Path in Tree | Hard | [Solution](leetcode/2277)
 2278 | Percentage of Letter in String | Easy | [Solution](leetcode/2278)
 2279 | Maximum Bags With Full Capacity of Rocks | Medium | [Solution](leetcode/2279)
 2280 | Minimum Lines to Represent a Line Chart | Medium | [Solution](leetcode/2280)
