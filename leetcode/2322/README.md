@@ -55,6 +55,11 @@ We cannot obtain a smaller score than 0.
 
 ## Solution 1.
 
+* BFS from all leaf nodes inward. Node `a` is a child of node `b` if `a` is in the path from `b` to a leaf node during the BFS.
+* Use bitmask to track the parent-child relationship. `children[u]` is a bitmask of all its children.
+* `treeXor[u]` is the XOR value of all the nodes in the subtree rooted at `u`.
+* Try each pairs of edge `(a,b)` and edge `(c,d)`. Based on the parent-child relationships between these 4 nodes, calculate the XOR values of the 3 parts.
+
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-score-after-removals-on-a-tree
 // Author: github.com/lzl124631x
