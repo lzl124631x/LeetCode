@@ -53,7 +53,7 @@ The total price sum of all trips is 1. It can be proven, that 1 is the minimum a
 
 
 **Companies**:
-[Bloomberg](https://leetcode.com/company/bloomberg), [Adobe](https://leetcode.com/company/adobe)
+[Adobe](https://leetcode.com/company/adobe), [Bloomberg](https://leetcode.com/company/bloomberg)
 
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array), [Dynamic Programming](https://leetcode.com/tag/dynamic-programming), [Tree](https://leetcode.com/tag/tree), [Depth-First Search](https://leetcode.com/tag/depth-first-search), [Graph](https://leetcode.com/tag/graph)
@@ -63,7 +63,7 @@ The total price sum of all trips is 1. It can be proven, that 1 is the minimum a
 * To find freq[i] we will use dfs or bfs for each trip and update every node on the path start and end.
 * Finally, to find the final price[i] we will use dynamic programming on the tree. Let dp(v, 0/1) denote the minimum total price with the node v’s price being halved or not.
 
-## Solution 1.
+## Solution 1. Post-order Traversal
 
 1. Build Graph (`O(E)` time, `O(E)` space)
 2. For each trip, increment the frequency of the nodes in the path. (`O(TN)` time, `O(N)` space)
@@ -95,17 +95,15 @@ public:
             return false;
         };
         for (auto &t : T) dfs(t[0], t[1], -1);
-        function<array<int, 2>(int, int)> dfs2 = [&](int u, int prev) {
-            array<int, 2> ans = {0,0}; // halve, skip
+        function<pair<int, int>(int, int)> dfs2 = [&](int u, int prev) {
+            int halve = cnt[u] * P[u] / 2, skip = cnt[u] * P[u];
             for (int v : G[u]) {
                 if (v == prev) continue;
                 auto [h, s] = dfs2(v, u);
-                ans[0] += s;
-                ans[1] += min(h, s);
+                halve += s;
+                skip += min(h, s);
             }
-            ans[0] += cnt[u] * P[u] / 2;
-            ans[1] += cnt[u] * P[u];
-            return ans;
+            return pair<int, int>{halve, skip};
         };
         auto [h, s] = dfs2(0, -1);
         return min(h, s);
