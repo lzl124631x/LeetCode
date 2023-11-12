@@ -117,3 +117,53 @@ public:
     }
 };
 ```
+
+## Solution 2. DFS
+
+Similar to solution 1, but here we use DFS to calculate `treeXor` (as `X`) and `children` (as `C`).
+
+```cpp
+// OJ: https://leetcode.com/problems/minimum-score-after-removals-on-a-tree
+// Author: github.com/lzl124631x
+// Time: O(N^2)
+// Space: O(N^2)
+class Solution {
+public:
+    int minimumScore(vector<int>& A, vector<vector<int>>& E) {
+        int N = A.size(), ans = INT_MAX;
+        vector<vector<int>> G(N);
+        for (auto &e : E) {
+            int u = e[0], v = e[1];
+            G[u].push_back(v);
+            G[v].push_back(u);
+        }
+        vector<int> X(N);
+        vector<bitset<1000>> C(N);
+        function<void(int, int)> dfs = [&](int u, int prev) {
+            X[u] ^= A[u];
+            C[u].set(u);
+            for (int v : G[u]) {
+                if (v == prev) continue;
+                dfs(v, u);
+                X[u] ^= X[v];
+                C[u] |= C[v];
+            }
+        };
+        dfs(0, -1);
+        for (int i = 0; i < N - 1; ++i) {
+            int a = E[i][0], b = E[i][1];
+            if (C[b].test(a)) swap(a, b);
+            for (int j = 0; j < i; ++j) {
+                int c = E[j][0], d = E[j][1];
+                if (C[d].test(c)) swap(c, d);
+                array<int, 3> v;
+                if (C[b].test(c)) v = {X[d], X[b] ^ X[d], X[0] ^ X[b]};
+                else if (C[d].test(a)) v = {X[b], X[d] ^ X[b], X[0] ^ X[d]};
+                else v = {X[b], X[d], X[0] ^ X[b] ^ X[d]};
+                ans = min(ans, *max_element(begin(v), end(v)) - *min_element(begin(v), end(v)));
+            }
+        }
+        return ans;
+    }
+};
+```
