@@ -104,7 +104,7 @@ public:
     Graph(int n, vector<vector<int>>& E) : n(n), dist(n, vector<int>(n, 1e9)) {
         for (int i = 0; i < n; ++i) dist[i][i] = 0;
         for (auto &e : E) dist[e[0]][e[1]] = e[2];
-        for (int k = 0; k < n; ++k) {
+        for (int k = 0; k < n; ++k) { // Typical Floyd-Warshall algorithm. Use a middle node `k` to relax the min distance from `i` to `j`
             for (int i = 0; i < n; ++i) {
                 for (int j = 0; j < n; ++j) {
                     dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
@@ -114,7 +114,7 @@ public:
     }
     void addEdge(vector<int> e) {
         if (e[2] >= dist[e[0]][e[1]]) return;
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i) { // Use this edge to relax the min distance from `i` to `j`.
             for (int j = 0; j < n; ++j) {
                 dist[i][j] = min(dist[i][j], dist[i][e[0]] + e[2] + dist[e[1]][j]);
             }

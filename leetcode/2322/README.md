@@ -55,6 +55,11 @@ We cannot obtain a smaller score than 0.
 
 ## Solution 1.
 
+* BFS from all leaf nodes inward. Node `a` is a child of node `b` if `a` is in the path from `b` to a leaf node during the BFS.
+* Use bitmask to track the parent-child relationship. `children[u]` is a bitmask of all its children.
+* `treeXor[u]` is the XOR value of all the nodes in the subtree rooted at `u`.
+* Try each pairs of edge `(a,b)` and edge `(c,d)`. Based on the parent-child relationships between these 4 nodes, calculate the XOR values of the 3 parts.
+
 ```cpp
 // OJ: https://leetcode.com/problems/minimum-score-after-removals-on-a-tree
 // Author: github.com/lzl124631x
@@ -67,20 +72,20 @@ public:
         int N = A.size(), totalXor = 0;
         vector<vector<int>> G(N);
         vector<bitset<1000>> children(N);
-        vector<int> treeXor = A, degree(N), seen(N);
-        for (auto &e : E) {
+        vector<int> treeXor = A, degree(N), seen(N); // treeXor[u] is the XOR value of all the nodes in the subtree rooted at `u`.
+        for (auto &e : E) { // Build graph and cound degrees
             int u = e[0], v = e[1];
             G[u].push_back(v);
             G[v].push_back(u);
             degree[u]++;
             degree[v]++;
         }
-        queue<int> q;
+        queue<int> q; // Traverse nodes from all leaves inward
         for (int i = 0; i < N; ++i) {
             totalXor ^= A[i];
             if (degree[i] == 1) q.push(i), seen[i] = 1;
         }
-        while (q.size()) {
+        while (q.size()) { // Calculate children[u] and treeXor[u]
             int u = q.front();
             q.pop();
             for (int v : G[u]) {
@@ -95,13 +100,13 @@ public:
             }
         }
         int ans = INT_MAX;
-        for (int i = 0; i < N - 1; ++i) {
+        for (int i = 0; i < N - 1; ++i) { // Try the first edge
             int a = E[i][0], b = E[i][1];
-            if (children[a].test(b)) swap(a, b);
-            for (int j = 0; j < i; ++j) {
+            if (children[a].test(b)) swap(a, b); // Make sure `a` is always a child of `b`.
+            for (int j = 0; j < i; ++j) { // Try the second edge
                 int c = E[j][0], d = E[j][1];
+                if (children[c].test(d)) swap(c, d); // Make sure `c` is always a child of `d`
                 array<int, 3> score;
-                if (children[c].test(d)) swap(c, d);
                 if (children[a].test(c)) score = {treeXor[c], treeXor[a] ^ treeXor[c], totalXor ^ treeXor[a] };
                 else if (children[c].test(a)) score = {treeXor[a], treeXor[a] ^ treeXor[c], totalXor ^ treeXor[c] };
                 else score = {treeXor[a], treeXor[c], treeXor[a] ^ treeXor[c] ^ totalXor };

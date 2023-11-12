@@ -519,6 +519,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 530 | Minimum Absolute Difference in BST | Easy | [Solution](leetcode/530)
 531 | Lonely Pixel I | Medium | [Solution](leetcode/531)
 532 | K-diff Pairs in an Array | Medium | [Solution](leetcode/532)
+533 | Lonely Pixel II | Medium | [Solution](leetcode/533)
 535 | Encode and Decode TinyURL | Medium | [Solution](leetcode/535)
 536 | ? | ? | [Solution](leetcode/536)
 537 | Complex Number Multiplication | Medium | [Solution](leetcode/537)
