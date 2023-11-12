@@ -1127,6 +1127,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1233 | Remove Sub-Folders from the Filesystem | Medium | [Solution](leetcode/1233)
 1234 | Replace the Substring for Balanced String | Medium | [Solution](leetcode/1234)
 1235 | Maximum Profit in Job Scheduling | Hard | [Solution](leetcode/1235)
+1236 | Web Crawler | Medium | [Solution](leetcode/1236)
 1237 | Find Positive Integer Solution for a Given Equation | Easy | [Solution](leetcode/1237)
 1238 | Circular Permutation in Binary Representation | Medium | [Solution](leetcode/1238)
 1239 | Maximum Length of a Concatenated String with Unique Characters | Medium | [Solution](leetcode/1239)
@@ -2313,6 +2314,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2924 | Find Champion II | Medium | [Solution](leetcode/2924)
 2925 | Maximum Score After Applying Operations on a Tree | Medium | [Solution](leetcode/2925)
 2926 | Maximum Balanced Subsequence Sum | Hard | [Solution](leetcode/2926)
+2932 | Maximum Strong Pair XOR I | Easy | [Solution](leetcode/2932)
+2933 | High-Access Employees | Medium | [Solution](leetcode/2933)
+2934 | Minimum Operations to Maximize Last Elements in Arrays | Medium | [Solution](leetcode/2934)
+2935 | Maximum Strong Pair XOR II | Hard | [Solution](leetcode/2935)
 
 
 # FAQ
