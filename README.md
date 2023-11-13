@@ -1443,6 +1443,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 1629 | Slowest Key | Easy | [Solution](leetcode/1629)
 1631 | Path With Minimum Effort | Medium | [Solution](leetcode/1631)
 1632 | Rank Transform of a Matrix | Hard | [Solution](leetcode/1632)
+1634 | Add Two Polynomials Represented as Linked Lists | Medium | [Solution](leetcode/1634)
 1636 | Sort Array by Increasing Frequency | Easy | [Solution](leetcode/1636)
 1637 | Widest Vertical Area Between Two Points Containing No Points | Medium | [Solution](leetcode/1637)
 1638 | Count Substrings That Differ by One Character | Medium | [Solution](leetcode/1638)
