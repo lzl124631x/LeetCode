@@ -1,4 +1,4 @@
-# [1930. Unique Length-3 Palindromic Subsequences (Medium)](https://leetcode.com/problems/unique-length-3-palindromic-subsequences/)
+# [1930. Unique Length-3 Palindromic Subsequences (Medium)](https://leetcode.com/problems/unique-length-3-palindromic-subsequences)
 
 <p>Given a string <code>s</code>, return <em>the number of <strong>unique palindromes of length three</strong> that are a <strong>subsequence</strong> of </em><code>s</code>.</p>
 
@@ -9,36 +9,39 @@
 <p>A <strong>subsequence</strong> of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.</p>
 
 <ul>
-	<li>For example, <code>"ace"</code> is a subsequence of <code>"<u>a</u>b<u>c</u>d<u>e</u>"</code>.</li>
+	<li>For example, <code>&quot;ace&quot;</code> is a subsequence of <code>&quot;<u>a</u>b<u>c</u>d<u>e</u>&quot;</code>.</li>
 </ul>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> s = "aabca"
+<pre>
+<strong>Input:</strong> s = &quot;aabca&quot;
 <strong>Output:</strong> 3
 <strong>Explanation:</strong> The 3 palindromic subsequences of length 3 are:
-- "aba" (subsequence of "<u>a</u>a<u>b</u>c<u>a</u>")
-- "aaa" (subsequence of "<u>aa</u>bc<u>a</u>")
-- "aca" (subsequence of "<u>a</u>ab<u>ca</u>")
+- &quot;aba&quot; (subsequence of &quot;<u>a</u>a<u>b</u>c<u>a</u>&quot;)
+- &quot;aaa&quot; (subsequence of &quot;<u>aa</u>bc<u>a</u>&quot;)
+- &quot;aca&quot; (subsequence of &quot;<u>a</u>ab<u>ca</u>&quot;)
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> s = "adc"
+<pre>
+<strong>Input:</strong> s = &quot;adc&quot;
 <strong>Output:</strong> 0
-<strong>Explanation:</strong> There are no palindromic subsequences of length 3 in "adc".
+<strong>Explanation:</strong> There are no palindromic subsequences of length 3 in &quot;adc&quot;.
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> s = "bbcbaba"
+<pre>
+<strong>Input:</strong> s = &quot;bbcbaba&quot;
 <strong>Output:</strong> 4
 <strong>Explanation:</strong> The 4 palindromic subsequences of length 3 are:
-- "bbb" (subsequence of "<u>bb</u>c<u>b</u>aba")
-- "bcb" (subsequence of "<u>b</u>b<u>cb</u>aba")
-- "bab" (subsequence of "<u>b</u>bcb<u>ab</u>a")
-- "aba" (subsequence of "bbcb<u>aba</u>")
+- &quot;bbb&quot; (subsequence of &quot;<u>bb</u>c<u>b</u>aba&quot;)
+- &quot;bcb&quot; (subsequence of &quot;<u>b</u>b<u>cb</u>aba&quot;)
+- &quot;bab&quot; (subsequence of &quot;<u>b</u>bcb<u>ab</u>a&quot;)
+- &quot;aba&quot; (subsequence of &quot;bbcb<u>aba</u>&quot;)
 </pre>
 
 <p>&nbsp;</p>
@@ -49,6 +52,16 @@
 	<li><code>s</code> consists of only lowercase English letters.</li>
 </ul>
 
+
+**Related Topics**:  
+[Hash Table](https://leetcode.com/tag/hash-table), [String](https://leetcode.com/tag/string), [Prefix Sum](https://leetcode.com/tag/prefix-sum)
+
+**Similar Questions**:
+* [Count Palindromic Subsequences (Hard)](https://leetcode.com/problems/count-palindromic-subsequences)
+
+**Hints**:
+* What is the maximum number of length-3 palindromic strings?
+* How can we keep track of the characters that appeared to the left of a given position?
 
 ## Solution 1.
 
@@ -65,12 +78,10 @@ public:
         for (int i = 0; i < N - 1; ++i) {
             int mid = s[i] - 'a';
             right[mid]--;
-            if (i > 0) {
-                for (int j = 0; j < 26; ++j) {
-                    if (left[j] && right[j] && seen[mid][j] == 0) {
-                        seen[mid][j] = 1;
-                        ++ans;
-                    }
+            for (int j = 0; j < 26; ++j) {
+                if (left[j] && right[j] && seen[mid][j] == 0) {
+                    seen[mid][j] = 1;
+                    ++ans;
                 }
             }
             left[mid]++;
