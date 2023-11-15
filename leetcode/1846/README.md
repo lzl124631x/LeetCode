@@ -1,4 +1,4 @@
-# [1846. Maximum Element After Decreasing and Rearranging (Medium)](https://leetcode.com/problems/maximum-element-after-decreasing-and-rearranging/)
+# [1846. Maximum Element After Decreasing and Rearranging (Medium)](https://leetcode.com/problems/maximum-element-after-decreasing-and-rearranging)
 
 <p>You are given an array of positive integers <code>arr</code>. Perform some operations (possibly none) on <code>arr</code> so that it satisfies these conditions:</p>
 
@@ -17,18 +17,20 @@
 <p>Return <em>the <strong>maximum</strong> possible value of an element in </em><code>arr</code><em> after performing the operations to satisfy the conditions</em>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> arr = [2,2,1,2,1]
+<pre>
+<strong>Input:</strong> arr = [2,2,1,2,1]
 <strong>Output:</strong> 2
 <strong>Explanation:</strong> 
 We can satisfy the conditions by rearranging <code>arr</code> so it becomes <code>[1,2,2,2,1]</code>.
 The largest element in <code>arr</code> is 2.
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> arr = [100,1,1000]
+<pre>
+<strong>Input:</strong> arr = [100,1,1000]
 <strong>Output:</strong> 3
 <strong>Explanation:</strong> 
 One possible way to satisfy the conditions is by doing the following:
@@ -39,9 +41,10 @@ Now <code>arr = [1,2,3], which </code>satisfies the conditions.
 The largest element in <code>arr is 3.</code>
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> arr = [1,2,3,4,5]
+<pre>
+<strong>Input:</strong> arr = [1,2,3,4,5]
 <strong>Output:</strong> 5
 <strong>Explanation:</strong> The array already satisfies the conditions, and the largest element is 5.
 </pre>
@@ -55,11 +58,15 @@ The largest element in <code>arr is 3.</code>
 </ul>
 
 
-**Companies**:  
+**Companies**:
 [Amazon](https://leetcode.com/company/amazon)
 
 **Related Topics**:  
-[Greedy](https://leetcode.com/tag/greedy/), [Sort](https://leetcode.com/tag/sort/)
+[Array](https://leetcode.com/tag/array), [Greedy](https://leetcode.com/tag/greedy), [Sorting](https://leetcode.com/tag/sorting)
+
+**Hints**:
+* Sort the Array.
+* Decrement each element to the largest integer that satisfies the conditions.
 
 ## Solution 1.
 
