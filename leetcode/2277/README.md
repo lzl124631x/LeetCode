@@ -71,7 +71,7 @@ Since 0 is the only node on the path, the answer to the first query is 0.</pre>
 * We can use a BFS to find the distances.
 * Use DFS to find all the nodes on the path from start_i to end_i.
 
-## Solution 1. DFS
+## Solution 1. Post-order traversal (Lowest Common Ancestor)
 
 For each query, DFS from `node` to all other nodes. Find the first node (furthest from `node`) that is in both paths to `start` and `end`.
 
@@ -100,11 +100,49 @@ public:
                     if (v == prev) continue;
                     cnt += dfs(v, u);
                 }
-                if (cnt == 2 && r == -1) r = u;
+                if (cnt == 2 && r == -1) r = u; // The first node that has both `start` and `end` as children or self is the LCA
                 return cnt;
             };
             dfs(node, -1);
             ans.push_back(r);
+        }
+        return ans;
+    }
+};
+```
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/closest-node-to-path-in-tree
+// Author: github.com/lzl124631x
+// Time: O(QN)
+// Space: O(N)
+class Solution {
+public:
+    vector<int> closestNode(int n, vector<vector<int>>& E, vector<vector<int>>& Q) {
+        vector<vector<int>> G(n);
+        for (auto &e : E) {
+            int u = e[0], v = e[1];
+            G[u].push_back(v);
+            G[v].push_back(u);
+        }
+        vector<int> ans;
+        for (auto &q : Q) {
+            int start = q[0], end = q[1], node = q[2];
+            function<int(int, int)> dfs = [&](int u, int prev) {
+                int ans = -1;
+                if (u == start || u == end) ans = u; // Forward the target node as potential LCA
+                for (int v : G[u]) {
+                    if (v == prev) continue;
+                    int n = dfs(v, u);
+                    if (n != -1) {
+                        if (ans != -1) ans = u; // Forward the target node or LCA from children to the root
+                        else ans = n; // If we've seen two target nodes, the current node is the LCA
+                    }
+                }
+                return ans;
+            };
+            ans.push_back(dfs(node, -1));
         }
         return ans;
     }
