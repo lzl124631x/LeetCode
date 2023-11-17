@@ -61,7 +61,7 @@ Coins will be collected from all the nodes using the first way. Therefore, total
 * Note that the value of each <code>node <= 10<sup>4</sup></code>, so when <code>t >= 14</code> <code>dp[x][t]</code> is always <code>0</code>.
 * General equation will be: <code>dp[x][t] = max((coins[x] >> t) - k + sigma(dp[y][t]), (coins[x] >> (t + 1)) + sigma(dp[y][t + 1]))</code> where nodes denoted by <code>y</code> in the sigma, are the direct children of node <code>x</code>.
 
-## Solution 1.
+## Solution 1. DP
 
 Let `dp[u][i]` be the max score at node `u` if we've done `i` halves in the ancestor nodes.
 
@@ -81,7 +81,7 @@ The answer is `dp[0][0]`
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-points-after-collecting-coins-from-all-nodes
 // Author: github.com/lzl124631x
-// Time: O(N)
+// Time: O(N * log(max(A)))
 // Space: O(N * log(max(A)))
 class Solution {
 public:
@@ -109,6 +109,41 @@ public:
         };
         dfs(0, -1);
         return dp[0][0];
+    }
+};
+```
+
+## Solution 2. DP
+
+Similar to Solution 1, but we directly start from `dp[0][0]`.
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-points-after-collecting-coins-from-all-nodes
+// Author: github.com/lzl124631x
+// Time: O(N * log(max(A)))
+// Space: O(N * log(max(A)))
+class Solution {
+public:
+    int maximumPoints(vector<vector<int>>& E, vector<int>& A, int k) {
+        int N = A.size();
+        vector<vector<int>> G(N), dp(N, vector<int>(13, -1));
+        for (auto &e : E) {
+            int u = e[0], v = e[1];
+            G[u].push_back(v);
+            G[v].push_back(u);
+        }
+        function<int(int, int, int)> dfs = [&](int u, int prev, int cnt) {
+            if (cnt > 12) return 0;
+            if (dp[u][cnt] != -1) return dp[u][cnt];
+            int first = (A[u] >> cnt) - k, second = (A[u] >> (cnt + 1));
+            for (int v : G[u]) {
+                if (v == prev) continue;
+                first += dfs(v, u, cnt);
+                second += dfs(v, u, cnt + 1);
+            }
+            return dp[u][cnt] = max(first, second);
+        };
+        return dfs(0, -1, 0);
     }
 };
 ```
