@@ -350,6 +350,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 352 | ? | ? | [Solution](leetcode/352)
 354 | Russian Doll Envelopes | Hard | [Solution](leetcode/354)
 355 | Design Twitter | Medium | [Solution](leetcode/355)
+356 | Line Reflection | Medium | [Solution](leetcode/356)
 357 | ? | ? | [Solution](leetcode/357)
 358 | Rearrange String k Distance Apart | Hard | [Solution](leetcode/358)
 359 | Logger Rate Limiter | Easy | [Solution](leetcode/359)
