@@ -67,7 +67,7 @@ public:
             }
         }
         if (n != 1) return "-1";
-        sort(begin(ans), end(ans));
+        reverse(begin(ans), end(ans));
         return ans;
     }
 };
