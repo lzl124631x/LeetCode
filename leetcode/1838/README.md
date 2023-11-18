@@ -1,4 +1,4 @@
-# [1838. Frequency of the Most Frequent Element (Medium)](https://leetcode.com/problems/frequency-of-the-most-frequent-element/)
+# [1838. Frequency of the Most Frequent Element (Medium)](https://leetcode.com/problems/frequency-of-the-most-frequent-element)
 
 <p>The <strong>frequency</strong> of an element is the number of times it occurs in an array.</p>
 
@@ -7,16 +7,18 @@
 <p>Return <em>the <strong>maximum possible frequency</strong> of an element after performing <strong>at most</strong> </em><code>k</code><em> operations</em>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> nums = [1,2,4], k = 5
+<pre>
+<strong>Input:</strong> nums = [1,2,4], k = 5
 <strong>Output:</strong> 3<strong>
 Explanation:</strong> Increment the first element three times and the second element two times to make nums = [4,4,4].
 4 has a frequency of 3.</pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> nums = [1,4,8,13], k = 5
+<pre>
+<strong>Input:</strong> nums = [1,4,8,13], k = 5
 <strong>Output:</strong> 2
 <strong>Explanation:</strong> There are multiple optimal solutions:
 - Increment the first element three times to make nums = [4,4,8,13]. 4 has a frequency of 2.
@@ -24,9 +26,10 @@ Explanation:</strong> Increment the first element three times and the second ele
 - Increment the third element five times to make nums = [1,4,13,13]. 13 has a frequency of 2.
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> nums = [3,9,6], k = 2
+<pre>
+<strong>Input:</strong> nums = [3,9,6], k = 2
 <strong>Output:</strong> 1
 </pre>
 
@@ -40,11 +43,19 @@ Explanation:</strong> Increment the first element three times and the second ele
 </ul>
 
 
-**Companies**:  
-[Amazon](https://leetcode.com/company/amazon), [Microsoft](https://leetcode.com/company/microsoft)
+**Companies**:
+[Amazon](https://leetcode.com/company/amazon), [Deutsche Bank](https://leetcode.com/company/deutsche-bank), [Uber](https://leetcode.com/company/uber), [CRED](https://leetcode.com/company/cred), [Microsoft](https://leetcode.com/company/microsoft), [PhonePe](https://leetcode.com/company/phonepe), [Apple](https://leetcode.com/company/apple), [Google](https://leetcode.com/company/google), [Pony.ai](https://leetcode.com/company/ponyai)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Binary Search](https://leetcode.com/tag/binary-search/), [Greedy](https://leetcode.com/tag/greedy/), [Sliding Window](https://leetcode.com/tag/sliding-window/), [Sorting](https://leetcode.com/tag/sorting/), [Prefix Sum](https://leetcode.com/tag/prefix-sum/)
+[Array](https://leetcode.com/tag/array), [Binary Search](https://leetcode.com/tag/binary-search), [Greedy](https://leetcode.com/tag/greedy), [Sliding Window](https://leetcode.com/tag/sliding-window), [Sorting](https://leetcode.com/tag/sorting), [Prefix Sum](https://leetcode.com/tag/prefix-sum)
+
+**Similar Questions**:
+* [Find All Lonely Numbers in the Array (Medium)](https://leetcode.com/problems/find-all-lonely-numbers-in-the-array)
+* [Longest Nice Subarray (Medium)](https://leetcode.com/problems/longest-nice-subarray)
+
+**Hints**:
+* Note that you can try all values in a brute force manner and find the maximum frequency of that value.
+* To find the maximum frequency of a value consider the biggest elements smaller than or equal to this value
 
 ## Solution 1. Sliding window (Shrinkable)
 

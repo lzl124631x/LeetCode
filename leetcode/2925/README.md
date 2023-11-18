@@ -54,6 +54,12 @@ It can be shown that 40 is the maximum score obtainable after any number of oper
 </ul>
 
 
+**Companies**:
+[Google](https://leetcode.com/company/google)
+
+**Related Topics**:  
+[Dynamic Programming](https://leetcode.com/tag/dynamic-programming), [Tree](https://leetcode.com/tag/tree), [Depth-First Search](https://leetcode.com/tag/depth-first-search)
+
 **Similar Questions**:
 * [Sum of Distances in Tree (Hard)](https://leetcode.com/problems/sum-of-distances-in-tree)
 * [Collect Coins in a Tree (Hard)](https://leetcode.com/problems/collect-coins-in-a-tree)
@@ -64,7 +70,13 @@ It can be shown that 40 is the maximum score obtainable after any number of oper
 * If we take <code>value[i]</code> into the score, then each subtree rooted at its children should satisfy the constraints.
 * <code>dp[x] = max(value[x] + sigma(dp[y]), sigma(sum[y]))</code>, where <code>y</code> is a direct child of <code>x</code>.
 
-## Solution 1.
+**Hints**:
+* Let <code>dp[i]</code> be the maximum score we can get on the subtree rooted at <code>i</code> and <code>sum[i]</code> be the sum of all the values of the subtree rooted at <code>i</code>.
+* If we don’t take <code>value[i]</code> into the final score, we can take all the nodes of the subtrees rooted at <code>i</code>’s children.
+* If we take <code>value[i]</code> into the score, then each subtree rooted at its children should satisfy the constraints.
+* <code>dp[x] = max(value[x] + sigma(dp[y]), sigma(sum[y]))</code>, where <code>y</code> is a direct child of <code>x</code>.
+
+## Solution 1. Post-order Traversal
 
 **Intuition**:
 * Use post-order traversal. Visit children nodes first, then make a decision at the current node
