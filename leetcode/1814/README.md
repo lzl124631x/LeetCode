@@ -71,7 +71,7 @@ class Solution {
 public:
     int countNicePairs(vector<int>& A) {
         unordered_map<int, int> m;
-        long ans = 0, mod = 1e9+7;
+        long ans = 0, mod = 1e9 + 7;
         for (int n : A) {
             long x = n - rev(n);
             ans = (ans + m[x]++) % mod;
