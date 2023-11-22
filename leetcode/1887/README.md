@@ -1,4 +1,4 @@
-# [1887. Reduction Operations to Make the Array Elements Equal (Medium)](https://leetcode.com/problems/reduction-operations-to-make-the-array-elements-equal/)
+# [1887. Reduction Operations to Make the Array Elements Equal (Medium)](https://leetcode.com/problems/reduction-operations-to-make-the-array-elements-equal)
 
 <p>Given an integer array <code>nums</code>, your goal is to make all elements in <code>nums</code> equal. To complete one operation, follow these steps:</p>
 
@@ -11,9 +11,10 @@
 <p>Return <em>the number of operations to make all elements in </em><code>nums</code><em> equal</em>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> nums = [5,1,3]
+<pre>
+<strong>Input:</strong> nums = [5,1,3]
 <strong>Output:</strong> 3
 <strong>Explanation:</strong>&nbsp;It takes 3 operations to make all elements in nums equal:
 1. largest = 5 at index 0. nextLargest = 3. Reduce nums[0] to 3. nums = [<u>3</u>,1,3].
@@ -21,16 +22,18 @@
 3. largest = 3 at index 2. nextLargest = 1. Reduce nums[2] to 1. nums = [1,1,<u>1</u>].
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> nums = [1,1,1]
+<pre>
+<strong>Input:</strong> nums = [1,1,1]
 <strong>Output:</strong> 0
 <strong>Explanation:</strong>&nbsp;All elements in nums are already equal.
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> nums = [1,1,2,2,3]
+<pre>
+<strong>Input:</strong> nums = [1,1,2,2,3]
 <strong>Output:</strong> 4
 <strong>Explanation:</strong>&nbsp;It takes 4 operations to make all elements in nums equal:
 1. largest = 3 at index 4. nextLargest = 2. Reduce nums[4] to 2. nums = [1,1,2,2,<u>2</u>].
@@ -48,11 +51,15 @@
 </ul>
 
 
-**Companies**:  
+**Companies**:
 [Microsoft](https://leetcode.com/company/microsoft)
 
 **Related Topics**:  
-[Greedy](https://leetcode.com/tag/greedy/), [Sort](https://leetcode.com/tag/sort/)
+[Array](https://leetcode.com/tag/array), [Sorting](https://leetcode.com/tag/sorting)
+
+**Hints**:
+* Sort the array.
+* Try to reduce all elements with maximum value to the next maximum value in one operation.
 
 ## Solution 1.
 
@@ -91,6 +98,28 @@ public:
         for (int i = 1; i < N; ++i) {
             if (A[i] != A[i - 1]) ++step;
             ans += step;
+        }
+        return ans;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/reduction-operations-to-make-the-array-elements-equal
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(1)
+class Solution {
+public:
+    int reductionOperations(vector<int>& A) {
+        sort(begin(A), end(A));
+        int ans = 0, N = A.size(), i = 0;
+        while (i < N && A[i] == A[0]) ++i;
+        for (; i < N; ++i) {
+            ans += N - i;
+            while (i + 1 < N && A[i + 1] == A[i]) ++i;
         }
         return ans;
     }
