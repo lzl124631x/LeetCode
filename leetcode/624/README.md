@@ -41,7 +41,7 @@
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array), [Greedy](https://leetcode.com/tag/greedy)
 
-## Solution 1. Greedy
+## Solution 1. Kadane's Algorithm
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-distance-in-arrays/
