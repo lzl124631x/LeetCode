@@ -51,11 +51,11 @@
 class Solution {
 public:
     int maxDistance(vector<vector<int>>& A) {
-        int mn = 1e5, mx = -1e5, ans = 0;
-        for (auto &v : A) {
-            ans = max({ ans, mx - v[0], v.back() - mn });
-            mx = max(mx, v.back());
-            mn = min(mn, v[0]);
+        int mx = -1e4, mn = 1e4, ans = INT_MIN;
+        for (auto &row : A) {
+            ans = max({ans, row.back() - mn, mx - row[0]});
+            mx = max(mx, row.back());
+            mn = min(mn, row[0]);
         }
         return ans;
     }
