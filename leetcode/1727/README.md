@@ -102,3 +102,29 @@ public:
     }
 };
 ```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/largest-submatrix-with-rearrangements
+// Author: github.com/lzl124631x
+// Time: O(MNlogN)
+// Space: O(N)
+class Solution {
+public:
+    int largestSubmatrix(vector<vector<int>>& A) {
+        int N = A[0].size(), ans = 0;
+        vector<int> h(N), id(N);
+        iota(begin(id), end(id), 0);
+        for (auto &r : A) {
+            for (int j = 0; j < N; ++j) {
+                if (r[j]) ++h[j];
+                else h[j] = 0;
+            }
+            sort(begin(id), end(id), [&](int a, int b) { return h[a] < h[b]; });
+            for (int i = 0; i < N; ++i) ans = max(ans, h[id[i]] * (N - i));
+        }
+        return ans;
+    }
+};
+```
