@@ -1,4 +1,4 @@
-# [624. Maximum Distance in Arrays (Medium)](https://leetcode.com/problems/maximum-distance-in-arrays/)
+# [624. Maximum Distance in Arrays (Medium)](https://leetcode.com/problems/maximum-distance-in-arrays)
 
 <p>You are given <code>m</code> <code>arrays</code>, where each array is sorted in <strong>ascending order</strong>.</p>
 
@@ -7,29 +7,19 @@
 <p>Return <em>the maximum distance</em>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> arrays = [[1,2,3],[4,5],[1,2,3]]
+<pre>
+<strong>Input:</strong> arrays = [[1,2,3],[4,5],[1,2,3]]
 <strong>Output:</strong> 4
 <strong>Explanation:</strong> One way to reach the maximum distance 4 is to pick 1 in the first or third array and pick 5 in the second array.
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> arrays = [[1],[1]]
+<pre>
+<strong>Input:</strong> arrays = [[1],[1]]
 <strong>Output:</strong> 0
-</pre>
-
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input:</strong> arrays = [[1],[2]]
-<strong>Output:</strong> 1
-</pre>
-
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input:</strong> arrays = [[1,4],[0,5]]
-<strong>Output:</strong> 4
 </pre>
 
 <p>&nbsp;</p>
@@ -37,7 +27,7 @@
 
 <ul>
 	<li><code>m == arrays.length</code></li>
-	<li><code>2&nbsp;&lt;= m &lt;= 10<sup>5</sup></code></li>
+	<li><code>2 &lt;= m &lt;= 10<sup>5</sup></code></li>
 	<li><code>1 &lt;= arrays[i].length &lt;= 500</code></li>
 	<li><code>-10<sup>4</sup> &lt;= arrays[i][j] &lt;= 10<sup>4</sup></code></li>
 	<li><code>arrays[i]</code> is sorted in <strong>ascending order</strong>.</li>
@@ -45,13 +35,13 @@
 </ul>
 
 
-**Companies**:  
+**Companies**:
 [Yahoo](https://leetcode.com/company/yahoo)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Greedy](https://leetcode.com/tag/greedy/)
+[Array](https://leetcode.com/tag/array), [Greedy](https://leetcode.com/tag/greedy)
 
-## Solution 1. Greedy
+## Solution 1. Kadane's Algorithm
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-distance-in-arrays/
@@ -61,11 +51,11 @@
 class Solution {
 public:
     int maxDistance(vector<vector<int>>& A) {
-        int mn = 1e5, mx = -1e5, ans = 0;
-        for (auto &v : A) {
-            ans = max({ ans, mx - v[0], v.back() - mn });
-            mx = max(mx, v.back());
-            mn = min(mn, v[0]);
+        int mx = -1e4, mn = 1e4, ans = INT_MIN;
+        for (auto &row : A) {
+            ans = max({ans, row.back() - mn, mx - row[0]});
+            mx = max(mx, row.back());
+            mn = min(mn, row[0]);
         }
         return ans;
     }

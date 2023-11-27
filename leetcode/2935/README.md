@@ -109,3 +109,50 @@ public:
     }
 };
 ```
+
+## Solution 2. Trie
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-strong-pair-xor-ii
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+struct TrieNode {
+    TrieNode *next[2] = {};
+    int cnt = 0;
+};
+class Solution {
+    void addNumber(TrieNode *node, int n, int d) {
+        for (int i = 19; i >= 0; --i) {
+            int b = n >> i & 1;
+            if (!node->next[b]) node->next[b] = new TrieNode();
+            node = node->next[b];
+            node->cnt += d;
+        }
+    }
+    int maxXor(TrieNode *node, int n) {
+        int ans = 0;
+        for (int i = 19; i >= 0; --i) {
+            int b = n >> i & 1, r = 1 - b;
+            if (node->next[r] && node->next[r]->cnt) node = node->next[r], ans |= (1 << i);
+            else node = node->next[b];
+        }
+        return ans;
+    }
+public:
+    int maximumStrongPairXor(vector<int>& A) {
+        sort(begin(A), end(A));
+        int N = A.size(), i = 0, j = 0, ans = 0;
+        TrieNode root;
+        for (; j < N; ++j) {
+            addNumber(&root, A[j], 1);
+            while (i < j && A[j] - A[i] > A[i]) {
+                addNumber(&root, A[i], -1);
+                ++i;
+            }
+            ans = max(ans, maxXor(&root, A[j]));
+        }
+        return ans;
+    }
+};
+```

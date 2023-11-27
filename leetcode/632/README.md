@@ -1,13 +1,14 @@
-# [632. Smallest Range Covering Elements from K Lists (Hard)](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/)
+# [632. Smallest Range Covering Elements from K Lists (Hard)](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists)
 
 <p>You have <code>k</code> lists of sorted integers in <strong>non-decreasing&nbsp;order</strong>. Find the <b>smallest</b> range that includes at least one number from each of the <code>k</code> lists.</p>
 
 <p>We define the range <code>[a, b]</code> is smaller than range <code>[c, d]</code> if <code>b - a &lt; d - c</code> <strong>or</strong> <code>a &lt; c</code> if <code>b - a == d - c</code>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> nums = [[4,10,15,24,26],[0,9,12,20],[5,18,22,30]]
+<pre>
+<strong>Input:</strong> nums = [[4,10,15,24,26],[0,9,12,20],[5,18,22,30]]
 <strong>Output:</strong> [20,24]
 <strong>Explanation: </strong>
 List 1: [4, 10, 15, 24,26], 24 is in range [20,24].
@@ -15,28 +16,11 @@ List 2: [0, 9, 12, 20], 20 is in range [20,24].
 List 3: [5, 18, 22, 30], 22 is in range [20,24].
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> nums = [[1,2,3],[1,2,3],[1,2,3]]
+<pre>
+<strong>Input:</strong> nums = [[1,2,3],[1,2,3],[1,2,3]]
 <strong>Output:</strong> [1,1]
-</pre>
-
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input:</strong> nums = [[10,10],[11,11]]
-<strong>Output:</strong> [10,11]
-</pre>
-
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input:</strong> nums = [[10],[11]]
-<strong>Output:</strong> [10,11]
-</pre>
-
-<p><strong>Example 5:</strong></p>
-
-<pre><strong>Input:</strong> nums = [[1],[2],[3],[4],[5],[6],[7]]
-<strong>Output:</strong> [1,7]
 </pre>
 
 <p>&nbsp;</p>
@@ -51,11 +35,14 @@ List 3: [5, 18, 22, 30], 22 is in range [20,24].
 </ul>
 
 
+**Companies**:
+[Flipkart](https://leetcode.com/company/flipkart), [Amazon](https://leetcode.com/company/amazon), [Snapchat](https://leetcode.com/company/snapchat), [Pinterest](https://leetcode.com/company/pinterest), [Google](https://leetcode.com/company/google), [Apple](https://leetcode.com/company/apple), [Adobe](https://leetcode.com/company/adobe), [Bloomberg](https://leetcode.com/company/bloomberg), [Microsoft](https://leetcode.com/company/microsoft), [Lyft](https://leetcode.com/company/lyft)
+
 **Related Topics**:  
-[Hash Table](https://leetcode.com/tag/hash-table/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [String](https://leetcode.com/tag/string/)
+[Array](https://leetcode.com/tag/array), [Hash Table](https://leetcode.com/tag/hash-table), [Greedy](https://leetcode.com/tag/greedy), [Sliding Window](https://leetcode.com/tag/sliding-window), [Sorting](https://leetcode.com/tag/sorting), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue)
 
 **Similar Questions**:
-* [Minimum Window Substring (Hard)](https://leetcode.com/problems/minimum-window-substring/)
+* [Minimum Window Substring (Hard)](https://leetcode.com/problems/minimum-window-substring)
 
 ## Solution 1. Two Pointers
 
@@ -165,6 +152,45 @@ public:
             mx = max(mx, A[i][next[i]]);
         }
         return ans;
+    }
+};
+```
+
+## Solution 3. Min Heap + Multiset
+
+Similar to Solution 2, but we use a `multiset` to keep track of the numbers within the sliding window.
+
+```cpp
+// OJ: https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists
+// Author: github.com/lzl124631x
+// Time: O(NKlogK)
+// Space: O(K)
+class Solution {
+public:
+    vector<int> smallestRange(vector<vector<int>>& A) {
+        int N = A.size(), first = INT_MAX, len = INT_MAX;
+        typedef array<int, 2> PII;
+        auto cmp = [&](auto &a, auto &b) { return A[a[0]][a[1]] > A[b[0]][b[1]]; };
+        priority_queue<PII, vector<PII>, decltype(cmp)> pq(cmp);
+        multiset<int> s;
+        for (int i = 0; i < N; ++i) {
+            pq.push({i, 0});
+            s.insert(A[i][0]);
+        }
+        while (true) {
+            int fst = *s.begin(), lst = *s.rbegin(), newLen = lst - fst + 1;
+            if (newLen < len || (len == newLen && fst < first)) {
+                first = fst;
+                len = newLen;
+            }
+            auto [i, j] = pq.top();
+            pq.pop();
+            s.erase(s.find(A[i][j]));
+            if (j + 1 == A[i].size()) break;
+            s.emplace(A[i][j + 1]);
+            pq.push({i, j + 1});
+        }
+        return {first, first + len - 1};
     }
 };
 ```
