@@ -146,12 +146,47 @@ public:
         while (true) {
             int i = pq.top(), mn = A[i][next[i]];
             pq.pop();
-            if (ans[1] - ans[0] > mx - mn || (ans[1] - ans[0] == mx - mn && mn < ans[0])) ans = { A[i][next[i]], mx };
+            if (ans[1] - ans[0] > mx - mn) ans = { A[i][next[i]], mx };
             if (++next[i] == A[i].size()) break;
             pq.push(i);
             mx = max(mx, A[i][next[i]]);
         }
         return ans;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists
+// Author: github.com/lzl124631x
+// Time: O(NKlogK)
+// Space: O(K)
+class Solution {
+public:
+    vector<int> smallestRange(vector<vector<int>>& A) {
+        typedef array<int, 2> PII;
+        auto cmp = [&](auto &a, auto &b) { return A[a[0]][a[1]] > A[b[0]][b[1]]; };
+        priority_queue<PII, vector<PII>, decltype(cmp)> pq(cmp);
+        int N = A.size(), mx = INT_MIN, first = INT_MAX, len = INT_MAX;
+        for (int i = 0; i < N; ++i) {
+            pq.push({ i, 0 });
+            mx = max(mx, A[i][0]);
+        }
+        while (true) {
+            auto [i, j] = pq.top();
+            pq.pop();
+            int newLen = mx - A[i][j] + 1;
+            if (newLen < len) {
+                first = A[i][j];
+                len = newLen;
+            }
+            if (j + 1 == A[i].size()) break;
+            pq.push({ i, j + 1 });
+            mx = max(mx, A[i][j + 1]);
+        }
+        return {first, first + len - 1};
     }
 };
 ```
