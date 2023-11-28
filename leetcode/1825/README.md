@@ -1,4 +1,4 @@
-# [1825. Finding MK Average (Hard)](https://leetcode.com/problems/finding-mk-average/)
+# [1825. Finding MK Average (Hard)](https://leetcode.com/problems/finding-mk-average)
 
 <p>You are given two integers, <code>m</code> and <code>k</code>, and a stream of integers. You are tasked to implement a data structure that calculates the <strong>MKAverage</strong> for the stream.</p>
 
@@ -19,30 +19,31 @@
 </ul>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input</strong>
-["MKAverage", "addElement", "addElement", "calculateMKAverage", "addElement", "calculateMKAverage", "addElement", "addElement", "addElement", "calculateMKAverage"]
+<pre>
+<strong>Input</strong>
+[&quot;MKAverage&quot;, &quot;addElement&quot;, &quot;addElement&quot;, &quot;calculateMKAverage&quot;, &quot;addElement&quot;, &quot;calculateMKAverage&quot;, &quot;addElement&quot;, &quot;addElement&quot;, &quot;addElement&quot;, &quot;calculateMKAverage&quot;]
 [[3, 1], [3], [1], [], [10], [], [5], [5], [5], []]
 <strong>Output</strong>
 [null, null, null, -1, null, 3, null, null, null, 5]
 
 <strong>Explanation</strong>
-MKAverage obj = new MKAverage(3, 1); 
+<code>MKAverage obj = new MKAverage(3, 1); 
 obj.addElement(3);        // current elements are [3]
 obj.addElement(1);        // current elements are [3,1]
 obj.calculateMKAverage(); // return -1, because m = 3 and only 2 elements exist.
 obj.addElement(10);       // current elements are [3,1,10]
 obj.calculateMKAverage(); // The last 3 elements are [3,1,10].
-                          // After removing smallest and largest 1 element the container will be <code>[3].
+                          // After removing smallest and largest 1 element the container will be [3].
                           // The average of [3] equals 3/1 = 3, return 3
 obj.addElement(5);        // current elements are [3,1,10,5]
 obj.addElement(5);        // current elements are [3,1,10,5,5]
 obj.addElement(5);        // current elements are [3,1,10,5,5,5]
 obj.calculateMKAverage(); // The last 3 elements are [5,5,5].
-                          // After removing smallest and largest 1 element the container will be <code>[5].
+                          // After removing smallest and largest 1 element the container will be [5].
                           // The average of [5] equals 5/1 = 5, return 5
-</code></code></pre>
+</code></pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
@@ -55,12 +56,20 @@ obj.calculateMKAverage(); // The last 3 elements are [5,5,5].
 </ul>
 
 
+**Companies**:
+[Google](https://leetcode.com/company/google)
+
 **Related Topics**:  
-[Heap](https://leetcode.com/tag/heap/), [Design](https://leetcode.com/tag/design/), [Queue](https://leetcode.com/tag/queue/)
+[Design](https://leetcode.com/tag/design), [Queue](https://leetcode.com/tag/queue), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue), [Data Stream](https://leetcode.com/tag/data-stream), [Ordered Set](https://leetcode.com/tag/ordered-set)
 
 **Similar Questions**:
-* [Find Median from Data Stream (Hard)](https://leetcode.com/problems/find-median-from-data-stream/)
-* [Kth Largest Element in a Stream (Easy)](https://leetcode.com/problems/kth-largest-element-in-a-stream/)
+* [Find Median from Data Stream (Hard)](https://leetcode.com/problems/find-median-from-data-stream)
+* [Kth Largest Element in a Stream (Easy)](https://leetcode.com/problems/kth-largest-element-in-a-stream)
+* [Sequentially Ordinal Rank Tracker (Hard)](https://leetcode.com/problems/sequentially-ordinal-rank-tracker)
+
+**Hints**:
+* At each query, try to save and update the sum of the elements needed to calculate MKAverage.
+* You can use BSTs for fast insertion and deletion of the elements.
 
 ## Solution 1. 3 Multisets
 
@@ -148,6 +157,65 @@ public:
     
     int calculateMKAverage() {
         return q.size() == m ? (sum / (m - 2 * k)) : -1;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/finding-mk-average
+// Author: github.com/lzl124631x
+// Time: 
+//     MKAverage: O(1)
+//     addElement: O(logM)
+//     calculateMKAverage: O(1)
+// Space: O(M)
+class MKAverage {
+    multiset<int> top, mid, bot;
+    queue<int> q;
+    long m, k, sum = 0;
+public:
+    MKAverage(int m, int k) : m(m), k(k) {
+    }
+    void addElement(int n) {
+        q.push(n);
+        if (q.size() > m) {
+            int rm = q.front();
+            q.pop();
+            if (*top.begin() <= rm) {
+                top.erase(top.find(rm));
+                rm = *mid.rbegin();
+                top.insert(rm);
+            }
+            if (*mid.begin() <= rm) {
+                mid.erase(mid.find(rm));
+                sum -= rm;
+                rm = *bot.rbegin();
+                mid.insert(rm);
+                sum += rm;
+            }
+            bot.erase(bot.find(rm));
+        }
+        if (top.size() < k || n > *top.begin()) {
+            top.insert(n);
+            if (top.size() <= k) return;
+            n = *top.begin();
+            top.erase(top.begin());
+        }
+        if (mid.size() < m - 2 * k || n > *mid.begin()) {
+            mid.insert(n);
+            sum += n;
+            if (mid.size() <= m - 2 * k) return;
+            n = *mid.begin();
+            sum -= n;
+            mid.erase(mid.begin());
+        }
+        bot.insert(n);
+    }
+    int calculateMKAverage() {
+        if (q.size() < m) return -1;
+        return sum / (m - 2 * k);
     }
 };
 ```
