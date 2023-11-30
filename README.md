@@ -2158,6 +2158,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2585 | Number of Ways to Earn Points | Hard | [Solution](leetcode/2585)
 2586 | Count the Number of Vowel Strings in Range | Easy | [Solution](leetcode/2586)
 2587 | Rearrange Array to Maximize Prefix Score | Medium | [Solution](leetcode/2587)
+2588 | Count the Number of Beautiful Subarrays | Medium | [Solution](leetcode/2588)
 2591 | Distribute Money to Maximum Children | Easy | [Solution](leetcode/2591)
 2592 | Maximize Greatness of an Array | Medium | [Solution](leetcode/2592)
 2593 | Find Score of an Array After Marking All Elements | Medium | [Solution](leetcode/2593)
