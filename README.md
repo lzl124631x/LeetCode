@@ -2175,6 +2175,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2609 | Find the Longest Balanced Substring of a Binary String | Easy | [Solution](leetcode/2609)
 2610 | Convert an Array Into a 2D Array With Conditions | Medium | [Solution](leetcode/2610)
 2611 | Mice and Cheese | Medium | [Solution](leetcode/2611)
+2612 | Minimum Reverse Operations | Hard | [Solution](leetcode/2612)
 2614 | Prime In Diagonal | Easy | [Solution](leetcode/2614)
 2615 | Sum of Distances | Medium | [Solution](leetcode/2615)
 2616 | Minimize the Maximum Difference of Pairs | Medium | [Solution](leetcode/2616)
