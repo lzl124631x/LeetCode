@@ -1,4 +1,4 @@
-# [1611. Minimum One Bit Operations to Make Integers Zero (Hard)](https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/)
+# [1611. Minimum One Bit Operations to Make Integers Zero (Hard)](https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero)
 
 <p>Given an integer <code>n</code>, you must transform it into <code>0</code> using the following operations any number of times:</p>
 
@@ -10,42 +10,26 @@
 <p>Return <em>the minimum number of operations to transform </em><code>n</code><em> into </em><code>0</code><em>.</em></p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> n = 0
-<strong>Output:</strong> 0
-</pre>
-
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input:</strong> n = 3
+<pre>
+<strong>Input:</strong> n = 3
 <strong>Output:</strong> 2
-<strong>Explanation:</strong> The binary representation of 3 is "11".
-"<u>1</u>1" -&gt; "<u>0</u>1" with the 2nd operation since the 0th bit is 1.
-"0<u>1</u>" -&gt; "0<u>0</u>" with the 1st operation.
+<strong>Explanation:</strong> The binary representation of 3 is &quot;11&quot;.
+&quot;<u>1</u>1&quot; -&gt; &quot;<u>0</u>1&quot; with the 2<sup>nd</sup> operation since the 0<sup>th</sup> bit is 1.
+&quot;0<u>1</u>&quot; -&gt; &quot;0<u>0</u>&quot; with the 1<sup>st</sup> operation.
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> n = 6
+<pre>
+<strong>Input:</strong> n = 6
 <strong>Output:</strong> 4
-<strong>Explanation:</strong> The binary representation of 6 is "110".
-"<u>1</u>10" -&gt; "<u>0</u>10" with the 2nd operation since the 1st bit is 1 and 0th through 0th bits are 0.
-"01<u>0</u>" -&gt; "01<u>1</u>" with the 1st operation.
-"0<u>1</u>1" -&gt; "0<u>0</u>1" with the 2nd operation since the 0th bit is 1.
-"00<u>1</u>" -&gt; "00<u>0</u>" with the 1st operation.
-</pre>
-
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input:</strong> n = 9
-<strong>Output:</strong> 14
-</pre>
-
-<p><strong>Example 5:</strong></p>
-
-<pre><strong>Input:</strong> n = 333
-<strong>Output:</strong> 393
+<strong>Explanation:</strong> The binary representation of 6 is &quot;110&quot;.
+&quot;<u>1</u>10&quot; -&gt; &quot;<u>0</u>10&quot; with the 2<sup>nd</sup> operation since the 1<sup>st</sup> bit is 1 and 0<sup>th</sup> through 0<sup>th</sup> bits are 0.
+&quot;01<u>0</u>&quot; -&gt; &quot;01<u>1</u>&quot; with the 1<sup>st</sup> operation.
+&quot;0<u>1</u>1&quot; -&gt; &quot;0<u>0</u>1&quot; with the 2<sup>nd</sup> operation since the 0<sup>th</sup> bit is 1.
+&quot;00<u>1</u>&quot; -&gt; &quot;00<u>0</u>&quot; with the 1<sup>st</sup> operation.
 </pre>
 
 <p>&nbsp;</p>
@@ -56,10 +40,19 @@
 </ul>
 
 
+**Companies**:
+[Oracle](https://leetcode.com/company/oracle), [McKinsey](https://leetcode.com/company/mckinsey), [VMware](https://leetcode.com/company/vmware), [Expedia](https://leetcode.com/company/expedia)
+
 **Related Topics**:  
-[Dynamic Programming](https://leetcode.com/tag/dynamic-programming/), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation/)
+[Dynamic Programming](https://leetcode.com/tag/dynamic-programming), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation), [Memoization](https://leetcode.com/tag/memoization)
 
+**Similar Questions**:
+* [Minimum Number of Operations to Make Array Continuous (Hard)](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous)
+* [Apply Bitwise Operations to Make Strings Equal (Medium)](https://leetcode.com/problems/apply-bitwise-operations-to-make-strings-equal)
 
+**Hints**:
+* The fastest way to convert n to zero is to remove all set bits starting from the leftmost one. Try some simple examples to learn the rule of how many steps are needed to remove one set bit.
+* consider n=2^k case first, then solve for all n.
 
 ## Solution 1.
 
