@@ -2228,6 +2228,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2731 | Movement of Robots | Medium | [Solution](leetcode/2731)
 2733 | Neither Minimum nor Maximum | Easy | [Solution](leetcode/2733)
 2734 | Lexicographically Smallest String After Substring Operation | Medium | [Solution](leetcode/2734)
+2736 | Maximum Sum Queries | Hard | [Solution](leetcode/2736)
 2739 | Total Distance Traveled | Easy | [Solution](leetcode/2739)
 2740 | Find the Value of the Partition | Medium | [Solution](leetcode/2740)
 2741 | Special Permutations | Medium | [Solution](leetcode/2741)
