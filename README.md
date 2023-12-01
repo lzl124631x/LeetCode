@@ -2097,6 +2097,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2491 | Divide Players Into Teams of Equal Skill | Medium | [Solution](leetcode/2491)
 2492 | Minimum Score of a Path Between Two Cities | Medium | [Solution](leetcode/2492)
 2496 | Maximum Value of a String in an Array | Easy | [Solution](leetcode/2496)
+2497 | Maximum Star Sum of a Graph | Medium | [Solution](leetcode/2497)
 2500 | Delete Greatest Value in Each Row | Easy | [Solution](leetcode/2500)
 2501 | Longest Square Streak in an Array | Medium | [Solution](leetcode/2501)
 2503 | Maximum Number of Points From Grid Queries | Hard | [Solution](leetcode/2503)
