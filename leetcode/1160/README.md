@@ -1,44 +1,52 @@
-# [1160. Find Words That Can Be Formed by Characters (Easy)](https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/)
+# [1160. Find Words That Can Be Formed by Characters (Easy)](https://leetcode.com/problems/find-words-that-can-be-formed-by-characters)
 
-<p>You are given an array of strings&nbsp;<code>words</code>&nbsp;and a string&nbsp;<code>chars</code>.</p>
+<p>You are given an array of strings <code>words</code> and a string <code>chars</code>.</p>
 
-<p>A string is <em>good</em>&nbsp;if&nbsp;it can be formed by&nbsp;characters from <code>chars</code>&nbsp;(each character&nbsp;can only be used once).</p>
+<p>A string is <strong>good</strong> if it can be formed by characters from chars (each character can only be used once).</p>
 
-<p>Return the sum of lengths of all good strings in <code>words</code>.</p>
-
-<p>&nbsp;</p>
-
-<p><strong>Example 1:</strong></p>
-
-<pre><strong>Input: </strong>words = <span id="example-input-1-1">["cat","bt","hat","tree"]</span>, chars = <span id="example-input-1-2">"atach"</span>
-<strong>Output: </strong><span id="example-output-1">6</span>
-<strong>Explanation: </strong>
-The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 = 6.
-</pre>
-
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input: </strong>words = <span id="example-input-2-1">["hello","world","leetcode"]</span>, chars = <span id="example-input-2-2">"welldonehoneyr"</span>
-<strong>Output: </strong><span id="example-output-2">10</span>
-<strong>Explanation: </strong>
-The strings that can be formed are "hello" and "world" so the answer is 5 + 5 = 10.
-</pre>
+<p>Return <em>the sum of lengths of all good strings in words</em>.</p>
 
 <p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
 
-<p><span><strong>Note:</strong></span></p>
+<pre>
+<strong>Input:</strong> words = [&quot;cat&quot;,&quot;bt&quot;,&quot;hat&quot;,&quot;tree&quot;], chars = &quot;atach&quot;
+<strong>Output:</strong> 6
+<strong>Explanation:</strong> The strings that can be formed are &quot;cat&quot; and &quot;hat&quot; so the answer is 3 + 3 = 6.
+</pre>
 
-<ol>
+<p><strong class="example">Example 2:</strong></p>
+
+<pre>
+<strong>Input:</strong> words = [&quot;hello&quot;,&quot;world&quot;,&quot;leetcode&quot;], chars = &quot;welldonehoneyr&quot;
+<strong>Output:</strong> 10
+<strong>Explanation:</strong> The strings that can be formed are &quot;hello&quot; and &quot;world&quot; so the answer is 5 + 5 = 10.
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
 	<li><code>1 &lt;= words.length &lt;= 1000</code></li>
-	<li><code>1 &lt;= words[i].length, chars.length&nbsp;&lt;= 100</code></li>
-	<li>All strings contain lowercase English letters only.</li>
-</ol>
+	<li><code>1 &lt;= words[i].length, chars.length &lt;= 100</code></li>
+	<li><code>words[i]</code> and <code>chars</code> consist of lowercase English letters.</li>
+</ul>
 
-**Companies**:  
-[Amazon](https://leetcode.com/company/amazon)
+
+**Companies**:
+[Karat](https://leetcode.com/company/karat), [Indeed](https://leetcode.com/company/indeed), [Amazon](https://leetcode.com/company/amazon), [Google](https://leetcode.com/company/google)
 
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/), [Hash Table](https://leetcode.com/tag/hash-table/)
+[Array](https://leetcode.com/tag/array), [Hash Table](https://leetcode.com/tag/hash-table), [String](https://leetcode.com/tag/string)
+
+**Similar Questions**:
+* [Rearrange Characters to Make Target String (Easy)](https://leetcode.com/problems/rearrange-characters-to-make-target-string)
+
+**Hints**:
+* Solve the problem for each string in <code>words</code> independently.
+* Now try to think in frequency of letters.
+* Count how many times each character occurs in string <code>chars</code>.
+* To form a string using characters from <code>chars</code>, the frequency of each character in <code>chars</code> must be greater than or equal the frequency of that character in the string to be formed.
 
 ## Solution 1.
 
