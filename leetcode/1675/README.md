@@ -1,4 +1,4 @@
-# [1675. Minimize Deviation in Array (Hard)](https://leetcode.com/problems/minimize-deviation-in-array/)
+# [1675. Minimize Deviation in Array (Hard)](https://leetcode.com/problems/minimize-deviation-in-array)
 
 <p>You are given an array <code>nums</code> of <code>n</code> positive integers.</p>
 
@@ -6,7 +6,6 @@
 
 <ul>
 	<li>If the element is <strong>even</strong>, <strong>divide</strong> it by <code>2</code>.
-
 	<ul>
 		<li>For example, if the array is <code>[1,2,3,4]</code>, then you can do this operation on the last element, and the array will be <code>[1,2,3,<u>2</u>].</code></li>
 	</ul>
@@ -23,23 +22,26 @@
 <p>Return <em>the <strong>minimum deviation</strong> the array can have after performing some number of operations.</em></p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> nums = [1,2,3,4]
+<pre>
+<strong>Input:</strong> nums = [1,2,3,4]
 <strong>Output:</strong> 1
 <strong>Explanation:</strong> You can transform the array to [1,2,3,<u>2</u>], then to [<u>2</u>,2,3,2], then the deviation will be 3 - 2 = 1.
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> nums = [4,1,5,20,3]
+<pre>
+<strong>Input:</strong> nums = [4,1,5,20,3]
 <strong>Output:</strong> 3
 <strong>Explanation:</strong> You can transform the array after two operations to [4,<u>2</u>,5,<u>5</u>,3], then the deviation will be 5 - 2 = 3.
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> nums = [2,10,8]
+<pre>
+<strong>Input:</strong> nums = [2,10,8]
 <strong>Output:</strong> 3
 </pre>
 
@@ -48,13 +50,21 @@
 
 <ul>
 	<li><code>n == nums.length</code></li>
-	<li><code>2 &lt;= n &lt;= 10<sup><span style="font-size: 10.8333px;">5</span></sup></code></li>
+	<li><code>2 &lt;= n &lt;= 5 * 10<sup><span style="font-size: 10.8333px;">4</span></sup></code></li>
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
 
+**Companies**:
+[Samsung](https://leetcode.com/company/samsung)
+
 **Related Topics**:  
-[Heap](https://leetcode.com/tag/heap/), [Ordered Map](https://leetcode.com/tag/ordered-map/)
+[Array](https://leetcode.com/tag/array), [Greedy](https://leetcode.com/tag/greedy), [Heap (Priority Queue)](https://leetcode.com/tag/heap-priority-queue), [Ordered Set](https://leetcode.com/tag/ordered-set)
+
+**Hints**:
+* Assume you start with the minimum possible value for each number so you can only multiply a number by 2 till it reaches its maximum possible value.
+* If there is a better solution than the current one, then it must have either its maximum value less than the current maximum value, or the minimum value larger than the current minimum value.
+* Since that we only increase numbers (multiply them by 2), we cannot decrease the current maximum value, so we must multiply the current minimum number by 2.
 
 ## Solution 1. Reuse solution to 632
 
@@ -196,12 +206,12 @@ Solution 2 is increasing the number. But if we turn odd numbers `n` to `2n` and 
 class Solution {
 public:
     int minimumDeviation(vector<int>& A) {
-        int N = A.size(), ans = INT_MAX, mn = INT_MAX;
+        int N = A.size(), ans = INT_MAX, mn = INT_MAX; // `mn` is the minimum number within the max heap
         priority_queue<int> pq;
         for (int n : A) {
-            int m = n % 2 ? 2 * n : n;
-            pq.push(m);
-            mn = min(mn, m);
+            if (n % 2) n *= 2;
+            pq.push(n);
+            mn = min(mn, n);
         }
         while (true) {
             int mx = pq.top();

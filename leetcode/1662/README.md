@@ -1,28 +1,31 @@
-# [1662. Check If Two String Arrays are Equivalent (Easy)](https://leetcode.com/problems/check-if-two-string-arrays-are-equivalent/)
+# [1662. Check If Two String Arrays are Equivalent (Easy)](https://leetcode.com/problems/check-if-two-string-arrays-are-equivalent)
 
 <p>Given two string arrays <code>word1</code> and <code>word2</code>, return<em> </em><code>true</code><em> if the two arrays <strong>represent</strong> the same string, and </em><code>false</code><em> otherwise.</em></p>
 
 <p>A string is <strong>represented</strong> by an array if the array elements concatenated <strong>in order</strong> forms the string.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> word1 = ["ab", "c"], word2 = ["a", "bc"]
+<pre>
+<strong>Input:</strong> word1 = [&quot;ab&quot;, &quot;c&quot;], word2 = [&quot;a&quot;, &quot;bc&quot;]
 <strong>Output:</strong> true
 <strong>Explanation:</strong>
-word1 represents string "ab" + "c" -&gt; "abc"
-word2 represents string "a" + "bc" -&gt; "abc"
+word1 represents string &quot;ab&quot; + &quot;c&quot; -&gt; &quot;abc&quot;
+word2 represents string &quot;a&quot; + &quot;bc&quot; -&gt; &quot;abc&quot;
 The strings are the same, so return true.</pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> word1 = ["a", "cb"], word2 = ["ab", "c"]
+<pre>
+<strong>Input:</strong> word1 = [&quot;a&quot;, &quot;cb&quot;], word2 = [&quot;ab&quot;, &quot;c&quot;]
 <strong>Output:</strong> false
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> word1  = ["abc", "d", "defg"], word2 = ["abcddefg"]
+<pre>
+<strong>Input:</strong> word1  = [&quot;abc&quot;, &quot;d&quot;, &quot;defg&quot;], word2 = [&quot;abcddefg&quot;]
 <strong>Output:</strong> true
 </pre>
 
@@ -37,8 +40,18 @@ The strings are the same, so return true.</pre>
 </ul>
 
 
+**Companies**:
+[Apple](https://leetcode.com/company/apple), [Amazon](https://leetcode.com/company/amazon), [Facebook](https://leetcode.com/company/facebook)
+
 **Related Topics**:  
-[String](https://leetcode.com/tag/string/)
+[Array](https://leetcode.com/tag/array), [String](https://leetcode.com/tag/string)
+
+**Similar Questions**:
+* [Check if an Original String Exists Given Two Encoded Strings (Hard)](https://leetcode.com/problems/check-if-an-original-string-exists-given-two-encoded-strings)
+
+**Hints**:
+* Concatenate all strings in the first array into a single string in the given order, the same for the second array.
+* Both arrays represent the same string if and only if the generated strings are the same.
 
 ## Solution 1. Brute Force
 
