@@ -2337,6 +2337,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2946 | Matrix Similarity After Cyclic Shifts | Easy | [Solution](leetcode/2946)
 2947 | Count Beautiful Substrings I | Medium | [Solution](leetcode/2947)
 2951 | Find the Peaks | Easy | [Solution](leetcode/2951)
+2952 | Minimum Number of Coins to be Added | Medium | [Solution](leetcode/2952)
 
 
 # FAQ
