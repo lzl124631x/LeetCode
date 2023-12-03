@@ -99,16 +99,16 @@ public:
 // Space: O(N)
 // Ref: https://leetcode.com/problems/maximum-profitable-triplets-with-increasing-prices-i/solutions/4183514/just-binary-search-map-lower-bound-upper-bound/
 class Solution {
-    void insert(map<int, int> &m, int price, int profit) {
+    void insert(map<int, int> &m, int price, int profit) { // this method ensures that both of the prices and profits are monotinic increasing.
         auto it = m.upper_bound(price);
-        if (it != m.begin() && prev(it)->second >= profit) return;
-        for (it = m.lower_bound(price); it != m.end() && it->second <= profit; m.erase(it++));
+        if (it != m.begin() && prev(it)->second >= profit) return; // If there was already an item with no greater price and no less profit, no need to insert.
+        for (it = m.lower_bound(price); it != m.end() && it->second <= profit; m.erase(it++)); // If there was already an item with no less price and no greater profit, this item can be deleted.
         m[price] = profit;
     }
 public:
     int maxProfit(vector<int>& A, vector<int>& B) {
         int N = A.size(), ans = -1;
-        map<int, int> one, two;
+        map<int, int> one, two; // `one`/`two` is a monotonic map corresponding to the maximum profit we can get from a subsequent of length one/two. The key is the price of the last element in the subsequence, and the value is the total profit of the subsequence. Both the keys and values are monotonic increasing.
         for (int i = 0; i < N; ++i) {
             auto it = two.lower_bound(A[i]);
             if (it != two.begin()) ans = max(ans, prev(it)->second + B[i]);
