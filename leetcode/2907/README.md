@@ -69,22 +69,52 @@ The answer would be sum of their profits which is 5 + 4 + 6 = 15.</pre>
 // OJ: https://leetcode.com/problems/maximum-profitable-triplets-with-increasing-prices-i
 // Author: github.com/lzl124631x
 // Time: O(N^2)
-// Space: O(N)
+// Space: O(1)
 class Solution {
 public:
     int maxProfit(vector<int>& A, vector<int>& B) {
         int N = A.size(), ans = -1;
-        vector<int> maxProfit(N);
-        for (int i = N - 2; i >= 0; --i) {
-            for (int j = i + 1; j < N; ++j) {
-                if (A[j] > A[i]) maxProfit[i] = max(maxProfit[i], B[j]);
+        for (int i = 1; i < N - 1; ++i) {
+            int left = 0, right = 0;
+            for (int j = 0; j < N; ++j) {
+                if (j < i) {
+                    if (A[j] < A[i]) left = max(left, B[j]);
+                } else if (j > i) {
+                    if (A[j] > A[i]) right = max(right, B[j]);
+                }
             }
+            if (left && right) ans = max(ans, left + right + B[i]);
         }
+        return ans;
+    }
+};
+```
+
+## Solution 2. Monotonic Map
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-profitable-triplets-with-increasing-prices-i
+// Author: github.com/lzl124631x
+// Time: O(NlogN)
+// Space: O(N)
+// Ref: https://leetcode.com/problems/maximum-profitable-triplets-with-increasing-prices-i/solutions/4183514/just-binary-search-map-lower-bound-upper-bound/
+class Solution {
+    void insert(map<int, int> &m, int price, int profit) {
+        auto it = m.upper_bound(price);
+        if (it != m.begin() && prev(it)->second >= profit) return;
+        for (it = m.lower_bound(price); it != m.end() && it->second <= profit; m.erase(it++));
+        m[price] = profit;
+    }
+public:
+    int maxProfit(vector<int>& A, vector<int>& B) {
+        int N = A.size(), ans = -1;
+        map<int, int> one, two;
         for (int i = 0; i < N; ++i) {
-            for (int j = i + 1; j < N; ++j) {
-                if (A[j] <= A[i] || maxProfit[j] == 0) continue;
-                ans = max(ans, B[i] + B[j] + maxProfit[j]);
-            }
+            auto it = two.lower_bound(A[i]);
+            if (it != two.begin()) ans = max(ans, prev(it)->second + B[i]);
+            it = one.lower_bound(A[i]);
+            if (it != one.begin()) insert(two, A[i], prev(it)->second + B[i]);
+            insert(one, A[i], B[i]);
         }
         return ans;
     }
