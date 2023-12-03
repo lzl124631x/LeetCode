@@ -72,7 +72,7 @@ It is a balanced subsequence, and its sum is the maximum among the balanced subs
 * For indices <code>x</code> in order from <code>[0, n - 1]</code>, <code>dp[x] = max(nums[x]</code>, <code>nums[x]</code> + the maximum query from the tree in the range <code>[0, dict[nums[x] - x]])</code>, and if <code>dp[x]</code> is greater than the value in the tree at position <code>dict[nums[x] - x]</code>, we update the value in the tree.
 * The answer to the problem is the maximum value in <code>dp</code>.
 
-## Solution 1.
+## Solution 1. Monotonic Map
 
 ```cpp
 // OJ: https://leetcode.com/problems/maximum-balanced-subsequence-sum
@@ -83,7 +83,7 @@ It is a balanced subsequence, and its sum is the maximum among the balanced subs
 class Solution {
 public:
     long long maxBalancedSubsequenceSum(vector<int>& A) {
-        map<int, long long> m{{INT_MIN, 0}}; // a map from A[i]-i to its corresponding maximum subsequence sum. Adding m[INT_MIN] = 0 is a trick with which we can always access prev(it) with worrying that it will go out of bound.
+        map<int, long long> m{{INT_MIN, 0}}; // a map from A[i]-i to its corresponding maximum subsequence sum. Both the key and the value are monotonically increasing. Adding m[INT_MIN] = 0 is a trick with which we can always access prev(it) with worrying that it will go out of bound.
         for (int i = 0, N = A.size(); i < N; ++i) {
             auto it = m.upper_bound(A[i] - i);
             long long sum = A[i] + max(0LL, prev(it)->second);
