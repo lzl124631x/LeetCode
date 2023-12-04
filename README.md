@@ -2333,6 +2333,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2933 | High-Access Employees | Medium | [Solution](leetcode/2933)
 2934 | Minimum Operations to Maximize Last Elements in Arrays | Medium | [Solution](leetcode/2934)
 2935 | Maximum Strong Pair XOR II | Hard | [Solution](leetcode/2935)
+2940 | Find Building Where Alice and Bob Can Meet | Hard | [Solution](leetcode/2940)
 2942 | Find Words Containing Character | Easy | [Solution](leetcode/2942)
 2946 | Matrix Similarity After Cyclic Shifts | Easy | [Solution](leetcode/2946)
 2947 | Count Beautiful Substrings I | Medium | [Solution](leetcode/2947)
