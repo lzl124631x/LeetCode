@@ -99,10 +99,9 @@ We'd better match the first half with the second half.
 class Solution {
 public:
     int minLengthAfterRemovals(vector<int>& A) {
-        int N = A.size(), ans = N;
-        for (int i = 0, j = N / 2 + 1; i < N / 2 && j < N; ++i) {
-            while (j < N && A[j] == A[i]) ++j;
-            if (j < N) ans -= 2, ++j;
+        int N = A.size(), i = 0, j = (N + 1) / 2, ans = N;
+        for (; j < N; ++j) {
+            if (A[i] < A[j]) ans -= 2, ++i;
         }
         return ans;
     }
