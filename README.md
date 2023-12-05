@@ -2301,6 +2301,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2861 | Maximum Number of Alloys | Medium | [Solution](leetcode/2861)
 2864 | Maximum Odd Binary Number | Easy | [Solution](leetcode/2864)
 2865 | Beautiful Towers I | Medium | [Solution](leetcode/2865)
+2866 | Beautiful Towers II | Medium | [Solution](leetcode/2866)
 2869 | Minimum Operations to Collect Elements | Easy | [Solution](leetcode/2869)
 2870 | Minimum Number of Operations to Make Array Empty | Medium | [Solution](leetcode/2870)
 2873 | Maximum Value of an Ordered Triplet I | Easy | [Solution](leetcode/2873)
