@@ -1,4 +1,4 @@
-# [1688. Count of Matches in Tournament (Easy)](https://leetcode.com/problems/count-of-matches-in-tournament/)
+# [1688. Count of Matches in Tournament (Easy)](https://leetcode.com/problems/count-of-matches-in-tournament)
 
 <p>You are given an integer <code>n</code>, the number of teams in a tournament that has strange rules:</p>
 
@@ -10,9 +10,10 @@
 <p>Return <em>the number of matches played in the tournament until a winner is decided.</em></p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> n = 7
+<pre>
+<strong>Input:</strong> n = 7
 <strong>Output:</strong> 6
 <strong>Explanation:</strong> Details of the tournament: 
 - 1st Round: Teams = 7, Matches = 3, and 4 teams advance.
@@ -21,9 +22,10 @@
 Total number of matches = 3 + 2 + 1 = 6.
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> n = 14
+<pre>
+<strong>Input:</strong> n = 14
 <strong>Output:</strong> 13
 <strong>Explanation:</strong> Details of the tournament:
 - 1st Round: Teams = 14, Matches = 7, and 7 teams advance.
@@ -41,8 +43,18 @@ Total number of matches = 7 + 3 + 2 + 1 = 13.
 </ul>
 
 
+**Companies**:
+[Adobe](https://leetcode.com/company/adobe), [Yahoo](https://leetcode.com/company/yahoo)
+
 **Related Topics**:  
-[Backtracking](https://leetcode.com/tag/backtracking/)
+[Math](https://leetcode.com/tag/math), [Simulation](https://leetcode.com/tag/simulation)
+
+**Similar Questions**:
+* [Count Distinct Numbers on Board (Easy)](https://leetcode.com/problems/count-distinct-numbers-on-board)
+
+**Hints**:
+* Simulate the tournament as given in the statement.
+* Be careful when handling odd integers.
 
 ## Solution 1. 
 
