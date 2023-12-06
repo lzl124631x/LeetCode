@@ -136,7 +136,7 @@ So if `secondHighestBit` is 1, i.e. `n = 11xxx...xxx`, then the we can do the fo
 00000...000
 ```
 
-The steps required for process 2 and 3 are known. The steps required for process 1 is exactly `f(xxx...xxx)` where `xxx...xxx` are the bits after the second highest bit.
+The steps required for process 2 and 3 are known, `1` and `2^k-1` respectively (assuming the highest bit 1 is `2^k`), `2^k` steps in total. The steps required for process 1 is exactly `f(xxx...xxx)` where `xxx...xxx` are the bits after the second highest bit.
 
 As you can see, it's a recursive process.
 
@@ -180,14 +180,10 @@ $$f(n) = 2^{k+1}-1 - f(2^{k-2} \cdot x_{k-2} + ... + 2^0 \cdot x_0)$$
 // Time: O(logN)
 // Space: O(logN)
 class Solution {
-    inline unsigned lowbit(unsigned x) { return x & -x; }
 public:
     int minimumOneBitOperations(int n) {
         if (n <= 1) return n;
-        unsigned first = ~0;
-        while (first & n) first <<= 1;
-        first = lowbit(first >> 1);
-        unsigned second = (first >> 1) & n, rest = minimumOneBitOperations(n & ~first & ~second);
+        unsigned first = 1 << (31 - __builtin_clz(n)), second = (first >> 1) & n, rest = minimumOneBitOperations(n & ~first & ~second);
         return second ? first + rest : (first << 1) - 1 - rest;
     }
 };
