@@ -2337,6 +2337,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2935 | Maximum Strong Pair XOR II | Hard | [Solution](leetcode/2935)
 2940 | Find Building Where Alice and Bob Can Meet | Hard | [Solution](leetcode/2940)
 2942 | Find Words Containing Character | Easy | [Solution](leetcode/2942)
+2945 | Find Maximum Non-decreasing Array Length | Hard | [Solution](leetcode/2945)
 2946 | Matrix Similarity After Cyclic Shifts | Easy | [Solution](leetcode/2946)
 2947 | Count Beautiful Substrings I | Medium | [Solution](leetcode/2947)
 2951 | Find the Peaks | Easy | [Solution](leetcode/2951)
