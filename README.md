@@ -2299,6 +2299,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2859 | Sum of Values at Indices With K Set Bits | Easy | [Solution](leetcode/2859)
 2860 | Happy Students | Medium | [Solution](leetcode/2860)
 2861 | Maximum Number of Alloys | Medium | [Solution](leetcode/2861)
+2862 | Maximum Element-Sum of a Complete Subset of Indices | Hard | [Solution](leetcode/2862)
 2864 | Maximum Odd Binary Number | Easy | [Solution](leetcode/2864)
 2865 | Beautiful Towers I | Medium | [Solution](leetcode/2865)
 2866 | Beautiful Towers II | Medium | [Solution](leetcode/2866)
