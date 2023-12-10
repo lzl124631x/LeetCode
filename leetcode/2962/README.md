@@ -69,7 +69,7 @@ public:
         long long N = A.size(), ans = 0, cnt = 0, mx = *max_element(begin(A), end(A)), i = 0, j = 0;
         for (; j < N; ++j) {
             cnt += A[j] == mx;
-            while (i <= j && cnt >= k) cnt -= A[i++] == mx;
+            while (cnt >= k) cnt -= A[i++] == mx;
             ans += i;
         }
         return ans;
