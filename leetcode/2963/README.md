@@ -93,3 +93,7 @@ public:
     }
 };
 ```
+
+## Discussion
+
+https://leetcode.com/problems/count-the-number-of-good-partitions/solutions/4384369/count-non-overlapping-intervals/

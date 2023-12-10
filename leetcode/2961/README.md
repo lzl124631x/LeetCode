@@ -74,3 +74,7 @@ public:
     }
 };
 ```
+
+## Discussion
+
+https://leetcode.com/problems/double-modular-exponentiation/solutions/4384476/c-fast-pow/

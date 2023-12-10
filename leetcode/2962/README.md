@@ -55,3 +55,28 @@ public:
     }
 };
 ```
+
+## Solution 2. Find Minimum Sliding Window
+
+```cpp
+// OJ: https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(N)
+class Solution {
+public:
+    long long countSubarrays(vector<int>& A, int k) {
+        long long N = A.size(), ans = 0, cnt = 0, mx = *max_element(begin(A), end(A)), i = 0, j = 0;
+        for (; j < N; ++j) {
+            cnt += A[j] == mx;
+            while (i <= j && cnt >= k) cnt -= A[i++] == mx;
+            ans += i;
+        }
+        return ans;
+    }
+};
+```
+
+## Discuss
+
+https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times/solutions/4384450/map-of-first-occurrence-o-n-time/

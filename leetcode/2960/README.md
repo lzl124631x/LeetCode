@@ -99,3 +99,7 @@ public:
     }
 };
 ```
+
+## Discussion
+
+https://leetcode.com/problems/count-tested-devices-after-test-operations/solutions/4384483/c-one-pass/
