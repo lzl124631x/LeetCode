@@ -2344,6 +2344,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2951 | Find the Peaks | Easy | [Solution](leetcode/2951)
 2952 | Minimum Number of Coins to be Added | Medium | [Solution](leetcode/2952)
 2956 | Find Common Elements Between Two Arrays | Easy | [Solution](leetcode/2956)
+2957 | Remove Adjacent Almost-Equal Characters | Medium | [Solution](leetcode/2957)
 
 
 # FAQ
