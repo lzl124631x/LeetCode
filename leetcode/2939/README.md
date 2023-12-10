@@ -50,7 +50,7 @@ It can be shown that 12 is the maximum value of (a XOR x) * (b XOR x) for all 0 
 
 **Hints**:
 * Iterate over bits from most significant to least significant.
-* For the <code>i<sup>th</sup></code> bit, if both <code>a</code> and <code>b</code> have the same value, we can always make <code>x</code>’s <code>i<sup>th</sup></code> bit different from <code>a</code> and <code>b</code>, so <code>a ^ x</code> and <code>b ^ x</code> both have the <code>i<sup>th</sup></cod> bit set.
+* For the <code>i<sup>th</sup></code> bit, if both <code>a</code> and <code>b</code> have the same value, we can always make <code>x</code>’s <code>i<sup>th</sup></code> bit different from <code>a</code> and <code>b</code>, so <code>a ^ x</code> and <code>b ^ x</code> both have the <code>i<sup>th</sup></code> bit set.
 * Otherwise, we can only set the <code>i<sup>th</sup></code> bit of one of <code>a ^ x</code> or <code>b ^ x</code>. Depending on the previous bits of  <code>a ^ x</code> or <code>b ^ x</code>, we should set the smaller value’s <code>i<sup>th</sup></code> bit.
 
 ## Solution 1.
