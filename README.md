@@ -2345,6 +2345,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2952 | Minimum Number of Coins to be Added | Medium | [Solution](leetcode/2952)
 2956 | Find Common Elements Between Two Arrays | Easy | [Solution](leetcode/2956)
 2957 | Remove Adjacent Almost-Equal Characters | Medium | [Solution](leetcode/2957)
+2960 | Count Tested Devices After Test Operations | Easy | [Solution](leetcode/2960)
+2961 | Double Modular Exponentiation | Medium | [Solution](leetcode/2961)
+2962 | Count Subarrays Where Max Element Appears at Least K Times | Medium | [Solution](leetcode/2962)
+2963 | Count the Number of Good Partitions | Hard | [Solution](leetcode/2963)
 
 
 # FAQ
