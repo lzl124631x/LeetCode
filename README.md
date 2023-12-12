@@ -2265,6 +2265,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2798 | Number of Employees Who Met the Target | Easy | [Solution](leetcode/2798)
 2799 | Count Complete Subarrays in an Array | Medium | [Solution](leetcode/2799)
 2800 | Shortest String That Contains Three Strings | Medium | [Solution](leetcode/2800)
+2802 | Find The K-th Lucky Number | Medium | [Solution](leetcode/2802)
 2806 | Account Balance After Rounded Purchase | Easy | [Solution](leetcode/2806)
 2807 | Insert Greatest Common Divisors in Linked List | Medium | [Solution](leetcode/2807)
 2808 | Minimum Seconds to Equalize a Circular Array | Medium | [Solution](leetcode/2808)
