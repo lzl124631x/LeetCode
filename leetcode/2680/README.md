@@ -1,4 +1,4 @@
-# [Maximum OR (Medium)](https://leetcode.com/problems/maximum-or)
+# [2680. Maximum OR (Medium)](https://leetcode.com/problems/maximum-or)
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> of length <code>n</code> and an integer <code>k</code>. In an operation, you can choose an element and multiply it by <code>2</code>.</p>
 
@@ -36,6 +36,10 @@
 **Related Topics**:  
 [Array](https://leetcode.com/tag/array), [Greedy](https://leetcode.com/tag/greedy), [Bit Manipulation](https://leetcode.com/tag/bit-manipulation), [Prefix Sum](https://leetcode.com/tag/prefix-sum)
 
+**Hints**:
+* The optimal solution should apply all the k operations on a single number.
+* Calculate the prefix or and the suffix or and perform k operations over each element, and maximize the answer.
+
 ## Solution 1.
 
 1. The optimal solution should apply all the k operations on a single number.
@@ -59,6 +63,33 @@ public:
         for (int i = 0; i < N; ++i) {
             ans = max(ans, pre | suf[i + 1] | ((long long)A[i] << K));
             pre |= A[i];
+        }
+        return ans;
+    }
+};
+```
+
+Or
+
+```cpp
+// OJ: https://leetcode.com/problems/maximum-or
+// Author: github.com/lzl124631x
+// Time: O(N)
+// Space: O(1)
+class Solution {
+public:
+    long long maximumOr(vector<int>& A, int k) {
+        long long cnt[32] = {}, all = 0, ans = 0;
+        for (int n : A) {
+            for (int i = 0; i < 32; ++i) cnt[i] += (n >> i & 1);
+            all |= n;
+        }
+        for (int n : A) {
+            int other = 0;
+            for (int i = 0; i < 32; ++i) {
+                if (cnt[i] - (n >> i & 1) > 0) other |= (1 << i);
+            }
+            ans = max(ans, other | ((long long)n << k));
         }
         return ans;
     }
