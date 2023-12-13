@@ -1,60 +1,48 @@
-# [1582. Special Positions in a Binary Matrix (Easy)](https://leetcode.com/problems/special-positions-in-a-binary-matrix/)
+# [1582. Special Positions in a Binary Matrix (Easy)](https://leetcode.com/problems/special-positions-in-a-binary-matrix)
 
-<p>Given a&nbsp;<code>rows x cols</code>&nbsp;matrix&nbsp;<code>mat</code>,&nbsp;where <code>mat[i][j]</code> is either <code>0</code> or <code>1</code>,&nbsp;return <em>the number of special positions in <code>mat</code>.</em></p>
+<p>Given an <code>m x n</code> binary matrix <code>mat</code>, return <em>the number of special positions in </em><code>mat</code><em>.</em></p>
 
-<p>A position <code>(i,j)</code> is called <strong>special</strong>&nbsp;if&nbsp;<code>mat[i][j] == 1</code> and all other elements in row <code>i</code>&nbsp;and column <code>j</code>&nbsp;are <code>0</code> (rows and columns are <strong>0-indexed</strong>).</p>
+<p>A position <code>(i, j)</code> is called <strong>special</strong> if <code>mat[i][j] == 1</code> and all other elements in row <code>i</code> and column <code>j</code> are <code>0</code> (rows and columns are <strong>0-indexed</strong>).</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
-
-<pre><strong>Input:</strong> mat = [[1,0,0],
-&nbsp;             [0,0,<strong>1</strong>],
-&nbsp;             [1,0,0]]
+<p><strong class="example">Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/12/23/special1.jpg" style="width: 244px; height: 245px;" />
+<pre>
+<strong>Input:</strong> mat = [[1,0,0],[0,0,1],[1,0,0]]
 <strong>Output:</strong> 1
-<strong>Explanation:</strong> (1,2) is a special position because mat[1][2] == 1 and all other elements in row 1 and column 2 are 0.
+<strong>Explanation:</strong> (1, 2) is a special position because mat[1][2] == 1 and all other elements in row 1 and column 2 are 0.
 </pre>
 
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input:</strong> mat = [[<strong>1</strong>,0,0],
-&nbsp;             [0,<strong>1</strong>,0],
-&nbsp;             [0,0,<strong>1</strong>]]
+<p><strong class="example">Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/12/24/special-grid.jpg" style="width: 244px; height: 245px;" />
+<pre>
+<strong>Input:</strong> mat = [[1,0,0],[0,1,0],[0,0,1]]
 <strong>Output:</strong> 3
-<strong>Explanation:</strong> (0,0), (1,1) and (2,2) are special positions. 
-</pre>
-
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input:</strong> mat = [[0,0,0,<strong>1</strong>],
-&nbsp;             [<strong>1</strong>,0,0,0],
-&nbsp;             [0,1,1,0],
-&nbsp;             [0,0,0,0]]
-<strong>Output:</strong> 2
-</pre>
-
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input:</strong> mat = [[0,0,0,0,0],
-&nbsp;             [<strong>1</strong>,0,0,0,0],
-&nbsp;             [0,<strong>1</strong>,0,0,0],
-&nbsp;             [0,0,<strong>1</strong>,0,0],
-&nbsp;             [0,0,0,1,1]]
-<strong>Output:</strong> 3
+<strong>Explanation:</strong> (0, 0), (1, 1) and (2, 2) are special positions.
 </pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>rows == mat.length</code></li>
-	<li><code>cols == mat[i].length</code></li>
-	<li><code>1 &lt;= rows, cols &lt;= 100</code></li>
-	<li><code>mat[i][j]</code> is <code>0</code> or <code>1</code>.</li>
+	<li><code>m == mat.length</code></li>
+	<li><code>n == mat[i].length</code></li>
+	<li><code>1 &lt;= m, n &lt;= 100</code></li>
+	<li><code>mat[i][j]</code> is either <code>0</code> or <code>1</code>.</li>
 </ul>
 
 
+**Companies**:
+[Bloomberg](https://leetcode.com/company/bloomberg), [Google](https://leetcode.com/company/google)
+
 **Related Topics**:  
-[Array](https://leetcode.com/tag/array/)
+[Array](https://leetcode.com/tag/array), [Matrix](https://leetcode.com/tag/matrix)
+
+**Similar Questions**:
+* [Difference Between Ones and Zeros in Row and Column (Medium)](https://leetcode.com/problems/difference-between-ones-and-zeros-in-row-and-column)
+
+**Hints**:
+* Keep track of 1s in each row and in each column. Then while iterating over matrix, if the current position is 1 and current row as well as current column contains exactly one occurrence of 1.
 
 ## Solution 1. Brute Force
 
