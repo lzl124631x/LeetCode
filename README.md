@@ -2204,7 +2204,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2672 | Number of Adjacent Elements With the Same Color | Medium | [Solution](leetcode/2672)
 2673 | Make Costs of Paths Equal in a Binary Tree | Medium | [Solution](leetcode/2673)
 2678 | Number of Senior Citizens | Easy | [Solution](leetcode/2678)
-2680 | ? | ? | [Solution](leetcode/2680)
+2680 | Maximum OR | Medium | [Solution](leetcode/2680)
 2681 | Power of Heroes | Hard | [Solution](leetcode/2681)
 2682 | Find the Losers of the Circular Game | Easy | [Solution](leetcode/2682)
 2683 | Neighboring Bitwise XOR | Medium | [Solution](leetcode/2683)
@@ -2351,6 +2351,13 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2961 | Double Modular Exponentiation | Medium | [Solution](leetcode/2961)
 2962 | Count Subarrays Where Max Element Appears at Least K Times | Medium | [Solution](leetcode/2962)
 2963 | Count the Number of Good Partitions | Hard | [Solution](leetcode/2963)
+3000. | ? | ? | [Solution](leetcode/3000.)
+Maximum | ? | ? | [Solution](leetcode/Maximum)
+Area | ? | ? | [Solution](leetcode/Area)
+of | ? | ? | [Solution](leetcode/of)
+Longest | ? | ? | [Solution](leetcode/Longest)
+Diagonal | ? | ? | [Solution](leetcode/Diagonal)
+Rectangle | ? | ? | [Solution](leetcode/Rectangle)
 
 
 # FAQ
