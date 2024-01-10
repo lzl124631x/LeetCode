@@ -2351,13 +2351,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2961 | Double Modular Exponentiation | Medium | [Solution](leetcode/2961)
 2962 | Count Subarrays Where Max Element Appears at Least K Times | Medium | [Solution](leetcode/2962)
 2963 | Count the Number of Good Partitions | Hard | [Solution](leetcode/2963)
-3000. | ? | ? | [Solution](leetcode/3000.)
-Maximum | ? | ? | [Solution](leetcode/Maximum)
-Area | ? | ? | [Solution](leetcode/Area)
-of | ? | ? | [Solution](leetcode/of)
-Longest | ? | ? | [Solution](leetcode/Longest)
-Diagonal | ? | ? | [Solution](leetcode/Diagonal)
-Rectangle | ? | ? | [Solution](leetcode/Rectangle)
+3000 | Maximum Area of Longest Diagonal Rectangle | Easy | [Solution](leetcode/3000)
 
 
 # FAQ
