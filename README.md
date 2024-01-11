@@ -2257,6 +2257,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2779 | Maximum Beauty of an Array After Applying Operation | Medium | [Solution](leetcode/2779)
 2780 | Minimum Index of a Valid Split | Medium | [Solution](leetcode/2780)
 2781 | Length of the Longest Valid Substring | Hard | [Solution](leetcode/2781)
+2782 | Number of Unique Categories | Medium | [Solution](leetcode/2782)
 2784 | Check if Array is Good | Easy | [Solution](leetcode/2784)
 2785 | Sort Vowels in a String | Medium | [Solution](leetcode/2785)
 2786 | Visit Array Positions to Maximize Score | Medium | [Solution](leetcode/2786)
