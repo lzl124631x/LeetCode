@@ -2358,6 +2358,10 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 3000 | Maximum Area of Longest Diagonal Rectangle | Easy | [Solution](leetcode/3000)
 3001 | Minimum Moves to Capture The Queen | Medium | [Solution](leetcode/3001)
 3002 | Maximum Size of a Set After Removals | Medium | [Solution](leetcode/3002)
+3033 | Modify the Matrix | Easy | [Solution](leetcode/3033)
+3034 | Number of Subarrays That Match a Pattern I | Medium | [Solution](leetcode/3034)
+3035 | Maximum Palindromes After Operations | Medium | [Solution](leetcode/3035)
+3036 | Number of Subarrays That Match a Pattern II | Hard | [Solution](leetcode/3036)
 
 
 # FAQ
