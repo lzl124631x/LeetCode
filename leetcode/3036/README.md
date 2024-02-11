@@ -69,12 +69,12 @@ Lastly, count the number of occurrence of `p` in `s`. We can use KMP to do this 
 // Space: O(M + N)
 class Solution {
     vector<int> getLps(string &s) {
-        int N = s.size(), j = 0;
-        vector<int> lps(N);
-        for (int i = 1; i < N; ++i) {
-            while (j > 0 && s[i] != s[j]) j = lps[j - 1];
-            j += s[i] == s[j];
-            lps[i] = j;
+        int N = s.size(), i = 0;
+        vector<int> lps(N); // lps[0] is always 0
+        for (int j = 1; j < N; ++j) {
+            while (i > 0 && s[i] != s[j]) i = lps[i - 1]; // when s[i] can't match s[j], keep moving `i` backwards to `lps[i-1]`
+            i += s[i] == s[j]; // Move `i` if s[j] matches s[i]
+            lps[j] = i; // Assign the matched length to lps[j]
         }
         return lps;
     }
@@ -86,11 +86,11 @@ class Solution {
             if (s[i] == t[j]) {
                 ++i;
                 ++j;
-            }
-            if (j == N) {
-                j = lps[j - 1];
-                ++ans;
-            } else if (i < M && s[i] != t[j]) {
+                if (j == N) {
+                    ++ans;
+                    j = lps[j - 1]; // Full match found. Move `j` back to `lps[j-1]` to skip matched prefix
+                }
+            } else {
                 if (j) j = lps[j - 1];
                 else ++i;
             }
