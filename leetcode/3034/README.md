@@ -51,7 +51,7 @@ Hence, there are 2 subarrays in nums that match the pattern.
 ## Solution 1. Brute Force
 
 ```cpp
-// OJ: https://leetcode.com/problems/weekly-contest-384
+// OJ: https://leetcode.com/problems/number-of-subarrays-that-match-a-pattern-i
 // Author: github.com/lzl124631x
 // Time: O((N - M - 1) * M)
 // Space: O(1)
