@@ -2352,6 +2352,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 2961 | Double Modular Exponentiation | Medium | [Solution](leetcode/2961)
 2962 | Count Subarrays Where Max Element Appears at Least K Times | Medium | [Solution](leetcode/2962)
 2963 | Count the Number of Good Partitions | Hard | [Solution](leetcode/2963)
+2971 | Find Polygon With the Largest Perimeter | Medium | [Solution](leetcode/2971)
 2980 | Check if Bitwise OR Has Trailing Zeros | Easy | [Solution](leetcode/2980)
 2981 | Find Longest Special Substring That Occurs Thrice I | Medium | [Solution](leetcode/2981)
 2982 | Find Longest Special Substring That Occurs Thrice II | Medium | [Solution](leetcode/2982)
