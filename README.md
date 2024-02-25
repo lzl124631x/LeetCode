@@ -2366,6 +2366,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 3042 | Count Prefix and Suffix Pairs I | Easy | [Solution](leetcode/3042)
 3043 | Find the Length of the Longest Common Prefix | Medium | [Solution](leetcode/3043)
 3044 | Most Frequent Prime | Medium | [Solution](leetcode/3044)
+3046 | Split the Array | Easy | [Solution](leetcode/3046)
 
 
 # FAQ
