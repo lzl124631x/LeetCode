@@ -2368,6 +2368,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 3044 | Most Frequent Prime | Medium | [Solution](leetcode/3044)
 3046 | Split the Array | Easy | [Solution](leetcode/3046)
 3062 | Winner of the Linked List Game | Easy | [Solution](leetcode/3062)
+3105 | Longest Strictly Increasing or Strictly Decreasing Subarray | Easy | [Solution](leetcode/3105)
 
 
 # FAQ
