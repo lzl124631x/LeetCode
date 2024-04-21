@@ -2372,6 +2372,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 3106 | Lexicographically Smallest String After Operations With Constraint | Medium | [Solution](leetcode/3106)
 3107 | Minimum Operations to Make Median of Array Equal to K | Medium | [Solution](leetcode/3107)
 3108 | Minimum Cost Walk in Weighted Graph | Hard | [Solution](leetcode/3108)
+3120 | Count the Number of Special Characters I | Easy | [Solution](leetcode/3120)
 
 
 # FAQ
