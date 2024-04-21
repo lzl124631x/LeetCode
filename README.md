@@ -2375,6 +2375,7 @@ Now I'm using a Chrome Extension I developed -- [LeetCoder](https://chrome.googl
 3120 | Count the Number of Special Characters I | Easy | [Solution](leetcode/3120)
 3121 | Count the Number of Special Characters II | Medium | [Solution](leetcode/3121)
 3122 | Minimum Number of Operations to Satisfy Conditions | Medium | [Solution](leetcode/3122)
+3123 | Find Edges in Shortest Paths | Hard | [Solution](leetcode/3123)
 
 
 # FAQ
